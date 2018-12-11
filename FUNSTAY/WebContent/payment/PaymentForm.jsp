@@ -18,10 +18,9 @@
 
 <!-- payment.jsp 링크 -->
 <link href="./css/payment/PaymentForm.css" rel="stylesheet">	
-<!-- 아임포트 jquery
+<!-- 아임포트 jquery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
- -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" 
 integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 
@@ -133,12 +132,12 @@ integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yI
 <!-- <div class="clear"></div> -->
 <div id="splitwrapright_sg2">
 <!-- 아임포트 j쿼리 버튼 -->
-<!-- <input type="button" value="결제하기" id="check_module"> -->
-<input type="submit" value="결제하기" id="check_module">
+<input type="button" value="결제하기" id="check_module" class="check_module">
+<input type="submit" value="결제하기(테스트용)" id="check_module">
 </div>
 </form>
 <!-- 아임포트 결제 j쿼리 -->
-<!-- <script src="../js/payment/PaymentForm.js"></script> -->
+<script src="./js/payment/PaymentForm.js"></script>
 
 <!-- <input type="button" value="날짜 확인test" id="datebtn">
 <script>

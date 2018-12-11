@@ -5,11 +5,11 @@ $("#check_module").click(function(){
 
 
 	IMP.request_pay({
-	    pg : 'html5_inicis', // version 1.1.0부터 지원.
-	    pay_method : 'card',
+	    pg : 'uplus', // version 1.1.0부터 지원.
+	    pay_method : 'phone',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
 	    name : '주문명:결제테스트',
-	    amount : 14000,
+	    amount : 10,
 	    /*buyer_email : 'iamport@siot.do',*/
 	    buyer_name : '구매자이름',
 	    buyer_tel : '010-1234-5678',
