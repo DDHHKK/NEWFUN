@@ -207,8 +207,13 @@ public class BookDAO {
     
     
     
-  //예약취소 메서드(sql-update문)
+  //예약취소된 숙소 가져오는 메서드(sql-update문)
   	public void BillCancel(BookingBean bb,PaymentBean pb){
+  		
+  		List bookingList=new ArrayList<>();
+		List paymentList=new ArrayList<>();
+		List hostList=new ArrayList<>();
+    	Vector vector=new Vector<>();
   		
   		Connection con=null;
   	    PreparedStatement pstmt=null;
@@ -240,8 +245,30 @@ public class BookDAO {
   			    //4단계 실행
   				pstmt.executeUpdate(); 
   				
+  				//3단계 
+  				sql="select * from booking where booking_status=?";
+  				pstmt=con.prepareStatement(sql);
   				
+  				pstmt.setInt(1, 0);
   				
+  				rs=pstmt.executeQuery();
+  				
+  				 while(rs.next()){ 
+ 					//첫 행 이동 열접근해서
+    		        	HostBean hb2=new HostBean();
+    		        	PaymentBean pb2=new PaymentBean();
+    		        	BookingBean bb2=new BookingBean();
+    		        	
+    		        	bb2.setCheck_in(rs.getDate("check_in"));
+    		        	bb2.setCheck_out(rs.getDate("check_out"));
+    		        	hb2.setRoom_subject(rs.getString("room_subject"));
+    		        	pb2.setSum_price(rs.getInt("sum_price"));
+    		        	
+    		        	bookingList.add(bb2);
+    		        	paymentList.add(pb2);
+    		        	hostList.add(hb2);
+    		        
+ 				}
   				
   		 }catch(Exception e){
   			 e.printStackTrace();

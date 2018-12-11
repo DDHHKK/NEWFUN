@@ -332,9 +332,9 @@ if(i%3==0){
   <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
-  <!--리뷰쓰기 버튼 -->
-  <button onclick="location.href='./ReviewWrite.bk'" class="review_butt_DY">리뷰쓰기</button>
-  <!--리뷰쓰기 버튼 끝  -->
+  <!--예약취소 버튼  -->
+  <button class="cancel_butt_DY" onclick="button_event();">예약취소</button>
+  <!-- 예약취소 버튼 끝  -->
 		
 
 	</td>
@@ -354,12 +354,6 @@ if(i%3==0){
 </table>
 
 
-
-
- 
- 
- 
- 
   
   
 </div>
@@ -496,7 +490,7 @@ function button_event(){
 		location.href="./BillCancel.bk";
 		alert("예약취소되었습니다.")
 		
-	}else if(r==false){
+	}else{
 		
 		history.go(-1);
 	}
