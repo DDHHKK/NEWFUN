@@ -136,8 +136,6 @@ for(int i=0; i<bookingList.size(); i++){
   <a href="#">
 <!--   <div class="mywish_shj"> -->
   
-  
-    
 <table border="1">
 <!-- <tr><td>방제목</td><td>체크인날짜</td>
     <td>체크아웃날짜</td><td>총금액</td></tr> -->
@@ -277,46 +275,87 @@ if(i%3==0){
 <!--예정된 숙소 시작  -->
 <div id="Paris" class="w3-container city" style="display:none">
 
-
+ 
  <!--썸네일1시작  -->
-  <a href="#">
+  <!--<a href="#">
   <div class="mywish_shj">
   <div id="outerbox_shj"> <img src="../img/부산1.png"> </div>
   <div id="imginfo_shj">
   <div id="imgname_shj">부산광역시 광안리</div>
-  <!--영수증버튼(모달박스)  -->
+  영수증버튼(모달박스) 
   <div class="w3-container_receipt">
   <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
   </div>
-  <!-- 영수증 버튼 끝  -->
-  <!--예약취소 버튼 -->
+  영수증 버튼 끝 
+  예약취소 버튼
   <button class="cancel_butt_DY" onclick="button_event();">예약취소</button>
-  <!--예약취소 버튼 끝  -->
+  예약취소 버튼 끝 
   </div>
   </div>
   </a>
- <!--썸네일1끝  -->
+ 썸네일1끝  -->
  
  
- <!--썸네일2시작  -->
-  <a href="#">
-  <div class="mywish_shj">
-  <div id="outerbox_shj"> <img src="../img/부산1.png"> </div>
-  <div id="imginfo_shj">
-  <div id="imgname_shj">부산광역시 광안리</div>
-  <!--영수증버튼(모달박스)  -->
+
+
+
+
+ 
+<table border="1">
+<!-- <tr><td>방제목</td><td>체크인날짜</td>
+    <td>체크아웃날짜</td><td>총금액</td></tr> -->
+
+
+  
+<%
+
+List bookingList2=(List)request.getAttribute("bookingList2");
+List paymentList2=(List)request.getAttribute("paymentList2");
+List hostList2=(List)request.getAttribute("hostList2");
+
+for(int i=0; i<bookingList2.size(); i++){
+	BookingBean bb=(BookingBean)bookingList2.get(i);
+	PaymentBean pb=(PaymentBean)paymentList2.get(i);
+	HostBean hb=(HostBean)hostList2.get(i);
+
+if(i%3==0){
+	%>
+	<tr>
+	<% 
+}
+%>
+
+<td><%=hb.getRoom_subject() %><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
+	
+<!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
   <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
   </div>
-  <!-- 영수증 버튼 끝  -->
-  <!--예약취소 버튼 -->
-  <button class="cancel_butt_DY" onclick="button_event();">예약취소</button>
-  <!--예약취소 버튼 끝  -->
-  </div>
-  </div>
-  </a>
- <!--썸네일2끝  -->
+ <!--영수증 버튼 끝  -->  
+  <!--리뷰쓰기 버튼 -->
+  <button onclick="location.href='./ReviewWrite.bk'" class="review_butt_DY">리뷰쓰기</button>
+  <!--리뷰쓰기 버튼 끝  -->
+		
+
+	</td>
+
+
+<% if(i%3==2) { %>
+</tr> 
+  <% } }%> 
+  
+
+<%-- <tr><td><%=hb.getRoom_subject()%></td>
+    <td><%=bb.getCheck_in()%></td>
+    <td><%=bb.getCheck_out()%></td>
+    <td><%=pb.getSum_price()%></td></tr> --%>
+
  
+</table>
+
+
+
+
  
  
  
@@ -349,24 +388,7 @@ if(i%3==0){
   </div>
   </div>
   </a>
-  <a href="#">
-  <div class="mywish_shj">
-  <div id="outerbox_shj"> <img src="../img/부산1.png"> </div>
-  <div id="imginfo_shj">
-  <div id="imgname_shj">부산광역시 광안리</div>
   
-   
-   
-   <!--영수증버튼(모달박스)  -->
-  <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
-  </div>
-<!-- 영수증 버튼 끝  -->
-   
-  
-  </div>
-  </div>
-  </a>
 </div>
 <!--취소된 숙소 끝  -->
 
