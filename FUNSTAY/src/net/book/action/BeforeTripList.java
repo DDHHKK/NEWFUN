@@ -31,17 +31,30 @@ public class BeforeTripList implements Action{
 		
 		
 		BookDAO bdao=new BookDAO();
+		//완료된 숙소 vector
 		Vector vector=bdao.GetBeforeTrip(member_email);
+		//예정된 숙소 vector2
+		Vector vector2=bdao.GetAfterTrip(member_email);
 				
 		List<BookingBean> bookingList=(List<BookingBean>)vector.get(0);
 		List<PaymentBean> paymentList=(List<PaymentBean>)vector.get(1);
 		List<HostBean> hostList=(List<HostBean>)vector.get(2);
 		
-        //request 저장 bb
+		List<BookingBean> bookingList2=(List<BookingBean>)vector2.get(0);
+		List<PaymentBean> paymentList2=(List<PaymentBean>)vector2.get(1);
+		List<HostBean> hostList2=(List<HostBean>)vector2.get(2);
+		
+		
+        //request 저장 
 		request.setAttribute("bookingList", bookingList);
 		request.setAttribute("paymentList", paymentList);
 		request.setAttribute("hostList", hostList);
 		
+		
+		 //request 저장 
+		request.setAttribute("bookingList2", bookingList2);
+		request.setAttribute("paymentList2", paymentList2);
+		request.setAttribute("hostList2", hostList2);
 				
 		ActionForward forward=new ActionForward();
 		//이동./myinfo/my_reserve.jsp

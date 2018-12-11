@@ -107,14 +107,14 @@ public class BookDAO {
 			con=getConnection();
                 
                    String sql2="select distinct h.room_subject,b.check_in, b.check_out,p.sum_price from home h, payment p , booking b "
-                   		+ "where p.member_email=? and b.payment_num=p.payment_num and b.home_num=h.home_num";
+                   		+ "where p.member_email=? and b.payment_num=p.payment_num and b.home_num=h.home_num and b.check_in<now()";
                    
                    pstmt=con.prepareStatement(sql2);//객체생성
    		           pstmt.setString(1,member_email);
    		          
    		           rs=pstmt.executeQuery();
    		           
-   		        if(rs.next()){ 
+   		       while(rs.next()){ 
 					//첫 행 이동 열접근해서
    		        	HostBean hb=new HostBean();
    		        	PaymentBean pb=new PaymentBean();
@@ -123,7 +123,7 @@ public class BookDAO {
    		        	bb.setCheck_in(rs.getDate("check_in"));
    		        	bb.setCheck_out(rs.getDate("check_out"));
    		        	hb.setRoom_subject(rs.getString("room_subject"));
-   		        	pb.setSum_price(rs.getInt("sun_price"));
+   		        	pb.setSum_price(rs.getInt("sum_price"));
    		        	
    		        	bookingList.add(bb);
    		        	paymentList.add(pb);
@@ -146,6 +146,64 @@ public class BookDAO {
 		
 	}//완료된 숙소 가져오는 메서드 끝
 
+    
+    
+  //예정된 숙소 가져오는 메서드(sql-select문)
+
+    public Vector<?> GetAfterTrip(String member_email){
+		List bookingList=new ArrayList<>();
+		List paymentList=new ArrayList<>();
+		List hostList=new ArrayList<>();
+    	Vector vector=new Vector<>();
+		
+		Connection con=null;
+	    PreparedStatement pstmt=null;	
+	    ResultSet rs=null;
+	    
+		try{
+			//1,2단계 메서드 호출
+			con=getConnection();
+                
+                   String sql2="select distinct h.room_subject,b.check_in, b.check_out,p.sum_price from home h, payment p , booking b "
+                   		+ "where p.member_email=? and b.payment_num=p.payment_num and b.home_num=h.home_num and b.check_in>now()";
+                   
+                   pstmt=con.prepareStatement(sql2);//객체생성
+   		           pstmt.setString(1,member_email);
+   		          
+   		           rs=pstmt.executeQuery();
+   		           
+   		       while(rs.next()){ 
+					//첫 행 이동 열접근해서
+   		        	HostBean hb=new HostBean();
+   		        	PaymentBean pb=new PaymentBean();
+   		        	BookingBean bb=new BookingBean();
+   		        	
+   		        	bb.setCheck_in(rs.getDate("check_in"));
+   		        	bb.setCheck_out(rs.getDate("check_out"));
+   		        	hb.setRoom_subject(rs.getString("room_subject"));
+   		        	pb.setSum_price(rs.getInt("sum_price"));
+   		        	
+   		        	bookingList.add(bb);
+   		        	paymentList.add(pb);
+   		        	hostList.add(hb);
+   		        
+				}
+   		        vector.add(bookingList);
+   		        vector.add(paymentList);
+   		        vector.add(hostList);
+   		        
+				}catch(Exception e){
+					e.printStackTrace();
+				}finally{
+					 if(rs!=null) try{rs.close();}catch(SQLException ex){}
+					 if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+					 if(con!=null) try{con.close();}catch(SQLException ex){}
+				}
+				
+		return vector;
+		
+	}//예정된 숙소 가져오는 메서드 끝
+    
     
     
     
