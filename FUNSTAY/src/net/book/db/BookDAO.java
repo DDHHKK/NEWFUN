@@ -208,7 +208,7 @@ public class BookDAO {
     
     
   //예약취소된 숙소 가져오는 메서드(sql-update문)
-  	public void BillCancel(BookingBean bb,PaymentBean pb){
+  	public Vector<?> BillCancel(BookingBean bb,PaymentBean pb){
   		
   		List bookingList=new ArrayList<>();
 		List paymentList=new ArrayList<>();
@@ -269,6 +269,9 @@ public class BookDAO {
     		        	hostList.add(hb2);
     		        
  				}
+  				vector.add(bookingList);
+   		        vector.add(paymentList);
+   		        vector.add(hostList);
   				
   		 }catch(Exception e){
   			 e.printStackTrace();
@@ -280,7 +283,9 @@ public class BookDAO {
   			 
   		 }
   		 
-  	}//예약취소 메서드 끝
+  		return vector;
+  		 
+  	}//예약취소된 숙소 가져오는 메서드 끝
 
 }//BookDAO 끝
 
