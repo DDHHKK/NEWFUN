@@ -59,7 +59,7 @@
 
 <div class="content_top_shj" >
 <!-- 변수값 : 목록 -->
-<h1 style="float:left;margin:2% 2% 2% 3%;">목록</h1>
+<h1 style="float:left;margin:2% 2% 2% 3%;"> 목록</h1>
 <div id="sect_HJ" style="left: 3%; margin-top: 9%;">
 <div style="float:left;width: auto;"  id="listmenu_shj">
 <ul style="width: 100%;" >
