@@ -702,7 +702,7 @@ public class MemberDAO {
 				hb1.setAddress(rs.getString("address"));
 				hb1.setStart_date(rs.getDate("start_date"));
 				hb1.setEnd_date(rs.getDate("end_date"));
-				hb1.setPhoto(rs.getString("photo "));
+				hb1.setPhoto(rs.getString("photo"));
 				
 				System.out.println("getsearchList" + hb1.getAddress());
 				System.out.println("getsearchList" + hb1.getStart_date());
@@ -752,7 +752,7 @@ public class MemberDAO {
 				hb1.setAddress(rs.getString("address"));
 				hb1.setStart_date(rs.getDate("start_date"));
 				hb1.setEnd_date(rs.getDate("end_date"));
-				hb1.setPhoto(rs.getString("photo "));
+				hb1.setPhoto(rs.getString("photo"));
 				
 				
 				System.out.println("getsearchList2" + hb1.getAddress());

@@ -140,7 +140,7 @@ private Connection getConnection() throws Exception{
 	}
 	
 	
-	public void insertConv(ConvBean cb,int home_num) {
+public void insertConv(ConvBean cb,int home_num) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -207,32 +207,29 @@ private Connection getConnection() throws Exception{
 		try {
 			con = getConnection();
 			
-			String sql = "select max(room_num) from room";
-			pstmt = con.prepareStatement(sql);
 			
-			rs=pstmt.executeQuery();
-			
-			if(rs.next()){
-				room_num=rs.getInt("max(room_num)")+1;
-			}
-			
-			for(int i=0; i<rb.getRe_room(); i++)
+			for(int i=1; i<=rb.getRe_room(); i++)		
 			{
-			  
-			sql = "insert into room values(?,?,?,?,?)";
-
+				String sql = "select max(room_num) from room";
+				pstmt = con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				if(rs.next()){		room_num=rs.getInt("max(room_num)")+1;	}	
+				sql = "insert into room values(?,?,?,?,?)";
+				System.out.println(i);
+				int num = i;
+				System.out.println(num);
 			pstmt = con.prepareStatement(sql); 
 		
 			pstmt.setInt(1, room_num);
-			pstmt.setInt(2, i);
+			pstmt.setInt(2, num);
 			pstmt.setInt(3, rb.getMin_people());
 			pstmt.setInt(4, rb.getMax_people());
 			pstmt.setInt(5, home_num);
-			
+			pstmt.executeUpdate();
 			}
 
 
-			pstmt.executeUpdate();
+			
 
 		
 			} catch (Exception e) {
@@ -245,7 +242,7 @@ private Connection getConnection() throws Exception{
 			if(rs!=null)	
 			try{rs.close();}catch(SQLException ex){}
 		}
-		return home_num;
+		return room_num;
 	}
 
 	
@@ -269,10 +266,8 @@ private Connection getConnection() throws Exception{
 			pstmt.setInt(2, bb.getSingle_bed());
 			pstmt.setInt(3, bb.getDouble_bed());
 			pstmt.setInt(4, bb.getBunk_bed());
-
-
-
 			pstmt.executeUpdate();
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -315,7 +310,6 @@ private Connection getConnection() throws Exception{
 				hb.setRoom_type(rs.getString("room_type"));
 				hb.setIn_time(rs.getString("in_time"));
 				hb.setOut_time(rs.getString("out_time"));
-				hb.setPhoto(rs.getString("photo"));
 			}
 		
 	}catch (Exception e) {
@@ -362,6 +356,34 @@ private Connection getConnection() throws Exception{
 		}
 		return result;		
 	}
+	
+/*	// 호스트 여부 체크
+	public int home_statusCheck(int home_status){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = -1;
+		try{
+			con = getConnection();
+			String sql = "select * from host where home_status=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, home_status);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result=1;
+			}else{result=0;}
+		}catch(Exception e){e.printStackTrace();
+		}finally{
+			try{
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+		return result;		
+	}*/
+	
 	
 	
 	
@@ -432,50 +454,16 @@ private Connection getConnection() throws Exception{
 		List<HostBean> hostHome = new ArrayList<>();
 		try{
 			con = getConnection();
-			String sql = "select room_subject,home_num,photo,home_status from home where host_email=?";
+			String sql = "select room_subject, home_num,photo from home where host_email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, host_email);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				HostBean hb = new HostBean();
-				hb.setRoom_subject(rs.getString("room_subject"));
 				hb.setHome_num(rs.getInt("home_num"));
-				hb.setPhoto(rs.getString("photo"));
-				hb.setHome_status(rs.getInt("home_status"));
-				hostHome.add(hb);
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			try{
-				if(rs!=null){rs.close();}
-				if(pstmt!=null){pstmt.close();}
-				if(con!=null){con.close();}
-			}catch(SQLException e){}
-		}
-		
-		return hostHome;
-	}
-	
-	public List<HostBean> getValidHostHomes(String host_email){
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<HostBean> hostHome = new ArrayList<>();
-		try{
-			con = getConnection();
-			String sql = "select room_subject,home_num,photo,home_status from home where host_email=? and home_status=1";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, host_email);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				HostBean hb = new HostBean();
 				hb.setRoom_subject(rs.getString("room_subject"));
-				hb.setHome_num(rs.getInt("home_num"));
 				hb.setPhoto(rs.getString("photo"));
-				hb.setHome_status(rs.getInt("home_status"));
 				hostHome.add(hb);
 			}
 		}catch(Exception e){
@@ -523,48 +511,44 @@ private Connection getConnection() throws Exception{
 		
 	}
 	
-
-		public void HostModify(HostBean hb){
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			String sql="";
+	/*public List getHostRoomList() {
+		List HostRoomList=new
+	}*/
+	
+	
+	public List<HostBean> getValidHostHomes(String host_email){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<HostBean> hostHome = new ArrayList<>();
+		try{
+			con = getConnection();
+			String sql = "select room_subject,home_num,photo,home_status from home where host_email=? and home_status=1";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, host_email);
+			rs = pstmt.executeQuery();
 			
-			try{
-				
-				con=getConnection();
-				
-				sql="update home set room_subject=?,room_content=?,restroom=?,"
-				  + "price=?,address=?,start_date=?,end_date=?,in_time=?,out_time=?,room_type=? where home_num=?";
-				
-				pstmt=con.prepareStatement(sql);
-				
-				pstmt.setString(1,hb.getRoom_subject());
-				pstmt.setString(2,hb.getRoom_content());
-				pstmt.setInt(3,hb.getRestroom());
-				pstmt.setInt(4,hb.getPrice());
-				pstmt.setString(5,hb.getAddress());
-				pstmt.setDate(6,hb.getStart_date());
-				pstmt.setDate(7,hb.getEnd_date());
-				pstmt.setString(8,hb.getIn_time());
-				pstmt.setString(9,hb.getOut_time());
-				pstmt.setString(10,hb.getRoom_type());
-				pstmt.setInt(11,hb.getHome_num());
-				
-				pstmt.executeUpdate();
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-			}finally{
-				if(rs!=null)try{rs.close();}catch(SQLException ex){}
-				if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-				if(con!=null)try{con.close();}catch(SQLException ex){}
+			while(rs.next()){
+				HostBean hb = new HostBean();
+				hb.setRoom_subject(rs.getString("room_subject"));
+				hb.setHome_num(rs.getInt("home_num"));
+				hb.setPhoto(rs.getString("photo"));
+				hb.setHome_status(rs.getInt("home_status"));
+				hostHome.add(hb);
 			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
 		}
-	
-	
 		
-	
+		return hostHome;
+		
+	}
 	
 	
 

@@ -19,6 +19,21 @@ $(document).ready(function(){
 	return;
 }
 	
+
+
+	$(document).mouseup(function (e){
+
+	    var container = $('.white_content_1');
+
+	    if( container.has(e.target).length === 0){
+
+	      container.css('display','none');
+
+	    }
+
+	  });
+	
+	
 </script>
 <!-- 로그인/회원가입 버튼/달력 -->
 <script src="js/login.js"></script>
@@ -31,33 +46,35 @@ mb=md.getMember(email);
 
 %>
 <section class="sec01_WS">
-<table>
-<tr>
-<td id="pont1_WS"><a href="./Main.me">FUNSTAY</a></td>
-<td><input type="text" id="text_1_WS" name="search_info" placeholder="검색할 내용을 적으세요">
-<input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></td>
-<td><a href="./HostMain.ho">호스트로 등록해보세요</a></td>
-<td><a href="./FAQ_boardList.fa">FAQ</a></td>
+
+
+<ul class="header_dh">
+
+<li id="pont1_WS"><a href="./Main.me">FUNSTAY</a></li>
+<li id="li_2"><input type="text" id="text_1_WS" name="search_info" placeholder="검색할 내용을 적으세요">
+<input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></li>
+<li id="li_3"><a href="./HostMain.ho">호스트로 등록해보세요</a></li>
+<li id="li_4"><a href="./FAQ_boardList.fa">FAQ</a></li>
 
 <!-- email값이 null이면 로그인과 회원가입이 보이고  null이아니면 사진창이뜨면서 회원닉네임과함께 문구가뜬다 -->
 <%
 
 if(email==null){
 	%>
-<td><button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</button>
+<li id="li_5"><button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</button></li>
 <!-- <button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button> -->
 <%
 }else{
 	%>
-	<td><a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'"><img src="./upload/<%=mb.getProfile_photo()%>" 
+	<li id="li_6"><a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'"><img src="./upload/<%=mb.getProfile_photo()%>" 
 	id="img_1_WS" style="border-radius:50%;width:40px;height:40px;"></a>
  <div id="light1" class="white_content_1">
   <div>
   <ul id="list_1_WS">
 	<li><a href="./MemberUpdate.me">프로필수정</a></li>
-	<li><a href="./Booking.bo">예약및 결제하기</a></li>
-	<li><a href="./MyReserve.bk">MY RESERVE</a></li>
-	<li><a href="./Wishlist.wi">위시리스트</a></li>
+	<li><a href="./Booking.bo">예약/결제</a></li>
+	<li><a href="./MyReserve.bk">나의 예약</a></li>
+	<li><a href="./Wishlist.wi">찜한숙소</a></li>
 	<li><a href="./MemberMileage.me">마일리지</a></li>
 	<li><a href="./MemberQNAlist.me">문의하기</a></li>
 	<%
@@ -68,9 +85,7 @@ if(email==null){
 	<li><a href="./MemberListAction.me">회원목록</a></li>
 	<li><a href="./FAQ_boardList.fa">FAQ 관리</a></li>	
 	<% }else if(hostCheck==1){%>
-	<li><a href="./HostPassCheckAction.ho">숙소 정보 수정</a></li>
-	<li><a href="#">숙소 삭제(없음)</a></li>
-	<li><a href="#">예약 관리(없음)</a></li>
+	<li><a href="./HostPassCheckAction.ho">숙소 관리</a></li>
 	<li><a href="./HostCash.ho">MY CASH</a></li>
 	<%}
 %>
@@ -78,14 +93,23 @@ if(email==null){
 	<li><a href="./MemberLogout2.me">로그아웃</a></li>
   </ul>
   </div>
-  <a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='none';document.getElementById('fade1').style.display='none'"><p id="font_2_WS">닫기</p></a>
+  <!-- <a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='none';document.getElementById('fade1').style.display='none'"><p id="font_2_WS">닫기</p></a> -->
   </div><!-- //white_content_1 -->
   <div id="fade1" class="black_overlay_1"></div>
-</td>
+</li>
 <%mb=md.getMember(email);%>
-<td><%=mb.getEmail()%></td>
+<li id="li_7"><%=mb.getEmail()%></li>
 <%
 }%>
+
+</ul>
+
+
+
+
+
+<div class="clear"></div>
+
 
 
 <!-- 로그인 -->
@@ -187,7 +211,7 @@ if(email==null){
   </form>
  </div><!-- modal_sh -->
 </div><!-- modal -->
-</td>
+<table>
 <%if(email==null){
 	%>
 <td><button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button>
@@ -273,11 +297,9 @@ if(email==null){
     </div><!-- //container -->
   </form>
 </div><!-- //modal -->
-</td>
-</tr>
-</table>
 
-</section>
+</table>
+</section> 
 
 
 </header>

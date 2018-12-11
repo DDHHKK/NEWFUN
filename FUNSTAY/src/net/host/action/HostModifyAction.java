@@ -39,7 +39,7 @@ public class HostModifyAction implements Action{
 		hb.setOut_time(out_time);
 		hb.setRoom_type(room_type);
 		
-		hdao.HostModify(hb);
+		//hdao.HostModify(hb);
 
 
 		ActionForward forward=new ActionForward();
