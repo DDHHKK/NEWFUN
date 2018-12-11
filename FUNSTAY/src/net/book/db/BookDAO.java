@@ -96,6 +96,7 @@ public class BookDAO {
 		List bookingList=new ArrayList<>();
 		List paymentList=new ArrayList<>();
 		List hostList=new ArrayList<>();
+		
     	Vector vector=new Vector<>();
 		
 		Connection con=null;
@@ -106,7 +107,7 @@ public class BookDAO {
 			//1,2단계 메서드 호출
 			con=getConnection();
                 
-                   String sql2="select distinct h.room_subject,b.check_in, b.check_out,p.sum_price from home h, payment p , booking b "
+                   String sql2="select distinct h.photo,h.room_subject,b.check_in, b.check_out,p.sum_price from home h, payment p , booking b "
                    		+ "where p.member_email=? and b.payment_num=p.payment_num and b.home_num=h.home_num and b.check_in<now()";
                    
                    pstmt=con.prepareStatement(sql2);//객체생성
@@ -120,19 +121,24 @@ public class BookDAO {
    		        	PaymentBean pb=new PaymentBean();
    		        	BookingBean bb=new BookingBean();
    		        	
+   		        	
+                            	
    		        	bb.setCheck_in(rs.getDate("check_in"));
    		        	bb.setCheck_out(rs.getDate("check_out"));
    		        	hb.setRoom_subject(rs.getString("room_subject"));
    		        	pb.setSum_price(rs.getInt("sum_price"));
+   		        	hb.setPhoto("photo");
+   		        	
    		        	
    		        	bookingList.add(bb);
    		        	paymentList.add(pb);
    		        	hostList.add(hb);
-   		        
+   		            
 				}
    		        vector.add(bookingList);
    		        vector.add(paymentList);
    		        vector.add(hostList);
+   		        
    		        
 				}catch(Exception e){
 					e.printStackTrace();
@@ -207,7 +213,7 @@ public class BookDAO {
     
     
     
-  //예약취소 메서드(sql-update문)
+  //예약취소하는 메서드(sql-update문)
   	public void BillCancel(BookingBean bb,PaymentBean pb){
   		
   		Connection con=null;
@@ -241,8 +247,6 @@ public class BookDAO {
   				pstmt.executeUpdate(); 
   				
   				
-  				
-  				
   		 }catch(Exception e){
   			 e.printStackTrace();
   		 }finally{
@@ -253,7 +257,9 @@ public class BookDAO {
   			 
   		 }
   		 
-  	}//예약취소 메서드 끝
+  		
+  		 
+  	}//예약취소하는 메서드 끝
 
 }//BookDAO 끝
 
