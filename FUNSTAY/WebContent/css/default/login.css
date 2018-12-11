@@ -20,7 +20,7 @@ input.e_check{
 	border: none;
 	font-weight: bold;
 	color: #fff;
-	background-color: #ff8080;
+	background-color: #cc1b1b;
 	float: right;
 	cursor: pointer;
 }
@@ -159,7 +159,7 @@ text-decoration: none;
 }
 /* submit 버튼 */
 .subtn{
-	background-color: ff8080 !important;
+	background-color: #cc1b1b !important;
 	width:100%;
 	height: 50px;
 	cursor: pointer;

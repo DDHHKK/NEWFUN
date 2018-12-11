@@ -1,3 +1,5 @@
+<%@page import="net.member.db.MemberDAO"%>
+<%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -54,14 +56,16 @@
 <button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">login</button>
 <button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button>
 	<%
-	
 	}else{
+	MemberBean mb = new MemberBean();
+	MemberDAO md = new MemberDAO();
 	%>
 	
 	<div class="log_btn_sh">
 	<div class="dropdown">
 		<img src="./img/default/no_profile.png" style="border-radius:50%;width:25px;height:25px;float:left;">
 		<button class="dropbtn">
+		<%=%>
 			<%=email%>
 		</button>
 		<div class="dropdown-content">
