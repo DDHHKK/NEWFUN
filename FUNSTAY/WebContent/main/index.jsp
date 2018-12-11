@@ -1,5 +1,5 @@
-<%@page import="net.member.db.MemberDAO"%>
 <%@page import="net.member.db.MemberBean"%>
+<%@page import="net.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,24 +48,25 @@
 <section>
 
 	<%
+	MemberDAO md = new MemberDAO();
+	MemberBean mb = new MemberBean(); 
 	String email = (String)session.getAttribute("email");
+	mb=md.getMember(email);
 	
 	if(session.getAttribute("email")==null){
 	%>
 	<!-- 로그인/회원가입 버튼 -->
-<button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</button>
+<button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">login</button>
 <button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button>
 	<%
+	
 	}else{
-	MemberBean mb = new MemberBean();
-	MemberDAO md = new MemberDAO();
 	%>
 	
 	<div class="log_btn_sh">
 	<div class="dropdown">
-		<img src="./img/default/no_profile.png" style="border-radius:50%;width:25px;height:25px;float:left;">
+		<img src="./upload/<%=mb.getProfile_photo()%>" style="border-radius:50%;width:25px;height:25px;float:left;">
 		<button class="dropbtn">
-		<%=mb.getProfile_photo()%>
 			<%=email%>
 		</button>
 		<div class="dropdown-content">
@@ -265,8 +266,10 @@ if (email.equals("admin")) {
       
 <!-- 약관동의 -->
        <p>이용약관 및 개인정보 보호 정책에 동의하여 주십시요 <br><input type="checkbox" name="req"> 개인정보 수집 및 이용에 동의합니다. 
+
        <!-- <input type="button" value="동의약관" style="color:dodgerblue" onclick="window.open('./member/agree.jsp','동의약관','top=200, left=150, width=1400, height=500')"> -->
       <a href="./member/agree.jsp" style="color:dodgerblue">동의약관</a>.</p> 
+
 <!-- 전송버튼 -->
       <div class="clearfix">
         <button type="button" class="subtn" onclick="regChk()"><a>가입완료</a></button>
@@ -291,8 +294,8 @@ if (email.equals("admin")) {
 <li><input type="text" value="" placeholder="목적지를 적으세요" class="textsize1" name="search_info"></li>
 <li><span>체크인</span> <span id="checkout">체크아웃</span></li>
 <li>
-   <input type='text' id="minMaxExample" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
-   <input type="text" value="" class="textsize2" id="datepicker" data-language='en' placeholder="년 / 월 / 일">
+   <input type='text' id="minMaxExample" class='datepicker-here' name="date_a" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
+   <input type="text" value="" class="textsize2" id="datepicker" name="date_b" data-language='en' placeholder="년 / 월 / 일">
 
 </li>
 <li>인원</li>
@@ -326,29 +329,91 @@ if (email.equals("admin")) {
 <nav>
 <p id="font2">지역 추천 여행을 다녀와 보세요<p>
 
-
-		<!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
-	
-	<table border="0" id="table_1">
-		<!--랜덤으로 나올 사진들 배열에 넣음.-->
-		<tr>
-			<td>
-				<div id="img_1"></div>
-			</td>
-			<td>
-				<div id="img_2"></div>
-			</td>
-			<td>
-				<div id="img_3"></div>
-			</td>
-			<td>
-				<div id="img_4"></div>
-			</td>
-		</tr>
-	</table>
-	<!--랜덤으로 사진을 나오게하는 소스 여기서 끝-->
+<table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
+ <script>   <!--랜덤으로 나올 사진들 배열에 넣음.--> 
+ var imgUrls = new Array();
+ imgUrls.push( "img/photo_1.png" );
+ imgUrls.push( "img/photo_2.png" );
+ imgUrls.push( "img/photo_3.png" );
+ imgUrls.push( "img/photo_4.png" );
+ imgUrls.push( "img/photo_5.png" );
+ imgUrls.push( "img/photo_6.png" );
  
+ var imgUrls2 = new Array();
+ imgUrls2.push( "img/photo_7.png" );
+ imgUrls2.push( "img/photo_8.png" );
+ imgUrls2.push( "img/photo_9.png" );
+ imgUrls2.push( "img/photo_10.png" );
+ imgUrls2.push( "img/photo_11.png" );
+ imgUrls2.push( "img/photo_12.png" );
+ 
+ var imgUrls3 = new Array();
+ imgUrls3.push( "img/photo_13.png" );
+ imgUrls3.push( "img/photo_14.png" );
+ imgUrls3.push( "img/photo_15.png" );
+ imgUrls3.push( "img/photo_16.png" );
+ imgUrls3.push( "img/photo_17.png" );
+ imgUrls3.push( "img/photo_18.png" );
+ 
+ var imgUrls4 = new Array();
+ imgUrls4.push( "img/photo_19.png" );
+ imgUrls4.push( "img/photo_20.png" );
+ imgUrls4.push( "img/photo_21.png" );
+ imgUrls4.push( "img/photo_22.png" );
+ imgUrls4.push( "img/photo_23.png" );
+ imgUrls4.push( "img/photo_24.png" );
+ </script>
+   <tr>   
+             
+    <td>
+    <div id= "img_1">
+    <script>
+document.write( "<img src='" + imgUrls[ Math.floor( Math.random() * 6) ] + "' width=400 height=400>"); //랜덤으로 난수발생하여 배열에사진하나를출력
+</script>
+</div>
+</td>     
+
+   	<td>
+   	<div id= "img_2">
+   	<script>
+document.write( "<img src='" + imgUrls2[ Math.floor( Math.random() * 6) ] + "' width=400 height=400>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
+</script>
+</div>
+</td>
+
+<td>
+<div id= "img_3">
+<script>
+document.write( "<img src='" + imgUrls3[ Math.floor( Math.random() * 6) ] + "' width=400 height=400>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
+</script>
+</div>
+</td>
+
+ <td>
+ <div id= "img_4">
+ <script>
+document.write( "<img src='" + imgUrls4[ Math.floor( Math.random() * 6) ] + "' width=400 height=400>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
+</script>
+</div>
+</td>
+
+</tr>
+ </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
 </nav>
-<script src="dist/js/person.js"></script>
+<script src="dist/js/main.js"></script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5bed14f670ff5a5a3a7243af/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 </html>
