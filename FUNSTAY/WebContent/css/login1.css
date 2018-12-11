@@ -24,10 +24,17 @@ input.e_check{
 	border: none;
 	font-weight: bold;
 	color: #fff;
-	background-color: #ff8080;
+	background-color: #cc1b1b;
 	float: right;
 	cursor: pointer;
 }
+
+input.e_check:hover{
+
+	background-color: #991515;
+	cursor: pointer;
+}
+
 #logo_sh{
 	font-family: 'Lobster', cursive;
     display: block;
@@ -179,13 +186,20 @@ img.avatar {
 }
 /* submit 버튼 */
 .subtn{
-	background-color: #ff8080;
+	background-color: #cc1b1b;
 	width:100%;
 	height: 50px;
 	cursor: pointer;
 	border-radius: 10px;
 	border: none;
 	margin-top: 20px;
+}
+
+
+.subtn:hover{
+	background-color: #991515;
+	cursor: pointer;
+
 }
  .subtn a{
 	color: #fff;

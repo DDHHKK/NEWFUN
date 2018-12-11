@@ -37,10 +37,25 @@ a:visited { color: #666; text-decoration: none;}
     top: 12%;
     font-size: 12px;
 }
+
+
+
 /* h1 {margin:5% 20% 5% 5%;
 	display: inline-block;
 	float:left;
 	width: max-content;} */
+
+ h1{  /* border: 1px solid black; */
+    border-left: 5px solid #cc1d1d;
+    padding-left: 7px;
+    color: #cc1d1d;
+    margin-bottom: 70px;
+    /* padding: 0px 0; */
+    box-sizing: border-box;
+    height: 46px;
+ }
+	
+	
 #content>h2 {margin:5% 0 2% 2%;} 
 
 #list_shj { width:25%;float:left;
