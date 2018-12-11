@@ -14,6 +14,7 @@ import net.book.db.BookDAO;
 import net.booking.db.BookingBean;
 import net.booking.db.PaymentBean;
 import net.host.db.HostBean;
+import net.search.db.SearchBean;
 
 public class BeforeTripList implements Action{
 
@@ -61,6 +62,36 @@ public class BeforeTripList implements Action{
 		request.setAttribute("paymentList2", paymentList2);
 		request.setAttribute("hostList2", hostList2);
 
+		
+		
+		
+int pageSize = 10;
+
+		
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null)
+			pageNum = "1";
+
+	
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage - 1) * pageSize + 1;
+
+	
+		int endRow = currentPage * pageSize;
+		
+		
+		
+		List<SearchBean> SearchList = null;
+		
+			SearchList = bdao.getSearchList(startRow, pageSize);
+		
+		request.setAttribute("searchList", SearchList);
+		
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("currentPage", currentPage);
+		
+		
 		
 		
 		

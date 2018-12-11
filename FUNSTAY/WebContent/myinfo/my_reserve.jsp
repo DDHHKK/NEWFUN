@@ -163,6 +163,15 @@ if(i%3==0){
 <td><%=hb.getPhoto()%></td>
 <td><%=hb.getRoom_subject() %><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
   <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
@@ -177,7 +186,7 @@ if(i%3==0){
 
 
 <% if(i%3==2) { %>
-</tr> 
+</tr>
   <% } }%> 
   
 
@@ -388,17 +397,46 @@ if(i%3==0){
       </header>
       <div class="w3-container">
         <table class="receipt_table_DY">
+        
+        
+  
+<%
+
+List bookingList3=(List)request.getAttribute("bookingList");
+List paymentList3=(List)request.getAttribute("paymentList");
+List hostList3=(List)request.getAttribute("hostList");
+
+for(int i=0; i<bookingList3.size(); i++){
+	BookingBean bb=(BookingBean)bookingList3.get(i);
+	PaymentBean pb=(PaymentBean)paymentList3.get(i);
+	HostBean hb=(HostBean)hostList3.get(i);
+	
+
+%>
+
+
+
          <tr>
-          <td colspan="2" class="receipt_ti_DY">화이트캐슬</td>
+          <td colspan="2" class="receipt_ti_DY"><%=hb.getRoom_subject() %></td>
          </tr>
+         
+         
+         
+         
+  
          <tr>
           <td>체크인</td> 
-          <td>화,12/9,2018</td>
+          <td><%=bb.getCheck_in() %></td>
          </tr>
          <tr>
           <td>체크아웃</td>
-          <td>목,12/11,2018</td>
+          <td><%=bb.getCheck_out() %></td>
          </tr>
+         
+         
+         <%  }%> 
+         
+         
          <tr>
           <td>숙박 세부정보</td>
           <td>2박,객실 1개</td>
@@ -425,12 +463,30 @@ if(i%3==0){
          </tr>
         </table>
       </div>
-      <footer class="w3-container w3-teal">
+     <!--  <footer class="w3-container w3-teal">
         <p class="cancel_DY">예약취소</p>
-      </footer>
+      </footer> -->
     </div>
   </div>
 <!--영수증 모달 팝업창 끝 -->  
+
+
+  
+
+ 
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
   
   
   
