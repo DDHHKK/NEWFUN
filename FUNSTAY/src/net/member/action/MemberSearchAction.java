@@ -30,7 +30,10 @@ public class MemberSearchAction implements Action{
 		//mb.setText11(Integer.parseInt(request.getParameter("text11")));
 		//mb.setText12(Integer.parseInt(request.getParameter("text12")));
 
-	
+		System.out.println("searchAction" + hb.getAddress());
+		System.out.println("searchAction" + start_date);
+		System.out.println("searchAction" + end_date);
+		
 		MemberDAO mdd= new MemberDAO();
 	
 
