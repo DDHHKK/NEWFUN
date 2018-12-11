@@ -5,7 +5,7 @@ $("#check_module").click(function(){
 
 
 	IMP.request_pay({
-	    pg : 'uplus', // version 1.1.0부터 지원.
+	    pg : 'html5_inicis', // version 1.1.0부터 지원.
 	    pay_method : 'phone',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
 	    name : '주문명:결제테스트',
