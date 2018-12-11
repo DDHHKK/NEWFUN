@@ -28,6 +28,13 @@ input.e_check{
 	float: right;
 	cursor: pointer;
 }
+
+input.e_check:hover{
+
+	background-color: #991515;
+	cursor: pointer;
+}
+
 #logo_sh{
 	font-family: 'Lobster', cursive;
     display: block;
@@ -186,6 +193,13 @@ img.avatar {
 	border-radius: 10px;
 	border: none;
 	margin-top: 20px;
+}
+
+
+.subtn:hover{
+	background-color: #991515;
+	cursor: pointer;
+
 }
  .subtn a{
 	color: #fff;
