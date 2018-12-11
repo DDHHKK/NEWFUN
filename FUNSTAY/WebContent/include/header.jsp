@@ -50,7 +50,7 @@ if(email==null){
 }else{
 	%>
 	<td><a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'"><img src="./upload/<%=mb.getProfile_photo()%>" 
-	id="img_1_WS" style="border-radius:50%;width:65px;height:65px;"></a>
+	id="img_1_WS" style="border-radius:50%;width:40px;height:40px;"></a>
  <div id="light1" class="white_content_1">
   <div>
   <ul id="list_1_WS">
