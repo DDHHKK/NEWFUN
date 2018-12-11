@@ -20,9 +20,10 @@ public class MemberSearchAction2 implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		request.setCharacterEncoding("UTF-8");
 		
 		HostBean hb = new HostBean();
-		hb.setAddress(request.getParameter("address"));
+		hb.setAddress(request.getParameter("search_info"));
 		System.out.println(hb.getAddress());
 		
 		MemberDAO mdd= new MemberDAO();

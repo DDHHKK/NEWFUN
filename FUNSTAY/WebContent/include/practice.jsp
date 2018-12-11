@@ -16,6 +16,7 @@
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
 
+
 if(list.size()!=0){
 for(int i=0;i<list.size();i++){
 	HostBean hb = (HostBean)list.get(i);
@@ -31,6 +32,7 @@ for(int i=0;i<list.size();i++){
 <td><%=hb.getAddress() %></td>
 <td><%=hb.getStart_date() %></td>
 <td><%=hb.getEnd_date() %></td>
+
 <td><img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="50" height="50"></td>
 </tr>
 </table>
