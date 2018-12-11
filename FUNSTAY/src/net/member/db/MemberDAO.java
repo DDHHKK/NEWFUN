@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import net.booking.db.PaymentBean;
+import net.host.db.HostBean;
 
 public class MemberDAO {
 	private Connection getConnection() throws Exception {
@@ -682,7 +683,7 @@ public class MemberDAO {
 	}// memberlist(pageing count) end
 
 	// searchlist
-	public Vector getsearchList(MemberBean mb) {
+	public Vector getsearchList(HostBean hb, String start_date, String end_date) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -690,24 +691,26 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select * from practice where search_info =? and text11 =? and text12 =? and date_a =? and date_b =?";
+			String sql = "select * from home where address =? and start_date =? and end_date =?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mb.getSearch_info());
-			pstmt.setInt(2, mb.getText11());
-			pstmt.setInt(3, mb.getText12());
-			pstmt.setString(4, mb.getDate_a());
-			pstmt.setString(5, mb.getDate_b());
+			pstmt.setString(1, hb.getAddress());
+			pstmt.setString(2, start_date);
+			pstmt.setString(3, end_date);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				MemberBean mb1 = new MemberBean();
-				mb1.setSearch_info(rs.getString("search_info"));
-				mb1.setText11(Integer.parseInt(rs.getString("text11")));
-				mb1.setText12(Integer.parseInt(rs.getString("text12")));
-				mb1.setDate_a(rs.getString("date_a"));
-				mb1.setDate_b(rs.getString("date_b"));
-				mb1.setImage(rs.getString("image"));
-
-				goodsList.add(mb1);
+				HostBean hb1 = new HostBean();
+				hb1.setAddress(rs.getString("address"));
+				hb1.setStart_date(rs.getDate("start_date"));
+				hb1.setEnd_date(rs.getDate("end_date"));
+				hb1.setPhoto(rs.getString("photo "));
+				
+				System.out.println("getsearchList" + hb1.getAddress());
+				System.out.println("getsearchList" + hb1.getStart_date());
+				System.out.println("getsearchList" + hb1.getEnd_date());
+				System.out.println("getsearchList" + hb1.getPhoto());
+				
+				
+				goodsList.add(hb1);
 			}
 			vector.add(goodsList);
 		} catch (Exception e) {
@@ -732,7 +735,7 @@ public class MemberDAO {
 		return vector;
 	}
 
-	public Vector getsearchList2(MemberBean mb) {
+	public Vector getsearchList2(HostBean hb) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -740,18 +743,24 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select * from practice where search_info =?";
+			String sql = "select * from home where address =?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mb.getSearch_info());
+			pstmt.setString(1, hb.getAddress());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				MemberBean mb1 = new MemberBean();
-				mb1.setSearch_info(rs.getString("search_info"));
-				mb1.setText11(Integer.parseInt(rs.getString("text11")));
-				mb1.setText12(Integer.parseInt(rs.getString("text12")));
-				mb1.setImage(rs.getString("image"));
+				HostBean hb1 = new HostBean();
+				hb1.setAddress(rs.getString("address"));
+				hb1.setStart_date(rs.getDate("start_date"));
+				hb1.setEnd_date(rs.getDate("end_date"));
+				hb1.setPhoto(rs.getString("photo "));
+				
+				
+				System.out.println("getsearchList2" + hb1.getAddress());
+				System.out.println("getsearchList2" + hb1.getStart_date());
+				System.out.println("getsearchList2" + hb1.getEnd_date());
+				System.out.println("getsearchList2" + hb1.getPhoto());
 
-				goodsList.add(mb1);
+				goodsList.add(hb1);
 
 			}
 			vector.add(goodsList);

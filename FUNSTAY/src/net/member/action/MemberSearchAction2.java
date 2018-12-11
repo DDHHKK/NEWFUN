@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import net.host.db.HostBean;
 import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
 
@@ -20,15 +21,15 @@ public class MemberSearchAction2 implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		MemberBean mb = new MemberBean();
-		mb.setSearch_info(request.getParameter("search_info"));
-		System.out.println(mb.getSearch_info());
+		HostBean hb = new HostBean();
+		hb.setAddress(request.getParameter("address"));
+		System.out.println(hb.getAddress());
 		
 		MemberDAO mdd= new MemberDAO();
 	
 
 	
-		Vector vector2 = mdd.getsearchList3(mb);
+		Vector vector2 = mdd.getsearchList2(hb);
 	 
 		 List rest=(List)vector2.get(0);
 		
