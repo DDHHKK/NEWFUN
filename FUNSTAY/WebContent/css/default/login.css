@@ -1,0 +1,237 @@
+@CHARSET "UTF-8";
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+.join_box input[type=text],.join_box input[type=password] {
+    width: 100%;
+    padding: 18px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 7px;
+}
+/* 이메일(아이디)중복체크 */
+input.e_check{
+	border:1px solid red;
+	width: 130px; 
+	height: 30px;
+	border-radius:7px; 
+	border: none;
+	font-weight: bold;
+	color: #fff;
+	background-color: #ff8080;
+	float: right;
+	cursor: pointer;
+}
+#logo_sh{
+	font-family: 'Lobster', cursive;
+    display: block;
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 50px;
+    /* margin: 200px 0 0 800px; */
+    font-size: 50px;
+}
+
+#clear{clear: both;}
+/* 로고 이미지 작성시 필요 
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+} */
+/* caps lock 알림*/
+#text {
+	display:none;color:red
+}
+/* 로그인 회원가입 상단 버튼 */
+.btn_remove{
+    background-color: transparent;
+    color: black;
+    padding: 20px 10px;
+    margin: 8px 0px 8px 30px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    font-size:16px;
+    font-family: Arial, Helvetica, sans-serif;
+} 
+.btn_remove:hover {
+    opacity: 0.8;
+} 
+
+/* 닫기버튼 박스 안으로 */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+/* 닫기 버튼 스타일*/
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.container {
+    padding: 28px;
+}
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    
+    /* overflow: auto; Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 0% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+}
+
+/* SNS */
+.sns_btn{
+  width: 180%;
+  padding: 12px;
+  /* border: none; */
+  border-radius: 10px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block; 
+  font-size: 20px;
+  text-align:center;
+  line-height: 20px;
+  text-decoration: none; 
+}
+
+
+
+/* sns 버튼 스타일 */
+.naver {
+  background-color: #1fbc02;
+  color: white;
+  width: 45%;
+  height: auto;
+}
+.google {
+  background-color: #4285f4;
+  color: white;
+  width: 45%;
+  height: auto;
+}
+
+#col_box a{float: left; 
+color:#fff;
+text-decoration: none;
+}
+.col>a, .col i{
+	color: #fff;
+}
+/* 생년월일 박스 사이즈 */
+.birth{
+	width: 29% !important;
+}
+/* submit 버튼 */
+.subtn{
+	background-color: ff8080 !important;
+	width:100%;
+	height: 50px;
+	cursor: pointer;
+	border: none;
+	border-radius: 10px;
+	font-weight: bold;
+}
+ .subtn a{
+	color: #fff;
+	font-size: 20px;
+	
+} 
+/* 취소버튼 스타일
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+ */
+ 
+/* style the submit button 
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}*/
+
+/* Two-column layout */
+/*   .col {
+  border:1px solid red;
+  width: 50%;
+  padding: 0px;
+  margin-top: 6px;
+  
+}  */
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 700px) {
+
+.modal-content{
+	width: 100%;
+	}
+		#col_box a{float:none;}
+.naver{
+	width: 96%;
+}	
+.google{
+	width: 96%;
+}
+	
+}
+@media screen and (max-width: 1024px) {
+	.modal-content{
+	width: 95%;
+	}
+	}

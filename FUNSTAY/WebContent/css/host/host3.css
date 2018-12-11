@@ -1,0 +1,83 @@
+@CHARSET "UTF-8";
+
+
+
+
+#info_check {
+	margin: 100px;
+}
+
+
+#info_check td{
+	padding : 15px;
+}
+
+
+
+
+.td1 {
+	width:200px;
+	text-align: right;
+	border-bottom: 1px solid #d7d7d7;
+}
+
+ input[type=text]{
+	border:none;
+}
+ 
+
+/* text area속성 */
+#cc{
+	border:none;
+}
+
+
+b{
+	font-size: 1.1em;
+}
+
+.td2{
+	border-bottom: 1px solid #d7d7d7;
+}
+
+#sub_btn {
+	font-size:1.2em;
+	color:  #fff;
+	border : none;
+	background-color: #fc4401;
+	font-weight: bold;
+	padding : 10px;
+	float: right;
+}
+
+#sub_btn:HOVER{
+	background-color: #dd1111;
+	cursor: pointer;
+}
+
+
+#back_btn{
+	font-size:1.2em;
+	color:  #fff;
+	border : none;
+	background-color: #fc4401;
+	font-weight: bold;
+	padding : 10px;
+	cursor: pointer;
+}
+
+
+
+/* --------host_join3-------- */
+
+#photo_up {
+	top:-1050px; 
+    left: 1200px;
+    width: 500px;
+    min-height: 600px;
+	position : relative;
+	padding : 20px;
+	border:2px dashed #cc1d1d;
+	/* margin : -1000px 500px 500px 1300px; */
+}
+

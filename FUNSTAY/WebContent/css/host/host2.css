@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+
+ input[type=file] {
+            display: none;
+        }
+
+        .my_button {
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+            padding: 10px;
+            background-color: #fc4401;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+
+        .next_button {
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+            padding: 10px;
+            background-color: #fc4401;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            float:right;
+        }
+
+
+        .imgs_wrap {
+
+            border: none;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
+        .imgs_wrap img {
+            max-width: 300px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }

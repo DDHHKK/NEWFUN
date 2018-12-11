@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+
+
+
+/* 테블릿,노트북 크기 768~1023px */
+@media all and (min-width:768px){}
+
+
+
+/* 모니터,대형스크린크기 1024~무한 */
+@media all and (min-width:1024px) {
+	
+h1 {
+	/* border: 1px solid black; */
+    border-left: 5px solid #cc1d1d;
+    padding-left: 7px;
+    color: #cc1d1d;
+    margin-bottom: 70px;
+    /* padding: 0px 0; */
+    box-sizing: border-box;
+    height: 46px;
+}
+
+.QnAcheck_table_sg {
+    width: 85%;
+    border-collapse: collapse;
+    /* border: none; */
+    text-align: center;
+}
+
+.qnaheadtd_sg {
+    background-color: #cc1d1d;
+    color: white;
+    border-color: #cc1d1d;
+}
+
+.QnAcheck_table_sg td {
+    height: 30px;
+}
+	
+}

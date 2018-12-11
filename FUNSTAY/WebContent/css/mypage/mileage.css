@@ -1,0 +1,159 @@
+@CHARSET "UTF-8";
+/* 규칙으로 정하면 좋을것 같습니다. */
+#wrap *{	box-sizing:border-box;
+	color: #313131;}
+#content h1 {
+	/* border: 1px solid black; */
+    border-left: 5px solid #cc1d1d;
+    padding-left: 7px;
+    color: #cc1d1d;
+    margin-bottom: 70px;
+    /* padding: 0px 0; */
+    box-sizing: border-box;
+    height: 46px;
+}
+
+/* 모바일 크기 0~767px */
+#mileagepreview_sg {
+	    /* border: 2px solid #cc1d1d; */
+    background-color: #f7f7f7;
+    border-radius: 0 20px 20px 0;
+    /* border: 1px solid red; */
+    width: 80%;
+    height: 300px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    /* background-color: darkred; */
+    color: white;
+}
+
+.showsnakicon_sg {
+	/* border: 1px solid blue */;
+	background-color: #cc1d1d;
+	float: left;
+    width: 56%;
+    padding: 19px;
+}
+
+/* .showsnakicon_sg i {
+	font-size: 80px;
+	color:#fc4401;
+} */
+
+.previewmileage_sg {
+    font-weight: 900;
+    text-align: center;
+    line-height: 67px;
+    text-decoration-line: 1px underline;
+    /* border: 1px solid pink; */
+    width: 40%;
+    float: left;
+    padding: 40px 50px;
+    /* color: white; */
+    color: #313131;
+    height: 300px;
+    text-align: left;
+}
+
+#mileageuselist_sg {
+	/* border:1px solid red; */
+	width:100%;
+	padding: 10px;
+}
+
+#mileageuselist_sg form {
+	margin-bottom: 10px;
+}
+
+#mdate_sg {
+    height: 37px;
+    height: 37px;
+    padding: 10px 20px;
+    width: 184px;
+}
+
+#mdatebtnnav_sg {
+	height: 24px;
+    border: 2px solid #cc1d1d;
+    background-color:transparent;
+    color: #cc1d1d;
+    width: 100px;
+    height: 37px;
+}
+
+#mdatebtn_sg {
+    height: 24px;
+    background-color: #cc1d1d;
+    border: none;
+    color: white;
+    width: 100px;
+    height: 37px;
+}
+
+/* 마일리지내역확인하기 css */
+.tab {
+    overflow: hidden;
+   /*  border: 1px solid #ccc;
+    background-color: #f1f1f1; */
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: #e3e3e3;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    /* background-color: #ddd; */
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #fc4401;
+    color:white;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.mileagetable_sg {
+	border-collapse: collapse;
+    width: 80%;
+    /* height: 200px; */
+    /* min-height: 100px; */
+    border: #cccccc;
+}
+
+.mileagetable_sg td{
+	padding-right: 10px;
+    padding-left: 10px;
+    height: 35px;
+    box-sizing: border-box;
+}
+
+.mileagetable_sg th{
+	background-color: #e3e3e3;
+    height: 35px;
+}
+/* 마일리지내역확인하기 css */
+
+/* 테블릿,노트북 크기 768~1023px */
+@media all and (min-width:768px) {
+	
+	
+}
+
+
+/* 모니터,대형스크린크기 1024~무한 */
+@media all and (min-width:1024px) {}

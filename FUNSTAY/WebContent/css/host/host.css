@@ -1,0 +1,269 @@
+@CHARSET "UTF-8";
+
+
+
+.clear{clear:both;}
+
+
+
+#host1 { margin : 10px 0px 0px 70px;
+	top:30px; 
+    left: 20px;
+    width: 700px;
+    height: 1000px;}
+
+
+#host2 { top:40px; 
+    left: 1020px;
+    width: 750px;
+    min-height: 1000px;
+	position : relative;}
+
+ 
+#host3 { top:1015px; 
+    left: 20px;
+   	margin : 60px 0px 0px 70px;
+	padding-right : 100px;
+	}
+
+.room1 {
+	top:1060px; 
+    left: 20px;
+   	margin : 190px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+.room2 {
+	top:1060px; 
+    left: 20px;
+   	margin : 340px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+.room3 {
+	top:1060px; 
+    left: 20px;
+   	margin : 490px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+.room4 {
+	top:1060px; 
+    left: 20px;
+   	margin : 640px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+.room5 {
+	top:1060px; 
+    left: 20px;
+   	margin : 790px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+.room6 {
+	top:1060px; 
+    left: 20px;
+   	margin : 940px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+.room7 {
+	top:1060px; 
+    left: 20px;
+   	margin : 1090px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+.room8 {
+	top:1060px; 
+    left: 20px;
+   	margin : 1240px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+.room9 {
+	top:1060px; 
+    left: 20px;
+   	margin : 1390px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+.room10 {
+	top:1060px; 
+    left: 20px;
+   	margin : 1540px 0px 0px 70px;
+	padding-right : 100px;
+}
+
+
+#content td {padding : 20px;}
+
+#content { min-height:1800px;/* ! */
+
+	position: relative; }
+
+#content table {
+	position : absolute;
+}
+
+	
+.sel {padding : 7px;
+	margin : 7px;}
+
+#text11 {
+	padding : 5px;
+	text-align: center;
+	border : none;
+	font-size : 15px;
+}
+
+.num_btn{
+	font-size:1.5em;
+	color:  #fc4401;
+	margin : 0 0 0 10px;
+	border : 1px solid #fc4401;
+	border-radius : 25px;
+	background-color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+	
+}
+
+
+.next_btn {
+	font-size:1.2em;
+	color:  #fff;
+	border : none;
+	background-color: #fc4401;
+	font-weight: bold;
+	float: right;
+	padding : 10px;
+	cursor: pointer;
+}
+
+.add_btn {
+	font-size:1.2em;
+	color:  #fff;
+	border : none;
+	background-color: #fc4401;
+	font-weight: bold;
+	padding : 10px;
+	cursor: pointer;
+}
+
+
+#del_btn {
+	font-size:1.2em;
+	color:  #fff;
+	border : none;
+	background-color: #fc4401;
+	font-weight: bold;
+	padding : 10px;
+	cursor: pointer;
+}
+
+
+#address {padding : 10px;
+		  margin : 7px;}
+
+#host {color : #fc4401;}
+
+.td {border-bottom: 1px solid #d7d7d7;}
+
+
+
+b {font-size: 1.1em;}
+
+
+.td1 {border-bottom: 1px solid #d7d7d7;
+	  text-align: center;}
+	  
+#td2	 {
+	text-align: center;
+}
+
+
+.select_rooms{
+	padding : 7px;
+	 margin : 7px;
+}
+
+
+span{
+	font-size:0.8em;
+}
+
+h5 {
+	margin-top:6px;
+}
+
+
+.sel2 {padding : 7px;
+	margin-top : -10px;}
+
+/* ------------------호스트동록메인----------------- */
+
+
+#myVideo {
+	position: fixed; 
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%; }
+
+#myBtn1 {
+    position: relative; 
+    top: 340px;  
+    color: #fff;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+#myBtn2 {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #fc4401;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn2:hover {
+    background-color: #cc1d1d;
+}
+
+#wri {
+	background-color:rgba(0,0,0,0.3); 
+	color : #fff;
+	font-size: 2.5em;
+	text-align: center;
+	margin : 20px auto ;
+	padding : 20px;
+	width:700px;
+}
+
+
+
+/* --------------host_join2.jsp------------ */
+
+
+#max_people {
+	border:none;
+	padding : 5px;
+	text-size :1.1em;
+	text-align: center;
+}
+
+
+.back_btn {
+	font-size:1.2em;
+	color:  #fff;
+	border : none;
+	background-color: #fc4401;
+	font-weight: bold;
+	float: left;
+	cursor: pointer;
+}

@@ -1,0 +1,206 @@
+@CHARSET "UTF-8";
+
+body{width: 1900px;height: 1000px;}
+
+#backimg{
+	animation-name:photo1;
+	animation-duration:10s;
+	height:1200px;
+	background-size:cover;
+	animation-iteration-count: infinite;
+	}
+
+@keyframes photo1{
+	
+	
+	0%{background-image: url("../img/photo1.jpeg");}
+
+	
+	50%{background-image: url("../img/photo2.jpg");}
+	
+	
+	100%{background-image: url("../img/photo3.jpg");}
+	
+}
+
+#clear{clear:left;}
+
+section {
+overflow: hidden;
+float: right;
+}
+ul li{
+	margin: 10px 30px 0 30px;
+	float: left;
+	list-style:none;
+	
+	 }
+
+ul li a{text-decoration: none;
+color: white;
+}
+
+ul li a:HOVER{
+	text-decoration: underline;
+}
+
+
+section ul li:NTH-CHILD(3)>ul {
+	display: none;
+	
+
+}
+
+
+#pont{font-family: 'Lobster', cursive;
+display: inline-block;
+margin: 200px 0 0 860px;
+font-size: 80px;
+}
+#pont a{text-decoration: none;
+color: black;}
+
+
+nav ol{border: 1px solid white;
+display: inline-block;
+background-color: white;
+border-radius:10px 10px 10px 10px; }
+
+nav ol li{list-style: none;
+margin: 15px 43px 15px 15px;
+font-size: 15px;}
+
+.textsize1{width: 400px;
+height: 40px;
+border-radius:7px;
+}
+
+.textsize2{width: 200px;
+height: 40px;
+border-radius:7px;}
+
+
+
+
+#nav_1 ol li:NTH-CHILD(5) ul>li{display: none;}
+#nav_1 ol li:NTH-CHILD(5) ol>li{display: none;}
+
+
+#nav_1 ol li:NTH-CHILD(5):HOVER ul>li{display: inline-block;
+width: 20px; height: 20px;}
+#nav_1 ol li:NTH-CHILD(5):HOVER ol>li{display: inline-block;
+width: 20px; height: 20px;}
+
+#btn1{float: right;
+overflow: hidden;
+width: 80px;height: 40px;
+border-radius:10px 10px 10px 10px;
+background: #ff8080;
+color: white;
+margin-bottom: 25px;
+}
+
+nav ol li{font-family: 'Kodchasan', sans-serif;}
+
+#checkout{padding-left: 160px;}
+
+nav ol li:NTH-CHILD(1) {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+#nav_1{margin: 120px 0 0 740px;}
+#clear{clear: both;}
+
+/*#nav_1 ol li:NTH-CHILD(8),li:NTH-CHILD(9){
+	display: none;
+}*/
+
+/*#form_1{
+display: none;
+}
+
+input#textsize_1[type=text]:FOCUS+#form_1{
+	display: inline;
+}*/
+
+.font1{font-size: 17px;
+font-weight: normal;}
+
+input#btn_11[type=button]{
+margin-left: 30px;	
+}
+
+input#btn_12[type=button]{
+margin-left: 13px;	
+}
+
+input#textcss1[type=text]{
+margin-right: 4px;	
+width: 40px;
+height: 30px;
+text-align: center;
+}
+input#textcss2[type=text]{
+margin-right: 6px;
+width: 40px;	
+height: 30px;
+text-align: center;
+}
+
+
+
+
+#form_1, #textsize_1 {
+    padding: 5px;
+    text-align: center;
+    border: solid 1px #c3c3c3;
+}
+
+#form_1 {
+    padding: 50px;
+    display: none;
+}
+
+.btn_1{border-radius:20px 20px 20px 20px; 
+background-color: white;
+font-size:23px;
+width:35px;height:35px;
+color: #0080ff;}
+
+.btn_1:ACTIVE{
+border: 1px solid #0080ff;
+background-color:#0080ff;
+color:white;
+}
+
+#btn{
+border-radius:10px 10px 10px 10px; 
+background-color: #ff8080;
+color: white;
+width: 60px; height: 40px;}
+
+ #img_1{margin: 0 30px 0 100px;}
+ #img_2{margin-right: 30px;}
+ #img_3{margin-right: 30px;}
+ #img_4{margin-right: 30px;}
+ 
+ #img_1:HOVER{
+ filter:brightness(50%);
+ }
+  #img_2:HOVER{
+ filter:brightness(50%);
+ }
+  #img_3:HOVER{
+ filter:brightness(50%);
+ }
+  #img_4:HOVER{
+ filter:brightness(50%);
+ }
+   
+   
+ #font2{font-size: 35px;
+   margin: 30px 0 45px 99px;
+   font-family: 'Noto Sans KR', sans-serif;}
+   
+

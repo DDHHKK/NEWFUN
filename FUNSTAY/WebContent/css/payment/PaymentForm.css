@@ -1,0 +1,295 @@
+@CHARSET "UTF-8";
+/* 규칙으로 정하면 좋을것 같습니다. */
+#wrap *{box-sizing:border-box;}
+#content h1{text-align: center;}
+
+/* 모바일 크기 0~767px */
+#content {
+	/* border:1px solid red; */
+	width:100%;
+	box-sizing:border-box;
+	margin: 0 auto;
+	font-size: 1em;
+}
+/* 스낵메세지 */
+.paysnakmsg_sg {
+	border:1px solid #cc1d1d;
+	border-radius: 10px;
+	padding: 20px;
+	width: 98%;
+    overflow: hidden;
+    margin: 0 auto; 
+}
+
+.heightcenterfit_sg {
+	visibility: hidden;
+	height:0;
+}
+
+.paysnakmsg_sg i{
+	line-height:100%;
+	color: #cc1d1d;
+	font-size: 2em;
+}
+
+.paysnakmsg_sg p{
+	margin: 0;
+}
+/* 주문정보 css */
+#paymentinfo_sg {
+	/* border:1px solid blue; */
+	width: 99%;
+	min-width: 100px;
+	padding: 0 3%;
+	line-height: 40px;
+	margin-bottom: 30px;
+}
+
+#paymentinfo_sg h3{
+	display:block;
+	width:98%;
+	text-align: left;
+	margin:0 auto;
+	margin-bottom: 20px;
+	border-bottom:1px solid #666;
+	padding:5px;
+}
+
+#paymentinfo_sg img{
+	width: 98%;
+	display:block;
+	margin:0 auto;
+}
+
+#paymentinfo_sg i {color: #cc1d1d;}
+.paytotal_sg {
+	/* border: 1px solid red; */
+    /* display: block; */
+    /* float: left; */
+    width:fix-content;
+    margin-left: 60%;
+    text-align: right;
+}
+
+/* 결제정보 css */
+#paymemberinfo_sg {
+	/* border:1px solid pink; */
+	width: 99%;
+	min-width: 100px;
+	padding: 0 3%;
+	line-height: 30px;
+}
+
+#paymemberinfo_sg h3{
+	display:block;
+	width:98%;
+	text-align: left;
+	margin:0 auto;
+	margin-bottom: 20px;
+	border-bottom:1px solid #666;
+	padding:5px;
+}
+
+#paymemberinfo_sg table{
+	width: 98%;
+	margin: 0 auto;
+}
+
+
+#check_module {
+	background-color:#cc1d1d;
+	display:block;
+	border: none;
+	color:white;
+	width: 98%;
+	margin: 0 auto;
+	height: 40px; 
+	padding: 5px 0;
+	border-radius: 10px;
+	margin-top: 20px;
+	font-size: 18px;
+    font-weight: bold;}
+	
+#paymemberinfo_sg input {
+	display: block;
+    width: 95%;
+}
+
+#paymemberinfo_sg textarea {
+	width: 95%;
+	overflow: visible;
+	text-overflow: ellipsis;
+	resize: vertical;
+	display: block;
+	min-height: 100px;
+	padding: 10px;
+}
+
+/* 테블릿,노트북 크기 768~1023px */
+@media all and (min-width:768px){
+
+#content {
+	width:79%;
+}
+	
+#splitwraptotal_sg {
+	/* border:1px solid red; */
+	width: 100%;
+	box-sizing: border-box;
+}	
+	
+#splitwrapleft_sg {
+	/* border:1px solid blue; */
+	width: 60%;
+	float: left;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+#splitwrapright_sg {
+	/* border:1px solid pink; */
+	width: 40%;
+	float: right;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+/* 스낵메세지 */
+.paysnakmsg_sg {
+	border:1px solid #cc1d1d;
+	border-radius: 10px;
+	padding: 20px;
+	width: 90%;
+    overflow: hidden;
+    margin: 0 auto; 
+    margin-bottom: 20px;
+}
+
+.heightcenterfit_sg {
+	line-height: 100%;
+    height:fit-content;
+    /* border: 1px solid blue; */
+    width: fit-content;
+    float: left;
+    margin-right: 10px;
+}
+
+.paysnakmsg_sg i{
+	line-height:100%;
+	color: #cc1d1d;
+	font-size: 2em;
+}
+
+.paysnakmsg_sg p{
+	/* border:1px solid blue; */
+	min-width:200px;
+	display: block;
+	float: left;
+	width: 82%;
+	margin: 0;
+}
+/* 주문정보 css */
+#paymentinfo_sg {
+	padding: 0;
+}
+
+/* 결제정보 css */
+#paymemberinfo_sg {
+	padding: 0;
+}
+
+
+/*  */
+#splitwrapright_sg1 {
+	width: 40%;
+	float: right;
+	padding: 10px;
+	box-sizing: border-box;
+	width: 40%;
+	padding: 20px 20px 0 20px;
+	border:1px solid black;
+	border-bottom:none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#splitwrapright_sg2 {
+	width: 40%;
+	float: right;
+	padding: 10px;
+	box-sizing: border-box;
+	width: 40%;
+	padding: 0 20px 20px 20px;
+	border: 1px solid black;
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#paymemberinfo_sg input {
+	display: block;
+    width: inherit;
+}
+/*  */
+
+
+}
+
+/* 모니터,대형스크린크기 1024~무한 */
+@media all and (min-width:1024px) {
+	
+#content {
+	width:79%;
+}
+
+#splitwraptotal_sg {
+	/* border:1px solid red; */
+	width: 60%;
+	box-sizing: border-box;
+}
+
+#splitwraptotal_sg {
+	padding: 20px 20px 0 20px;
+}	
+	
+#splitwrapleft_sg {
+	padding: 20px 20px 0 20px;
+}
+
+#splitwrapright_sg{
+	width: 40%;
+	padding: 20px 20px 0 20px;
+}
+
+#splitwrapright_sg1 {
+	width: 40%;
+	float: right;
+	padding: 10px;
+	box-sizing: border-box;
+	width: 40%;
+	padding: 20px 20px 0 20px;
+	border:1px solid black;
+	border-bottom:none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#splitwrapright_sg2 {
+	width: 40%;
+	float: right;
+	padding: 10px;
+	box-sizing: border-box;
+	width: 40%;
+	padding: 0 20px 20px 20px;
+	border: 1px solid black;
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#paymemberinfo_sg input {
+	display: block;
+    width: inherit;
+}
+	
+}

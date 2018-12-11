@@ -1,0 +1,151 @@
+@CHARSET "UTF-8";
+
+
+
+#sub_DY {
+    border: 1px solid blue;
+    background-color:#f5f4f0;
+    width: 20%;
+    min-height: 500px;
+    float: left;
+    /* position: fixed; */
+    /* right: 938px; */
+    top: 83px;
+    left: 20px;}
+
+#search_bar_DY{
+border-bottom:1px dotted #000000; 
+min-height:200px; }
+
+#option_DY{
+
+min-height:200px;}
+
+#filter_pupular_DY{
+width: 100%;
+min-height:100px;
+	
+}
+
+
+#filter_pupular_list>li {list-style: none;}
+
+#hotel_rate_DY {
+width: 100%;
+min-height:100px;}
+
+#cost_DY {
+width: 100%;
+min-height:100px;}
+
+#facility_DY {
+width: 100%;
+min-height:100px;}
+
+
+
+#filter_pupular_DY>h3,#hotel_rate_DY>h3,#cost_DY>h3,#facility_DY>h3,#disabled_facility_DY>h3 {
+	
+	width: 60%;
+	margin-left: 40px;
+ }
+
+
+
+#filter_pupular_DY,#hotel_rate_DY,#cost_DY,#facility_DY{
+	border-bottom:1px dotted #000000; }
+
+
+
+
+
+#content_DY {
+	border: 1px solid red;
+	width: 77%;
+	min-height: 500px;
+	float: right;
+}
+
+
+
+.letter {margin: 20px;
+ font-size: 20px;}
+
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    margin: 20px;
+   
+}
+
+/* Style the buttons inside the tab */
+.tab button {/* border: 1px solid #ccc; */
+    background-color: #f1f1f1;
+   /*  background-color: inherit; */
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {border:2px solid blue;
+	min-height:500px;
+	display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+
+.pic {border:2px solid green;
+    width:200px;
+    height:200px;
+    
+    background-image: url("../../images/couch.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+    }
+
+.pic2 {border:2px solid green;
+    width:200px;
+    height:200px;
+    
+    background-image: url("../../images/couch.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+    }
+
+
+
+.house1,.house2{border: 1px solid;
+width: 250px;
+}
+
+.house1{float: left;}
+
+.house2{float: right;
+margin-right: 350px;} 
+
+
+
+
+

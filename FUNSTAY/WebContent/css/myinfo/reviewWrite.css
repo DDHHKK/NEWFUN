@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+
+#content_DY {
+	 
+    border:1px solid;
+    padding-left:15px;
+    width: 77%;
+    min-height: 500px;
+    float: right;
+
+	
+}
+
+
+/*별점 매기기  */
+.starR{
+  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.starR.on{background-position:0 0;}
+/*별점 매기기 끝  */
+
+
+
+textarea {
+	width:1000px;
+	height:300px;
+	font-size: 1.8em;
+}
+
+/*placeholder글자색과 글자크기  */
+textarea::placeholder {
+  color: #6b5b95;
+  font-size: 1em;
+}
+/*placeholder글자 끝 */
+
+
+/*버튼  */
+.review_button_DY {
+	font-size: 2em;
+    background-color: #6b5b95;
+    color: white;
+}
+/*버튼  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
