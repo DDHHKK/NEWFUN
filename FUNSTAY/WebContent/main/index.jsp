@@ -53,7 +53,7 @@
 	if(session.getAttribute("email")==null){
 	%>
 	<!-- 로그인/회원가입 버튼 -->
-<button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">login</button>
+<button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</button>
 <button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button>
 	<%
 	}else{
