@@ -1,3 +1,7 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="net.bed.db.BedBean"%>
 <%@page import="java.util.List"%>
 <%@page import="net.conv.db.ConvBean"%>
@@ -73,7 +77,17 @@ String address = request.getParameter("address");
 
 int re_room =  Integer.parseInt(request.getParameter("re_room"))+1;
 
-
+// 호스팅 시작날짜 끝나는 날짜 계산
+Calendar cal = Calendar.getInstance();
+cal.setTime(new Date());
+cal.add(Calendar.DATE, 3);
+ 
+// 지정된 형태의 날짜로 출력
+DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+String strDate = df.format(cal.getTime());
+cal.setTime(new Date());
+cal.add(Calendar.DATE, end_date);
+String endDate = df.format(cal.getTime());
 
 
 %>
@@ -105,7 +119,7 @@ int re_room =  Integer.parseInt(request.getParameter("re_room"))+1;
 <tr><td class="td1">1박당 가격  </td><td class="td2"><input type="text" name="price" value="<%=price %>" readonly></td></tr>
 <tr><td class="td1">체크인 가능 시간  </td><td class="td2"><input type="text" name="in_time" value="<%=in_time %>" readonly> </td></tr>
 <tr><td class="td1">체크아웃 가능 시간  </td><td class="td2"><input type="text" name="out_time" value="<%=out_time %>" readonly></td></tr>
-<tr><td class="td1">호스팅 끝낼 날짜  </td><td class="td2"><input type="text" name="end_date" value="<%=end_date %>" readonly></td></tr>
+<tr><td class="td1">호스팅 기간  </td><td class="td2"><input type="text" name="end_date" value="<%=strDate%> ~ <%=endDate%>" readonly><input type="hidden" name="end_date" value="<%=end_date %>" readonly></td></tr>
 <tr><td class="td1">편의시설 </td><td class="td2">
 <%for(int i=0; i<convenience.length; i++){%>
 <%

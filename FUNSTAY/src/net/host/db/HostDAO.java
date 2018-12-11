@@ -101,12 +101,15 @@ private Connection getConnection() throws Exception{
 			
 			
 			  
-			sql = "insert into home(home_num,host_email,address,room_type,photo,room_subject,"
-					+ "room_content,restroom,in_time,out_time,price,start_date,end_date,apply_date,home_status)"
-					+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,now(),?)";
+			sql 
+			= "insert into home"
+					+ "(home_num,host_email,address,room_type,photo,room_subject,room_content,restroom,in_time,out_time,price,"
+					+ "apply_date,home_status,start_date,end_date)"
+			+ "values"
+				+ "(?,?,?,?,?,?,?,?,?,?,?,now(),?,date_format(now()+ interval 3 day, '%Y-%m-%d'),date_format(now()+ interval ? day, '%Y-%m-%d'))";
 
-			pstmt = con.prepareStatement(sql); 
-		
+			pstmt = con.prepareStatement(sql);
+
 			pstmt.setInt(1, home_num);
 			pstmt.setString(2, email);
 			pstmt.setString(3, hb.getAddress());
@@ -118,9 +121,8 @@ private Connection getConnection() throws Exception{
 			pstmt.setString(9, hb.getIn_time());
 			pstmt.setString(10, hb.getOut_time());
 			pstmt.setInt(11, hb.getPrice());
-			pstmt.setDate(12, hb.getStart_date());
-			pstmt.setDate(13, hb.getEnd_date());
-			pstmt.setInt(14,1);
+			pstmt.setInt(12, 1);
+			pstmt.setInt(13, end_date2);
 
 			pstmt.executeUpdate();
 

@@ -80,7 +80,7 @@ HostBean hb=new HostBean();
 	  <tr> <% } %>
 	  
  
-<td><%=hb.getHome_num() %><figure><img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> 
+<td><figure><img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> 
 	<figcaption>
 
 		<a href="./RoomDetail.sc?home_num=<%=hb.getHome_num()%>"><img src="./img/icon/paper.png" width="45px" height="45px" alt="상세페이지"></a>
@@ -116,12 +116,12 @@ HostBean hb=new HostBean();
 
 <script type="text/javascript">
 
-function fun1(i) {
+function fun1(home_status) {
 	r=confirm ("정말 숙소를 삭제하시겠습니까?");
 		
 	if(r==true){
 		//삭제액션으로 가기
-		return location.href="./HostDelete.ho?home_num="+i+"";
+		return location.href="./HostDelete.ho?home_num="+home_status+"";
 	}else {
 		alert("취소되었습니다.");
 	}
