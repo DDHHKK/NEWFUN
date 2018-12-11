@@ -74,7 +74,8 @@ input#btn_1_WS[type=button]:hover{
 }
 
 .sec01_WS tr td:NTH-CHILD(5) {
-	padding-left: 70px;
+	padding-left: 200px;
+	padding-top : 10px;
 }
 
 /* .sec01_WS tr td:NTH-CHILD(6) {
