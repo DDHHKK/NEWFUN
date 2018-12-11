@@ -30,7 +30,7 @@ public class HostCash implements Action{
 		int result = hdao.hostCheck(host_email);
 		
 		if(result==1){
-			System.out.println("host");
+			/*System.out.println("host");*/
 			// 해당 호스트의 cash 누적적립/인출 
 			totalCash = hdao.getCashAmount(host_email);
 			

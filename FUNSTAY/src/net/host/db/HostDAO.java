@@ -361,34 +361,6 @@ private Connection getConnection() throws Exception{
 		return result;		
 	}
 	
-/*	// 호스트 여부 체크
-	public int home_statusCheck(int home_status){
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int result = -1;
-		try{
-			con = getConnection();
-			String sql = "select * from host where home_status=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, home_status);
-			
-			rs = pstmt.executeQuery();
-			if(rs.next()){
-				result=1;
-			}else{result=0;}
-		}catch(Exception e){e.printStackTrace();
-		}finally{
-			try{
-				if(rs!=null){rs.close();}
-				if(pstmt!=null){pstmt.close();}
-				if(con!=null){con.close();}
-			}catch(SQLException e){}
-		}
-		return result;		
-	}*/
-	
-	
 	
 	
 	// 호스트 cash 누적적립/인출
