@@ -15,13 +15,13 @@ public class MemberFrontController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String requestURI = request.getRequestURI();
-		//System.out.println("URL 주소:" + requestURI);
-
+		System.out.println("URL 요청:" + requestURI);
+		
 		String ContextPath = request.getContextPath();
-		// System.out.println("������Ʈ �̸� ����:"+ContextPath.length()); //>>
-		String command = requestURI.substring(ContextPath.length());
-
-		//System.out.println("가상의 주소" + command);//>>/*.me
+		System.out.println("프로젝트 이름 길이:"+ContextPath.length()); //>>8자
+		
+		String command= requestURI.substring(ContextPath.length());
+		System.out.println("뽑아온 가상의 주소:" + command);//>>/*.me
 
 		ActionForward forward = null;
 		Action action = null;
