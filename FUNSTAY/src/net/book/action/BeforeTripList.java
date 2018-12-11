@@ -36,8 +36,7 @@ public class BeforeTripList implements Action{
 		Vector vector=bdao.GetBeforeTrip(member_email);
 		//예정된 숙소 vector2
 		Vector vector2=bdao.GetAfterTrip(member_email);
-		//취소된숙소 vector3
-		Vector vector3=bdao.BillCancel(bb, pb);
+		
 		
 		//완료된 숙소
 		List<BookingBean> bookingList=(List<BookingBean>)vector.get(0);

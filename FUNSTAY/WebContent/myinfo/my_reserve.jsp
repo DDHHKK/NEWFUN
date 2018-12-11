@@ -1,3 +1,4 @@
+<%@page import="net.book.db.HomeBean"%>
 <%@page import="net.host.db.HostBean"%>
 <%@page import="net.booking.db.PaymentBean"%>
 <%@page import="net.booking.db.BookingBean"%>
@@ -65,6 +66,9 @@
 </div>
 
 
+
+
+
 <!--완료된 숙소탭 시작  -->
 <div id="London" class="w3-container city">
 
@@ -109,11 +113,6 @@ for(int i=0; i<bookingList.size(); i++){
 %> 
   
   
-  
-  
-  
-  
-  
 
   <div id="imginfo_shj">
   
@@ -152,6 +151,7 @@ for(int i=0; i<bookingList.size(); i++){
 	BookingBean bb=(BookingBean)bookingList.get(i);
 	PaymentBean pb=(PaymentBean)paymentList.get(i);
 	HostBean hb=(HostBean)hostList.get(i);
+	
 
 if(i%3==0){
 	%>
@@ -160,6 +160,7 @@ if(i%3==0){
 }
 %>
 
+<td><%=hb.getPhoto()%></td>
 <td><%=hb.getRoom_subject() %><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
 	
 <!--영수증버튼(모달박스)  -->
@@ -188,17 +189,6 @@ if(i%3==0){
  
 </table>
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -261,8 +251,6 @@ if(i%3==0){
   
   
   
-  
-  
 </div>
 <!--완료된 숙소 끝  -->
 
@@ -272,30 +260,13 @@ if(i%3==0){
 
 
 
+
+
+
+
+
 <!--예정된 숙소 시작  -->
 <div id="Paris" class="w3-container city" style="display:none">
-
- 
- <!--썸네일1시작  -->
-  <!--<a href="#">
-  <div class="mywish_shj">
-  <div id="outerbox_shj"> <img src="../img/부산1.png"> </div>
-  <div id="imginfo_shj">
-  <div id="imgname_shj">부산광역시 광안리</div>
-  영수증버튼(모달박스) 
-  <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
-  </div>
-  영수증 버튼 끝 
-  예약취소 버튼
-  <button class="cancel_butt_DY" onclick="button_event();">예약취소</button>
-  예약취소 버튼 끝 
-  </div>
-  </div>
-  </a>
- 썸네일1끝  -->
- 
- 
 
 
 
@@ -325,6 +296,7 @@ if(i%3==0){
 }
 %>
 
+<td><%=hb.getPhoto()%></td>
 <td><%=hb.getRoom_subject() %><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
 	
 <!--영수증버튼(모달박스)  -->
@@ -332,9 +304,9 @@ if(i%3==0){
   <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
-  <!--리뷰쓰기 버튼 -->
-  <button onclick="location.href='./ReviewWrite.bk'" class="review_butt_DY">리뷰쓰기</button>
-  <!--리뷰쓰기 버튼 끝  -->
+  <!-- 예약취소 버튼 -->
+  <button class="cancel_butt_DY" onclick="button_event();">예약취소</button>
+  <!-- 예약취소 버튼 끝  -->
 		
 
 	</td>
@@ -354,16 +326,15 @@ if(i%3==0){
 </table>
 
 
-
-
- 
- 
- 
- 
-  
   
 </div>
 <!--예정된 숙소 끝  -->
+
+
+
+
+
+
 
 
 
@@ -391,6 +362,16 @@ if(i%3==0){
   
 </div>
 <!--취소된 숙소 끝  -->
+
+
+
+
+
+
+
+
+
+
 
 </div>
 
