@@ -71,8 +71,7 @@ String out_time = request.getParameter("out_time");
 int end_date = Integer.parseInt(request.getParameter("end_date")); 
 String[] convenience=request.getParameterValues("convenience");
 String address = request.getParameter("address"); 
-
-
+String [] num_conv = request.getParameterValues("num_conv");
 /* List<BedBean> bed_type = (List)request.getAttribute("bed_type"); */
 
 int re_room =  Integer.parseInt(request.getParameter("re_room"))+1;
@@ -102,9 +101,11 @@ String endDate = df.format(cal.getTime());
 
 
 <form action="./HostInsertAction.ho" method="post" enctype="multipart/form-data">
+<%
 
+System.out.println(strDate);
+%>
 
-<%-- <input type="hidden" name="bed_type" value="<%= bed_type%>"> --%>
 <input type="hidden" name="re_room" value="<%= re_room%>">
 
 
@@ -126,16 +127,24 @@ String endDate = df.format(cal.getTime());
 if(i == (convenience.length-1)){
 	out.print(convenience[i]);
 			%>
-			<input type="hidden" name="<%=i %>" value="<%=convenience[i]%>">
+			
 	<%}
 
 else{
 	out.print(convenience[i]+",");
 %>
-	<input type="hidden" name="<%=i %>" value="<%=convenience[i]%>">
+	
 <%}
-}%>
 
+}
+for(int i=0; i<num_conv.length; i++)
+{
+	%>
+	<input type="hidden" name="num_conv" value="<%=num_conv[i] %>">
+	<%
+}
+
+%>
 
 </td></tr>
 <tr><td class="td1">총 방개수</td><td class="td2"><input type="text" name="re_room" value="<%=re_room %>" readonly></td></tr>
