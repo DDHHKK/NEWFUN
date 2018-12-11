@@ -65,7 +65,7 @@
 	<div class="dropdown">
 		<img src="./img/default/no_profile.png" style="border-radius:50%;width:25px;height:25px;float:left;">
 		<button class="dropbtn">
-		<%=%>
+		<%=mb.getProfile_photo()%>
 			<%=email%>
 		</button>
 		<div class="dropdown-content">
