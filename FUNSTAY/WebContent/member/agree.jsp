@@ -3,24 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript">
-function chk(){
- var req = document.form.req.checked;
- var num = 0;
- if(req == true){
-  num = 1;
- }
- if(num==1){
-  document.form.submit();
- }else{
-  alert("개인정보 약관에 동의하셔야 합니다.");
- }
-}
-function nochk(){
- alert("동의하지 않으면 가입하실 수 없습니다");
- location.href="history.back()";
-}
-</script>
+
 <style type="text/css">
 #b_sh{
  font-size:20px;
@@ -42,15 +25,10 @@ function nochk(){
 <body>
 <form action="#" name="form" method="post">
  <table width="1400" height="650">
-  <tr>
-   <td width="100%" height="10%"><span style="padding-left: 160px">
-   <img src="../img/twitter.png" width="200" height="60" border="0"
-    align="middle"></span>&nbsp;회원가입
-   </td>
-  </tr>
+
   <tr>
    <td height="60%" align="center">
-   <hr class="hr_sh"><br>
+
    <p align="left">
    <span style="padding-left: 160px">
    <b id="b_sh">FUNSTAY 약관동의</b></span>
@@ -77,16 +55,11 @@ function nochk(){
 - 협력회사로부터의 제공 
 - 생성정보 수집 툴을 통한 수집
    </textarea>
-   <br><br>
-   <input type="checkbox" name="req"> 개인정보 수집 및 이용에 동의합니다. 
-   <br>
-   <hr class="hr_sh">
    </td>
   </tr>
   <tr>
    <td align="center" valign="top">
-    <input type="submit" value="동의" onclick="chk()">&nbsp;&nbsp;&nbsp;
-    <input type="button" value="동의안함" onclick="nochk()">    
+    <input type="button" value="확인" onclick="window.close()">    
    </td>
   </tr>
  </table>
