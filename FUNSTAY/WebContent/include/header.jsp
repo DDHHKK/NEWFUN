@@ -83,7 +83,7 @@ if(email==null){
   <div id="fade1" class="black_overlay_1"></div>
 </td>
 <%mb=md.getMember(email);%>
-<td><%=mb.getName()%>님 반갑습니다!</td>
+<td><%=mb.getEmail()%></td>
 <%
 }%>
 

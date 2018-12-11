@@ -26,6 +26,8 @@ public class MemberSearchAction implements Action{
 		HostBean hb = new HostBean();
 		
 		
+		request.setCharacterEncoding("utf-8");
+		
 		hb.setAddress(request.getParameter("address"));
 		String start_date = request.getParameter("start_date");
 		String end_date = request.getParameter("end_date");
