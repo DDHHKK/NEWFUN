@@ -101,12 +101,15 @@ private Connection getConnection() throws Exception{
 			
 			
 			  
-			sql = "insert into home(home_num,host_email,address,room_type,photo,room_subject,"
-					+ "room_content,restroom,in_time,out_time,price,start_date,end_date,apply_date,home_status)"
-					+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,now(),?)";
+			sql 
+			= "insert into home"
+					+ "(home_num,host_email,address,room_type,photo,room_subject,room_content,restroom,in_time,out_time,price,"
+					+ "apply_date,home_status,start_date,end_date)"
+			+ "values"
+				+ "(?,?,?,?,?,?,?,?,?,?,?,now(),?,date_format(now()+ interval 3 day, '%Y-%m-%d'),date_format(now()+ interval ? day, '%Y-%m-%d'))";
 
-			pstmt = con.prepareStatement(sql); 
-		
+			pstmt = con.prepareStatement(sql);
+
 			pstmt.setInt(1, home_num);
 			pstmt.setString(2, email);
 			pstmt.setString(3, hb.getAddress());
@@ -118,9 +121,8 @@ private Connection getConnection() throws Exception{
 			pstmt.setString(9, hb.getIn_time());
 			pstmt.setString(10, hb.getOut_time());
 			pstmt.setInt(11, hb.getPrice());
-			pstmt.setDate(12, hb.getStart_date());
-			pstmt.setDate(13, hb.getEnd_date());
-			pstmt.setInt(14,1);
+			pstmt.setInt(12, 1);
+			pstmt.setInt(13, end_date2);
 
 			pstmt.executeUpdate();
 
@@ -431,6 +433,39 @@ private Connection getConnection() throws Exception{
 		try{
 			con = getConnection();
 			String sql = "select room_subject,home_num,photo,home_status from home where host_email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, host_email);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				HostBean hb = new HostBean();
+				hb.setRoom_subject(rs.getString("room_subject"));
+				hb.setHome_num(rs.getInt("home_num"));
+				hb.setPhoto(rs.getString("photo"));
+				hb.setHome_status(rs.getInt("home_status"));
+				hostHome.add(hb);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+		
+		return hostHome;
+	}
+	
+	public List<HostBean> getValidHostHomes(String host_email){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<HostBean> hostHome = new ArrayList<>();
+		try{
+			con = getConnection();
+			String sql = "select room_subject,home_num,photo,home_status from home where host_email=? and home_status=1";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, host_email);
 			rs = pstmt.executeQuery();

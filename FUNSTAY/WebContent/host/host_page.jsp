@@ -61,6 +61,7 @@ HostBean hb=new HostBean();
 <!-- 여기서부터 페이지 내용을 적어주세요. -->
 
 <h1>내 숙소관리</h1>
+
  
 
  
@@ -73,8 +74,6 @@ HostBean hb=new HostBean();
     	
     for(int i=0; i<hostHome.size(); i++){
 	 		hb=(HostBean)hostHome.get(i);
-	 		
-	 		 if(hb.getHome_status()==1){ 
 
 	 
 	 if(i%3==0) { %>
@@ -87,14 +86,14 @@ HostBean hb=new HostBean();
 		<a href="./RoomDetail.sc?home_num=<%=hb.getHome_num()%>"><img src="./img/icon/paper.png" width="45px" height="45px" alt="상세페이지"></a>
 		<a href="./BookingList.ho?home_num=<%=hb.getHome_num()%>"><img src="./img/icon/calendar.png" width="45px" height="45px" alt="예약관리"></a>
 		<a href="./HostModify.ho?home_num=<%=hb.getHome_num()%>"><img src="./img/icon/pen.png" width="45px" height="45px" alt="정보수정"></a>
-		<a href="./HostDelete.ho?home_num=<%=hb.getHome_num()%>" onclick="fun1()"><img src="./img/icon/basket.png" width="45px" height="45px" alt="숙소삭제"></a>
+		<a href="#" onclick="fun1(<%=hb.getHome_num()%>)" ><img src="./img/icon/basket.png" width="45px" height="45px" alt="숙소삭제"></a>
 
 	</figcaption></figure></td>
 
 
 <% if(i%3==2) { %>
 </tr> 
-  <% } } }%> 
+  <% } }%> 
 
  </table> 
 
@@ -115,27 +114,20 @@ HostBean hb=new HostBean();
 <!-- content 영역 끝 -->  
 
 
+<script type="text/javascript">
 
-
-
-<script>
-
-function fun1() {
+function fun1(home_status) {
 	r=confirm ("정말 숙소를 삭제하시겠습니까?");
 		
 	if(r==true){
 		//삭제액션으로 가기
-		location.href="/HostDeleteAction.ho";
-	
-	}else if(r==false) {
+		return location.href="./HostDelete.ho?home_num="+home_status+"";
+	}else {
 		alert("취소되었습니다.");
-		return false;
 	}
-	
 }
 
 </script>
-
 
 
 <!-- 페이지내용 끝 -->

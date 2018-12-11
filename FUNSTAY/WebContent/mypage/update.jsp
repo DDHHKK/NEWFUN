@@ -65,7 +65,7 @@
   <form action="./MemberUpdateAction.me" id="join"method="post" enctype="multipart/form-data">
    <div id="fileup_sh" name="photo" style="width: 250px; height: 250px; border: 1px dashed #ccc;">
   <!-- <p id="status_sh">프로필 사진</p> -->
-  <img src="./img/<%=mb.getProfile_photo()%>"style="width: 250px; height: 250px;">
+  <img src="./upload/<%=mb.getProfile_photo()%>"style="width: 250px; height: 250px;">
 	  
    </div>
   <p>

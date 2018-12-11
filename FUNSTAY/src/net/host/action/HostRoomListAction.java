@@ -21,7 +21,7 @@ public class HostRoomListAction implements Action{
 		
 		HostDAO hdao=new HostDAO();
 		
-		List hostHome=hdao.getHostHomes(host_email);
+		List hostHome=hdao.getValidHostHomes(host_email);
 		
 		request.setAttribute("hostHome", hostHome);
 		

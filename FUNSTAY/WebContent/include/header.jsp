@@ -28,14 +28,13 @@ $(document).ready(function(){
 MemberBean mb = new MemberBean(); 
 String email = (String)session.getAttribute("email");
 mb=md.getMember(email);
-int hostCheck = 0;
-hostCheck = (int)session.getAttribute("hostCheck");
+
 %>
 <section class="sec01_WS">
 <table>
 <tr>
 <td id="pont1_WS"><a href="./Main.me">FUNSTAY</a></td>
-<td><input type="text" id="text_1_WS" name="search_info" placeholder="지역을 입력 해주세요.">
+<td><input type="text" id="text_1_WS" name="search_info" placeholder="검색할 내용을 적으세요">
 <input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></td>
 <td><a href="./HostMain.ho">호스트로 등록해보세요</a></td>
 <td><a href="./FAQ_boardList.fa">FAQ</a></td>
@@ -54,35 +53,38 @@ if(email==null){
  <div id="light1" class="white_content_1">
   <div>
   <ul id="list_1_WS">
-	<li><a href="./PassCheckForm.me">프로필수정</a></li>
+	<li><a href="./MemberUpdate.me">프로필수정</a></li>
 	<li><a href="./Booking.bo">예약및 결제하기</a></li>
 	<li><a href="./MyReserve.bk">MY RESERVE</a></li>
 	<li><a href="./Wishlist.wi">위시리스트</a></li>
 	<li><a href="./MemberMileage.me">마일리지</a></li>
 	<li><a href="./MemberQNAlist.me">문의하기</a></li>
 	<%
-	}if(email.equals("admin")){
+	int hostCheck = 0;
+	hostCheck = (int)session.getAttribute("hostCheck");
+	if(email.equals("admin")){
 	%>
 	<li><a href="./MemberListAction.me">회원목록</a></li>
 	<li><a href="./FAQ_boardList.fa">FAQ 관리</a></li>	
 	<% }else if(hostCheck==1){%>
-	<li><a href="./HostPassCheckAction.ho">숙소 관리</a></li>
+	<li><a href="./HostPassCheckAction.ho">숙소 정보 수정</a></li>
+	<li><a href="#">숙소 삭제(없음)</a></li>
+	<li><a href="#">예약 관리(없음)</a></li>
 	<li><a href="./HostCash.ho">MY CASH</a></li>
-
-	<%} %>
-
+	<%}
+%>
 	
 	<li><a href="./MemberLogout2.me">로그아웃</a></li>
   </ul>
   </div>
   <a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='none';document.getElementById('fade1').style.display='none'"><p id="font_2_WS">닫기</p></a>
-  </div>
+  </div><!-- //white_content_1 -->
   <div id="fade1" class="black_overlay_1"></div>
 </td>
 <%mb=md.getMember(email);%>
 <td><%=mb.getName()%>님 반갑습니다!</td>
 <%
- %>
+}%>
 
 
 <!-- 로그인 -->
@@ -185,10 +187,10 @@ if(email==null){
  </div><!-- modal_sh -->
 </div><!-- modal -->
 </td>
-<%if(session.getAttribute("email")==null){
+<%if(email==null){
 	%>
 <td><button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button>
-<% 
+<%
 }
 %>
 <!-- 회원가입 -->
@@ -278,17 +280,3 @@ if(email==null){
 
 
 </header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

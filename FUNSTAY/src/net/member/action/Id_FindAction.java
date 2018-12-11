@@ -36,7 +36,7 @@ public class Id_FindAction implements Action{
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('이메일은"+email+"입니다');");
-			out.print("location.href='./Main.me'");
+			out.print("location.href='./find_pw.me'");
 			out.println("</script>");
 			out.close();
 			return null;
