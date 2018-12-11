@@ -284,15 +284,15 @@ if (email.equals("admin")) {
 <div class="main_box">
 <a href="#" id="pont">FunStay</a>
 <nav id="nav_1">
-<form action="./MemberSearchAction.me" method="get" name="fff" id="form_2">
+<form action="./MemberSearchAction.me" method="post" name="fff" id="form_2">
 <ol>
 <li class="tite_text">여행에 필요한 정보를 적으세요.</li>
 <li>목적지</li>
-<li><input type="text" value="" placeholder="목적지를 적으세요" class="textsize1" name="search_info"></li>
+<li><input type="text" value="" placeholder="목적지를 적으세요" class="textsize1" name="address"></li>
 <li><span>체크인</span> <span id="checkout">체크아웃</span></li>
 <li>
-   <input type='text' id="minMaxExample" class='datepicker-here' name="date_a" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
-   <input type="text" value="" class="textsize2" id="datepicker" name="date_b" data-language='en' placeholder="년 / 월 / 일">
+   <input type='text' id="minMaxExample" class='datepicker-here' name="start_date" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
+   <input type="text" value="" class="textsize2" id="datepicker" name="end_date" data-language='en' placeholder="년 / 월 / 일">
 
 </li>
 <li>인원</li>
