@@ -20,8 +20,8 @@ font-size: 50px;
 font-weight: bolder;
 }
 
-#img_1_WS{width: 100px;
-border-radius: 10px 10px 10px 10px;}
+/* #img_1_WS{width: 100px;
+border-radius: 10px 10px 10px 10px;} */
 
 .sec01_WS tr td:NTH-CHILD(1) {
 	padding:0 250px 0 30px;
@@ -74,12 +74,13 @@ input#btn_1_WS[type=button]:hover{
 }
 
 .sec01_WS tr td:NTH-CHILD(5) {
-	padding-left: 70px;
+	padding-left: 200px;
+	padding-top : 10px;
 }
 
-.sec01_WS tr td:NTH-CHILD(6) {
-	padding-left: 60px;
-}
+/* .sec01_WS tr td:NTH-CHILD(6) {
+	padding-left: 45px;
+} */
 .sec01_WS tr td:NTH-CHILD(7) {
 	padding-left: 20px;
 }

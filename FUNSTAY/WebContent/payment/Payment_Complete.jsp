@@ -9,7 +9,7 @@
 </head>
 <body>
 
-결제 완료!!<br>
+결제가 완료 되었습니다.<br>
 room_subject : <%=request.getAttribute("room_subject") %><br>
 home_num : <%=request.getAttribute("home_num") %><br>
 request_msg : <%=request.getAttribute("request_msg") %><br>
@@ -17,6 +17,7 @@ member_email : <%=request.getAttribute("member_email") %><br>
 storage_m : <%=request.getAttribute("storage_m") %><br>
 used_m : <%=request.getAttribute("used_m") %><br>
 
+<a href="./MyReserve.bk">예약정보 확인하기</a>
 <!-- <script type="text/javascript">
 //이전 페이지의 url을 불러오는 코드 ->  document.referrer
 var x = document.referrer;

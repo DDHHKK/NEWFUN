@@ -49,7 +49,8 @@ if(email==null){
 <%
 }else{
 	%>
-	<td><a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'"><img src="./upload/<%=mb.getProfile_photo()%>" id="img_1_WS"></a>
+	<td><a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'"><img src="./upload/<%=mb.getProfile_photo()%>" 
+	id="img_1_WS" style="border-radius:50%;width:40px;height:40px;"></a>
  <div id="light1" class="white_content_1">
   <div>
   <ul id="list_1_WS">
@@ -169,7 +170,7 @@ if(email==null){
    <div id="forget_sh">
  		 <div class="forget">
   		<a href="./find_pw.me">Forget password?</a>
-  		</div> 
+  		</div> <!-- //forget -->
   
   <!-- 아이디 찾기 -->
  	 	 <div class="forget">
