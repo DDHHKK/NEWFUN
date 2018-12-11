@@ -38,7 +38,23 @@
 
 
 <!-- js -->
-
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('#con_btn').click(function(){
+		var convenience = [];
+		var convenience ="";
+		$('input[name="convenience"]').each(function(index){
+		if ($(this).is(':checked')){
+				$(this).append("<input type='hidden' value='1' name='num_conv' checked>");
+			} else{
+				$(this).append("<input type='hidden' value='0' name='num_conv' checked>");
+			}
+		});
+	});
+	
+	});
+</script>
 
 </head>
 <body>
@@ -67,16 +83,16 @@ $(function() {
 		
 
 		for(var j=10; j>rooms; j--){
-			$('.room'+(j+1)+'_single').val('싱글침대 개수를 선택하세요');
-			$('.room'+(j+1)+'_double').val('더블침대 개수를 선택하세요');
-			$('.room'+(j+1)+'_bunk').val('이층침대 개수를 선택하세요');
-			$('.room'+j+'').css({
+			$('.room'+j+'_single').val('싱글침대 개수를 선택하세요');
+			$('.room'+j+'_double').val('더블침대 개수를 선택하세요');
+			$('.room'+j+'_bunk').val('이층침대 개수를 선택하세요');
+			$('.room'+(j-1)+'').css({
 				"display":"none"
 			});
 		}
 		//alert($('.room3_single').val());
 		for(var i=0; i<=rooms; i++){
-			$('.room'+(i+1)+'').css({
+			$('.room'+i+'').css({
 				"display":"block"
 			});
 		}
@@ -261,16 +277,16 @@ $(function() {
 <tr><td><b>방 개수를 선택하세요.</b></td></tr>
 <tr><td><b>방개수 </b><select class="select_rooms" name="re_room">
 	<option>방 개수 선택</option>
-	<option value="0">1</option>
-	<option value="1">2</option>
-	<option value="2">3</option>
-	<option value="3">4</option>
-	<option value="4">5</option>
-	<option value="5">6</option>
-	<option value="6">7</option>
-	<option value="7">8</option>
-	<option value="8">9</option>
-	<option value="9">10</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
 </select>
 <input type="button" class="select_btn" value="선택"></td></tr>
 </table>
@@ -285,7 +301,7 @@ for ( int i =1; i<=10; i++){
 	</td>
 	<td class="td">
 		<img src="./img/icon/single_bed-512.png" width="30px">
-		<select class="room<%=i %>_single" name="room<%=i %>_single">
+		<select class="room<%=i %>_single" name="room_single">
 		<option>싱글침대 개수를 선택하세요</option>
 		<option>1</option>
 		<option>2</option>
@@ -294,7 +310,7 @@ for ( int i =1; i<=10; i++){
 		</select><br>
        			
 		<img src="./img/icon/icon_bed__45215.png" width="30px">
-		<select class="room<%=i %>_double" name="room<%=i %>_double">
+		<select class="room<%=i %>_double" name="room_double">
 		<option>더블침대 개수를 선택하세요</option>
 		<option>1</option>
 		<option>2</option>
@@ -302,7 +318,7 @@ for ( int i =1; i<=10; i++){
 		</select><br>
        			
 		<img src="./img/icon/3365-200.png" width="30px">
-		<select class="room<%=i %>_bunk" name="room<%=i %>_bunk">
+		<select class="room<%=i %>_bunk" name="room_bunk">
 		<option>이층침대 개수를 선택하세요</option>
 		<option>1</option>
 		<option>2</option>
@@ -314,7 +330,7 @@ for ( int i =1; i<=10; i++){
 	</td>
 	<td class="td1">
 		<b>수용가능한 최대인원을 선택하세요</b><br><br>
-		<input type="number" value="2" name="room<%=i %>_maxP">
+		<input type="number" value="2" name="room_maxP">
 	</td>
 </tr>
 </table>
@@ -357,7 +373,8 @@ for ( int i =1; i<=10; i++){
 <td><input type="checkbox" name="convenience" value="업무가능공간/책상" class="conv" > <img src="./img/icon/table-512.png" width="20px" height="20px"> 업무가능공간/책상</td></tr>
 
 <tr><td class="td"><input type="checkbox" name="convenience" value="간이침대" class="conv" > <i class='fas fa-bed' style='font-size:15px'></i> 간이침대</td>
-<td class="td"><input type="checkbox" name="convenience" value="헤어드라이기" class="conv" > <img src="./img/icon/hair_dryer-512.png" width="20px" height="20px"> 헤어드라이기</td></tr>
+<td class="td"><input type="checkbox" name="convenience" value="헤어드라이기" class="conv" > <img src="./img/icon/hair_dryer-512.png" width="20px" height="20px"> 헤어드라이기
+<input type="button" id="con_btn"></td></tr>
 
 
 
