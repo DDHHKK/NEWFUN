@@ -33,8 +33,8 @@ public class MemberUpdateAction implements Action{
 		MemberBean mb = new MemberBean();
 		
 		String filePath = null;
-		if(request.getRealPath("/img")!=null){
-			filePath=request.getRealPath("/img");
+		if(request.getRealPath("/upload")!=null){
+			filePath=request.getRealPath("/upload");
 		}
 		
 	
