@@ -21,18 +21,22 @@ public class MemberSearchAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		request.setCharacterEncoding("UTF-8");
 		
 		HostBean hb = new HostBean();
+		
 		
 		hb.setAddress(request.getParameter("address"));
 		String start_date = request.getParameter("start_date");
 		String end_date = request.getParameter("end_date");
-		//mb.setText11(Integer.parseInt(request.getParameter("text11")));
-		//mb.setText12(Integer.parseInt(request.getParameter("text12")));
+		//int num = (Integer.parseInt(request.getParameter("text11")));
+		//int num2 = (Integer.parseInt(request.getParameter("text12")));
+		
+	
 
 		System.out.println("searchAction" + hb.getAddress());
 		System.out.println("searchAction" + start_date);
-		System.out.println("searchAction" + end_date);
+		System.out.println("searchAction" + hb.getAddress());
 		
 		MemberDAO mdd= new MemberDAO();
 	
@@ -44,6 +48,8 @@ public class MemberSearchAction implements Action{
 		HttpSession session = request.getSession();
 		session.setAttribute("list", list);
 		session.setAttribute("rest", rest);
+		//request.setAttribute("num", num);
+		//request.setAttribute("num2", num2);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
