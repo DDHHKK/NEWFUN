@@ -109,9 +109,9 @@ input#btn_1_WS[type=button]:hover{
   display: none;
   position: absolute;
   top: 100px;
-  left: 1620px;
-  width: 230px;
-  height: 430px;
+  left: 1680px;
+  width: 200px;
+  height: 375px;
   /* padding: 5px;; */
   border: 1px solid #cccccc;
   /* border-radius: 10px 10px 10px 10px; */
@@ -129,7 +129,7 @@ input#btn_1_WS[type=button]:hover{
 
 
 #list_1_WS li{padding: 10px;
-			  border-bottom: 1px solid #cccccc;
+			  border-bottom: 1px solid #e8e8e8;
 			  text-align: center;}
 
 

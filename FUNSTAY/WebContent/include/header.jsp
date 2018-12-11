@@ -19,6 +19,21 @@ $(document).ready(function(){
 	return;
 }
 	
+
+
+	$(document).mouseup(function (e){
+
+	    var container = $('.white_content_1');
+
+	    if( container.has(e.target).length === 0){
+
+	      container.css('display','none');
+
+	    }
+
+	  });
+	
+	
 </script>
 <!-- 로그인/회원가입 버튼/달력 -->
 <script src="js/login.js"></script>
@@ -78,7 +93,7 @@ if(email==null){
 	<li><a href="./MemberLogout2.me">로그아웃</a></li>
   </ul>
   </div>
-  <a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='none';document.getElementById('fade1').style.display='none'"><p id="font_2_WS">닫기</p></a>
+  <!-- <a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='none';document.getElementById('fade1').style.display='none'"><p id="font_2_WS">닫기</p></a> -->
   </div><!-- //white_content_1 -->
   <div id="fade1" class="black_overlay_1"></div>
 </li>
