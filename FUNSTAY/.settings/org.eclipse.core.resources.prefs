@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/id_pw_find/findform.jsp=UTF-8
 encoding//src/net/member/action/MemberJoinAction.java=UTF-8
 encoding//src/net/search/Action/RoomDetailAction.java=UTF-8
 encoding//src/net/search/Action/SearchListAction.java=UTF-8

@@ -59,7 +59,8 @@
   </tr>
   <tr>
    <td align="center" valign="top">
-    <input type="button" value="확인" onclick="window.close()">    
+    <!-- <input type="button" value="확인" onclick="window.close()">  -->  
+    <input type="button" value="확인" onclick="location.href='history.go(-1)'"> 
    </td>
   </tr>
  </table>

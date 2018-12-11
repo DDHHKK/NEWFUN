@@ -265,8 +265,8 @@ if (email.equals("admin")) {
       
 <!-- 약관동의 -->
        <p>이용약관 및 개인정보 보호 정책에 동의하여 주십시요 <br><input type="checkbox" name="req"> 개인정보 수집 및 이용에 동의합니다. 
-       <input type="button" value="동의약관" style="color:dodgerblue" onclick="window.open('./member/agree.jsp','동의약관','top=100, width=1400, height=500')">
-       <!-- <a href="./member/agree.jsp" style="color:dodgerblue">동의약관</a>.</p> -->
+       <!-- <input type="button" value="동의약관" style="color:dodgerblue" onclick="window.open('./member/agree.jsp','동의약관','top=200, left=150, width=1400, height=500')"> -->
+      <a href="./member/agree.jsp" style="color:dodgerblue">동의약관</a>.</p> 
 <!-- 전송버튼 -->
       <div class="clearfix">
         <button type="button" class="subtn" onclick="regChk()"><a>가입완료</a></button>

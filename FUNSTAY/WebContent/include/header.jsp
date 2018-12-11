@@ -169,7 +169,7 @@ if(email==null){
    <div id="forget_sh">
  		 <div class="forget">
   		<a href="./find_pw.me">Forget password?</a>
-  		</div> 
+  		</div> <!-- //forget -->
   
   <!-- 아이디 찾기 -->
  	 	 <div class="forget">
