@@ -44,14 +44,14 @@ b{
 	font-size:1.2em;
 	color:  #fff;
 	border : none;
-	background-color: #fc4401;
+	background-color: #cc1d1d;
 	font-weight: bold;
 	padding : 10px;
 	float: right;
 }
 
 #sub_btn:HOVER{
-	background-color: #dd1111;
+	background-color: #991515;
 	cursor: pointer;
 }
 
@@ -60,9 +60,14 @@ b{
 	font-size:1.2em;
 	color:  #fff;
 	border : none;
-	background-color: #fc4401;
+	background-color: #cc1d1d;
 	font-weight: bold;
 	padding : 10px;
+	cursor: pointer;
+}
+
+#back_btn:HOVER{
+	background-color: #991515;
 	cursor: pointer;
 }
 
@@ -71,7 +76,7 @@ b{
 /* --------host_join3-------- */
 
 #photo_up {
-	top:-1050px; 
+	top:-1000px; 
     left: 1200px;
     width: 500px;
     min-height: 600px;
@@ -80,4 +85,14 @@ b{
 	border:2px dashed #cc1d1d;
 	/* margin : -1000px 500px 500px 1300px; */
 }
+
+input[type=file]{
+	width: 65px;
+	height: 40px;
+	background-color: #cc1d1d;
+	color : #fff;
+	cursor: pointer;
+	
+}
+
 

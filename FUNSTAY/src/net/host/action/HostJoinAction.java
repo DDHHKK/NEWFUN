@@ -1,6 +1,7 @@
 package net.host.action;
 
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,23 +29,127 @@ public class HostJoinAction  implements Action{
 		
 	
 		String room_subject=request.getParameter("room_subject");
+		
+		if(room_subject==null)
+		{
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('방 제목이 입력되지 않았습니다.');");
+				out.println("history.back();");
+				out.println("</script>");
+				out.close();
+		}
 		String room_content=request.getParameter("room_content");
-		int restroom=Integer.parseInt(request.getParameter("restroom"));
-		int price=Integer.parseInt(request.getParameter("price"));
-		String address=request.getParameter("address");
-		String start_date=request.getParameter("start_date");
-		String end_date=request.getParameter("end_date");
-		String in_time=request.getParameter("in_time");
-		String out_time=request.getParameter("out_time");
-		String room_type=request.getParameter("room_type");
-		int re_room=Integer.parseInt(request.getParameter("re_room"));
+		if(room_content==null)
+		{
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('방 정보가 입력되지 않았습니다.');");
+				out.println("history.back();");
+				out.println("</script>");
+				out.close();
+		}
+		
+		int restroom=0;
+
+		try{restroom=Integer.parseInt(request.getParameter("restroom"));} 
+		catch(Exception e)
+		{
+			restroom=0;
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('화장실의 개수가 선택되지 않았습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();}
+		
+		int price=0;
+		try{price=Integer.parseInt(request.getParameter("price"));} 
+		catch(Exception e)
+		{	response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('방 가격이 입력되지 않았습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+		}
+		String address= null;
+		try{address=request.getParameter("address");} 
+		catch(Exception e)
+		{	response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('주소가 입력되지 않았습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+		}
+				
+		int end_date=0;
+		try{end_date=Integer.parseInt(request.getParameter("end_date"));} 
+		catch(Exception e)
+		{	response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('호스팅 기간이 선택되지 않았습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+		}
+	
+
+		String in_time=null;
+		String out_time=null;
+		try
+		{
+			in_time=request.getParameter("in_time");
+			out_time=request.getParameter("out_time");
+		} 
+		catch(Exception e){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('체크인 및 체크아웃이 가능한 시간이 입력되지 않았습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+		}
+		
+		String room_type=null;
+		try{	room_type =request.getParameter("room_type");}
+		catch(Exception e){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('룸 타입이 입력되지 않았습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+		}
+		
+		int re_room=0;
+		try{	re_room =Integer.parseInt(request.getParameter("re_room"));}
+		catch(Exception e){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('방 개수가 선택되지 않았습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+		}
+		
 		
 		
 		String[] convenience = null;
 		if(request.getParameter("convenience") != null)
 		{
 			convenience=request.getParameterValues("convenience");
-			for(String checkbox : convenience){System.out.println(checkbox);}
+			
 		}
 		
 		String [] num_conv = null;
@@ -66,16 +171,17 @@ public class HostJoinAction  implements Action{
 			
 			BedBean bb = new BedBean();
 			int single_bed=0;int double_bed=0;int bunk_bed=0;
-			try{single_bed = Integer.parseInt(single_beds[i]);	} catch(Exception e){single_bed=0;}
-			try{double_bed = Integer.parseInt(double_beds[i]);	} catch(Exception e){double_bed=0;}	
-			try{ bunk_bed = Integer.parseInt(bunk_beds[i]);		} catch(Exception e){ bunk_bed=0;}
-			int room_maxP = Integer.parseInt(room_maxPs[i]);	
+			try{single_bed = Integer.parseInt(single_beds[i-1]);	} catch(Exception e){single_bed=0;}
+			try{double_bed = Integer.parseInt(double_beds[i-1]);	} catch(Exception e){double_bed=0;}	
+			try{ bunk_bed = Integer.parseInt(bunk_beds[i-1]);		} catch(Exception e){ bunk_bed=0;}
+			int room_maxP = Integer.parseInt(room_maxPs[i-1]);	
 			bb.setSingle_bed(single_bed);
 			bb.setDouble_bed(double_bed);
 			bb.setBunk_bed(bunk_bed);
 			RoomBean rb = new RoomBean();
 			int min_people = single_bed+(double_bed*2)+(bunk_bed*2);
 			rb.setRe_room(i);
+			
 			rb.setMin_people(min_people);
 			rb.setMax_people(room_maxP);
 			bedlist.add(bb);
@@ -83,21 +189,7 @@ public class HostJoinAction  implements Action{
 			
 			
 		}
-		/*List<BedBean> bed_type = new ArrayList<BedBean>();
-		BedBean bb = new BedBean();
 
-		for(int i=0; i<re_room; i++){
-		
-		int room_single = Integer.parseInt(request.getParameter("room"+(i+1)+"_single"));
-		int room_bunk = Integer.parseInt(request.getParameter("room"+(i+1)+"_bunk"));
-		int room_double = Integer.parseInt(request.getParameter("room"+(i+1)+"_double"));
-		bb.setSingle_bed(room_single);
-		bb.setDouble_bed(room_double);
-		bb.setBunk_bed(room_bunk);
-		bed_type.add(bb);
-		
-		
-		}*/
 		
 	
 		//request.setAttribute("bed_type", bed_type);
@@ -105,7 +197,6 @@ public class HostJoinAction  implements Action{
 		request.setAttribute("room_content",room_content);
 		request.setAttribute("restroom",restroom);
 		request.setAttribute("price",price);
-		request.setAttribute("start_date",start_date);
 		request.setAttribute("end_date",end_date);
 		request.setAttribute("address",address);
 		request.setAttribute("in_time",in_time);
@@ -114,7 +205,6 @@ public class HostJoinAction  implements Action{
 		request.setAttribute("convenience",convenience);
 		request.setAttribute("re_room",re_room);
 		request.setAttribute("num_conv", num_conv);
-		
 		HttpSession session=request.getSession();
 		session.setAttribute("bedlist", bedlist);
 		session.setAttribute("roomlist", roomlist);

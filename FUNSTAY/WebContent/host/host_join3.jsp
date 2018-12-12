@@ -74,7 +74,7 @@ String address = request.getParameter("address");
 String [] num_conv = request.getParameterValues("num_conv");
 /* List<BedBean> bed_type = (List)request.getAttribute("bed_type"); */
 
-int re_room =  Integer.parseInt(request.getParameter("re_room"))+1;
+int re_room =  Integer.parseInt(request.getParameter("re_room"));
 
 // 호스팅 시작날짜 끝나는 날짜 계산
 Calendar cal = Calendar.getInstance();
@@ -101,14 +101,9 @@ String endDate = df.format(cal.getTime());
 
 
 <form action="./HostInsertAction.ho" method="post" enctype="multipart/form-data">
-<%
-
-System.out.println(strDate);
-%>
-
-<input type="hidden" name="re_room" value="<%= re_room%>">
 
 
+<input type="hidden" name="re_room" value="<%=re_room%>">
 
 <table id="info_check">
 <tr><td colspan="2"><b>정보가 정확히 입력되었는지 확인 해주세요.</b></td></tr>

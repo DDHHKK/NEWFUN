@@ -48,7 +48,9 @@
 <form action="./HostJoin1.ho" method="post" id="myBtn1">
 <p id="wri">FUNSTAY에서 숙소를 등록해보세요.</p><br>
 <button type="submit" id="myBtn2">숙소 등록 시작하기</button>
+<input type="button" onclick="location.href='./Main.me'" id="myBtn3" value="메인으로 돌아가기">
 </form>
+
 
 
 

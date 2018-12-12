@@ -92,11 +92,12 @@ public class ReviewDAO {
 				re.setPayment_num(rs.getString("payment_num"));
 				re.setContent(rs.getString("content"));
 				re.setReview_date(rs.getDate("review_date"));
-				re.setAccess(rs.getInt("access"));
-				re.setClean(rs.getInt("clean"));
-				re.setSatisfaction(rs.getInt("satisfaction"));
+				re.setAccess(rs.getString("access"));
+				re.setClean(rs.getString("clean"));
+				re.setSatisfaction(rs.getString("satisfaction"));
 				re.setMember_email(rs.getString("member_email"));
-				re.setHome_num(rs.getInt("satisfaction"));
+				re.setHome_num(rs.getInt("home_num"));
+				re.setStar(rs.getString("star"));
 				
 				reviewList.add(re);
 				

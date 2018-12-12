@@ -19,6 +19,7 @@ public class HostBean {
 	private Date end_date;
 	private int home_status;
 	private Date apply_date;
+
 	
 	
 	public int getHome_status() {
@@ -111,6 +112,7 @@ public class HostBean {
 	public void setApply_date(Date apply_date) {
 		this.apply_date = apply_date;
 	}
+	
 
 	
 }

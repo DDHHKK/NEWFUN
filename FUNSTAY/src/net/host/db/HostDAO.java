@@ -99,7 +99,7 @@ private Connection getConnection() throws Exception{
 				home_num=rs.getInt("max(home_num)")+1;
 			}
 			
-			
+			System.out.println(home_num);
 			  
 			sql 
 			= "insert into home"
@@ -207,30 +207,22 @@ public void insertConv(ConvBean cb,int home_num) {
 		try {
 			con = getConnection();
 			
-			
-			for(int i=1; i<=rb.getRe_room(); i++)		
-			{
-				String sql = "select max(room_num) from room";
-				pstmt = con.prepareStatement(sql);
-				rs=pstmt.executeQuery();
-				if(rs.next()){		room_num=rs.getInt("max(room_num)")+1;	}	
-				sql = "insert into room values(?,?,?,?,?)";
-				System.out.println(i);
-				int num = i;
-				System.out.println(num);
+			System.out.println(rb.getRe_room());
+			String sql = "select max(room_num) from room";
+			pstmt = con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()){		room_num=rs.getInt("max(room_num)")+1;	}	
+			sql = "insert into room values(?,?,?,?,?)";
+					
 			pstmt = con.prepareStatement(sql); 
 		
 			pstmt.setInt(1, room_num);
-			pstmt.setInt(2, num);
+			pstmt.setInt(2, rb.getRe_room());
 			pstmt.setInt(3, rb.getMin_people());
 			pstmt.setInt(4, rb.getMax_people());
 			pstmt.setInt(5, home_num);
 			pstmt.executeUpdate();
-			}
-
-
-			
-
+		
 		
 			} catch (Exception e) {
 			e.printStackTrace();

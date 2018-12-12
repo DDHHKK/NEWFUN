@@ -36,7 +36,8 @@ public class HostInsertAction implements Action{
 		
 		HttpSession session=request.getSession();
 		String email=(String)session.getAttribute("email");
-		ConvBean cb = (ConvBean)session.getAttribute("cb");
+		
+			
 
 		List bedlist = (List)session.getAttribute("bedlist");
 		List roomlist = (List)session.getAttribute("roomlist");
@@ -53,7 +54,7 @@ public class HostInsertAction implements Action{
 		
 		HostBean hb=new HostBean();
 		HostDAO hdao= new HostDAO();
-	
+		ConvBean cb = new ConvBean();
 		BedBean bb=new BedBean();
 		MemberBean mb = new MemberBean();
 		
@@ -70,13 +71,13 @@ public class HostInsertAction implements Action{
 		cb.setParty(Integer.parseInt(num_conv[8]));
 		cb.setPickup(Integer.parseInt(num_conv[9]));
 		cb.setElevator(Integer.parseInt(num_conv[10]));
-		System.out.println(Integer.parseInt(num_conv[10]));
+	
 		cb.setBreakfast(Integer.parseInt(num_conv[11]));
 		cb.setSmoking(Integer.parseInt(num_conv[12]));
 		cb.setLaundry(Integer.parseInt(num_conv[13]));
 		cb.setIron(Integer.parseInt(num_conv[14]));
 		cb.setDesk(Integer.parseInt(num_conv[15]));
-		System.out.println(Integer.parseInt(num_conv[15]));
+		
 		cb.setExtra_bed(Integer.parseInt(num_conv[16]));
 		cb.setHair_dryer(Integer.parseInt(num_conv[17]));
 
@@ -88,18 +89,18 @@ public class HostInsertAction implements Action{
 		hb.setIn_time(multi.getParameter("in_time"));
 		hb.setOut_time(multi.getParameter("out_time"));
 		hb.setAddress(multi.getParameter("address"));
-		String end_datess = request.getParameter("end_date");
-		int end_date = Integer.parseInt(end_datess);
+		String end_dates = multi.getParameter("end_date");
+
+		int end_date = Integer.parseInt(end_dates);
 		
-		//Date date = java.sql.Date.valueOf(strDate);
 		
 		mb.setProfile_photo(multi.getParameter("profile_photo"));
 
 		//cb.setEssential(Integer.parseInt(multi.getParameter("essential")));
 		//cb.setDisabled(Integer.parseInt(multi.getParameter("disabled")));
 		
-	/*	int end_date2=Integer.parseInt(multi.getParameter("end_date"));
-		*/
+	//	int end_date2=Integer.parseInt(multi.getParameter("end_date"));
+		
 	 
 		hb.setPhoto(multi.getFilesystemName("photo1")+","
 		+multi.getFilesystemName("photo2")+","
@@ -121,10 +122,9 @@ public class HostInsertAction implements Action{
 		for(int i=0; i<roomlist.size(); i++)
 		{
 			RoomBean rb =(RoomBean)roomlist.get(i); 
-
 			
-		 int room_num =hdao.insertRoom(rb, home_num);
-
+			int room_num =hdao.insertRoom(rb, home_num);
+			
 		hdao.insertBed((BedBean)bedlist.get(i),room_num);
 		}
 		

@@ -24,9 +24,10 @@ a:visited { color: #666; text-decoration: none;}
 /*전체적용*/
 
 /*header 부분*/
-#pont1_WS{font-family: 'WONTitle', cursive;
+#pont1_WS{font-family: 'Leelawadee UI', cursive;
 font-size: 50px;
 font-weight: bolder;
+/* color : #cc1d1d !important; */
 }
 
 /* #img_1_WS{width: 100px;
@@ -41,6 +42,7 @@ input#text_1_WS[type=text]{
 	/* border-radius: 5px 5px 5px 5px; */
 	border: 3px solid #cc1d1d;
 	margin-right : 5px; 
+	padding-left: 7px;
 }
 
 input#btn_1_WS[type=button]{
@@ -202,8 +204,9 @@ margin-left: 10px;}
 	float: left;
 }
 
-#pont1_WS {
+#pont1_WS i {
 	margin-bottom:10px;
+	color : #cc1d1d !important;
 }
 
 #li_2 {
@@ -215,22 +218,22 @@ margin-left: 10px;}
 	margin:22px 0px 0px -80px;
 }
 
-#li_3:hover{
+#li_3 a:hover{
 	color : #cc1d1d;
 }
 
 
 #li_4{
-	margin:25px 50px 0px 45px;
+	margin:25px 50px 33px 45px;
 }
 
-#li_4:hover{
+#li_4 a:hover{
 	color : #cc1d1d;
 }
 
 
 #li_5{
-	margin-top:10px;
+	margin: 22px 10px 10px -15px;
 }
 
 
@@ -241,4 +244,10 @@ margin-left: 10px;}
 #li_7{
 	margin-top:27px;
 	margin-left:10px;
+}
+
+#li_8{
+	margin-top: -54px;
+    margin-right: 50px;
+    float: right;
 }

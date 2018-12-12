@@ -79,10 +79,8 @@
 
 <!-- room_facility -->
 	<div id="room_facility">
-<a name="편의시설"><h1>편의시설</h1></a><br><br> <%-- <%=restroom %> --%>
-<jsp:include page="icon.jsp"></jsp:include><br>
-표준: 무선 인터넷, 주방, 난방, 옷걸이, 세탁기, 그 외 7개의 편의시설<br>
-기타 하이라이트: 건물 내 무료 주차, 실내 벽난로, 어린이용 책과 장난감, 아기 침대, 암막 커튼, 그 외 1개의 편의시설
+<a name="편의시설"><h1>편의시설</h1></a><br><br> 
+<%=sc.getRestroom() %> 
 <br><br><br><br><br>
 	</div>
 

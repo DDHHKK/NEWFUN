@@ -1,3 +1,4 @@
+<%@page import="net.search.db.SearchBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +16,33 @@
 <link href="./css/default/subpage.css" rel="stylesheet">
 <script src="./js/default/jquery-3.3.1.js"></script>
 <!-- 페이지 default 링크 끝-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 
+<!-- 별점-->
+<style>
+.star-input>.input,
+.star-input>.input>label:hover,
+.star-input>.input>input:focus+label,
+.star-input>.input>input:checked+label{display: inline-block;vertical-align:middle;background:url('img/grade_img.png')no-repeat;}
+.star-input{display:inline-block; white-space:nowrap;width:225px;height:40px;padding:25px;line-height:30px;}
+.star-input>.input{display:inline-block;width:150px;background-size:150px;height:28px;white-space:nowrap;overflow:hidden;position: relative;}
+.star-input>.input>input{position:absolute;width:1px;height:1px;opacity:0;}
+star-input>.input.focus{outline:1px dotted #ddd;}
+.star-input>.input>label{width:30px;height:0;padding:28px 0 0 0;overflow: hidden;float:left;cursor: pointer;position: absolute;top: 0;left: 0;}
+.star-input>.input>label:hover,
+.star-input>.input>input:focus+label,
+.star-input>.input>input:checked+label{background-size: 150px;background-position: 0 bottom;}
+.star-input>.input>label:hover~label{background-image: none;}
+.star-input>.input>label[for="p1"]{width:30px;z-index:5;}
+.star-input>.input>label[for="p2"]{width:60px;z-index:4;}
+.star-input>.input>label[for="p3"]{width:90px;z-index:3;}
+.star-input>.input>label[for="p4"]{width:120px;z-index:2;}
+.star-input>.input>label[for="p5"]{width:150px;z-index:1;}
+.star-input>output{display:inline-block;width:60px; font-size:18px;text-align:right; vertical-align:middle;}
+</style>
+<!-- 별점 끝-->
 
 
 
@@ -31,6 +58,14 @@
 
 <!--body시작  -->
 <body>
+<%
+request.setCharacterEncoding("UTF-8");
+	
+SearchBean sc = (SearchBean) request.getAttribute("sc");
+String pageNum = (String) request.getAttribute("pageNum");
+int num = ((Integer) request.getAttribute("num")).intValue();
+
+	%>
 <!-- header  시작-->
 <jsp:include page="../include/header.jsp"></jsp:include>
 <!-- header  끝-->
@@ -55,18 +90,28 @@
 <!--테이블 시작  -->
 <table border="1">
 
-<!-- <tr>
-<td>별점매기기</td>
-<td>  
- <div class="starRev" name="satisfaction">
-  <span class="starR on">별1</span>
-  <span class="starR">별2</span>
-  <span class="starR">별3</span>
-  <span class="starR">별4</span>
-  <span class="starR">별5</span>
-</div>
+<tr>
+<td>방 별점주기</td>
+<td>
+<span class="star-input">
+	<span class="input">
+    	<input type="radio" name="star" value="1" id="p1">
+    	<label for="p1">1</label>
+    	<input type="radio" name="star" value="2" id="p2">
+    	<label for="p2">2</label>
+    	<input type="radio" name="star" value="3" id="p3">
+    	<label for="p3">3</label>
+    	<input type="radio" name="star" value="4" id="p4">
+    	<label for="p4">4</label>
+    	<input type="radio" name="star" value="5" id="p5">
+    	<label for="p5">5</label>
+  	</span>
+  	<output for="star-input"><b>0</b>점</output>						
+</span>
+<script src="js/room_info/jquery-1.11.3.min.js"></script>
+<script src="js/room_info/star.js"></script>
 </td>
-</tr> -->
+</tr>
 <h2>숙박이 어떠셨는지 말씀해 주세요</h2>
 
 <tr>
@@ -79,15 +124,30 @@
 </tr>
 <tr>
 <td>만족도</td>
-<td><input type="text" name="satisfaction"></td>
+<td>
+<input type="radio" name="satisfaction" value="1">1점
+<input type="radio" name="satisfaction" value="2">2점
+<input type="radio" name="satisfaction" value="3">3점
+<input type="radio" name="satisfaction" value="4">4점
+<input type="radio" name="satisfaction" value="5">5점</td>
 </tr>
 <tr>
 <td>깨끗함</td>
-<td><input type="text" name="clean"></td>
+<td>
+<input type="radio" name="clean" value="1">1점
+<input type="radio" name="clean" value="2">2점
+<input type="radio" name="clean" value="3">3점
+<input type="radio" name="clean" value="4">4점
+<input type="radio" name="clean" value="5">5점</td>
 </tr>
 <tr>
 <td>교통접근성</td>
-<td><input type="text" name="access"></td>
+<td>
+<input type="radio" name="access" value="1">1점
+<input type="radio" name="access" value="2">2점
+<input type="radio" name="access" value="3">3점
+<input type="radio" name="access" value="4">4점
+<input type="radio" name="access" value="5">5점</td>
 </tr>
 <tr>
 <td>아이디</td>
@@ -95,7 +155,7 @@
 </tr>
 <tr>
 <td>home_num</td>
-<td><input type="text" name="home_num"></td>
+<td><input type="text" name="home_num" value="<%=sc.getHome_num() %>"></td>
 </tr>
 <tr>
 <td colspan="2">

@@ -10,6 +10,7 @@
 <!-- 페이지 default 링크 시작 -->
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="./css/default/login.css" rel="stylesheet">
+<link href="./css/login1.css" rel="stylesheet">
 <link href="./css/default/default.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- 페이지 default 링크 끝-->
@@ -81,7 +82,7 @@ $(function() {
 	$('.select_btn').click(function(){
 		var rooms = $('.select_rooms').val();
 		
-
+		 alert("daaaa");
 		for(var j=10; j>rooms; j--){
 			$('.room'+j+'_single').val('싱글침대 개수를 선택하세요');
 			$('.room'+j+'_double').val('더블침대 개수를 선택하세요');
@@ -101,6 +102,11 @@ $(function() {
 });
     
     
+
+
+
+
+
     
     
     
@@ -119,8 +125,7 @@ $(function() {
   */
  
 
-	 
- 
+
  
  
  
@@ -270,13 +275,11 @@ $(function() {
 
 
 
-
 <!-- ---------------방개수/최대인원수/침대개수 등 선택---------------------- -->
 
 <table id="host3">
 <tr><td><b>방 개수를 선택하세요.</b></td></tr>
 <tr><td><b>방개수 </b><select class="select_rooms" name="re_room">
-	<option>방 개수 선택</option>
 	<option value="1">1</option>
 	<option value="2">2</option>
 	<option value="3">3</option>
@@ -308,6 +311,7 @@ for ( int i =1; i<=10; i++){
 		<option>3</option>
 		<option>4</option>
 		</select><br>
+
        			
 		<img src="./img/icon/icon_bed__45215.png" width="30px">
 		<select class="room<%=i %>_double" name="room_double">
@@ -330,7 +334,7 @@ for ( int i =1; i<=10; i++){
 	</td>
 	<td class="td1">
 		<b>수용가능한 최대인원을 선택하세요</b><br><br>
-		<input type="number" value="2" name="room_maxP">
+		<input type="number" value="2" class="room<%=i %>_maxP" name="room_maxP">
 	</td>
 </tr>
 </table>
@@ -374,7 +378,7 @@ for ( int i =1; i<=10; i++){
 
 <tr><td class="td"><input type="checkbox" name="convenience" value="간이침대" class="conv" > <i class='fas fa-bed' style='font-size:15px'></i> 간이침대</td>
 <td class="td"><input type="checkbox" name="convenience" value="헤어드라이기" class="conv" > <img src="./img/icon/hair_dryer-512.png" width="20px" height="20px"> 헤어드라이기
-<input type="button" id="con_btn"></td></tr>
+</td></tr>
 
 
 
@@ -407,7 +411,7 @@ for ( int i =1; i<=10; i++){
 
 
 <!-- ------------다음페이지 버튼------------- -->
-<tr><td colspan="2"><input type="submit" value="다음페이지>>" class="next_btn"></td></tr>
+<tr><td colspan="2"><input type="submit" value="다음페이지>>" class="next_btn" id="con_btn"></td></tr>
 </table>
 </form>
 
