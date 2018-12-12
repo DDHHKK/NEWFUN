@@ -226,13 +226,13 @@ h5 {
     font-size: 18px;
     padding: 10px;
     border: none;
-    background: #fc4401;
+    background: #cc1d1d;
     color: #fff;
     cursor: pointer;
 }
 
 #myBtn2:hover {
-    background-color: #cc1d1d;
+    background-color: #991515;
 }
 
 #wri {
@@ -243,6 +243,21 @@ h5 {
 	margin : 20px auto ;
 	padding : 20px;
 	width:700px;
+}
+
+
+#myBtn3 {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #666;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn3:hover {
+    background-color: black;
 }
 
 
