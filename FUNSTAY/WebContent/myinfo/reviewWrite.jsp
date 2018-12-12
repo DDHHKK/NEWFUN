@@ -58,7 +58,7 @@
 <tr>
 <td>방 별점주기</td>
 <td>  
- <div class="starRev" name="satisfaction">
+ <div class="starRev" name="star">
   <span class="starR on">별1</span>
   <span class="starR">별2</span>
   <span class="starR">별3</span>
