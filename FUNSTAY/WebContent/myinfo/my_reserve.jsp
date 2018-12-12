@@ -1,3 +1,4 @@
+<%@page import="net.book.db.BeforeBean"%>
 <%@page import="net.book.db.HomeBean"%>
 <%@page import="net.host.db.HostBean"%>
 <%@page import="net.booking.db.PaymentBean"%>
@@ -146,11 +147,13 @@ for(int i=0; i<bookingList.size(); i++){
 List bookingList=(List)request.getAttribute("bookingList");
 List paymentList=(List)request.getAttribute("paymentList");
 List hostList=(List)request.getAttribute("hostList");
+List beforeList=(List)request.getAttribute("beforeList");
 
 for(int i=0; i<bookingList.size(); i++){
 	BookingBean bb=(BookingBean)bookingList.get(i);
 	PaymentBean pb=(PaymentBean)paymentList.get(i);
 	HostBean hb=(HostBean)hostList.get(i);
+	BeforeBean BeforeB=(BeforeBean)beforeList.get(i);
 	
 
 if(i%3==0){
@@ -160,8 +163,8 @@ if(i%3==0){
 }
 %>
 
-<td><%=hb.getPhoto()%></td>
-<td><%=hb.getRoom_subject() %><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
+<td><%=BeforeB.getPhoto()%></td>
+<td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
 	
 	
 	
@@ -292,11 +295,13 @@ if(i%3==0){
 List bookingList2=(List)request.getAttribute("bookingList2");
 List paymentList2=(List)request.getAttribute("paymentList2");
 List hostList2=(List)request.getAttribute("hostList2");
+List afterList=(List)request.getAttribute("afterList");
 
 for(int i=0; i<bookingList2.size(); i++){
 	BookingBean bb=(BookingBean)bookingList2.get(i);
 	PaymentBean pb=(PaymentBean)paymentList2.get(i);
 	HostBean hb=(HostBean)hostList2.get(i);
+	BeforeBean BeforeB=(BeforeBean)afterList.get(i);
 
 if(i%3==0){
 	%>
@@ -305,8 +310,8 @@ if(i%3==0){
 }
 %>
 
-<td><%=hb.getPhoto()%></td>
-<td><%=hb.getRoom_subject() %><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
+<td><%=BeforeB.getPhoto()%></td>
+<td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
@@ -397,46 +402,17 @@ if(i%3==0){
       </header>
       <div class="w3-container">
         <table class="receipt_table_DY">
-        
-        
-  
-<%
-
-List bookingList3=(List)request.getAttribute("bookingList");
-List paymentList3=(List)request.getAttribute("paymentList");
-List hostList3=(List)request.getAttribute("hostList");
-
-for(int i=0; i<bookingList3.size(); i++){
-	BookingBean bb=(BookingBean)bookingList3.get(i);
-	PaymentBean pb=(PaymentBean)paymentList3.get(i);
-	HostBean hb=(HostBean)hostList3.get(i);
-	
-
-%>
-
-
-
          <tr>
-          <td colspan="2" class="receipt_ti_DY"><%=hb.getRoom_subject() %></td>
+          <td colspan="2" class="receipt_ti_DY">룸 제목</td>
          </tr>
-         
-         
-         
-         
-  
          <tr>
           <td>체크인</td> 
-          <td><%=bb.getCheck_in() %></td>
+          <td>체크인날짜</td>
          </tr>
          <tr>
           <td>체크아웃</td>
-          <td><%=bb.getCheck_out() %></td>
+          <td>체크아웃 날짜</td>
          </tr>
-         
-         
-         <%  }%> 
-         
-         
          <tr>
           <td>숙박 세부정보</td>
           <td>2박,객실 1개</td>
