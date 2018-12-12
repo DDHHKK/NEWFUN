@@ -403,7 +403,7 @@ if(i%3==0){
       <div class="w3-container">
         <table class="receipt_table_DY">
          <tr>
-          <td colspan="2" class="receipt_ti_DY">룸 제목</td>
+          <td colspan="2" class="receipt_ti_DY">룸제목(완료된 숙소)</td>
          </tr>
          <tr>
           <td>체크인</td> 
@@ -450,6 +450,63 @@ if(i%3==0){
   
 
  
+
+<!--영수증 모달 팝업창 시작 -->
+  <div id="id09" class="w3-modal">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id09').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2 class="site_DY">Funstay</h2>
+      </header>
+      <div class="w3-container">
+        <table class="receipt_table_DY">
+         <tr>
+          <td colspan="2" class="receipt_ti_DY">룸제목(예정된 숙소)</td>
+         </tr>
+         <tr>
+          <td>체크인</td> 
+          <td>체크인날짜</td>
+         </tr>
+         <tr>
+          <td>체크아웃</td>
+          <td>체크아웃 날짜</td>
+         </tr>
+         <tr>
+          <td>숙박 세부정보</td>
+          <td>2박,객실 1개</td>
+         </tr>
+         <tr>
+          <td>이름</td>
+          <td>홍길동</td>
+         </tr>
+         <tr>
+          <td>인원/성인</td>
+          <td>1명의 성인</td>
+         </tr>
+         <tr>
+          <td>침대</td>
+          <td>싱글침대 1개</td>
+         </tr>
+         <tr>
+          <td>포함사항</td>
+          <td>무료 WiFi</td>
+         </tr>
+         <tr>
+          <td>총 요금</td>
+          <td>60,000원</td>
+         </tr>
+        </table>
+      </div>
+     <!--  <footer class="w3-container w3-teal">
+        <p class="cancel_DY">예약취소</p>
+      </footer> -->
+    </div>
+  </div>
+<!--영수증 모달 팝업창 끝 -->  
+
+
+
 
 
         

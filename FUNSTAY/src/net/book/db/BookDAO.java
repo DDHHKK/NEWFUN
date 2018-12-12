@@ -182,6 +182,8 @@ public class BookDAO {
 		List bookingList=new ArrayList<>();
 		List paymentList=new ArrayList<>();
 		List hostList=new ArrayList<>();
+		List afterList=new ArrayList<>();
+		
     	Vector vector=new Vector<>();
 		
 		Connection con=null;
@@ -192,7 +194,7 @@ public class BookDAO {
 			//1,2단계 메서드 호출
 			con=getConnection();
                 
-                   String sql2="select distinct h.room_subject,b.check_in, b.check_out,p.sum_price from home h, payment p , booking b "
+                   String sql2="select * from home h, payment p , booking b "
                    		+ "where p.member_email=? and b.payment_num=p.payment_num and b.home_num=h.home_num and b.check_in>now()";
                    
                    pstmt=con.prepareStatement(sql2);//객체생성
@@ -205,20 +207,34 @@ public class BookDAO {
    		        	HostBean hb=new HostBean();
    		        	PaymentBean pb=new PaymentBean();
    		        	BookingBean bb=new BookingBean();
+   		        	BeforeBean BeforB=new BeforeBean();
    		        	
-   		        	bb.setCheck_in(rs.getDate("check_in"));
+   		        	/*bb.setCheck_in(rs.getDate("check_in"));
    		        	bb.setCheck_out(rs.getDate("check_out"));
    		        	hb.setRoom_subject(rs.getString("room_subject"));
-   		        	pb.setSum_price(rs.getInt("sum_price"));
+   		        	pb.setSum_price(rs.getInt("sum_price"));*/
+   		        	
+   		        	BeforB.setRoom_type(rs.getString("room_type"));
+   		        	BeforB.setPhoto(rs.getString("photo"));
+   		        	BeforB.setRoom_subject(rs.getString("room_subject"));
+   		        	BeforB.setMember_email(rs.getString("member_email"));
+   		        	BeforB.setSum_price(rs.getInt("sum_price"));
+   		        	BeforB.setCheck_in(rs.getDate("check_in"));
+   		        	BeforB.setCheck_out(rs.getDate("check_out"));
+   		        	BeforB.setPeople(rs.getInt("people"));
+   		        	
+   		        	
    		        	
    		        	bookingList.add(bb);
    		        	paymentList.add(pb);
    		        	hostList.add(hb);
+   		        	afterList.add(BeforB);
    		        
 				}
    		        vector.add(bookingList);
    		        vector.add(paymentList);
    		        vector.add(hostList);
+   		        vector.add(afterList);
    		        
 				}catch(Exception e){
 					e.printStackTrace();
