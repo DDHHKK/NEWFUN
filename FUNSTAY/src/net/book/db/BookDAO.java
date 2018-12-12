@@ -95,9 +95,9 @@ public class BookDAO {
 	//완료된 숙소 가져오는 메서드(sql-select문)
 
     public Vector<?> GetBeforeTrip(String member_email){
-		List bookingList=new ArrayList<>();
+		/*List bookingList=new ArrayList<>();
 		List paymentList=new ArrayList<>();
-		List hostList=new ArrayList<>();
+		List hostList=new ArrayList<>();*/
 		List beforeList=new ArrayList<>();
 		
 		
@@ -121,9 +121,9 @@ public class BookDAO {
    		           
    		       while(rs.next()){ 
 					//첫 행 이동 열접근해서
-   		        	HostBean hb=new HostBean();
+   		        	/*HostBean hb=new HostBean();
    		        	PaymentBean pb=new PaymentBean();
-   		        	BookingBean bb=new BookingBean();
+   		        	BookingBean bb=new BookingBean();*/
    		        	BeforeBean BeforB=new BeforeBean();
    		      
    		        	
@@ -150,16 +150,16 @@ public class BookDAO {
    		        	
    		        	
    		        	
-   		        	
+   		        	/*
    		        	bookingList.add(bb);
    		        	paymentList.add(pb);
-   		        	hostList.add(hb);
+   		        	hostList.add(hb);*/
    		            beforeList.add(BeforB);
    		        	
 				}
-   		        vector.add(bookingList);
+   		       /* vector.add(bookingList);
    		        vector.add(paymentList);
-   		        vector.add(hostList);
+   		        vector.add(hostList);*/
    		        vector.add(beforeList);
    		        
    		        
@@ -180,9 +180,9 @@ public class BookDAO {
   //예정된 숙소 가져오는 메서드(sql-select문)
 
     public Vector<?> GetAfterTrip(String member_email){
-		List bookingList=new ArrayList<>();
+		/*List bookingList=new ArrayList<>();
 		List paymentList=new ArrayList<>();
-		List hostList=new ArrayList<>();
+		List hostList=new ArrayList<>();*/
 		List afterList=new ArrayList<>();
 		
     	Vector vector=new Vector<>();
@@ -205,9 +205,9 @@ public class BookDAO {
    		           
    		       while(rs.next()){ 
 					//첫 행 이동 열접근해서
-   		        	HostBean hb=new HostBean();
+   		        	/*HostBean hb=new HostBean();
    		        	PaymentBean pb=new PaymentBean();
-   		        	BookingBean bb=new BookingBean();
+   		        	BookingBean bb=new BookingBean();*/
    		        	BeforeBean BeforB=new BeforeBean();
    		        	
    		        	/*bb.setCheck_in(rs.getDate("check_in"));
@@ -226,15 +226,15 @@ public class BookDAO {
    		        	
    		        	
    		        	
-   		        	bookingList.add(bb);
+   		        	/*bookingList.add(bb);
    		        	paymentList.add(pb);
-   		        	hostList.add(hb);
+   		        	hostList.add(hb);*/
    		        	afterList.add(BeforB);
    		        
 				}
-   		        vector.add(bookingList);
+   		        /*vector.add(bookingList);
    		        vector.add(paymentList);
-   		        vector.add(hostList);
+   		        vector.add(hostList);*/
    		        vector.add(afterList);
    		        
 				}catch(Exception e){
