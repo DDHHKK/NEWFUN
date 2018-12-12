@@ -113,7 +113,7 @@ input#btn_1_WS[type=button]:hover{
   top: 100px;
   left: 1680px;
   width: 200px;
-  height: 375px;
+  height: 441px;
   /* padding: 5px;; */
   border: 1px solid #cccccc;
   /* border-radius: 10px 10px 10px 10px; */
@@ -215,7 +215,7 @@ margin-left: 10px;}
 
 
 #li_3{
-	margin:22px 0px 0px -80px;
+	margin:22px 0px 0px 25px; 
 }
 
 #li_3 a:hover{

@@ -71,6 +71,7 @@ if(email==null){
  <div id="light1" class="white_content_1">
   <div>
   <ul id="list_1_WS">
+  	<li id="li_7"><b><%=mb.getEmail()%></b></li>
 	<li><a href="./MemberUpdate.me"><b>프로필수정</b></a></li>
 	<li><a href="./Booking.bo"><b>예약/결제</b></a></li>
 	<li><a href="./MyReserve.bk"><b>나의 예약</b></a></li>
@@ -97,8 +98,8 @@ if(email==null){
   </div><!-- //white_content_1 -->
   <div id="fade1" class="black_overlay_1"></div>
 </li>
-<%mb=md.getMember(email);%>
-<li id="li_7"><%=mb.getEmail()%></li>
+<%-- <%mb=md.getMember(email);%>
+<li id="li_7"><%=mb.getEmail()%></li> --%>
 <%
 }%>
 
