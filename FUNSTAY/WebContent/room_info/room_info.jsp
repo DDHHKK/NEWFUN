@@ -26,7 +26,7 @@
 <script src="./dist/js/datepicker.min.js"></script>
 <script src="./dist/js/i18n/datepicker.en.js"></script>
 <!-- room_info scroll박스 -->
-<script src="./dist/js/scroll.js"></script>
+<script src="./js/room_info/scroll.js"></script>
 </head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -58,7 +58,8 @@
  <div id="room_detail">
  	<div id="room_imfomation">
  	<h2><a href="#">개요 </a><a href="#사진">·사진 </a><a href="#숙소이름">·숙소이름 </a>
- 	<a href="#편의시설">·편의시설 </a><a href="#지역정보">·지역정보 </a><a href="#숙소이용규칙">·숙소이용규칙 </a><a href="#후기">·후기  </a></h2>
+ 	<a href="#편의시설">·편의시설 </a><a href="#지역정보">·지역정보 </a><a href="#숙소이용규칙">·숙소이용규칙 </a>
+ 	<a href="#후기">·후기  </a><a href="#QnA">·QnA  </a></h2>
  	<hr><hr>
   
  	
@@ -73,7 +74,7 @@
 	숙소내용 : <%=sc.getRoom_content() %> <br>
 	price : <%=sc.getPrice() %> <br>
 	사진 : <img src="./upload/<%=sc.getPhoto().split(",")[0] %>" width="130" height="130">
-<br><br><br><br><br><br><br>
+<br><br>
 	</div>
 
 
@@ -90,7 +91,7 @@
 	<a name="지역정보"><h1>지역정보</h1></a><br><br>
 <%=sc.getAddress() %>
 	</div>
-<br><br><br><br><br>
+<br><br>
 
 
 <!-- room_rule -->
@@ -100,12 +101,22 @@
 	체크아웃 시간 - <%=sc.getOut_time() %> <br> 
 	</div>
 </div>
- <br><br><br><br><br>
+ <br><br>
  
+ 
+ <!-- room_review -->
 <div id="room_review">
 <jsp:include page="room_review.jsp"></jsp:include>
 </div>
+<br><br>
 
+
+
+<!-- room_qna -->
+<div id="room_qna">
+<jsp:include page="room_qna.jsp"></jsp:include>
+</div>
+<br><br>
  
  
  	</div> 
