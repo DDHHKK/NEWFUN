@@ -6,6 +6,7 @@
 	width: 77%; */
 	height: 100%;
 	float: right;
+
 }
 
 
@@ -45,7 +46,7 @@ a:visited { color: #666; text-decoration: none;}
 	float:left;
 	width: max-content;} */
 
- h1{  /* border: 1px solid black; */
+h1{
     border-left: 5px solid #cc1d1d;
     padding-left: 7px;
     color: #cc1d1d;

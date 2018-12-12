@@ -27,7 +27,7 @@
    <link rel="stylesheet" href="styles.css">
    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <style type="text/css">
-.content_top_shj html, body, .content_top_shj div, dl, dt, dd,.content_top_shj ul, ol,.content_top_shj li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend,.content_top_shj input, textarea, button, p, blockquote, th, td { margin:0; padding:0;-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+.content_top_shj html, body, .content_top_shj div, dl, dt, dd,.content_top_shj ul, ol,.content_top_shj li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend,.content_top_shj input, textarea, button, p, blockquote, th, td { margin:0; /* padding:0; */-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 .content_top_shj html { width:100%; height:100%; }
 .content_top_shj body, code { min-width:320px; font-size:13px; line-height:1.2em; color:#1b1b1b; background:#fff; -webkit-text-size-adjust:none;height:100%; }
 .content_top_shj html, body{height:100%;}
