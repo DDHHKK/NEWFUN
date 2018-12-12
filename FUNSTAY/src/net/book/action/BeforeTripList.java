@@ -51,7 +51,7 @@ public class BeforeTripList implements Action{
 		List<BookingBean> bookingList2=(List<BookingBean>)vector2.get(0);
 		List<PaymentBean> paymentList2=(List<PaymentBean>)vector2.get(1);
 		List<HostBean> hostList2=(List<HostBean>)vector2.get(2);
-		List<BeforeBean> afterList=(List<BeforeBean>)vector.get(3);
+		List<BeforeBean> afterList=(List<BeforeBean>)vector2.get(3);
 		
 		
 		
