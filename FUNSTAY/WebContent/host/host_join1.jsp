@@ -374,7 +374,7 @@ for ( int i =1; i<=10; i++){
 
 <tr><td class="td"><input type="checkbox" name="convenience" value="간이침대" class="conv" > <i class='fas fa-bed' style='font-size:15px'></i> 간이침대</td>
 <td class="td"><input type="checkbox" name="convenience" value="헤어드라이기" class="conv" > <img src="./img/icon/hair_dryer-512.png" width="20px" height="20px"> 헤어드라이기
-<input type="button" id="con_btn"></td></tr>
+</td></tr>
 
 
 
@@ -407,7 +407,7 @@ for ( int i =1; i<=10; i++){
 
 
 <!-- ------------다음페이지 버튼------------- -->
-<tr><td colspan="2"><input type="submit" value="다음페이지>>" class="next_btn"></td></tr>
+<tr><td colspan="2"><input type="submit" value="다음페이지>>" class="next_btn" id="con_btn"></td></tr>
 </table>
 </form>
 
