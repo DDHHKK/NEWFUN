@@ -47,13 +47,12 @@ img.avatar {
 }
 
 /* 로그인 회원가입 상단 버튼 */
-/* login1.css와 중복으로 주석처리함-김다현 */
 
-/*.btn_remove{
+.btn_remove{
     background-color: transparent;
     color: black;
-    padding: 20px 10px;
-    margin: 8px 0px 8px 30px;
+/*     padding: 20px 10px;
+    margin: 8px 0px 8px 30px; */
     border: none;
     cursor: pointer;
     width: 100%;
@@ -63,7 +62,7 @@ img.avatar {
 } 
  .btn_remove:hover {
     opacity: 0.8;
-}  */
+} 
 
 
 
