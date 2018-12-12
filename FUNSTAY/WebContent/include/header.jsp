@@ -211,10 +211,10 @@ if(email==null){
   </form>
  </div><!-- modal_sh -->
 </div><!-- modal -->
-<table>
+
 <%if(email==null){
 	%>
-<td><button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button>
+<button class="btn_remove" id="li_8" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button>
 <%
 }
 %>
@@ -298,7 +298,6 @@ if(email==null){
   </form>
 </div><!-- //modal -->
 
-</table>
 </section> 
 
 
