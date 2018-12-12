@@ -57,9 +57,9 @@ $(document).ready(function(){
 <div class="sub_menu">
 <ul>
 	<li class="a"><a href="./MemberUpdate.me">회원 정보 수정</a></li>
-	<li class="a"><a href="./Booking.bo">예약및결제하기<br>(삭제 예정)</a></li>
-	<li class="a"><a href="./MyReserve.bk">MY RESERVE</a></li>
-	<li class="a"><a href="./Wishlist.wi">위시리스트</a></li>
+	<li class="a"><a href="./Booking.bo">예약/결제<br>(삭제 예정)</a></li>
+	<li class="a"><a href="./MyReserve.bk">나의 예약</a></li>
+	<li class="a"><a href="./Wishlist.wi">찜한숙소</a></li>
 	<li class="a"><a href="./MemberMileage.me" class="aa">마일리지</a></li>
 	<li class="a"><a href="./MemberQNAlist.me">문의 확인</a></li>
 	
