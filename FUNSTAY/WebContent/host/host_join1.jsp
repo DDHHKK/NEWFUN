@@ -81,7 +81,7 @@ $(function() {
 	$('.select_btn').click(function(){
 		var rooms = $('.select_rooms').val();
 		
-
+		 alert("daaaa");
 		for(var j=10; j>rooms; j--){
 			$('.room'+j+'_single').val('싱글침대 개수를 선택하세요');
 			$('.room'+j+'_double').val('더블침대 개수를 선택하세요');
@@ -101,6 +101,11 @@ $(function() {
 });
     
     
+
+
+
+
+
     
     
     
@@ -119,8 +124,7 @@ $(function() {
   */
  
 
-	 
- 
+
  
  
  
@@ -270,7 +274,6 @@ $(function() {
 
 
 
-
 <!-- ---------------방개수/최대인원수/침대개수 등 선택---------------------- -->
 
 <table id="host3">
@@ -308,6 +311,7 @@ for ( int i =1; i<=10; i++){
 		<option>3</option>
 		<option>4</option>
 		</select><br>
+
        			
 		<img src="./img/icon/icon_bed__45215.png" width="30px">
 		<select class="room<%=i %>_double" name="room_double">
@@ -330,7 +334,7 @@ for ( int i =1; i<=10; i++){
 	</td>
 	<td class="td1">
 		<b>수용가능한 최대인원을 선택하세요</b><br><br>
-		<input type="number" value="2" name="room_maxP">
+		<input type="number" value="2" class="room<%=i %>_maxP" name="room_maxP">
 	</td>
 </tr>
 </table>
