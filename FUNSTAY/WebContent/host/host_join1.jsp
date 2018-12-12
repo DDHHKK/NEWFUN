@@ -277,7 +277,6 @@ $(function() {
 <table id="host3">
 <tr><td><b>방 개수를 선택하세요.</b></td></tr>
 <tr><td><b>방개수 </b><select class="select_rooms" name="re_room">
-	<option>방 개수 선택</option>
 	<option value="1">1</option>
 	<option value="2">2</option>
 	<option value="3">3</option>
