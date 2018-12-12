@@ -10,7 +10,6 @@
 <!-- 페이지 default 링크 시작 -->
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="./css/default/login.css" rel="stylesheet">
-<link href="./css/login1.css" rel="stylesheet">
 <link href="./css/default/default.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- 페이지 default 링크 끝-->
@@ -82,7 +81,7 @@ $(function() {
 	$('.select_btn').click(function(){
 		var rooms = $('.select_rooms').val();
 		
-		 alert("daaaa");
+
 		for(var j=10; j>rooms; j--){
 			$('.room'+j+'_single').val('싱글침대 개수를 선택하세요');
 			$('.room'+j+'_double').val('더블침대 개수를 선택하세요');
@@ -99,16 +98,32 @@ $(function() {
 		}
 		
 	});
+
+	
+	
+	
+/*-----------------------------최대 침대개수 제어--------------------------  */
+		 $(".room1_single, .room1_double, .room1_bunk").change(function()
+		{	
+		var room1_single = $(".room1_single option:selected").val();
+		if(room1_single=="싱글침대 개수를 선택하세요"){room1_single=0;}
+		else{room1_single *=1;}
+		
+		var room1_double = $(".room1_double option:selected").val(); 
+		if(room1_double=="더블침대 개수를 선택하세요"){room1_double=0;}
+		else{room1_double *=1;}
+		
+		var room1_bunk = $(".room1_bunk option:selected").val(); 
+		if(room1_bunk=="이층침대 개수를 선택하세요"){room1_bunk=0;}
+		else{room1_bunk *=1;}
+		
+		var room_maxP = room1_single+(room1_double*2)+(room1_bunk*2);
+		$(".room1_maxP").attr("value",room_maxP);
+	});
 });
     
     
-
-
-
-
-
-    
-    
+  
     
     
  /*------------- 체크박스 다중으로 담아가는 코드 ------------*/   
@@ -125,7 +140,8 @@ $(function() {
   */
  
 
-
+	 
+ 
  
  
  
@@ -341,7 +357,6 @@ for ( int i =1; i<=10; i++){
 <%
 }
 %>
-
 
 
 
