@@ -19,18 +19,11 @@ $(document).ready(function(){
 	return;
 }
 	
-
-
 	$(document).mouseup(function (e){
-
 	    var container = $('.white_content_1');
-
 	    if( container.has(e.target).length === 0){
-
 	      container.css('display','none');
-
 	    }
-
 	  });
 	
 	
@@ -43,7 +36,6 @@ $(document).ready(function(){
 MemberBean mb = new MemberBean(); 
 String email = (String)session.getAttribute("email");
 mb=md.getMember(email);
-
 %>
 <section class="sec01_WS">
 
@@ -58,7 +50,6 @@ mb=md.getMember(email);
 
 <!-- email값이 null이면 로그인과 회원가입이 보이고  null이아니면 사진창이뜨면서 회원닉네임과함께 문구가뜬다 -->
 <%
-
 if(email==null){
 	%>
 <li id="li_5"><button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</button></li>
