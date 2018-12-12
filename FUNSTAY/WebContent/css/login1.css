@@ -35,8 +35,8 @@ input.e_check:hover{
 	cursor: pointer;
 }
 
-#logo_sh{
-	font-family: 'Lobster', cursive;
+#logo_sh i{
+	font-family: 'Leelawadee UI', cursive;
     display: block;
     text-align: center;
     width: 300px;
@@ -44,6 +44,8 @@ input.e_check:hover{
     margin-top: 50px;
     /* margin: 200px 0 0 800px; */
     font-size: 50px;
+    font-weight: bolder;
+    color: #cc1d1d;
 }
 #clear{clear: both;}
 /* 로고 이미지 작성시 필요 

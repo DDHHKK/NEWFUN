@@ -120,12 +120,12 @@ if(email==null){
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <!-- 로고스타일 -->    
-      <div id="logo_sh">FUNSTAY</div>
+      <div id="logo_sh"><i>FUNSTAY</i></div>
     </div>
     <div class="container">
      <div class="join_box">
   <!-- 이메일(아이디)입력 폼 -->   
-      <label for="email"><b>Username</b></label>
+      <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Username" name="email" required>
   <!-- 비밀번호 입력 폼 -->
       <label for="pass"><b>Password</b></label>
@@ -225,7 +225,7 @@ if(email==null){
     <div class="imgcontainer">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
   <!-- 로고스타일 -->    
-      <div id="logo_sh">FUNSTAY</div>
+      <div id="logo_sh"><i>FUNSTAY</i></div>
     </div>
 
     <div class="container">
