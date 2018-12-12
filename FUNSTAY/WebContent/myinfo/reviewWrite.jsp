@@ -155,7 +155,7 @@ int num = ((Integer) request.getAttribute("num")).intValue();
 </tr>
 <tr>
 <td>home_num</td>
-<td><%=sc.getHome_num() %></td>
+<td><input type="text" name="home_num" value="<%=sc.getHome_num() %>"></td>
 </tr>
 <tr>
 <td colspan="2">

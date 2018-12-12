@@ -36,7 +36,6 @@ public class ReviewWrite implements Action {
 		bdao.updateReadcount(num); 
 		SearchBean sc= bdao.getSearchboard(num);
 		
-		System.out.println("이"+num);
 		request.setAttribute("sc", sc);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
