@@ -55,7 +55,6 @@
 <a name="후기"><h1>후기 <%=count%>개 </h1></a>
 	<button class="button button1"
 			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
-	<!-- <a href="./ReviewWrite.bk"><h2 align="right">후기쓰기</h2></a> -->
 	<div id="room_review">
 	
 	
