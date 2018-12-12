@@ -27,6 +27,7 @@ a:visited { color: #666; text-decoration: none;}
 #pont1_WS{font-family: 'WONTitle', cursive;
 font-size: 50px;
 font-weight: bolder;
+/* color : #cc1d1d !important; */
 }
 
 /* #img_1_WS{width: 100px;
