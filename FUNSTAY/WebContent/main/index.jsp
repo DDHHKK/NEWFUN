@@ -78,9 +78,9 @@ if (email.equals("admin")) {
 		<a href="./MemberLogout.me">로그아웃</a>
  <%}else{%>
 		<a href="./MemberUpdate.me">프로필수정</a>
-		<a href="./Booking.bo">예약및 결제하기</a>
-		<a href="./MyReserve.bk">MY RESERVE</a>
-		<a href="./Wishlist.wi">위시리스트</a>
+		<a href="./Booking.bo">예약/결제</a>
+		<a href="./MyReserve.bk">나의 예약</a>
+		<a href="./Wishlist.wi">찜한숙소</a>
 		<a href="./MemberMileage.me">마일리지</a>
 		<a href="./MemberQNAlist.me">문의확인</a>
 		<a href="./MemberLogout.me">로그아웃</a>
@@ -101,12 +101,12 @@ if (email.equals("admin")) {
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <!-- 로고스타일 -->    
-      <div id="logo_sh">FUNSTAY</div>
+      <div id="logo_sh"><i>FUNSTAY</i></div>
     </div>
     <div class="container">
      <div class="join_box">
   <!-- 이메일(아이디)입력 폼 -->   
-      <label for="email"><b>Username</b></label>
+      <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Username" name="email" required>
   <!-- 비밀번호 입력 폼 -->
       <label for="pass"><b>Password</b></label>
@@ -207,7 +207,7 @@ if (email.equals("admin")) {
     <div class="imgcontainer">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
   <!-- 로고스타일 -->    
-      <div id="logo_sh">FUNSTAY</div>
+      <div id="logo_sh"><i>FUNSTAY</i></div>
     </div>
 
     <div class="container">
@@ -285,7 +285,7 @@ if (email.equals("admin")) {
 </section>
 <div class="clear"></div>
 <div class="main_box">
-<a href="#" id="pont">FunStay</a>
+<a href="#" id="pont">FUNSTAY</a>
 <nav id="nav_1">
 <form action="./MemberSearchAction.me" method="post" name="fff" id="form_2">
 <ol>

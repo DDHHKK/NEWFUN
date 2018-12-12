@@ -50,7 +50,7 @@ mb=md.getMember(email);
 
 <ul class="header_dh">
 
-<li id="pont1_WS"><a href="./Main.me">FUNSTAY</a></li>
+<li id="pont1_WS"><a href="./Main.me"><i>FUNSTAY</i></a></li>
 <li id="li_2"><input type="text" id="text_1_WS" name="search_info" placeholder="검색할 내용을 적으세요">
 <input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></li>
 <li id="li_3"><a href="./HostMain.ho">호스트로 등록해보세요</a></li>
@@ -71,26 +71,26 @@ if(email==null){
  <div id="light1" class="white_content_1">
   <div>
   <ul id="list_1_WS">
-	<li><a href="./MemberUpdate.me">프로필수정</a></li>
-	<li><a href="./Booking.bo">예약/결제</a></li>
-	<li><a href="./MyReserve.bk">나의 예약</a></li>
-	<li><a href="./Wishlist.wi">찜한숙소</a></li>
-	<li><a href="./MemberMileage.me">마일리지</a></li>
-	<li><a href="./MemberQNAlist.me">문의하기</a></li>
+	<li><a href="./MemberUpdate.me"><b>프로필수정</b></a></li>
+	<li><a href="./Booking.bo"><b>예약/결제</b></a></li>
+	<li><a href="./MyReserve.bk"><b>나의 예약</b></a></li>
+	<li><a href="./Wishlist.wi"><b>찜한숙소</b></a></li>
+	<li><a href="./MemberMileage.me"><b>마일리지</b></a></li>
+	<li><a href="./MemberQNAlist.me"><b>문의하기</b></a></li>
 	<%
 	int hostCheck = 0;
 	hostCheck = (int)session.getAttribute("hostCheck");
 	if(email.equals("admin")){
 	%>
-	<li><a href="./MemberListAction.me">회원목록</a></li>
-	<li><a href="./FAQ_boardList.fa">FAQ 관리</a></li>	
+	<li><a href="./MemberListAction.me"><b>회원목록</b></a></li>
+	<li><a href="./FAQ_boardList.fa"><b>FAQ 관리</b></a></li>	
 	<% }else if(hostCheck==1){%>
-	<li><a href="./HostPassCheckAction.ho">숙소 관리</a></li>
-	<li><a href="./HostCash.ho">MY CASH</a></li>
+	<li><a href="./HostPassCheckAction.ho"><b>숙소 관리</b></a></li>
+	<li><a href="./HostCash.ho"><b>MY CASH</b></a></li>
 	<%}
 %>
 	
-	<li><a href="./MemberLogout2.me">로그아웃</a></li>
+	<li><a href="./MemberLogout2.me"><b>로그아웃</b></a></li>
   </ul>
   </div>
   <!-- <a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='none';document.getElementById('fade1').style.display='none'"><p id="font_2_WS">닫기</p></a> -->
@@ -120,12 +120,12 @@ if(email==null){
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <!-- 로고스타일 -->    
-      <div id="logo_sh">FUNSTAY</div>
+      <div id="logo_sh"><i>FUNSTAY</i></div>
     </div>
     <div class="container">
      <div class="join_box">
   <!-- 이메일(아이디)입력 폼 -->   
-      <label for="email"><b>Username</b></label>
+      <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Username" name="email" required>
   <!-- 비밀번호 입력 폼 -->
       <label for="pass"><b>Password</b></label>
@@ -225,7 +225,7 @@ if(email==null){
     <div class="imgcontainer">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
   <!-- 로고스타일 -->    
-      <div id="logo_sh">FUNSTAY</div>
+      <div id="logo_sh"><i>FUNSTAY</i></div>
     </div>
 
     <div class="container">

@@ -1,3 +1,4 @@
+<%@page import="net.search.db.SearchBean"%>
 <%@page import="net.review.db.ReviewBean"%>
 <%@page import="java.util.List"%>
 
@@ -7,6 +8,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    align : right;
+}
+
+.button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    border-radius: 50%;
+}
+
+.button1:hover {background-color: #e7e7e7;}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -19,11 +46,15 @@
 	String pageNum = (String) request.getAttribute("pageNum");
 	int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
 	int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
+	SearchBean sc = (SearchBean) request.getAttribute("sc");
+	int num = ((Integer) request.getAttribute("num")).intValue();
 %>
 
 
 <a name="후기"><h1>후기 <%=count%>개(평균 평점 ★★★★★) </h1></a>
-	<a href="./ReviewWrite.bk"><h2 align="right">후기쓰기</h2></a>
+	<button class="button button1"
+			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
+	<!-- <a href="./ReviewWrite.bk"><h2 align="right">후기쓰기</h2></a> -->
 	<div id="room_review">
 	
 	

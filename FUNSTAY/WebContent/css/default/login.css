@@ -25,7 +25,7 @@ input.e_check{
 	cursor: pointer;
 }
 #logo_sh{
-	font-family: 'Lobster', cursive;
+	font-family: 'Leelawadee UI', cursive;
     display: block;
     text-align: center;
     width: 300px;
@@ -33,6 +33,8 @@ input.e_check{
     margin-top: 50px;
     /* margin: 200px 0 0 800px; */
     font-size: 50px;
+    font-weight: bolder;
+    color:#cc1d1d;
 }
 
 #clear{clear: both;}

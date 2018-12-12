@@ -122,7 +122,7 @@
 	font-size:1.5em;
 	color:  #fc4401;
 	margin : 0 0 0 10px;
-	border : 1px solid #fc4401;
+	border : 1px solid #cc1d1d;
 	border-radius : 25px;
 	background-color: #fff;
 	font-weight: bold;
@@ -135,7 +135,7 @@
 	font-size:1.2em;
 	color:  #fff;
 	border : none;
-	background-color: #fc4401;
+	background-color: #cc1d1d;
 	font-weight: bold;
 	float: right;
 	padding : 10px;
@@ -146,10 +146,26 @@
 	font-size:1.2em;
 	color:  #fff;
 	border : none;
-	background-color: #fc4401;
+	background-color: #cc1d1d;
 	font-weight: bold;
 	padding : 10px;
 	cursor: pointer;
+}
+
+.add_btn:hover{
+	background-color: #991515;
+}
+
+.next_btn:hover{
+	background-color: #991515;
+}
+
+.num_btn:hover{
+	background-color: #991515;
+}
+
+#del_btn:hover {
+	background-color: #991515;
 }
 
 
@@ -157,7 +173,7 @@
 	font-size:1.2em;
 	color:  #fff;
 	border : none;
-	background-color: #fc4401;
+	background-color: #cc1d1d;
 	font-weight: bold;
 	padding : 10px;
 	cursor: pointer;
@@ -201,6 +217,20 @@ h5 {
 
 .sel2 {padding : 7px;
 	margin-top : -10px;}
+
+.select_btn{
+	color : #fff;
+	background-color: #cc1d1d;
+	border:1px solid #cc1d1d;
+	cursor: pointer;
+	height: 31px;
+	font-size:13px;
+}
+
+.select_btn:hover {
+	background-color: #991515;
+	border:1px solid #991515;
+}
 
 /* ------------------호스트동록메인----------------- */
 
@@ -277,7 +307,7 @@ h5 {
 	font-size:1.2em;
 	color:  #fff;
 	border : none;
-	background-color: #fc4401;
+	background-color: #cc1d1d;
 	font-weight: bold;
 	float: left;
 	cursor: pointer;
