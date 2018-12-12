@@ -498,42 +498,63 @@ if(i%3==0){
       </header>
       <div class="w3-container">
         <table class="receipt_table_DY">
+        
+  
+<%
+/* 
+List bookingList2=(List)request.getAttribute("bookingList2");
+List paymentList2=(List)request.getAttribute("paymentList2");
+List hostList2=(List)request.getAttribute("hostList2"); */
+List afterList2=(List)request.getAttribute("afterList");
+
+for(int i=0; i<afterList2.size(); i++){
+	/* BookingBean bb=(BookingBean)bookingList2.get(i);
+	PaymentBean pb=(PaymentBean)paymentList2.get(i);
+	HostBean hb=(HostBean)hostList2.get(i); */
+	BeforeBean BeforeB=(BeforeBean)afterList2.get(i);
+
+if(i%3==0){
+	%>
+	<tr>
+	<% 
+}
+%>
+       
          <tr>
-          <td colspan="2" class="receipt_ti_DY">룸제목(예정된 숙소)</td>
+          <td colspan="2" class="receipt_ti_DY"><%=BeforeB.getRoom_subject() %></td>
          </tr>
          <tr>
           <td>체크인</td> 
-          <td>체크인날짜</td>
+          <td><%=BeforeB.getCheck_in() %></td>
          </tr>
          <tr>
           <td>체크아웃</td>
-          <td>체크아웃 날짜</td>
+          <td><%=BeforeB.getCheck_out() %></td>
          </tr>
          <tr>
-          <td>숙박 세부정보</td>
-          <td>2박,객실 1개</td>
+          <td>Room_type</td>
+          <td><%=BeforeB.getRoom_type() %></td>
          </tr>
          <tr>
-          <td>이름</td>
-          <td>홍길동</td>
+          <td>UserName</td>
+          <td><%=BeforeB.getMember_email() %></td>
          </tr>
          <tr>
-          <td>인원/성인</td>
-          <td>1명의 성인</td>
-         </tr>
-         <tr>
-          <td>침대</td>
-          <td>싱글침대 1개</td>
-         </tr>
-         <tr>
-          <td>포함사항</td>
-          <td>무료 WiFi</td>
+          <td>인원</td>
+          <td><%=BeforeB.getPeople() %></td>
          </tr>
          <tr>
           <td>총 요금</td>
-          <td>60,000원</td>
+          <td><%=BeforeB.getSum_price() %></td>
          </tr>
-        </table>
+       
+        
+
+<% if(i%3==2) { %>
+</tr>
+  <% } }%> 
+  
+ </table>
       </div>
      <!--  <footer class="w3-container w3-teal">
         <p class="cancel_DY">예약취소</p>
@@ -541,7 +562,7 @@ if(i%3==0){
     </div>
   </div>
 <!--영수증 모달 팝업창 끝 -->  
-
+	
 
 
 
