@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import net.book.action.BeforeTripList;
 import net.book.action.BillCancel;
+import net.book.action.ReviewWrite;
 import net.book.action.ReviewWriteAction;
 
 
@@ -37,21 +39,21 @@ public class BookFrontController extends HttpServlet {
 		// 일치하면   ./myinfo/my_reserve.jsp 이동
 		ActionForward forward=null;
 		Action action=null;
-		
+		 
 		//리뷰작성 페이지
 		if(command.equals("/ReviewWrite.bk")){
-			//response.sendRedirect("./myinfo/my_reserve.jsp");
-			// forward 이동방식  A -> B 이동
-			//                A에 있는 request 정보를 가지고 B로 이동
-			//                주소줄에는 A유지 => 실행화면 B가 보임
-//			RequestDispatcher dispatcher=
-//			 request.getRequestDispatcher("./myinfo/my_reserve.jsp");
-//			dispatcher.forward(request, response);
-			
-			forward=new ActionForward();
-			forward.setRedirect(false);   //  true/false
+			action = new ReviewWrite();
+			try { 
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/ReviewWriteForm.bk")){
+			forward = new ActionForward(); 
 			forward.setPath("./myinfo/reviewWrite.jsp");
-			
+			forward.setRedirect(false);
+		
+			  
 		//리뷰작성Action	
 		}else if(command.equals("/ReviewWriteAction.bk")){
 			action=new ReviewWriteAction();

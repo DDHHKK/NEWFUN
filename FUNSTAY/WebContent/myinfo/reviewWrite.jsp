@@ -62,9 +62,9 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 request.setCharacterEncoding("UTF-8");
 	
 SearchBean sc = (SearchBean) request.getAttribute("sc");
-/* String pageNum = (String) request.getAttribute("pageNum");
-int num = ((Integer) request.getAttribute("num")).intValue();*/
-		
+String pageNum = (String) request.getAttribute("pageNum");
+int num = ((Integer) request.getAttribute("num")).intValue();
+
 	%>
 <!-- header  시작-->
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -155,7 +155,7 @@ int num = ((Integer) request.getAttribute("num")).intValue();*/
 </tr>
 <tr>
 <td>home_num</td>
-<td><input type="text" name="home_num"></td>
+<td><%=sc.getHome_num() %></td>
 </tr>
 <tr>
 <td colspan="2">
