@@ -57,16 +57,17 @@ public class BookDAO {
 			    //1,2단계 디비연결하는 메서드 호출
 				con=getConnection();
 				 //3단계 sql 구문
-				String sql="insert into review values(?,?,now(),?,?,?,?,?)";
+				String sql="insert into review values(?,?,now(),?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				//System.out.println(bb.getPayment_num());
 				pstmt.setString(1,bb.getPayment_num()); //payment_num 			
 				pstmt.setString(2,bb.getContent());//content
-			    pstmt.setInt(3,bb.getSatisfaction());//satisfaction
-				pstmt.setInt(4,bb.getClean());//clean
-				pstmt.setInt(5,bb.getAccess());//access
+			    pstmt.setString(3,bb.getSatisfaction());//satisfaction
+				pstmt.setString(4,bb.getClean());//clean
+				pstmt.setString(5,bb.getAccess());//access
 				pstmt.setString(6,bb.getMember_email());//member_email
 				pstmt.setInt(7,bb.getHome_num());//home_num
+				pstmt.setString(8,bb.getStar());//star
 
                 //4단계 실행
 				pstmt.executeUpdate(); 
