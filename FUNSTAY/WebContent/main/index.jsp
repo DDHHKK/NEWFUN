@@ -78,9 +78,9 @@ if (email.equals("admin")) {
 		<a href="./MemberLogout.me">로그아웃</a>
  <%}else{%>
 		<a href="./MemberUpdate.me">프로필수정</a>
-		<a href="./Booking.bo">예약및 결제하기</a>
-		<a href="./MyReserve.bk">MY RESERVE</a>
-		<a href="./Wishlist.wi">위시리스트</a>
+		<a href="./Booking.bo">예약/결제</a>
+		<a href="./MyReserve.bk">나의 예약</a>
+		<a href="./Wishlist.wi">찜한숙소</a>
 		<a href="./MemberMileage.me">마일리지</a>
 		<a href="./MemberQNAlist.me">문의확인</a>
 		<a href="./MemberLogout.me">로그아웃</a>
@@ -285,7 +285,7 @@ if (email.equals("admin")) {
 </section>
 <div class="clear"></div>
 <div class="main_box">
-<a href="#" id="pont">FunStay</a>
+<a href="#" id="pont">FUNSTAY</a>
 <nav id="nav_1">
 <form action="./MemberSearchAction.me" method="post" name="fff" id="form_2">
 <ol>
