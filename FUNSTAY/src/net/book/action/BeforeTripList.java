@@ -9,11 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import net.book.controller.Action;
 import net.book.controller.ActionForward;
+import net.book.db.BeforeBean;
 import net.book.db.BookBean;
 import net.book.db.BookDAO;
 import net.booking.db.BookingBean;
 import net.booking.db.PaymentBean;
 import net.host.db.HostBean;
+import net.search.db.SearchBean;
 
 public class BeforeTripList implements Action{
 
@@ -28,8 +30,9 @@ public class BeforeTripList implements Action{
 		String member_email=(String)session.getAttribute("email");
 		
 		
-		BookingBean bb=new BookingBean();
-		PaymentBean pb=new PaymentBean();
+		/*BookingBean bb=new BookingBean();
+		PaymentBean pb=new PaymentBean();*/
+		BeforeBean BeforeB=new BeforeBean();
 		
 		BookDAO bdao=new BookDAO();
 		//완료된 숙소 vector
@@ -39,28 +42,61 @@ public class BeforeTripList implements Action{
 		
 		
 		//완료된 숙소
-		List<BookingBean> bookingList=(List<BookingBean>)vector.get(0);
+		/*List<BookingBean> bookingList=(List<BookingBean>)vector.get(0);
 		List<PaymentBean> paymentList=(List<PaymentBean>)vector.get(1);
-		List<HostBean> hostList=(List<HostBean>)vector.get(2);
+		List<HostBean> hostList=(List<HostBean>)vector.get(2);*/
+		List<BeforeBean> beforeList=(List<BeforeBean>)vector.get(0);
 		
 		//예정된숙소
-		List<BookingBean> bookingList2=(List<BookingBean>)vector2.get(0);
+		/*List<BookingBean> bookingList2=(List<BookingBean>)vector2.get(0);
 		List<PaymentBean> paymentList2=(List<PaymentBean>)vector2.get(1);
-		List<HostBean> hostList2=(List<HostBean>)vector2.get(2);
+		List<HostBean> hostList2=(List<HostBean>)vector2.get(2);*/
+		List<BeforeBean> afterList=(List<BeforeBean>)vector2.get(0);
 		
 		
 		
         //완료된 숙소 request 저장 
-		request.setAttribute("bookingList", bookingList);
+		/*request.setAttribute("bookingList", bookingList);
 		request.setAttribute("paymentList", paymentList);
-		request.setAttribute("hostList", hostList);
-		
+		request.setAttribute("hostList", hostList);*/
+		request.setAttribute("beforeList", beforeList);
 		
 		 //예정된 숙소 request 저장 
-		request.setAttribute("bookingList2", bookingList2);
+		/*request.setAttribute("bookingList2", bookingList2);
 		request.setAttribute("paymentList2", paymentList2);
-		request.setAttribute("hostList2", hostList2);
+		request.setAttribute("hostList2", hostList2);*/
+		request.setAttribute("afterList", afterList);
 
+		
+		
+/*		
+int pageSize = 10;
+
+		
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null)
+			pageNum = "1";
+
+	
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage - 1) * pageSize + 1;
+
+	
+		int endRow = currentPage * pageSize;
+		
+		
+		
+		List<SearchBean> SearchList = null;
+		
+			SearchList = bdao.getSearchList(startRow, pageSize);
+		
+		request.setAttribute("searchList", SearchList);
+		
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("currentPage", currentPage);
+		*/
+		
 		
 		
 		

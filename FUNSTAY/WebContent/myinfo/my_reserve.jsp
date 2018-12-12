@@ -1,3 +1,4 @@
+<%@page import="net.book.db.BeforeBean"%>
 <%@page import="net.book.db.HomeBean"%>
 <%@page import="net.host.db.HostBean"%>
 <%@page import="net.booking.db.PaymentBean"%>
@@ -80,32 +81,21 @@
 <table border="1">
 <tr><td>방제목</td><td>체크인날짜</td>
     <td>체크아웃날짜</td><td>총금액</td></tr>
-
-
   
 <%
-
 List bookingList=(List)request.getAttribute("bookingList");
 List paymentList=(List)request.getAttribute("paymentList");
 List hostList=(List)request.getAttribute("hostList");
-
 for(int i=0; i<bookingList.size(); i++){
 	BookingBean bb=(BookingBean)bookingList.get(i);
 	PaymentBean pb=(PaymentBean)paymentList.get(i);
 	HostBean hb=(HostBean)hostList.get(i);
-
-
-
-
-
 %>
   
-
 <tr><td><%=hb.getRoom_subject()%></td>
     <td><%=bb.getCheck_in()%></td>
     <td><%=bb.getCheck_out()%></td>
     <td><%=pb.getSum_price()%></td></tr>
-
  
 </table>
 <%
@@ -113,7 +103,6 @@ for(int i=0; i<bookingList.size(); i++){
 %> 
   
   
-
   <div id="imginfo_shj">
   
   <!--영수증버튼(모달박스)  -->
@@ -142,17 +131,17 @@ for(int i=0; i<bookingList.size(); i++){
 
   
 <%
-
+/* 
 List bookingList=(List)request.getAttribute("bookingList");
 List paymentList=(List)request.getAttribute("paymentList");
-List hostList=(List)request.getAttribute("hostList");
-
-for(int i=0; i<bookingList.size(); i++){
-	BookingBean bb=(BookingBean)bookingList.get(i);
+List hostList=(List)request.getAttribute("hostList");  */
+List beforeList=(List)request.getAttribute("beforeList");
+for(int i=0; i<beforeList.size(); i++){
+	/* BookingBean bb=(BookingBean)bookingList.get(i);
 	PaymentBean pb=(PaymentBean)paymentList.get(i);
-	HostBean hb=(HostBean)hostList.get(i);
+	HostBean hb=(HostBean)hostList.get(i); */
+	BeforeBean BeforeB=(BeforeBean)beforeList.get(i);
 	
-
 if(i%3==0){
 	%>
 	<tr>
@@ -160,9 +149,19 @@ if(i%3==0){
 }
 %>
 
-<td><%=hb.getPhoto()%></td>
-<td><%=hb.getRoom_subject() %><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
+<td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
+
+<td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> </td>
+
 	
+	
+	
+	
+	
+	
+	
+	
+<td>	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
   <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
@@ -177,7 +176,7 @@ if(i%3==0){
 
 
 <% if(i%3==2) { %>
-</tr> 
+</tr>
   <% } }%> 
   
 
@@ -279,16 +278,16 @@ if(i%3==0){
 
   
 <%
-
+/* 
 List bookingList2=(List)request.getAttribute("bookingList2");
 List paymentList2=(List)request.getAttribute("paymentList2");
-List hostList2=(List)request.getAttribute("hostList2");
-
-for(int i=0; i<bookingList2.size(); i++){
-	BookingBean bb=(BookingBean)bookingList2.get(i);
+List hostList2=(List)request.getAttribute("hostList2"); */
+List afterList=(List)request.getAttribute("afterList");
+for(int i=0; i<afterList.size(); i++){
+	/* BookingBean bb=(BookingBean)bookingList2.get(i);
 	PaymentBean pb=(PaymentBean)paymentList2.get(i);
-	HostBean hb=(HostBean)hostList2.get(i);
-
+	HostBean hb=(HostBean)hostList2.get(i); */
+	BeforeBean BeforeB=(BeforeBean)afterList.get(i);
 if(i%3==0){
 	%>
 	<tr>
@@ -296,12 +295,12 @@ if(i%3==0){
 }
 %>
 
-<td><%=hb.getPhoto()%></td>
-<td><%=hb.getRoom_subject() %><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
+<td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
+<td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
+  <button onclick="document.getElementById('id10').style.display='block'" class="w3-button w3-black">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
   <!-- 예약취소 버튼 -->
@@ -367,18 +366,17 @@ if(i%3==0){
 
 
 
-
-
-
-
-
-
 </div>
 
 
 
 
-<!--영수증 모달 팝업창 시작 -->
+
+
+
+
+
+<!--완료된 숙소 영수증 모달 팝업창 시작 -->
   <div id="id09" class="w3-modal">
     <div class="w3-modal-content w3-card-4">
       <header class="w3-container w3-teal"> 
@@ -388,49 +386,183 @@ if(i%3==0){
       </header>
       <div class="w3-container">
         <table class="receipt_table_DY">
+
+
+  
+<%
+/* 
+List bookingList=(List)request.getAttribute("bookingList");
+List paymentList=(List)request.getAttribute("paymentList");
+List hostList=(List)request.getAttribute("hostList");  */
+List beforeList2=(List)request.getAttribute("beforeList");
+for(int i=0; i<beforeList2.size(); i++){
+	/* BookingBean bb=(BookingBean)bookingList.get(i);
+	PaymentBean pb=(PaymentBean)paymentList.get(i);
+	HostBean hb=(HostBean)hostList.get(i); */
+	BeforeBean BeforeB=(BeforeBean)beforeList2.get(i);
+	
+if(i%3==0){
+	%>
+	<tr>
+	<% 
+}
+%>
+
+
+	
          <tr>
-          <td colspan="2" class="receipt_ti_DY">화이트캐슬</td>
+          <td colspan="2" class="receipt_ti_DY"><%=BeforeB.getRoom_subject() %></td>
          </tr>
          <tr>
           <td>체크인</td> 
-          <td>화,12/9,2018</td>
+          <td><%=BeforeB.getCheck_in() %></td>
          </tr>
          <tr>
           <td>체크아웃</td>
-          <td>목,12/11,2018</td>
+          <td><%=BeforeB.getCheck_out() %></td>
          </tr>
          <tr>
-          <td>숙박 세부정보</td>
-          <td>2박,객실 1개</td>
+          <td>Room_type</td>
+          <td><%=BeforeB.getRoom_type() %></td>
          </tr>
          <tr>
-          <td>이름</td>
-          <td>홍길동</td>
+          <td>UserName</td>
+          <td><%=BeforeB.getMember_email() %></td>
          </tr>
          <tr>
-          <td>인원/성인</td>
-          <td>1명의 성인</td>
-         </tr>
-         <tr>
-          <td>침대</td>
-          <td>싱글침대 1개</td>
-         </tr>
-         <tr>
-          <td>포함사항</td>
-          <td>무료 WiFi</td>
+          <td>인원</td>
+          <td><%=BeforeB.getPeople() %></td>
          </tr>
          <tr>
           <td>총 요금</td>
-          <td>60,000원</td>
+          <td><%=BeforeB.getSum_price() %></td>
          </tr>
-        </table>
+       
+	
+	
+	
+	
+
+
+<% if(i%3==2) { %>
+</tr>
+  <% } }%> 
+  
+ </table>
       </div>
-      <footer class="w3-container w3-teal">
+     <!--  <footer class="w3-container w3-teal">
         <p class="cancel_DY">예약취소</p>
-      </footer>
+      </footer> -->
     </div>
   </div>
 <!--영수증 모달 팝업창 끝 -->  
+	
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+<!-- 예정된 숙소 영수증 모달 팝업창 시작 -->
+  <div id="id10" class="w3-modal">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id10').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2 class="site_DY">Funstay</h2>
+      </header>
+      <div class="w3-container">
+        <table class="receipt_table_DY">
+         
+<%
+/* 
+List bookingList=(List)request.getAttribute("bookingList");
+List paymentList=(List)request.getAttribute("paymentList");
+List hostList=(List)request.getAttribute("hostList");  */
+List afterList2=(List)request.getAttribute("afterList");
+for(int i=0; i<afterList2.size(); i++){
+	/* BookingBean bb=(BookingBean)bookingList.get(i);
+	PaymentBean pb=(PaymentBean)paymentList.get(i);
+	HostBean hb=(HostBean)hostList.get(i); */
+	BeforeBean BeforeB=(BeforeBean)afterList2.get(i);
+	
+if(i%3==0){
+	%>
+	<tr>
+	<% 
+}
+%>
+        
+	
+         <tr>
+          <td colspan="2" class="receipt_ti_DY"><%=BeforeB.getRoom_subject() %></td>
+         </tr>
+         <tr>
+          <td>체크인</td> 
+          <td><%=BeforeB.getCheck_in() %></td>
+         </tr>
+         <tr>
+          <td>체크아웃</td>
+          <td><%=BeforeB.getCheck_out() %></td>
+         </tr>
+         <tr>
+          <td>Room_type</td>
+          <td><%=BeforeB.getRoom_type() %></td>
+         </tr>
+         <tr>
+          <td>UserName</td>
+          <td><%=BeforeB.getMember_email() %></td>
+         </tr>
+         <tr>
+          <td>인원</td>
+          <td><%=BeforeB.getPeople() %></td>
+         </tr>
+         <tr>
+          <td>총 요금</td>
+          <td><%=BeforeB.getSum_price() %></td>
+         </tr>
+       
+	
+	
+	
+	
+
+
+<% if(i%3==2) { %>
+</tr>
+  <% } }%> 
+  
+ </table>
+      </div>
+     <!--  <footer class="w3-container w3-teal">
+        <p class="cancel_DY">예약취소</p>
+      </footer> -->
+    </div>
+  </div>
+<!--영수증 모달 팝업창 끝 -->  
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
   
   
   
@@ -445,18 +577,12 @@ if(i%3==0){
 <script>
 // Get the modal(영수증모달)
 var modal = document.getElementById('id09');
-
 // When the user clicks anywhere outside of the modal, close it(모달박스 바깥쪽 누르면 모달창 꺼짐)
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
-
-
-
-
-
 //완료된숙소,예정숙소 탭  
 function openCity(cityName) {
     var i;
@@ -466,8 +592,6 @@ function openCity(cityName) {
     }
     document.getElementById(cityName).style.display = "block";  
 }
-
-
 //예약 취소 확인
 function button_event(){
 	r=confirm("정말 예약 취소하시겟습니까?")
@@ -483,7 +607,6 @@ function button_event(){
 	}
 	return false;
 }
-
 </script> 
 
 

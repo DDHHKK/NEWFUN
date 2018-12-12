@@ -34,6 +34,7 @@
 
 .button1:hover {background-color: #e7e7e7;}
 </style>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -51,10 +52,9 @@
 %>
 
 
-<a name="후기"><h1>후기 <%=count%>개(평균 평점 ★★★★★) </h1></a>
+<a name="후기"><h1>후기 <%=count%>개 </h1></a>
 	<button class="button button1"
 			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
-	<!-- <a href="./ReviewWrite.bk"><h2 align="right">후기쓰기</h2></a> -->
 	<div id="room_review">
 	
 	
@@ -64,14 +64,17 @@
 	%>
 
 <table id="" border="1">
-	<tr><th class="" rowspan="4"><img src="./img/user.png" alt="img02"></th>
-	<th class=""><%=re.getPayment_num() %></th>
-   	<th class=""><%=re.getMember_email() %></th>
-   	<th class=""><%=re.getHome_num() %></th>
-    <tr><th  class="" colspan="3"><%=re.getContent() %></th></tr>
-    <tr><th  class="" colspan="3"><%=re.getAccess()%></th></tr>
-    <tr><th class="" colspan="3"><%=re.getClean() %></th></tr>  
-    <tr><th class="" colspan="3"><%=re.getSatisfaction() %></th></tr>  
+	<tr><th colspan="3">
+	<%=re.getStar()%>점
+	</th></tr>
+	<tr><throwspan="4"><img src="./img/user.png" alt="img02"></th>
+	<th><%=re.getPayment_num() %></th>
+   	<th><%=re.getMember_email() %></th>
+   	<th><%=re.getHome_num() %></th>
+    <tr><th colspan="3"><%=re.getContent() %></th></tr>
+    <tr><th colspan="3"><%=re.getAccess()%></th></tr>
+    <tr><th colspan="3"><%=re.getClean() %></th></tr>  
+    <tr><th colspan="3"><%=re.getSatisfaction() %></th></tr>  
 </table>
 
 		
