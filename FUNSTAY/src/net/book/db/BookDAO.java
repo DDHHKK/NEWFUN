@@ -303,56 +303,7 @@ public class BookDAO {
   	
   	
 
-	public List<SearchBean> getSearchList(int startRow, int pageSize){
-		Connection con=null;
-  	    PreparedStatement pstmt=null;
-  	    ResultSet rs=null;
-  	    
-		List<SearchBean> SearchList = new ArrayList<SearchBean>();
-		try{
-			
-			//1,2�뵒鍮꾩뿰寃� 硫붿꽌�뱶�샇異�
-			con = getConnection();
-			//num 寃뚯떆�뙋 湲�踰덊샇 援ы븯湲�
-			//sql �븿�닔 理쒕�媛� 援ы븯湲� max()
-			String sql = "select * from home order by home_num desc limit ?,? ";
-			pstmt = con.prepareStatement(sql); 
-			pstmt.setInt(1, startRow-1);
-			pstmt.setInt(2, pageSize);
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				SearchBean sb=new SearchBean();
-				
-				sb.setHome_num(rs.getInt("home_num"));
-				sb.setHost_email(rs.getString("host_email"));
-				sb.setAddress(rs.getString("address"));
-				sb.setRoom_type(rs.getString("room_type"));
-				sb.setPhoto(rs.getString("photo"));
-				sb.setRoom_subject(rs.getString("room_subject"));
-				sb.setRoom_content(rs.getString("room_content"));
-				sb.setRestroom(rs.getInt("restroom"));
-				sb.setIn_time(rs.getString("in_time"));
-				sb.setOut_time(rs.getString("out_time"));
-				sb.setPrice(rs.getInt("price"));	
-				sb.setStart_date(rs.getDate("start_date"));
-				sb.setEnd_date(rs.getDate("end_date"));
-				sb.setApply_date(rs.getDate("apply_date"));
-
-				
-				SearchList.add(sb);
-				
-			}
-
-		}catch (Exception e){
-			e.printStackTrace();
-		}finally{
-			if (rs != null) {try {rs.close();} catch (SQLException ex) {}	}
-			if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
-			if (con != null) {try {con.close();} catch (SQLException ex) {	}}
-		}
-		return SearchList;
-	} 
-
+	
   	
   	
   	
