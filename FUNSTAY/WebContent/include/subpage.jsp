@@ -40,6 +40,8 @@ $(document).ready(function(){
 		$('.a a:eq('+6+')').css({"border-bottom":"4px solid #cc1d1d"});}
 	if(pathArray[2]==("HostRoomList.ho")) {
 		$('.a a:eq('+6+')').css({"border-bottom":"4px solid #cc1d1d"});}
+/* 	if(pathArray[2]==("MemberUpdate.me")) {
+		$('.a a:eq('+6+')').css({"border-bottom":"4px solid #cc1d1d"});} */
 	
 	var aSize = $('.a').length;
 	// 주소창에 가상주소가 입력되면 회원메뉴에서 가상주소와 일치하는 목록을 찾아서 border-bottom으로 밑줄 표시
@@ -56,7 +58,7 @@ $(document).ready(function(){
 <div id="wrap">
 <div class="sub_menu">
 <ul>
-	<li class="a"><a href="./MemberUpdate.me">회원 정보 수정</a></li>
+	<li class="a"><a href="./PassCheckForm.me">회원 정보 수정</a></li>
 	<li class="a"><a href="./Booking.bo">예약/결제<br>(삭제 예정)</a></li>
 	<li class="a"><a href="./MyReserve.bk">나의 예약</a></li>
 	<li class="a"><a href="./Wishlist.wi">찜한숙소</a></li>
