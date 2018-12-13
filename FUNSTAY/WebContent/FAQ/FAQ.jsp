@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+<!-- css -->
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -32,6 +33,16 @@
 }
 
 .button1:hover {background-color: #e7e7e7;}
+
+#FAQ_wrap{
+	text-align: center;
+}
+#FAQ_detail{
+	width : 1000px;
+	margin : 0 auto;
+	}
+
+
 
 </style>
 
@@ -88,13 +99,14 @@
 		int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
 		int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
 	%>
-
+<div id="FAQ_wrap">
 <h1>FAQ</h1>  
 
 	<h1>
 		자주묻는질문 [ 전체글의 개수 : <%=count%>]
 	</h1>
-
+</div>
+<div id="FAQ_detail">
 	 	<%
 			for (int i = 0; i < FAQ_boardList.size(); i++) {
 				FAQBean fb = (FAQBean) FAQ_boardList.get(i);
@@ -169,11 +181,7 @@
 	%>
   
  
-  
-  
- <div id="top_quick">
-   <a href="#">top</a>
- </div>
+  </div>
 
 
 <!-- 페이지내용 끝 -->

@@ -155,11 +155,21 @@ for(int i=0; i<num_conv.length; i++)
 	
 <table id="photo_up">
 <tr><td><b>숙소 사진을 업로드 해주세요.</b></td></tr>
-<tr><td><input type="file" name="photo1"></td></tr>
-<tr><td><input type="file" name="photo2"></td></tr>
-<tr><td><input type="file" name="photo3"></td></tr>
-<tr><td><input type="file" name="photo4"></td></tr>
-<tr><td><input type="file" name="photo5"></td></tr>
+
+<label for="photo1">업로드1</label>
+<tr><td><input type="file" name="photo1" id="photo1"></td></tr>
+
+<label for="photo2">업로드2</label>
+<tr><td><input type="file" name="photo2" id="photo2"></td></tr>
+
+<label for="photo3">업로드3</label>
+<tr><td><input type="file" name="photo3" id="photo3"></td></tr>
+
+<label for="photo4">업로드4</label>
+<tr><td><input type="file" name="photo4" id="photo4"></td></tr>
+
+<label for="photo5">업로드5</label>
+<tr><td><input type="file" name="photo5" id="photo5"></td></tr>
 </table>
 	
 </form>

@@ -29,7 +29,10 @@
 	** 해당 페이지의 연결링크와 스크립트를 head에 넣을때 default링크와 섞이지 않도록 주석으로 구분해서 넣어주세요
 -->
 <link href="./css/mypage/update.css" rel="stylesheet">
+
+
 <script src="./js/file.js"></script>
+
 
 
 
@@ -60,17 +63,19 @@
 <div id="content">
 <!-- 페이지내용 시작 -->
  <div class="panel_box_sh">
-  <h1 class="tite_sh">정보수정</h1>
+  <h1>정보수정</h1>
   <!-- 정보수정폼시작 -->
   <form action="./MemberUpdateAction.me" id="join"method="post" enctype="multipart/form-data">
-   <div id="fileup_sh" name="photo" style="width: 250px; height: 250px; border: 1px dashed #ccc;">
+  
+   <div id="fileup_sh" name="photo" style="width: 150px; height: 150px;">
   <!-- <p id="status_sh">프로필 사진</p> -->
-  <img src="./upload/<%=mb.getProfile_photo()%>"style="width: 250px; height: 250px;">
+  
+  <img id="preview" src="./upload/<%=mb.getProfile_photo()%>"style="width: 150px; height: 150px; border-radius: 50%;">
 	  
    </div>
   <p>
   
-  <input type="file" name="profile_photo"></p>
+  <input type="file" name="profile_photo" id="getfile" accept="image/*"></p>
   <div id="holder_sh"></div>
    
    <div>
@@ -105,12 +110,32 @@
    <div id="buttons_sh">
     <input type="submit" value="저장하기" class="btn">
     <input type="button" value="취소하기" class="btn" onclick="history.back()">
-    <input type="button" value="탈퇴하기" class="btn" onclick="location.href='./MemberDelete.me'">
+    <input type="button" value="탈퇴하기" class="btn1" onclick="location.href='./MemberDelete.me'">
    </div>
    
   </form> 
   <!-- //정보수정폼끝 -->
 </div><!-- //panel_box -->
+
+<script>
+
+var file1 = document.querySelector('#getfile');
+
+file1.onchange = function () {
+    var fileList = file1.files ;
+
+    // 읽기
+    var reader = new FileReader();
+    reader.readAsDataURL(fileList [0]);
+
+    //로드 한 후
+    reader.onload = function  () {
+        document.querySelector('#preview').src = reader.result ;
+    };
+};
+
+
+</script>
 
 
 <!-- 페이지내용 끝 -->
