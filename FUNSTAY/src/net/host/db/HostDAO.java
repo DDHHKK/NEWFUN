@@ -542,6 +542,139 @@ public void insertConv(ConvBean cb,int home_num) {
 		
 	}
 	
+	public ConvBean getConvenience(int home_num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ConvBean cb = new ConvBean();
+		try{
+			con = getConnection();
+			String sql = "select * from convenience where home_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, home_num);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				cb.setAir_conditioner(rs.getInt("air_conditioner"));
+				cb.setAnimal(rs.getInt("animal"));
+				cb.setBreakfast(rs.getInt("breakfast"));
+				cb.setDesk(rs.getInt("desk"));
+				cb.setDisabled(rs.getInt("disabled"));
+				cb.setElevator(rs.getInt("elevator"));
+				cb.setEssential(rs.getInt("essential"));
+				cb.setExtra_bed(rs.getInt("extra_bed"));
+				cb.setHair_dryer(rs.getInt("hair_dryer"));
+				cb.setHeat(rs.getInt("heat"));
+				cb.setHome_num(rs.getInt("home_num"));
+				cb.setIron(rs.getInt("iron"));
+				cb.setLaundry(rs.getInt("laundry"));
+				cb.setParking(rs.getInt("parking"));
+				cb.setParty(rs.getInt("party"));
+				cb.setPickup(rs.getInt("pickup"));
+				cb.setShampoo(rs.getInt("shampoo"));
+				cb.setSmoking(rs.getInt("smoking"));
+				cb.setWifi(rs.getInt("wifi"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+		return cb;
+	}
+	
+	/*public List<RoomBean> getRooms(int home_num){
+		
+	}*/
+	
+	/*public List<BedBean> getBedType(int room_num){
+		
+		
+	}*/
+	
+	public void updateHome(HostBean hb){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try{
+			con = getConnection();
+			System.out.println("home 수정");
+			String sql = "update home set address=?,room_type=?,room_subject=?,room_content=?,restroom=?,in_time=?,out_time=?,price=? where home_num=? and host_email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, hb.getAddress());
+			System.out.println(hb.getAddress());
+			pstmt.setString(2, hb.getRoom_type());
+			System.out.println(hb.getRoom_type());
+			pstmt.setString(3, hb.getRoom_subject());
+			System.out.println(hb.getRoom_subject());
+			pstmt.setString(4, hb.getRoom_content());
+			System.out.println(hb.getRoom_content());
+			pstmt.setInt(5, hb.getRestroom());
+			System.out.println(hb.getRestroom());
+			pstmt.setString(6, hb.getIn_time());
+			System.out.println(hb.getIn_time());
+			pstmt.setString(7, hb.getOut_time());
+			System.out.println(hb.getOut_time());
+			pstmt.setInt(8, hb.getPrice());
+			System.out.println(hb.getPrice());
+			pstmt.setInt(9, hb.getHome_num());
+			System.out.println(hb.getHome_num());
+			pstmt.setString(10, hb.getHost_email());
+			System.out.println(hb.getHost_email());
+			
+			pstmt.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+	}
+	
+	public void updateConvenience(ConvBean cb){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try{
+			con = getConnection();
+			String sql = "update convenience set essential=?,disabled=?,parking=?,wifi=?,air_conditioner=?,animal=?,party=?,pickup=?,elevator=?,iron=?,extra_bed=?,shampoo=?,heat=?,smoking=?,breakfast=?,laundry=?,desk=?,hair_dryer=? where home_num=?";
+			pstmt=con.prepareStatement(sql);
+			System.out.println("컨비니언스 수정");
+			pstmt.setInt(1, cb.getEssential());
+			pstmt.setInt(2, cb.getDisabled());
+			pstmt.setInt(3, cb.getParking());
+			pstmt.setInt(4, cb.getWifi());
+			pstmt.setInt(5, cb.getAir_conditioner());
+			pstmt.setInt(6, cb.getAnimal());
+			pstmt.setInt(7, cb.getParty());
+			pstmt.setInt(8, cb.getPickup());
+			pstmt.setInt(9, cb.getElevator());
+			pstmt.setInt(10, cb.getIron());
+			pstmt.setInt(11, cb.getExtra_bed());
+			pstmt.setInt(12, cb.getShampoo());
+			pstmt.setInt(13, cb.getHeat());
+			pstmt.setInt(14, cb.getSmoking());
+			pstmt.setInt(15, cb.getBreakfast());
+			pstmt.setInt(16, cb.getLaundry());
+			pstmt.setInt(17, cb.getDesk());
+			pstmt.setInt(18, cb.getHair_dryer());
+			pstmt.setInt(19, cb.getHome_num());
+		
+			pstmt.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+	}
+	
 	
 
 }

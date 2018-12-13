@@ -1,3 +1,4 @@
+<%@page import="net.conv.db.ConvBean"%>
 <%@page import="net.host.db.HostDAO"%>
 <%@page import="net.bed.db.BedBean"%>
 <%@page import="java.util.List"%>
@@ -26,7 +27,114 @@
 
 <link href="./css/host/host_page.css" rel="stylesheet"> 
 
+<!-- 편의시설 아이콘 링크 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css'
+	integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
 
+<!-- css -->
+
+<style>
+/* * {
+  box-sizing: border-box;
+} */
+
+/* body {
+  background-color: #f1f1f1;
+} */
+
+/* #regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+} */
+
+/* input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  border: 1px solid #aaaaaa;
+} */
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+  min-height: 500px;
+}
+
+button {
+  background-color: #cc1d1d;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #cc1d1d;
+}
+
+#convenience td{width: 400px;}
+</style>
+
+<!-- js -->
+<script type="text/javascript">
+$(document).ready(function(){
+		
+		// DB에서 가져온 convenience 정보 체크박스에 체크해주는 코드
+		$('input[name="convenience"]').each(function(index){
+			if ($(this).val()==1){ this.checked = true; }//checked 처리
+		});
+	
+		$('#con_btn').click(function(){
+			$('.num_conv').remove();
+			var convenience = [];
+			var convenience ="";
+			$('input[name="convenience"]').each(function(index){
+			if ($(this).is(':checked')){
+					$(this).append("<input type='hidden' value='1' name='num_conv' class='num_conv' checked>");
+				} else{
+					$(this).append("<input type='hidden' value='0' name='num_conv' class='num_conv' checked>");
+				}
+			});
+		});
+	
+	});
+</script>
 </head>
 
 <body>
@@ -44,122 +152,271 @@
 
 <%
 HostBean hb=(HostBean)request.getAttribute("hb");
-
-
+ConvBean cb=(ConvBean)request.getAttribute("cb");
+int home_num=Integer.parseInt(request.getParameter("home_num"));
 %>
 
 
 <!-- 각 페이지 내용을  content 영역 안에 배치 해주세요.-->
 <div id="content">
 
+<h1>숙소 정보 수정</h1>
 
+<!-- 멀티스텝  폼-->
+<form action="./HostModifyAction.ho" method="post" id="regForm">
+  <!-- 1단계 -->
+  <div class="tab">
+				<table id="info_check">
+					<tr>
+						<td class="td1"><b>숙소이름</b></td>
+						<td class="td2" colspan="3"><input type="text" name="room_subject"
+							size="70" value="<%=hb.getRoom_subject()%>">
+							<input type="hidden" value="<%=home_num%>" name="home_num">
+						</td>
+					</tr>
+					<tr>
+						<td class="td1"><b>숙소 위치</b></td>
+						<td class="td2" colspan="3"><input type="text" name="address" id="address" size="70" value="<%=hb.getAddress() %>">
+ 							<i class="fa fa-search" onclick="daumPostcode()" style='font-size:30px'></i></td>
+					</tr>
+					<tr>
+						<td class="td1"><b>숙소설명 </b></td>
+						<td class="td2" colspan="3"><textarea name="room_content" cols="75"
+								rows="10" id="cc"><%=hb.getRoom_content() %></textarea></td>
+					</tr>
+					<tr>
+						<td class="td"><b>룸타입</b></td>
+						<td><select class="sel" name="room_type">
+								<option value="개인실" <%if (hb.getRoom_type().equals("개인실")) {%>
+									selected <%}%>>개인실</option>
+								<option value="집전체" <%if (hb.getRoom_type().equals("집전체")) {%>
+									selected <%}%>>집전체</option>
+						</select></td>
+						<td class="td"><b>가격 </b></td>
+						<td class="td2"><input type="text" name="price" value="<%=hb.getPrice() %>" size="8"> /1박 </td>
+					</tr>
+				</table>
+  </div>
+  <!-- 2단계 -->
+  <div class="tab">
+    <table>
+    	<tr>
+    		<td class="td"><b>욕실 개수</b></td>
+    		<td><select class="sel" name="restroom">
+				<option value="1" <% if(hb.getRestroom()==1) { %> selected <%}%> > 1</option>
+ 				<option value="2" <% if(hb.getRestroom()==2) { %> selected <%}%> > 2</option>
+ 				<option value="3" <% if(hb.getRestroom()==3) { %> selected <%}%> > 3</option>
+ 				<option value="4" <% if(hb.getRestroom()==4) { %> selected <%}%> > 4</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="td"><b>체크인 가능 시간</b></td><td>
+				<select class="sel" name="in_time">
+ 				<option value="10:00" <% if(hb.getIn_time().equals("10:00")) { %> selected <%}%> > 10:00</option>
+  				<option value="11:00" <% if(hb.getIn_time().equals("11:00")) { %> selected <%}%> > 11:00</option>
+  				<option value="12:00" <% if(hb.getIn_time().equals("12:00")) { %> selected <%}%> > 12:00</option>
+  				<option value="13:00이후" <% if(hb.getIn_time().equals("13:00이후")) { %> selected <%}%> > 13:00이후</option>
+				</select>
+			</td>
+			<td class="td"><b>체크아웃 가능 시간</b></td><td>
+				<select class="sel" name="out_time">
+  				<option value="10:00" <% if(hb.getOut_time().equals("10:00")) { %> selected <%}%> > 10:00</option>
+  				<option value="11:00" <% if(hb.getOut_time().equals("11:00")) { %> selected <%}%> > 11:00</option>
+  				<option value="12:00" <% if(hb.getOut_time().equals("12:00")) { %> selected <%}%> > 12:00</option>
+  				<option value="13:00이후" <% if(hb.getOut_time().equals("13:00이후")) { %> selected <%}%> > 13:00이후</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="td"><b>방 개수</b></td>
+			<td><div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">1번 방</div></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" value="+" style="background-color:#cc1d1d;border:none;color:white;line-height:20px;border-radius:50%;width:40px;height:40px;font-size:29px;"></td>
+		</tr>
+    </table>
+  </div>
+  <!-- 3단계 -->
+  <div class="tab"><b>편의시설</b>
+				<table id="convenience">
+					
+					<tr>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getEssential() %>"
+							class="conv"><i class='far fa-lightbulb'
+							style='font-size: 20px'></i> 필수품목<br>
+						<span>수건,침대시트,베개,비누,휴지 등</span></td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getWifi() %>"
+							class="conv"> <i class="fa fa-wifi"></i> 와이파이</td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getParking() %>"
+							class="conv"> <i class='fas fa-parking'
+							style='font-size: 20px'></i> 주차가능</td>
+					</tr>
 
+					<tr>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getShampoo() %>"
+							class="conv"> <img src="./img/icon/shampoo.png"
+							width="15px" height="25px"> 샴푸</td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getAir_conditioner() %>"
+							class="conv"> <i class='fas fa-thermometer-empty'
+							style='font-size: 20px'></i> 에어컨</td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getHeat() %>"
+							class="conv"> <i class='fas fa-thermometer-full'
+							style='font-size: 20px'></i> 난방</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getAnimal() %>"
+							class="conv"> <i class='fas fa-paw'></i> 반려동물</td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getDisabled() %>"
+							class="conv"> <i class='fab fa-accessible-icon'
+							style='font-size: 20px'></i> 장애인시설</td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getParty() %>"
+							class="conv"> <i class='fas fa-birthday-cake'
+							style='font-size: 20px'></i> 파티가능</td>
+					</tr>
 
+					<tr>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getPickup() %>"
+							class="conv"> <i class="fa fa-car"
+							style="font-size: 20px"></i> 픽업가능</td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getElevator() %>"
+							class="conv"> <i class='fas fa-sort'
+							style='font-size: 20px'></i> 엘리베이터</td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getBreakfast() %>"
+							class="conv"> <i class='fas fa-utensils'></i> 조식제공</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getSmoking() %>"
+							class="conv"> <i class='fas fa-smoking'></i> 흡연가능</td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getLaundry() %>"
+							class="conv"> <img src="./img/icon/washing.png"
+							width="15px" height="20px"> 세탁기</td>
+						<td><input type="checkbox" name="convenience" value="<%=cb.getIron() %>"
+							class="conv"> <img src="./img/icon/iron-512.png"
+							width="20px" height="20px"> 다리미</td>
+					</tr>
+
+					<tr>
+						<td><input type="checkbox" name="convenience"
+							value="<%=cb.getDesk() %>" class="conv"> <img
+							src="./img/icon/table-512.png" width="20px" height="20px">
+							업무가능공간/책상</td>
+						<td class="td"><input type="checkbox" name="convenience"
+							value="<%=cb.getExtra_bed() %>" class="conv"> <i class='fas fa-bed'
+							style='font-size: 15px'></i> 간이침대</td>
+						<td class="td"><input type="checkbox" name="convenience"
+							value="<%=cb.getHair_dryer() %>" class="conv"> <img
+							src="./img/icon/hair_dryer-512.png" width="20px" height="20px">
+							헤어드라이기 <input type="button" id="con_btn"></td>
+					</tr>
+				</table>
+			</div>
+			
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">이전</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">다음</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+<!--     <span class="step"></span> -->
+  </div>
+</form>
+
+<!-- js -->
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the crurrent tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  // 이전, 다음 버튼 수정
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "수정하기";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "다음";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  //if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+/* function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+} */
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
 
 
 
 <!-- 여기서부터 페이지 내용을 적어주세요. -->
 
-<h1>숙소 정보 수정</h1>
+
  
-<form action="./HostModifyAction.ho" method="post">
 
-
-<%-- <input type="hidden" name="bed_type" value="<%= bed_type%>">
-<input type="hidden" name="re_room" value="<%= re_room%>"> --%>
-
-<input type="hidden" name="home_num" value="<%=hb.getHome_num()%>">
-
-<table id="info_check">
-
-<tr><td class="td1"><b>숙소이름</b>  </td><td class="td2"><input type="text" name="room_subject" size="70" value="<%=hb.getRoom_subject() %>"></td></tr>
-<tr><td class="td1"><b>숙소설명 </b> </td><td class="td2"><textarea name="room_content" cols="75" rows="10" id="cc"><%=hb.getRoom_content() %></textarea></td></tr>
-
-
-
-<tr><td class="td"><b>룸타입</b></td><td>
-<select class="sel" name="room_type">
- <option value="개인실" <% if(hb.getRoom_type().equals("개인실")) { %> selected <%}%> > 개인실</option>
- <option value="집전체" <% if(hb.getRoom_type().equals("집전체")) { %> selected <%}%> > 집전체</option>
-</select></td></tr>
-
-
-
-<tr><td class="td"><b>욕실 개수</b></td><td>
-<select class="sel" name="restroom">
- <option value="1" <% if(hb.getRestroom()==1) { %> selected <%}%> > 1</option>
- <option value="2" <% if(hb.getRestroom()==2) { %> selected <%}%> > 2</option>
- <option value="3" <% if(hb.getRestroom()==3) { %> selected <%}%> > 3</option>
- <option value="4" <% if(hb.getRestroom()==4) { %> selected <%}%> > 4</option>
-</select></td></tr>
-
-
-<tr><td class="td"><b>가격 </b></td>
-<td class="td2"><input type="text" name="price" value="<%=hb.getPrice() %>" size="8"> /1박 </td></tr>
-
-
-
-<tr><td class="td"><b>체크인 가능 시간</b></td><td>
-<select class="sel" name="in_time">
-  <option value="10:00" <% if(hb.getIn_time().equals("10:00")) { %> selected <%}%> > 10:00</option>
-  <option value="11:00" <% if(hb.getIn_time().equals("11:00")) { %> selected <%}%> > 11:00</option>
-  <option value="12:00" <% if(hb.getIn_time().equals("12:00")) { %> selected <%}%> > 12:00</option>
-  <option value="13:00이후" <% if(hb.getIn_time().equals("13:00이후")) { %> selected <%}%> > 13:00이후</option>
-</select></td></tr>
-
-
-
-<tr><td class="td"><b>체크아웃 가능 시간</b></td><td>
-<select class="sel" name="out_time">
-  <option value="10:00" <% if(hb.getOut_time().equals("10:00")) { %> selected <%}%> > 10:00</option>
-  <option value="11:00" <% if(hb.getOut_time().equals("11:00")) { %> selected <%}%> > 11:00</option>
-  <option value="12:00" <% if(hb.getOut_time().equals("12:00")) { %> selected <%}%> > 12:00</option>
-  <option value="13:00이후" <% if(hb.getOut_time().equals("13:00이후")) { %> selected <%}%> > 13:00이후</option>
-</select></td></tr>
-
-
-
-
-<%-- <tr><td class="td1">편의시설 </td><td class="td2">
-<%for(int i=0; i<convenience.length; i++){%>
-<%
-if(i == (convenience.length-1)){
-	out.print(convenience[i]);
-			%>
-			<input type="hidden" name="<%=i %>" value="<%=convenience[i]%>">
-	<%}
-
-else{
-	out.print(convenience[i]+",");
-%>
-	<input type="hidden" name="<%=i %>" value="<%=convenience[i]%>">
-<%}
-}%>
-
-
-</td></tr> --%>
-<%-- <tr><td class="td1">총 방개수</td><td class="td2"><input type="text" name="re_room" value="<%=re_room %>"></td></tr> --%>
-<tr><td class="td1"><b>주소 </b> </td><td class="td2"><input type="text" name="address" id="address" size="70" value="<%=hb.getAddress() %>">
- <i class="fa fa-search" onclick="daumPostcode()" style='font-size:30px'></i></td></tr>
-
-
-<%-- <tr><td><input type="file"name="photo1"><img src="<%=hb.getPhoto().split(",")[0]%>"><br>
-<input type="file"name="photo2"><br>
-<input type="file"name="photo3"><br>
-<input type="file" name="photo4"><br>
-<input type="file" name="photo5"></td></tr> --%>
-
-
-
-<tr><td colspan="2"><input type="submit" value="수정완료" id="sub_btn"></td></tr>
-</table>
-</form>
 
 
 
 
 <!-- 주소와 지도가 보여지는 API -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5bd0699811ddfc0b8ef260a07e7c9163&libraries=services"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -224,7 +481,7 @@ else{
             }
         }).open();
     }
-</script>
+</script> -->
 
 
 

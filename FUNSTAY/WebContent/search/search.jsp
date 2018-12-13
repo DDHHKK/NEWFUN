@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FunStay</title>
 <!-- 페이지 default 링크 시작 -->
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
@@ -15,6 +16,8 @@
 <!-- 도이씨 삽입링크 -->
 <link href="../css/search/search.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+
 <!-- 혜진씨 삽입링크 -->
 <link href="../css/search/search_center_shj.css" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -28,13 +31,19 @@
 <!-- rangebar -->
 <link rel="stylesheet" href="../css/search/normalize.css" />
 <link rel="stylesheet" href="../css/search/ion.rangeSlider.css" />
-<link rel="stylesheet" href="../css/search/ion.rangeSlider.skinFlat.css" />
+<link rel="stylesheet" href="../css/search/ion.rangeSlider.skinNice.css" />
+
+<!-- modal -->
+<script type="text/javascript" src="../js/myinfo/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search/modal_shj.js"></script>
+
 
 <!-- 편의시설 아이콘 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css'
 	integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
+	
 	
 
 
@@ -60,29 +69,29 @@
 
 <div align=center>
  <span>
- 	 <i id="image1"class="material-icons" style="font-size:18px" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)">star_border</i>
- 	 <i id="image2" class="material-icons" style="font-size:18px" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)">star_border</i>
- 	 <i id="image3" class="material-icons" style="font-size:18px" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)">star_border</i>
- 	 <i id="image4"class="material-icons" style="font-size:18px" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)">star_border</i>
- 	  <i id="image5"class="material-icons" style="font-size:18px" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)">star_border</i>
+ 	 <i id="image1"class="material-icons" style="color:#cc1d1d;" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)">star_border</i>
+ 	 <i id="image2" class="material-icons" style="color:#cc1d1d;" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)">star_border</i>
+ 	 <i id="image3" class="material-icons" style="color:#cc1d1d;" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)">star_border</i>
+ 	 <i id="image4"class="material-icons" style="color:#cc1d1d;" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)">star_border</i>
+ 	  <i id="image5"class="material-icons" style=color:#cc1d1d;" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)">star_border</i>
  
  </span>
 </div>
-<input type="hidden" name="star">
+<input type="hidden" class="star_shj" name="star" value="">
 
 
   </div>
    
 
 
-<script src="../js/myinfo/jquery-1.12.3.min.js"></script>
-<script src="../js/myinfo/ion.rangeSlider.js"></script>
+<script src="../js/search/jquery-1.12.3.min.js"></script>
+<script src="../js/search/ion.rangeSlider.js"></script>
  <div style="position: relative; padding: 10%;">
 
     <div>
         <input type="text" id="range" value="" name="range" />
-        <input type="hidden" id="from_shj" value="">
-        <input type="hidden" id="to_shj" value="">
+        <input type="number" id="from_shj" value="0">
+        <input type="number" id="to_shj" value="0">
     </div>
 
 </div>
@@ -103,12 +112,14 @@
             min_interval : 5000,
             grid: true
         });
-        $range.on("change", function () {
+        $("#range").on("change", function () {
      	    var $this = $(this),
      	        from = $this.data("from"),
      	        to = $this.data("to");
 			$('#from_shj').val(from);
 			$('#to_shj').val(to);
+			$('#from_shj').attr("value",from);
+			$('#to_shj').attr("value",to);
      	    console.log(from + " - " + to);
      	});
 
@@ -220,70 +231,218 @@
  
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 <div class="clear"></div>
 
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo1.jpeg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
-</div>
-</a>
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo2.jpg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
-</div>
-</a>
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo3.jpg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
-</div>
-</a>
+<div class="outerbox_shj">
+<div class="imgbox_shj">
 
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo1.jpeg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
+<div class="slideshow-container">
+
+<div class="mySlides fade_shj">
+ 
+  <img src="../img/photo_4.png" class="img_shj"style="width:100%">
+
 </div>
-</a>
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo2.jpg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
+
+<div class="mySlides fade_shj">
+
+  <img src="../img/photo_3.png" class="img_shj" style="width:100%">
+
 </div>
-</a>
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo3.jpg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
+
+
+<div class="mySlides fade_shj">
+
+  <img src="../img/photo_2.png" class="img_shj" style="width:100%">
+
 </div>
-</a>
+
+<a class="prev_shj" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next_shj" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div class="dot_box" style="text-align:center">
+  <span class="dot_shj" onclick="currentSlide(1)"></span> 
+  <span class="dot_shj" onclick="currentSlide(2)"></span> 
+  <span class="dot_shj" onclick="currentSlide(3)"></span> 
+</div>
+
+	<!-- 이미지 fade 기능  -->
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active_shj";
+}
+</script>	
+
+
+
+</div>
+<div class="contentbox_shj">
+<div class="innercon_shj">
+<h4>개인실</h4>
+<h3>방 제목</h3>
+<h5>필수용품, 반려동물, 와이파이, 세탁기, 에어컨</h5>
+</div>
+<div class="star_shj">
+
+ <span>
+ 	 <i id="image1"class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image2" class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image3" class="material-icons" style="font-size:18px" >star_border</i>
+ 	 <i id="image4"class="material-icons" style="font-size:18px" >star_border</i>
+ 	  <i id="image5"class="material-icons" style="font-size:18px" >star_border</i>
+ </span>
+ <span style="position: relative; bottom: 10%;">
+ 2/5
+ </span>
+</div>
+</div>
+<div class="extra_shj">
+<div class="innerex_shj">
+<h4>25000/1박</h4></div>
+<div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
+</div>
+</div>
+
+<div id="modal_shj" style="display:none;">
+	<h2 >목록 리스트</h2>
+
+</div>
+
+
+
+
+
+<!-- 하트 클릭부분 -->
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('.heart_shj>i').click(function(){
+		/* var home_num= $('#home_num').val();
+		var wishlist_num= $('#wishlist_num').val();
+		var wish_num=$('#wish_num').val(); */
+		if($(this).attr("class")=='far')
+			{
+			
+				$(this).attr('class','fas');
+				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
+				location.href = "#modal_shj";
+			}
+		else
+			{
+				$(this).attr('class','far');
+				/*  location.href="./DeleteMyWish.wi?wish_num="+wish_num+"&wishlist_num="+wishlist_num; */
+				 
+			}
+			});
+});
+</script>
+
+
+<!--모달윈도우부분-->
+<script type="text/javascript">
+$(function(){
+ /*  $('#loginform').submit(function(e){
+    return false;
+  }); */
+  
+  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="pageNum_shj">
 <a href="#" >◀</a>
