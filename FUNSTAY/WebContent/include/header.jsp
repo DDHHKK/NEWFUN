@@ -194,13 +194,13 @@ if(email==null){
   <!-- 비밀번호 찾기 --> 
    <div id="forget_sh">
  		 <div class="forget">
-  		<a href="./find_pw.me">Forget password?</a>
+  		<a href="./find_id.me">Forget email / password ?</a>
   		</div> <!-- //forget -->
   
   <!-- 아이디 찾기 -->
- 	 	 <div class="forget">
+ 	 	 <!-- <div class="forget">
   		<a href="./find_id.me">Forget email?</a>
-  		</div><!-- //forget -->
+  		</div>//forget -->
   	</div><!-- //forget_sh --> 
     </div><!-- container -->
 
