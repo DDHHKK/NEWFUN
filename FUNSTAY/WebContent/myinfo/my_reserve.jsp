@@ -61,7 +61,7 @@
 
 <h1>내 예약정보</h1>
  
-<div class="w3-bar w3-black">
+<div class="w3-bar_DY w3-black">
   <button class="w3-bar-item w3-button" onclick="openCity('London')">완료된 숙소</button>
   <button class="w3-bar-item w3-button" onclick="openCity('Paris')">예정된 숙소</button>
   <button class="w3-bar-item w3-button" onclick="openCity('Seoul')">취소된 숙소</button>
