@@ -20,6 +20,7 @@ public class MemberSearchAction2 implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		request.setCharacterEncoding("UTF-8");
 		
 		HostBean hb = new HostBean();
 		hb.setAddress(request.getParameter("address"));
