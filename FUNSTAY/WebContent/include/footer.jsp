@@ -3,8 +3,11 @@
 <footer>
 <div>
 <nav id="float_1_WS">
-<p>All contents Copyright 2018 FUNSTAY 2018 FUNSTAY Inc. all rights reserved
-Contact mail:FUNSTAY@FUNSTAYbiz.com Tel +82 64 123 4315 Fax +82 64 123 4321(※전화나 이메일로 문의해주십시오)<span id="fdfce">SNS로 만나 보세요!</span></p>
+<p> 상호명. (주) FUNSTAY | 사업자등록번호.  111-22-12345 | 이메일.  funstay@funstay.com | 대표전화. 1588-1234 | FAX. 051-123-4567 
+| 주소. 부산광역시 부산진구 동천로 109 삼한골드게이트빌 7F <br><br>
+
+Copyright (c) 2013 SONYUNARA all rights reserved.
+<!-- <span id="fdfce">SNS로 만나 보세요!</span> --></p>
 </nav>
 
 <nav>
