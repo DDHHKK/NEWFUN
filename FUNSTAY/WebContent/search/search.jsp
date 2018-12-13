@@ -31,7 +31,7 @@
 <!-- rangebar -->
 <link rel="stylesheet" href="../css/search/normalize.css" />
 <link rel="stylesheet" href="../css/search/ion.rangeSlider.css" />
-<link rel="stylesheet" href="../css/search/ion.rangeSlider.skinFlat.css" />
+<link rel="stylesheet" href="../css/search/ion.rangeSlider.skinNice.css" />
 
 <!-- 편의시설 아이콘 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -64,29 +64,29 @@
 
 <div align=center>
  <span>
- 	 <i id="image1"class="material-icons" style="font-size:18px" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)">star_border</i>
- 	 <i id="image2" class="material-icons" style="font-size:18px" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)">star_border</i>
- 	 <i id="image3" class="material-icons" style="font-size:18px" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)">star_border</i>
- 	 <i id="image4"class="material-icons" style="font-size:18px" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)">star_border</i>
- 	  <i id="image5"class="material-icons" style="font-size:18px" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)">star_border</i>
+ 	 <i id="image1"class="material-icons" style="color:#cc1d1d;" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)">star_border</i>
+ 	 <i id="image2" class="material-icons" style="color:#cc1d1d;" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)">star_border</i>
+ 	 <i id="image3" class="material-icons" style="color:#cc1d1d;" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)">star_border</i>
+ 	 <i id="image4"class="material-icons" style="color:#cc1d1d;" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)">star_border</i>
+ 	  <i id="image5"class="material-icons" style=color:#cc1d1d;" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)">star_border</i>
  
  </span>
 </div>
-<input type="hidden" name="star">
+<input type="hidden" class="star_shj" name="star" value="">
 
 
   </div>
    
 
 
-<script src="../js/myinfo/jquery-1.12.3.min.js"></script>
-<script src="../js/myinfo/ion.rangeSlider.js"></script>
+<script src="../js/search/jquery-1.12.3.min.js"></script>
+<script src="../js/search/ion.rangeSlider.js"></script>
  <div style="position: relative; padding: 10%;">
 
     <div>
         <input type="text" id="range" value="" name="range" />
-        <input type="hidden" id="from_shj" value="">
-        <input type="hidden" id="to_shj" value="">
+        <input type="number" id="from_shj" value="0">
+        <input type="number" id="to_shj" value="0">
     </div>
 
 </div>
@@ -107,12 +107,14 @@
             min_interval : 5000,
             grid: true
         });
-        $range.on("change", function () {
+        $("#range").on("change", function () {
      	    var $this = $(this),
      	        from = $this.data("from"),
      	        to = $this.data("to");
 			$('#from_shj').val(from);
 			$('#to_shj').val(to);
+			$('#from_shj').attr("value",from);
+			$('#to_shj').attr("value",to);
      	    console.log(from + " - " + to);
      	});
 
