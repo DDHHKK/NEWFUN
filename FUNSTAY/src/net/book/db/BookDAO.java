@@ -268,10 +268,9 @@ public class BookDAO {
   				con=getConnection();
   			    //3단계
   				String sql="delete from booking where booking_num=?";
-  				pstmt=con.prepareStatement(sql);
+  				pstmt=con.prepareStatement(sql);//객체생성
   				
-  				pstmt.setInt(1, 0);
-  				pstmt.setInt(2, bb.getBooking_num()); 
+  				pstmt.setInt(1, bb.getBooking_num()); 
   				
   			    //4단계 실행
   				pstmt.executeUpdate(); 
