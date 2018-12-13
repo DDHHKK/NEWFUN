@@ -196,10 +196,11 @@ public class BookDAO {
 			con=getConnection();
                 
                    String sql2="select * from home h, payment p , booking b "
-                   		+ "where p.member_email=? and b.payment_num=p.payment_num and b.home_num=h.home_num and b.check_in>now() and b.booking_status=1";
+                   		+ "where p.member_email=? and b.payment_num=p.payment_num and b.home_num=h.home_num and b.check_in>now() and p.payment_status=?";
                    
                    pstmt=con.prepareStatement(sql2);//객체생성
    		           pstmt.setString(1,member_email);
+   		           pstmt.setString(2, "결제완료");
    		          
    		           rs=pstmt.executeQuery();
    		           
@@ -266,7 +267,7 @@ public class BookDAO {
   			    //1,2단계 디비연결하는 메서드 호출
   				con=getConnection();
   			    //3단계
-  				String sql="update booking set booking_status=? where booking_num=?";
+  				String sql="delete from booking where booking_num=?";
   				pstmt=con.prepareStatement(sql);
   				
   				pstmt.setInt(1, 0);

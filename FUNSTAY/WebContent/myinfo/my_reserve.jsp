@@ -601,15 +601,15 @@ function button_event(booking_status){
 	
 	if(r==true){
 		//삭제액션으로 가기
-		location.href="./BillCancel.bk?booking_num="+booking_status+"";
+		return location.href="./BillCancel.bk?booking_num="+booking_status+"";
+		
+		
+		
+	}else{
 		
 		alert("예약취소되었습니다.")
-		
-	}else if(r==false){
-		
-		history.go(-1);
 	}
-	return false;
+	
 }
 </script> 
 
