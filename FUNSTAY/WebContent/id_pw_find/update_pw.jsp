@@ -29,7 +29,7 @@
 <!-- 이메일 중복체크 -->
 <script src="./js/member/email_check.js"></script>
 <!-- 회원가입시 제어 -->
-<script src="./js/default/required_Join.js"></script>
+<script src="./js/default/required_pass.js"></script>
 <link href="./css/mypage/id_find.css" rel="stylesheet">
 <script src="./js/member/id_find.js"></script>
 
@@ -66,16 +66,16 @@ String email=request.getParameter("me_email");
         <!-- <legend>비밀번호 찾기</legend> -->
          <p>
           <label for="pw_name">새 비밀번호</label>
-           <input type="text" name="me_pass" id="pw_1" >
+           <input type="password" name="me_pass" id="pw_1" >
          </p>
 
          <p>
          <label for="pw_phone">비밀번호 확인</label>
-          <input type="text" name="me_pass_check" id="pw_2">
+          <input type="password" name="me_pass_check" id="pw_2" onblur="passchk()">
          </p>
          
 
-         <button type="submit" class="btn">비밀번호 변경</button>
+         <button type="button" class="btn" onclick="change_pw()">비밀번호 변경</button>
        </fieldset>
       </form>
       </div><!-- //info -->

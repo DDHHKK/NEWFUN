@@ -25,11 +25,8 @@ public class FAQDAO {
 private Connection getConnection() throws Exception{
 		
 		Connection con = null;
-		// Context ��ü ����
 		Context init = new InitialContext();
-		// DateSource = ��񿬵� �̸� �ҷ�����
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MysqlDB");
-		// con = DataSource
 		con = ds.getConnection();
 
 		return con;
@@ -39,21 +36,16 @@ private Connection getConnection() throws Exception{
 		int num = 0;
 		try{
 			
-			//1,2디비연결 메서드호출
 			con = getConnection();
-			//num 게시판 글번호 구하기
-			//sql 함수 최대값 구하기 max()
 			sql = "select max(FAQ_num) from FAQ_board";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) num = rs.getInt(1)+1;
-			//3. sql insert  
 			sql = "insert into FAQ_board(FAQ_num,FAQ_subject,FAQ_content) values(?,?,?)";
 			pstmt=con.prepareStatement(sql); 
-			pstmt.setInt(1, num); //num
+			pstmt.setInt(1, num);
 			pstmt.setString(2, fb.getFAQ_subject());
 			pstmt.setString(3, fb.getFAQ_content());
-			//4. 실행
 			pstmt.executeUpdate();
 			 
 			
@@ -65,7 +57,7 @@ private Connection getConnection() throws Exception{
 			if (con != null) {try {con.close();} catch (SQLException ex) {	}}
 		}
 		
-	}// insertBoard() end
+	}
 
 	//getBoardCount()
 		public int getFAQ_boardCount(){
