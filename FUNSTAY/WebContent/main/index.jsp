@@ -179,7 +179,7 @@ if (email.equals("admin")) {
   
   <!-- 아이디 찾기 -->
  	 	 <div class="forget">
-  		<a href="./find_id.me">Forget email?</a>
+  		<a href="./find_id.me">Forget email / password ?</a>
   		</div><!-- //forget -->
   	</div><!-- //forget_sh --> 
     </div><!-- container -->
