@@ -17,10 +17,13 @@ public class BillCancel implements Action {
 		//request 한글처리
 		request.setCharacterEncoding("utf-8");
 		
+		int booking_num=Integer.parseInt(request.getParameter("booking_num"));
+		
+		
 		BookDAO bdao=new BookDAO();
 		BookingBean bb=new BookingBean();
-		PaymentBean pb=new PaymentBean();
-		bdao.BillCancel(bb, pb);
+		/*PaymentBean pb=new PaymentBean();*/
+		bdao.BillCancel(bb, booking_num);
 		
 		
 		ActionForward forward=new ActionForward();

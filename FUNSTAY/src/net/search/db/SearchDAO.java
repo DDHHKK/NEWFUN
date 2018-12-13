@@ -14,7 +14,9 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import net.FAQ.db.FAQBean;
+import net.book.db.ReviewBean;
 import net.member.db.MemberBean;
+import net.member.db.QnaBean;
 import net.search.Action.SearchListAction;
 
 
@@ -165,9 +167,209 @@ private Connection getConnection() throws Exception{
 			}
 			return sc;		
 		}
+		
+		// QnA 리스트
+		public List<QnaBean> getQnAList(int home_num) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<QnaBean> q_list = new ArrayList<>();
+			try {
+				con = getConnection();
+				String sql 
+						= "select * "
+						+ "from qna_board "
+						+ "where home_num=? "
+						+ "order by QnA_num desc";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, home_num);
 
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					QnaBean qb = new QnaBean();
+					qb.setQnA_num(rs.getInt("QnA_num"));
+					qb.setSubject(rs.getString("subject"));
+					qb.setContent(rs.getString("content"));
+					qb.setQnA_pass(rs.getString("QnA_pass"));
+					qb.setMember_email(rs.getString("member_email"));
+					qb.setHome_num(rs.getInt("home_num"));
+					qb.setQnA_date(rs.getDate("QnA_date"));
+					qb.setRe_ref(rs.getInt("re_ref"));
+					qb.setRe_lev(rs.getInt("re_lev"));
+					qb.setRe_seq(rs.getInt("re_seq"));
 
-}//�겢�옒�뒪
+					q_list.add(qb);
+				}
+			} catch (Exception e) {
+			} finally {
+				try{
+					if(rs!=null){rs.close();}
+					if(pstmt!=null){rs.close();}
+					if(con!=null){rs.close();}
+				}catch(SQLException e){}
+			}
+			return q_list;
+		}
+		
+		public QnaBean getQnaboard(int home_num){
+			ResultSet rs = null;
+			QnaBean qb = new QnaBean();
+			try{			
+				//1,2�뵒鍮꾩뿰寃� 硫붿꽌�뱶�샇異�
+				con = getConnection();
+				//num 寃뚯떆�뙋 湲�踰덊샇 援ы븯湲�
+				//sql �븿�닔 理쒕�媛� 援ы븯湲� max()
+				sql = "select * from home where home_num = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, home_num);
+				rs = pstmt.executeQuery();
+				while(rs.next()){				
+					qb.setHome_num(rs.getInt(1));
+					qb.setSubject(rs.getString(2));
+					qb.setContent(rs.getString(3));
+					qb.setQnA_pass(rs.getString(4));
+					qb.setMember_email(rs.getString(5));
+					qb.setHome_num(rs.getInt(6));
+					qb.setQnA_date(rs.getDate(7));
+					qb.setRe_ref(rs.getInt(8));
+					qb.setRe_lev(rs.getInt(9));
+					qb.setRe_seq(rs.getInt(10));
+					
+					
+					
+		}
+			}catch (Exception e){
+				e.printStackTrace();
+			}finally{
+				if (rs != null) {try {rs.close();} catch (SQLException ex) {}	}
+				if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
+				if (con != null) {try {con.close();} catch (SQLException ex) {	}}
+			}
+			return qb;		
+		}
+		
+
+		// QnA content
+		public List<QnaBean> getQnAcontent (int re_ref) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<QnaBean> q_list = new ArrayList();
+			try{
+				con = getConnection();
+				String sql  
+					    = "select "
+							+ "q.QnA_num,q.subject,q.content,q.QnA_pass,q.member_email,q.home_num,q.QnA_date,q.re_ref,q.re_lev,q.re_seq,h.room_subject "
+						+ "from qna_board q join home h "
+						+ "on q.home_num = h.home_num "
+						+ "where q.re_ref=? "
+						+ "order by q.re_lev";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, re_ref);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					QnaBean qb = new QnaBean();
+					qb.setQnA_num(rs.getInt("q.QnA_num"));
+					qb.setContent(rs.getString("q.content"));
+					qb.setHome_num(rs.getInt("q.home_num"));
+					qb.setMember_email(rs.getString("q.member_email"));
+					qb.setQnA_date(rs.getDate("q.QnA_date"));
+					qb.setQnA_pass(rs.getString("q.QnA_pass"));
+					qb.setRe_lev(rs.getInt("q.re_lev"));
+					qb.setRe_ref(rs.getInt("q.re_ref")); 
+					qb.setRe_seq(rs.getInt("q.re_seq"));
+					qb.setSubject(rs.getString("q.subject"));
+					qb.setHome_subject(rs.getString("h.room_subject"));
+					
+					q_list.add(qb);
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(rs!=null){rs.close();}
+					if(pstmt!=null){rs.close();}
+					if(con!=null){rs.close();}
+				}catch(SQLException e){}
+			}
+			return q_list;
+		}
+		
+		//getQnaCount()
+				public int getQnaCount(){
+					Connection con=null;
+					PreparedStatement pstmt=null;
+					ResultSet rs=null;
+					int count=0;
+					try {
+						//1,2�뵒鍮꾩뿰寃� 硫붿꽌�뱶 �샇異�
+						con=getConnection();
+				//3 寃뚯떆�뙋 湲�媛쒖닔 援ы븯湲� count(*)
+						String sql="select count(*) from qna_board";
+						pstmt=con.prepareStatement(sql);
+						//4 ���옣 <= 寃곌낵 �떎�뻾
+						rs=pstmt.executeQuery();
+						//5 泥ロ뻾�뿉 �뜲�씠�꽣 �엳�쑝硫� 
+						if(rs.next()){
+							count=rs.getInt(1);   
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally{
+						if(rs!=null)try{rs.close();}catch(SQLException ex){}
+						if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+						if(con!=null)try{con.close();}catch(SQLException ex){}
+					}
+					return count;
+				} 
+	//QnA insert
+		public void insertQna_board(QnaBean qb){
+					
+				Connection con=null;
+			    PreparedStatement pstmt=null;
+			    ResultSet rs=null;
+	    
+				 try{
+						    //1,2단계 디비연결하는 메서드 호출
+						con=getConnection();
+						 //3단계 sql 구문
+						String sql="insert into qna_board values(?,?,?,?,?,?,now(),?,?,?)";
+						pstmt=con.prepareStatement(sql);
+
+						pstmt.setInt(1,qb.getQnA_num()); 		
+						pstmt.setString(2,qb.getSubject());
+						pstmt.setString(3,qb.getContent());
+					    pstmt.setString(4,qb.getQnA_pass());
+						pstmt.setString(5,qb.getMember_email());
+						pstmt.setInt(6,qb.getHome_num());				
+						pstmt.setDate(7,qb.getQnA_date());
+						pstmt.setInt(8,qb.getRe_ref());
+						pstmt.setInt(9,qb.getRe_lev());
+						pstmt.setInt(10,qb.getRe_seq());
+					
+			                //4단계 실행
+						pstmt.executeUpdate(); 
+					
+						
+							
+				 }catch(Exception e){
+					 e.printStackTrace();
+				 }finally{
+					 //try안에서 예외 발생여부 상관없이 마무리 작업함.
+					 //객체 생성해서 사용한 기억공간 없애줌 .close()
+				 if(rs!=null) try{rs.close();}catch(SQLException ex){}
+					 if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+					 if(con!=null) try{con.close();}catch(SQLException ex){}
+					 
+				 }
+					 
+
+			}
+		
+				
+
+}
 
 
 

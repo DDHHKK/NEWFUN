@@ -221,14 +221,16 @@ public class MemberDAO {
 		try {
 			con = getConnection();
 
-			String sql = "update member set name=?, profile_photo=?, phone=?, birth=? where email=? and pass=?";
+			String sql = "update member set name=?, profile_photo=?, phone=?, birth=?,pass=?where email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mb.getName());
 			pstmt.setString(2, mb.getProfile_photo());
 			pstmt.setString(3, mb.getPhone());
 			pstmt.setString(4, mb.getBirth());
-			pstmt.setString(5, mb.getEmail());
-			pstmt.setString(6, mb.getPass());
+			pstmt.setString(5, mb.getPass());
+			pstmt.setString(6, mb.getEmail());
+	
+			
 
 			pstmt.executeUpdate();
 
@@ -445,7 +447,53 @@ public class MemberDAO {
 		}
 		return pass;
 	}// pass find end
+	
+	
 
+	// pass change start : 수정자 - 김다현
+	public String updatePw(MemberBean mb) {
+		String pass = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// System.out.println("���̵� �� Ȯ�� >>>> "+mb.getEmail());
+		// System.out.println("��ȣ �� Ȯ�� >>>> " + mb.getName());
+		try {
+			con = getConnection();
+			String sql = "update member set pass=? where email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mb.getPass());
+			pstmt.setString(2, mb.getEmail());
+
+
+			pstmt.executeUpdate();
+			
+			//System.out.println(pass);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return pass;
+	}// pass find end
+	
+	
+	
 	
 // mileage DAO start
 
@@ -692,9 +740,9 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select * from home where address =? and start_date =? and end_date =?";
+			String sql = "select * from home where address LIKE ? and start_date < ? and end_date > ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, hb.getAddress());
+			pstmt.setString(1, "%"+hb.getAddress()+"%");
 			pstmt.setString(2, start_date);
 			pstmt.setString(3, end_date);
 			rs = pstmt.executeQuery();
@@ -703,6 +751,8 @@ public class MemberDAO {
 				hb1.setAddress(rs.getString("address"));
 				hb1.setStart_date(rs.getDate("start_date"));
 				hb1.setEnd_date(rs.getDate("end_date"));
+				hb1.setRoom_subject(rs.getString("room_subject"));
+				hb1.setRoom_type(rs.getString("room_type"));
 				hb1.setPhoto(rs.getString("photo"));
 				
 				System.out.println("getsearchList" + hb1.getAddress());
@@ -744,15 +794,17 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select * from home where address =?";
+			String sql = "select * from home where address LIKE ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, hb.getAddress());
+			pstmt.setString(1, "%"+hb.getAddress()+"%");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HostBean hb1 = new HostBean();
 				hb1.setAddress(rs.getString("address"));
 				hb1.setStart_date(rs.getDate("start_date"));
 				hb1.setEnd_date(rs.getDate("end_date"));
+				hb1.setRoom_subject(rs.getString("room_subject"));
+				hb1.setRoom_type(rs.getString("room_type"));
 				hb1.setPhoto(rs.getString("photo"));
 				
 				
@@ -787,52 +839,5 @@ public class MemberDAO {
 		return vector;
 	}
 
-	public Vector getsearchList3(MemberBean mb) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		Vector vector = new Vector();
-		List goodsList = new ArrayList();
-		try {
-			con = getConnection();
-			String sql = "select * from practice where search_info =?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mb.getSearch_info());
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				MemberBean mb1 = new MemberBean();
-				mb1.setSearch_info(rs.getString("search_info"));
-				mb1.setText11(Integer.parseInt(rs.getString("text11")));
-				mb1.setText12(Integer.parseInt(rs.getString("text12")));
-				mb1.setImage(rs.getString("image"));
-
-				goodsList.add(mb1);
-				System.out.println(mb1.getSearch_info());
-				System.out.println(mb1.getText11());
-				System.out.println(mb1.getText12());
-				System.out.println(mb1.getImage());
-			}
-			vector.add(goodsList);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-				}
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			if (con != null)
-				try {
-					con.close();
-				} catch (SQLException ex) {
-				}
-		}
-		return vector;
-	}
 
 }// class end

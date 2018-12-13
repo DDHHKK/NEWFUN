@@ -1,53 +1,7 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="net.host.db.HostBean"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FunStay</title>
-<!-- 페이지 default 링크 시작 -->
-<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-<link href="../css/default/login.css" rel="stylesheet">
-<link href="../css/default/default.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- 페이지 default 링크 끝-->
-
-<!-- 도이씨 삽입링크 -->
-<link href="../css/search/search.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- 
-
-<!-- 혜진씨 삽입링크 -->
-<link href="../css/search/search_center_shj.css" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script src="script.js"></script>
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
-
-<!--star  -->
-<script src="../js/search/star.js"></script>
-
-<!-- rangebar -->
-<link rel="stylesheet" href="../css/search/normalize.css" />
-<link rel="stylesheet" href="../css/search/ion.rangeSlider.css" />
-<link rel="stylesheet" href="../css/search/ion.rangeSlider.skinNice.css" />
-
-<!-- 편의시설 아이콘 링크 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css'
-	integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
-	
-	
-
-
-</head>
-<body>
-<!-- header  시작-->
-<jsp:include page="../include/header.jsp"></jsp:include>
-<!-- header  끝-->
-<hr>
 
 <div id="content">
 <!-- 페이지내용 시작 -->
@@ -79,8 +33,8 @@
    
 
 
-<script src="../js/search/jquery-1.12.3.min.js"></script>
-<script src="../js/search/ion.rangeSlider.js"></script>
+<script src="./js/search/jquery-1.12.3.min.js"></script>
+<script src="./js/search/ion.rangeSlider.js"></script>
  <div style="position: relative; padding: 10%;">
 
     <div>
@@ -204,11 +158,32 @@
 
 
 <div id="content_DY">
+<%
+List list = (List)session.getAttribute("list");
+List rest = (List)session.getAttribute("rest");
+String address = request.getParameter("address");
+%>
+<p id = "pont_1213_WS"><%=address%>에 대해 찾으셨나요?
+ <%if(list.size()!=0){
+	%> <%=list.size()%>개의 정보를 찾았습니다.</p>
+<%
+ }
+ else if(rest.size()!=0){
+	 %> <%=rest.size()%>개의 정보를 찾았습니다.</p>
+	 <% 
+ }
+%>
+<% 
+if(list.size()!=0){
+for(int i=0;i<list.size();i++){ //for문 시작
+	HostBean hb = (HostBean)list.get(i);
+%>
+
 <!-- 여기서부터 페이지 내용을 적어주세요. -->
 <div class="content_top_shj" >
 
 <!-- 변수값 : "부산광역시", "100" -->
-<h1 style="float:left;margin:2% 2% 2% 3%;">"부산광역시"검색결과, "100"개의 정보를 찾았습니다.</h1><br>
+<h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb.getAddress()%></h1><br>
 
 <!--정렬  -->
 <div style="width:8%" id='listmenu_shj'>
@@ -231,38 +206,180 @@
 
 
 
+</div>
+<div class="clear"></div>
+
+<div class="outerbox_shj">
+<div class="imgbox_shj">
+
+<div class="slideshow-container">
+
+<div class="mySlides fade_shj">
+ 
+  <img src="./img/photo_4.png" class="img_shj"style="width:100%">
+
+</div>
+
+<div class="mySlides fade_shj">
+
+  <img src="./img/photo_3.png" class="img_shj" style="width:100%">
+
+</div>
+
+
+<div class="mySlides fade_shj">
+
+  <img src="./img/photo_2.png" class="img_shj" style="width:100%">
+
+</div>
+
+<a class="prev_shj" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next_shj" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div class="dot_box" style="text-align:center">
+  <span class="dot_shj" onclick="currentSlide(1)"></span> 
+  <span class="dot_shj" onclick="currentSlide(2)"></span> 
+  <span class="dot_shj" onclick="currentSlide(3)"></span> 
+</div>
+
+	<!-- 이미지 fade 기능  -->
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active_shj";
+}
+</script>	
+
+</div>
+<div class="contentbox_shj">
+<div class="innercon_shj">
+<h4>개인실</h4>
+<h3></h3>
+<h5>필수용품, 반려동물, 와이파이, 세탁기, 에어컨</h5>
+<h6><%=hb.getStart_date()%> ~ <%=hb.getEnd_date()%> 예약가능</h6>
+</div>
+<div class="star_shj">
+
+ <span>
+ 	 <i id="image1"class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image2" class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image3" class="material-icons" style="font-size:18px" >star_border</i>
+ 	 <i id="image4"class="material-icons" style="font-size:18px" >star_border</i>
+ 	  <i id="image5"class="material-icons" style="font-size:18px" >star_border</i>
+ </span>
+ <span style="position: relative; bottom: 10%;">
+ 2/5
+ </span>
+</div>
+</div>
+<div class="extra_shj">
+<div class="innerex_shj">
+<h4>25000/1박</h4></div>
+<div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
+</div>
+</div>
+
+<div id="modal_shj" style="display:none;">
+	<h2 >목록 리스트</h2>
+
+</div>
 
 
 
 
 
+<!-- 하트 클릭부분 -->
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('.heart_shj>i').click(function(){
+		/* var home_num= $('#home_num').val();
+		var wishlist_num= $('#wishlist_num').val();
+		var wish_num=$('#wish_num').val(); */
+		if($(this).attr("class")=='far')
+			{
+			
+				$(this).attr('class','fas');
+				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
+				location.href = "#modal_shj";
+			}
+		else
+			{
+				$(this).attr('class','far');
+				/*  location.href="./DeleteMyWish.wi?wish_num="+wish_num+"&wishlist_num="+wishlist_num; */
+				 
+			}
+			});
+});
+</script>
+
+
+<!--모달윈도우부분-->
+<script type="text/javascript">
+$(function(){
+ /*  $('#loginform').submit(function(e){
+    return false;
+  }); */
+  
+  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+});
+</script>
+<%
+} //for문끝
+} //if문끝
 
 
 
+else if(rest.size()!=0){
+for(int i=0;i<rest.size();i++){ //for문 시작
+	HostBean hb1 = (HostBean)rest.get(i);
+%>
 
+<!-- 여기서부터 페이지 내용을 적어주세요. -->
+<div class="content_top_shj" >
 
+<!-- 변수값 : "부산광역시", "100" -->
+<h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb1.getAddress()%></h1><br>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--정렬  -->
+<div style="width:8%" id='listmenu_shj'>
+<ul style=" width: 100%;" >
+   <li class='active has-sub_shj'><a href='#'><span  class='fas'>정렬  &#xf107; &#xf106;</span></a>
+      <ul>
+         <li class='has-sub_shj'><a href='#'><span  class='fas'>최신순 &#xf107; &#xf106;</span></a>
+         </li>
+         <li class='has-sub_shj'><a href='#'><span  class='fas'>인기순  &#xf107; &#xf106;</span></a>
+         </li>
+      </ul>
+   </li>
+</ul>
+</div>
+ 
 
 </div>
 <div class="clear"></div>
@@ -274,20 +391,20 @@
 
 <div class="mySlides fade_shj">
  
-  <img src="../img/photo_4.png" class="img_shj"style="width:100%">
+  <img src="./img/photo_4.png" class="img_shj"style="width:100%">
 
 </div>
 
 <div class="mySlides fade_shj">
 
-  <img src="../img/photo_3.png" class="img_shj" style="width:100%">
+  <img src="./img/photo_3.png" class="img_shj" style="width:100%">
 
 </div>
 
 
 <div class="mySlides fade_shj">
 
-  <img src="../img/photo_2.png" class="img_shj" style="width:100%">
+  <img src="./img/photo_2.png" class="img_shj" style="width:100%">
 
 </div>
 
@@ -341,6 +458,7 @@ function showSlides(n) {
 <h4>개인실</h4>
 <h3>방 제목</h3>
 <h5>필수용품, 반려동물, 와이파이, 세탁기, 에어컨</h5>
+<h6><%=hb1.getStart_date()%> ~ <%=hb1.getEnd_date()%> 예약가능</h6>
 </div>
 <div class="star_shj">
 
@@ -359,12 +477,20 @@ function showSlides(n) {
 <div class="extra_shj">
 <div class="innerex_shj">
 <h4>25000/1박</h4></div>
-<div class="heart_shj"> <i  class='fas' style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
+<div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
 </div>
 </div>
 
+<div id="modal_shj" style="display:none;">
+	<h2 >목록 리스트</h2>
+
+</div>
 
 
+
+
+
+<!-- 하트 클릭부분 -->
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -377,8 +503,7 @@ $(document).ready(function(){
 			
 				$(this).attr('class','fas');
 				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
-				 
-				
+				location.href = "#modal_shj";
 			}
 		else
 			{
@@ -391,17 +516,28 @@ $(document).ready(function(){
 </script>
 
 
+<!--모달윈도우부분-->
+<script type="text/javascript">
+$(function(){
+ /*  $('#loginform').submit(function(e){
+    return false;
+  }); */
+  
+  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+});
+</script>
+<%
+} //for문끝
+} //esle if문끝
 
 
-
-
-
-
-
-
-
-
-
+else{
+%>
+<p id="pont_1213_WS"><%=address%>대한 정보를 찾지 못하였습니다.
+다시 지역을 검색해 주세요</p>
+<% 
+}
+%>
 
 
 
@@ -439,11 +575,4 @@ $(document).ready(function(){
 </div><!-- subpage include 파일에서 나온 div 닫기 태그 -->
 
 
-
 <div class="clear"></div>
-<hr>
-<!-- footer -->
-<jsp:include page="../include/footer.jsp"></jsp:include>
-<!-- footer -->
-</body>
-</html>

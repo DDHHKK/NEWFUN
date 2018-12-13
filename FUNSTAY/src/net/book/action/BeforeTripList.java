@@ -30,8 +30,9 @@ public class BeforeTripList implements Action{
 		String member_email=(String)session.getAttribute("email");
 		
 		
-		/*BookingBean bb=new BookingBean();
-		PaymentBean pb=new PaymentBean();*/
+		BookingBean bb=new BookingBean();
+		PaymentBean pb=new PaymentBean();
+		HostBean hb=new HostBean();
 		BeforeBean BeforeB=new BeforeBean();
 		
 		BookDAO bdao=new BookDAO();
@@ -48,10 +49,10 @@ public class BeforeTripList implements Action{
 		List<BeforeBean> beforeList=(List<BeforeBean>)vector.get(0);
 		
 		//예정된숙소
-		/*List<BookingBean> bookingList2=(List<BookingBean>)vector2.get(0);
-		List<PaymentBean> paymentList2=(List<PaymentBean>)vector2.get(1);
-		List<HostBean> hostList2=(List<HostBean>)vector2.get(2);*/
-		List<BeforeBean> afterList=(List<BeforeBean>)vector2.get(0);
+		List<BookingBean> bookingList2=(List<BookingBean>)vector2.get(0);
+	    List<PaymentBean> paymentList2=(List<PaymentBean>)vector2.get(1);
+		List<HostBean> hostList2=(List<HostBean>)vector2.get(2);
+		List<BeforeBean> afterList=(List<BeforeBean>)vector2.get(3);
 		
 		
 		
@@ -62,9 +63,9 @@ public class BeforeTripList implements Action{
 		request.setAttribute("beforeList", beforeList);
 		
 		 //예정된 숙소 request 저장 
-		/*request.setAttribute("bookingList2", bookingList2);
+		request.setAttribute("bookingList2", bookingList2);
 		request.setAttribute("paymentList2", paymentList2);
-		request.setAttribute("hostList2", hostList2);*/
+		request.setAttribute("hostList2", hostList2);
 		request.setAttribute("afterList", afterList);
 
 		request.setAttribute("BeforeB", BeforeB);
