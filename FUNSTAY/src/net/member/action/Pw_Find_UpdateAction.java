@@ -21,8 +21,8 @@ public class Pw_Find_UpdateAction implements Action {
 		String email=request.getParameter("email");
 		String pass_check=request.getParameter("me_pass_check");
 		
-		System.out.println(pass_check);
-		System.out.println(email);
+		/*System.out.println(pass_check);
+		System.out.println(email);*/
 		
 		MemberDAO mdao=new MemberDAO();
 		MemberBean mb=new MemberBean();
