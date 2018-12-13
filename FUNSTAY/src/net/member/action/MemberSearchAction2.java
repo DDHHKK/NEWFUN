@@ -23,7 +23,8 @@ public class MemberSearchAction2 implements Action{
 		request.setCharacterEncoding("UTF-8");
 		
 		HostBean hb = new HostBean();
-		hb.setAddress(request.getParameter("address"));
+		String address = request.getParameter("address");
+		hb.setAddress(address);
 		System.out.println(hb.getAddress());
 		
 		MemberDAO mdd= new MemberDAO();
@@ -37,6 +38,7 @@ public class MemberSearchAction2 implements Action{
 		HttpSession session = request.getSession();
 
 		session.setAttribute("rest", rest);
+		request.setAttribute("address", address);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
