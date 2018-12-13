@@ -79,22 +79,19 @@ span.star-prototype > * {
   
 <table border="1" align="center">
 	<tr>
-	<th><%=re.getHome_num()%>번방</th> 
+	<th>평점</th> 
 	<th colspan="3"> 
 	<span class="star-prototype"><%=re.getStar() %></span>  
- 	
 	</th>  
-	
 	</tr>
 	<tr>
 	<th><img src="./img/user.png" alt="img02" width="50px" height="50px"></th>
 	<th> <%=re.getReview_date() %></th>
    	<th colspan="2"><%=re.getMember_email() %></th> 
     <tr><th colspan="5"><%=re.getContent() %></th></tr>
-    <tr><th>접근성</th><th colspan="4"><span class="star-prototype"><%=re.getAccess()%></span>
-    </th></tr>
-    <tr><th>청결함</th><th colspan="4"><span class="star-prototype"><%=re.getClean() %><</span></th></tr>  
-    <tr><th>만족도</th><th colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %><</span></th></tr>  
+    <tr><th>만족도</th><th colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></th></tr>
+    <tr><th>청결함</th><th colspan="4"><span class="star-prototype"><%=re.getClean() %></span></th></tr>
+	<tr><th>교통접근성</th><th colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></th></tr>
 </table> 
 		<script type="text/javascript"> 
 				$.fn.generateStars = function() {

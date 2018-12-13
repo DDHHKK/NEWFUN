@@ -79,7 +79,7 @@
 	<div id="room_facility">
 <a name="편의시설"><h1>편의시설</h1></a><br><br> 
 화장실 개수 : <%=sc.getRestroom() %> 
-<br><br><br><br><br>
+<br><br>
 	</div>
 
 
