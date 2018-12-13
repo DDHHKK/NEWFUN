@@ -36,6 +36,11 @@ public class MemberSearchAction implements Action{
 		System.out.println("searchAction" + start_date);
 		System.out.println("searchAction" + end_date);
 		
+		if(hb.getAddress().equals(""))
+		{
+			System.out.println("널입돠");
+			
+		}
 		MemberDAO mdd= new MemberDAO();
 	
 

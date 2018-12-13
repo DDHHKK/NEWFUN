@@ -691,9 +691,9 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select * from home where address =? and start_date =? and end_date =?";
+			String sql = "select * from home where address LIKE ? and start_date < ? and end_date > ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, hb.getAddress());
+			pstmt.setString(1, "%"+hb.getAddress()+"%");
 			pstmt.setString(2, start_date);
 			pstmt.setString(3, end_date);
 			rs = pstmt.executeQuery();
