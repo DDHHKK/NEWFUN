@@ -26,8 +26,8 @@
 <a name="QnA"><h1>QnA <%=count1%>개 </h1></a>
 
 <button class="button button1"
-			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
-	<div id="room_review">
+			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>'">QnA쓰기</button>
+	<div id="room_qna">
 	
 	
 
