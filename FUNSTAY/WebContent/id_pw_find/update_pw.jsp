@@ -24,13 +24,14 @@
 	 	<script src="../js/mypage/message_list.js"></script>
 	** 해당 페이지의 연결링크와 스크립트를 head에 넣을때 default링크와 섞이지 않도록 주석으로 구분해서 넣어주세요
 -->
+
 <!-- 이메일 중복체크 -->
 <script src="./js/member/email_check.js"></script>
 <!-- 회원가입시 제어 -->
 <script src="./js/default/required_Join.js"></script>
-
 <link href="./css/mypage/id_find.css" rel="stylesheet">
 <script src="./js/member/id_find.js"></script>
+
 </head>
 <body>
 <!-- header  시작-->
@@ -40,40 +41,42 @@
 
 <div id="content">
 <!-- 페이지내용 시작 -->
+
+
+
 <div class="content">
   <div class="agree">
 	<!-- <div id="ysh"><h1>ID/비밀번호 찾기</h1></div> -->
-   <ul class="id_pw_srh">
-    <li>
      <div class="srh_box br">
       <div class="srh_top">
-       <h2>비밀번호 찾기</h2>
-       "내정보에 등록한 정보로"<br>
-       "비밀번호를 재설정할 수 있습니다"
+       	새로운 비밀번호를 입력해주세요.<br>
+       	비밀번호는 영어,숫자조합 6자 이상으로 작성해주세요.
       </div><!-- //srh_top -->
-      <div class="info">
-      <form name="pw_form" method="post" action="./Pw_FindAction.me" onsubmit="return chk_pwform(this)">
+      <div class="info in_box1">
+      
+      <form name="pw_form" method="post" action="./Pw_Find_UpdateAction.me" onsubmit="return chk_pwform(this)">
        <input type="hidden" name="s_type" value="pw">
        <fieldset>
         <!-- <legend>비밀번호 찾기</legend> -->
          <p>
-          <label for="pw_name">ID</label>
-           <input type="text" name="me_email" id="pw_name" title="아이디 입력">
-         </p>
-         <p>
-         <label for="pw_phone">이름</label>
-          <input type="text" name="me_name" id="pw_phone" title="이름을 입력">
+          <label for="pw_name">새 비밀번호</label>
+           <input type="text" name="me_pass" id="pw_1" >
          </p>
 
-         <button type="submit">찾기</button>
+         <p>
+         <label for="pw_phone">비밀번호 확인</label>
+          <input type="text" name="me_pass_check" id="pw_2">
+         </p>
+         
+
+         <button type="submit" class="btn">비밀번호 변경</button>
        </fieldset>
       </form>
       </div><!-- //info -->
      </div><!-- //srh_box br -->
-    </li>
-   </ul>
 </div><!-- //agree -->
 </div><!-- //content -->
+
 
 
 

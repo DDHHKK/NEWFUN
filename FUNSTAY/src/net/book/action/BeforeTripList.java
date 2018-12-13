@@ -67,7 +67,7 @@ public class BeforeTripList implements Action{
 		request.setAttribute("hostList2", hostList2);*/
 		request.setAttribute("afterList", afterList);
 
-		
+		request.setAttribute("BeforeB", BeforeB);
 		
 /*		
 int pageSize = 10;
