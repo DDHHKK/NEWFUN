@@ -209,6 +209,44 @@ private Connection getConnection() throws Exception{
 			}
 			return q_list;
 		}
+		
+		public QnaBean getQnaboard(int home_num){
+			ResultSet rs = null;
+			QnaBean qb = new QnaBean();
+			try{			
+				//1,2�뵒鍮꾩뿰寃� 硫붿꽌�뱶�샇異�
+				con = getConnection();
+				//num 寃뚯떆�뙋 湲�踰덊샇 援ы븯湲�
+				//sql �븿�닔 理쒕�媛� 援ы븯湲� max()
+				sql = "select * from home where home_num = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, home_num);
+				rs = pstmt.executeQuery();
+				while(rs.next()){				
+					qb.setHome_num(rs.getInt(1));
+					qb.setSubject(rs.getString(2));
+					qb.setContent(rs.getString(3));
+					qb.setQnA_pass(rs.getString(4));
+					qb.setMember_email(rs.getString(5));
+					qb.setHome_num(rs.getInt(6));
+					qb.setQnA_date(rs.getDate(7));
+					qb.setRe_ref(rs.getInt(8));
+					qb.setRe_lev(rs.getInt(9));
+					qb.setRe_seq(rs.getInt(10));
+					
+					
+					
+		}
+			}catch (Exception e){
+				e.printStackTrace();
+			}finally{
+				if (rs != null) {try {rs.close();} catch (SQLException ex) {}	}
+				if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
+				if (con != null) {try {con.close();} catch (SQLException ex) {	}}
+			}
+			return qb;		
+		}
+		
 
 		// QnA content
 		public List<QnaBean> getQnAcontent (int re_ref) {
