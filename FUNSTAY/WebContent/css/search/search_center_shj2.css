@@ -165,14 +165,6 @@
       width: 108px;
 }
 
-#image1, #image2, #image3, #image4, #image5
-{
-	font-size:30px;
-	cursor: pointer;
-}
-
-
-
 
 
 
@@ -542,16 +534,16 @@ margin-right: 350px;}
 
 
 
-/* 
-rangebar
 
-Ion.RangeSlider, Flat UI Skin
+/* rangebar */
+
+/* Ion.RangeSlider, Flat UI Skin
 // css version 2.0.3
 // © Denis Ineshin, 2014    https://github.com/IonDen
-// ===================================================================================================================
+// ===================================================================================================================*/
 
-=====================================================================================================================
-// Skin details
+/* =====================================================================================================================
+// Skin details */
 
 .irs-line-mid,
 .irs-line-left,
@@ -608,9 +600,9 @@ Ion.RangeSlider, Flat UI Skin
     top: 22px;
     background-position: 0 -120px;
 }
-.state_hover, .irs-slider:hover {
-   color:#cc1d1d;
-} 
+/* .irs-slider.state_hover, .irs-slider:hover {
+    background-position: 0 -150px;
+} */
 
 .irs-min, .irs-max {
     color: #999;
@@ -652,4 +644,4 @@ Ion.RangeSlider, Flat UI Skin
 .irs-disabled {
 }
 
- */
+

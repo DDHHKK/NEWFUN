@@ -61,7 +61,7 @@
 
 <h1>내 예약정보</h1>
  
-<div class="w3-bar w3-black">
+<div class="w3-bar_DY w3-black">
   <button class="w3-bar-item w3-button" onclick="openCity('London')">완료된 숙소</button>
   <button class="w3-bar-item w3-button" onclick="openCity('Paris')">예정된 숙소</button>
   <button class="w3-bar-item w3-button" onclick="openCity('Seoul')">취소된 숙소</button>
@@ -151,6 +151,8 @@ if(i%3==0){
 %>
 
 <td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
+
+
 
 <td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> </td>
 
@@ -456,7 +458,7 @@ if(i%3==0){
       </footer> -->
     </div>
   </div>
-<!--영수증 모달 팝업창 끝 -->  
+<!--완료된 숙소 영수증 모달 팝업창 끝 -->  
 	
 
 
@@ -547,7 +549,7 @@ if(i%3==0){
       </footer> -->
     </div>
   </div>
-<!--영수증 모달 팝업창 끝 -->  
+<!--예정된 숙소 영수증 모달 팝업창 끝 -->  
 
 
 
