@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <header>
-<script src="./js/jquery-3.3.1.js"></script>
+<script src="./js/default/jquery-3.3.1.js"></script>
 <script type="text/javascript">
    //인원 텍스트창을 클릭하면 스크롤바가 내려온다 
 $(document).ready(function(){
