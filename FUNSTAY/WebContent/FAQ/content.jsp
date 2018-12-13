@@ -31,6 +31,10 @@
 }
 
 .button1:hover {background-color: #e7e7e7;}
+#FAQ_wrap{
+	width : 1000px;
+	margin : 0 auto;
+}
 </style>
 
 
@@ -74,12 +78,7 @@
 	int num = ((Integer) request.getAttribute("num")).intValue();
 	%>
 
-
-
-
-	
-	
-			
+<div id="FAQ_wrap">		
 			<h1><%=fb.getFAQ_subject()%></h1>
 		
 			
@@ -104,7 +103,7 @@
 			}
 		}
 	%>
-			
+</div>			
 		
 	
 	
