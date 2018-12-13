@@ -29,7 +29,7 @@ public class HostJoinAction  implements Action{
 		
 	
 		String room_subject=request.getParameter("room_subject");
-		
+
 		if(room_subject==null)
 		{
 			response.setContentType("text/html; charset=UTF-8");
@@ -40,6 +40,8 @@ public class HostJoinAction  implements Action{
 				out.println("</script>");
 				out.close();
 		}
+		
+		
 		String room_content=request.getParameter("room_content");
 		if(room_content==null)
 		{
@@ -51,7 +53,7 @@ public class HostJoinAction  implements Action{
 				out.println("</script>");
 				out.close();
 		}
-		
+
 		int restroom=0;
 
 		try{restroom=Integer.parseInt(request.getParameter("restroom"));} 
@@ -61,11 +63,11 @@ public class HostJoinAction  implements Action{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('화장실의 개수가 선택되지 않았습니다.');");
+			out.println("alert('욕실의 개수가 선택되지 않았습니다.');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();}
-		
+
 		int price=0;
 		try{price=Integer.parseInt(request.getParameter("price"));} 
 		catch(Exception e)
@@ -77,6 +79,8 @@ public class HostJoinAction  implements Action{
 			out.println("</script>");
 			out.close();
 		}
+		
+
 		String address= null;
 		try{address=request.getParameter("address");} 
 		catch(Exception e)
@@ -88,7 +92,7 @@ public class HostJoinAction  implements Action{
 			out.println("</script>");
 			out.close();
 		}
-				
+
 		int end_date=0;
 		try{end_date=Integer.parseInt(request.getParameter("end_date"));} 
 		catch(Exception e)
@@ -118,7 +122,7 @@ public class HostJoinAction  implements Action{
 			out.println("</script>");
 			out.close();
 		}
-		
+	
 		String room_type=null;
 		try{	room_type =request.getParameter("room_type");}
 		catch(Exception e){
@@ -142,21 +146,28 @@ public class HostJoinAction  implements Action{
 			out.println("</script>");
 			out.close();
 		}
-		
-		
-		
-		String[] convenience = null;
-		if(request.getParameter("convenience") != null)
-		{
-			convenience=request.getParameterValues("convenience");
+
+		String[] num_conv = null;
+		try{	num_conv=request.getParameterValues("num_conv");}
+		catch(Exception e){
+			for(int i=0; i<num_conv.length; i++)
+			{
+				num_conv[i]="0";
+			}
 			
 		}
 		
-		String [] num_conv = null;
-		if(request.getParameter("num_conv") != null)
-		{num_conv = request.getParameterValues("num_conv");}
 
 		
+		String[] convenience = null;
+		try{	convenience=request.getParameterValues("convenience");
+		request.setAttribute("convenience",convenience);}
+		catch(Exception e){
+			e.printStackTrace();
+			
+		}
+		
+	
 		
 		
 		
@@ -190,7 +201,7 @@ public class HostJoinAction  implements Action{
 			
 		}
 
-		
+	
 	
 		//request.setAttribute("bed_type", bed_type);
 		request.setAttribute("room_subject",room_subject);
@@ -202,7 +213,6 @@ public class HostJoinAction  implements Action{
 		request.setAttribute("in_time",in_time);
 		request.setAttribute("out_time",out_time);
 		request.setAttribute("room_type",room_type);
-		request.setAttribute("convenience",convenience);
 		request.setAttribute("re_room",re_room);
 		request.setAttribute("num_conv", num_conv);
 		HttpSession session=request.getSession();

@@ -117,21 +117,29 @@ String endDate = df.format(cal.getTime());
 <tr><td class="td1">체크아웃 가능 시간  </td><td class="td2"><input type="text" name="out_time" value="<%=out_time %>" readonly></td></tr>
 <tr><td class="td1">호스팅 기간  </td><td class="td2"><input type="text" name="end_date" value="<%=strDate%> ~ <%=endDate%>" readonly><input type="hidden" name="end_date" value="<%=end_date %>" readonly></td></tr>
 <tr><td class="td1">편의시설 </td><td class="td2">
-<%for(int i=0; i<convenience.length; i++){%>
 <%
-if(i == (convenience.length-1)){
-	out.print(convenience[i]);
+try{
+
+	for(int i=0; i<convenience.length; i++){%>
+	<%
+	if(i == (convenience.length-1)){
+		out.print(convenience[i]);
 			%>
 			
-	<%}
+		<%}
 
-else{
-	out.print(convenience[i]+",");
-%>
+	else{
+		out.print(convenience[i]+",");
+	%>
 	
-<%}
-
+	<%}
+	}
 }
+catch(Exception e)
+{
+	e.printStackTrace();
+}
+
 for(int i=0; i<num_conv.length; i++)
 {
 	%>
