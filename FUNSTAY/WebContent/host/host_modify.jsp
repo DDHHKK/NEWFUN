@@ -245,17 +245,17 @@ List<BedBean> bed_list = (List)request.getAttribute("bed_list");
 				
 				<td>
 					<div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">
-						<%=rb.getRe_room()%>번방<br>
+						<b><%=rb.getRe_room()%>번방</b><br>
 						<%-- <%=rb.getRoom_num()%><br> --%>
-						최대인원 : <%=rb.getMax_people()%><br>
+						최대 <%=rb.getMax_people()%>명<br>
 						<%for(int z=0; z<bb.getSingle_bed(); z++){ %>
-							<img src="./img/host/single_bed.png" style="width:30px;height:30px;">
+							<img src="./img/host/single_bed.png" style="width:35px;height:35px;">
 						<%
 						}for(int z=0; z<bb.getDouble_bed(); z++){ %>
-							<img src="./img/host/double_bed.png" style="width:30px;height:30px;">
+							<img src="./img/host/double_bed.png" style="width:35px;height:35px;">
 						<%
 						}for(int z=0; z<bb.getBunk_bed(); z++){ %>
-							<img src="./img/host/bunk_bed.png" style="width:30px;height:30px;">
+							<img src="./img/host/bunk_bed.png" style="width:35px;height:35px;">
 						<%} %>
 					</div>
 				</td>
@@ -342,7 +342,7 @@ List<BedBean> bed_list = (List)request.getAttribute("bed_list");
 						<td class="td"><input type="checkbox" name="convenience"
 							value="<%=cb.getHair_dryer() %>" class="conv"> <img
 							src="./img/icon/hair_dryer-512.png" width="20px" height="20px">
-							헤어드라이기 <input type="button" id="con_btn"></td>
+							헤어드라이기<!--  <input type="button" id="con_btn"> --></td>
 					</tr>
 				</table>
 			</div>
@@ -350,7 +350,7 @@ List<BedBean> bed_list = (List)request.getAttribute("bed_list");
   <div style="overflow:auto;">
     <div style="float:right;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">이전</button>
-      <button type="button" id="nextBtn" onclick="nextPrev(1)">다음</button>
+      <button type="button" class="con_btn" id="nextBtn" onclick="nextPrev(1)">다음</button>
     </div>
   </div>
   <!-- Circles which indicates the steps of the form: -->
@@ -398,6 +398,16 @@ function nextPrev(n) {
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
     // ... the form gets submitted:
+    	$('.num_conv').remove();
+			var convenience = [];
+			var convenience ="";
+			$('input[name="convenience"]').each(function(index){
+			if ($(this).is(':checked')){
+					$(this).append("<input type='hidden' value='1' name='num_conv' class='num_conv' checked>");
+				} else{
+					$(this).append("<input type='hidden' value='0' name='num_conv' class='num_conv' checked>");
+				}
+			});
     document.getElementById("regForm").submit();
     return false;
   }

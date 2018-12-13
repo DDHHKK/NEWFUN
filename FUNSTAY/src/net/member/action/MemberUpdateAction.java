@@ -57,7 +57,7 @@ public class MemberUpdateAction implements Action{
 		mb.setBirth(multi.getParameter("birth"));
 		
 		mb.setProfile_photo(multi.getFilesystemName("profile_photo"));
-		
+		System.out.println(multi.getParameter("name"));
 /*		mb.setEmail(request.getParameter("email"));
 		mb.setPass(request.getParameter("pass"));
 		mb.setName(request.getParameter("name"));
