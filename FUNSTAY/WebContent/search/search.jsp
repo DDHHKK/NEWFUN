@@ -33,6 +33,11 @@
 <link rel="stylesheet" href="../css/search/ion.rangeSlider.css" />
 <link rel="stylesheet" href="../css/search/ion.rangeSlider.skinNice.css" />
 
+<!-- modal -->
+<script type="text/javascript" src="../js/myinfo/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search/modal_shj.js"></script>
+
+
 <!-- 편의시설 아이콘 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
@@ -359,12 +364,20 @@ function showSlides(n) {
 <div class="extra_shj">
 <div class="innerex_shj">
 <h4>25000/1박</h4></div>
-<div class="heart_shj"> <i  class='fas' style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
+<div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
 </div>
 </div>
 
+<div id="modal_shj" style="display:none;">
+	<h2 >목록 리스트</h2>
+
+</div>
 
 
+
+
+
+<!-- 하트 클릭부분 -->
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -377,8 +390,7 @@ $(document).ready(function(){
 			
 				$(this).attr('class','fas');
 				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
-				 
-				
+				location.href = "#modal_shj";
 			}
 		else
 			{
@@ -391,9 +403,16 @@ $(document).ready(function(){
 </script>
 
 
-
-
-
+<!--모달윈도우부분-->
+<script type="text/javascript">
+$(function(){
+ /*  $('#loginform').submit(function(e){
+    return false;
+  }); */
+  
+  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+});
+</script>
 
 
 
