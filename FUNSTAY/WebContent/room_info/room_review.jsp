@@ -33,10 +33,23 @@
 }
 
 .button1:hover {background-color: #e7e7e7;}
+
+span.star-prototype, span.star-prototype > * {
+    height: 16px; 
+    background: url(http://i.imgur.com/YsyS5y8.png) 0 -50px repeat-x;
+    width: 80px;
+    display: inline-block;
+}
+ 
+span.star-prototype > * {
+    background-position: 0 0;
+    max-width:80px;   
+}
+
 </style>
 
 <title>Insert title here</title>
-</head>
+</head> 
 <body>
 		
 <%
@@ -56,31 +69,43 @@
 	<button class="button button1"
 			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
 	<div id="room_review">
+	
+	
 
 	<%
 			for (int i = 0; i < ReviewList.size(); i++) {
 				ReviewBean re = (ReviewBean) ReviewList.get(i);
 	%>
-
+  
 <table border="1" align="center">
 	<tr>
-	<th><%=re.getHome_num() %>번방</th> 
-	<th colspan="3">
-	<%=re.getStar() %>점 
-	</th>
+	<th><%=re.getHome_num()%>번방</th> 
+	<th colspan="3"> 
+	<span class="star-prototype"><%=re.getStar() %></span>  
+ 	
+	</th>  
+	
 	</tr>
 	<tr>
 	<th><img src="./img/user.png" alt="img02" width="50px" height="50px"></th>
-	<th><%=re.getPayment_num() %></th>
+	<th> <%=re.getReview_date() %></th>
    	<th colspan="2"><%=re.getMember_email() %></th> 
     <tr><th colspan="5"><%=re.getContent() %></th></tr>
-    <tr><th>접근성</th><th colspan="4"><%=re.getAccess()%></th></tr>
-    <tr><th>청결함</th><th colspan="4"><%=re.getClean() %></th></tr>  
-    <tr><th>만족도</th><th colspan="4"><%=re.getSatisfaction() %></th></tr>  
+    <tr><th>접근성</th><th colspan="4"><span class="star-prototype"><%=re.getAccess()%></span>
+    </th></tr>
+    <tr><th>청결함</th><th colspan="4"><span class="star-prototype"><%=re.getClean() %><</span></th></tr>  
+    <tr><th>만족도</th><th colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %><</span></th></tr>  
 </table> 
-		
+		<script type="text/javascript"> 
+				$.fn.generateStars = function() {
+  			  return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*16));});
+			};
+
+			// 숫자 평점을 별로 변환하도록 호출하는 함수
+			$('.star-prototype').generateStars();
+		</script>
 		<%
-			}
+			}   
 		%>  
 
 <%
