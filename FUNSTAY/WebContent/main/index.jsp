@@ -337,7 +337,7 @@ if (email.equals("admin")) {
  imgUrls.push( "img/photo_3.png" );
  imgUrls.push( "img/photo_4.png" );
  imgUrls.push( "img/photo_5.png" );
- imgUrls.push( "img/photo_6.png" );
+
  
  var imgUrls2 = new Array();
  imgUrls2.push( "img/photo_7.png" );
@@ -345,7 +345,7 @@ if (email.equals("admin")) {
  imgUrls2.push( "img/photo_9.png" );
  imgUrls2.push( "img/photo_10.png" );
  imgUrls2.push( "img/photo_11.png" );
- imgUrls2.push( "img/photo_12.png" );
+
  
  var imgUrls3 = new Array();
  imgUrls3.push( "img/photo_13.png" );
@@ -353,22 +353,27 @@ if (email.equals("admin")) {
  imgUrls3.push( "img/photo_15.png" );
  imgUrls3.push( "img/photo_16.png" );
  imgUrls3.push( "img/photo_17.png" );
- imgUrls3.push( "img/photo_18.png" );
- 
+
  var imgUrls4 = new Array();
  imgUrls4.push( "img/photo_19.png" );
  imgUrls4.push( "img/photo_20.png" );
  imgUrls4.push( "img/photo_21.png" );
  imgUrls4.push( "img/photo_22.png" );
  imgUrls4.push( "img/photo_23.png" );
- imgUrls4.push( "img/photo_24.png" );
+
+ 
+ var imgUrls5 = new Array();
+ imgUrls5.push( "img/photo_6.png" );
+ imgUrls5.push( "img/photo_12.png" );
+ imgUrls5.push( "img/photo_18.png" );
+ imgUrls5.push( "img/photo_24.png" );
  </script>
    <tr>   
              
     <td>
     <div id= "img_1">
     <script>
-document.write( "<img src='" + imgUrls[ Math.floor( Math.random() * 6) ] + "' width=400 height=400>"); //랜덤으로 난수발생하여 배열에사진하나를출력
+document.write( "<img src='" + imgUrls[ Math.floor( Math.random() * 5) ] + "' width=300 height=300>"); //랜덤으로 난수발생하여 배열에사진하나를출력
 </script>
 </div>
 </td>     
@@ -376,7 +381,7 @@ document.write( "<img src='" + imgUrls[ Math.floor( Math.random() * 6) ] + "' wi
    	<td>
    	<div id= "img_2">
    	<script>
-document.write( "<img src='" + imgUrls2[ Math.floor( Math.random() * 6) ] + "' width=400 height=400>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
+document.write( "<img src='" + imgUrls2[ Math.floor( Math.random() * 5) ] + "' width=300 height=300>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
 </script>
 </div>
 </td>
@@ -384,7 +389,7 @@ document.write( "<img src='" + imgUrls2[ Math.floor( Math.random() * 6) ] + "' w
 <td>
 <div id= "img_3">
 <script>
-document.write( "<img src='" + imgUrls3[ Math.floor( Math.random() * 6) ] + "' width=400 height=400>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
+document.write( "<img src='" + imgUrls3[ Math.floor( Math.random() * 5) ] + "' width=300 height=300>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
 </script>
 </div>
 </td>
@@ -392,7 +397,15 @@ document.write( "<img src='" + imgUrls3[ Math.floor( Math.random() * 6) ] + "' w
  <td>
  <div id= "img_4">
  <script>
-document.write( "<img src='" + imgUrls4[ Math.floor( Math.random() * 6) ] + "' width=400 height=400>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
+document.write( "<img src='" + imgUrls4[ Math.floor( Math.random() * 5) ] + "' width=300 height=300>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
+</script>
+</div>
+</td>
+
+<td>
+ <div id= "img_5">
+ <script>
+document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' width=300 height=300>" ); //랜덤으로 난수발생하여 배열에사진하나를출력
 </script>
 </div>
 </td>
