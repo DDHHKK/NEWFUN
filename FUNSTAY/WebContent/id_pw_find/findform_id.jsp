@@ -55,7 +55,7 @@
 		<div class="srh_box or">
 			<div class="wap">
 
-				<div class="srh_top">" 내정보에 등록한 정보로<br>아이디를 찾을수 있습니다 "</div><!-- //srh_top -->
+				<div class="srh_top">회원가입시 등록한 정보로 아이디를 찾을수 있습니다.</div><!-- //srh_top -->
 
 				<div class="info in_box">
 					<form name="id_form" method="post" action="./Id_FindAction.me" onsubmit="return chk_idform(this)">
@@ -104,8 +104,8 @@
 	<!-- <div id="ysh"><h1>ID/비밀번호 찾기</h1></div> -->
      <div class="srh_box br">
       <div class="srh_top">
-       "내정보에 등록한 정보로<br>
-      	비밀번호를 재설정할 수 있습니다"
+       	가입하신 "이메일" 로 비밀번호 찾기가 가능합니다.<br>
+       	꼭 올바른 이메일,성함,휴대폰번호를 입력해 주세요.
       </div><!-- //srh_top -->
       <div class="info in_box">
       <form name="pw_form" method="post" action="./Pw_FindAction.me" onsubmit="return chk_pwform(this)">
@@ -121,6 +121,24 @@
          <label for="pw_phone">이름</label>
           <input type="text" name="me_name" id="pw_phone" title="이름을 입력">
          </p>
+         
+         <p>
+							<label for="id_mobile">휴대폰번호</label>
+							<select name="me_hp1" class="tel_box">
+								<option value="">선택</option>
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="018">018</option>
+								<option value="019">019</option>
+							</select>
+							- 
+							<input type="text" name="me_hp2" id="pass_mobile1" class="tel_box" title="휴대폰번호입력">
+							- 
+							<input type="text" name="me_hp3" id="pass_mobile2"  class="tel_box" title="휴대폰번호입력">
+						</p>
+
 
          <button type="submit" class="btn">비밀번호 찾기</button>
        </fieldset>
