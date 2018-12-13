@@ -215,6 +215,7 @@ public class BookDAO {
    		        	hb.setRoom_subject(rs.getString("room_subject"));
    		        	pb.setSum_price(rs.getInt("sum_price"));*/
    		        	
+   		        	bb.setBooking_num(rs.getInt("booking_num"));
    		        	BeforB.setRoom_type(rs.getString("room_type"));
    		        	BeforB.setPhoto(rs.getString("photo"));
    		        	BeforB.setRoom_subject(rs.getString("room_subject"));
@@ -269,7 +270,7 @@ public class BookDAO {
   				pstmt=con.prepareStatement(sql);
   				
   				pstmt.setInt(1, 0);
-  				pstmt.setInt(2, bb.getBooking_num());
+  				pstmt.setInt(2, bb.getBooking_num()); 
   				
   			    //4단계 실행
   				pstmt.executeUpdate(); 

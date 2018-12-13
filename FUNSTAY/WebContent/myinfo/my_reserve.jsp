@@ -286,7 +286,7 @@ List bookingList2=(List)request.getAttribute("bookingList2");
 List paymentList2=(List)request.getAttribute("paymentList2");
 List hostList2=(List)request.getAttribute("hostList2"); 
 List afterList=(List)request.getAttribute("afterList");
-for(int i=0; i<afterList.size(); i++){
+for(int i=0; i<bookingList2.size(); i++){
 	BookingBean bb=(BookingBean)bookingList2.get(i);
 	PaymentBean pb=(PaymentBean)paymentList2.get(i);
 	HostBean hb=(HostBean)hostList2.get(i); 
@@ -297,7 +297,7 @@ if(i%3==0){
 	<% 
 }
 %>
-
+<td><%=bb.getBooking_num()%></td>
 <td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
 <td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
 	
