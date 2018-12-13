@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FunStay</title>
 <!-- 페이지 default 링크 시작 -->
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
@@ -15,6 +16,8 @@
 <!-- 도이씨 삽입링크 -->
 <link href="../css/search/search.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+
 <!-- 혜진씨 삽입링크 -->
 <link href="../css/search/search_center_shj.css" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -32,9 +35,10 @@
 
 <!-- 편의시설 아이콘 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css'
 	integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
+	
 	
 
 
@@ -220,70 +224,181 @@
  
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 <div class="clear"></div>
 
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo1.jpeg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
-</div>
-</a>
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo2.jpg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
-</div>
-</a>
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo3.jpg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
-</div>
-</a>
+<div class="outerbox_shj">
+<div class="imgbox_shj">
 
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo1.jpeg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
+<div class="slideshow-container">
+
+<div class="mySlides fade_shj">
+ 
+  <img src="../img/photo_4.png" class="img_shj"style="width:100%">
+
 </div>
-</a>
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo2.jpg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
+
+<div class="mySlides fade_shj">
+
+  <img src="../img/photo_3.png" class="img_shj" style="width:100%">
+
 </div>
-</a>
-<a href="#">
-<div class="mywish_shj">
- <div id="outerbox"> <img src="../img/photo3.jpg"> </div>
- <div id="imginfo_shj">
-  <div id="info_1_shj">부산광역시 해운대</div>
-  <div id="info_2_shj">35,000 / 박</div>
-  <div id="info_3_shj">3.5 ㅇㅇㅇㅇㅇ25</div>
- </div>
+
+
+<div class="mySlides fade_shj">
+
+  <img src="../img/photo_2.png" class="img_shj" style="width:100%">
+
 </div>
-</a>
+
+<a class="prev_shj" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next_shj" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div class="dot_box" style="text-align:center">
+  <span class="dot_shj" onclick="currentSlide(1)"></span> 
+  <span class="dot_shj" onclick="currentSlide(2)"></span> 
+  <span class="dot_shj" onclick="currentSlide(3)"></span> 
+</div>
+
+	<!-- 이미지 fade 기능  -->
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active_shj";
+}
+</script>	
+
+
+
+</div>
+<div class="contentbox_shj">
+<div class="innercon_shj">
+<h4>개인실</h4>
+<h3>방 제목</h3>
+<h5>필수용품, 반려동물, 와이파이, 세탁기, 에어컨</h5>
+</div>
+<div class="star_shj">
+
+ <span>
+ 	 <i id="image1"class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image2" class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image3" class="material-icons" style="font-size:18px" >star_border</i>
+ 	 <i id="image4"class="material-icons" style="font-size:18px" >star_border</i>
+ 	  <i id="image5"class="material-icons" style="font-size:18px" >star_border</i>
+ </span>
+ <span style="position: relative; bottom: 10%;">
+ 2/5
+ </span>
+</div>
+</div>
+<div class="extra_shj">
+<div class="innerex_shj">
+<h4>25000/1박</h4></div>
+<div class="heart_shj"> <i  class='fas' style="color:#cc1d1d;">&#xf004;</i></div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="pageNum_shj">
 <a href="#" >◀</a>
