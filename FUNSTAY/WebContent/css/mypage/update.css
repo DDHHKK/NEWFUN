@@ -77,7 +77,7 @@
 	
 } */
 
-.panel_box_sh .tite_sh{
+/* .panel_box_sh .tite_sh{
 	color: #666;
     font-size:30px;
     font-weight:600;
@@ -86,7 +86,7 @@
     margin:0;
     padding:20px 65px; 
     letter-spacing: -2.5px;
-}
+} */
 
 
 
@@ -106,5 +106,5 @@ h1{
     box-sizing: border-box;
     height: 46px;
  }
-}
+
 
