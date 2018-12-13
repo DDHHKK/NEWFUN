@@ -24,6 +24,8 @@
 <!-- 페이지 default 링크 끝-->
 
 
+<script src="./js/default/jquery-3.3.1.js"></script>
+
 <!-- 
 	css파일 연결할때 예시 
 	<link href="../css/jsp파일이 있는 폴더와 동일한 폴더를 css폴더 안에 만들고 폴더의 이름을 이곳에 써주세요/css파일 이름.css" rel="stylesheet"> 
@@ -155,18 +157,101 @@ for(int i=0; i<num_conv.length; i++)
 
 
 
-
-
 <tr><td colspan="2"><input type="button" value="<<이전페이지" id="back_btn" onclick="history.go(-1)">
 <input type="submit" value="숙소등록하기" id="sub_btn"></td></tr>
 </table>
 	
-<table id="photo_up">
-<tr><td><b>숙소 사진을 업로드 해주세요.</b></td></tr>
+<div id="photo_up">
+<div id="photo_subject"><b>숙소 사진을 업로드 해주세요.</b></div>
+<div class="ptouterbox_1">
+	<div class="ptinnerbox_1">
+		<div class="inner_subject">
+			<label for="photo1">업로드1</label>
+			<input type="file" name="photo1" id="photo1">
+		</div>
+		<div class="inner_img">
+			<img id="img_shj1">
+		</div>
+	</div>
+	<div class="ptinnerbox_2">
+		<div class="inner_subject">
+			<label for="photo1">업로드1</label>
+			<input type="file" name="photo2" id="photo2">
+		</div>
+		<div class="inner_img">
+			<img id="img_shj2">
+		</div>
+	</div>
+</div>
 
-<label for="photo1">업로드1</label>
+<div class="ptouterbox_2">
+	<div class="ptinnerbox_1">
+		<div class="inner_subject">
+			<label for="photo1">업로드1</label>
+			<input type="file" name="photo3" id="photo3">
+		</div>
+		<div class="inner_img">
+			<img id="img_shj3">
+		</div>
+	</div>
+	
+	<div class="ptinnerbox_2">
+		<div class="inner_subject">
+			<label for="photo1">업로드1</label>
+			<input type="file" name="photo4" id="photo4">
+		</div>
+		<div class="inner_img">
+			<img id="img_shj4">
+		</div>
+	</div>
+</div>
+
+<div class="ptouterbox_3">
+	<div class="inner_subject">
+		<label for="photo1">업로드1</label>
+		<input type="file" name="photo5" id="photo5">
+	</div>
+	<div class="inner_img">
+		<img id="img_shj5">
+	</div>
+</div>
+
+<script type="text/javascript">
+var sel_files;
+var id;
+$(document).ready(function(){
+	//path = $(this);
+	$(this).on("change",handleImgFileSelect);
+});
+	
+	function handleImgFileSelect (e)
+	{
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		id =e.target.id;
+		filesArr.forEach(function(f){
+			if(!f.type.match("image.*"))	{alert("확장자는 이미지 확장자만 가능합니다.");return;}		
+		sel_file = f;
+		var reader = new FileReader();
+		reader.onload = function(e)
+		{
+			if(id=="photo1"){$("#img_shj1").attr("src",e.target.result);}
+			else if(id=="photo2"){	$("#img_shj2").attr("src",e.target.result);}
+			else if(id=="photo3"){
+				$("#img_shj3").attr("src",e.target.result);}
+			else if(id=="photo4"){
+				$("#img_shj4").attr("src",e.target.result);}
+			else if(id=="photo5"){
+				$("#img_shj5").attr("src",e.target.result);}
+		}
+		reader.readAsDataURL(f);
+		});
+	}
+
+</script>
+<!-- <label for="photo1">업로드1</label>
 <tr><td><input type="file" name="photo1" id="photo1"></td></tr>
-
+<div></div>
 <label for="photo2">업로드2</label>
 <tr><td><input type="file" name="photo2" id="photo2"></td></tr>
 
@@ -177,8 +262,8 @@ for(int i=0; i<num_conv.length; i++)
 <tr><td><input type="file" name="photo4" id="photo4"></td></tr>
 
 <label for="photo5">업로드5</label>
-<tr><td><input type="file" name="photo5" id="photo5"></td></tr>
-</table>
+<tr><td><input type="file" name="photo5" id="photo5"></td></tr> -->
+</div>
 	
 </form>
 
