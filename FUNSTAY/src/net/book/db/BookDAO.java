@@ -255,7 +255,7 @@ public class BookDAO {
     
     
   //예약취소하는 메서드(sql-update문)
-  	public void BillCancel(BookingBean bb,int booking_num){
+  	public void BillCancel(PaymentBean pb,int booking_num){
   		
   		Connection con=null;
   	    PreparedStatement pstmt=null;
@@ -270,22 +270,22 @@ public class BookDAO {
   				String sql="delete from booking where booking_num=?";
   				pstmt=con.prepareStatement(sql);//객체생성
   				
-  				pstmt.setInt(1, bb.getBooking_num()); 
+  				pstmt.setInt(1, booking_num); 
   				
   			    //4단계 실행
   				pstmt.executeUpdate(); 
   				
-  			/*	
+  				
   			    //3단계
   				sql="update payment set payment_status=? where payment_num=?";
   				pstmt=con.prepareStatement(sql);
   				
   				pstmt.setString(1, "결제취소");
-  				pstmt.setString(2, pb.getPayment_num());
+  				pstmt.setString(2,pb.getPayment_num());
   				
   			    //4단계 실행
   				pstmt.executeUpdate(); 
-  				*/
+  				
   				
   				
   				

@@ -297,7 +297,7 @@ if(i%3==0){
 	<% 
 }
 %>
-<td><%=bb.getBooking_num()%></td>
+
 <td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
 <td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
 	
@@ -307,7 +307,7 @@ if(i%3==0){
   </div>
  <!--영수증 버튼 끝  -->  
   <!-- 예약취소 버튼 -->
-  <button class="cancel_butt_DY" onclick="button_event(<%=bb.getBooking_num()%>);">예약취소</button>
+  <button class="cancel_butt_DY" onclick="button_event();">예약취소</button>
   <!-- 예약취소 버튼 끝  -->
 		
 
@@ -595,19 +595,52 @@ function openCity(cityName) {
     }
     document.getElementById(cityName).style.display = "block";  
 }
+
+
+
+
+
 //예약 취소 확인
-function button_event(booking_status){
+function button_event(){
 	r=confirm("정말 예약 취소하시겟습니까?")
 	
 	if(r==true){
 		//삭제액션으로 가기
-		return location.href="./BillCancel.bk?booking_num="+booking_status+"";
 		
 		
+		
+		
+		
+		
+		<%
+
+		List bookingList3=(List)request.getAttribute("bookingList2");
+		List paymentList3=(List)request.getAttribute("paymentList2");
+		List hostList3=(List)request.getAttribute("hostList2"); 
+		List afterList3=(List)request.getAttribute("afterList");
+		for(int i=0; i<bookingList3.size(); i++){
+			BookingBean bb=(BookingBean)bookingList3.get(i);
+			PaymentBean pb=(PaymentBean)paymentList3.get(i);
+			HostBean hb=(HostBean)hostList3.get(i); 
+			BeforeBean BeforeB=(BeforeBean)afterList3.get(i);
+		
+		%>
+
+		return location.href="./BillCancel.bk?booking_num=<%=bb.getBooking_num()%>";
+
+		<% }%> 
+		  
+		
+		
+		alert("예약취소되었습니다.")
+		
+		
+		
+	
 		
 	}else{
 		
-		alert("예약취소되었습니다.")
+		
 	}
 	
 }

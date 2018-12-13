@@ -21,9 +21,9 @@ public class BillCancel implements Action {
 		
 		
 		BookDAO bdao=new BookDAO();
-		BookingBean bb=new BookingBean();
-		/*PaymentBean pb=new PaymentBean();*/
-		bdao.BillCancel(bb, booking_num);
+		/*BookingBean bb=new BookingBean();*/
+		PaymentBean pb=new PaymentBean();
+		bdao.BillCancel(pb, booking_num);
 		
 		
 		ActionForward forward=new ActionForward();
