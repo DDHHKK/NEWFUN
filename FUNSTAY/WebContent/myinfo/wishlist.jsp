@@ -87,7 +87,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 <!-- 여기서부터 페이지 내용을 적어주세요. -->
 
 <div class="content_top_shj">
-<h1 style="float:left;margin:2% 2% 2% 3%;">목록</h1><br><br>
+<h1 style="float:left;margin:2% 2% 2% 3%;">찜한숙소</h1><br><br>
 <!-- 변수값:1 --> 
 
 <%
