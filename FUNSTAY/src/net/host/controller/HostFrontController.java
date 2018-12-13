@@ -18,6 +18,7 @@ import net.host.action.HostJoinAction;
 import net.host.action.HostPassCheckAction;
 import net.host.action.HostRoomListAction;
 import net.host.action.HostModify;
+import net.host.action.HostModifyAction;
 
 
 
@@ -104,9 +105,10 @@ public class HostFrontController extends HttpServlet{
 		
 		//숙소 정보 수정하는 곳
 		else if(command.equals("/HostModifyAction.ho")){
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./host/host_modify.jsp");
+			action = new HostModifyAction();
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){e.printStackTrace();}
 			
 		}else if(command.equals("/HostModify.ho")){
 			action = new HostModify();
