@@ -93,6 +93,4 @@
 		<servlet-name>ReviewFrontController</servlet-name>
 		<url-pattern>*.re</url-pattern>
 	</servlet-mapping>
- 
-
 </web-app>

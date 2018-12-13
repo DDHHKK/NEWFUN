@@ -42,7 +42,8 @@ $(document).ready(function(){
 <!-- header  시작-->
 <jsp:include page="../include/header.jsp"></jsp:include>
 <!-- header  끝-->
-<!-- <hr> -->
+<hr> 
+
 <div class="clear"></div>
 <!-- <div style="height:150px;"></div> -->
 <!-- 회원 관리 페이지 왼쪽메뉴바 시작 -->

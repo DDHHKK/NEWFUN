@@ -19,9 +19,13 @@ public class MemberUpdateAction implements Action{
 			throws Exception {
 		
 		request.setCharacterEncoding("UTF-8");
+	
 		
 		HttpSession session = request.getSession();
 		String email = (String)session.getAttribute("email");
+		
+		/*String photo11=(String)request.getAttribute("photo11");*/
+		/*System.out.println("하하하ㅏ"+photo11);*/
 		
 		ActionForward forward = new ActionForward();
 		if(email==null){
@@ -32,6 +36,8 @@ public class MemberUpdateAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		MemberBean mb = new MemberBean();
 		
+		
+		
 		String filePath = null;
 		if(request.getRealPath("/upload")!=null){
 			filePath=request.getRealPath("/upload");
@@ -40,12 +46,16 @@ public class MemberUpdateAction implements Action{
 	
 		int MaxSize = 30 * 1024 * 1024;
 		MultipartRequest multi = new MultipartRequest(request, filePath, MaxSize, "utf-8", new DefaultFileRenamePolicy());
+	
+		
+		
 		
 		mb.setEmail(multi.getParameter("email"));
 		mb.setPass(multi.getParameter("pass"));
 		mb.setName(multi.getParameter("name"));
 		mb.setPhone(multi.getParameter("phone"));
 		mb.setBirth(multi.getParameter("birth"));
+		
 		mb.setProfile_photo(multi.getFilesystemName("profile_photo"));
 		
 /*		mb.setEmail(request.getParameter("email"));
