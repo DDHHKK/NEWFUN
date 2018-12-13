@@ -2,6 +2,7 @@
 var locked=0;
 function show(star)
 {
+	unlock(star);
 	if (locked) {return;}
 	
 	var i;
@@ -41,9 +42,15 @@ function lock (star)
 	locked=1;
 }
 
+function unlock (star)
+{
+	noshow(5);
+	locked=0;
+}
+
 function mark(star)
 {
 	lock(star);
-	document.fr.star.value=star;
+	$('.star_shj').attr("value",star);
 }
 

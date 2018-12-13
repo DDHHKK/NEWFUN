@@ -101,8 +101,8 @@
 <tr><td></td></tr>
 </table> -->
 <%
-int wishlist_num = ((Integer)request.getAttribute("wishlist_num")).intValue(); 
-int home_num = ((Integer)request.getAttribute("home_num")).intValue(); 
+int wishlist_num = ((Integer)request.getAttribute("wishlist_num")); 
+int home_num = ((Integer)request.getAttribute("home_num")); 
 
 List MyWishlist = (List)request.getAttribute("mywishlist");
 
