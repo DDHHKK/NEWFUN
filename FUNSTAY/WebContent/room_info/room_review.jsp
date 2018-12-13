@@ -56,27 +56,28 @@
 	<button class="button button1"
 			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
 	<div id="room_review">
-	
-	
+
 	<%
 			for (int i = 0; i < ReviewList.size(); i++) {
 				ReviewBean re = (ReviewBean) ReviewList.get(i);
 	%>
 
-<table id="" border="1">
-	<tr><th colspan="3">
-	<%=re.getStar()%>점
-	</th></tr>
-	<tr><throwspan="4"><img src="./img/user.png" alt="img02"></th>
+<table border="1" align="center">
+	<tr>
+	<th><%=re.getHome_num() %>번방</th> 
+	<th colspan="3">
+	<%=re.getStar() %>점 
+	</th>
+	</tr>
+	<tr>
+	<th><img src="./img/user.png" alt="img02" width="50px" height="50px"></th>
 	<th><%=re.getPayment_num() %></th>
-   	<th><%=re.getMember_email() %></th>
-   	<th><%=re.getHome_num() %></th>
-    <tr><th colspan="3"><%=re.getContent() %></th></tr>
-    <tr><th colspan="3"><%=re.getAccess()%></th></tr>
-    <tr><th colspan="3"><%=re.getClean() %></th></tr>  
-    <tr><th colspan="3"><%=re.getSatisfaction() %></th></tr>  
-</table>
-
+   	<th colspan="2"><%=re.getMember_email() %></th> 
+    <tr><th colspan="5"><%=re.getContent() %></th></tr>
+    <tr><th>접근성</th><th colspan="4"><%=re.getAccess()%></th></tr>
+    <tr><th>청결함</th><th colspan="4"><%=re.getClean() %></th></tr>  
+    <tr><th>만족도</th><th colspan="4"><%=re.getSatisfaction() %></th></tr>  
+</table> 
 		
 		<%
 			}

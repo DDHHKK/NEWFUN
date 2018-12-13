@@ -36,6 +36,12 @@ $(document).ready(function(){
 MemberBean mb = new MemberBean(); 
 String email = (String)session.getAttribute("email");
 mb=md.getMember(email);
+int hostCheck = 0;
+try{
+hostCheck = (int)session.getAttribute("hostCheck");
+}catch(Exception e){
+	hostCheck=0;}
+
 %>
 <section class="sec01_WS">
 
@@ -45,7 +51,11 @@ mb=md.getMember(email);
 <li id="pont1_WS"><a href="./Main.me"><i>FUNSTAY</i></a></li>
 <li id="li_2"><input type="text" id="text_1_WS" name="search_info" placeholder="검색할 내용을 적으세요">
 <input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></li>
-<li id="li_3"><a href="./HostMain.ho">호스트로 등록해보세요</a></li>
+<%if(hostCheck==0){ %>
+<li id="li_3"><a href="./HostMain.ho">호스트로 등록해 보세요</a></li>
+<%}else if(hostCheck==1){ %>
+<li id="li_3"><a href="./HostMain.ho">숙소를 추가해 보세요</a></li>
+<%} %>
 <li id="li_4"><a href="./FAQ_boardList.fa">FAQ</a></li>
 
 <!-- email값이 null이면 로그인과 회원가입이 보이고  null이아니면 사진창이뜨면서 회원닉네임과함께 문구가뜬다 -->
@@ -70,8 +80,7 @@ if(email==null){
 	<li><a href="./MemberMileage.me"><b>마일리지</b></a></li>
 	<li><a href="./MemberQNAlist.me"><b>문의하기</b></a></li>
 	<%
-	int hostCheck = 0;
-	hostCheck = (int)session.getAttribute("hostCheck");
+	
 	if(email.equals("admin")){
 	%>
 	<li><a href="./MemberListAction.me"><b>회원목록</b></a></li>
