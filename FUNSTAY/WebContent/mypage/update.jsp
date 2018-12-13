@@ -85,7 +85,12 @@
    
    <div>
     <p><i class="fa fa-key icon"></i><label>Password</label></p>
-    <p><input type="password" class="t_box_sh" name="pass"></p>
+    <p><input type="password" class="t_box_sh" name="pass" ></p>
+   </div>
+   
+     <div>
+    <p><i class="fa fa-key icon"></i><label>Password Check</label></p>
+    <p><input type="password" class="t_box_sh" name="pass_check"></p>
    </div>
    
    <div>
