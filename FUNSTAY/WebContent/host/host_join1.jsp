@@ -79,8 +79,9 @@ $(document).ready(function(){
 
 /* --------------방개수 선택하는 select box-------------- */
 $(function() {
+	var rooms =0;
 	$('.select_btn').click(function(){
-		var rooms = $('.select_rooms').val();
+		rooms = $('.select_rooms').val();
 		
 
 		for(var j=10; j>rooms; j--){
@@ -92,10 +93,11 @@ $(function() {
 			});
 		}
 		//alert($('.room3_single').val());
-		for(var i=0; i<=rooms; i++){
+		for(var i=1; i<=rooms; i++){
 			$('.room'+i+'').css({
 				"display":"block"
 			});
+	/* 		$('.max_box'+i+'').append("<input type='number' value='0' class='room"+i+"_maxP' name='room_maxP'>"); */ 
 		}
 		
 	});
@@ -104,25 +106,46 @@ $(function() {
 	
 	
 /*-----------------------------최대 침대개수 제어--------------------------  */
-		 $(".room1_single, .room1_double, .room1_bunk").change(function()
-		{	
-		var room1_single = $(".room1_single option:selected").val();
+	  $('select').change(function(){
+	for(var i=1; i<=rooms; i++)
+	{
+		var room1_single = $(".room"+i+"_single option:selected").val();
 		if(room1_single=="싱글침대 개수를 선택하세요"){room1_single=0;}
 		else{room1_single *=1;}
 		
-		var room1_double = $(".room1_double option:selected").val(); 
+		var room1_double = $(".room"+i+"_double option:selected").val(); 
 		if(room1_double=="더블침대 개수를 선택하세요"){room1_double=0;}
 		else{room1_double *=1;}
 		
-		var room1_bunk = $(".room1_bunk option:selected").val(); 
+		var room1_bunk = $(".room"+i+"_bunk option:selected").val(); 
+		if(room1_bunk=="이층침대 개수를 선택하세요"){room1_bunk=0;}
+		else{room1_bunk *=1;}
+	
+		var room_maxP = room1_single+(room1_double*2)+(room1_bunk*2);
+		$(".room"+i+"_maxP").attr("value",room_maxP);
+	}
+		}); 
+		/*  $(this).change(function()
+		{	
+			var clss = $(this).parent().find("option:selected").text();
+			alert($(this).parent().find("option:selected").text()); */
+/* 		var room1_single = $(".room"+i+"_single option:selected").val();
+		if(room1_single=="싱글침대 개수를 선택하세요"){room1_single=0;}
+		else{room1_single *=1;}
+		
+		var room1_double = $(".room"+i+"_double option:selected").val(); 
+		if(room1_double=="더블침대 개수를 선택하세요"){room1_double=0;}
+		else{room1_double *=1;}
+		
+		var room1_bunk = $(".room"+i+"_bunk option:selected").val(); 
 		if(room1_bunk=="이층침대 개수를 선택하세요"){room1_bunk=0;}
 		else{room1_bunk *=1;}
 		
 		var room_maxP = room1_single+(room1_double*2)+(room1_bunk*2);
-		$(".room1_maxP").attr("value",room_maxP);
-	});
+		$(".room"+i+"_maxP").attr("value",room_maxP); */
+	
 });
-    
+
     
   
     
@@ -321,7 +344,7 @@ for ( int i =1; i<=10; i++){
 	</td>
 	<td class="td">
 		<img src="./img/icon/single_bed-512.png" width="30px">
-		<select class="room<%=i %>_single" name="room_single">
+		<select class="room<%=i %>_single" id="<%=i %>" name="room_single">
 		<option>싱글침대 개수를 선택하세요</option>
 		<option>1</option>
 		<option>2</option>
@@ -331,7 +354,7 @@ for ( int i =1; i<=10; i++){
 
        			
 		<img src="./img/icon/icon_bed__45215.png" width="30px">
-		<select class="room<%=i %>_double" name="room_double">
+		<select class="room<%=i %>_double" id="<%=i %>" name="room_double">
 		<option>더블침대 개수를 선택하세요</option>
 		<option>1</option>
 		<option>2</option>
@@ -339,7 +362,7 @@ for ( int i =1; i<=10; i++){
 		</select><br>
        			
 		<img src="./img/icon/3365-200.png" width="30px">
-		<select class="room<%=i %>_bunk" name="room_bunk">
+		<select class="room<%=i %>_bunk" id="<%=i %>" name="room_bunk">
 		<option>이층침대 개수를 선택하세요</option>
 		<option>1</option>
 		<option>2</option>
@@ -349,9 +372,9 @@ for ( int i =1; i<=10; i++){
 		<option>6</option>
 		</select>
 	</td>
-	<td class="td1">
+	<td class="max_box<%=i %>">
 		<b>수용가능한 최대인원을 선택하세요</b><br><br>
-		<input type="number" value="2" class="room<%=i %>_maxP" name="room_maxP">
+	 	<input type="number" value="2" class="room<%=i %>_maxP" name="room_maxP"> 
 	</td>
 </tr>
 </table>
