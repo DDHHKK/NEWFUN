@@ -271,7 +271,7 @@ public class BookDAO {
   				pstmt=con.prepareStatement(sql);//객체생성
   				
   				pstmt.setInt(1, booking_num); 
-  				
+  				System.out.println(booking_num);
   			    //4단계 실행
   				pstmt.executeUpdate(); 
   				
