@@ -1,5 +1,6 @@
 package net.member.action;
 
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.List;
 import java.util.Vector;
@@ -25,8 +26,8 @@ public class MemberSearchAction implements Action{
 		HostBean hb = new HostBean();
 		
 		request.setCharacterEncoding("utf-8");
-		
-		hb.setAddress(request.getParameter("address"));
+		String address = request.getParameter("address");
+		hb.setAddress(address);
 		String start_date = request.getParameter("start_date");
 		String end_date = request.getParameter("end_date");
 		//mb.setText11(Integer.parseInt(request.getParameter("text11")));
@@ -35,6 +36,17 @@ public class MemberSearchAction implements Action{
 		System.out.println("searchAction" + hb.getAddress());
 		System.out.println("searchAction" + start_date);
 		System.out.println("searchAction" + end_date);
+		
+		if(hb.getAddress().equals(""))
+		{
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('검색할 지역을 입력해 주세요');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();		
+		}
 		
 		MemberDAO mdd= new MemberDAO();
 	
@@ -46,6 +58,7 @@ public class MemberSearchAction implements Action{
 		HttpSession session = request.getSession();
 		session.setAttribute("list", list);
 		session.setAttribute("rest", rest);
+		request.setAttribute("address", address);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
