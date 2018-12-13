@@ -126,11 +126,6 @@
   </div>
 </div>
 
-<!-- top -->
-  <div id="top_quick">
-   <a href="#">top</a>
-  </div>
-
-
+  
 </body>
 </html>

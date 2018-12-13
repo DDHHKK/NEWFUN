@@ -26,19 +26,19 @@ img:hover {
 	int num = ((Integer) request.getAttribute("num")).intValue();
 %>
 
-
+ 
 <div id="room_photo">
  <a name="사진"><h1>사진</h1></a><br>
-<table border="4" align="center">
+<table border="1" align="center">
 <tr>
 <th rowspan="3" >
-<a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[0] %>" width="800" height="700"></a></th>
-<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[1] %>" width="400" height="350"></a></th>
-<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[2] %>" width="400" height="350"></a></th>
+<a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[0] %>" width="1000px" height="700px"></a></th>
+<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[1] %>" width="500px" height="350px"></a></th>
+<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[2] %>" width="500px" height="350px"></a></th>
 </tr>
 <tr>
-<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[3] %>" width="400" height="350"></a></th>
-<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[4] %>" width="400" height="350"></a></th>
+<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[3] %>" width="500px" height="350px"></a></th>
+<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[4] %>" width="500px" height="350px"></a></th>
 </tr>
 </table>
  </div> 
