@@ -445,7 +445,53 @@ public class MemberDAO {
 		}
 		return pass;
 	}// pass find end
+	
+	
 
+	// pass change start : 수정자 - 김다현
+	public String updatePw(MemberBean mb) {
+		String pass = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// System.out.println("���̵� �� Ȯ�� >>>> "+mb.getEmail());
+		// System.out.println("��ȣ �� Ȯ�� >>>> " + mb.getName());
+		try {
+			con = getConnection();
+			String sql = "update member set pass=? where email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mb.getPass());
+			pstmt.setString(2, mb.getEmail());
+
+
+			pstmt.executeUpdate();
+			
+			//System.out.println(pass);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return pass;
+	}// pass find end
+	
+	
+	
 	
 // mileage DAO start
 

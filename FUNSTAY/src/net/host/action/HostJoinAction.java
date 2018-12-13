@@ -61,7 +61,7 @@ public class HostJoinAction  implements Action{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('화장실의 개수가 선택되지 않았습니다.');");
+			out.println("alert('욕실의 개수가 선택되지 않았습니다.');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();}
