@@ -43,7 +43,7 @@ public class BookFrontController extends HttpServlet {
 		//리뷰작성 페이지
 		if(command.equals("/ReviewWrite.bk")){
 			action = new ReviewWrite();
-			try { 
+			try {  
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();

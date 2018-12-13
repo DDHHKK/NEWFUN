@@ -108,12 +108,11 @@
 <br><br>
 
 
-
 <!-- room_qna -->
 <div id="room_qna">
 <jsp:include page="room_qna.jsp"></jsp:include>
 </div>
-<br><br>
+<br><br> 
  
  
  	</div> 

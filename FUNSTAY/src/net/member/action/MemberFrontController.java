@@ -130,11 +130,11 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/MemberUpdateForm.me")) {
+		} /*else if (command.equals("/MemberUpdateForm.me")) {
 			forward = new ActionForward();
 			forward.setPath("./mypage/update.jsp");
 			forward.setRedirect(false);
-		} else if (command.equals("/MemberUpdateAction.me")) {
+		}*/ else if (command.equals("/MemberUpdateAction.me")) {
 			action = new MemberUpdateAction();
 			try {
 				forward = action.execute(request, response);

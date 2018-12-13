@@ -19,9 +19,13 @@ public class MemberUpdateAction implements Action{
 			throws Exception {
 		
 		request.setCharacterEncoding("UTF-8");
+	
 		
 		HttpSession session = request.getSession();
 		String email = (String)session.getAttribute("email");
+		
+		/*String photo11=(String)request.getAttribute("photo11");*/
+		/*System.out.println("하하하ㅏ"+photo11);*/
 		
 		ActionForward forward = new ActionForward();
 		if(email==null){
@@ -32,6 +36,8 @@ public class MemberUpdateAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		MemberBean mb = new MemberBean();
 		
+		
+		
 		String filePath = null;
 		if(request.getRealPath("/upload")!=null){
 			filePath=request.getRealPath("/upload");
@@ -40,12 +46,16 @@ public class MemberUpdateAction implements Action{
 	
 		int MaxSize = 30 * 1024 * 1024;
 		MultipartRequest multi = new MultipartRequest(request, filePath, MaxSize, "utf-8", new DefaultFileRenamePolicy());
+	
+		
+		
 		
 		mb.setEmail(multi.getParameter("email"));
 		mb.setPass(multi.getParameter("pass"));
 		mb.setName(multi.getParameter("name"));
 		mb.setPhone(multi.getParameter("phone"));
 		mb.setBirth(multi.getParameter("birth"));
+		
 		mb.setProfile_photo(multi.getFilesystemName("profile_photo"));
 		System.out.println(multi.getParameter("name"));
 /*		mb.setEmail(request.getParameter("email"));
@@ -56,15 +66,23 @@ public class MemberUpdateAction implements Action{
 		mb.setBirth(request.getParameter("birth"));
 		mb.setMileage(Integer.parseInt(request.getParameter("mileage")));*/
 		
-		int check = mdao.updateMember(mb);
+			mdao.updateMember(mb);
 		
-		if(check == 1){
-			//수정성공시
-			forward = new ActionForward();
+		
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('정보가 변경되었습니다');");
+			out.println("location.href='./MemberUpdate.me'");
+			out.println("</script>");
+			out.close();
+			return null;
+			
+			/*forward = new ActionForward();
 			forward.setPath("./MemberUpdateForm.me");
 			forward.setRedirect(true);
-			return forward;
-		}else if(check == 0){
+			return forward;*/
+		/*}else if(check == 0){
 			//비밀번호 틀림
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -84,6 +102,6 @@ public class MemberUpdateAction implements Action{
 			out.close();
 			return null;
 		}
-		
+		*/
 	}
 }

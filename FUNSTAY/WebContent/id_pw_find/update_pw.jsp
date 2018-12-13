@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,7 +29,7 @@
 <!-- 이메일 중복체크 -->
 <script src="./js/member/email_check.js"></script>
 <!-- 회원가입시 제어 -->
-<script src="./js/default/required_Join.js"></script>
+<script src="./js/default/required_pass.js"></script>
 <link href="./css/mypage/id_find.css" rel="stylesheet">
 <script src="./js/member/id_find.js"></script>
 
@@ -42,34 +43,39 @@
 <div id="content">
 <!-- 페이지내용 시작 -->
 
+<%
+String email=request.getParameter("me_email");
+/* request.setAttribute("me_email",email); */
 
+%>
 
 <div class="content">
   <div class="agree">
 	<!-- <div id="ysh"><h1>ID/비밀번호 찾기</h1></div> -->
      <div class="srh_box br">
       <div class="srh_top">
-       	새로운 비밀번호를 입력해주세요.<br>
-       	비밀번호는 영어,숫자조합 6자 이상으로 작성해주세요.
+       	새로운 비밀번호를 입력해 주세요.<br>
+       	비밀번호는 영어,숫자조합 6자 이상으로 작성해 주세요.
       </div><!-- //srh_top -->
       <div class="info in_box1">
       
-      <form name="pw_form" method="post" action="./Pw_Find_UpdateAction.me" onsubmit="return chk_pwform(this)">
+      <form name="pw_form" method="post" action="./Pw_Find_UpdateAction.me?email=<%=email%>">
        <input type="hidden" name="s_type" value="pw">
+       <input type="hidden" name="<%=email%>">
        <fieldset>
         <!-- <legend>비밀번호 찾기</legend> -->
          <p>
           <label for="pw_name">새 비밀번호</label>
-           <input type="text" name="me_pass" id="pw_1" >
+           <input type="password" name="me_pass" id="pw_1" >
          </p>
 
          <p>
          <label for="pw_phone">비밀번호 확인</label>
-          <input type="text" name="me_pass_check" id="pw_2">
+          <input type="password" name="me_pass_check" id="pw_2" onblur="passchk()">
          </p>
          
 
-         <button type="submit" class="btn">비밀번호 변경</button>
+         <button type="button" class="btn" onclick="change_pw()">비밀번호 변경</button>
        </fieldset>
       </form>
       </div><!-- //info -->

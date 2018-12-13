@@ -14,6 +14,40 @@
 <!-- 페이지 default 링크 끝-->
 <link href="./css/login1.css" rel="stylesheet">
 
+
+<!-- 도이씨 삽입링크 -->
+<link href="./css/search/search.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+
+<!-- 혜진씨 삽입링크 -->
+<link href="./css/search/search_center_shj.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="script.js"></script>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
+
+<!--star  -->
+<script src="./js/search/star.js"></script>
+
+<!-- rangebar -->
+<link rel="stylesheet" href="./css/search/normalize.css" />
+<link rel="stylesheet" href="./css/search/ion.rangeSlider.css" />
+<link rel="stylesheet" href="./css/search/ion.rangeSlider.skinNice.css" />
+
+<!-- modal -->
+<script type="text/javascript" src="./js/myinfo/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search/modal_shj.js"></script>
+
+
+<!-- 편의시설 아이콘 링크 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css'
+	integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
+
+
+
 <!-- 
 	css파일 연결할때 예시 
 	<link href="../css/jsp파일이 있는 폴더와 동일한 폴더를 css폴더 안에 만들고 폴더의 이름을 이곳에 써주세요/css파일 이름.css" rel="stylesheet"> 
@@ -34,7 +68,7 @@
 
 <!-- 페이지내용 시작 -->
 
-<jsp:include page="../include/practice.jsp"></jsp:include>
+<jsp:include page="../search/search.jsp"></jsp:include>
 
 <!-- 페이지내용 끝 -->
 
