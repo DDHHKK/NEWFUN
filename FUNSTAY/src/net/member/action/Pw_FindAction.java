@@ -14,6 +14,7 @@ public class Pw_FindAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		request.setCharacterEncoding("UTF-8");
+		
 		String email = request.getParameter("me_email"); 
 		String name = request.getParameter("me_name"); 
 		String phone = (request.getParameter("me_hp1")+request.getParameter("me_hp2")+request.getParameter("me_hp3")); 
@@ -54,7 +55,7 @@ public class Pw_FindAction implements Action{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('정보가없습니다');");
+			out.println("alert('정보가 없습니다.');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();

@@ -56,15 +56,23 @@ public class MemberUpdateAction implements Action{
 		mb.setBirth(request.getParameter("birth"));
 		mb.setMileage(Integer.parseInt(request.getParameter("mileage")));*/
 		
-		int check = mdao.updateMember(mb);
+			mdao.updateMember(mb);
 		
-		if(check == 1){
-			//수정성공시
-			forward = new ActionForward();
+		
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('정보가 변경되었습니다');");
+			out.println("location.href='./MemberUpdate.me'");
+			out.println("</script>");
+			out.close();
+			return null;
+			
+			/*forward = new ActionForward();
 			forward.setPath("./MemberUpdateForm.me");
 			forward.setRedirect(true);
-			return forward;
-		}else if(check == 0){
+			return forward;*/
+		/*}else if(check == 0){
 			//비밀번호 틀림
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -84,6 +92,6 @@ public class MemberUpdateAction implements Action{
 			out.close();
 			return null;
 		}
-		
+		*/
 	}
 }

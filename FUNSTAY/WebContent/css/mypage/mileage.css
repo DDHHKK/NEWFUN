@@ -79,7 +79,10 @@
     color: #cc1d1d;
     width: 100px;
     height: 37px;
+    cursor: pointer;
 }
+
+
 
 #mdatebtn_sg {
     height: 24px;
@@ -88,6 +91,11 @@
     color: white;
     width: 100px;
     height: 37px;
+    cursor: pointer;
+}
+
+#mdatebtn_sg:hover {
+	background-color: #991515;
 }
 
 /* 마일리지내역확인하기 css */

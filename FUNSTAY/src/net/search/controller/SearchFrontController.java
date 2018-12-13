@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.book.action.ReviewWrite;
+import net.search.Action.Qna_boardWrite;
+import net.search.Action.Qna_boardWriteAction;
 import net.search.Action.RoomDetailAction;
 import net.search.Action.SearchListAction;
 
@@ -27,7 +30,7 @@ public class SearchFrontController extends HttpServlet{
 		System.out.println("뽑아온 가상주소 : "+command);
 		//뽑아온 가상주소 비교
 		ActionForward forward=null;
-		Action action=null;
+		Action action=null; 
 		
 		//list 
 		if (command.equals("/SearchList.sc")){
@@ -54,6 +57,19 @@ public class SearchFrontController extends HttpServlet{
 			forward.setRedirect(false);
 		}
 		
+		//QnA write
+		if(command.equals("/Qna_boardWrite.sc")){
+			action = new Qna_boardWrite();
+			try {  
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/Qna_boardWriteForm.sc")){
+			forward = new ActionForward();  
+			forward.setPath("./room_info/Qna_boardWriteForm.jsp");
+			forward.setRedirect(false);
+		}
 		
 	
 			

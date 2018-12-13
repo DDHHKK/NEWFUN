@@ -23,17 +23,7 @@ public class ReviewDAO {
 	PreparedStatement pstmt = null;
 	String sql = null; 
 	//디비연결 메서드
-	private Connection getConnection() throws Exception{
-		
-		//p443
-		//커넥션 풀 (Connection Pool)
-		//프로그램 설치 Java Naming DI API
-		//DBCP API
-		
-		//tomcat-dbcp.jar 설치
-		//1. WebContent/META-INF/context.xml
-		//2. WebContent/WEB-INF/web.xml
-		
+	private Connection getConnection() throws Exception{	
 		Connection con=null;
 		Context init=new InitialContext();
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/MysqlDB");
