@@ -299,8 +299,9 @@ if(i%3==0){
 %>
 
 <td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
-<td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> 
+<td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%></td> 
 	
+<td>	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
   <button onclick="document.getElementById('id10').style.display='block'" class="w3-button w3-black">영수증</button>
