@@ -282,6 +282,7 @@ public class BookDAO {
   				
   				pstmt.setString(1, "결제취소");
   				pstmt.setString(2,pb.getPayment_num());
+  			    System.out.println(pb.getPayment_num());
   				
   			    //4단계 실행
   				pstmt.executeUpdate(); 

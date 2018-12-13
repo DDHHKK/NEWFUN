@@ -24,7 +24,7 @@ public class BillCancel implements Action {
 		/*BookingBean bb=new BookingBean();*/
 		PaymentBean pb=new PaymentBean();
 		bdao.BillCancel(pb, booking_num);
-		
+		System.out.println(pb.getPayment_num());
 		
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(true);
