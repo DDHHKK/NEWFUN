@@ -412,13 +412,14 @@ public class MemberDAO {
 		// System.out.println("��ȣ �� Ȯ�� >>>> " + mb.getName());
 		try {
 			con = getConnection();
-			String sql = "select pass from member where email=? and name=?";
+			String sql = "select pass from member where email=? and name=? and phone=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mb.getEmail());
 			pstmt.setString(2, mb.getName());
+			pstmt.setString(3, mb.getPhone());
 
 			rs = pstmt.executeQuery();
-			System.out.println(pass);
+			//System.out.println(pass);
 
 			if (rs.next()) {
 				pass = rs.getString("pass");
