@@ -198,12 +198,13 @@ float : right;
 }
 
 #room_photo{
-	/* border : 3px solid green;  */
+/* 	border : 3px solid gray;  */
 	
 }
 #room_detail{
-	width: 700px;
+	width: 900px;
 	margin : 0 auto;
+	text-align: center;
 	/* border : 1px solid red;  */
 }
 #room_content{

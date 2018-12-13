@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FunStay</title>
 <!-- 페이지 default 링크 시작 -->
-<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
 <link href="./css/default/login.css" rel="stylesheet">
 <link href="./css/default/default.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,10 +29,11 @@
 
 
 <!--혜진씨 검색목록 컨텐츠 부분  -->
-<link href="./css/myinfo/mywish_wishlist_shj.css" rel="stylesheet"> 
+<!-- <link href="./css/myinfo/mywish_wishlist_shj.css" rel="stylesheet">  -->
 
 <!--영수증 모달  -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+<link href="./css/myinfo/w3.css" rel="stylesheet">
 
 <!--my_reserve.css  -->
 <link href="./css/myinfo/my_reserve.css" rel="stylesheet">
@@ -58,7 +59,7 @@
 
 <!-- 여기서부터 페이지 내용을 적어주세요. -->
 
-<p class="letter">내 예약정보</p>
+<h1>내 예약정보</h1>
  
 <div class="w3-bar w3-black">
   <button class="w3-bar-item w3-button" onclick="openCity('London')">완료된 숙소</button>

@@ -26,7 +26,7 @@
 <script src="./dist/js/datepicker.min.js"></script>
 <script src="./dist/js/i18n/datepicker.en.js"></script>
 <!-- room_info scroll박스 -->
-<script src="./dist/js/scroll.js"></script>
+<script src="./js/room_info/scroll.js"></script>
 </head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -35,15 +35,12 @@
 <body>
 <div class="room_menu">
 </div>
-<marquee behavior=scroll><b>☆숙소를 소개합니다☆</b></marquee>
 
 <!-- room_border -->
 <div id="room_border">
 
 <!-- room_photo.jsp -->
  <jsp:include page="room_photo.jsp"></jsp:include>
- 
- <br><br><br><br><br>
  
  	<%
  	request.setCharacterEncoding("UTF-8");
@@ -54,13 +51,16 @@
 	%>
 			
 <!-- room_wrapper -->
+<marquee behavior=scroll><b>☆숙소를 소개합니다☆</b></marquee>
+
 <div id="room_wrap">
  <div id="room_detail">
  	<div id="room_imfomation">
- 	<h2><a href="#">개요 </a><a href="#사진">·사진 </a><a href="#숙소이름">·숙소이름 </a>
- 	<a href="#편의시설">·편의시설 </a><a href="#지역정보">·지역정보 </a><a href="#숙소이용규칙">·숙소이용규칙 </a><a href="#후기">·후기  </a></h2>
- 	<hr><hr>
-  
+ 	<h2><a href="#">개요 </a> 
+ 	<a href="#편의시설">·편의시설 </a><a href="#지역정보">·지역정보 </a><a href="#숙소이용규칙">·숙소이용규칙 </a>
+ 	<a href="#후기">·후기  </a><a href="#QnA">·QnA  </a></h2>
+ 	<hr>  
+      
  	
  	<a href="#"><img src="./img/메일.jpg" alt="mail" align="right"></a>
  	<a href="#"><img src="./img/smile.png" alt="smile" align="right"></a>
@@ -68,19 +68,17 @@
  	
 <!-- room_content --> 	
  	<div id="room_content">
- 	<a name="숙소이름"><h1>숙소이름 : <%=sc.getRoom_subject() %></h1></a><br><br> 
- 	Room_type : <%=sc.getRoom_type() %> <br>
-	숙소내용 : <%=sc.getRoom_content() %> <br>
-	price : <%=sc.getPrice() %> <br>
-	사진 : <img src="./upload/<%=sc.getPhoto().split(",")[0] %>" width="130" height="130">
-<br><br><br><br><br><br><br>
+ 	<h1><%=sc.getRoom_subject() %></h1><br><br> 
+ 	 <%=sc.getRoom_type() %> <br>
+	 <%=sc.getRoom_content() %> <br> 
+<br><br>
 	</div>
 
 
-<!-- room_facility -->
+<!-- room_facility --> 
 	<div id="room_facility">
 <a name="편의시설"><h1>편의시설</h1></a><br><br> 
-<%=sc.getRestroom() %> 
+화장실 개수 : <%=sc.getRestroom() %> 
 <br><br><br><br><br>
 	</div>
 
@@ -90,7 +88,7 @@
 	<a name="지역정보"><h1>지역정보</h1></a><br><br>
 <%=sc.getAddress() %>
 	</div>
-<br><br><br><br><br>
+<br><br>
 
 
 <!-- room_rule -->
@@ -100,12 +98,22 @@
 	체크아웃 시간 - <%=sc.getOut_time() %> <br> 
 	</div>
 </div>
- <br><br><br><br><br>
+ <br><br>
  
+ 
+ <!-- room_review -->
 <div id="room_review">
 <jsp:include page="room_review.jsp"></jsp:include>
 </div>
+<br><br>
 
+
+
+<!-- room_qna -->
+<div id="room_qna">
+<jsp:include page="room_qna.jsp"></jsp:include>
+</div>
+<br><br>
  
  
  	</div> 
@@ -115,11 +123,6 @@
   </div>
 </div>
 
-<!-- top -->
-  <div id="top_quick">
-   <a href="#">top</a>
-  </div>
-
-
+  
 </body>
 </html>

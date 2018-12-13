@@ -172,14 +172,14 @@ if (email.equals("admin")) {
       </label> -->
       <br>
   <!-- 비밀번호 찾기 --> 
-   <div id="forget_sh">
+    <div id="forget_sh">
  		 <div class="forget">
-  		<a href="./find_pw.me">Forget password?</a>
-  		</div> 
+  		
+  		</div>  
   
   <!-- 아이디 찾기 -->
  	 	 <div class="forget">
-  		<a href="./find_id.me">Forget email?</a>
+  		<a href="./find_id.me">Forget email / password ?</a>
   		</div><!-- //forget -->
   	</div><!-- //forget_sh --> 
     </div><!-- container -->
