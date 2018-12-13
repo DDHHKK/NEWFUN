@@ -221,14 +221,16 @@ public class MemberDAO {
 		try {
 			con = getConnection();
 
-			String sql = "update member set name=?, profile_photo=?, phone=?, birth=? where email=? and pass=?";
+			String sql = "update member set name=?, profile_photo=?, phone=?, birth=?,pass=?where email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mb.getName());
 			pstmt.setString(2, mb.getProfile_photo());
 			pstmt.setString(3, mb.getPhone());
 			pstmt.setString(4, mb.getBirth());
-			pstmt.setString(5, mb.getEmail());
-			pstmt.setString(6, mb.getPass());
+			pstmt.setString(5, mb.getPass());
+			pstmt.setString(6, mb.getEmail());
+	
+			
 
 			pstmt.executeUpdate();
 

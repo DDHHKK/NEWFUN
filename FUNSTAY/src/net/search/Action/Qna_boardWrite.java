@@ -1,21 +1,14 @@
-package net.book.action;
+package net.search.Action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import net.book.controller.Action;
-import net.book.controller.ActionForward;
-import net.search.db.SearchBean;
+import net.member.db.QnaBean;
+import net.search.controller.Action;
+import net.search.controller.ActionForward;
 import net.search.db.SearchDAO;
 
- 
-
-
-
-
-
-public class ReviewWrite implements Action {
+public class Qna_boardWrite implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -33,16 +26,16 @@ public class ReviewWrite implements Action {
 		
 		
 		SearchDAO bdao = new SearchDAO();
-		bdao.updateReadcount(num); 
-		SearchBean sc= bdao.getSearchboard(num);
+		bdao.updateReadcount(num);  
+		QnaBean qb= bdao.getQnaboard(num);
 		
-		request.setAttribute("sc", sc);
+		request.setAttribute("qb", qb);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
 		ActionForward forward = new ActionForward();
 		
 		forward = new ActionForward();
-		forward.setPath("./ReviewWriteForm.bk");
+		forward.setPath("./Qna_boardWriteForm.sc");
 		forward.setRedirect(false);
 
 		return forward;

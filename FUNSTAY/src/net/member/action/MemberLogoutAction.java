@@ -20,7 +20,7 @@ public class MemberLogoutAction implements Action{
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('Logout');");
+		/*out.println("alert('Logout');");*/
 		out.println("location.href='./Main.me'");
 		out.println("</script>");
 		out.close();
