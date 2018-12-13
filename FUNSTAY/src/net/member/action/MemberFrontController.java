@@ -213,7 +213,7 @@ public class MemberFrontController extends HttpServlet {
 			// find PASS
 		} else if (command.equals("/find_pw.me")) {
 			forward = new ActionForward();
-			forward.setPath("./id_pw_find/findform_pw.jsp");
+			forward.setPath("./id_pw_find/update_pw.jsp");
 			forward.setRedirect(false);
 		} else if (command.equals("/Pw_FindAction.me")) {
 			action = new Pw_FindAction();
@@ -222,6 +222,15 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		}
+			else if (command.equals("/Pw_Find_UpdateAction.me")) {
+				action = new Pw_Find_UpdateAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 			// pass check
 		} else if (command.equals("/PassCheckForm.me")) {
