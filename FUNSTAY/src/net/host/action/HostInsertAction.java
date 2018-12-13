@@ -139,8 +139,8 @@ public class HostInsertAction implements Action{
 		session.removeAttribute("bedlist");
 		session.removeAttribute("cb");
 		ActionForward forward=new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./host/host_main.jsp");
+		forward.setRedirect(true);
+		forward.setPath("./HostRoomList.ho");
 		return forward;
 	
 	}
