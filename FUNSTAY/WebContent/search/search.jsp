@@ -359,13 +359,36 @@ function showSlides(n) {
 <div class="extra_shj">
 <div class="innerex_shj">
 <h4>25000/1박</h4></div>
-<div class="heart_shj"> <i  class='fas' style="color:#cc1d1d;">&#xf004;</i></div>
+<div class="heart_shj"> <i  class='fas' style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
 </div>
 </div>
 
 
 
-
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('.heart_shj>i').click(function(){
+		/* var home_num= $('#home_num').val();
+		var wishlist_num= $('#wishlist_num').val();
+		var wish_num=$('#wish_num').val(); */
+		if($(this).attr("class")=='far')
+			{
+			
+				$(this).attr('class','fas');
+				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
+				 
+				
+			}
+		else
+			{
+				$(this).attr('class','far');
+				/*  location.href="./DeleteMyWish.wi?wish_num="+wish_num+"&wishlist_num="+wishlist_num; */
+				 
+			}
+			});
+});
+</script>
 
 
 
