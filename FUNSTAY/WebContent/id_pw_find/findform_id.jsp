@@ -32,49 +32,6 @@
 <link href="./css/mypage/id_find.css" rel="stylesheet">
 <script src="./js/member/id_find.js"></script>
 
-
-
-<style>
-body {font-family: Arial;}
-
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-</style>
-
 </head>
 <body>
 <!-- header  시작-->
@@ -85,86 +42,72 @@ body {font-family: Arial;}
 <div id="content">
 <!-- 페이지내용 시작 -->
 
-
-
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')">아이디 찾기</button>
+  <button class="tablinks line" onclick="openCity(event, 'London')"id="defaultOpen">아이디 찾기</button>
   <button class="tablinks" onclick="openCity(event, 'Paris')">비밀번호 찾기</button>
 </div>
 
+<div id="London" class="tabcontent cont_box">
+	<div class="content">
+		<div class="agree">
+		<!-- <div id="ysh"><h1>ID/비밀번호 찾기</h1></div> -->
+
+		<div class="srh_box or">
+			<div class="wap">
+
+				<div class="srh_top">" 내정보에 등록한 정보로<br>아이디를 찾을수 있습니다 "</div><!-- //srh_top -->
+
+				<div class="info in_box">
+					<form name="id_form" method="post" action="./Id_FindAction.me" onsubmit="return chk_idform(this)">
+					<input type="hidden" name="s_type" value="id">
+					<fieldset>
+						<!-- <legend>ID 찾기</legend> -->
+						<p>
+							<label for="id_name">이름</label>
+							<input type="text" name="me_name" id="id_name" title="이름을 입력">
+						</p>
+
+						<p>
+							<label for="id_mobile">휴대폰번호</label>
+							<select name="me_hp1" class="tel_box">
+								<option value="">선택</option>
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="018">018</option>
+								<option value="019">019</option>
+							</select>
+							- 
+							<input type="text" name="me_hp2" id="id_mobile1" class="tel_box" title="휴대폰번호입력">
+							- 
+							<input type="text" name="me_hp3" id="id_mobile2"  class="tel_box" title="휴대폰번호입력">
+						</p>
+
+						<button type="submit" class="btn">아이디 찾기</button>
+					</fieldset>
+					</form>
+				</div><!-- //info -->
+
+			</div><!-- //warp -->
+		</div><!-- //srh_box or -->
+
+		</div><!-- //agree -->
+	</div><!-- //content -->
+</div><!-- //tabcontent -->
 
 
 
-
-<div id="London" class="tabcontent">
+<div id="Paris" class="tabcontent cont_box">
 <div class="content">
   <div class="agree">
 	<!-- <div id="ysh"><h1>ID/비밀번호 찾기</h1></div> -->
-   <ul class="id_pw_srh">
-    <li>
-  <div class="srh_box or">
-  <div class="wap">
-  <div class="srh_top">
-
-	"내정보에 등록한 정보로<br>
-	아이디를 찾을수 있습니다"
-  </div><!-- //srh_top -->
-<div class="info">
- <form name="id_form" method="post" action="./Id_FindAction.me" onsubmit="return chk_idform(this)">
-  <input type="hidden" name="s_type" value="id">
-   <fieldset>
-    <!-- <legend>ID 찾기</legend> -->
-     <p>
-   	  <label for="id_name">이름</label>
-   	  <input type="text" name="me_name" id="id_name" title="이름을 입력">
-     </p>
-     <p>
-      <label for="id_mobile">휴대폰번호</label>
-      <select name="me_hp1">
-       <option value="">선택</option>
-       <option value="010">010</option>
-       <option value="011">011</option>
-       <option value="016">016</option>
-       <option value="017">017</option>
-       <option value="018">018</option>
-       <option value="019">019</option>
-      </select>
-       - 
-      <input type="text" name="me_hp2" id="id_mobile1" title="휴대폰번호입력" style="width: 50px;">
-       - 
-      <input type="text" name="me_hp3" id="id_mobile2" title="휴대폰번호입력" style="width: 50px;">
-     </p>
-
-     <button type="submit">아이디 찾기</button>
-   </fieldset>
- </form>
-</div><!-- //info -->
-</div><!-- //warp -->
-</div><!-- //srh_box or -->
-    </li>
-   </ul>
-</div><!-- //agree -->
-</div><!-- //content -->
-</div>
-
-
-
-
-
-
-
-<div id="Paris" class="tabcontent">
-<div class="content">
-  <div class="agree">
-	<!-- <div id="ysh"><h1>ID/비밀번호 찾기</h1></div> -->
-   <ul class="id_pw_srh">
-    <li>
      <div class="srh_box br">
       <div class="srh_top">
        "내정보에 등록한 정보로<br>
       	비밀번호를 재설정할 수 있습니다"
       </div><!-- //srh_top -->
-      <div class="info">
+      <div class="info in_box">
       <form name="pw_form" method="post" action="./Pw_FindAction.me" onsubmit="return chk_pwform(this)">
        <input type="hidden" name="s_type" value="pw">
        <fieldset>
@@ -173,41 +116,41 @@ body {font-family: Arial;}
           <label for="pw_name">아이디</label>
            <input type="text" name="me_email" id="pw_name" title="아이디 입력">
          </p>
+
          <p>
          <label for="pw_phone">이름</label>
           <input type="text" name="me_name" id="pw_phone" title="이름을 입력">
          </p>
 
-         <button type="submit">비밀번호 찾기</button>
+         <button type="submit" class="btn">비밀번호 찾기</button>
        </fieldset>
       </form>
       </div><!-- //info -->
      </div><!-- //srh_box br -->
-    </li>
-   </ul>
 </div><!-- //agree -->
 </div><!-- //content -->
-</div>
+</div><!-- //tabcontent -->
 
 
 
 
 
-<script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
+	<script>
+	function openCity(evt, cityName) {
+	  var i, tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	  }
+	  tablinks = document.getElementsByClassName("tablinks");
+	  for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "");
+	  }
+	  document.getElementById(cityName).style.display = "block";
+	  evt.currentTarget.className += " active";
+	}
+	document.getElementById("defaultOpen").click();
+	</script>
 
 
 
