@@ -1,3 +1,4 @@
+<%@page import="net.member.db.QnaBean"%>
 <%@page import="net.FAQ.db.FAQBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -50,7 +51,11 @@
 <!-- header  끝-->
 <hr>
 <%
+request.setCharacterEncoding("UTF-8");
+
+QnaBean qb = (QnaBean) request.getAttribute("qb");
 String pageNum = (String) request.getAttribute("pageNum");
+int num = ((Integer) request.getAttribute("num")).intValue();
 %>
 
 
@@ -58,7 +63,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 <table border="0" align="center">
 <tr><td><h2>QnA 글쓰기</h2></tr></td>
 <!-- <tr><td><h3>번호</h3></td><td><input type="text" name="QnA_num"></td></tr> -->
-<tr><td><h3>아이디</h3></td></tr>
+<tr><td><h3><%=qb.getHome_num() %></h3></td></tr>
 <tr><td><h3>제목</h3></td><td><input class="w3-input" name="subject" placeholder="제목을 입력해주세요..."></td>
 <td>비밀번호</td><td><input class="w3-input" name="QnA_pass" placeholder="비밀번호를입력해주세요..."></td></tr>
 <tr><td><h3>내용</h3></td><td colspan="5"><textarea name="content" rows="20" cols="30" placeholder="내용을 입력해주세요..."></textarea></td></tr>

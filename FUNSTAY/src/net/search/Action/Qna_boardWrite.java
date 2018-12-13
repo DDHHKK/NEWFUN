@@ -27,9 +27,9 @@ public class Qna_boardWrite implements Action {
 		
 		SearchDAO bdao = new SearchDAO();
 		bdao.updateReadcount(num);  
-		QnaBean sc= bdao.getQnaboard(num);
+		QnaBean qb= bdao.getQnaboard(num);
 		
-		request.setAttribute("sc", sc);
+		request.setAttribute("qb", qb);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
 		ActionForward forward = new ActionForward();
