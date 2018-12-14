@@ -328,12 +328,12 @@ public class BookDAO {
   			//1,2단계 메서드 호출
   			con=getConnection();
                   
-                     String sql2="select * from home h, payment p , booking b "
-                     		+ "where p.member_email=? and b.payment_num=p.payment_num and b.home_num=h.home_num and b.check_in>now() and p.payment_status=?";
+                     String sql2="select * from home h,payment p "
+                     		+ "where p.member_email=? and h.host_email=p.host_email and p.payment_status=?";
                      
                      pstmt=con.prepareStatement(sql2);//객체생성
      		           pstmt.setString(1,member_email);
-     		           pstmt.setString(2, "결제완료");
+     		           pstmt.setString(2, "결제취소");
      		          
      		           rs=pstmt.executeQuery();
      		           
@@ -349,15 +349,15 @@ public class BookDAO {
      		        	hb.setRoom_subject(rs.getString("room_subject"));
      		        	pb.setSum_price(rs.getInt("sum_price"));*/
      		        	
-     		        	bb.setBooking_num(rs.getInt("booking_num"));
+     		        	
      		        	BeforB.setRoom_type(rs.getString("room_type"));
      		        	BeforB.setPhoto(rs.getString("photo"));
      		        	BeforB.setRoom_subject(rs.getString("room_subject"));
      		        	BeforB.setMember_email(rs.getString("member_email"));
      		        	BeforB.setSum_price(rs.getInt("sum_price"));
-     		        	BeforB.setCheck_in(rs.getDate("check_in"));
-     		        	BeforB.setCheck_out(rs.getDate("check_out"));
-     		        	BeforB.setPeople(rs.getInt("people"));
+     		        	/*BeforB.setCheck_in(rs.getDate("check_in"));
+     		        	BeforB.setCheck_out(rs.getDate("check_out"));*/
+     		        	/*BeforB.setPeople(rs.getInt("people"));*/
      		        	
      		        	
      		        	

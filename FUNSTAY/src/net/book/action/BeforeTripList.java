@@ -40,6 +40,10 @@ public class BeforeTripList implements Action{
 		Vector vector=bdao.GetBeforeTrip(member_email);
 		//예정된 숙소 vector2
 		Vector vector2=bdao.GetAfterTrip(member_email);
+		//취소된 숙소 vector3
+		Vector vector3=bdao.GetCancelTrip(member_email);
+		
+		
 		
 		
 		//완료된 숙소
@@ -53,6 +57,12 @@ public class BeforeTripList implements Action{
 	    List<PaymentBean> paymentList2=(List<PaymentBean>)vector2.get(1);
 		List<HostBean> hostList2=(List<HostBean>)vector2.get(2);
 		List<BeforeBean> afterList=(List<BeforeBean>)vector2.get(3);
+		
+		//취소된 숙소
+		List<BookingBean> bookingList3=(List<BookingBean>)vector3.get(0);
+	    List<PaymentBean> paymentList3=(List<PaymentBean>)vector3.get(1);
+		List<HostBean> hostList3=(List<HostBean>)vector3.get(2);
+		List<BeforeBean> afterList3=(List<BeforeBean>)vector3.get(3);
 		
 		
 		
@@ -69,6 +79,16 @@ public class BeforeTripList implements Action{
 		request.setAttribute("afterList", afterList);
 
 		request.setAttribute("BeforeB", BeforeB);
+		
+		
+		//취소된 숙소 request 저장
+		request.setAttribute("bookingList3", bookingList3);
+		request.setAttribute("paymentList3", paymentList3);
+		request.setAttribute("hostList3", hostList3);
+		request.setAttribute("afterList3", afterList3);
+		
+		
+		
 		
 /*		
 int pageSize = 10;
