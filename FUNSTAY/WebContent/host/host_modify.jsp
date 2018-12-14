@@ -1,3 +1,4 @@
+<%@page import="net.room.db.RoomBean"%>
 <%@page import="net.conv.db.ConvBean"%>
 <%@page import="net.host.db.HostDAO"%>
 <%@page import="net.bed.db.BedBean"%>
@@ -151,9 +152,12 @@ $(document).ready(function(){
 <!-- 회원 관리 페이지 왼쪽메뉴바 끝 -->
 
 <%
+int home_num=Integer.parseInt(request.getParameter("home_num"));
 HostBean hb=(HostBean)request.getAttribute("hb");
 ConvBean cb=(ConvBean)request.getAttribute("cb");
-int home_num=Integer.parseInt(request.getParameter("home_num"));
+List<RoomBean> rooms = (List)request.getAttribute("rooms");
+List<BedBean> bed_list = (List)request.getAttribute("bed_list");
+/* System.out.println(rooms.get(0).getHome_num()); */
 %>
 
 
@@ -202,7 +206,7 @@ int home_num=Integer.parseInt(request.getParameter("home_num"));
     <table>
     	<tr>
     		<td class="td"><b>욕실 개수</b></td>
-    		<td><select class="sel" name="restroom">
+    		<td colspan="3"><select class="sel" name="restroom">
 				<option value="1" <% if(hb.getRestroom()==1) { %> selected <%}%> > 1</option>
  				<option value="2" <% if(hb.getRestroom()==2) { %> selected <%}%> > 2</option>
  				<option value="3" <% if(hb.getRestroom()==3) { %> selected <%}%> > 3</option>
@@ -230,7 +234,37 @@ int home_num=Integer.parseInt(request.getParameter("home_num"));
 		</tr>
 		<tr>
 			<td class="td"><b>방 개수</b></td>
-			<td><div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">1번 방</div></td>
+			<td colspan="3">
+				<table>
+				<!-- <div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">1번 방</div> -->
+				<% for(int i=0; i<rooms.size(); i++) { 
+					RoomBean rb = (RoomBean)rooms.get(i);
+					BedBean bb = (BedBean)bed_list.get(i);
+				if(i%4==0) { %>
+				<tr> <%} %>
+				
+				<td>
+					<div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">
+						<b><%=rb.getRe_room()%>번방</b><br>
+						<%-- <%=rb.getRoom_num()%><br> --%>
+						최대 <%=rb.getMax_people()%>명<br>
+						<%for(int z=0; z<bb.getSingle_bed(); z++){ %>
+							<img src="./img/host/single_bed.png" style="width:35px;height:35px;">
+						<%
+						}for(int z=0; z<bb.getDouble_bed(); z++){ %>
+							<img src="./img/host/double_bed.png" style="width:35px;height:35px;">
+						<%
+						}for(int z=0; z<bb.getBunk_bed(); z++){ %>
+							<img src="./img/host/bunk_bed.png" style="width:35px;height:35px;">
+						<%} %>
+					</div>
+				</td>
+				
+				<% if(i%4==2){ %>
+				</tr>
+				<%} } %>
+				</table>
+			</td>
 		</tr>
 		<tr>
 			<td></td>
@@ -308,7 +342,7 @@ int home_num=Integer.parseInt(request.getParameter("home_num"));
 						<td class="td"><input type="checkbox" name="convenience"
 							value="<%=cb.getHair_dryer() %>" class="conv"> <img
 							src="./img/icon/hair_dryer-512.png" width="20px" height="20px">
-							헤어드라이기 <input type="button" id="con_btn"></td>
+							헤어드라이기<!--  <input type="button" id="con_btn"> --></td>
 					</tr>
 				</table>
 			</div>
@@ -316,7 +350,7 @@ int home_num=Integer.parseInt(request.getParameter("home_num"));
   <div style="overflow:auto;">
     <div style="float:right;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">이전</button>
-      <button type="button" id="nextBtn" onclick="nextPrev(1)">다음</button>
+      <button type="button" class="con_btn" id="nextBtn" onclick="nextPrev(1)">다음</button>
     </div>
   </div>
   <!-- Circles which indicates the steps of the form: -->
@@ -364,6 +398,16 @@ function nextPrev(n) {
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
     // ... the form gets submitted:
+    	$('.num_conv').remove();
+			var convenience = [];
+			var convenience ="";
+			$('input[name="convenience"]').each(function(index){
+			if ($(this).is(':checked')){
+					$(this).append("<input type='hidden' value='1' name='num_conv' class='num_conv' checked>");
+				} else{
+					$(this).append("<input type='hidden' value='0' name='num_conv' class='num_conv' checked>");
+				}
+			});
     document.getElementById("regForm").submit();
     return false;
   }

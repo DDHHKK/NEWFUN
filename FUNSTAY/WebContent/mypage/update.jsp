@@ -60,6 +60,11 @@
 	MemberDAO mdao = new MemberDAO();
 	MemberBean mb = mdao.getMember(email);
 	%>  
+	
+ <input type="hidden" name="photo11" value="<%=mb.getProfile_photo()%>">
+ <input type="hidden" name="pass11" value="<%=mb.getPass()%>">
+
+
 <div id="content">
 <!-- 페이지내용 시작 -->
  <div class="panel_box_sh">
@@ -70,8 +75,8 @@
    <div id="fileup_sh" name="photo" style="width: 150px; height: 150px;">
   <!-- <p id="status_sh">프로필 사진</p> -->
   
-  <img id="preview" src="./upload/<%=mb.getProfile_photo()%>"style="width: 150px; height: 150px; border-radius: 50%;">
-	  
+  <img id="preview" src="./upload/<%=mb.getProfile_photo()%>"style="width: 150px; height:150px; border-radius: 50%;">
+  
    </div>
   <p>
   
@@ -85,7 +90,7 @@
    
    <div>
     <p><i class="fa fa-key icon"></i><label>Password</label></p>
-    <p><input type="password" class="t_box_sh" name="pass" ></p>
+    <p><input type="password" class="t_box_sh" name="pass" value="<%=mb.getPass()%>"></p>
    </div>
    
      <div>

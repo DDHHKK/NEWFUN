@@ -587,14 +587,70 @@ public void insertConv(ConvBean cb,int home_num) {
 		return cb;
 	}
 	
-	/*public List<RoomBean> getRooms(int home_num){
-		
-	}*/
+	public List<RoomBean> getRooms(int home_num){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<RoomBean> rooms = new ArrayList<>();
+		try{
+			con = getConnection();
+			String sql = "select * from room where home_num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, home_num);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				RoomBean rb = new RoomBean();
+				rb.setHome_num(rs.getInt("home_num"));
+				rb.setMax_people(rs.getInt("max_people"));
+				rb.setMin_people(rs.getInt("min_people"));
+				rb.setRe_room(rs.getInt("re_room"));
+				rb.setRoom_num(rs.getInt("room_num"));
+				
+				rooms.add(rb);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+		return rooms;
+	}
 	
-	/*public List<BedBean> getBedType(int room_num){
-		
-		
-	}*/
+	public BedBean getBedType(int room_num){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BedBean bb = new BedBean();
+		try{
+			con = getConnection();
+			String sql = "select * from bed_type where room_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, room_num);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				bb.setBunk_bed(rs.getInt("bunk_bed"));
+				bb.setDouble_bed(rs.getInt("double_bed"));
+				bb.setRoom_num(rs.getInt("room_num"));
+				bb.setSingle_bed(rs.getInt("single_bed"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+		return bb;
+	}
+	
 	
 	public void updateHome(HostBean hb){
 		Connection con = null;
@@ -605,25 +661,15 @@ public void insertConv(ConvBean cb,int home_num) {
 			String sql = "update home set address=?,room_type=?,room_subject=?,room_content=?,restroom=?,in_time=?,out_time=?,price=? where home_num=? and host_email=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, hb.getAddress());
-			System.out.println(hb.getAddress());
 			pstmt.setString(2, hb.getRoom_type());
-			System.out.println(hb.getRoom_type());
 			pstmt.setString(3, hb.getRoom_subject());
-			System.out.println(hb.getRoom_subject());
 			pstmt.setString(4, hb.getRoom_content());
-			System.out.println(hb.getRoom_content());
 			pstmt.setInt(5, hb.getRestroom());
-			System.out.println(hb.getRestroom());
 			pstmt.setString(6, hb.getIn_time());
-			System.out.println(hb.getIn_time());
 			pstmt.setString(7, hb.getOut_time());
-			System.out.println(hb.getOut_time());
 			pstmt.setInt(8, hb.getPrice());
-			System.out.println(hb.getPrice());
 			pstmt.setInt(9, hb.getHome_num());
-			System.out.println(hb.getHome_num());
 			pstmt.setString(10, hb.getHost_email());
-			System.out.println(hb.getHost_email());
 			
 			pstmt.executeUpdate();
 		}catch(Exception e){
@@ -643,7 +689,6 @@ public void insertConv(ConvBean cb,int home_num) {
 			con = getConnection();
 			String sql = "update convenience set essential=?,disabled=?,parking=?,wifi=?,air_conditioner=?,animal=?,party=?,pickup=?,elevator=?,iron=?,extra_bed=?,shampoo=?,heat=?,smoking=?,breakfast=?,laundry=?,desk=?,hair_dryer=? where home_num=?";
 			pstmt=con.prepareStatement(sql);
-			System.out.println("컨비니언스 수정");
 			pstmt.setInt(1, cb.getEssential());
 			pstmt.setInt(2, cb.getDisabled());
 			pstmt.setInt(3, cb.getParking());
