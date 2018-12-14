@@ -83,7 +83,7 @@ HostBean hb=new HostBean();
 <td><figure><img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> 
 	<figcaption>
 
-		<a href="./RoomDetail.sc?home_num=<%=hb.getHome_num()%>"><img src="./img/icon/paper.png" width="45px" height="45px" alt="상세페이지"></a>
+		<a href="./RoomDetail.sc?num=<%=hb.getHome_num()%>&pageNum=1"><img src="./img/icon/paper.png" width="45px" height="45px" alt="상세페이지"></a>
 		<a href="./BookingList.ho?home_num=<%=hb.getHome_num()%>"><img src="./img/icon/calendar.png" width="45px" height="45px" alt="예약관리"></a>
 		<a href="./HostModify.ho?home_num=<%=hb.getHome_num()%>"><img src="./img/icon/pen.png" width="45px" height="45px" alt="정보수정"></a>
 		<a href="#" onclick="fun1(<%=hb.getHome_num()%>)" ><img src="./img/icon/basket.png" width="45px" height="45px" alt="숙소삭제"></a>

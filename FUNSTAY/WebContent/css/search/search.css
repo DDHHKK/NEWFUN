@@ -68,4 +68,20 @@
  #like_star span{position: relative;top: 29px; left: 20px;
     font-size: 20px; font-weight: bold; display: inline-block;"}
     
+
     
+    }
+
+
+
+.house1,.house2{border: 1px solid;
+width: 250px;
+}
+
+.house1{float: left;}
+
+.house2{float: right;
+margin-right: 350px;} 
+
+    
+

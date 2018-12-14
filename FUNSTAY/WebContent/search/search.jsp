@@ -135,11 +135,21 @@ s0.parentNode.insertBefore(s1,s0);
 </div>
 <!-- 페이지내용 시작 -->
 
+
+<div id="sub_DY">
+  <form action="starTest.jpg" method="post" name="fr">
+ <div id="search_bar_DY"> 
+
+
+
+ </div> 
+
  <!-- <div id="sideBar_shj">
    <form action="starTest.jpg" method="post" name="fr">
  <div >
  main에서 검색바 떼와서 붙이는 자리
  </div>
+
  <div id="option_DY">
   
   
@@ -293,8 +303,8 @@ s0.parentNode.insertBefore(s1,s0);
 <%
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
-String address = request.getParameter("address");
-System.out.print(address);
+String address = (String)session.getAttribute("address");
+int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
 %>
 <p id = "pont_1213_WS"><%=address%>에 대해 찾으셨나요?
  <%if(list.size()!=0){
@@ -316,7 +326,7 @@ for(int i=0;i<list.size();i++){ //for문 시작
 <div class="content_top_shj" >
 
 <!-- 변수값 : "부산광역시", "100" -->
-<h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb.getAddress()%></h1><br>
+<%-- <h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb.getAddress()%></h1><br> --%>
 
 <!--정렬  -->
 <div style="width:8%" id='listmenu_shj'>
@@ -372,11 +382,9 @@ for(int i=0;i<list.size();i++){ //for문 시작
 
 </div> -->
 
-<a class="prev_shj" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next_shj" onclick="plusSlides(1)">&#10095;</a>
 
 </div>
-<br>
+
 
 <!-- <div class="dot_box" style="text-align:center">
   <span class="dot_shj" onclick="currentSlide(1)"></span> 
@@ -419,13 +427,11 @@ function showSlides(n) {
 <div class="contentbox_shj">
 <div class="innercon_shj">
 <h4><%=hb.getRoom_type() %></h4>
-<h3><%=hb.getRoom_subject() %></h3>
-<h5>필수용품, 반려동물, 와이파이, 세탁기, 에어컨</h5>
+<h3><a href="./RoomDetail.sc?num=<%=hb.getHome_num()%>&pageNum=<%=pageSize%>"><%=hb.getRoom_subject() %></a></h3>
 <h5><%=hb.getRoom_content() %></h5>
-<h6><%=hb.getStart_date()%> ~ <%=hb.getEnd_date()%> 예약가능</h6>
+<%-- <h6><%=hb.getStart_date()%> ~ <%=hb.getEnd_date()%> 예약가능</h6> --%>
 </div>
 <div class="star_shj">
-
  <span>
  	 <i id="image1"class="material-icons" style="font-size:18px" >star</i>
  	 <i id="image2" class="material-icons" style="font-size:18px" >star</i>
@@ -440,18 +446,62 @@ function showSlides(n) {
 <div class="extra_shj">
 <div class="innerex_shj">
 <h4><%=hb.getPrice() %>￦/1박</h4></div>
-<h4>25000/1박</h4></div>
-<div><a href="#loginmodal" class="flatbtn" id="modaltrigger">
-	<i class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i>
-	</a></div>
+<div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
+</div>
 </div>
 
+
+<div id="modal_shj" style="display:none;">
+	<h2 >목록 리스트</h2>
+
 </div>
 
-<%
-System.out.println("Asdfasdfasdf");
-%>
 
+
+</div>
+
+
+
+
+
+<!-- 하트 클릭부분 -->
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('.heart_shj>i').click(function(){
+		/* var home_num= $('#home_num').val();
+		var wishlist_num= $('#wishlist_num').val();
+		var wish_num=$('#wish_num').val(); */
+		if($(this).attr("class")=='far')
+			{
+			
+				$(this).attr('class','fas');
+				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
+				location.href = "#modal_shj";
+			}
+		else
+			{
+				$(this).attr('class','far');
+				/*  location.href="./DeleteMyWish.wi?wish_num="+wish_num+"&wishlist_num="+wishlist_num; */
+				 
+			}
+			});
+});
+</script>
+
+
+
+
+<!--모달윈도우부분-->
+<script type="text/javascript">
+$(function(){
+ /*  $('#loginform').submit(function(e){
+    return false;
+  }); */
+  
+  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+});
+</script>
 
 
 
@@ -470,10 +520,10 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 <div class="content_top_shj" >
 
 <!-- 변수값 : "부산광역시", "100" -->
-<h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb1.getAddress()%></h1><br>
+<%-- <h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb1.getAddress()%></h1><br> --%>
 
 <!--정렬  -->
-<!-- <div style="width:8%" id='listmenu_shj'>
+<div style="width:8%" id='listmenu_shj'>
 <ul style=" width: 100%;" >
    <li class='active has-sub_shj'><a href="#"><span  class='fas'>정렬  &#xf107; &#xf106;</span></a>
       <ul>
@@ -485,8 +535,7 @@ for(int i=0;i<rest.size();i++){ //for문 시작
    </li>
 </ul>
 </div>
-  -->
-
+ 
 </div>
 <div class="clear"></div>
 
@@ -512,10 +561,9 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 <div class="contentbox_shj">
 <div class="innercon_shj">
 <h4><%=hb1.getRoom_type() %></h4>
-<h3><%=hb1.getRoom_subject() %></h3>
-<h5>필수용품, 반려동물, 와이파이, 세탁기, 에어컨</h5>
+<h3><a href="./RoomDetail.sc?num=<%=hb1.getHome_num()%>&pageNum=<%=pageSize%>"><%=hb1.getRoom_subject() %></a></h3>
 <h5><%=hb1.getRoom_content() %></h5>
-<h6><%=hb1.getStart_date()%> ~ <%=hb1.getEnd_date()%> 예약가능</h6>
+<%-- <h6><%=hb1.getStart_date()%> ~ <%=hb1.getEnd_date()%> 예약가능</h6> --%>
 </div>
 <div class="star_shj">
 

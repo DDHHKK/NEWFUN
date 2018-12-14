@@ -27,17 +27,17 @@ img:hover {
 %>
 
  
-<div id="room_photo">
-<table border="1" align="center">
+<div id="room_photo" style="width=100%;">
+<table align="center" style="width=100%;border-collapse:collapse;">
 <tr>
-<th rowspan="3" >
-<a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[0] %>" width="800px" height="700px"></a></th>
-<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[1] %>" width="400px" height="350px"></a></th>
-<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[2] %>" width="400px" height="350px"></a></th>
+<th rowspan="3" style="width:50%">
+<a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[0] %>" width="100%" height="700px" style="position:relative;left:2px;"></a></th>
+<th style="width:25%"><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[1] %>" width="100%" height="350px" style="position:relative;top:3px;"></a></th>
+<th style="width:25%"><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[2] %>" width="100%" height="350px" style="position:relative;top:3px;right: 2px;"></a></th>
 </tr>
 <tr>
-<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[3] %>" width="400px" height="350px"></a></th>
-<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[4] %>" width="400px" height="350px"></a></th>
+<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[3] %>" width="100%" height="350px" style="position:relative;bottom:3px;"></a></th>
+<th><a href="#"><img src="./upload/<%=sc.getPhoto().split(",")[4] %>" width="100%" height="350px" style="position:relative;bottom:3px;right: 2px;"></a></th>
 </tr>
 </table>
  </div> 

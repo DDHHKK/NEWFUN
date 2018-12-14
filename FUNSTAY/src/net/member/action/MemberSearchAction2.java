@@ -38,7 +38,7 @@ public class MemberSearchAction2 implements Action{
 		HttpSession session = request.getSession();
 
 		session.setAttribute("rest", rest);
-		request.setAttribute("address", address);
+		session.setAttribute("address", address);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
