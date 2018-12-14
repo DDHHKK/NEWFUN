@@ -94,6 +94,7 @@ function func()
   <form action="./MemberUpdateAction.me" id="join" name="chpw" method="post" enctype="multipart/form-data">
    <input type="hidden" name="photo11" value="<%=mb.getProfile_photo()%>">
  <input type="hidden" name="pass11" value="<%=mb.getPass()%>">
+ <input type="hidden" name="check" onclick="ch_pw()" value="1">
 
   
    <div id="fileup_sh" name="photo" style="width: 150px; height: 150px;">
@@ -149,7 +150,7 @@ function func()
    </div>
    
    <div id="buttons_sh">
-    <button type="button"class="btn" onclick="ch_pw()">저장하기</button>
+    <button type="submit"class="btn" onclick="ch_pw()">저장하기</button>
     <input type="button" value="취소하기" class="btn" onclick="history.back()">
     <input type="button" value="탈퇴하기" class="btn1" onclick="location.href='./MemberDelete.me'">
    </div>
@@ -186,28 +187,30 @@ function ch_pw(){
 	var chk2 = /[a-z]/i;
 	var pass = document.chpw.pass.value;
 	 var pass2 = document.chpw.pass_check.value;
-	 
+	
 	 if(pass.length<6 || pass==null){
-	  alert("비밀번호를 확인해주세요.(영어,숫자조합 6글자이상)");
+		 document.chpw.check.value=0;
+	  /* alert("비밀번호를 확인해주세요.(영어,숫자조합 6글자이상)"); */
 	  return false;
 	 }
 	 if (chk1.test(pass) && chk2.test(pass)){
+		 document.chpw.check.value=1;
 	 }else{
-	  alert("비밀번호는 영어,숫자 조합입니다.");
+	  /* alert("비밀번호는 영어,숫자 조합입니다."); */
 	  return false;
 	 }
 
-	 if(pass!=pass2){
-	 alert("비밀번호가 일치하지 않습니다.");}
-	 else
-		 {
-		 document.chpw.submit();
-		 }
+	/*  if(pass!=pass2){
+	 alert("비밀번호가 일치하지 않습니다.");} */
+	
+		
+		 /* document.chpw.submit(); */
+		
 	 
 	 
 	 
 
-	 /* document.chpw.submit(); */
+	 
 }//regChk()
 function passchk(){
 	var pass = document.chpw.pass.value;
