@@ -125,7 +125,7 @@ for(int i=0; i<bookingList.size(); i++){
   <a href="#">
 <!--   <div class="mywish_shj"> -->
   
-<table border="1">
+<table class="reseve_table">
 <!-- <tr><td>방제목</td><td>체크인날짜</td>
     <td>체크아웃날짜</td><td>총금액</td></tr> -->
 
@@ -145,17 +145,17 @@ for(int i=0; i<beforeList.size(); i++){
 	
 if(i%3==0){
 	%>
-	<tr>
+	<tr id="tr">
 	<% 
 }
 %>
 
-<td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
+<td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="300" height="300"><br>
 
 
-
-<td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> </td>
-
+<div id="room_sub">
+<%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> <br>
+</div>
 	
 	
 	
@@ -164,12 +164,13 @@ if(i%3==0){
 	
 	
 	
-<td>	
+	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">영수증</button>
+  <button onclick="document.getElementById('id09').style.display='block'" id="bill_butt_DY">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
+ <hr>
   <!--리뷰쓰기 버튼 -->
   <button onclick="location.href='./ReviewWrite.bk'" class="review_butt_DY">리뷰쓰기</button>
   <!--리뷰쓰기 버튼 끝  -->
@@ -190,6 +191,7 @@ if(i%3==0){
 
  
 </table>
+
 
   
   

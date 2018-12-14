@@ -220,8 +220,8 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-
-			String sql = "update member set name=?, profile_photo=?, phone=?, birth=?,pass=?where email=?";
+	
+			String sql = "update member set name=?, profile_photo=?, phone=?, birth=?,pass=? where email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mb.getName());
 			pstmt.setString(2, mb.getProfile_photo());
@@ -233,7 +233,7 @@ public class MemberDAO {
 			
 
 			pstmt.executeUpdate();
-
+			
 			check = 1;
 		} catch (Exception e) {
 			e.printStackTrace();
