@@ -10,6 +10,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Frontier JQuery Calendar</title>
 
+<!-- 페이지 default 링크 시작 -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="./css/default/login.css" rel="stylesheet">
+<link href="./css/login1.css" rel="stylesheet">
+<link href="./css/default/default.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ --><!-- 페이지 default 링크 끝-->
+
 <!-- Include CSS for JQuery Frontier Calendar plugin (Required for calendar plugin) -->
 <link rel="stylesheet" type="text/css" href="./css/host/cal/jquery-frontier-cal-1.3.2.css" />
 
@@ -600,7 +608,7 @@ $(document).ready(function(){
 </script>
 
 
-		
+
 	
 	<div id="tabs-2">
 

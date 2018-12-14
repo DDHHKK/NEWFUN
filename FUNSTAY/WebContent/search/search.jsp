@@ -220,7 +220,7 @@ for(int i=0;i<list.size();i++){ //for문 시작
 
 </div>
 
-<div class="mySlides fade_shj">
+<!-- <div class="mySlides fade_shj">
 
   <img src="./img/photo_3.png" class="img_shj" style="width:100%">
 
@@ -231,7 +231,7 @@ for(int i=0;i<list.size();i++){ //for문 시작
 
   <img src="./img/photo_2.png" class="img_shj" style="width:100%">
 
-</div>
+</div> -->
 
 <a class="prev_shj" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next_shj" onclick="plusSlides(1)">&#10095;</a>
@@ -239,14 +239,14 @@ for(int i=0;i<list.size();i++){ //for문 시작
 </div>
 <br>
 
-<div class="dot_box" style="text-align:center">
+<!-- <div class="dot_box" style="text-align:center">
   <span class="dot_shj" onclick="currentSlide(1)"></span> 
   <span class="dot_shj" onclick="currentSlide(2)"></span> 
   <span class="dot_shj" onclick="currentSlide(3)"></span> 
-</div>
+</div> -->
 
 	<!-- 이미지 fade 기능  -->
-<script>
+<!-- <script>
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -273,7 +273,7 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active_shj";
 }
-</script>	
+</script>	 -->
 
 </div>
 <div class="contentbox_shj">
@@ -300,39 +300,47 @@ function showSlides(n) {
 <div class="extra_shj">
 <div class="innerex_shj">
 <h4>25000/1박</h4></div>
-<div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
-</div>
-</div>
-
-<div id="modal_shj" style="display:none;">
-	<h2 >목록 리스트</h2>
-
+<div><a href="#loginmodal" class="flatbtn" id="modaltrigger">
+	<i class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i>
+	</a></div>
 </div>
 
+<div id="loginmodal" style="display:none;">
+<h2 >목록 리스트</h2>
+<ul>
+<li style="cursor: pointer;">Mylist1</li>
+<li style="cursor: pointer;">Mylist2</li>
+<li style="cursor: pointer;">Mylist3</li>
+</ul>
+</div>
 
+<%
 
+System.out.println("Asdfasdfasdf");
+%>
 
 
 <!-- 하트 클릭부분 -->
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	$('.heart_shj>i').click(function(){
+	$('#loginmodal li').click(function(){
 		/* var home_num= $('#home_num').val();
 		var wishlist_num= $('#wishlist_num').val();
 		var wish_num=$('#wish_num').val(); */
-		if($(this).attr("class")=='far')
+		
+		if($("#modaltrigger_shj").attr("class")=='far')
 			{
 			
-				$(this).attr('class','fas');
+				$("#modaltrigger_shj").attr('class','fas');
 				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
-				location.href = "#modal_shj";
+				location.href="#loginmodal"; 
 			}
 		else
 			{
-				$(this).attr('class','far');
+				$("#modaltrigger_shj").attr('class','far');
 				/*  location.href="./DeleteMyWish.wi?wish_num="+wish_num+"&wishlist_num="+wishlist_num; */
-				 
+				return;
 			}
 			});
 });
@@ -346,7 +354,7 @@ $(function(){
     return false;
   }); */
   
-  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8 });
 });
 </script>
 <%
