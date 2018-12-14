@@ -39,13 +39,25 @@
 </head>
 
 <script type="text/javascript">
+$(document).ready(function(){
+	$("#updateCancel").hide();
+	$("#updatePass").click(function(){
+		$("#updateCancel").show();
+		$("#updatePassbox").append("<div id='insertPass'><div><p><i class='fa fa-key icon'></i><label>Password</label></p><p><input type='password' class='t_box_sh' name='pass' val='' ></p></div><div><p><i class='fa fa-key icon'></i><label>Password Check</label></p><p><input type='password' class='t_box_sh' name='pass_check' val=''></p></div></div>");
+		/* $("#updatePassbox").append("<p><input type='password' class='t_box_sh' name='pass' val='' ></p></div>");
+		$("#updatePassbox").append("<div><p><i class='fa fa-key icon'></i><label>Password Check</label></p>");
+		$("#updatePassbox").append("<p><input type='password' class='t_box_sh' name='pass_check' val=''></p></div></div>");	 */
+		$("#updatePass").hide();
+	});
+	$("#updateCancel").click(function(){
+		$("#updatePass").show();
+		$("#insertPass").remove();	
+		$("#updateCancel").hide();
+	});
+});
 function func()
 {
 
-	$("#updatePass").append("<div><p><i class='fa fa-key icon'></i><label>Password</label></p>");
-	$("#updatePass").append("<p><input type='password' class='t_box_sh' name='pass' val='' ></p></div>");
-	$("#updatePass").append("<div><p><i class='fa fa-key icon'></i><label>Password Check</label></p>");
-	$("#updatePass").append("<p><input type='password' class='t_box_sh' name='pass_check' val=''></p></div>");
 }
 
 
@@ -101,8 +113,9 @@ function func()
     <p><input type="text" class="t_box_sh" name="email" value="<%=mb.getEmail()%>" style="border: none;" readonly></p>
    </div>
    
-   <div id ="updatePass">
-   <input type="button" value="비밀번호 변경"onclick="func()">
+   <div id ="updatePassbox">
+   <input type="button" value="비밀번호 변경" id="updatePass" onclick="func()">
+   <input type="button" value="비밀번호 변경취소" id="updateCancel">
    </div>
   <!--  <div>
     <p><i class="fa fa-key icon"></i><label>Password</label></p>
