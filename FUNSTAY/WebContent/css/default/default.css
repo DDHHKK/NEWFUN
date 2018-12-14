@@ -196,22 +196,13 @@ margin-left: 10px;}
 
 /* --------------김다현 header수정---------------- */
 
-.header_dh,.header_dh1 {
+.header_dh {
 	list-style: none;
 }
 
 .header_dh>li {
 	float: left;
 }
-.header_dh1>li {
-	float: left;
-}
-
-.header_dh1 {
-	float: right;
-	margin-right: 3%;
-}
-
 
 #pont1_WS i {
 	margin-bottom:10px;
@@ -223,9 +214,8 @@ margin-left: 10px;}
 }
 
 
-
 #li_3{
-	margin:4% 0% 0% -90%;
+	margin:22px 0px 0px -75px; 
 }
 
 #li_3 a:hover{
@@ -234,7 +224,7 @@ margin-left: 10px;}
 
 
 #li_4{
-	margin:5% 0% 0% 0%;
+	margin:25px 50px 33px 45px;
 }
 
 #li_4 a:hover{
@@ -243,20 +233,21 @@ margin-left: 10px;}
 
 
 #li_5{
-	margin: 4% 0% 0% 20%;
+	margin: 22px 10px 10px -15px;
 }
 
 
 #li_6{
-	margin-top:15%;
+	margin-top:15px;
 }
 
 #li_7{
-	margin-top:27%;
-	margin-left:10%;
+	margin-top:27px;
+	margin-left:10px;
 }
 
 #li_8{
-	margin: -2.2% 3% 0% 0%;
+	margin-top: -54px;
+    margin-right: 50px;
     float: right;
 }
