@@ -48,16 +48,23 @@ public class MemberUpdateAction implements Action{
 		MultipartRequest multi = new MultipartRequest(request, filePath, MaxSize, "utf-8", new DefaultFileRenamePolicy());
 	
 		
-		
-		
+		String profile_photo = multi.getFilesystemName("profile_photo");
+		String photo11 = multi.getParameter("photo11");
 		mb.setEmail(multi.getParameter("email"));
 		mb.setPass(multi.getParameter("pass"));
 		mb.setName(multi.getParameter("name"));
 		mb.setPhone(multi.getParameter("phone"));
 		mb.setBirth(multi.getParameter("birth"));
-		
-		mb.setProfile_photo(multi.getFilesystemName("profile_photo"));
-		System.out.println(multi.getParameter("name"));
+
+		if(profile_photo==null)
+		{
+			mb.setProfile_photo(photo11);
+		}
+		else
+		{
+			mb.setProfile_photo(profile_photo);
+		}
+
 /*		mb.setEmail(request.getParameter("email"));
 		mb.setPass(request.getParameter("pass"));
 		mb.setName(request.getParameter("name"));

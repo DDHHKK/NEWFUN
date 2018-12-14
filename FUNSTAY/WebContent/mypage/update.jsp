@@ -61,9 +61,6 @@
 	MemberBean mb = mdao.getMember(email);
 	%>  
 	
- <input type="hidden" name="photo11" value="<%=mb.getProfile_photo()%>">
- <input type="hidden" name="pass11" value="<%=mb.getPass()%>">
-
 
 <div id="content">
 <!-- 페이지내용 시작 -->
@@ -71,6 +68,9 @@
   <h1>정보수정</h1>
   <!-- 정보수정폼시작 -->
   <form action="./MemberUpdateAction.me" id="join"method="post" enctype="multipart/form-data">
+   <input type="hidden" name="photo11" value="<%=mb.getProfile_photo()%>">
+ <input type="hidden" name="pass11" value="<%=mb.getPass()%>">
+
   
    <div id="fileup_sh" name="photo" style="width: 150px; height: 150px;">
   <!-- <p id="status_sh">프로필 사진</p> -->
