@@ -627,7 +627,7 @@ function button_event(){
 		
 		%>
 
-		return location.href="./BillCancel.bk?booking_num=<%=bb.getBooking_num()%>";
+		return location.href="./BillCancel.bk?booking_num=<%=bb.getBooking_num()%>&payment_num=<%=pb.getPayment_num()%>";
 
 		<% }%> 
 		  
