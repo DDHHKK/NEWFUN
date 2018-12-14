@@ -162,6 +162,7 @@
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
 String address = request.getParameter("address");
+System.out.print(address);
 %>
 <p id = "pont_1213_WS"><%=address%>에 대해 찾으셨나요?
  <%if(list.size()!=0){
@@ -216,22 +217,28 @@ for(int i=0;i<list.size();i++){ //for문 시작
 
 <div class="mySlides fade_shj">
  
-  <img src="./img/photo_4.png" class="img_shj"style="width:100%">
+ <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" class="img_shj"style="width:100%">
 
 </div>
 
-<div class="mySlides fade_shj">
+<a class="prev_shj"></a>
+<a class="next_shj"></a>
+
+
+<!-- <div class="mySlides fade_shj">
 
   <img src="./img/photo_3.png" class="img_shj" style="width:100%">
+>>>>>>> branch 'master' of https://github.com/DDHHKK/NEWFUN.git
 
 </div>
+
 
 
 <div class="mySlides fade_shj">
 
   <img src="./img/photo_2.png" class="img_shj" style="width:100%">
 
-</div>
+</div> -->
 
 <a class="prev_shj" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next_shj" onclick="plusSlides(1)">&#10095;</a>
@@ -239,14 +246,14 @@ for(int i=0;i<list.size();i++){ //for문 시작
 </div>
 <br>
 
-<div class="dot_box" style="text-align:center">
+<!-- <div class="dot_box" style="text-align:center">
   <span class="dot_shj" onclick="currentSlide(1)"></span> 
   <span class="dot_shj" onclick="currentSlide(2)"></span> 
   <span class="dot_shj" onclick="currentSlide(3)"></span> 
-</div>
+</div> -->
 
 	<!-- 이미지 fade 기능  -->
-<script>
+<!-- <script>
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -273,14 +280,16 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active_shj";
 }
-</script>	
+</script>	 -->
+
 
 </div>
 <div class="contentbox_shj">
 <div class="innercon_shj">
-<h4>개인실</h4>
-<h3></h3>
+<h4><%=hb.getRoom_type() %></h4>
+<h3><%=hb.getRoom_subject() %></h3>
 <h5>필수용품, 반려동물, 와이파이, 세탁기, 에어컨</h5>
+<h5><%=hb.getRoom_content() %></h5>
 <h6><%=hb.getStart_date()%> ~ <%=hb.getEnd_date()%> 예약가능</h6>
 </div>
 <div class="star_shj">
@@ -293,46 +302,65 @@ function showSlides(n) {
  	  <i id="image5"class="material-icons" style="font-size:18px" >star_border</i>
  </span>
  <span style="position: relative; bottom: 10%;">
- 2/5
  </span>
 </div>
 </div>
 <div class="extra_shj">
 <div class="innerex_shj">
+<h4><%=hb.getPrice() %>￦/1박</h4></div>
 <h4>25000/1박</h4></div>
-<div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
-</div>
-</div>
-
-<div id="modal_shj" style="display:none;">
-	<h2 >목록 리스트</h2>
-
+<div><a href="#loginmodal" class="flatbtn" id="modaltrigger">
+	<i class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i>
+	</a></div>
 </div>
 
 
+<div id="wrap">
+	<h1>모달윈도우 샘플페이지</h1>
+	<div class="c_text">레이어팝업식으로 새창이 뜨면서 화면의 나머지 부분이 비활성화된것처럼 반투명의 검정색으로 보여집니다.</div>
+	<div><a href="#loginmodal" class="flatbtn" id="modaltrigger">
+	<i class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i>
+	</a></div>
 
 
+<div id="loginmodal" style="display:none;">
+<h2 >목록 리스트</h2>
+<ul>
+<li style="cursor: pointer;">Mylist1</li>
+<li style="cursor: pointer;">Mylist2</li>
+<li style="cursor: pointer;">Mylist3</li>
+</ul>
+
+</div>
+
+
+</div>
+
+<%
+System.out.println("Asdfasdfasdf");
+%>
 
 <!-- 하트 클릭부분 -->
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	$('.heart_shj>i').click(function(){
+	$('#loginmodal li').click(function(){
 		/* var home_num= $('#home_num').val();
 		var wishlist_num= $('#wishlist_num').val();
 		var wish_num=$('#wish_num').val(); */
-		if($(this).attr("class")=='far')
+		
+		if($("#modaltrigger_shj").attr("class")=='far')
 			{
 			
-				$(this).attr('class','fas');
+				$("#modaltrigger_shj").attr('class','fas');
 				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
-				location.href = "#modal_shj";
+				location.href="#loginmodal"; 
 			}
 		else
 			{
-				$(this).attr('class','far');
+				$("#modaltrigger_shj").attr('class','far');
 				/*  location.href="./DeleteMyWish.wi?wish_num="+wish_num+"&wishlist_num="+wishlist_num; */
-				 
+				return;
 			}
 			});
 });
@@ -344,9 +372,15 @@ $(document).ready(function(){
 $(function(){
  /*  $('#loginform').submit(function(e){
     return false;
+
+  });
+   */
+  $('#modaltrigger').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+
   }); */
   
-  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8 });
+
 });
 </script>
 <%
@@ -367,19 +401,19 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 <h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb1.getAddress()%></h1><br>
 
 <!--정렬  -->
-<div style="width:8%" id='listmenu_shj'>
+<!-- <div style="width:8%" id='listmenu_shj'>
 <ul style=" width: 100%;" >
-   <li class='active has-sub_shj'><a href='#'><span  class='fas'>정렬  &#xf107; &#xf106;</span></a>
+   <li class='active has-sub_shj'><a href="#"><span  class='fas'>정렬  &#xf107; &#xf106;</span></a>
       <ul>
-         <li class='has-sub_shj'><a href='#'><span  class='fas'>최신순 &#xf107; &#xf106;</span></a>
+         <li class='has-sub_shj'><a href='#'><span class='fas'>최신순 &#xf107; &#xf106;</span></a>
          </li>
-         <li class='has-sub_shj'><a href='#'><span  class='fas'>인기순  &#xf107; &#xf106;</span></a>
+         <li class='has-sub_shj'><a href='#'><span class='fas'>인기순  &#xf107; &#xf106;</span></a>
          </li>
       </ul>
    </li>
 </ul>
 </div>
- 
+  -->
 
 </div>
 <div class="clear"></div>
@@ -391,73 +425,24 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 
 <div class="mySlides fade_shj">
  
-  <img src="./img/photo_4.png" class="img_shj"style="width:100%">
+  <img src="./upload/<%=hb1.getPhoto().split(",")[0]%>" class="img_shj"style="width:100%">
 
 </div>
 
-<div class="mySlides fade_shj">
-
-  <img src="./img/photo_3.png" class="img_shj" style="width:100%">
-
-</div>
-
-
-<div class="mySlides fade_shj">
-
-  <img src="./img/photo_2.png" class="img_shj" style="width:100%">
-
-</div>
-
-<a class="prev_shj" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next_shj" onclick="plusSlides(1)">&#10095;</a>
+<a class="prev_shj"></a>
+<a class="next_shj"></a>
 
 </div>
 <br>
 
-<div class="dot_box" style="text-align:center">
-  <span class="dot_shj" onclick="currentSlide(1)"></span> 
-  <span class="dot_shj" onclick="currentSlide(2)"></span> 
-  <span class="dot_shj" onclick="currentSlide(3)"></span> 
-</div>
-
 	<!-- 이미지 fade 기능  -->
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active_shj";
-}
-</script>	
-
-
-
 </div>
 <div class="contentbox_shj">
 <div class="innercon_shj">
-<h4>개인실</h4>
-<h3>방 제목</h3>
+<h4><%=hb1.getRoom_type() %></h4>
+<h3><%=hb1.getRoom_subject() %></h3>
 <h5>필수용품, 반려동물, 와이파이, 세탁기, 에어컨</h5>
+<h5><%=hb1.getRoom_content() %></h5>
 <h6><%=hb1.getStart_date()%> ~ <%=hb1.getEnd_date()%> 예약가능</h6>
 </div>
 <div class="star_shj">
@@ -476,7 +461,7 @@ function showSlides(n) {
 </div>
 <div class="extra_shj">
 <div class="innerex_shj">
-<h4>25000/1박</h4></div>
+<h4><%=hb1.getPrice() %>￦/1박</h4></div>
 <div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
 </div>
 </div>

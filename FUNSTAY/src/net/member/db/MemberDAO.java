@@ -753,6 +753,8 @@ public class MemberDAO {
 				hb1.setEnd_date(rs.getDate("end_date"));
 				hb1.setRoom_subject(rs.getString("room_subject"));
 				hb1.setRoom_type(rs.getString("room_type"));
+				hb1.setRoom_content(rs.getString("room_content"));
+				hb1.setPrice(rs.getInt("price"));
 				hb1.setPhoto(rs.getString("photo"));
 				
 				System.out.println("getsearchList" + hb1.getAddress());
@@ -805,6 +807,8 @@ public class MemberDAO {
 				hb1.setEnd_date(rs.getDate("end_date"));
 				hb1.setRoom_subject(rs.getString("room_subject"));
 				hb1.setRoom_type(rs.getString("room_type"));
+				hb1.setRoom_content(rs.getString("room_content"));
+				hb1.setPrice(rs.getInt("price"));
 				hb1.setPhoto(rs.getString("photo"));
 				
 				

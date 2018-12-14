@@ -148,7 +148,7 @@ font-weight: bolder;}
 
 
 /*footer부분*/
-.img_2_WS{width: 50px;height: 50px;
+.img_2_WS{width: 2%;height: 2%;
 margin: 6px 10px 0 10px;}
 
 #img_2_WS{margin-left: 15px;}
@@ -184,7 +184,7 @@ margin-left: 10px;}
   overflow: auto;
 }
 
-#float_1_WS{float: left;}
+#float_1_WS{text-align: center;}
 
 #fdfce{margin: 0 0 0 60px;}
 
@@ -196,12 +196,21 @@ margin-left: 10px;}
 
 /* --------------김다현 header수정---------------- */
 
-.header_dh {
+.header_dh,.header_dh1 {
 	list-style: none;
 }
 
 .header_dh>li {
 	float: left;
+}
+
+.header_dh1>li {
+	float: left;
+}
+
+.header_dh1{
+	float: right;
+	margin: -2% 8% 0% 0%;
 }
 
 #pont1_WS i {
@@ -215,7 +224,7 @@ margin-left: 10px;}
 
 
 #li_3{
-	margin:22px 0px 0px -75px; 
+	margin: 2% 0% 0% 8%;
 }
 
 #li_3 a:hover{
@@ -224,7 +233,7 @@ margin-left: 10px;}
 
 
 #li_4{
-	margin:25px 50px 33px 45px;
+	margin: -5% 0% 0% 65%;
 }
 
 #li_4 a:hover{
@@ -233,21 +242,18 @@ margin-left: 10px;}
 
 
 #li_5{
-	margin: 22px 10px 10px -15px;
+	margin: -7% 0% 0% 80%
 }
 
 
 #li_6{
-	margin-top:15px;
+	margin-top:15%;
 }
 
 #li_7{
-	margin-top:27px;
-	margin-left:10px;
+	margin: 22% 10% 10% 1%;
 }
 
 #li_8{
-	margin-top: -54px;
-    margin-right: 50px;
-    float: right;
+	margin: 2% 0% 0% 2%;
 }

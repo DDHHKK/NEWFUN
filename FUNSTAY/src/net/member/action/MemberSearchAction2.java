@@ -23,7 +23,7 @@ public class MemberSearchAction2 implements Action{
 		request.setCharacterEncoding("UTF-8");
 		
 		HostBean hb = new HostBean();
-		String address = request.getParameter("address");
+		String address = request.getParameter("search_info");
 		hb.setAddress(address);
 		System.out.println(hb.getAddress());
 		

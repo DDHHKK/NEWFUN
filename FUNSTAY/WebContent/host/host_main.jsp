@@ -42,7 +42,7 @@
 <!-- 페이지내용 시작 -->
 
 <video autoplay muted loop id="myVideo">
-  <source src="./host/Pinwheel.mp4" type="video/mp4" width="100%">
+  <source src="./host/Bubbles.mp4" type="video/mp4" width="100%">
 </video>
 
 <form action="./HostJoin1.ho" method="post" id="myBtn1">
