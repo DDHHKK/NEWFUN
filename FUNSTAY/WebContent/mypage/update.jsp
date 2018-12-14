@@ -185,7 +185,8 @@ function ch_pw(){
 	var chk1 = /\d/;
 	var chk2 = /[a-z]/i;
 	var pass = document.chpw.pass.value;
-
+	 var pass2 = document.chpw.pass_check.value;
+	 
 	 if(pass.length<6 || pass==null){
 	  alert("비밀번호를 확인해주세요.(영어,숫자조합 6글자이상)");
 	  return false;
@@ -196,7 +197,17 @@ function ch_pw(){
 	  return false;
 	 }
 
-	 document.chpw.submit();
+	 if(pass!=pass2){
+	 alert("비밀번호가 일치하지 않습니다.");}
+	 else
+		 {
+		 document.chpw.submit();
+		 }
+	 
+	 
+	 
+
+	 /* document.chpw.submit(); */
 }//regChk()
 function passchk(){
 	var pass = document.chpw.pass.value;
@@ -213,6 +224,8 @@ function passchk(){
 	 }
 	 return;
 	}//passchk() 
+
+	
 </script>
 
 <!-- 페이지내용 끝 -->

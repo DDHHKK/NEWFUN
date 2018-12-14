@@ -3,6 +3,14 @@
 /* *{border:1px solid red;} */
 
 
+
+
+
+#content_DY{    width: 80%;
+    float: right;}
+
+
+
 #content {
 
 	width: 77%;
@@ -386,72 +394,6 @@ height:75%;
 
 
 
-/* ���̵� */
-
-
-#sub_DY {
-    border: 1px solid blue;
-    background-color:#f5f4f0;
-    width: 20%;
-    min-height: 500px;
-    float: left;
-    /* position: fixed; */
-    /* right: 938px; */
-    top: 83px;
-    left: 20px;}
-
-#search_bar_DY{
-border-bottom:1px dotted #000000; 
-min-height:200px; }
-
-#option_DY{
-
-min-height:200px;}
-
-#filter_pupular_DY{
-width: 100%;
-min-height:100px;
-	
-}
-
-
-#filter_pupular_list>li {list-style: none; margin:5%;}
-
-#hotel_rate_DY {
-width: 100%;
-min-height:100px;}
-
-#cost_DY {
-width: 100%;
-min-height:100px;}
-
-#facility_DY {
-width: 100%;
-min-height:100px;}
-
-
-
-#filter_pupular_DY>h3,#hotel_rate_DY>h3,#cost_DY>h3,#facility_DY>h3,#disabled_facility_DY>h3 {
-	
-	width: 60%;
-	margin-left: 40px;
- }
-
-
-
-#filter_pupular_DY,#hotel_rate_DY,#cost_DY,#facility_DY{
-	border-bottom:1px dotted #000000; }
-
-
-
-
-
-#content_DY {
-	border: 1px solid red;
-	width: 77%;
-	min-height: 500px;
-	float: right;
-}
 
 
 

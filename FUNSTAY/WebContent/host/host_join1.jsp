@@ -176,11 +176,9 @@ $(function() {
 <form action="./HostJoinAction.ho" method="post" name="fr1">
 <table id="host1">
 <tr><td><b>숙소 이름</b></td></tr>
-<tr><td class="td"><input type="text" size="100" name="room_subject"></td></tr>
+<tr><td class="td"><input type="text" size="100" name="room_subject" maxlength="50"></td></tr>
 <tr><td><b>숙소 설명(주의사항,규칙,기타 정보 등을 적어주세요)</b></td></tr>
-<tr><td class="td"><textarea rows="10" cols="100" name="room_content"></textarea></td></tr>
-
-
+<tr><td class="td"><textarea rows="10" cols="100" name="room_content" maxlength="1000"></textarea></td></tr>
 
 
 

@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 <style>
 .button {
     background-color: #4CAF50; /* Green */
@@ -25,13 +25,35 @@
 }
 
 .button1 {
-    background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
-    border-radius: 50%;
+    background-color: #cc1d1d;
+    color: #ffffff;
+    /* border: 2px solid #cc1d1d; */
+    border:none;
 }
 
-.button1:hover {background-color: #e7e7e7;}
+.button1:hover {background-color: #991515;}
+
+
+.w3-input {
+
+	padding-left: 10px; 
+	padding : 7px;
+}
+
+table textarea {
+	padding: 10px; 
+
+}
+
+#btn111 {
+	text-align: right;
+	padding-top : 10px;
+}
+
+h3 {
+	padding : 5px;
+
+}
 
 </style>
 <title>FunStay</title>
@@ -76,12 +98,16 @@
 	
 	
 <form class="w3-container" action="./FAQ_boardUpdateAction.fa?pageNum=<%=pageNum %>" method="post" name="fr">
+<input type="hidden"class="w3-input" name="FAQ_num" value="<%=fb.getFAQ_num()%>">
+
 <table border="0" align="center">
-<tr><td><h3>번호</h3></td><td><input class="w3-input" name="FAQ_num" value="<%=fb.getFAQ_num()%>"></td></tr>
-<tr><td><h3>제목</h3></td><td><input class="w3-input" name="FAQ_subject" value="<%=fb.getFAQ_subject()%>" placeholder="제목을 입력해주세요..."></td></tr>
-<tr><td><h3>내용</h3></td><td><textarea rows="30" cols="50" name="FAQ_content" placeholder="내용을 입력해주세요..."><%=fb.getFAQ_content()%></textarea></td></tr>
+
+<tr><td><h3>제목</h3></td><td><input class="w3-input" name="FAQ_subject" size="100" id="subject" value="<%=fb.getFAQ_subject()%>"></td></tr>
+<tr><td><h3>내용</h3></td><td><textarea name="FAQ_content" rows="30" cols="100"><%=fb.getFAQ_content()%></textarea></td></tr>
+
+
 <tr><td colspan="3" align="right">
-<button class="button button1">글수정</button>
+<button class="button button1">수정</button>
 </td></tr>
 </table>
 </form>
