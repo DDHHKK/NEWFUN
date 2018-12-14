@@ -1,7 +1,5 @@
 package net.search.Action;
 
-import java.sql.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,30 +8,26 @@ import net.search.controller.Action;
 import net.search.controller.ActionForward;
 import net.search.db.SearchDAO;
 
-
-
-
-
 public class Qna_boardWriteAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ReviewWriteAction execute()");
+		System.out.println("Qna_boardWriteAction  execute()");
 		//request 한글처리
 		request.setCharacterEncoding("utf-8");
+		System.out.println("여기");
+		QnaBean qb = new QnaBean();  
 		
-		QnaBean qb = new QnaBean();
 		
-		
-		qb.setQnA_num(Integer.parseInt(request.getParameter("qnA_num")));
+/*		qb.setQnA_num(Integer.parseInt(request.getParameter("qnA_num")));*/
 		qb.setSubject(request.getParameter("subject"));
-		qb.setContent(request.getParameter("content"));
+		qb.setContent(request.getParameter("content")); 
 		qb.setQnA_pass(request.getParameter("qnA_pass"));
 		qb.setMember_email(request.getParameter("member_email"));
 		qb.setHome_num(Integer.parseInt(request.getParameter("home_num")));
-		qb.setRe_ref(Integer.parseInt(request.getParameter("re_ref")));
+	/*	qb.setRe_ref(Integer.parseInt(request.getParameter("re_ref")));
 		qb.setRe_lev(Integer.parseInt(request.getParameter("re_lev")));
-		qb.setRe_seq(Integer.parseInt(request.getParameter("re_seq")));
+		qb.setRe_seq(Integer.parseInt(request.getParameter("re_seq")));*/
 
 
 		SearchDAO sdao=new SearchDAO();

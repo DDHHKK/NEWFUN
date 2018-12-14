@@ -330,9 +330,7 @@ font-size: 15px;
 font-weight: 600;
 cursor: pointer;
 }
-.content_box1{
-	box-sizing: border-box;
-}
+
 .in_box1 fieldset button.btn:hover{
 background-color: #991515;
 }
