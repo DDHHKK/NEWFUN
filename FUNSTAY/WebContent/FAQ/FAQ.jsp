@@ -12,6 +12,7 @@
  integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
 <style>
 <!-- css -->
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -55,6 +56,7 @@
 #pen {
 	margin: 0% 0% 0% 74%;
 	cursor: pointer;
+	padding : 10px;
 }
 
 #pen:hover{
@@ -136,23 +138,25 @@
 	%>
 
 
-
+<!-- <script src="./js/QnA/QnA.js"></script> -->
 <div id="FAQ_detail">
 	 	<%
 			for (int i = 0; i < FAQ_boardList.size(); i++) {
 				FAQBean fb = (FAQBean) FAQ_boardList.get(i);
 		%>
+		<button class="accordion" href="./FAQ_boardContent.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>"><%=fb.getFAQ_subject()%></button>
 		
-		<a href="./FAQ_boardContent.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>"><%=fb.getFAQ_subject()%>
 		<div class="panel_box">
-		<button class="accordion"><%=fb.getFAQ_content()%></button></a>
-	 	<script src="./js/QnA/QnA.js"></script>
-		</div>
-		
+		<p>
+		<%=fb.getFAQ_content()%>
+	 	</p>
+	
+</div> 
 		<%
 			}
 		%> 
 		
+
 <div id="bor_num">
 
 <%
@@ -181,7 +185,7 @@
 		}
 			// 1~10
 			for (int i = startPage; i <= endPage; i++) {
-	%><a href="./FAQ_boardList.fa?pageNum=<%=i%>"> <%=i%> 
+	%><a href="./FAQ_boardList.fa?pageNum=<%=i%>">  <%=i%>  
 	</a>
 	<%
 		}
@@ -204,6 +208,24 @@
 
  
   </div>
+  
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+  
 
 
 <!-- 페이지내용 끝 -->
