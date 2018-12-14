@@ -29,7 +29,7 @@ $(document).ready(function(){
 	
 </script>
 <!-- 로그인/회원가입 버튼/달력 -->
-<script src="js/login.js"></script>
+<script src=".js/default/login.js"></script>
 
 <!-- id값을 가져오기 위해 객체생성 -->
 <%MemberDAO md = new MemberDAO();
