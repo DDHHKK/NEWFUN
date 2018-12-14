@@ -732,7 +732,7 @@ public class MemberDAO {
 	}// memberlist(pageing count) end
 
 	// searchlist
-	public Vector getsearchList(HostBean hb, String start_date, String end_date) {
+	/*public Vector getsearchList4(HostBean hb, String start_date, String end_date) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -786,6 +786,59 @@ public class MemberDAO {
 				}
 		}
 		return vector;
+	}*/
+	
+	public Vector getsearchList(HostBean hb, String start_date, String end_date, int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector vector = new Vector();
+		List goodsList = new ArrayList();
+		try {
+			con = getConnection();
+			String sql = "select * from (select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) "
+					+ "as min_people1, sum(max_people) as max_people1 from home h join room r "
+					+ "on h.home_num=r.home_num where h.address LIKE ? and h.start_date < ? "
+					+ "and h.end_date > ? group by h.home_num) sum_list where max_people1>= ?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+hb.getAddress()+"%");
+			pstmt.setString(2, start_date);
+			pstmt.setString(3, end_date);
+			pstmt.setInt(4, num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				HostBean hb1 = new HostBean();
+				hb1.setAddress(rs.getString("address"));
+				hb1.setRoom_subject(rs.getString("room_subject"));
+				hb1.setRoom_type(rs.getString("room_type"));
+				hb1.setRoom_content(rs.getString("room_content"));
+				hb1.setHome_num(rs.getInt("home_num"));
+				hb1.setPrice(rs.getInt("price"));
+				hb1.setPhoto(rs.getString("photo"));
+					
+				goodsList.add(hb1);
+			}
+			vector.add(goodsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return vector;
 	}
 
 	public Vector getsearchList2(HostBean hb) {
@@ -803,19 +856,13 @@ public class MemberDAO {
 			while (rs.next()) {
 				HostBean hb1 = new HostBean();
 				hb1.setAddress(rs.getString("address"));
-				hb1.setStart_date(rs.getDate("start_date"));
-				hb1.setEnd_date(rs.getDate("end_date"));
 				hb1.setRoom_subject(rs.getString("room_subject"));
 				hb1.setRoom_type(rs.getString("room_type"));
 				hb1.setRoom_content(rs.getString("room_content"));
+				hb1.setHome_num(rs.getInt("home_num"));
 				hb1.setPrice(rs.getInt("price"));
 				hb1.setPhoto(rs.getString("photo"));
-				
-				
-				System.out.println("getsearchList2" + hb1.getAddress());
-				System.out.println("getsearchList2" + hb1.getStart_date());
-				System.out.println("getsearchList2" + hb1.getEnd_date());
-				System.out.println("getsearchList2" + hb1.getPhoto());
+			
 
 				goodsList.add(hb1);
 

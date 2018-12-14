@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 <style>
 .button {
     background-color: #4CAF50; /* Green */
@@ -23,13 +23,13 @@
 }
 
 .button1 {
-    background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
-    border-radius: 50%;
+    background-color: #cc1d1d;
+    color: #ffffff;
+    /* border: 2px solid #cc1d1d; */
+    border:none;
 }
 
-.button1:hover {background-color: #e7e7e7;}
+.button1:hover {background-color: #991515;}
 
 </style>
 
@@ -95,4 +95,4 @@
 <jsp:include page="../include/footer.jsp"></jsp:include>
 <!-- footer 끝-->
 </body>
-</html>
+</html> --%>
