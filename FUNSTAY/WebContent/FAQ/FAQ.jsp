@@ -8,8 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'
+ integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
 <style>
 <!-- css -->
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -43,6 +46,22 @@
 	}
 
 
+#bor_num{
+	text-align: center;
+	margin-top:35px;
+	padding-bottom: 30px;
+}
+
+
+#pen {
+	margin: 0% 0% 0% 74%;
+	cursor: pointer;
+	padding : 10px;
+}
+
+#pen:hover{
+	color:#cc1d1d;
+}
 
 </style>
 
@@ -100,27 +119,45 @@
 		int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
 	%>
 <div id="FAQ_wrap">
-<h1>FAQ</h1>  
-
-	<h1>
+	<h2>
 		자주묻는질문 [ 전체글의 개수 : <%=count%>]
-	</h1>
+	</h2>
 </div>
+
+<!-- id가 admin이면 회원목록이 보이도록 하자. -->
+	<%
+	String email = (String)session.getAttribute("email");
+		if (email != null) {
+			if (email.equals("admin")) {
+	%>
+	<a href="./FAQ_boardWrite.fa"><i class='fas fa-pen-alt' style='font-size:27px' id="pen"></i></a>
+
+	<%
+			}
+		}
+	%>
+
+
+<!-- <script src="./js/QnA/QnA.js"></script> -->
 <div id="FAQ_detail">
 	 	<%
 			for (int i = 0; i < FAQ_boardList.size(); i++) {
 				FAQBean fb = (FAQBean) FAQ_boardList.get(i);
 		%>
+		<button class="accordion" href="./FAQ_boardContent.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>"><%=fb.getFAQ_subject()%></button>
 		
-		<a href="./FAQ_boardContent.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>"><%=fb.getFAQ_subject()%>
 		<div class="panel_box">
-		<button class="accordion"><%=fb.getFAQ_content()%></button></a>
-	 	<script src="./js/QnA/QnA.js"></script>
-		</div>
-		
+		<p>
+		<%=fb.getFAQ_content()%>
+	 	</p>
+	
+</div> 
 		<%
 			}
-		%>  
+		%> 
+		
+
+<div id="bor_num">
 
 <%
 		if (count != 0) {
@@ -143,23 +180,24 @@
 			}
 			//이전
 			if (startPage > pageBlock) {
-	%><a href="./FAQ_boardList.fa?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+	%><a href="./FAQ_boardList.fa?pageNum=<%=startPage - pageBlock%>">◀</a>
 	<%
 		}
 			// 1~10
 			for (int i = startPage; i <= endPage; i++) {
-	%><a href="./FAQ_boardList.fa?pageNum=<%=i%>">[<%=i%>]
+	%><a href="./FAQ_boardList.fa?pageNum=<%=i%>">  <%=i%>  
 	</a>
 	<%
 		}
 			//다음
 			if (endPage < pageCount) {
-	%><a href="./FAQ_boardList.fa?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+	%><a href="./FAQ_boardList.fa?pageNum=<%=startPage + pageBlock%>">▶</a>
 	<%
 		}
 
 		}
 	%>
+</div> 
 	<!-- 	1 2 3 .....10  [다음] -->
 	<!-- 	[이전] 11 12 13 ... 20 [다음] -->
 	<!-- 	[이전] 21 22 23 ..27   [다음] -->
@@ -167,21 +205,27 @@
 
 
 
-<!-- id가 admin이면 회원목록이 보이도록 하자. -->
-	<%
-	String email = (String)session.getAttribute("email");
-		if (email != null) {
-			if (email.equals("admin")) {
-	%>
-	<button class="button button1"><a href="./FAQ_boardWrite.fa">글쓰기</a></button>
 
-	<%
-			}
-		}
-	%>
-  
  
   </div>
+  
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+  
 
 
 <!-- 페이지내용 끝 -->

@@ -24,17 +24,45 @@
 }
 
 .button1 {
-    background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
-    border-radius: 50%;
+    background-color: #cc1d1d;
+    color: #ffffff;
+    /* border: 2px solid #cc1d1d; */
+    border:none;
 }
 
-.button1:hover {background-color: #e7e7e7;}
+.button1:hover {background-color: #991515;}
+
+
 #FAQ_wrap{
 	width : 1000px;
 	margin : 0 auto;
 }
+
+
+.w3-input {
+
+	padding-left: 10px; 
+	padding : 10px;
+	border: #fff;
+	border-bottom: 1px solid #cccccc;
+}
+
+table textarea {
+	padding: 10px; 
+	border : 1px solid #cccccc;
+
+}
+
+#btn111 {
+	text-align: right;
+	padding-top : 10px;
+}
+
+h3 {
+	padding : 5px;
+
+}
+
 </style>
 
 
@@ -79,11 +107,13 @@
 	%>
 
 <div id="FAQ_wrap">		
-			<h1><%=fb.getFAQ_subject()%></h1>
-		
-			
-			<h1><%=fb.getFAQ_content()%></h1>
-		
+	<table align="center">
+
+
+
+<!-- <tr><td><h3>번호</h3></td><td><input type="text" name="FAQ_num"></td></tr> -->
+<tr><td><h3>제목</h3></td><td><input class="w3-input" name="FAQ_subject" size="100" id="subject" value="<%=fb.getFAQ_subject()%>" readonly></td></tr>
+<tr><td><h3>내용</h3></td><td><textarea name="FAQ_content" rows="30" cols="100" readonly><%=fb.getFAQ_content()%></textarea></td></tr>
 			
 			<!-- id가 admin이면 회원목록이 보이도록 하자. -->
 	<%
@@ -91,21 +121,22 @@
 		if (email != null) {
 			if (email.equals("admin")) {
 	%>
-	<button class="button button1"
+
+	<tr><td colspan="2" id="btn111"><button class="button button1"
 			 onclick="location.href='FAQ_boardUpdate.fa?num=<%=num%>&pageNum=<%=pageNum%>'">글수정</button>
 			 <button class="button button1"
 			onclick="location.href = './FAQ_boardDelete.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>'">글삭제</button>
 			 <button class="button button1"
-			 onclick="location.href = './FAQ_boardList.fa?pageNum=<%=pageNum%>'">글목록</button>
+			 onclick="location.href = './FAQ_boardList.fa?pageNum=<%=pageNum%>'">글목록</button></td></tr>
 	
 
 	<%
 			}
 		}
 	%>
-</div>			
 		
-	
+</table>
+</div>		
 	
 <!-- 페이지내용 끝 -->
 </div>

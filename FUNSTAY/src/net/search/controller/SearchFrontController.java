@@ -70,13 +70,14 @@ public class SearchFrontController extends HttpServlet{
 			forward.setPath("./room_info/Qna_boardWriteForm.jsp");
 			forward.setRedirect(false);
 		}
+		
 		//리뷰작성Action	
-			else if(command.equals("/Qna_boardWriteAction.sc")){
-				action=new Qna_boardWriteAction();
+			else if(command.equals("/Qna_boardWriteAction.sc")){	
+				action=new Qna_boardWriteAction();	
 				try {  
-				} catch (Exception e) {
-						
-					e.printStackTrace();
+					forward = action.execute(request, response);
+				} catch (Exception e) {						
+					e.printStackTrace(); 
 				}
 					
 			}

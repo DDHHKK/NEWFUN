@@ -22,12 +22,25 @@
  
 
 <!-- 혜진씨 삽입링크 -->
-<link href="./css/search/search_center_shj.css" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="./css/search/search_center_shj2.css" rel="stylesheet">
+ <link rel="stylesheet" href="styles.css">
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script src="script.js"></script>
+<!-- <script src="script.js"></script> -->
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
 
+<!-- datepicker -->
+<script src="./dist/js/caleander2.js"></script>
+<script src="./dist/js/datepicker.js"></script>
+<script src="./dist/js/datepicker.min.js"></script>
+<script src="./dist/js/i18n/datepicker.en.js"></script>
+
+<link href="./dist/css/datepicker.min.css" rel="stylesheet"type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+<!-- css -->
+<!-- <link href = "css/main.css" rel="stylesheet">
+ -->
 <!--star  -->
 <script src="./js/search/star.js"></script>
 

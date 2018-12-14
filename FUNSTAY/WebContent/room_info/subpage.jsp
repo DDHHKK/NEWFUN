@@ -30,6 +30,7 @@
 <!-- header  시작-->
 <jsp:include page="../include/header.jsp"></jsp:include>
 <!-- header  끝-->
+<div class="clear"></div>
 <hr>
 
 <div id="content">

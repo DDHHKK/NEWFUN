@@ -64,12 +64,47 @@
     background-color: #000;
 	border:1px solid #000;
 }
-
+/* 비밀번호 변경버튼css */
+#updatePass{
+	background-color: #cc1d1d;
+	color: #fff;
+	width: 150px;
+	height:30px;
+	font-size: 16px;
+	border: 1px solid #cc1d1d;
+	border-radius: 7px;
+	cursor: pointer;
+}
+#updatePass button:HOVER {
+	background-color: #991515;
+}
+#updateCancel{
+	background-color: #cc1d1d;
+	color: #fff;
+	width: 150px;
+	height:30px;
+	font-size: 16px;
+	border: 1px solid #cc1d1d;
+	border-radius: 7px;
+	cursor: pointer;
+}
+#updateCancel button:HOVER {
+	background-color: #991515;
+}
+/* //비밀번호 변경버튼css */
 
 .panel_box_sh .birth{
 	width: 13%;
 	height: 38px;
     border: solid 1px #c3c3c3;	
+}
+
+.psw-repeat{
+	border-width: 0px;
+    height: 20px;
+    color: red;
+    padding: 0px;
+    margin: auto;
 }
 /* .panel_box_sh form{
 	padding:50px 70px;
