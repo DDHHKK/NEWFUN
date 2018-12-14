@@ -203,15 +203,15 @@ margin-left: 10px;}
 .header_dh>li {
 	float: left;
 }
+
 .header_dh1>li {
 	float: left;
 }
 
-.header_dh1 {
+.header_dh1{
 	float: right;
-	margin-right: 3%;
+	margin: -2% 8% 0% 0%;
 }
-
 
 #pont1_WS i {
 	margin-bottom:10px;
@@ -223,9 +223,8 @@ margin-left: 10px;}
 }
 
 
-
 #li_3{
-	margin:4% 0% 0% -90%;
+	margin: 2% 0% 0% 8%;
 }
 
 #li_3 a:hover{
@@ -234,7 +233,7 @@ margin-left: 10px;}
 
 
 #li_4{
-	margin:5% 0% 0% 0%;
+	margin: -5% 0% 0% 65%;
 }
 
 #li_4 a:hover{
@@ -243,7 +242,7 @@ margin-left: 10px;}
 
 
 #li_5{
-	margin: 4% 0% 0% 20%;
+	margin: -7% 0% 0% 80%
 }
 
 
@@ -252,11 +251,9 @@ margin-left: 10px;}
 }
 
 #li_7{
-	margin-top:27%;
-	margin-left:10%;
+	margin: 22% 10% 10% 1%;
 }
 
 #li_8{
-	margin: -2.2% 3% 0% 0%;
-    float: right;
+	margin: 2% 0% 0% 2%;
 }

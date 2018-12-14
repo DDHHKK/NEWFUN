@@ -37,6 +37,31 @@
 
 
 </head>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#updateCancel").hide();
+	$("#updatePass").click(function(){
+		$("#updateCancel").show();
+		$("#updatePassbox").append("<div id='insertPass'><div><p><i class='fa fa-key icon'></i><label>Password</label></p><p><input type='password' class='t_box_sh' name='pass' val='' ></p></div><div><p><i class='fa fa-key icon'></i><label>Password Check</label></p><p><input type='password' class='t_box_sh' name='pass_check' val=''></p></div></div>");
+		/* $("#updatePassbox").append("<p><input type='password' class='t_box_sh' name='pass' val='' ></p></div>");
+		$("#updatePassbox").append("<div><p><i class='fa fa-key icon'></i><label>Password Check</label></p>");
+		$("#updatePassbox").append("<p><input type='password' class='t_box_sh' name='pass_check' val=''></p></div></div>");	 */
+		$("#updatePass").hide();
+	});
+	$("#updateCancel").click(function(){
+		$("#updatePass").show();
+		$("#insertPass").remove();	
+		$("#updateCancel").hide();
+	});
+});
+function func()
+{
+
+}
+
+
+</script>
 <body>
 
 <!-- header  시작-->
@@ -61,9 +86,6 @@
 	MemberBean mb = mdao.getMember(email);
 	%>  
 	
- <input type="hidden" name="photo11" value="<%=mb.getProfile_photo()%>">
- <input type="hidden" name="pass11" value="<%=mb.getPass()%>">
-
 
 <div id="content">
 <!-- 페이지내용 시작 -->
@@ -71,6 +93,9 @@
   <h1>정보수정</h1>
   <!-- 정보수정폼시작 -->
   <form action="./MemberUpdateAction.me" id="join"method="post" enctype="multipart/form-data">
+   <input type="hidden" name="photo11" value="<%=mb.getProfile_photo()%>">
+ <input type="hidden" name="pass11" value="<%=mb.getPass()%>">
+
   
    <div id="fileup_sh" name="photo" style="width: 150px; height: 150px;">
   <!-- <p id="status_sh">프로필 사진</p> -->
@@ -88,15 +113,19 @@
     <p><input type="text" class="t_box_sh" name="email" value="<%=mb.getEmail()%>" style="border: none;" readonly></p>
    </div>
    
-   <div>
+   <div id ="updatePassbox">
+   <input type="button" value="비밀번호 변경" id="updatePass" onclick="func()">
+   <input type="button" value="비밀번호 변경취소" id="updateCancel">
+   </div>
+  <!--  <div>
     <p><i class="fa fa-key icon"></i><label>Password</label></p>
-    <p><input type="password" class="t_box_sh" name="pass" value="<%=mb.getPass()%>"></p>
+    <p><input type="password" class="t_box_sh" name="pass" ></p>
    </div>
    
      <div>
     <p><i class="fa fa-key icon"></i><label>Password Check</label></p>
     <p><input type="password" class="t_box_sh" name="pass_check"></p>
-   </div>
+   </div> -->
    
    <div>
    	 <p><i class="fa fa-user-o"></i><label>NAME</label></p>

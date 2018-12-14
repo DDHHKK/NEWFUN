@@ -30,16 +30,13 @@ public class Id_FindAction implements Action{
 		String email = mdao.findid(mb);
 		
 		System.out.println("확인"+email);
+		
 		if(email!=null){
+			forward = new ActionForward();
+			forward.setPath("./id_pw_find/find_result.jsp");
+			forward.setRedirect(false);
+			return forward;
 			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('이메일은"+email+"입니다');");
-			out.print("location.href='./find_pw.me'");
-			out.println("</script>");
-			out.close();
-			return null;
 		}else if(email==null){
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -51,11 +48,9 @@ public class Id_FindAction implements Action{
 			return null;
 		}
 			
-		/*forward = new ActionForward();
-		forward.setPath("./Main.me");
-		forward.setRedirect(true);*/
+	
 		
-		return forward;
+		return null;
 	}
 	
 }
