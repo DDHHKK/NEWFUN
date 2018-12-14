@@ -232,7 +232,7 @@ padding-left:10px;
 }
 
 .in_box fieldset button.btn{
-background-color: #cc1b1b;
+background-color: #cc1d1d;
 border: none;
 color: #fff;
 font-family: 'Malgun Gothic','맑은 고딕';
@@ -243,6 +243,23 @@ margin: 10px 0;
 font-size: 15px;
 font-weight: 600;
 cursor: pointer;
+}
+.btn_2{
+background-color: #cc1d1d;
+border: none;
+color: #fff;
+font-family: 'Malgun Gothic','맑은 고딕';
+width: 49%;
+text-align: center;
+padding: 14px;
+margin: 10px 0;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+}
+.btn_2:HOVER{
+	background-color: #991515;
+	
 }
 
 .in_box fieldset button.btn:hover{
@@ -313,11 +330,21 @@ font-size: 15px;
 font-weight: 600;
 cursor: pointer;
 }
-
+.content_box1{
+	box-sizing: border-box;
+}
 .in_box1 fieldset button.btn:hover{
 background-color: #991515;
 }
-
+.in_box1 fieldset p{
+	text-align: center; 
+	font-weight: bold; 
+	margin-bottom: 35px;
+	font-size: 20px;
+}
+.in_box1 fieldset span{
+	color: #cc1d1d;
+}
 
 
 @media screen and (max-width: 700px) {
