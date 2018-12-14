@@ -316,6 +316,20 @@ cursor: pointer;
     display: block;
 }
 
+
+.top_pad_ws{
+	padding-left: 240px;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+.top_pad1_ws{
+	padding-left: 135px;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+
 .dropdown-content a:hover {background-color: #ddd;}
 
 .dropdown:hover .dropdown-content {display: block;}
