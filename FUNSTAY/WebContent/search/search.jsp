@@ -220,10 +220,68 @@ for(int i=0;i<list.size();i++){ //for문 시작
  <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" class="img_shj"style="width:100%">
 
 </div>
+
 <a class="prev_shj"></a>
 <a class="next_shj"></a>
 
+
+<!-- <div class="mySlides fade_shj">
+
+  <img src="./img/photo_3.png" class="img_shj" style="width:100%">
+>>>>>>> branch 'master' of https://github.com/DDHHKK/NEWFUN.git
+
 </div>
+
+
+
+<div class="mySlides fade_shj">
+
+  <img src="./img/photo_2.png" class="img_shj" style="width:100%">
+
+</div> -->
+
+<a class="prev_shj" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next_shj" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<!-- <div class="dot_box" style="text-align:center">
+  <span class="dot_shj" onclick="currentSlide(1)"></span> 
+  <span class="dot_shj" onclick="currentSlide(2)"></span> 
+  <span class="dot_shj" onclick="currentSlide(3)"></span> 
+</div> -->
+
+	<!-- 이미지 fade 기능  -->
+<!-- <script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active_shj";
+}
+</script>	 -->
+
 
 </div>
 <div class="contentbox_shj">
@@ -244,13 +302,18 @@ for(int i=0;i<list.size();i++){ //for문 시작
  	  <i id="image5"class="material-icons" style="font-size:18px" >star_border</i>
  </span>
  <span style="position: relative; bottom: 10%;">
- 2/5
  </span>
 </div>
 </div>
 <div class="extra_shj">
 <div class="innerex_shj">
 <h4><%=hb.getPrice() %>￦/1박</h4></div>
+<h4>25000/1박</h4></div>
+<div><a href="#loginmodal" class="flatbtn" id="modaltrigger">
+	<i class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i>
+	</a></div>
+</div>
+
 
 <div id="wrap">
 	<h1>모달윈도우 샘플페이지</h1>
@@ -259,9 +322,6 @@ for(int i=0;i<list.size();i++){ //for문 시작
 	<i class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i>
 	</a></div>
 
-</div>
-
-</div>
 
 <div id="loginmodal" style="display:none;">
 <h2 >목록 리스트</h2>
@@ -270,8 +330,15 @@ for(int i=0;i<list.size();i++){ //for문 시작
 <li style="cursor: pointer;">Mylist2</li>
 <li style="cursor: pointer;">Mylist3</li>
 </ul>
+
 </div>
 
+
+</div>
+
+<%
+System.out.println("Asdfasdfasdf");
+%>
 
 <!-- 하트 클릭부분 -->
 <script type="text/javascript">
@@ -305,9 +372,15 @@ $(document).ready(function(){
 $(function(){
  /*  $('#loginform').submit(function(e){
     return false;
+
   });
    */
   $('#modaltrigger').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+
+  }); */
+  
+  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8 });
+
 });
 </script>
 <%
@@ -328,19 +401,19 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 <h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb1.getAddress()%></h1><br>
 
 <!--정렬  -->
-<div style="width:8%" id='listmenu_shj'>
+<!-- <div style="width:8%" id='listmenu_shj'>
 <ul style=" width: 100%;" >
-   <li class='active has-sub_shj'><a href='#'><span  class='fas'>정렬  &#xf107; &#xf106;</span></a>
+   <li class='active has-sub_shj'><a href="#"><span  class='fas'>정렬  &#xf107; &#xf106;</span></a>
       <ul>
-         <li class='has-sub_shj'><a href='#'><span  class='fas'>최신순 &#xf107; &#xf106;</span></a>
+         <li class='has-sub_shj'><a href='#'><span class='fas'>최신순 &#xf107; &#xf106;</span></a>
          </li>
-         <li class='has-sub_shj'><a href='#'><span  class='fas'>인기순  &#xf107; &#xf106;</span></a>
+         <li class='has-sub_shj'><a href='#'><span class='fas'>인기순  &#xf107; &#xf106;</span></a>
          </li>
       </ul>
    </li>
 </ul>
 </div>
- 
+  -->
 
 </div>
 <div class="clear"></div>
