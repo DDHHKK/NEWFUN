@@ -49,8 +49,11 @@ hostCheck = (int)session.getAttribute("hostCheck");
 <ul class="header_dh">
 
 <li id="pont1_WS"><a href="./Main.me"><i>FUNSTAY</i></a></li>
-<li id="li_2"><input type="text" id="text_1_WS" name="search_info" placeholder="검색할 내용을 적으세요">
+<li id="li_2"><input type="text" id="text_1_WS" name="search_info" placeholder="여행하실 지역을 적어주세요">
 <input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></li>
+</ul>
+
+<ul class="header_dh1">
 <%if(hostCheck==0){ %>
 <li id="li_3"><a href="./HostMain.ho">호스트로 등록해 보세요</a></li>
 <%}else if(hostCheck==1){ %>
@@ -63,6 +66,7 @@ hostCheck = (int)session.getAttribute("hostCheck");
 if(email==null){
 	%>
 <li id="li_5"><button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</button></li>
+<li id="li_8"><button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button></li>
 <!-- <button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button> -->
 <%
 }else{
@@ -215,7 +219,7 @@ if(email==null){
 
 <%if(email==null){
 	%>
-<button class="btn_remove" id="li_8" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button>
+<!-- <button class="btn_remove" id="li_8" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button> -->
 <%
 }
 %>
