@@ -37,6 +37,19 @@
 
 
 </head>
+
+<script type="text/javascript">
+function func()
+{
+
+	$("#updatePass").append("<div><p><i class='fa fa-key icon'></i><label>Password</label></p>");
+	$("#updatePass").append("<p><input type='password' class='t_box_sh' name='pass' val='' ></p></div>");
+	$("#updatePass").append("<div><p><i class='fa fa-key icon'></i><label>Password Check</label></p>");
+	$("#updatePass").append("<p><input type='password' class='t_box_sh' name='pass_check' val=''></p></div>");
+}
+
+
+</script>
 <body>
 
 <!-- header  시작-->
@@ -88,15 +101,18 @@
     <p><input type="text" class="t_box_sh" name="email" value="<%=mb.getEmail()%>" style="border: none;" readonly></p>
    </div>
    
-   <div>
+   <div id ="updatePass">
+   <input type="button" value="비밀번호 변경"onclick="func()">
+   </div>
+  <!--  <div>
     <p><i class="fa fa-key icon"></i><label>Password</label></p>
-    <p><input type="password" class="t_box_sh" name="pass" value="<%=mb.getPass()%>"></p>
+    <p><input type="password" class="t_box_sh" name="pass" ></p>
    </div>
    
      <div>
     <p><i class="fa fa-key icon"></i><label>Password Check</label></p>
     <p><input type="password" class="t_box_sh" name="pass_check"></p>
-   </div>
+   </div> -->
    
    <div>
    	 <p><i class="fa fa-user-o"></i><label>NAME</label></p>
