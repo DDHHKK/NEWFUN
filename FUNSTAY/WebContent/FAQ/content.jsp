@@ -24,13 +24,13 @@
 }
 
 .button1 {
-    background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
-    border-radius: 50%;
+    background-color: #cc1d1d;
+    color: #ffffff;
+    /* border: 2px solid #cc1d1d; */
+    border:none;
 }
 
-.button1:hover {background-color: #e7e7e7;}
+.button1:hover {background-color: #991515;}
 #FAQ_wrap{
 	width : 1000px;
 	margin : 0 auto;
