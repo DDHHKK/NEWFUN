@@ -1,156 +1,71 @@
 @CHARSET "UTF-8";
 
 
-
-#sub_DY {
-    border: 1px solid blue;
-    background-color:#f5f4f0;
-    width: 20%;
-    min-height: 500px;
-    float: left;
-    /* position: fixed; */
-    /* right: 938px; */
-    top: 83px;
-    left: 20px;}
-
-#search_bar_DY{
-border-bottom:1px dotted #000000; 
-min-height:200px; }
-
-#option_DY{
-
-min-height:200px;}
-
-#filter_pupular_DY{
-width: 100%;
-min-height:100px;
-	
-}
+/* sideBar */
+#sideBar_shj{border: 2px solid red;
+	width:350px;
+	height:800px;
+	display: inline-block;}
 
 
-#pont_1213_WS{
-	font-size: 25px;
-	text-align: center;
-}
-
-#filter_pupular_list>li {list-style: none;}
-
-#hotel_rate_DY {
-width: 100%;
-min-height:100px;}
-
-#cost_DY {
-width: 100%;
-min-height:100px;}
-
-#facility_DY {
-width: 100%;
-min-height:100px;}
-
-
-
-#filter_pupular_DY>h3,#hotel_rate_DY>h3,#cost_DY>h3,#facility_DY>h3,#disabled_facility_DY>h3 {
-	
-	width: 60%;
-	margin-left: 40px;
- }
-
-
-
-#filter_pupular_DY,#hotel_rate_DY,#cost_DY,#facility_DY{
-	border-bottom:1px dotted #000000; }
-
-
-
-
-
-#content_DY {
-	border: 1px solid red;
-	width: 77%;
-	min-height: 500px;
-	float: right;
-}
-
-
-
-.letter {margin: 20px;
- font-size: 20px;}
-
-
-
-/* Style the tab */
-.tab {
-    overflow: hidden;
-    margin: 20px;
+.textsize1 {
+    width: 150px !important;
+    height: 25px !important;
+    border-radius: 7px !important;
    
+    padding: 5px 10px;
+    box-sizing: border-box;
 }
 
-/* Style the buttons inside the tab */
-.tab button {/* border: 1px solid #ccc; */
-    background-color: #f1f1f1;
-   /*  background-color: inherit; */
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
+.textsize2 {
+    width: 150px !important;
+    height: 25px !important;
+    border-radius: 7px !important;
+    margin-left: 15px !important;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+.datepicker-here{ width: 73.5px !important;
+    height: 25px !important;
+    border-radius: 7px !important;
+    padding: 5px 10px;
+    box-sizing: border-box;
 }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-    background-color: #ddd;
+#form_1 ol li,#searchtable {list-style: none;
+       margin: 7px 43px 7px 5px;
+    font-size: 20px;
+    font-weight: bold;
 }
+#form_1 ol { padding-inline-start: 0 !important;}
+#searchtable tr td{margin:3px;} 
+#searchtable tr {margin:3px 0;} 
+#btn1 {      width: 96px;
+    height: 34px;
+    font-size: 18px;
+    margin: 5% 0 6% 40%;
+    background-color: #cc1d1d;
+    /* position: relative; */
+    /* top: 52px; */
+    color: white;}
+#searchtable input[type=text] {width: 20px; font-size: 10px !important;}
 
-/* Create an active/current tablink class */
-.tab button.active {
-    background-color: #ccc;
-}
+.btn_1{    width: 20px;
+ color: white;
+ background-color: #cc1d1d;}
 
-/* Style the tab content */
-.tabcontent {border:2px solid blue;
-	min-height:500px;
-	display: none;
-    padding: 6px 12px;
-    border-top: none;
-}
-
-
-.pic {border:2px solid green;
-    width:200px;
-    height:200px;
-    
-    background-image: url("../../images/couch.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    
-    }
-
-.pic2 {border:2px solid green;
-    width:200px;
-    height:200px;
-    
-    background-image: url("../../images/couch.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+#btn_sh{    position: relative;
+    left: 126px;
+    bottom: 48px;
+    height: 40px;
+    width: 50px;
+    background-color: #cc1d1d;
+    color: white;
+    font-size: 16px;}
     
     
-    }
-
-
-
-.house1,.house2{border: 1px solid;
-width: 250px;
-}
-
-.house1{float: left;}
-
-.house2{float: right;
-margin-right: 350px;} 
-
-
-
-
-
+    
+ #like_star span{position: relative;top: 29px; left: 20px;
+    font-size: 20px; font-weight: bold; display: inline-block;"}
+    
+    
