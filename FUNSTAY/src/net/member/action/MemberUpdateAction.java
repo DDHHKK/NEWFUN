@@ -52,31 +52,14 @@ public class MemberUpdateAction implements Action{
 		String photo11 = multi.getParameter("photo11");
 		String pass = multi.getParameter("pass");
 		String pass11 = multi.getParameter("pass11");
+		System.out.println(pass);
+		System.out.println(pass11);
 		
 		mb.setEmail(multi.getParameter("email"));
 		
 		mb.setName(multi.getParameter("name"));
 		mb.setPhone(multi.getParameter("phone"));
 		mb.setBirth(multi.getParameter("birth"));
-
-		if(pass==null)
-		{
-			mb.setPass(pass11);
-		}
-		else if(pass11==null)
-		{
-			mb.setPass(pass);
-		}else{
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('변경할 비밀번호를 입력해주세요');");
-			out.println("history.back();");
-			out.println("</script>");
-			out.close();
-			return null;
-		}
-		
 		if(profile_photo==null)
 		{
 			mb.setProfile_photo(photo11);
@@ -85,6 +68,40 @@ public class MemberUpdateAction implements Action{
 		{
 			mb.setProfile_photo(profile_photo);
 		}
+		
+		if(pass==null)
+		{
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('변경할 비밀번호를 입력해주세요');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+			return null;	
+		
+		}
+		/*else if(pass11==null)
+		{
+		
+				mb.setPass(pass);
+
+
+		}*/else{
+			mb.setPass(pass11);
+		}
+	
+		mdao.updateMember(mb);
+		
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('정보가 변경되었습니다');");
+		out.println("location.href='./MemberUpdate.me'");
+		out.println("</script>");
+		out.close();
+		return null;
 
 /*		mb.setEmail(request.getParameter("email"));
 		mb.setPass(request.getParameter("pass"));
@@ -94,19 +111,9 @@ public class MemberUpdateAction implements Action{
 		mb.setBirth(request.getParameter("birth"));
 		mb.setMileage(Integer.parseInt(request.getParameter("mileage")));*/
 		
-			mdao.updateMember(mb);
-		
-		
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('정보가 변경되었습니다');");
-			out.println("location.href='./MemberUpdate.me'");
-			out.println("</script>");
-			out.close();
-			return null;
+
 			
-			/*forward = new ActionForward();
+		/*	forward = new ActionForward();
 			forward.setPath("./MemberUpdateForm.me");
 			forward.setRedirect(true);
 			return forward;*/

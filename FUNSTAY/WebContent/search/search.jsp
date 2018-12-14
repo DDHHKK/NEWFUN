@@ -3,12 +3,141 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<script src="dist/js/main.js"></script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+$(document).ready(function(){
+$("#form_1").hide();
+});
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5bed14f670ff5a5a3a7243af/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+
+
+
+
+</script>
+<!--End of Tawk.to Script-->
+
+
+
 <div id="content">
+
+
+<div id="sideBar_shj">
+<div id="sideSrch_shj">
+
+<nav id="nav_1">
+<form action="./MemberSearchAction.me" method="post" name="fff" id="form_2">
+<table  id="searchtable">
+<tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
+
+<tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><input type="text" value="" placeholder="목적지를 적으세요" class="textsize1" name="address"></td></tr>
+<tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><input type='text' id="minMaxExample" class='datepicker-here' name="start_date" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
+   <input type="text" value="" class="datepicker-here" id="datepicker" name="end_date" data-language='en' placeholder="년 / 월 / 일">
+</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;인원</td> <td>
+  <input type="text" value="" placeholder="게스트를 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
+  <nav id="form_1">
+  <ol>
+     <li>
+        <span class="font1">성&nbsp;인</span> &nbsp;&nbsp;
+        <input type="button" value="-" onclick="cid1()" class="btn_1" id="btn_11"> 
+        <input type="text" value="" name="text11" id="textcss1" placeholder="0" class="text_box">
+        <input type="button" value="+" onclick="add1()" class="btn_1">
+     </li>
+     <li>
+      <span class="font1">어린이</span> 
+      <input type="button" value="-" onclick="cid2()" class="btn_1" id="btn_12"> 
+      <input type="text" value="" name="text12" id="textcss2" placeholder="0"class="text_box">
+      <input type="button" value="+" onclick="add2()" class="btn_1">
+     </li>
+     <li> 
+       <input type="button" value="확인" onclick="choice()" id="btn_sh">
+     </li>
+     </ol>
+  </nav>
+</td></tr>
+
+</table>
+</form>
+</nav>
+</div>
+<div style="position: relative;top: 29px; left: 20px;
+    font-size: 20px; font-weight: bold; display: inline-block;">가격</div>
+<div id="sideRnge" style=" display: inline-block;">
+<script src="./js/search/jquery-1.12.3.min.js"></script>
+<script src="./js/search/ion.rangeSlider.js"></script>
+ <div style="position: relative; padding: 10%;">
+
+    <div>
+        <input type="text" id="range" value="" name="range" />
+        <input type="number" id="from_shj" value="0">
+        <input type="number" id="to_shj" value="0">
+    </div>
+
+</div>
+<script>
+
+    $(function () {
+
+        $("#range").ionRangeSlider({
+            hide_min_max: true,
+            keyboard: true,
+            min: 0,
+            max: 50000,
+            from: 100,
+            to: 50000,
+            type: 'double',
+            step: 100,
+            prefix: "$",
+            min_interval : 5000,
+            grid: true
+        });
+        $("#range").on("change", function () {
+     	    var $this = $(this),
+     	        from = $this.data("from"),
+     	        to = $this.data("to");
+			$('#from_shj').val(from);
+			$('#to_shj').val(to);
+			$('#from_shj').attr("value",from);
+			$('#to_shj').attr("value",to);
+     	    console.log(from + " - " + to);
+     	});
+
+        
+    });
+</script>
+
+<div id="like_star">
+<span>선호도</span>
+ <span>
+ 	 <i id="image1"class="material-icons" style="color:#cc1d1d;" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)">star_border</i>
+ 	 <i id="image2" class="material-icons" style="color:#cc1d1d;" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)">star_border</i>
+ 	 <i id="image3" class="material-icons" style="color:#cc1d1d;" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)">star_border</i>
+ 	 <i id="image4"class="material-icons" style="color:#cc1d1d;" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)">star_border</i>
+ 	  <i id="image5"class="material-icons" style=color:#cc1d1d;" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)">star_border</i>
+ 
+ </span>
+</div>
+
+</div>
+<div id="sideOp"></div>
+
+
+</div>
 <!-- 페이지내용 시작 -->
 
-<div id="sub_DY">
+ <!-- <div id="sideBar_shj">
    <form action="starTest.jpg" method="post" name="fr">
- <div id="search_bar_DY">
+ <div >
  main에서 검색바 떼와서 붙이는 자리
  </div>
  <div id="option_DY">
@@ -74,18 +203,21 @@
 
         
     });
-</script>
+</script> -->
 
 
 
 
  
+
  
+ 
+
 
   
   
   
-  <div id="facility_DY">
+ <!--  <div id="facility_DY">
    <h3>시설</h3>
    <ul id="filter_pupular_list">
     <li>
@@ -153,11 +285,11 @@
 
 
 
+ -->
 
 
 
-
-<div id="content_DY">
+<div id="content_DY" style="border: 1px solid red;">
 <%
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
@@ -314,75 +446,15 @@ function showSlides(n) {
 	</a></div>
 </div>
 
-
-<div id="wrap">
-	<h1>모달윈도우 샘플페이지</h1>
-	<div class="c_text">레이어팝업식으로 새창이 뜨면서 화면의 나머지 부분이 비활성화된것처럼 반투명의 검정색으로 보여집니다.</div>
-	<div><a href="#loginmodal" class="flatbtn" id="modaltrigger">
-	<i class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i>
-	</a></div>
-
-
-<div id="loginmodal" style="display:none;">
-<h2 >목록 리스트</h2>
-<ul>
-<li style="cursor: pointer;">Mylist1</li>
-<li style="cursor: pointer;">Mylist2</li>
-<li style="cursor: pointer;">Mylist3</li>
-</ul>
-
-</div>
-
-
 </div>
 
 <%
 System.out.println("Asdfasdfasdf");
 %>
 
-<!-- 하트 클릭부분 -->
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	$('#loginmodal li').click(function(){
-		/* var home_num= $('#home_num').val();
-		var wishlist_num= $('#wishlist_num').val();
-		var wish_num=$('#wish_num').val(); */
-		
-		if($("#modaltrigger_shj").attr("class")=='far')
-			{
-			
-				$("#modaltrigger_shj").attr('class','fas');
-				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
-				location.href="#loginmodal"; 
-			}
-		else
-			{
-				$("#modaltrigger_shj").attr('class','far');
-				/*  location.href="./DeleteMyWish.wi?wish_num="+wish_num+"&wishlist_num="+wishlist_num; */
-				return;
-			}
-			});
-});
-</script>
 
 
-<!--모달윈도우부분-->
-<script type="text/javascript">
-$(function(){
- /*  $('#loginform').submit(function(e){
-    return false;
 
-  });
-   */
-  $('#modaltrigger').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
-
-  }); */
-  
-  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8 });
-
-});
-</script>
 <%
 } //for문끝
 } //if문끝
@@ -425,7 +497,7 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 
 <div class="mySlides fade_shj">
  
-  <img src="./upload/<%=hb1.getPhoto().split(",")[0]%>" class="img_shj"style="width:100%">
+<img src="./upload/<%=hb1.getPhoto().split(",")[0]%>" class="img_shj"style="width:100%">
 
 </div>
 
@@ -466,51 +538,7 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 </div>
 </div>
 
-<div id="modal_shj" style="display:none;">
-	<h2 >목록 리스트</h2>
 
-</div>
-
-
-
-
-
-<!-- 하트 클릭부분 -->
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	$('.heart_shj>i').click(function(){
-		/* var home_num= $('#home_num').val();
-		var wishlist_num= $('#wishlist_num').val();
-		var wish_num=$('#wish_num').val(); */
-		if($(this).attr("class")=='far')
-			{
-			
-				$(this).attr('class','fas');
-				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
-				location.href = "#modal_shj";
-			}
-		else
-			{
-				$(this).attr('class','far');
-				/*  location.href="./DeleteMyWish.wi?wish_num="+wish_num+"&wishlist_num="+wishlist_num; */
-				 
-			}
-			});
-});
-</script>
-
-
-<!--모달윈도우부분-->
-<script type="text/javascript">
-$(function(){
- /*  $('#loginform').submit(function(e){
-    return false;
-  }); */
-  
-  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
-});
-</script>
 <%
 } //for문끝
 } //esle if문끝
@@ -555,7 +583,7 @@ else{
 
 </div>
 <!-- 페이지 내용이 끝나는 부분입니다. -->
-</div>
+
 </div>
 </div><!-- subpage include 파일에서 나온 div 닫기 태그 -->
 

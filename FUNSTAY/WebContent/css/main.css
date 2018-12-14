@@ -126,14 +126,37 @@ margin:0px 10px 25px 0px;
 font-size:18px;
 font-weight:600;
 cursor: pointer;
-}
 
+transition:all 0.5;
+}
+#btn1 span{
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
 #btn1:hover {
 	background: #991515;
 	color: white;
 	cursor: pointer;
 }
-
+#btn1 span:AFTER{
+   content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+ }
+#btn1:HOVER span{
+ 	padding-right: 25px;
+ }
+#btn1:HOVER span:AFTER{
+ opacity: 1;
+  right: 0;
+ }
 
 #checkout{padding-left: 160px;}
 

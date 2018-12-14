@@ -98,6 +98,14 @@
 	height: 38px;
     border: solid 1px #c3c3c3;	
 }
+
+.psw-repeat{
+	border-width: 0px;
+    height: 20px;
+    color: red;
+    padding: 0px;
+    margin: auto;
+}
 /* .panel_box_sh form{
 	padding:50px 70px;
 	
