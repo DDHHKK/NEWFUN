@@ -62,11 +62,11 @@ int num = ((Integer) request.getAttribute("num")).intValue();
 <form class="w3-container" action="./Qna_boardWriteAction.sc" method="post" name="fr">
 <table border="0" align="center">
 <tr><td><h2>QnA 글쓰기</h2></tr></td>
-<!-- <tr><td><h3>번호</h3></td><td><input type="text" name="QnA_num"></td></tr> -->
-<tr><td><h3><%=qb.getHome_num() %></h3></td></tr>
+<tr><td><h3>번호</h3></td><td><%=qb.getQnA_num()%></td></tr> 
+<tr><td><h3>Home_num</h3></td><td><h3><%=qb.getHome_num() %></h3></td></tr>
 <tr><td><h3>제목</h3></td><td><input class="w3-input" name="subject" placeholder="제목을 입력해주세요..."></td>
 <td>비밀번호</td><td><input class="w3-input" name="QnA_pass" placeholder="비밀번호를입력해주세요..."></td></tr>
-<tr><td><h3>내용</h3></td><td colspan="5"><textarea name="content" rows="20" cols="30" placeholder="내용을 입력해주세요..."></textarea></td></tr>
+<tr><td><h3>내용</h3></td><td colspan="3"><textarea name="content" rows="30" cols="100" placeholder="내용을 입력해주세요..."></textarea></td></tr>
 <tr><td colspan="3" align="right">
 <button class="button button1">글쓰기</button>
 <button class="button button1" type="reset">다시쓰기</button> 

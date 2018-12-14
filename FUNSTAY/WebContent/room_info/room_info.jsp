@@ -1,4 +1,7 @@
 <!-- http://kirinyaga.tistory.com/21 스크롤 -->
+<%@page import="net.bed.db.BedBean"%>
+<%@page import="net.room.db.RoomBean"%>
+<%@page import="net.conv.db.ConvBean"%>
 <%@page import="net.review.db.ReviewBean"%>
 <%@page import="java.util.List"%>
 <%@page import="net.search.db.SearchBean"%>
@@ -48,6 +51,9 @@
 	SearchBean sc = (SearchBean) request.getAttribute("sc");
 	String pageNum = (String) request.getAttribute("pageNum");
 	int num = ((Integer) request.getAttribute("num")).intValue();
+	ConvBean cb=(ConvBean)request.getAttribute("cb");
+	List<RoomBean> rooms = (List)request.getAttribute("rooms");
+	List<BedBean> bed_list = (List)request.getAttribute("bed_list");
 	%>
 			
 <!-- room_wrapper -->
@@ -56,24 +62,79 @@
 <div id="room_wrap">
  <div id="room_detail">
  	<div id="room_imfomation">
- 	<h2><a href="#">개요 </a> 
- 	<a href="#편의시설">·편의시설 </a><a href="#지역정보">·지역정보 </a><a href="#숙소이용규칙">·숙소이용규칙 </a>
- 	<a href="#후기">·후기  </a><a href="#QnA">·QnA  </a></h2>
+ 	<!-- 숙소제목 -->
+ 	<h1 style="color:#cc1d1d;"><%=sc.getRoom_subject() %></h1>
  	<hr>  
       
  	
- 	<a href="#"><img src="./img/메일.jpg" alt="mail" align="right"></a>
- 	<a href="#"><img src="./img/smile.png" alt="smile" align="right"></a>
+ 	<!-- <a href="#"><img src="./img/메일.jpg" alt="mail" align="right"></a> -->
+ 	<!-- <a href="#"><img src="./img/smile.png" alt="smile" align="right"></a> -->
  	
  	
 <!-- room_content --> 	
  	<div id="room_content">
- 	<h1><%=sc.getRoom_subject() %></h1><br><br> 
+ 	<!-- 네비게이션 바 -->
+ 		<ul class="roomdetailNav_sg">
+ 			<li><a href="#room_imfomation">개요 </a> </li>
+ 			<li><a href="#room">방정보</a></li>
+ 			<li><a href="#convenience">편의시설 </a></li>
+ 			<li><a href="#location">지역정보 </a></li>
+ 			<li><a href="#room_rule">숙소이용규칙 </a></li>
+ 			<li><a href="#review">후기 </a></li>
+ 			<li><a href="#QnA">QnA</a></li>
+ 		</ul>
+ 	<!-- <h2>
+ 		<a href="#">개요 </a> 
+ 		<a href="#편의시설">·편의시설 </a><a href="#지역정보">·지역정보 </a><a href="#숙소이용규칙">·숙소이용규칙 </a>
+ 		<a href="#후기">·후기  </a><a href="#QnA">·QnA </a>
+ 	</h2> -->
+ 		<!-- 룸타입 -->
+ 	<div>
  	 <%=sc.getRoom_type() %> <br>
+ 		<!-- room_rule -->
+	<div id="room_rule">
+	<a><h1>숙소이용규칙</h1></a>
+	체크인 시간 - <%=sc.getIn_time() %> <br>
+	체크아웃 시간 - <%=sc.getOut_time() %> <br> 
+	</div>
+		<!-- 숙소 소개 내용 -->
 	 <%=sc.getRoom_content() %> <br> 
 <br><br>
 	</div>
+	</div>
 
+<!-- 룸정보 -->
+	<div id="room">
+		<table>
+				<!-- <div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">1번 방</div> -->
+				<% for(int i=0; i<rooms.size(); i++) { 
+					RoomBean rb = (RoomBean)rooms.get(i);
+					BedBean bb = (BedBean)bed_list.get(i);
+				if(i%4==0) { %>
+				<tr> <%} %>
+				
+				<td>
+					<div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">
+						<b><%=rb.getRe_room()%>번방</b><br>
+						<%-- <%=rb.getRoom_num()%><br> --%>
+						최대 <%=rb.getMax_people()%>명<br>
+						<%for(int z=0; z<bb.getSingle_bed(); z++){ %>
+							<img src="./img/host/single_bed.png" style="width:35px;height:35px;">
+						<%
+						}for(int z=0; z<bb.getDouble_bed(); z++){ %>
+							<img src="./img/host/double_bed.png" style="width:35px;height:35px;">
+						<%
+						}for(int z=0; z<bb.getBunk_bed(); z++){ %>
+							<img src="./img/host/bunk_bed.png" style="width:35px;height:35px;">
+						<%} %>
+					</div>
+				</td>
+				
+				<% if(i%4==2){ %>
+				</tr>
+				<%} } %>
+				</table>
+	</div>
 
 <!-- room_facility --> 
 	<div id="room_facility">
@@ -88,15 +149,9 @@
 	<a name="지역정보"><h1>지역정보</h1></a><br><br>
 <%=sc.getAddress() %>
 	</div>
+<!---------------------- 지도 api 불러오기 ---------------------->
 <br><br>
 
-
-<!-- room_rule -->
-	<div id="room_rule">
-	<a name="숙소이용규칙"><h1>숙소이용규칙</h1></a>
-	체크인 시간 - <%=sc.getIn_time() %> <br>
-	체크아웃 시간 - <%=sc.getOut_time() %> <br> 
-	</div>
 </div>
  <br><br>
  

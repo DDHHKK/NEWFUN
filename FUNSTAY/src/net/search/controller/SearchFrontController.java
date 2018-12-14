@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.book.action.ReviewWrite;
+
 import net.search.Action.Qna_boardWrite;
 import net.search.Action.Qna_boardWriteAction;
 import net.search.Action.RoomDetailAction;
@@ -70,8 +70,16 @@ public class SearchFrontController extends HttpServlet{
 			forward.setPath("./room_info/Qna_boardWriteForm.jsp");
 			forward.setRedirect(false);
 		}
-		
-	
+		//리뷰작성Action	
+			else if(command.equals("/Qna_boardWriteAction.sc")){
+				action=new Qna_boardWriteAction();
+				try {  
+				} catch (Exception e) {
+						
+					e.printStackTrace();
+				}
+					
+			}
 			
 		//이동
 		if(forward!=null){ //forward정보가 있으면
