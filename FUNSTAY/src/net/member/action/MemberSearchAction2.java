@@ -22,7 +22,7 @@ public class MemberSearchAction2 implements Action{
 		
 		
 		HostBean hb = new HostBean();
-		String address = request.getParameter("address");
+		String address = request.getParameter("search_info");
 		hb.setAddress(address);
 		System.out.println(hb.getAddress());
 		
