@@ -24,18 +24,24 @@ public class MemberSearchAction implements Action{
 		
 		
 		HostBean hb = new HostBean();
-		
 		request.setCharacterEncoding("utf-8");
 		String address = request.getParameter("address");
 		hb.setAddress(address);
 		String start_date = request.getParameter("start_date");
 		String end_date = request.getParameter("end_date");
+	
+
+		int num = (Integer.parseInt(request.getParameter("text11")))+(Integer.parseInt(request.getParameter("text12")));
+
 		//mb.setText11(Integer.parseInt(request.getParameter("text11")));
 		//mb.setText12(Integer.parseInt(request.getParameter("text12")));
+		
+		int pageSize = 10;
 
 		System.out.println("searchAction" + hb.getAddress());
 		System.out.println("searchAction" + start_date);
 		System.out.println("searchAction" + end_date);
+		System.out.println("searchAction" + num);
 		
 		if(hb.getAddress().equals(""))
 		{
@@ -51,14 +57,16 @@ public class MemberSearchAction implements Action{
 		MemberDAO mdd= new MemberDAO();
 	
 
-		Vector vector = mdd.getsearchList(hb, start_date, end_date);
+		Vector vector = mdd.getsearchList(hb, start_date, end_date,num);
 		Vector vector2 = mdd.getsearchList2(hb);
 	    List list=(List)vector.get(0);
 		List rest =(List)vector2.get(0);
 		HttpSession session = request.getSession();
 		session.setAttribute("list", list);
 		session.setAttribute("rest", rest);
-		request.setAttribute("address", address);
+		session.setAttribute("address", address);
+		request.setAttribute("pageSize", pageSize);
+	
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
@@ -66,6 +74,11 @@ public class MemberSearchAction implements Action{
 	
 		
 		return forward;
+	}
+
+	private int sizeof(int num) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

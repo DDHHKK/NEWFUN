@@ -321,7 +321,7 @@ if (email.equals("admin")) {
      </ol>
   </nav>
 </li>
-<li><input type="submit" value="검색" id="btn1"></li>
+<li><input type="submit" value="검색" id="btn1" onclick="fundk()"></li>
 </ol>
 </form>
 </nav>

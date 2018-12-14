@@ -45,6 +45,15 @@ function choice() {   //인원수  확인 버튼 누르면 text창에  값이 �
 		document.fff.text12.value=0;
 }
 
+function fundk(){
+	if(document.fff.text11.value==""){
+		document.fff.text11.value=0;
+	}
+	if(document.fff.text12.value==""){
+		document.fff.text12.value=0;
+	}
+}
+
 /*인원 텍스트창을 클릭하면 스크롤바가 내려온다*/
 $(document).ready(function(){
     $("#textsize_1").click(function(){
