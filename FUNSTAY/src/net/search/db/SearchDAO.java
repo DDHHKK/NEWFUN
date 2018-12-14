@@ -323,49 +323,63 @@ private Connection getConnection() throws Exception{
 					}
 					return count;
 				} 
-	//QnA insert
-		public void insertQna_board(QnaBean qb){
-					
-				Connection con=null;
-			    PreparedStatement pstmt=null;
-			    ResultSet rs=null;
-	    
-				 try{
-						    //1,2단계 디비연결하는 메서드 호출
-						con=getConnection();
-						 //3단계 sql 구문
-						String sql="insert into qna_board values(?,?,?,?,?,?,now(),?,?,?)";
-						pstmt=con.prepareStatement(sql);
-
-						pstmt.setInt(1,qb.getQnA_num()); 		
-						pstmt.setString(2,qb.getSubject());
-						pstmt.setString(3,qb.getContent());
-					    pstmt.setString(4,qb.getQnA_pass());
-						pstmt.setString(5,qb.getMember_email());
-						pstmt.setInt(6,qb.getHome_num());				
-						pstmt.setDate(7,qb.getQnA_date());
-						pstmt.setInt(8,qb.getRe_ref());
-						pstmt.setInt(9,qb.getRe_lev());
-						pstmt.setInt(10,qb.getRe_seq());
-					
-			                //4단계 실행
-						pstmt.executeUpdate(); 
-					
+				
+				
+		//QnA insert
+			public void insertQna_board(QnaBean qb){
+				ResultSet rs = null;
+				int num = 0;
+				try{
 						
-							
-				 }catch(Exception e){
-					 e.printStackTrace();
-				 }finally{
-					 //try안에서 예외 발생여부 상관없이 마무리 작업함.
-					 //객체 생성해서 사용한 기억공간 없애줌 .close()
-				 if(rs!=null) try{rs.close();}catch(SQLException ex){}
-					 if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
-					 if(con!=null) try{con.close();}catch(SQLException ex){}
-					 
-				 }
-					 
+					con = getConnection();
+					sql = "select max(QnA_num) from qna_board";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					if(rs.next()) num = rs.getInt(1)+1;
+					sql = "insert into qna_board values(?,?,?,?,?,?,now(),?,?,?)";
+					pstmt=con.prepareStatement(sql);
 
+					pstmt.setInt(1,num); 		
+					pstmt.setString(2,qb.getSubject());
+					pstmt.setString(3,qb.getContent());
+				    pstmt.setString(4,qb.getQnA_pass());
+					pstmt.setString(5,qb.getMember_email());
+					pstmt.setInt(6,qb.getHome_num());				
+					pstmt.setInt(7,qb.getRe_ref());
+					pstmt.setInt(8,qb.getRe_lev());
+					pstmt.setInt(9,qb.getRe_seq());
+						
+						
+					pstmt.executeUpdate();
+						 
+						
+				}catch (Exception e){
+					e.printStackTrace();
+				}finally{
+					if (rs != null) {try {rs.close();} catch (SQLException ex) {}	}
+					if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
+					if (con != null) {try {con.close();} catch (SQLException ex) {	}}
+				}
+					
 			}
+			
+			public void qna_updateReadcount(int qna_num){
+				ResultSet rs = null;
+				try{			
+					con = getConnection();
+					sql = "update qna_board set readcount=readcount+1 where qna_num = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, qna_num);
+					pstmt.executeUpdate();			
+				}catch (Exception e){
+					e.printStackTrace();
+				}finally{
+					if (rs != null) {try {rs.close();} catch (SQLException ex) {}	}
+					if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
+					if (con != null) {try {con.close();} catch (SQLException ex) {	}}
+				}
+			}// updateReadcount() end
+
 		
 				
 

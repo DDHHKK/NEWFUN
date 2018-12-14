@@ -24,9 +24,9 @@ public class Qna_boardWrite implements Action {
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		
-		
+		int qna_num = num;
 		SearchDAO bdao = new SearchDAO();
-		bdao.updateReadcount(num);  
+		bdao.qna_updateReadcount(qna_num);
 		QnaBean qb= bdao.getQnaboard(num);
 		
 		request.setAttribute("qb", qb);
