@@ -216,6 +216,8 @@ public class BookDAO {
    		        	hb.setRoom_subject(rs.getString("room_subject"));
    		        	pb.setSum_price(rs.getInt("sum_price"));*/
    		        	
+   		        	pb.setPayment_num(rs.getString("payment_num"));
+   		        	pb.setRequest_msg(rs.getString("request_msg"));
    		        	bb.setBooking_num(rs.getInt("booking_num"));
    		        	BeforB.setRoom_type(rs.getString("room_type"));
    		        	BeforB.setPhoto(rs.getString("photo"));

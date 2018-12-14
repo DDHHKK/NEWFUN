@@ -271,15 +271,8 @@ if(i%3==0){
 <div id="Paris" class="w3-container city" style="display:none">
 
 
-
-
- 
 <table border="1">
-<!-- <tr><td>방제목</td><td>체크인날짜</td>
-    <td>체크아웃날짜</td><td>총금액</td></tr> -->
 
-
-  
 <%
 
 List bookingList2=(List)request.getAttribute("bookingList2");
@@ -298,6 +291,8 @@ if(i%3==0){
 }
 %>
 
+<td><%=pb.getRequest_msg()%></td>
+<td><%=pb.getPayment_num()%></td>
 <td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
 <td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%></td> 
 	
@@ -320,16 +315,9 @@ if(i%3==0){
   <% } }%> 
   
 
-<%-- <tr><td><%=hb.getRoom_subject()%></td>
-    <td><%=bb.getCheck_in()%></td>
-    <td><%=bb.getCheck_out()%></td>
-    <td><%=pb.getSum_price()%></td></tr> --%>
-
- 
 </table>
 
 
-  
 </div>
 <!--예정된 숙소 끝  -->
 
@@ -626,7 +614,7 @@ function button_event(){
 			BeforeBean BeforeB=(BeforeBean)afterList3.get(i);
 		
 		%>
-
+           
 		return location.href="./BillCancel.bk?booking_num=<%=bb.getBooking_num()%>&payment_num=<%=pb.getPayment_num()%>";
 
 		<% }%> 
