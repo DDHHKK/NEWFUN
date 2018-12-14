@@ -41,7 +41,7 @@ $(document).ready(function(){
 	$("#updateCancel").hide();
 	$("#updatePass").click(function(){
 		$("#updateCancel").show();
-		$("#updatePassbox").append("<div id='insertPass'><div><p><i class='fa fa-key icon'></i><label>Password</label></p><p><input type='password' class='t_box_sh' name='pass' val='' ></p></div><div><p><i class='fa fa-key icon'></i><label>Password Check</label></p><p><input type='password' class='t_box_sh' name='pass_check' val=''></p></div></div>");
+		$("#updatePassbox").append("<div id='insertPass'><div><p><i class='fa fa-key icon'></i><label>Password</label></p><p><input type='password' class='t_box_sh' name='pass' val='' ></p></div><div><p><i class='fa fa-key icon'></i><label>Password Check</label></p><p><input type='password' class='t_box_sh' name='pass_check' val='' onblur='passchk()'></p><p><input type='text' class='psw-repeat' name='chk' value='비밀번호를 입력하세요' readonly='readonly'</p></div></div>");
 		/* $("#updatePassbox").append("<p><input type='password' class='t_box_sh' name='pass' val='' ></p></div>");
 		$("#updatePassbox").append("<div><p><i class='fa fa-key icon'></i><label>Password Check</label></p>");
 		$("#updatePassbox").append("<p><input type='password' class='t_box_sh' name='pass_check' val=''></p></div></div>");	 */
@@ -91,7 +91,7 @@ function func()
  <div class="panel_box_sh">
   <h1>정보수정</h1>
   <!-- 정보수정폼시작 -->
-  <form action="./MemberUpdateAction.me" id="join"method="post" enctype="multipart/form-data">
+  <form action="./MemberUpdateAction.me" id="join" name="chpw" method="post" enctype="multipart/form-data">
    <input type="hidden" name="photo11" value="<%=mb.getProfile_photo()%>">
  <input type="hidden" name="pass11" value="<%=mb.getPass()%>">
 
@@ -125,7 +125,9 @@ function func()
      <div>
     <p><i class="fa fa-key icon"></i><label>Password Check</label></p>
     <p><input type="password" class="t_box_sh" name="pass_check"></p>
+    <p><input type="text" class="psw-repeat" name="chk" value="비밀번호를 입력하세요" readonly="readonly"</p>
    </div> -->
+   
    
    <div>
    	 <p><i class="fa fa-user-o"></i><label>NAME</label></p>
@@ -147,7 +149,7 @@ function func()
    </div>
    
    <div id="buttons_sh">
-    <input type="submit" value="저장하기" class="btn">
+    <button type="button"class="btn" onclick="ch_pw()">저장하기</button>
     <input type="button" value="취소하기" class="btn" onclick="history.back()">
     <input type="button" value="탈퇴하기" class="btn1" onclick="location.href='./MemberDelete.me'">
    </div>
@@ -175,7 +177,43 @@ file1.onchange = function () {
 
 
 </script>
+<script type="text/javascript">
+/*비밀번호  / 핸드폰 번호 제어*/
 
+var right=0;
+function ch_pw(){
+	var chk1 = /\d/;
+	var chk2 = /[a-z]/i;
+	var pass = document.chpw.pass.value;
+
+	 if(pass.length<6 || pass==null){
+	  alert("비밀번호를 확인해주세요.(영어,숫자조합 6글자이상)");
+	  return false;
+	 }
+	 if (chk1.test(pass) && chk2.test(pass)){
+	 }else{
+	  alert("비밀번호는 영어,숫자 조합입니다.");
+	  return false;
+	 }
+
+	 document.chpw.submit();
+}//regChk()
+function passchk(){
+	var pass = document.chpw.pass.value;
+	 var pass2 = document.chpw.pass_check.value;
+	 if (pass2.length == 0 || pass2 == "") {
+	  document.chpw.chk.value = "비밀번호를 입력하세요";
+	  right = 0;
+	 } else if (pass != pass2) {
+	  document.chpw.chk.value = "비밀번호가 다릅니다.";
+	  right = 0;
+	 } else {   
+	  document.chpw.chk.value = "비밀번호가 동일합니다.";
+	  right = 1;
+	 }
+	 return;
+	}//passchk() 
+</script>
 
 <!-- 페이지내용 끝 -->
 </div><!-- content 끝 -->
