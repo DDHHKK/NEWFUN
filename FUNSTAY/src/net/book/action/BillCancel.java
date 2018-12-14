@@ -18,16 +18,16 @@ public class BillCancel implements Action {
 		request.setCharacterEncoding("utf-8");
 		
 		int booking_num=Integer.parseInt(request.getParameter("booking_num"));
-		/*int payment_num=request.getParameter("payment_num");*/
+		String payment_num=request.getParameter("payment_num");
 		
 		System.out.println(booking_num);
-		/*System.out.println(payment_num);*/
+		System.out.println(payment_num);
 		
 		BookDAO bdao=new BookDAO();
-		/*BookingBean bb=new BookingBean();*/
+		BookingBean bb=new BookingBean();
 		PaymentBean pb=new PaymentBean();
 		
-		/*bdao.BillCancel(payment_num, booking_num);*/
+		bdao.BillCancel(payment_num, booking_num);
 		
 		
 		
