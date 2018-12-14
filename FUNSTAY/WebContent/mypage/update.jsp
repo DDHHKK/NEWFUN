@@ -36,17 +36,30 @@
 
 
 <style type="text/css">
-#updatePassbox button{
-   background-color: #cc1d1d;
-  border: none;
-  color: #fff;
-  padding: 12px 16px;
-  font-size: 16px;
-  border-radius:7px;
-  cursor: pointer;
-
+#updatePass{
+	background-color: #cc1d1d;
+	color: #fff;
+	width: 150px;
+	height:30px;
+	font-size: 16px;
+	border: 1px solid #cc1d1d;
+	border-radius: 7px;
+	cursor: pointer;
 }
-#updatePassbox button:HOVER {
+#updatePass button:HOVER {
+	background-color: #991515;
+}
+#updateCancel{
+	background-color: #cc1d1d;
+	color: #fff;
+	width: 150px;
+	height:30px;
+	font-size: 16px;
+	border: 1px solid #cc1d1d;
+	border-radius: 7px;
+	cursor: pointer;
+}
+#updateCancel button:HOVER {
 	background-color: #991515;
 }
 </style>
@@ -130,7 +143,7 @@ function func()
    
    <div id ="updatePassbox">
    <input type="button" value="비밀번호 변경" id="updatePass" onclick="func()">
-   <button id="updatePass" onclick="func()"><i class="fa fa-key icon"></i>비밀번호변경</button>
+   <!-- <button id="updatePass" onclick="func()"><i class="fa fa-key icon"></i>비밀번호변경</button> -->
    <input type="button" value="비밀번호 변경취소" id="updateCancel">
    </div>
   <!--  <div>

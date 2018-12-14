@@ -63,9 +63,18 @@ public class MemberUpdateAction implements Action{
 		{
 			mb.setPass(pass11);
 		}
-		else
+		else if(pass11==null)
 		{
 			mb.setPass(pass);
+		}else{
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('변경할 비밀번호를 입력해주세요');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+			return null;
 		}
 		
 		if(profile_photo==null)
