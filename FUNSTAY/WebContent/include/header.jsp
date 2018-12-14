@@ -65,7 +65,7 @@ hostCheck = (int)session.getAttribute("hostCheck");
 <%
 if(email==null){
 	%>
-<li id="li_5"><button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</button></li>
+<li id="li_5" style="margin-right:0;"><button class="btn_remove" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">로그인</button></li>
 <li id="li_8"><button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button></li>
 <!-- <button class="btn_remove" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">회원가입</button> -->
 <%
