@@ -216,6 +216,8 @@ public class BookDAO {
    		        	hb.setRoom_subject(rs.getString("room_subject"));
    		        	pb.setSum_price(rs.getInt("sum_price"));*/
    		        	
+   		        	pb.setPayment_num(rs.getString("payment_num"));
+   		        	pb.setRequest_msg(rs.getString("request_msg"));
    		        	bb.setBooking_num(rs.getInt("booking_num"));
    		        	BeforB.setRoom_type(rs.getString("room_type"));
    		        	BeforB.setPhoto(rs.getString("photo"));
@@ -255,7 +257,7 @@ public class BookDAO {
     
     
   //예약취소하는 메서드(sql-update문)
-  	public void BillCancel(BookingBean bb,int booking_num){
+  	public void BillCancel(String payment_num,int booking_num){
   		
   		Connection con=null;
   	    PreparedStatement pstmt=null;
@@ -270,22 +272,23 @@ public class BookDAO {
   				String sql="delete from booking where booking_num=?";
   				pstmt=con.prepareStatement(sql);//객체생성
   				
-  				pstmt.setInt(1, bb.getBooking_num()); 
-  				
+  				pstmt.setInt(1, booking_num); 
+  				System.out.println(booking_num);
   			    //4단계 실행
   				pstmt.executeUpdate(); 
   				
-  			/*	
+  				
   			    //3단계
   				sql="update payment set payment_status=? where payment_num=?";
   				pstmt=con.prepareStatement(sql);
   				
   				pstmt.setString(1, "결제취소");
-  				pstmt.setString(2, pb.getPayment_num());
+  				pstmt.setString(2,payment_num);
+  			    System.out.println(payment_num);
   				
   			    //4단계 실행
   				pstmt.executeUpdate(); 
-  				*/
+  				
   				
   				
   				
@@ -310,10 +313,10 @@ public class BookDAO {
     //취소된 숙소 가져오는 메서드(sql-select문)
 
       public Vector<?> GetCancelTrip(String member_email){
-  		/*List bookingList=new ArrayList<>();
-  		List paymentList=new ArrayList<>();
-  		List hostList=new ArrayList<>();*/
-  		List afterList=new ArrayList<>();
+  		List bookingList2=new ArrayList<>();
+  		List paymentList2=new ArrayList<>();
+  		List hostList2=new ArrayList<>();
+  		List afterList2=new ArrayList<>();
   		
       	Vector vector=new Vector<>();
   		
@@ -325,19 +328,21 @@ public class BookDAO {
   			//1,2단계 메서드 호출
   			con=getConnection();
                   
-  		    //3단계 (취소된 숙소 가져오기)
-				String sql="select * from booking where booking_status=?";
+                     String sql2="select * from home h,payment p "
+                     		+ "where p.member_email=? and h.host_email=p.host_email and p.payment_status=?";
                      
-                       pstmt=con.prepareStatement(sql);//객체생성
-     		           pstmt.setInt(1,0);
+                     pstmt=con.prepareStatement(sql2);//객체생성
+     		           pstmt.setString(1,member_email);
+     		           System.out.println(member_email);
+     		           pstmt.setString(2, "결제취소");
      		          
      		           rs=pstmt.executeQuery();
      		           
      		       while(rs.next()){ 
   					//첫 행 이동 열접근해서
-     		        	/*HostBean hb=new HostBean();
+     		        	HostBean hb=new HostBean();
      		        	PaymentBean pb=new PaymentBean();
-     		        	BookingBean bb=new BookingBean();*/
+     		        	BookingBean bb=new BookingBean();
      		        	BeforeBean BeforB=new BeforeBean();
      		        	
      		        	/*bb.setCheck_in(rs.getDate("check_in"));
@@ -345,27 +350,29 @@ public class BookDAO {
      		        	hb.setRoom_subject(rs.getString("room_subject"));
      		        	pb.setSum_price(rs.getInt("sum_price"));*/
      		        	
+     		        	pb.setPayment_num(rs.getString("payment_num"));
+       		        	pb.setRequest_msg(rs.getString("request_msg"));
      		        	BeforB.setRoom_type(rs.getString("room_type"));
      		        	BeforB.setPhoto(rs.getString("photo"));
      		        	BeforB.setRoom_subject(rs.getString("room_subject"));
      		        	BeforB.setMember_email(rs.getString("member_email"));
      		        	BeforB.setSum_price(rs.getInt("sum_price"));
-     		        	BeforB.setCheck_in(rs.getDate("check_in"));
-     		        	BeforB.setCheck_out(rs.getDate("check_out"));
-     		        	BeforB.setPeople(rs.getInt("people"));
+     		        	/*BeforB.setCheck_in(rs.getDate("check_in"));
+     		        	BeforB.setCheck_out(rs.getDate("check_out"));*/
+     		        	/*BeforB.setPeople(rs.getInt("people"));*/
      		        	
      		        	
      		        	
-     		        	/*bookingList.add(bb);
-     		        	paymentList.add(pb);
-     		        	hostList.add(hb);*/
-     		        	afterList.add(BeforB);
+     		        	bookingList2.add(bb);
+     		        	paymentList2.add(pb);
+     		        	hostList2.add(hb);
+     		        	afterList2.add(BeforB);
      		        
   				}
-     		        /*vector.add(bookingList);
-     		        vector.add(paymentList);
-     		        vector.add(hostList);*/
-     		        vector.add(afterList);
+     		        vector.add(bookingList2);
+     		        vector.add(paymentList2);
+     		        vector.add(hostList2);
+     		        vector.add(afterList2);
      		        
   				}catch(Exception e){
   					e.printStackTrace();
@@ -378,6 +385,7 @@ public class BookDAO {
   		return vector;
   		
   	}//취소된 숙소 가져오는 메서드 끝
+      
       
   	
   	

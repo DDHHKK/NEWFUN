@@ -197,18 +197,34 @@ img.avatar {
 	border-radius: 10px;
 	border: none;
 	margin-top: 20px;
+	transition:all 0.5;
 }
-
-
-.subtn:hover{
-	background-color: #991515;
-	cursor: pointer;
-
-}
- .subtn a{
-	color: #fff;
-	font-size: 20px;
+ .subtn span{
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 } 
+.subtn:HOVER{
+	background-color: #991515;
+}
+ .subtn span:AFTER{
+   content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+ }
+ .subtn:HOVER span{
+ 	padding-right: 25px;
+ }
+ .subtn:HOVER span:AFTER{
+ opacity: 1;
+  right: 0;
+ }
 #a{
 	color: #fff;
 }
