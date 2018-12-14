@@ -274,7 +274,7 @@ if(i%3==0){
 <div id="Paris" class="w3-container city" style="display:none">
 
 
-<table border="1">
+<table class="reseve_table">
 
 <%
 List bookingList2=(List)request.getAttribute("bookingList2");
@@ -288,20 +288,27 @@ for(int i=0; i<bookingList2.size(); i++){
 	BeforeBean BeforeB=(BeforeBean)afterList.get(i);
 if(i%3==0){
 	%>
-	<tr>
+	<tr id="tr">
 	<% 
 }
 %>
 
-<td><%=pb.getRequest_msg()%></td>
-<td><%=pb.getPayment_num()%></td>
-<td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
-<td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%></td> 
+<%-- <td><%=pb.getRequest_msg()%></td>
+<td><%=pb.getPayment_num()%></td> --%>
+<td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="300" height="300"><br>
+
+
+<div id="room_sub">
+<%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> <br>
+</div>
+
+
+
 	
-<td>	
+	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id10').style.display='block'" class="w3-button w3-black">영수증</button>
+  <button onclick="document.getElementById('id10').style.display='block'" id="bill_butt_DY">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
   <!-- 예약취소 버튼 -->
