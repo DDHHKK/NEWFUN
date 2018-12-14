@@ -333,7 +333,7 @@ public class BookDAO {
                      
                      pstmt=con.prepareStatement(sql2);//객체생성
      		           pstmt.setString(1,member_email);
-     		           System.out.println(member_email);
+     		          
      		           pstmt.setString(2, "결제취소");
      		          
      		           rs=pstmt.executeQuery();
@@ -344,7 +344,7 @@ public class BookDAO {
      		        	PaymentBean pb=new PaymentBean();
      		        	BookingBean bb=new BookingBean();
      		        	BeforeBean BeforB=new BeforeBean();
-     		        	System.out.println(rs.getString("payment_num"));
+     		        	
      		        	
      		        	/*bb.setCheck_in(rs.getDate("check_in"));
      		        	bb.setCheck_out(rs.getDate("check_out"));
