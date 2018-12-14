@@ -34,35 +34,6 @@
 <script src="./js/file.js"></script>
 
 
-
-<style type="text/css">
-#updatePass{
-	background-color: #cc1d1d;
-	color: #fff;
-	width: 150px;
-	height:30px;
-	font-size: 16px;
-	border: 1px solid #cc1d1d;
-	border-radius: 7px;
-	cursor: pointer;
-}
-#updatePass button:HOVER {
-	background-color: #991515;
-}
-#updateCancel{
-	background-color: #cc1d1d;
-	color: #fff;
-	width: 150px;
-	height:30px;
-	font-size: 16px;
-	border: 1px solid #cc1d1d;
-	border-radius: 7px;
-	cursor: pointer;
-}
-#updateCancel button:HOVER {
-	background-color: #991515;
-}
-</style>
 </head>
 
 <script type="text/javascript">
