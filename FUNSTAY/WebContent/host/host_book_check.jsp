@@ -61,8 +61,6 @@ Include JQuery Core (Required for calendar plugin)
 <li id="pont1_WS"><a href="./Main.me"><i>FUNSTAY</i></a></li>
 <li id="li_2"><input type="text" id="text_1_WS" name="search_info" placeholder="여행하실 지역을 적어주세요">
 <input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></li>
-<li id="li_3"><a href="./HostMain.ho">숙소를 추가해 보세요</a></li>
-<li id="li_4"><a href="./FAQ_boardList.fa">FAQ</a></li>
 
 </ul>
 </div>
@@ -118,7 +116,7 @@ http://osdir.com/ml/jquery-ui/2009-04/msg00071.html
     
 .head_dh {
   width:100%;
-  height: 80px;
+  height: 100px;
 }
 
 
@@ -639,16 +637,6 @@ $(document).ready(function(){
 	<div id="tabs-2">
 
 		<div id="example" style="margin: 0% 0% 0% 30%; width:60%;">
-		
-		<br>
-		
-
-		
-		<br><br>
-
-		
-
-		<br>
 
 		<!--
 		You can use pixel widths or percentages. Calendar will auto resize all sub elements.

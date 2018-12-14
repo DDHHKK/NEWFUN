@@ -102,7 +102,7 @@ Style for header cells (day name cells at top of calendar)
 	border-top: 0px solid #ffffff;
 	border-bottom: 0px solid #ffffff;
 	border-left: 0px solid #ffffff;
-	background-color: #000;
+	background-color: #cc1d1d;
 	color: white;
 	font: 15px verdana;
 	/*font-weight: bold;*/
@@ -128,13 +128,14 @@ Style for week Header cells (cells for day numbers above each week)
 .JFrontierCal .JFrontierCal-NextMonth-Week-Header-Cell-Last {
 	padding: 0px;
 	border-left: 0px solid #ffffff;
-	background-color: #dedede;
+	background-color: #ffffff;
 	color: #000000;
 	font: 13px verdana;
 	float: left;
 	clear: right;
 	height: 17px;
-	text-align: right;
+	text-align: left;
+	border-bottom: 1px solid #ccc;
 }
 /*
 Style for week header cells for the previous and next month. Make them a little darker.
