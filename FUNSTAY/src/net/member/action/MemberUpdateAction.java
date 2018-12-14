@@ -84,24 +84,44 @@ public class MemberUpdateAction implements Action{
 			return null;	
 		
 		}else */
+		System.out.println(">>>"+multi.getParameter("check"));
 		if(pass!=null){
-			mb.setPass(pass);
-			if(pass.equals(pwck)){
-				
-				mdao.updateMember(mb);
-				
+			if(multi.getParameter("check").equals("0")){
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('정보가 변경되었습니다');");
-				out.println("location.href='./MemberUpdate.me'");
+				out.println("alert('비밀번호를 확인해주세요.(영어,숫자조합 6글자이상)');");
+				out.println("history.back();");
 				out.println("</script>");
 				out.close();
 				return null;
+			}else{
+				
+				mb.setPass(pass);
+				if(pass.equals(pwck)){
+					
+					mdao.updateMember(mb);
+					
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>");
+					out.println("alert('정보가 변경되었습니다');");
+					out.println("location.href='./MemberUpdate.me'");
+					out.println("</script>");
+					out.close();
+					return null;
+				}else{
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>");
+					out.println("alert('비밀번호가 일치하지않습니다');");
+					out.println("history.back();");
+					out.println("</script>");
+					out.close();
+					return null;
+				}
 			}
-		}
-		
-		else{
+		}else{
 			mb.setPass(pass11);
 			
 			mdao.updateMember(mb);
@@ -117,7 +137,7 @@ public class MemberUpdateAction implements Action{
 		}
 	
 
-		return null;
+		
 
 /*		mb.setEmail(request.getParameter("email"));
 		mb.setPass(request.getParameter("pass"));
