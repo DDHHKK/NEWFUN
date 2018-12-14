@@ -51,6 +51,7 @@ hostCheck = (int)session.getAttribute("hostCheck");
 <li id="pont1_WS"><a href="./Main.me"><i>FUNSTAY</i></a></li>
 <li id="li_2"><input type="text" id="text_1_WS" name="search_info" placeholder="여행하실 지역을 적어주세요">
 <input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></li>
+
 </ul>
 
 <ul class="header_dh1">
