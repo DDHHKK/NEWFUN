@@ -357,8 +357,8 @@ if(i%3==0){
 }
 %>
 
-<td><%=pb.getRequest_msg()%></td>
-<td><%=pb.getPayment_num()%></td>
+<%-- <td><%=pb.getRequest_msg()%></td>
+<td><%=pb.getPayment_num()%></td> --%>
 <td><img src="./upload/<%=BeforeB.getPhoto().split(",")[0]%>" width="100" height="100"></td>
 <td><%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%></td> 
 	
@@ -653,14 +653,14 @@ function button_event(){
 		  
 		
 		
-		alert("예약취소되었습니다.")
+		
 		
 		
 		
 	
 		
 	}else{
-		
+		alert("예약취소되었습니다.")
 		
 	}
 	

@@ -313,10 +313,10 @@ public class BookDAO {
     //취소된 숙소 가져오는 메서드(sql-select문)
 
       public Vector<?> GetCancelTrip(String member_email){
-  		List bookingList=new ArrayList<>();
-  		List paymentList=new ArrayList<>();
-  		List hostList=new ArrayList<>();
-  		List afterList=new ArrayList<>();
+  		List bookingList2=new ArrayList<>();
+  		List paymentList2=new ArrayList<>();
+  		List hostList2=new ArrayList<>();
+  		List afterList2=new ArrayList<>();
   		
       	Vector vector=new Vector<>();
   		
@@ -349,7 +349,8 @@ public class BookDAO {
      		        	hb.setRoom_subject(rs.getString("room_subject"));
      		        	pb.setSum_price(rs.getInt("sum_price"));*/
      		        	
-     		        	
+     		        	pb.setPayment_num(rs.getString("payment_num"));
+       		        	pb.setRequest_msg(rs.getString("request_msg"));
      		        	BeforB.setRoom_type(rs.getString("room_type"));
      		        	BeforB.setPhoto(rs.getString("photo"));
      		        	BeforB.setRoom_subject(rs.getString("room_subject"));
@@ -361,16 +362,16 @@ public class BookDAO {
      		        	
      		        	
      		        	
-     		        	bookingList.add(bb);
-     		        	paymentList.add(pb);
-     		        	hostList.add(hb);
-     		        	afterList.add(BeforB);
+     		        	bookingList2.add(bb);
+     		        	paymentList2.add(pb);
+     		        	hostList2.add(hb);
+     		        	afterList2.add(BeforB);
      		        
   				}
-     		        vector.add(bookingList);
-     		        vector.add(paymentList);
-     		        vector.add(hostList);
-     		        vector.add(afterList);
+     		        vector.add(bookingList2);
+     		        vector.add(paymentList2);
+     		        vector.add(hostList2);
+     		        vector.add(afterList2);
      		        
   				}catch(Exception e){
   					e.printStackTrace();
