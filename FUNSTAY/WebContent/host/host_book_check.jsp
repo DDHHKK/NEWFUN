@@ -8,7 +8,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Frontier JQuery Calendar</title>
+<title>FunStay</title>
+
+<!-- <!-- 페이지 default 링크 시작 -->
+<!-- <link href="./css/default/login.css" rel="stylesheet"> -->
+<link href="./css/default/default.css" rel="stylesheet">
+<link href="./css/default/subpage_content.css" rel="stylesheet">
+<link href="./css/default/subpage.css" rel="stylesheet">
+
+
 
 <!-- Include CSS for JQuery Frontier Calendar plugin (Required for calendar plugin) -->
 <link rel="stylesheet" type="text/css" href="./css/host/cal/jquery-frontier-cal-1.3.2.css" />
@@ -45,7 +53,24 @@ Include JQuery Core (Required for calendar plugin)
 <script type="text/javascript" src="./js/host/cal/frontierCalendar/jquery-frontier-cal-1.3.2.min2.js"></script>
 
 </head>
-<body >
+<body>
+
+<!-- header  시작-->
+<div class="head_dh">
+<ul class="header_dh">
+<li id="pont1_WS"><a href="./Main.me"><i>FUNSTAY</i></a></li>
+<li id="li_2"><input type="text" id="text_1_WS" name="search_info" placeholder="여행하실 지역을 적어주세요">
+<input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></li>
+<li id="li_3"><a href="./HostMain.ho">숙소를 추가해 보세요</a></li>
+<li id="li_4"><a href="./FAQ_boardList.fa">FAQ</a></li>
+
+</ul>
+</div>
+
+<!-- header  끝-->
+<hr>
+
+<jsp:include page="../include/subpage.jsp"></jsp:include>
 
 <!-- Some CSS for our example. (Not required for calendar plugin. Used for example.)-->
 <style type="text/css" media="screen">
@@ -56,7 +81,7 @@ body font-size to 62.5% isn't an option, or not one you want, you can set the fo
 to 1em or set it to px.
 http://osdir.com/ml/jquery-ui/2009-04/msg00071.html
 */
-body { font-size: 62.5%; }
+/* body { font-size: 62.5%; } */
 .shadow {
 	-moz-box-shadow: 3px 3px 4px #aaaaaa;
 	-webkit-box-shadow: 3px 3px 4px #aaaaaa;
@@ -90,6 +115,15 @@ body { font-size: 62.5%; }
     color: #666;
     cursor: pointer;
     font-size: 16px;} 
+    
+.head_dh {
+  width:100%;
+  height: 80px;
+}
+
+
+
+
 </style>
 
 <script type="text/javascript">
@@ -604,7 +638,7 @@ $(document).ready(function(){
 	
 	<div id="tabs-2">
 
-		<div id="example" style="margin: auto; width:80%;">
+		<div id="example" style="margin: 0% 0% 0% 30%; width:60%;">
 		
 		<br>
 		
@@ -612,13 +646,7 @@ $(document).ready(function(){
 		
 		<br><br>
 
-		<div id="toolbar" class="ui-widget-header ui-corner-all" style="padding:3px; vertical-align: middle; white-space:nowrap; overflow: hidden;">
-			<button id="BtnPreviousMonth">이전 달</button>
 		
-			<button id="back_shj" onclick="location.href='MemberUpdate.me'">Back</button>
-		
-				<button id="BtnNextMonth">다음 달</button>
-		</div>
 
 		<br>
 
@@ -627,7 +655,16 @@ $(document).ready(function(){
 		Height will be calculated by aspect ratio. Basically all day cells will be as tall
 		as they are wide.
 		-->
-		<div id="monthbox_shj" ></div>
+		
+		<div id="toolbar" class="ui-widget-header ui-corner-all" style="padding:3px; vertical-align: middle; white-space:nowrap; overflow: hidden; height: 120px;">
+			<button id="BtnPreviousMonth" style="bottom: -55px; left: 10px;">◀</button>
+		
+				<div id="monthbox_shj" ></div>
+			<!-- <button id="back_shj" onclick="location.href='MemberUpdate.me'">Back</button> -->
+		
+				<button id="BtnNextMonth">▶</button>
+		</div>
+		
 	
 		<div id="mycal"></div>
 
@@ -657,57 +694,13 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-
 <p>&nbsp;</p>
 
-
+</div><!-- 회원 관리 페이지 'subpage' include된 페이지의 div끝 !!지우지마세요!!-->
+<div class="clear"></div>
+<hr>
+<!-- footer 시작-->
+<jsp:include page="../include/footer.jsp"></jsp:include>
+<!-- footer 끝-->
 </body>
 </html>
