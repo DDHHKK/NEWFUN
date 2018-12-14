@@ -344,6 +344,7 @@ public class BookDAO {
      		        	PaymentBean pb=new PaymentBean();
      		        	BookingBean bb=new BookingBean();
      		        	BeforeBean BeforB=new BeforeBean();
+     		        	System.out.println(rs.getString("payment_num"));
      		        	
      		        	/*bb.setCheck_in(rs.getDate("check_in"));
      		        	bb.setCheck_out(rs.getDate("check_out"));

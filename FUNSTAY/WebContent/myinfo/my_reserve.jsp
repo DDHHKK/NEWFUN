@@ -333,7 +333,7 @@ if(i%3==0){
 
 <!--취소된 숙소 시작 -->
 
-<div id="Paris" class="w3-container city" style="display:none">
+<div id="Seoul" class="w3-container city" style="display:none">
 
 
 <table border="1">
@@ -343,6 +343,7 @@ List bookingList4=(List)request.getAttribute("bookingList3");
 List paymentList4=(List)request.getAttribute("paymentList3");
 List hostList4=(List)request.getAttribute("hostList3"); 
 List afterList4=(List)request.getAttribute("afterList3");
+System.out.println(bookingList4);
 for(int i=0; i<bookingList4.size(); i++){
 	BookingBean bb=(BookingBean)bookingList4.get(i);
 	PaymentBean pb=(PaymentBean)paymentList4.get(i);
@@ -399,7 +400,7 @@ if(i%3==0){
 
 
 <!--완료된 숙소 영수증 모달 팝업창 시작 -->
-  <div id="id09" class="w3-modal">
+ <%--  <div id="id09" class="w3-modal">
     <div class="w3-modal-content w3-card-4">
       <header class="w3-container w3-teal"> 
         <span onclick="document.getElementById('id09').style.display='none'" 
@@ -476,7 +477,7 @@ if(i%3==0){
         <p class="cancel_DY">예약취소</p>
       </footer> -->
     </div>
-  </div>
+  </div> --%>
 <!--완료된 숙소 영수증 모달 팝업창 끝 -->  
 	
 
@@ -493,7 +494,7 @@ if(i%3==0){
  
 
 <!-- 예정된 숙소 영수증 모달 팝업창 시작 -->
-  <div id="id10" class="w3-modal">
+ <%--  <div id="id10" class="w3-modal">
     <div class="w3-modal-content w3-card-4">
       <header class="w3-container w3-teal"> 
         <span onclick="document.getElementById('id10').style.display='none'" 
@@ -567,7 +568,7 @@ if(i%3==0){
         <p class="cancel_DY">예약취소</p>
       </footer> -->
     </div>
-  </div>
+  </div> --%>
 <!--예정된 숙소 영수증 모달 팝업창 끝 -->  
 
 
