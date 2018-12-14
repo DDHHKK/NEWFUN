@@ -333,6 +333,7 @@ public class BookDAO {
                      
                      pstmt=con.prepareStatement(sql2);//객체생성
      		           pstmt.setString(1,member_email);
+     		           System.out.println(member_email);
      		           pstmt.setString(2, "결제취소");
      		          
      		           rs=pstmt.executeQuery();

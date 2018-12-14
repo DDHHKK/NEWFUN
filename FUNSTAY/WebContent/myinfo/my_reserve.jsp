@@ -275,7 +275,6 @@ if(i%3==0){
 <table border="1">
 
 <%
-
 List bookingList2=(List)request.getAttribute("bookingList2");
 List paymentList2=(List)request.getAttribute("paymentList2");
 List hostList2=(List)request.getAttribute("hostList2"); 
@@ -340,7 +339,6 @@ if(i%3==0){
 <table border="1">
 
 <%
-
 List bookingList4=(List)request.getAttribute("bookingList3");
 List paymentList4=(List)request.getAttribute("paymentList3");
 List hostList4=(List)request.getAttribute("hostList3"); 
@@ -616,11 +614,6 @@ function openCity(cityName) {
     }
     document.getElementById(cityName).style.display = "block";  
 }
-
-
-
-
-
 //예약 취소 확인
 function button_event(){
 	r=confirm("정말 예약 취소하시겟습니까?")
@@ -634,7 +627,6 @@ function button_event(){
 		
 		
 		<%
-
 		List bookingList3=(List)request.getAttribute("bookingList2");
 		List paymentList3=(List)request.getAttribute("paymentList2");
 		List hostList3=(List)request.getAttribute("hostList2"); 
@@ -648,19 +640,18 @@ function button_event(){
 		%>
            
 		return location.href="./BillCancel.bk?booking_num=<%=bb.getBooking_num()%>&payment_num=<%=pb.getPayment_num()%>";
-
 		<% }%> 
 		  
 		
 		
-		
+		alert("예약취소되었습니다.")
 		
 		
 		
 	
 		
 	}else{
-		alert("예약취소되었습니다.")
+		
 		
 	}
 	

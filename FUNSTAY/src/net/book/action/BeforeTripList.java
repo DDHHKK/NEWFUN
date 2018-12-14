@@ -28,6 +28,7 @@ public class BeforeTripList implements Action{
 		//home_num파라미터 가져오기
 		HttpSession session=request.getSession();
 		String member_email=(String)session.getAttribute("email");
+		System.out.println(member_email);
 		
 		
 		BookingBean bb=new BookingBean();
