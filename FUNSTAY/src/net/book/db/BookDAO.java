@@ -257,12 +257,13 @@ public class BookDAO {
     
     
   //예약취소하는 메서드(sql-update문)
-  	public void BillCancel(String payment_num,int booking_num){
+  	public void BillCancel(String payment_num,int booking_num,String member_email){
   		
   		Connection con=null;
   	    PreparedStatement pstmt=null;
   	    ResultSet rs=null;
   	    
+  	    String host_email=null;
   	    
   	    
   		 try{
@@ -270,25 +271,69 @@ public class BookDAO {
   				con=getConnection();
   			    //3단계
   				String sql="delete from booking where booking_num=?";
+  				System.out.println("1");
   				pstmt=con.prepareStatement(sql);//객체생성
   				
   				pstmt.setInt(1, booking_num); 
   				System.out.println(booking_num);
   			    //4단계 실행
   				pstmt.executeUpdate(); 
+  				pstmt.close();
   				
   				
   			    //3단계
   				sql="update payment set payment_status=? where payment_num=?";
+  				System.out.println("2");
   				pstmt=con.prepareStatement(sql);
   				
+
   				pstmt.setString(1, "결제취소");
   				pstmt.setString(2,payment_num);
-  			    System.out.println(payment_num);
+  			   
+  			    //4단계 실행
+  				pstmt.executeUpdate(); 
+  				pstmt.close();
+  				
+  				//3단계(마일리지 payment테이블 storage_m used_m )
+  				sql=" update member set mileage=mileage-(select (storage_m-used_m) as SU from payment where payment_num=?) "
+  						+ "where email=?";
+  				System.out.println("3");
+  				pstmt=con.prepareStatement(sql);
+  				pstmt.setString(1, payment_num);
+  				pstmt.setString(2, member_email);
   				
   			    //4단계 실행
   				pstmt.executeUpdate(); 
+  				pstmt.close();
   				
+  				//3단계
+  				sql="select host_email from payment where payment_num=?";
+  				System.out.println("4");
+  				pstmt=con.prepareStatement(sql);
+  				pstmt.setString(1,payment_num);
+  				
+  				rs=pstmt.executeQuery();
+  				if(rs.next()){
+  					host_email=rs.getString("host_email");
+  					System.out.println(host_email);
+  				}
+  				
+  				pstmt.close();
+  				
+  				//3단계 (캐쉬 host테이블 sum_price-fees=cash)
+  				sql="update host set cash=cash-(select (sum_price-fees) as SF from payment where payment_num=?) "
+  						+ "where host_email=?";
+  				System.out.println("5");
+  				pstmt=con.prepareStatement(sql);
+  				pstmt.setString(1, payment_num);
+  				pstmt.setString(2, host_email);
+  				
+  				
+  				
+  			    //4단계 실행
+  				pstmt.executeUpdate(); 
+  				pstmt.close();
+  				System.out.println("6");
   				
   				
   				

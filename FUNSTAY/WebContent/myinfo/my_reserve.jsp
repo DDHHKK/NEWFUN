@@ -303,7 +303,7 @@ if(i%3==0){
   </div>
  <!--영수증 버튼 끝  -->  
   <!-- 예약취소 버튼 -->
-  <button class="cancel_butt_DY" onclick="button_event();">예약취소</button>
+  <button class="cancel_butt_DY" onclick="button_event('<%=pb.getPayment_num()%>');">예약취소</button>
   <!-- 예약취소 버튼 끝  -->
 		
 
@@ -616,7 +616,7 @@ function openCity(cityName) {
     document.getElementById(cityName).style.display = "block";  
 }
 //예약 취소 확인
-function button_event(){
+function button_event(payment_num){
 	r=confirm("정말 예약 취소하시겟습니까?")
 	
 	if(r==true){
@@ -640,7 +640,7 @@ function button_event(){
 		
 		%>
            
-		return location.href="./BillCancel.bk?booking_num=<%=bb.getBooking_num()%>&payment_num=<%=pb.getPayment_num()%>";
+		return location.href="./BillCancel.bk?booking_num="+<%=bb.getBooking_num()%>+"&payment_num="+payment_num+"";
 		<% }%> 
 		  
 		
