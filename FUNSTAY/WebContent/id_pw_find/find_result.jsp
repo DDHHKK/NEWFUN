@@ -48,8 +48,8 @@ request.setCharacterEncoding("UTF-8");
 String name = request.getParameter("me_name"); 
 String phone = (request.getParameter("me_hp1")+request.getParameter("me_hp2")+request.getParameter("me_hp3"));
 
-System.out.println(name);
-System.out.println(phone);
+/* System.out.println(name);
+System.out.println(phone); */
 
 MemberBean mb = new MemberBean();
 
@@ -59,12 +59,12 @@ mb.setPhone(phone);
 MemberDAO mdao = new MemberDAO();
 String email = mdao.findid(mb);
 
-System.out.println("확인"+email);
+/* System.out.println("확인"+email); */
 
 %>
 <div class="content_box1">
   <div class="agree">
-	<!-- <div id="ysh"><h1>ID/비밀번호 찾기</h1></div> -->
+	
      <div class="srh_box br">
    
       <div class="info in_box1">
