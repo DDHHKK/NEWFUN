@@ -316,18 +316,6 @@ int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
 	 <% 
  }
 %>
-<% 
-if(list.size()!=0){
-for(int i=0;i<list.size();i++){ //for문 시작
-	HostBean hb = (HostBean)list.get(i);
-%>
-
-<!-- 여기서부터 페이지 내용을 적어주세요. -->
-<div class="content_top_shj" >
-
-<!-- 변수값 : "부산광역시", "100" -->
-<%-- <h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb.getAddress()%></h1><br> --%>
-
 <!--정렬  -->
 <div style="width:8%" id='listmenu_shj'>
 <ul style=" width: 100%;" >
@@ -341,10 +329,20 @@ for(int i=0;i<list.size();i++){ //for문 시작
    </li>
 </ul>
 </div>
+<% 
+if(list.size()!=0){
+for(int i=0;i<list.size();i++){ //for문 시작
+	HostBean hb = (HostBean)list.get(i);
+%>
+
+<!-- 여기서부터 페이지 내용을 적어주세요. -->
+<div class="content_top_shj" >
+
+<!-- 변수값 : "부산광역시", "100" -->
+<%-- <h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb.getAddress()%></h1><br> --%>
+
+
  
-
-
-
 
 
 
@@ -523,18 +521,7 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 <%-- <h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb1.getAddress()%></h1><br> --%>
 
 <!--정렬  -->
-<div style="width:8%" id='listmenu_shj'>
-<ul style=" width: 100%;" >
-   <li class='active has-sub_shj'><a href="#"><span  class='fas'>정렬  &#xf107; &#xf106;</span></a>
-      <ul>
-         <li class='has-sub_shj'><a href='#'><span class='fas'>최신순 &#xf107; &#xf106;</span></a>
-         </li>
-         <li class='has-sub_shj'><a href='#'><span class='fas'>인기순  &#xf107; &#xf106;</span></a>
-         </li>
-      </ul>
-   </li>
-</ul>
-</div>
+
  
 </div>
 <div class="clear"></div>

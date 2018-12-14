@@ -1,3 +1,7 @@
+<%@page import="net.wishlist.db.MyWishBean"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Vector"%>
+<%@page import="net.wishlist.db.MyWishDAO"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@page import="net.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -52,6 +56,8 @@
 	MemberBean mb = new MemberBean(); 
 	String email = (String)session.getAttribute("email");
 	mb=md.getMember(email);
+	Vector vt=md.getheartphoto();
+	List heart=(List)vt.get(0);
 	
 	if(session.getAttribute("email")==null){
 	%>
@@ -415,6 +421,68 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 
 </tr>
  </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
+
+</nav>
+
+
+
+<nav>
+<p id="font2">좋아요 TOP5 지역으로 떠나보세요<p>
+
+<table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
+
+<tr>
+<td class="top_pad_ws">TOP1</td>
+<td class="top_pad1_ws">TOP2</td>
+<td class="top_pad1_ws">TOP3</td>
+<td class="top_pad1_ws">TOP4</td>
+<td class="top_pad1_ws">TOP5</td>
+</tr>
+
+   <tr> 
+    <td>
+    <div id= "img_1">
+    <%MyWishBean sb1 = (MyWishBean)heart.get(0); %>
+	<img src="./upload/<%=sb1.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+</div>
+</td>     
+
+   	<td>
+   	<div id= "img_2">
+   	<%MyWishBean sb2 = (MyWishBean)heart.get(1); %>
+   	<img src="./upload/<%=sb2.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+</div>
+</td>
+
+<td>
+<div id= "img_3">
+	<%MyWishBean sb3 = (MyWishBean)heart.get(2);%>
+	<img src="./upload/<%=sb3.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+
+</div>
+</td>
+
+ <td>
+ <div id= "img_4">
+	<%MyWishBean sb4 = (MyWishBean)heart.get(3);%>
+	<img src="./upload/<%=sb4.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+
+</div>
+</td>
+
+<td>
+ <div id= "img_5">
+ 	<%MyWishBean sb5 = (MyWishBean)heart.get(4);%>
+	<img src="./upload/<%=sb5.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+
+</div>
+</td>
+
+</tr>
+ </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
+ 
+ 
+ 
 </nav>
 <script src="dist/js/main.js"></script>
 

@@ -2,6 +2,7 @@ package net.book.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.book.controller.Action;
 import net.book.controller.ActionForward;
@@ -19,6 +20,9 @@ public class BillCancel implements Action {
 		
 		int booking_num=Integer.parseInt(request.getParameter("booking_num"));
 		String payment_num=request.getParameter("payment_num");
+		HttpSession session=request.getSession();
+		String member_email=(String)session.getAttribute("email");
+		System.out.println(member_email);
 		
 		System.out.println(booking_num);
 		System.out.println(payment_num);
@@ -27,7 +31,7 @@ public class BillCancel implements Action {
 		BookingBean bb=new BookingBean();
 		PaymentBean pb=new PaymentBean();
 		
-		bdao.BillCancel(payment_num, booking_num);
+		bdao.BillCancel(payment_num, booking_num, member_email);
 		
 		
 		

@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 
 import net.booking.db.PaymentBean;
 import net.host.db.HostBean;
+import net.wishlist.db.MyWishBean;
 
 public class MemberDAO {
 	private Connection getConnection() throws Exception {
@@ -220,8 +221,8 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-
-			String sql = "update member set name=?, profile_photo=?, phone=?, birth=?,pass=?where email=?";
+	
+			String sql = "update member set name=?, profile_photo=?, phone=?, birth=?,pass=? where email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mb.getName());
 			pstmt.setString(2, mb.getProfile_photo());
@@ -233,7 +234,7 @@ public class MemberDAO {
 			
 
 			pstmt.executeUpdate();
-
+			
 			check = 1;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -890,5 +891,47 @@ public class MemberDAO {
 		return vector;
 	}
 
+	public Vector getheartphoto() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector vector = new Vector();
+		List goodsList = new ArrayList();
+		try {
+			con = getConnection();
+			String sql = "select sum(heart), home_num, home_photo from wish group by home_num, home_photo order by sum(heart) desc";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			
+			while (rs.next()) {
+				MyWishBean sb1 = new MyWishBean();
+				sb1.setHome_photo(rs.getString("home_photo"));
+				System.out.println(sb1.getHome_photo());
+				goodsList.add(sb1);
+			}
+			
+			vector.add(goodsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return vector;
+	}
 
 }// class end

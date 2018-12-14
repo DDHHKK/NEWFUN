@@ -5,7 +5,8 @@
 #sideBar_shj{border: 2px solid red;
 	width:350px;
 	height:800px;
-	display: inline-block;}
+	display: inline-block;
+	float: left;}
 
 
 .textsize1 {
