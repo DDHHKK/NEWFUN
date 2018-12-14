@@ -52,14 +52,17 @@ public class MemberUpdateAction implements Action{
 		String photo11 = multi.getParameter("photo11");
 		String pass = multi.getParameter("pass");
 		String pass11 = multi.getParameter("pass11");
+		String pwck = multi.getParameter("pass_check");
 		System.out.println(pass);
 		System.out.println(pass11);
+		System.out.println(pwck);
 		
 		mb.setEmail(multi.getParameter("email"));
 		
 		mb.setName(multi.getParameter("name"));
 		mb.setPhone(multi.getParameter("phone"));
 		mb.setBirth(multi.getParameter("birth"));
+		
 		if(profile_photo==null)
 		{
 			mb.setProfile_photo(photo11);
@@ -69,7 +72,7 @@ public class MemberUpdateAction implements Action{
 			mb.setProfile_photo(profile_photo);
 		}
 		
-		if(pass==null)
+		/*if(pass==null)
 		{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -80,27 +83,40 @@ public class MemberUpdateAction implements Action{
 			out.close();
 			return null;	
 		
+		}else */
+		if(pass!=null){
+			mb.setPass(pass);
+			if(pass.equals(pwck)){
+				
+				mdao.updateMember(mb);
+				
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('정보가 변경되었습니다');");
+				out.println("location.href='./MemberUpdate.me'");
+				out.println("</script>");
+				out.close();
+				return null;
+			}
 		}
-		/*else if(pass11==null)
-		{
 		
-				mb.setPass(pass);
-
-
-		}*/else{
+		else{
 			mb.setPass(pass11);
+			
+			mdao.updateMember(mb);
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('정보가 변경되었습니다');");
+			out.println("location.href='./MemberUpdate.me'");
+			out.println("</script>");
+			out.close();
+			return null;
 		}
 	
-		mdao.updateMember(mb);
-		
-		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("<script>");
-		out.println("alert('정보가 변경되었습니다');");
-		out.println("location.href='./MemberUpdate.me'");
-		out.println("</script>");
-		out.close();
+
 		return null;
 
 /*		mb.setEmail(request.getParameter("email"));

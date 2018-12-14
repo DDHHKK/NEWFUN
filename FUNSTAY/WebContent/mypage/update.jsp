@@ -149,7 +149,7 @@ function func()
    </div>
    
    <div id="buttons_sh">
-    <button type="button"class="btn" onclick="ch_pw()">저장하기</button>
+    <button type="submit"class="btn" onclick="ch_pw()">저장하기</button>
     <input type="button" value="취소하기" class="btn" onclick="history.back()">
     <input type="button" value="탈퇴하기" class="btn1" onclick="location.href='./MemberDelete.me'">
    </div>
@@ -199,10 +199,10 @@ function ch_pw(){
 
 	 if(pass!=pass2){
 	 alert("비밀번호가 일치하지 않습니다.");}
-	 else
-		 {
-		 document.chpw.submit();
-		 }
+	
+		
+		 /* document.chpw.submit(); */
+		
 	 
 	 
 	 
