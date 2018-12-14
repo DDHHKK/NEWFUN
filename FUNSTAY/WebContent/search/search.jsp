@@ -273,9 +273,6 @@ for(int i=0;i<list.size();i++){ //for문 시작
 </div>
 
 
-
-
-
 <!-- 하트 클릭부분 -->
 <script type="text/javascript">
 $(document).ready(function(){
