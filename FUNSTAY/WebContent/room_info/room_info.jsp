@@ -63,11 +63,11 @@
 	%>
 			
 <!-- room_wrapper -->
-<marquee behavior=scroll><b>☆숙소를 소개합니다☆</b></marquee>
+<!-- <marquee behavior=scroll><b>☆숙소를 소개합니다☆</b></marquee> -->
 
-<div id="room_wrap">
+<div id="room_wrap" style="width:80%;margin:0 auto;">
  <div id="room_detail">
- 	<div id="room_imfomation">
+ 	<div id="room_imfomation" style="margin-top: 25px;">
  	<!-- 숙소제목 -->
  	<div>
  		<h1 style="color:#cc1d1d;display:block;float:left;margin-top:0;"><%=sc.getRoom_subject() %></h1>
