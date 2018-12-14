@@ -54,6 +54,17 @@ hostCheck = (int)session.getAttribute("hostCheck");
 
 </ul>
 
+<!-- 검색바 엔터 치면 검색버튼 클릭되도록 하는 기능 -->
+<script>
+var input = document.getElementById("text_1_WS");
+input.addEventListener("keyup", function(event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    document.getElementById("btn_1_WS").click();
+  }
+});
+</script>
+
 <ul class="header_dh1">
 <%if(hostCheck==0){ %>
 <li id="li_3"><a href="./HostMain.ho">호스트로 등록해 보세요</a></li>

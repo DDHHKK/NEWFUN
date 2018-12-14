@@ -34,8 +34,6 @@
 <script src="./js/file.js"></script>
 
 
-
-
 </head>
 
 <script type="text/javascript">
@@ -60,8 +58,9 @@ function func()
 
 }
 
-
 </script>
+
+
 <body>
 
 <!-- header  시작-->
@@ -115,6 +114,7 @@ function func()
    
    <div id ="updatePassbox">
    <input type="button" value="비밀번호 변경" id="updatePass" onclick="func()">
+   <!-- <button id="updatePass" onclick="func()"><i class="fa fa-key icon"></i>비밀번호변경</button> -->
    <input type="button" value="비밀번호 변경취소" id="updateCancel">
    </div>
   <!--  <div>
@@ -141,7 +141,7 @@ function func()
     <p><i class="fa fa-heart icon"></i><label>birth</label></p>
     <p>
  
-    <input type="text" name="birth" class="t_box_sh" value="<%=mb.getBirth()%>" readonly>
+    <input type="text" name="birth" class="t_box_sh" value="<%=mb.getBirth()%>" style="border: none;" readonly>
     
     </p>
    </div>
