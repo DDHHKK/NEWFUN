@@ -39,17 +39,18 @@
 <nav id="nav_1">
 <form action="Booking.bo" method="get" name="fff" id="form_2">
 <ol>
-<li class="tite_text"><%=sc.getPrice() %> / 1박 <img src="./img/heart.jpg" align="right"></li>
+<li class="tite_text"><%=sc.getPrice() %> / 1박 
+<!--  <img src="./img/heart.jpg" align="right"> --></li>
 <li>★★★★★ 167</li>
-<li class="tite_text">날짜</li>
+<!-- <li class="tite_text">날짜</li> -->
 <li><span>체크인</span> <span id="checkout">체크아웃</span></li>
 <li>
    <input type='text' id="minMaxExample" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/>
    <input type="text" value="" class="textsize2" id="datepicker" data-language='en' placeholder="년/월/일">
 </li>
-<li class="tite_text">인원</li>
+<!-- <li class="tite_text">인원</li> -->
 <li>
-  <input type="text" value="" placeholder="게스트를 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
+  <input type="text" value="" placeholder="게스트 인원을 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
   <nav id="form_1">
   <ol>
      <li>
@@ -71,9 +72,11 @@
   </nav>
 </li>
 <li><input type="submit" value="예약요청" id="btn1"></li>
-<li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li><hr>
+<div class="clear"></div>
+<!-- <hr> -->
+<!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->
 <li align="center">지난 주에 500회 이상 조회되었습니다.</li>
-	<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" />
+	<!-- <input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;"/> -->
 </ol>
 </form>
 </nav>
