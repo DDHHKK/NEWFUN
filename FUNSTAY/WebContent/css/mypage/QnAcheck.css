@@ -24,18 +24,69 @@ h1 {
 .QnAcheck_table_sg {
     width: 85%;
     border-collapse: collapse;
-    /* border: none; */
+    border: 1px solid #cccccc;
     text-align: center;
+    margin-bottom:10px;
+}
+
+.QnAcheck_table_sg td b{
+	text-align: right;
 }
 
 .qnaheadtd_sg {
     background-color: #cc1d1d;
     color: white;
     border-color: #cc1d1d;
+    
 }
 
 .QnAcheck_table_sg td {
     height: 30px;
+    
 }
+
+
+.text_dh {
+	
+	border : none;
+	margin-top : 15px;
+}
+
+#btn_dh {
+	 background-color: #cc1d1d;
+	 color : #fff;
+	 padding : 15px 20px;;
+	 border : none;
+	 margin-bottom: 10px;
+     margin-left: 78%;
+     cursor: pointer;
+	
+}
+
+#btn_dh:hover {
+	 background-color: #991515;
+}
+
+#answer_dh {
+	background-color: #000;
+	color : #fff;
+	padding : 5px 0px;
+	
+}
+
+#question_dh{
+	background-color: #cc1d1d;
+	color : #fff;
+	padding : 5px 0px;
+}
+
+.QnAcheck_table_dh {
+    width: 85%;
+    border-collapse: collapse;
+    border: 1px solid #cccccc;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
 	
 }
