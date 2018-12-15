@@ -12,11 +12,11 @@
 <head> 
 <!-- css -->
 <link href = "./css/room_info/room_info.css" rel="stylesheet">
-<link href = "./css/login1.css" rel="stylesheet">
-<!-- 검색 폰트 -->
+<!-- <link href = "./css/login1.css" rel="stylesheet">
+검색 폰트
 <link href="https://fonts.googleapis.com/css?family=Kodchasan" rel="stylesheet">
-<!-- 로그인 jquery -->
-<script src="./js/login.js"></script>
+로그인 jquery
+<script src="./js/login.js"></script> -->
 
 
 <!-- date picker api  -->
@@ -75,6 +75,7 @@
  			<!-- 룸타입 -->
  			<%=sc.getRoom_type() %>
  		</span>
+ 		<i class="far" id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;float:right;font-size:30px;">&#xf004;</i>
  	</div>
  	<div class="clear"></div>
  	<hr>  
@@ -93,7 +94,7 @@
  			<li><a href="#room_facility">편의시설 </a></li>
  			<li><a href="#room_area">지역정보 </a></li>
  			<li><a href="#room_review">후기 </a></li>
- 			<li><a href="#QnA">QnA</a></li>
+ 			<li style="height:21px;line-height:23px;"><a href="#QnA">QnA</a></li>
  		</ul>
  	<div>
  	
@@ -205,7 +206,7 @@
 	<!-- 숙소 위치 -->
 	<div id="room_area">
 	<h3>지역정보</h3>
-		<input type="text" value="<%=sc.getAddress()%>" id="address" readonly>
+		<input type="text" value="<%=sc.getAddress()%>" id="address" readonly style="border:none;">
 		<div id="map" style="width:500px;height:350px;border-radius:20px;"></div>
 	</div>
 	<!---------------------- 지도 api 불러오기 ---------------------->
@@ -266,7 +267,7 @@
 
 
 <!-- room_qna -->
-<div id="room_qna">
+<div id="room_qna"">
 <jsp:include page="room_qna.jsp"></jsp:include>
 </div>
 <br><br> 
