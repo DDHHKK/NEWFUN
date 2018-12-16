@@ -110,8 +110,8 @@ String endDate = df.format(cal.getTime());
 <table id="info_check">
 <tr><td colspan="2"><b>정보가 정확히 입력되었는지 확인 해주세요.</b></td></tr>
 
-<tr><td class="td1">숙소이름  </td><td class="td2"><input type="text" name="room_subject" size="100" value="<%=room_subject %>" readonly></td></tr>
-<tr><td class="td1">숙소설명  </td><td class="td2"><textarea name="room_content" cols="100" rows="10" id="cc" readonly><%=room_content %></textarea></td></tr>
+<tr><td class="td1">숙소이름  </td><td class="td2"><input type="text" name="room_subject" size="80" value="<%=room_subject %>" readonly></td></tr>
+<tr><td class="td1">숙소설명  </td><td class="td2"><textarea name="room_content" cols="100" rows="7" id="cc"  style="resize: none;" readonly><%=room_content %></textarea></td></tr>
 <tr><td class="td1">룸타입  </td><td class="td2"><input type="text" name="room_type" value="<%=room_type %>" readonly></td></tr>
 <tr><td class="td1">욕실개수  </td><td class="td2"><input type="text" name="restroom" value="<%=restroom %>" readonly></td></tr>
 <tr><td class="td1">1박당 가격  </td><td class="td2"><input type="text" name="price" value="<%=price %>" readonly></td></tr>
@@ -119,6 +119,7 @@ String endDate = df.format(cal.getTime());
 <tr><td class="td1">체크아웃 가능 시간  </td><td class="td2"><input type="text" name="out_time" value="<%=out_time %>" readonly></td></tr>
 <tr><td class="td1">호스팅 기간  </td><td class="td2"><input type="text" name="end_date" value="<%=strDate%> ~ <%=endDate%>" readonly><input type="hidden" name="end_date" value="<%=end_date %>" readonly></td></tr>
 <tr><td class="td1">편의시설 </td><td class="td2">
+<textarea id="cc" cols="100" rows="5" style="resize: none;" readonly>
 <%
 try{
 
@@ -133,7 +134,8 @@ try{
 	else{
 		out.print(convenience[i]+",");
 	%>
-	
+
+
 	<%}
 	}
 }
@@ -145,6 +147,7 @@ catch(Exception e)
 for(int i=0; i<num_conv.length; i++)
 {
 	%>
+	</textarea>
 	<input type="hidden" name="num_conv" value="<%=num_conv[i] %>">
 	<%
 }
@@ -157,8 +160,7 @@ for(int i=0; i<num_conv.length; i++)
 
 
 
-<tr><td colspan="2"><input type="button" value="<<이전페이지" id="back_btn" onclick="history.go(-1)">
-<input type="submit" value="숙소등록하기" id="sub_btn"></td></tr>
+<tr><td colspan="2"></td></tr>
 </table>
 	
 <div id="photo_up">
@@ -215,6 +217,9 @@ for(int i=0; i<num_conv.length; i++)
 		<img id="img_shj5">
 	</div>
 </div>
+
+<input type="button" value="<<이전페이지" id="back_btn" onclick="history.go(-1)">
+<input type="submit" value="숙소등록하기" id="sub_btn">
 
 <script type="text/javascript">
 var sel_files;
