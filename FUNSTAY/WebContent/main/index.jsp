@@ -56,8 +56,7 @@
 	MemberBean mb = new MemberBean(); 
 	String email = (String)session.getAttribute("email");
 	mb=md.getMember(email);
-	Vector vt=md.getheartphoto();
-	List heart=(List)vt.get(0);
+	
 	
 	if(session.getAttribute("email")==null){
 	%>
@@ -81,6 +80,7 @@
 if (email.equals("admin")) {
 %>
  		<a href="./MemberListAction.me">회원목록</a>
+ 		<a href="./FAQ_boardList.fa">FAQ</a>
 		<a href="./MemberLogout.me">로그아웃</a>
  <%}else{%>
 		<a href="./MemberUpdate.me">프로필수정</a>
@@ -423,8 +423,12 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
  </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
 
 </nav>
+<%-- 
+<%
+Vector vt=md.getheartphoto();
+List heart=(List)vt.get(0);
 
-
+%>
 
 <nav>
 <p id="font2">좋아요 TOP5 지역으로 떠나보세요<p>
@@ -481,7 +485,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 </tr>
  </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
  
- 
+  --%>
  
 </nav>
 <script src="dist/js/main.js"></script>
