@@ -166,6 +166,18 @@ http://osdir.com/ml/jquery-ui/2009-04/msg00071.html
 
 
 
+h1 {
+	/* border: 1px solid black; */
+    border-left: 5px solid #cc1d1d;
+    padding-left: 7px;
+    color: #cc1d1d;
+    /* padding: 0px 0; */
+    box-sizing: border-box;
+    height: 46px;
+    margin: 3% 0% 1% 30%;
+}
+
+
 
 </style>
 
@@ -708,8 +720,11 @@ $(document).ready(function(){
 
 
 		
+
 	
 	<div id="tabs-2">
+	
+		<h1>예약 관리</h1>
 
 		<div id="example" style="margin: 0% 0% 0% 30%; width:60%;">
 
