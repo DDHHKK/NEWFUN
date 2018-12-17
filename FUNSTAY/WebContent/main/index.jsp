@@ -61,6 +61,14 @@
 	List heart=(List)vt.get(0);
 	List satisfaction = (List)vt2.get(0);
 	
+	int hostCheck = 0;
+	try{
+	hostCheck = (int)session.getAttribute("hostCheck");
+	}catch(Exception e){
+		hostCheck=0;}
+
+	
+	
 	
 	if(session.getAttribute("email")==null){
 	%>
@@ -81,6 +89,8 @@
 		<div class="dropdown-content">
 <%
 //id가 admin이면 회원목록 출력 
+
+
 if (email.equals("admin")) {
 %>
  		<a href="./MemberListAction.me">회원목록</a>
@@ -88,11 +98,14 @@ if (email.equals("admin")) {
 		<a href="./MemberLogout.me">로그아웃</a>
  <%}else{%>
 		<a href="./MemberUpdate.me">프로필수정</a>
-		<a href="./Booking.bo">예약/결제</a>
 		<a href="./MyReserve.bk">나의 예약</a>
 		<a href="./Wishlist.wi">찜한숙소</a>
 		<a href="./MemberMileage.me">마일리지</a>
 		<a href="./MemberQNAlist.me">문의확인</a>
+<%if(hostCheck==1){%>
+		<a href="./HostPassCheck.ho">숙소 관리</a>
+		<a href="./HostCash.ho">MY CASH</a>
+<%}%>
 		<a href="./MemberLogout.me">로그아웃</a>
 		</div>
 	</div>

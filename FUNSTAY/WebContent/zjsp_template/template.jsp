@@ -60,7 +60,9 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css'
 	integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
 
-
+<!-- 로그인/회원가입 js -->
+<script src="./js/member/email_sub_check.js"></script>
+<script src="./js/default/required_sub.js"></script>
 
 <!-- 
 	css파일 연결할때 예시 
@@ -93,5 +95,6 @@
 <!-- footer 시작-->
 <jsp:include page="../include/footer.jsp"></jsp:include>
 <!-- footer 끝-->
+
 </body>
 </html>

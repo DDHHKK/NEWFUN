@@ -11,7 +11,7 @@
 
 #info_check td{
 	padding : 15px;
-	width: 100px;
+	width: 145px;
 }
 
 
@@ -25,7 +25,7 @@
 
  input[type=text]{
 	border:none;
-	display: block;
+	/* display: block; */
 }
  
 
@@ -36,9 +36,14 @@
 }
 
 
-b{
-	font-size: 1.1em;
+.photo_subject>b{
+	font-size: 1.2em;
+
 }
+.photo_subject {
+	padding-bottom: 10px;
+}
+
 
 .td2{
 	border-bottom: 1px solid #d7d7d7;
@@ -64,14 +69,14 @@ b{
 	font-size:1.2em;
 	color:  #fff;
 	border : none;
-	background-color: #cc1d1d;
+	background-color: #bbbbbb;
 	font-weight: bold;
 	padding : 10px;
 	cursor: pointer;
 }
 
 #back_btn:HOVER{
-	background-color: #991515;
+	background-color: #666666;
 	cursor: pointer;
 }
 

@@ -17,8 +17,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FunStay</title>
 <!-- 페이지 default 링크 시작 -->
-<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="./css/default/login.css" rel="stylesheet">
+<link href="./css/login1.css" rel="stylesheet">
 <link href="./css/default/default.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- 페이지 default 링크 끝-->
@@ -53,7 +53,7 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <!-- header  끝-->
 
-<hr>
+<hr> 
 
 
 <%
@@ -106,7 +106,7 @@ String endDate = df.format(cal.getTime());
 
 <table>
 
-<tr><td id="photo_subject" colspan="5"><b>1. 숙소 사진을 업로드 해주세요.</b><td></tr>
+<tr><td class="photo_subject" colspan="5"><b>1. 숙소 사진을 업로드 해주세요.</b><td></tr>
 
 
 <tr id="up_btn">
@@ -184,7 +184,7 @@ String endDate = df.format(cal.getTime());
 <input type="hidden" name="re_room" value="<%=re_room%>">
 
 <table id="info_check">
-<tr><td colspan="2"><b>2. 정보가 정확히 입력되었는지 확인 해주세요.</b></td></tr>
+<tr><td colspan="2" class="photo_subject"><b>2. 정보가 정확히 입력되었는지 확인 해주세요.</b></td></tr>
 
 <tr><td class="td1">숙소이름  </td><td class="td2"><input type="text" name="room_subject" size="100" value="<%=room_subject %>" readonly></td></tr>
 <tr><td class="td1">숙소설명  </td><td class="td2"><textarea name="room_content" cols="120" rows="10" id="cc"  style="resize: none;" readonly><%=room_content %></textarea></td></tr>
@@ -277,20 +277,7 @@ $(document).ready(function(){
 	}
 
 </script>
-<!-- <label for="photo1">업로드1</label>
-<tr><td><input type="file" name="photo1" id="photo1"></td></tr>
-<div></div>
-<label for="photo2">업로드2</label>
-<tr><td><input type="file" name="photo2" id="photo2"></td></tr>
 
-<label for="photo3">업로드3</label>
-<tr><td><input type="file" name="photo3" id="photo3"></td></tr>
-
-<label for="photo4">업로드4</label>
-<tr><td><input type="file" name="photo4" id="photo4"></td></tr>
-
-<label for="photo5">업로드5</label>
-<tr><td><input type="file" name="photo5" id="photo5"></td></tr> -->
 
 </form>
 

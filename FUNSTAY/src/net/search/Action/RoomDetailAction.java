@@ -34,7 +34,7 @@ public class RoomDetailAction implements Action{
 		SearchDAO bdao = new SearchDAO();
 		HostDAO hdao = new HostDAO();
 		
-		bdao.updateReadcount(num); 
+		/*bdao.updateReadcount(num); */
 		
 		SearchBean sc= bdao.getSearchboard(num);
 		ConvBean cb= hdao.getConvenience(num);

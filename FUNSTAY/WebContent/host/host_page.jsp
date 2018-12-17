@@ -1,3 +1,5 @@
+<%@page import="net.member.db.MemberBean"%>
+<%@page import="net.member.db.MemberDAO"%>
 <%@page import="net.host.db.HostBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -56,7 +58,20 @@ List hostHome=(List)request.getAttribute("hostHome");
 
 HostBean hb=new HostBean();
 
-%>
+MemberDAO md = new MemberDAO();
+MemberBean mb = new MemberBean(); 
+String email = (String)session.getAttribute("email");
+mb=md.getMember(email);
+
+
+if(email==null){ %>
+	
+	<script type="text/javascript">
+	alert("비정상적인 접근입니다.");
+	location.href("./Main.me");
+	</script>
+	
+<%}%>
 
 <!-- 여기서부터 페이지 내용을 적어주세요. -->
 

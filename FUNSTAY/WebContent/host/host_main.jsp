@@ -1,3 +1,5 @@
+<%@page import="net.member.db.MemberBean"%>
+<%@page import="net.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,6 +39,21 @@
 <%-- <jsp:include page="../include/header.jsp"></jsp:include> --%>
 <!-- header  끝-->
 <hr>
+<%
+MemberDAO md = new MemberDAO();
+MemberBean mb = new MemberBean(); 
+String email = (String)session.getAttribute("email");
+mb=md.getMember(email);
+
+
+if(email==null){ %>
+	
+	<script type="text/javascript">
+	alert("로그인 후 이용해 주세요.");
+	location.href="./Main.me";
+	</script>
+	
+<%}%>
 
 <div id="content" style="border: 1px solid blue;">
 <!-- 페이지내용 시작 -->
