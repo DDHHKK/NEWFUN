@@ -106,7 +106,7 @@ String endDate = df.format(cal.getTime());
 
 <table>
 
-<tr><td id="photo_subject" colspan="5"><b>숙소 사진을 업로드 해주세요.</b><td></tr>
+<tr><td id="photo_subject" colspan="5"><b>1. 숙소 사진을 업로드 해주세요.</b><td></tr>
 
 
 <tr id="up_btn">
@@ -184,10 +184,10 @@ String endDate = df.format(cal.getTime());
 <input type="hidden" name="re_room" value="<%=re_room%>">
 
 <table id="info_check">
-<tr><td colspan="2"><b>정보가 정확히 입력되었는지 확인 해주세요.</b></td></tr>
+<tr><td colspan="2"><b>2. 정보가 정확히 입력되었는지 확인 해주세요.</b></td></tr>
 
 <tr><td class="td1">숙소이름  </td><td class="td2"><input type="text" name="room_subject" size="100" value="<%=room_subject %>" readonly></td></tr>
-<tr><td class="td1">숙소설명  </td><td class="td2"><textarea name="room_content" cols="100" rows="10" id="cc"  style="resize: none;" readonly><%=room_content %></textarea></td></tr>
+<tr><td class="td1">숙소설명  </td><td class="td2"><textarea name="room_content" cols="120" rows="10" id="cc"  style="resize: none;" readonly><%=room_content %></textarea></td></tr>
 <tr><td class="td1">룸타입  </td><td class="td2"><input type="text" name="room_type" value="<%=room_type %>" readonly></td></tr>
 <tr><td class="td1">욕실개수  </td><td class="td2"><input type="text" name="restroom" value="<%=restroom %>" readonly></td></tr>
 <tr><td class="td1">1박당 가격  </td><td class="td2"><input type="text" name="price" value="<%=price %>" readonly></td></tr>
