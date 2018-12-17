@@ -181,7 +181,7 @@
 		<div class="panel_box">
 		<button class="accordion" href="./FAQ_boardContent.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>"><%=fb.getFAQ_subject()%></button>
 		
-		<div class="panel_box">
+		<div class="panel">
 		<p>
 			<%=fb.getFAQ_content()%>
 				<%
