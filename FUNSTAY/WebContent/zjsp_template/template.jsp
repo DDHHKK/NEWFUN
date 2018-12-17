@@ -60,10 +60,10 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css'
 	integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
 
-
 <!-- 로그인/회원가입 js -->
-<script src="./js/member/email_check.js"></script>
-<script src="./js/default/required_Join.js"></script>
+<script src="./js/member/email_sub_check.js"></script>
+<script src="./js/default/required_sub.js"></script>
+
 <!-- 
 	css파일 연결할때 예시 
 	<link href="../css/jsp파일이 있는 폴더와 동일한 폴더를 css폴더 안에 만들고 폴더의 이름을 이곳에 써주세요/css파일 이름.css" rel="stylesheet"> 
@@ -95,5 +95,6 @@
 <!-- footer 시작-->
 <jsp:include page="../include/footer.jsp"></jsp:include>
 <!-- footer 끝-->
+
 </body>
 </html>
