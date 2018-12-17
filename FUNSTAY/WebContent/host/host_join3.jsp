@@ -104,41 +104,46 @@ String endDate = df.format(cal.getTime());
 
 <form action="./HostInsertAction.ho" method="post" enctype="multipart/form-data">
 
-<table border="1">
+<table>
 
 <tr><td id="photo_subject" colspan="5"><b>숙소 사진을 업로드 해주세요.</b><td></tr>
 
 
-<tr>
+<tr id="up_btn">
 
 <td>
-	<label for="photo1">업로드1</label>
+	<label for="photo1" class="label1">첨부파일1 <i class='far fa-file-image'></i>
 		<input type="file" name="photo1" id="photo1">
+	</label>
 </td>
 
 <td>	
-	<label for="photo1">업로드2</label>
+	<label for="photo2" class="label1">첨부파일2 <i class='far fa-file-image'></i>
 		<input type="file" name="photo2" id="photo2">
+	</label>
 </td>
 
 <td>
-	<label for="photo1">업로드3</label>
+	<label for="photo3" class="label1">첨부파일3 <i class='far fa-file-image'></i>
 		<input type="file" name="photo3" id="photo3">
+	</label>
 </td>
 
 <td>
-	<label for="photo1">업로드4</label>
+	<label for="photo4" class="label1">첨부파일4 <i class='far fa-file-image'></i>
 		<input type="file" name="photo4" id="photo4">
+	</label>
 </td>
 
 <td>
-	<label for="photo1">업로드5</label>
+	<label for="photo5" class="label1">첨부파일5 <i class='far fa-file-image'></i>
 		<input type="file" name="photo5" id="photo5">
+	</label>
 </td>
 </tr>
 
 		
-<tr>
+<tr id="review_img">
 <td>
 	<div class="inner_img">
 		<img id="img_shj1">
