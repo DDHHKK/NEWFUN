@@ -423,7 +423,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
  </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
 
 </nav>
-<%-- 
+
 <%
 Vector vt=md.getheartphoto();
 List heart=(List)vt.get(0);
@@ -485,7 +485,7 @@ List heart=(List)vt.get(0);
 </tr>
  </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
  
-  --%>
+
  
 </nav>
 <script src="dist/js/main.js"></script>
