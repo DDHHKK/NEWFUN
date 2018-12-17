@@ -25,8 +25,7 @@ public class Qna_boardWrite implements Action {
 		String room_subject = request.getParameter("room_subject");
 		HttpSession session = request.getSession();
 		String Member_email = (String)session.getAttribute("email");
-		
-		
+	
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		
