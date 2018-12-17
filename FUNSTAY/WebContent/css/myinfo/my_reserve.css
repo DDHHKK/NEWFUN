@@ -130,10 +130,10 @@ color: #100f0f;
 }
 
 /*예약취소버튼  */
-.cancel_butt_DY {
+/* .cancel_butt_DY {
     background-color: #cc1d1d;
     color: white;
-}
+} */
 /*예약취소버튼 끝  */
 
 
@@ -186,7 +186,16 @@ hr {
 }
 
 
-
+.cancel_butt_DY {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.2em;
+    margin: 5% 0% 0% 35%;
+}
 
 
 

@@ -311,6 +311,7 @@ if(i%3==0){
   <button onclick="document.getElementById('id10').style.display='block'" id="bill_butt_DY">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
+ <hr>
   <!-- 예약취소 버튼 -->
   <button class="cancel_butt_DY" onclick="button_event('<%=pb.getPayment_num()%>');">예약취소</button>
   <!-- 예약취소 버튼 끝  -->
