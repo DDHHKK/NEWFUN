@@ -61,6 +61,7 @@
 	List heart=(List)vt.get(0);
 	List satisfaction = (List)vt2.get(0);
 	
+	
 	if(session.getAttribute("email")==null){
 	%>
 	<!-- 로그인/회원가입 버튼 -->
@@ -83,6 +84,7 @@
 if (email.equals("admin")) {
 %>
  		<a href="./MemberListAction.me">회원목록</a>
+ 		<a href="./FAQ_boardList.fa">FAQ</a>
 		<a href="./MemberLogout.me">로그아웃</a>
  <%}else{%>
 		<a href="./MemberUpdate.me">프로필수정</a>
@@ -483,7 +485,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 </tr>
  </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
  
- 
+
  
 </nav>
 
