@@ -1,34 +1,6 @@
 <%@page import="net.search.db.SearchBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
- <script language="javascript">
-  function showPopup() { 
-	  window.open("room_info/room_report.jsp", "a", "width=1000, height=700, left=200, top=100"); 
-	  }
- </script>
-<!--  <style>
- .btn_remove{
-    background-color: transparent;
-    color: black;
-    padding: 20px 10px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 4px;
-} 
-.btn_remove:hover {
-    opacity: 0.8;
-}
-
- </style> -->
-</head>
-<body>
 <%
 	SearchBean sc = (SearchBean) request.getAttribute("sc");
 	String pageNum = (String) request.getAttribute("pageNum");
@@ -76,10 +48,8 @@
 <!-- <hr> -->
 <!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->
 <li align="center">지난 주에 500회 이상 조회되었습니다.</li>
-	<!-- <input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;"/> -->
+	<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;"/>
 </ol>
 </form>
 </nav>
  </div>
-</body>
-</html>

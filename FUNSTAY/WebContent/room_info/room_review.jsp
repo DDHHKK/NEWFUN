@@ -4,53 +4,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style>
-.button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
-    align : right;
-}
-
-.button1 {
-    background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
-    border-radius: 50%;
-}
-
-.button1:hover {background-color: #e7e7e7;}
-
-span.star-prototype, span.star-prototype > * {
-    height: 16px; 
-    background: url(http://i.imgur.com/YsyS5y8.png) 0 -50px repeat-x;
-    width: 80px;
-    display: inline-block;
-}
- 
-span.star-prototype > * {
-    background-position: 0 0;
-    max-width:80px;   
-}
-
-</style>
-
-<title>Insert title here</title>
-</head> 
-<body>
 		
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -66,7 +19,7 @@ span.star-prototype > * {
 
 
 <a name="후기"><h1>후기 <%=count%>개 </h1></a>
-	<button class="button button1"
+	<button class="button_sg button1_sg"
 			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
 	<div id="room_review">
 	
@@ -145,15 +98,3 @@ span.star-prototype > * {
 	%>
 
 </div>
-
-	
-	
-	
-	
-	
-	
-
-</body>
-
-
-</html>
