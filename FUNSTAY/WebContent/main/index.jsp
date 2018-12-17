@@ -57,7 +57,9 @@
 	String email = (String)session.getAttribute("email");
 	mb=md.getMember(email);
 	Vector vt=md.getheartphoto();
+	Vector vt2=md.getsatisfactionphoto();
 	List heart=(List)vt.get(0);
+	List satisfaction = (List)vt2.get(0);
 	
 	if(session.getAttribute("email")==null){
 	%>
@@ -484,6 +486,66 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
  
  
 </nav>
+
+<nav>
+<p id="font2">게스트의 만족도 TOP5 지역으로 떠나보세요<p>
+
+<table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
+
+<tr>
+<td class="top_pad_ws">TOP1</td>
+<td class="top_pad1_ws">TOP2</td>
+<td class="top_pad1_ws">TOP3</td>
+<td class="top_pad1_ws">TOP4</td>
+<td class="top_pad1_ws">TOP5</td>
+</tr>
+
+   <tr> 
+    <td>
+    <div id= "img_1">
+    <%MyWishBean sbb1 = (MyWishBean)satisfaction.get(0); %>
+	<img src="./upload/<%=sbb1.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+</div>
+</td>     
+
+   	<td>
+   	<div id= "img_2">
+   	<%MyWishBean sbb2 = (MyWishBean)satisfaction.get(1); %>
+   	<img src="./upload/<%=sbb2.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+</div>
+</td>
+
+<td>
+<div id= "img_3">
+	<%MyWishBean sbb3 = (MyWishBean)satisfaction.get(2);%>
+	<img src="./upload/<%=sbb3.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+
+</div>
+</td>
+
+ <td>
+ <div id= "img_4">
+	<%MyWishBean sbb4 = (MyWishBean)satisfaction.get(3);%>
+	<img src="./upload/<%=sbb4.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+
+</div>
+</td>
+
+<td>
+ <div id= "img_5">
+ 	<%MyWishBean sbb5 = (MyWishBean)satisfaction.get(4);%>
+	<img src="./upload/<%=sbb5.getHome_photo().split(",")[0]%>" width="300" height="300">; 
+
+</div>
+</td>
+
+</tr>
+ </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
+ 
+ 
+ 
+</nav>
+
 <script src="dist/js/main.js"></script>
 
 <!--Start of Tawk.to Script-->

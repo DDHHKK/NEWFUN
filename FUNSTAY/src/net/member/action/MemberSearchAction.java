@@ -29,14 +29,14 @@ public class MemberSearchAction implements Action{
 		hb.setAddress(address);
 		String start_date = request.getParameter("start_date");
 		String end_date = request.getParameter("end_date");
-	
-
+		
+		
 		int num = (Integer.parseInt(request.getParameter("text11")))+(Integer.parseInt(request.getParameter("text12")));
 
 		//mb.setText11(Integer.parseInt(request.getParameter("text11")));
 		//mb.setText12(Integer.parseInt(request.getParameter("text12")));
 		
-		int pageSize = 10;
+	
 
 		System.out.println("searchAction" + hb.getAddress());
 		System.out.println("searchAction" + start_date);
@@ -55,7 +55,8 @@ public class MemberSearchAction implements Action{
 		}
 		
 		MemberDAO mdd= new MemberDAO();
-	
+
+		int pageSize = 10;
 
 		Vector vector = mdd.getsearchList(hb, start_date, end_date,num);
 		Vector vector2 = mdd.getsearchList2(hb);
@@ -76,9 +77,6 @@ public class MemberSearchAction implements Action{
 		return forward;
 	}
 
-	private int sizeof(int num) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 	
 }
