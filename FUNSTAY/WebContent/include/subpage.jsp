@@ -29,21 +29,21 @@ $(document).ready(function(){
 	
 	// 가상 주소가 a태그의 href에서 바뀌는 주소들은 따로 지정
 	if(pathArray[2]==("MemberSearchMC.me")) {
-		$('.a a:eq('+4+')').css({"border-bottom":"4px solid #cc1d1d"});}
-	if(pathArray[2]==("MemberQNAcontent.me")) {
-		$('.a a:eq('+5+')').css({"border-bottom":"4px solid #cc1d1d"});}
-	if(pathArray[2]==("MyWish.wi")) {
 		$('.a a:eq('+3+')').css({"border-bottom":"4px solid #cc1d1d"});}
+	if(pathArray[2]==("MemberQNAcontent.me")) {
+		$('.a a:eq('+4+')').css({"border-bottom":"4px solid #cc1d1d"});}
+	if(pathArray[2]==("MyWish.wi")) {
+		$('.a a:eq('+2+')').css({"border-bottom":"4px solid #cc1d1d"});}
 	if(pathArray[2]==("MemberDelete.me")) {
 		$('.a a:eq('+0+')').css({"border-bottom":"4px solid #cc1d1d"});}
 	if(pathArray[2]==("HostPage.ho")) {
-		$('.a a:eq('+6+')').css({"border-bottom":"4px solid #cc1d1d"});}
+		$('.a a:eq('+5+')').css({"border-bottom":"4px solid #cc1d1d"});}
 	if(pathArray[2]==("HostRoomList.ho")) {
-		$('.a a:eq('+6+')').css({"border-bottom":"4px solid #cc1d1d"});}
+		$('.a a:eq('+5+')').css({"border-bottom":"4px solid #cc1d1d"});}
 	if(pathArray[2]==("MemberUpdate.me")) {
 		$('.a a:eq('+0+')').css({"border-bottom":"4px solid #cc1d1d"});}
 	if(pathArray[2]==("HostModify.ho")) {
-		$('.a a:eq('+6+')').css({"border-bottom":"4px solid #cc1d1d"});}
+		$('.a a:eq('+5+')').css({"border-bottom":"4px solid #cc1d1d"});}
 	
 	
 	var aSize = $('.a').length;
@@ -62,7 +62,6 @@ $(document).ready(function(){
 <div class="sub_menu">
 <ul>
 	<li class="a"><a href="./PassCheckForm.me">회원 정보 수정</a></li>
-	<li class="a"><a href="./Booking.bo">예약/결제<br>(삭제 예정)</a></li>
 	<li class="a"><a href="./MyReserve.bk">나의 예약</a></li>
 	<li class="a"><a href="./Wishlist.wi">찜한숙소</a></li>
 	<li class="a"><a href="./MemberMileage.me" class="aa">마일리지</a></li>
