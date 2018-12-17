@@ -395,20 +395,28 @@
 	
 			<table>
 				<tr>
-					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;text-align:center;"><%=qn.getMember_email() %></td><td style="width:200px;">등록 날짜표시</td><td style="width:200px;">답변여부표시</td>
+					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;text-align:center;"><%=qn.getMember_email() %></td>
+					<td style="width:200px;"><%=qn.getQnA_date() %></td>
+					<td style="width:200px;">
+						<%if(qn.getRe_seq()==1){%>
+								답변완료
+								<%}else{%>
+								답변중
+						<%}%>
+					</td>
 				</tr>
 			</table>
 		</button>
 		<div class="panel_sg">
   			<p>
   				<img src="./img/user.png" alt="img02" width="50px" height="50px">
-				<%=qn.getSubject() %>
+				<%=qn.getContent() %>
 				<hr>
 				답글이 있다면 출력하기
   			</p>
 		</div>
 
-	<% } %>
+	<% } %> 
 		<div style="text-align: center;">
 <%
 		if (count1 != 0) {
@@ -484,6 +492,7 @@ for (i = 0; i < acc.length; i++) {
 <div id="room_box">
 <nav id="nav_1">
 <form action="Booking.bo" method="get" name="fff" id="form_2">
+<<<<<<< HEAD
 <input type="hidden" name="host_email" value="<%=sc.getHost_email() %>">
 <input type="hidden" name="home_num" value="<%=sc.getHome_num()%>">
 <ol>
@@ -520,6 +529,42 @@ for (i = 0; i < acc.length; i++) {
   </nav>
 </li>
 <li><input type="submit" value="예약하기" id="btn1"></li>
+=======
+<ol>
+<li class="tite_text"><%=sc.getPrice() %> / 1박 
+<!--  <img src="./img/heart.jpg" align="right"> --></li>
+<li>★★★★★ 167</li>
+<!-- <li class="tite_text">날짜</li> -->
+<li><span>체크인</span> <span id="checkout">체크아웃</span></li>
+<li>
+   <input type='text' id="minMaxExample" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/>
+   <input type="text" class='datepicker-here'  data-language='en' placeholder="년/월/일">
+</li>
+<!-- <li class="tite_text">인원</li> -->
+<li>
+  <input type="text" value="" placeholder="게스트 인원을 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
+  <nav id="form_1">
+  <ol>
+     <li>
+        <span class="font1">성&nbsp;인</span> 
+        <input type="button" value="-" onclick="cid1()" class="btn_1" id="btn_11"> 
+        <input type="text" value="" name="text11" id="textcss1" placeholder="0" class="text_box">
+        <input type="button" value="+" onclick="add1()" class="btn_1">
+     </li>
+     <li>
+      <span class="font1">어린이</span> 
+      <input type="button" value="-" onclick="cid2()" class="btn_1" id="btn_12"> 
+      <input type="text" value="" name="text12" id="textcss2" placeholder="0"class="text_box">
+      <input type="button" value="+" onclick="add2()" class="btn_1">
+     </li>
+     <li> 
+       <input type="button" value="확인" onclick="choice()" id="btn">
+     </li>
+     </ol>
+  </nav>
+</li>
+<li><input type="submit" value="예약요청" id="btn1"></li>
+>>>>>>> branch 'master' of https://github.com/DDHHKK/NEWFUN.git
 <div class="clear"></div>
 <!-- <hr> -->
 <!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->

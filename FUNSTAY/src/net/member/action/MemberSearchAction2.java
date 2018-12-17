@@ -25,6 +25,8 @@ public class MemberSearchAction2 implements Action{
 		HostBean hb = new HostBean();
 		String address = request.getParameter("search_info");
 		hb.setAddress(address);
+		int pageSize = 10;
+		
 		System.out.println(hb.getAddress());
 		
 		MemberDAO mdd= new MemberDAO();
@@ -39,6 +41,7 @@ public class MemberSearchAction2 implements Action{
 
 		session.setAttribute("rest", rest);
 		session.setAttribute("address", address);
+		request.setAttribute("pageSize", pageSize);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

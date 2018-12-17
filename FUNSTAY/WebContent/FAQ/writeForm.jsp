@@ -78,7 +78,7 @@ table textarea {
 	
 	
 #btn2 {
-	margin:0% 0% 0% 69%;
+	margin:0% 0% 0% 63%;
 
 }
  
@@ -120,6 +120,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 <input type="button" value="예약" onclick="fun3()" class="btn1">
 <input type="button" value="계정" onclick="fun4()" class="btn1">
 <input type="button" value="요금/수수료" onclick="fun5()" class="btn1">
+<input type="button" value="기타" onclick="fun6()" class="btn1">
 </div>
 </td></tr>
 
@@ -159,6 +160,11 @@ function fun4() {
 function fun5() {
 	document.getElementById("subject").value="[요금/수수료]";
 }
+
+function fun6() {
+	document.getElementById("subject").value="[기타]";
+}
+
 
 
 </script>

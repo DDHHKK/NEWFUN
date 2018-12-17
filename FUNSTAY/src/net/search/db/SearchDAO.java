@@ -345,7 +345,7 @@ private Connection getConnection() throws Exception{
 				    pstmt.setString(4,qb.getQnA_pass());
 					pstmt.setString(5,qb.getMember_email());
 					pstmt.setInt(6,qb.getHome_num());				
-					pstmt.setInt(7,qb.getRe_ref());
+					pstmt.setInt(7,num);
 					pstmt.setInt(8,qb.getRe_lev());
 					pstmt.setInt(9,qb.getRe_seq());
 						

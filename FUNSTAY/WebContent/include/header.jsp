@@ -148,8 +148,7 @@ if(email==null){
       <label for="pass"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="pass" id="myInput" required>
       </div>
-  <!-- caps lock -->
-     <p id="caps">WARNING! Caps lock is ON.</p> 
+  
   <!-- SNS -->
       <div id="col_box">   
 	  <div class="col">
@@ -250,7 +249,7 @@ if(email==null){
 <!-- 이메일(아이디)입력 폼 -->    
       <i class="fa fa-envelope icon"></i>
       <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email">
+      <input type="text" placeholder="Enter Email" name="email">
 <!-- 이메일 중복체크 입력 폼 -->       
       <div>
       <input type="button" value="E-mail중복체크" class="e_check" onclick="idcheck()">

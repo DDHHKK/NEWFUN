@@ -1,4 +1,6 @@
-﻿<%@page import="net.host.db.HostBean"%>
+﻿<%@page import="net.member.db.MemberDAO"%>
+<%@page import="org.apache.tomcat.jni.Mmap"%>
+<%@page import="net.host.db.HostBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -301,6 +303,7 @@ s0.parentNode.insertBefore(s1,s0);
 
 <div id="content_DY" style="border: 1px solid red;">
 <%
+MemberDAO da = new MemberDAO();
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
 String address = (String)session.getAttribute("address");
@@ -501,13 +504,10 @@ $(function(){
 });
 </script>
 
-
-
 <%
 } //for문끝
-} //if문끝
-
-
+} 
+//if문끝
 
 else if(rest.size()!=0){
 for(int i=0;i<rest.size();i++){ //for문 시작
@@ -574,8 +574,10 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 </div>
 
 
+
 <%
-} //for문끝
+
+}
 } //esle if문끝
 
 
@@ -609,11 +611,7 @@ else{
 
 
 
-<div class="pageNum_shj">
-<a href="#" >◀</a>
-<b><a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
- <a href="#">6</a> <a href="#">7</a> <a href="#">8</a> <a href="#">9</a></b>
-<a href="#">▶</a>
+
 
 
 </div>

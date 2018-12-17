@@ -116,7 +116,7 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 0% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: -3% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 30%; /* Could be more or less, depending on screen size */
 }
@@ -162,6 +162,12 @@ text-decoration: none;
 /* 생년월일 박스 사이즈 */
 .birth{
 	width: 29% !important;
+	padding: 20px 20px;
+    margin: 7px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 7px;
 }
 /* submit 버튼 */
 .subtn{
@@ -178,6 +184,13 @@ text-decoration: none;
 	font-size: 20px;
 	
 } 
+.psw-repeat {
+    border-width: 0px !important;
+    height: 20px !important;
+    color: red !important;
+    padding: 0px !important;
+    margin: auto !important;
+}
 /* 취소버튼 스타일
 .cancelbtn {
     width: auto;
@@ -241,3 +254,7 @@ input[type=submit]:hover {
 	width: 95%;
 	}
 	}
+	
+	
+#pont_1213_WS{margin: 30px 0 0 374px;
+font-size: 20px;}
