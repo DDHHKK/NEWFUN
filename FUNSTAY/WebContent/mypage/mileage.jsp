@@ -48,7 +48,7 @@
 	<!-- 추천숙소의 섬네일 -->
 	<div class="showsnakicon_sg">
 		<a href="#">
-			<img src="./img/photo2.jpg" style="width: 100%;height: 260px;">
+			<img src="./img/christmas.jpg" style="width: 100%;height: 260px;">
 		</a>
 	</div>
 	
