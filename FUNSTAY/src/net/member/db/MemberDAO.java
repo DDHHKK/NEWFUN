@@ -862,6 +862,7 @@ public class MemberDAO {
 	}
 
 	public Vector getsearchList2(HostBean hb) {
+		System.out.println("DAO들어옴전");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -873,6 +874,7 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+hb.getAddress()+"%");
 			rs = pstmt.executeQuery();
+			System.out.println("DAO들어옴후dddd"+hb.getAddress());
 			while (rs.next()) {
 				HostBean hb1 = new HostBean();
 				hb1.setAddress(rs.getString("address"));
@@ -883,10 +885,11 @@ public class MemberDAO {
 				hb1.setPrice(rs.getInt("price"));
 				hb1.setPhoto(rs.getString("photo"));
 			
-
+				System.out.println("DAO들어옴후");
 				goodsList.add(hb1);
 
 			}
+			System.out.println(goodsList.size());
 			vector.add(goodsList);
 		} catch (Exception e) {
 			e.printStackTrace();
