@@ -4,12 +4,14 @@
 
 
 #info_check {
-	margin: 100px;
+	display: block;
+	margin-top: 3%;
 }
 
 
 #info_check td{
 	padding : 15px;
+	width: 100px;
 }
 
 
@@ -23,12 +25,14 @@
 
  input[type=text]{
 	border:none;
+	display: block;
 }
  
 
 /* text area속성 */
 #cc{
 	border:none;
+	display: block;
 }
 
 
@@ -75,78 +79,51 @@ b{
 
 /* --------host_join3-------- */
 
-#photo_up {
-	top:-925px; 
-    left: 1200px;
-    width: 700px;
+#content {
+	margin: 3%;
     min-height: 800px;
 	position : relative;
-	border:2px dashed #cc1d1d;
 	/* margin : -1000px 500px 500px 1300px; */
 }
 
 input[type=file]{
-	width: 65px;
-	height: 40px;
-	background-color: #cc1d1d;
-	color : #fff;
+
+	display: none;
+	
+}
+
+.label1{
+	color: #666;
 	cursor: pointer;
-	
+	text-align: center;
 }
-#photo_subject{border:1px solid blue;
-	width:100%;
-	height: 60px;}
-.ptouterbox_1{/* border:1px solid blue; */
-	width:100%;
-	height:250px;}
+
+
+#photo_subject{
 	
-.ptouterbox_1>.ptinnerbox_1{border:1px solid blue;
-	width:49.7%;
-	height:248px;
-	float: left;
-	display: inline-block;
-}	
-
-
-.ptouterbox_1>.ptinnerbox_2{border:1px solid blue;
-	width:49.7%;
-	height:248px;
-	float: left;
-	display: inline-block;}		
-
-.ptouterbox_2>.ptinnerbox_1{border:1px solid green;
-	width:49.7%;
-	height:248px;
-	float: left;
-	display: inline-block;
-}	
-.ptouterbox_2>.ptinnerbox_2{border:1px solid green;
-	width:49.7%;
-	height:248px;
-	float: left;}
-	
-.ptouterbox_2{ border:1px solid blue; 
 	width:100%;
-	height:250px;}
+	height: 60px;
+}
 	
-.ptouterbox_3{/* border: 1px solid blue; */
-    width: 50%;
-    height: 250px;
-    margin: 0px 25%;}
+	
 
- .inner_subject{border: 1px solid blue;
-	width: 100%;
-    height: 19.7%;}
-.inner_img{border: 1px solid blue;
-	width: 100%;
-    height: 79.7%;} 
 .inner_img img{
-    max-width: 100%;
-    max-height: 100%;
-    padding-left: 14%;
+	width::200px;
+	height: 200px;
 }
 
+.inner_img{
+	border: 1px solid #cccccc;
 
+}
 
+#up_btn td {
+	padding : 10px;
+	text-align: center;
+	border: 1px solid #cccccc;
+}
 
-
+#review_img td{
+	width:1000px;
+	text-align: center;
+}

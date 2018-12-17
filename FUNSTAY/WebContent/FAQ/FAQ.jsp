@@ -87,7 +87,7 @@
 	
 #btn2 {
 	
-    margin: 3% 0% -2% 26%;
+    margin: 3% 0% -2% 24%;
 
 }
 
@@ -173,25 +173,37 @@
 		}
 	%>
 
-
-<!-- <script src="./js/QnA/QnA.js"></script> -->
 <div id="FAQ_detail">
 	 	<%
 			for (int i = 0; i < FAQ_boardList.size(); i++) {
 				FAQBean fb = (FAQBean) FAQ_boardList.get(i);
 		%>
+		<div class="panel_box">
 		<button class="accordion" href="./FAQ_boardContent.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>"><%=fb.getFAQ_subject()%></button>
 		
-		<div class="panel_box">
+		<div class="panel">
 		<p>
-		<%=fb.getFAQ_content()%>
-	 	</p>
+			<%=fb.getFAQ_content()%>
+				<%
+					String email1 = (String)session.getAttribute("email");
+					if (email1 != null) {
+					if (email1.equals("admin")) {
+				%>
+			<button class="button button1"
+				 onclick="location.href='FAQ_boardUpdate.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>'">글수정</button>
+			<button class="button button1"
+				onclick="location.href = './FAQ_boardDelete.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>'">글삭제</button>
+					<%
+					}
+				}
+			%>
+	 	</p> 
+		</div> 
 	
-</div> 
 		<%
 			}
 		%> 
-		
+		</div>
 
 <div id="bor_num">
 
@@ -261,7 +273,7 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
-  
+ 
 
 
 <!-- 페이지내용 끝 -->

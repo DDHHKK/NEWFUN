@@ -53,7 +53,7 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <!-- header  끝-->
 
-
+<hr>
 
 
 <%
@@ -104,14 +104,90 @@ String endDate = df.format(cal.getTime());
 
 <form action="./HostInsertAction.ho" method="post" enctype="multipart/form-data">
 
+<table>
+
+<tr><td id="photo_subject" colspan="5"><b>1. 숙소 사진을 업로드 해주세요.</b><td></tr>
+
+
+<tr id="up_btn">
+
+<td>
+	<label for="photo1" class="label1">첨부파일1 <i class='far fa-file-image'></i>
+		<input type="file" name="photo1" id="photo1">
+	</label>
+</td>
+
+<td>	
+	<label for="photo2" class="label1">첨부파일2 <i class='far fa-file-image'></i>
+		<input type="file" name="photo2" id="photo2">
+	</label>
+</td>
+
+<td>
+	<label for="photo3" class="label1">첨부파일3 <i class='far fa-file-image'></i>
+		<input type="file" name="photo3" id="photo3">
+	</label>
+</td>
+
+<td>
+	<label for="photo4" class="label1">첨부파일4 <i class='far fa-file-image'></i>
+		<input type="file" name="photo4" id="photo4">
+	</label>
+</td>
+
+<td>
+	<label for="photo5" class="label1">첨부파일5 <i class='far fa-file-image'></i>
+		<input type="file" name="photo5" id="photo5">
+	</label>
+</td>
+</tr>
+
+		
+<tr id="review_img">
+<td>
+	<div class="inner_img">
+		<img id="img_shj1">
+	</div>
+</td>
+
+
+<td>
+	<div class="inner_img">
+		<img id="img_shj2">
+	</div>
+</td>
+
+<td>
+	<div class="inner_img">
+		<img id="img_shj3">
+	</div>
+</td>
+
+
+<td>
+	<div class="inner_img">
+		<img id="img_shj4">
+	</div>
+</td>
+
+<td>
+	<div class="inner_img">
+		<img id="img_shj5">
+	</div>
+</td>
+
+
+</tr>
+</table>
+
 
 <input type="hidden" name="re_room" value="<%=re_room%>">
 
 <table id="info_check">
-<tr><td colspan="2"><b>정보가 정확히 입력되었는지 확인 해주세요.</b></td></tr>
+<tr><td colspan="2"><b>2. 정보가 정확히 입력되었는지 확인 해주세요.</b></td></tr>
 
-<tr><td class="td1">숙소이름  </td><td class="td2"><input type="text" name="room_subject" size="80" value="<%=room_subject %>" readonly></td></tr>
-<tr><td class="td1">숙소설명  </td><td class="td2"><textarea name="room_content" cols="100" rows="7" id="cc"  style="resize: none;" readonly><%=room_content %></textarea></td></tr>
+<tr><td class="td1">숙소이름  </td><td class="td2"><input type="text" name="room_subject" size="100" value="<%=room_subject %>" readonly></td></tr>
+<tr><td class="td1">숙소설명  </td><td class="td2"><textarea name="room_content" cols="120" rows="10" id="cc"  style="resize: none;" readonly><%=room_content %></textarea></td></tr>
 <tr><td class="td1">룸타입  </td><td class="td2"><input type="text" name="room_type" value="<%=room_type %>" readonly></td></tr>
 <tr><td class="td1">욕실개수  </td><td class="td2"><input type="text" name="restroom" value="<%=restroom %>" readonly></td></tr>
 <tr><td class="td1">1박당 가격  </td><td class="td2"><input type="text" name="price" value="<%=price %>" readonly></td></tr>
@@ -119,7 +195,7 @@ String endDate = df.format(cal.getTime());
 <tr><td class="td1">체크아웃 가능 시간  </td><td class="td2"><input type="text" name="out_time" value="<%=out_time %>" readonly></td></tr>
 <tr><td class="td1">호스팅 기간  </td><td class="td2"><input type="text" name="end_date" value="<%=strDate%> ~ <%=endDate%>" readonly><input type="hidden" name="end_date" value="<%=end_date %>" readonly></td></tr>
 <tr><td class="td1">편의시설 </td><td class="td2">
-<textarea id="cc" cols="100" rows="5" style="resize: none;" readonly>
+
 <%
 try{
 
@@ -147,7 +223,7 @@ catch(Exception e)
 for(int i=0; i<num_conv.length; i++)
 {
 	%>
-	</textarea>
+ 
 	<input type="hidden" name="num_conv" value="<%=num_conv[i] %>">
 	<%
 }
@@ -160,66 +236,13 @@ for(int i=0; i<num_conv.length; i++)
 
 
 
-<tr><td colspan="2"></td></tr>
+<tr><td colspan="2"><input type="button" value="<<이전페이지" id="back_btn" onclick="history.go(-1)">
+<input type="submit" value="숙소등록하기" id="sub_btn"></td></tr>
 </table>
 	
-<div id="photo_up">
-<div id="photo_subject"><b>숙소 사진을 업로드 해주세요.</b></div>
-<div class="ptouterbox_1">
-	<div class="ptinnerbox_1">
-		<div class="inner_subject">
-			<label for="photo1">업로드1</label>
-			<input type="file" name="photo1" id="photo1">
-		</div>
-		<div class="inner_img">
-			<img id="img_shj1">
-		</div>
-	</div>
-	<div class="ptinnerbox_2">
-		<div class="inner_subject">
-			<label for="photo1">업로드1</label>
-			<input type="file" name="photo2" id="photo2">
-		</div>
-		<div class="inner_img">
-			<img id="img_shj2">
-		</div>
-	</div>
-</div>
 
-<div class="ptouterbox_2">
-	<div class="ptinnerbox_1">
-		<div class="inner_subject">
-			<label for="photo1">업로드1</label>
-			<input type="file" name="photo3" id="photo3">
-		</div>
-		<div class="inner_img">
-			<img id="img_shj3">
-		</div>
-	</div>
-	
-	<div class="ptinnerbox_2">
-		<div class="inner_subject">
-			<label for="photo1">업로드1</label>
-			<input type="file" name="photo4" id="photo4">
-		</div>
-		<div class="inner_img">
-			<img id="img_shj4">
-		</div>
-	</div>
-</div>
 
-<div class="ptouterbox_3">
-	<div class="inner_subject">
-		<label for="photo1">업로드1</label>
-		<input type="file" name="photo5" id="photo5">
-	</div>
-	<div class="inner_img">
-		<img id="img_shj5">
-	</div>
-</div>
 
-<input type="button" value="<<이전페이지" id="back_btn" onclick="history.go(-1)">
-<input type="submit" value="숙소등록하기" id="sub_btn">
 
 <script type="text/javascript">
 var sel_files;
@@ -268,8 +291,7 @@ $(document).ready(function(){
 
 <label for="photo5">업로드5</label>
 <tr><td><input type="file" name="photo5" id="photo5"></td></tr> -->
-</div>
-	
+
 </form>
 
 

@@ -56,6 +56,8 @@ request.setCharacterEncoding("UTF-8");
 QnaBean qb = (QnaBean) request.getAttribute("qb");
 String pageNum = (String) request.getAttribute("pageNum");
 int num = ((Integer) request.getAttribute("num")).intValue();
+String room_subject = (String)request.getAttribute("room_subject");
+String Member_email = (String)request.getAttribute("Member_email");
 %>
 
 
@@ -63,8 +65,9 @@ int num = ((Integer) request.getAttribute("num")).intValue();
 <table border="0" align="center">
 <tr><td><h2>QnA 글쓰기</h2></tr></td>
 <!-- <tr><td><h3>번호</h3></td><td><input class="w3-input" name="QnA_num" placeholder="QnA_num을 입력해주세요..."></td></tr>  -->
-<tr><td><h3>Email</h3></td><td><input class="w3-input" name="member_email" placeholder="member_email을 입력해주세요..."></td></tr> 
-<tr><td><h3>Home_num</h3></td><td><h3></h3><input class="w3-input" name="home_num" placeholder="Home_num을 입력해주세요..."><%=qb.getHome_num() %></h3></td></tr>
+<tr><td><h3>방 이름</h3></td><td><h3></h3><input class="w3-input" type="hidden" name="home_num" value=<%=qb.getHome_num() %> placeholder="Home_num을 입력해주세요...">
+<input class="w3-input" value="<%=room_subject %>" readonly></h3></td></tr>
+<tr><td><h3>Email</h3></td><td><input class="w3-input" name="member_email" value="<%=Member_email %>" readonly></td></tr> 
 <tr><td><h3>제목</h3></td><td><h3></h3><input class="w3-input" name="subject" placeholder="제목을 입력해주세요..."></h3></td></tr>  
 <tr><td><h3>내용</h3></td><td colspan="3"><textarea name="content" rows="30" cols="100" placeholder="내용을 입력해주세요..."></textarea></td></tr>
 <tr><td colspan="3" align="right">
