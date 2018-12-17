@@ -63,6 +63,34 @@
 	color:#cc1d1d;
 }
 
+.btn1 {
+	background-color: #fff;
+	border:1px solid #cc1d1d;
+    color: #cc1d1d;
+    /* border: 2px solid #e7e7e7; */
+    cursor: pointer;
+    padding : 7px;
+    font-weight: bolder;
+  
+
+}
+
+/* .btn1:hover {
+	background-color: #991515;
+	color : #fff;
+	} */
+	
+.btn1:FOCUS {
+	background-color: #991515;
+	color : #fff;
+	}	
+	
+#btn2 {
+	
+    margin: 3% 0% -2% 26%;
+
+}
+
 </style>
 
 
@@ -124,6 +152,14 @@
 	</h2>
 </div>
 
+<div id="btn2">
+<input type="button" value="전체" onclick="fun1()" class="btn1">
+<input type="button" value="숙소" onclick="fun1()" class="btn1">
+<input type="button" value="결제" onclick="fun2()" class="btn1">
+<input type="button" value="예약" onclick="fun3()" class="btn1">
+<input type="button" value="계정" onclick="fun4()" class="btn1">
+<input type="button" value="요금/수수료" onclick="fun5()" class="btn1">
+</div>
 <!-- id가 admin이면 회원목록이 보이도록 하자. -->
 	<%
 	String email = (String)session.getAttribute("email");

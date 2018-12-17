@@ -74,8 +74,9 @@ table textarea {
 .btn1:hover {
 	background-color: #991515;
 	color : #fff;
-	}
-
+	} 
+	
+	
 #btn2 {
 	margin:0% 0% 0% 69%;
 
