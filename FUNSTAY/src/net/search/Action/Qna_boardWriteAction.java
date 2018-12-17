@@ -19,7 +19,6 @@ public class Qna_boardWriteAction implements Action{
 		System.out.println("Qna_boardWriteAction  execute()");
 		//request 한글처리
 		request.setCharacterEncoding("utf-8");
-		System.out.println("여기");
 		QnaBean qb = new QnaBean();  
 		
 		

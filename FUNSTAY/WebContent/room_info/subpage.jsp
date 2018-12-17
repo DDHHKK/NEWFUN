@@ -26,6 +26,7 @@
 
 <!-- 로그인/회원가입 js -->
 <script src="./js/member/email_check.js"></script>
+<script src="./js/default/required_Join.js"></script>
 
 <!-- 편의시설 아이콘 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
