@@ -2,6 +2,7 @@ package net.search.Action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.member.db.QnaBean;
 import net.search.controller.Action;
@@ -21,6 +22,11 @@ public class Qna_boardWrite implements Action {
 		request.setCharacterEncoding("UTF-8");		
 		
 		
+		String room_subject = request.getParameter("room_subject");
+		HttpSession session = request.getSession();
+		String Member_email = (String)session.getAttribute("email");
+		
+		
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		
@@ -32,6 +38,9 @@ public class Qna_boardWrite implements Action {
 		request.setAttribute("qb", qb);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
+		request.setAttribute("room_subject", room_subject);
+		request.setAttribute("Member_email", Member_email);
+		
 		ActionForward forward = new ActionForward();
 		
 		forward = new ActionForward();

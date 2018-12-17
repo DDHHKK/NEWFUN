@@ -56,7 +56,7 @@
 <a name="QnA"><h1>QnA <%-- <%=count1%>개 --%> </h1></a>
 
 <button class="button"
-			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
+			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%><%-- &room_subject=<%=room_subject %> --%>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
 	<div id="room_qna">
 	
 	
