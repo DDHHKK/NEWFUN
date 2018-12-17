@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.booking.db.BookingBean;
 import net.booking.db.BookingDAO;
@@ -18,20 +19,21 @@ public class BookingAction implements Action{
 		System.out.println("bookingAction execute()");
 		ActionForward forward = new ActionForward();
 		request.setCharacterEncoding("utf-8");
-		List room_num = null;
-		room_num.add(Integer.parseInt(request.getParameter("room_num[0]")));
-		room_num.add(Integer.parseInt(request.getParameter("room_num[1]")));
-		int room_num1 = Integer.parseInt(request.getParameter("room_num[0]"));
-		int room_num2 = Integer.parseInt(request.getParameter("room_num[1]"));
-		Date check_in = Date.valueOf(request.getParameter("check_in"));
-		Date check_out = Date.valueOf(request.getParameter("check_out"));
+		HttpSession session = request.getSession();
+		String member_email = (String)session.getAttribute("email");
+		//List room_num = null;
+		//room_num.add(Integer.parseInt(request.getParameter("room_num[0]")));
+		//room_num.add(Integer.parseInt(request.getParameter("room_num[1]")));
+		//int room_num1 = Integer.parseInt(request.getParameter("room_num[0]"));
+		//int room_num2 = Integer.parseInt(request.getParameter("room_num[1]"));
+		//Date check_in = Date.valueOf(request.getParameter("check_in"));
+		//Date check_out = Date.valueOf(request.getParameter("check_out"));
 		//int price = 200000;
-		int people = Integer.parseInt(request.getParameter("people"));
+		//int people = Integer.parseInt(request.getParameter("people"));
 		String host_email = request.getParameter("host_email");
 		int fees = Integer.parseInt(request.getParameter("fees"));
 		int sum_price= Integer.parseInt(request.getParameter("sum_price"));
 		int home_num = Integer.parseInt(request.getParameter("home_num"));
-		String member_email = request.getParameter("member_email");
 		String room_subject = request.getParameter("room_subject");
 		String request_msg = request.getParameter("request_msg");
 		int storage_m = Integer.parseInt(request.getParameter("storage_m"));

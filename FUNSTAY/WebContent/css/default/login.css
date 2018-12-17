@@ -184,6 +184,13 @@ text-decoration: none;
 	font-size: 20px;
 	
 } 
+.psw-repeat {
+    border-width: 0px !important;
+    height: 20px !important;
+    color: red !important;
+    padding: 0px !important;
+    margin: auto !important;
+}
 /* 취소버튼 스타일
 .cancelbtn {
     width: auto;
