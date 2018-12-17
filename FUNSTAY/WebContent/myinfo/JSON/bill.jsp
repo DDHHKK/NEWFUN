@@ -11,7 +11,6 @@ String member_email=(String)session.getAttribute("email");
 String payment_num=(String)request.getParameter("payment_num");
 
 
-
 //member_email="kim@gmail.com";
 //payment_num="20181214-94";
 

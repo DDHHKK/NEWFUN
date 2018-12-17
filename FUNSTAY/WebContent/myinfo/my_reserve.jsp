@@ -768,7 +768,7 @@ function button_event(payment_num){
 		  		  $('.receipt_table_DY').append('<tr><td colspan="2">'+item.room_subject+'</td></tr><tr><td>체크인</td><td>'+item.check_in+
 		  				  '</td></tr><tr><td>체크아웃</td><td>'+item.check_out+'</td></tr><tr><td>Room_type</td><td>'+item.room_type+
 		  				  '</td></tr><tr><td>UserName</td><td>'+item.member_email+'</td></tr><tr><td>인원</td><td>'+item.people+
-		  				  '</td></tr><tr><td>총 요금</td><td>'+item.sum_price+'</td></tr>');
+		  				  '</td></tr><tr><td>총요금</td><td>'+item.sum_price+'</td></tr>');
 		  	  }); 
 		  	  
 		  	  
