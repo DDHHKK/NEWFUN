@@ -113,61 +113,97 @@
 
 	<!-- 편의시설 --> 
 	<h3 id="room_facility1">편의시설</h3>
-	<div id="room_facility" style="padding:20px;border:1px solid #cccccc;">
+	<div id="room_facility" style="padding:20px;border:1px solid #cccccc;overflow:hidden;">
 			 
 			<%if(cb.getEssential()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='far fa-lightbulb' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 필수품목
+				</div>
 			<%}%>
 			<%if(cb.getWifi()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class="fa fa-wifi" style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 와이파이
+				</div>
 			<%}%>
 			<%if(cb.getParking()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-parking' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 주차가능
+				</div>
 			<%}%>
 			<%if(cb.getShampoo()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<img src="./img/icon/shampoo.png" width="15px" height="25px" style='color:#cc1d1d;margin-left:20px;'> 샴푸
+				</div>
 			<%}%>
 			<%if(cb.getAir_conditioner()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-thermometer-empty' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 에어컨
+				</div>
 			<%}%>
 			<%if(cb.getHeat()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-thermometer-full' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 난방
+				</div>
 			<%}%>
 			<%if(cb.getAnimal()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-paw' style='color:#cc1d1d;margin-left:20px;'></i> 반려동물
+				</div>
 			<%}%>
 			<%if(cb.getDisabled()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fab fa-accessible-icon' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 장애인시설
+				</div>
 			<%}%>
 			<%if(cb.getParty()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-birthday-cake' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 파티가능
+				</div>
 			<%}%>
 			<%if(cb.getPickup()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class="fa fa-car" style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 픽업가능
+				</div>
 			<%}%>
 			<%if(cb.getElevator()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-sort' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 엘리베이터
+				</div>
 			<%}%>
 			<%if(cb.getBreakfast()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-utensils' style='color:#cc1d1d;margin-left:20px;'></i> 조식제공
+				</div>
 			<%}%>
 			<%if(cb.getSmoking()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-smoking' style='color:#cc1d1d;margin-left:20px;'></i> 흡연가능
+				</div>
 			<%}%>
 			<%if(cb.getLaundry()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<img src="./img/icon/washing.png" width="15px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 세탁기
+				</div>
 			<%}%>
 			<%if(cb.getIron()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<img src="./img/icon/iron-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 다리미
+				</div>
 			<%}%>
 			<%if(cb.getDesk()==1){%>
-				<img src="./img/icon/table-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 업무가능공간/책상
+				<div style="width:150px;float:left;height:30px;">
+				<img src="./img/icon/table-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 업무가능공간
+				</div>
 			<%}%>
 			<%if(cb.getExtra_bed()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-bed' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 간이침대
+				</div>
 			<%}%>
 			<%if(cb.getHair_dryer()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<img src="./img/icon/hair_dryer-512.png" width="20px" height="20px" style="color:#cc1d1d;margin-left:20px;"> 헤어드라이기
+				</div>
 			<%}%>
 	</div>
 
@@ -361,7 +397,7 @@
 				<tr>
 					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;text-align:center;"><%=qn.getMember_email() %></td>
 					<td style="width:200px;"><%=qn.getQnA_date() %></td>
-					<td style="width:200px;">
+					<td colspan="2" style="width:200px;">
 						<%if(qn.getRe_seq()==1){%>
 								답변완료
 								<%}else{%>
@@ -456,6 +492,8 @@ for (i = 0; i < acc.length; i++) {
 <div id="room_box">
 <nav id="nav_1">
 <form action="Booking.bo" method="get" name="fff" id="form_2">
+<input type="hidden" name="host_email" value="<%=sc.getHost_email() %>">
+<input type="hidden" name="home_num" value="<%=sc.getHome_num()%>">
 <ol>
 <li class="tite_text"><%=sc.getPrice() %> / 1박 
 <!--  <img src="./img/heart.jpg" align="right"> --></li>
@@ -489,7 +527,7 @@ for (i = 0; i < acc.length; i++) {
      </ol>
   </nav>
 </li>
-<li><input type="submit" value="예약요청" id="btn1"></li>
+<li><input type="submit" value="예약하기" id="btn1"></li>
 <div class="clear"></div>
 <!-- <hr> -->
 <!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->

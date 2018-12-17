@@ -380,8 +380,51 @@ private Connection getConnection() throws Exception{
 				}
 			}// updateReadcount() end
 
-		
-				
+			
+		// reInsertBoard
+			public void reInsertBoard(QnaBean qb){
+		        Connection con=null;
+		        PreparedStatement pstmt=null;
+		        ResultSet rs=null;
+		        int num=0; 
+		        try {		          
+		           con=getConnection();	        
+		           String sql="select max(num) from qna_board";
+		           pstmt=con.prepareStatement(sql);		      
+		           rs=pstmt.executeQuery();
+		          
+		           if(rs.next()){
+		              num=rs.getInt("max(num)")+1;   //rs.getInt(1)
+		           }
+		      
+		           sql="update qna_board set re_seq = re_seq + 1 where re_ref = ? and re_seq > ? ";
+		           pstmt=con.prepareStatement(sql);
+		              pstmt.setInt(1,qb.getRe_ref());
+		              pstmt.setInt(2, qb.getRe_seq());
+		              
+		          
+		           sql="insert into qna_board values(?,?,?,?,?,?,now(),?,?,?)";
+		           pstmt=con.prepareStatement(sql);
+		           pstmt.setInt(1,num); 		
+					pstmt.setString(2,qb.getSubject());
+					pstmt.setString(3,qb.getContent());
+				    pstmt.setString(4,qb.getQnA_pass());
+					pstmt.setString(5,qb.getMember_email());
+					pstmt.setInt(6,qb.getHome_num());				
+					pstmt.setInt(7,qb.getRe_ref());//re_ref == num 
+					pstmt.setInt(8,qb.getRe_lev() + 1);//re_lev + 1
+					pstmt.setInt(9,qb.getRe_seq() + 1);//re_seq + 1
+						        
+		           pstmt.executeUpdate();
+		        } catch (Exception e) {
+		           e.printStackTrace();
+		        }finally{
+		           if(rs!=null)try{rs.close();}catch(SQLException ex){}
+		           if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+		           if(con!=null)try{con.close();}catch(SQLException ex){}
+		        }
+		     }
+		// reInsertBoard end		
 
 }
 
