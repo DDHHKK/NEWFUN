@@ -303,6 +303,7 @@ s0.parentNode.insertBefore(s1,s0);
 
 <div id="content_DY" style="border: 1px solid red;">
 <%
+System.out.println("이까지옴");
 MemberDAO da = new MemberDAO();
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
