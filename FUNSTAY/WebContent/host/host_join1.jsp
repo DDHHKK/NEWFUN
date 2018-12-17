@@ -224,9 +224,25 @@ $(function() {
  <option selected>룸타입 선택하세요</option>
  <option>개인실</option>
  <option>집전체</option>
-</select></td></tr>
+</select>
 
+<div class="tooltip">
+	<i class='far fa-lightbulb' style='font-size:12px' class="light">개인실</i>
+  <span class="tooltiptext">
+  	게스트에게 개인 침실이 제공됩니다.<br>
+  	침실 이외의 공간은 다른 사람과 함께 쓸 수 있습니다.
+  </span>
+</div>
 
+<div class="tooltip">
+	<i class='far fa-lightbulb' style='font-size:12px' class="light">집전체</i>
+  <span class="tooltiptext">
+  	게스트가 숙소 전체를 다른 사람과 
+  	공유하지 않고 단독으로 이용합니다.
+  </span>
+</div>
+
+</td></tr>
 
 
 
