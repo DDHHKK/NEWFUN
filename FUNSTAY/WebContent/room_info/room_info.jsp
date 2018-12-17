@@ -497,8 +497,9 @@ for (i = 0; i < acc.length; i++) {
 <input type="hidden" name="home_num" value="<%=sc.getHome_num()%>">
 <ol>
 <li class="tite_text"><input type="hidden" value="<%=sc.getPrice()%>" name="price11">
+	<input type="hidden" value="<%=sc.getPrice()%>" name="price22">
 	<input type="text" value="<%=sc.getPrice()%>" name="price00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;">
-	/ <input type="text" value="1" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;">박 
+	/ <input type="text" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;">박 
 <div class="clear"></div>
 <!-- <div class="datepicker-here" data-language='en'></div> -->
 <!--  <img src="./img/heart.jpg" align="right"> --></li>
@@ -506,8 +507,10 @@ for (i = 0; i < acc.length; i++) {
 <!-- <li class="tite_text">날짜</li> -->
 <li><span>체크인</span> <span id="checkout">체크아웃</span></li>
 <li>
-   <input type='text' name="check_in" id="check_in" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/ readonly>
-   <input type="text" value="2018-12-28" name="check_out" id="check_out" class='datepicker-here'  data-language='en' placeholder="년/월/일" readonly>
+   <input type='text' value="2018-12-28" name="check_in" id="check_in" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/ readonly style="width:38%!important;">
+   <input type="text" value="2019-01-02" name="check_out" id="check_out" class='datepicker-here'  data-language='en' placeholder="년/월/일" readonly style="width:38%!important;">
+   <input type="button" id="search_price" value="가격조회" 
+   	style="background-color:white;color:#cc1d1b;border:2px solid #cc1d1b;padding:9px;font-weight:bold;font-size:16px;height:52px;border-radius:10px;line-height:10px;">
 </li>
 <!-- <li class="tite_text">인원</li> -->
 <li>
