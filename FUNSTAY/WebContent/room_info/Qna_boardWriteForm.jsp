@@ -80,7 +80,7 @@ String Member_email = (String)request.getAttribute("Member_email");
 <!-- 여기서부터 페이지 내용을 적어주세요. -->
 
 
-<form class="w3-container" action="./Qna_boardWriteAction.sc" method="post">
+<form class="w3-container" action="./Qna_boardWriteAction.sc?num=<%=qb.getHome_num()%>&pageNum=<%=pageNum%>" method="post">
 <table border="0" align="center">
 <tr><td><p class="letter">QnA 문의하기</p></tr></td>
 <!-- <tr><td><h3>번호</h3></td><td><input class="w3-input" name="QnA_num" placeholder="QnA_num을 입력해주세요..."></td></tr>  -->
