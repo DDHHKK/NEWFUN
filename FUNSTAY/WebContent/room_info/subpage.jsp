@@ -15,14 +15,19 @@
 
 <!-- date picker api  -->
 <link href="./dist/css/datepicker.min.css" rel="stylesheet"type="text/css">
+<link href="./dist/css/datepicker.css" rel="stylesheet"type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <!-- <script src="./dist/js/caleander.js"></script> -->
+<!-- <script src="./dist/js/datepicker.min.js"></script> -->
 <script src="./dist/js/datepicker.js"></script>
-<script src="./dist/js/datepicker.min.js"></script>
 <script src="./dist/js/i18n/datepicker.en.js"></script>
 
-<!-- room_info scroll박스 -->
-<script src="./js/room_info/scroll.js"></script>
+<!-- js -->
+	<!-- room_info scroll박스 -->
+	<script src="./js/room_info/scroll.js"></script>
+<script src="./js/member/email_check.js"></script>
+<script src="./js/member/id_find.js"></script>
+<script src="./js/default/required_join.js"></script>
 
 <!-- 편의시설 아이콘 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,8 +36,6 @@
 
 <!-- css -->
 <link href = "./css/room_info/room_info.css" rel="stylesheet">
-
-
 
  <script language="javascript">
   function showPopup() { 

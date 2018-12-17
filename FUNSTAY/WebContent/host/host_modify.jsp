@@ -244,7 +244,7 @@ List<BedBean> bed_list = (List)request.getAttribute("bed_list");
 				<tr> <%} %>
 				
 				<td>
-					<div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">
+					<div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:130px;padding:10px;">
 						<b><%=rb.getRe_room()%>번방</b><br>
 						<%-- <%=rb.getRoom_num()%><br> --%>
 						최대 <%=rb.getMax_people()%>명<br>
@@ -260,7 +260,7 @@ List<BedBean> bed_list = (List)request.getAttribute("bed_list");
 					</div>
 				</td>
 				
-				<% if(i%4==2){ %>
+				<% if(i%4==3){ %>
 				</tr>
 				<%} } %>
 				</table>
