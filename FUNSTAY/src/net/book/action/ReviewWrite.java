@@ -35,10 +35,13 @@ public class ReviewWrite implements Action {
 		SearchDAO bdao = new SearchDAO();
 		bdao.updateReadcount(num); 
 		SearchBean sc= bdao.getSearchboard(num);
+		HttpSession session = request.getSession();
+		String Member_email = (String)session.getAttribute("email");
 		
 		request.setAttribute("sc", sc);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
+		request.setAttribute("Member_email", Member_email);
 		ActionForward forward = new ActionForward();
 		
 		forward = new ActionForward();

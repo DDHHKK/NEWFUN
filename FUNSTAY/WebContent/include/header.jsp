@@ -148,8 +148,7 @@ if(email==null){
       <label for="pass"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="pass" id="myInput" required>
       </div>
-  <!-- caps lock -->
-     <p id="caps">WARNING! Caps lock is ON.</p> 
+  
   <!-- SNS -->
       <div id="col_box">   
 	  <div class="col">

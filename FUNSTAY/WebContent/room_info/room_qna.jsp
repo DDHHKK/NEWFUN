@@ -2,16 +2,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FunStay</title>
 
-</head>
-<body>
-	<%
+<%
 	request.setCharacterEncoding("UTF-8");
 	
 	List QnAList = (List) request.getAttribute("QnAList");
@@ -25,36 +17,32 @@
 
 <a name="QnA"><h1>QnA <%=count1%>개 </h1></a>
 
-<button class="button button1"
-			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>'">QnA쓰기</button>
+<button class="button"
+			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%><%-- &room_subject=<%=room_subject %> --%>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
+
 	<div id="room_qna">
-	
-	
-
-	<%
-			for (int i = 0; i < QnAList.size(); i++) {
-				QnaBean qn = (QnaBean) QnAList.get(i);
+	<% for (int i = 0; i < QnAList.size(); i++) {
+		QnaBean qn = (QnaBean) QnAList.get(i);
 	%>
-  
-<table border="1" align="center">
-	<tr>
-	<th>Content</th> 
-	<th colspan="3"> 
-	<%=qn.getContent() %>
-	</th>  
-	</tr>
-	<tr>
-	<th><img src="./img/user.png" alt="img02" width="50px" height="50px"></th>
-	<th> <%=qn.getHome_num()%></th>
-   	<th colspan="2"><%=qn.getSubject() %></th> 
-    <tr><th colspan="5"><%=qn.getMember_email() %></th></tr>
-    <tr><th>QnA_num</th><th colspan="4"><%=qn.getQnA_num()%></th></tr>
-    <tr><th>QnA_pass</th><th colspan="4"><%=qn.getQnA_pass()%></th></tr>
-</table> 
-		<% 
-			}   
-		%>  
+		<button class="accordion_sg">
+	
+			<table>
+				<tr>
+					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;"><%=qn.getMember_email() %></td><td style="width:200px;">등록 날짜표시</td><td style="width:200px;">답변여부표시</td>
+				</tr>
+			</table>
+		</button>
+		<div class="panel_sg">
+  			<p>
+  				<img src="./img/user.png" alt="img02" width="50px" height="50px">
+				<%=qn.getSubject() %>
+				<hr>
+				답글이 있다면 출력하기
+  			</p>
+		</div>
 
+	<% } %>
+		<div style="text-align: center;">
 <%
 		if (count1 != 0) {
 			//전체 페이지수 구하기 게시판 
@@ -93,12 +81,22 @@
 
 		}
 	%>
-
 </div>
- 
- 
+</div>
 
+<script>
+var acc = document.getElementsByClassName("accordion_sg");
+var i;
 
-
-</body>
-</html>
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>

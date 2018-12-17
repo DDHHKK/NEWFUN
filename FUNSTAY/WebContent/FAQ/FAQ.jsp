@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'
  integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 <!-- css -->
 
@@ -30,19 +31,21 @@
 
 .button1 {
     background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
-    border-radius: 50%;
+    border: none;
+    float: right;
+    cursor: pointer;
 }
 
-.button1:hover {background-color: #e7e7e7;}
+.button1:hover {
+	color: #cc1d1d;
+}
 
 #FAQ_wrap{
 	text-align: center;
 }
 #FAQ_detail{
 	width : 1000px;
-	margin : 0 auto;
+	margin: 10px auto;
 	}
 
 
@@ -54,13 +57,64 @@
 
 
 #pen {
-	margin: 0% 0% 0% 74%;
+	margin: -2% 0% -1% 70%;
 	cursor: pointer;
 	padding : 10px;
+	width: 105px;
 }
 
 #pen:hover{
 	color:#cc1d1d;
+}
+
+.btn1 {
+	background-color: #fff;
+	border:1px solid #cc1d1d;
+    color: #cc1d1d;
+    /* border: 2px solid #e7e7e7; */
+    cursor: pointer;
+    padding : 7px;
+    font-weight: bolder;
+  
+
+}
+
+/* .btn1:hover {
+	background-color: #991515;
+	color : #fff;
+	} */
+	
+.m_over {	
+	background : #cc1d1d;
+	color : white;
+	border:1px solid #cc1d1d;
+	cursor: pointer;
+    padding : 7px;
+    font-weight: bolder;	}
+	
+.m_out {	
+	background : white;	color : #cc1d1d;	
+	border:1px solid #cc1d1d;
+	cursor: pointer;
+    padding : 7px;
+    font-weight: bolder;}
+	
+.act {
+	background : #cc1d1d;
+	color : white;
+	border:1px solid #cc1d1d;
+	cursor: pointer;
+    padding : 7px;
+    font-weight: bolder;	}	
+	
+#btn2 {
+	
+    margin: 3% 0% 0% 24%;
+
+}
+
+#pen_a{
+	
 }
 
 </style>
@@ -124,38 +178,75 @@
 	</h2>
 </div>
 
+<div id="btn2">
+<input type="button" value="전체" 
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+<input type="button" value="숙소"
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+<input type="button" value="결제"
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+<input type="button" value="예약"
+  onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)"class="btn1">
+<input type="button" value="계정"
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+<input type="button" value="요금/수수료"
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+<input type="button" value="기타" 
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+</div>
 <!-- id가 admin이면 회원목록이 보이도록 하자. -->
+
 	<%
 	String email = (String)session.getAttribute("email");
 		if (email != null) {
 			if (email.equals("admin")) {
 	%>
-	<a href="./FAQ_boardWrite.fa"><i class='fas fa-pen-alt' style='font-size:27px' id="pen"></i></a>
+	<i class='fas fa-pen-alt' style='font-size:20px' id="pen" onclick="location.href='./FAQ_boardWrite.fa'">FAQ작성</i>
 
 	<%
 			}
 		}
 	%>
 
-
-<!-- <script src="./js/QnA/QnA.js"></script> -->
 <div id="FAQ_detail">
 	 	<%
 			for (int i = 0; i < FAQ_boardList.size(); i++) {
 				FAQBean fb = (FAQBean) FAQ_boardList.get(i);
 		%>
+		<div class="panel_box">
 		<button class="accordion" href="./FAQ_boardContent.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>"><%=fb.getFAQ_subject()%></button>
 		
-		<div class="panel_box">
+		<div class="panel">
 		<p>
-		<%=fb.getFAQ_content()%>
-	 	</p>
+			<%=fb.getFAQ_content()%>
+				<%
+					String email1 = (String)session.getAttribute("email");
+					if (email1 != null) {
+					if (email1.equals("admin")) {
+				%>
+				
 	
-</div> 
+			<button class="button button1"
+				onclick="location.href = './FAQ_boardDelete.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>'">
+				<i class="fa fa-trash" style="font-size:24px"></i>
+			</button>
+			
+			<button class="button button1"
+				 onclick="location.href='FAQ_boardUpdate.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>'">
+				 <i class="fa fa-edit" style="font-size:24px"></i>
+			</button>
+
+					<%
+					}
+				}
+			%>
+	 	</p> 
+		</div> 
+	
 		<%
 			}
 		%> 
-		
+		</div>
 
 <div id="bor_num">
 
@@ -224,8 +315,34 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+
+
+
+
+/* FAQ 검색 버튼 색상 적용하는 쿼리 */
+
+function over(obj){ 
+	if(obj.className != "act") {
+	obj.className = "m_over";
+	}
+	} 
+	// 롤아웃 
+	function out(obj){ 
+	if(obj.className != "act") {
+	obj.className = "m_out";
+	}
+	} 
+	// 클릭 
+	function clicks(obj){ 
+	var divs = document.getElementById("btn2").getElementsByTagName("input"); 
+	for(var i=0; i<divs.length; i++){ 
+	divs[i].className = "m_out";
+	}
+	obj.className = "act";
+	}
 </script>
-  
+ 
 
 
 <!-- 페이지내용 끝 -->

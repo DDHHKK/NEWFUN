@@ -5,43 +5,11 @@
 <%@page import="net.review.db.ReviewBean"%>
 <%@page import="java.util.List"%>
 <%@page import="net.search.db.SearchBean"%>
+<%@page import="net.member.db.QnaBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head> 
-<!-- css -->
-<link href = "./css/room_info/room_info.css" rel="stylesheet">
-<link href = "./css/login1.css" rel="stylesheet">
-<!-- 검색 폰트 -->
-<link href="https://fonts.googleapis.com/css?family=Kodchasan" rel="stylesheet">
-<!-- 로그인 jquery -->
-<script src="./js/login.js"></script>
 
-
-<!-- date picker api  -->
-<link href="./dist/css/datepicker.min.css" rel="stylesheet"type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-
-<script src="./dist/js/caleander.js"></script>
-<script src="./dist/js/datepicker.js"></script>
-<script src="./dist/js/datepicker.min.js"></script>
-<script src="./dist/js/i18n/datepicker.en.js"></script>
-<!-- room_info scroll박스 -->
-<script src="./js/room_info/scroll.js"></script>
-
-<!-- 편의시설 아이콘 링크 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css'
-	integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
-
-</head>
-<!-- <meta charset="UTF-8">
-<title>Insert title here</title> -->
-
-
-<body>
 <div class="room_menu">
 </div>
 
@@ -60,14 +28,15 @@
 	ConvBean cb=(ConvBean)request.getAttribute("cb");
 	List<RoomBean> rooms = (List)request.getAttribute("rooms");
 	List<BedBean> bed_list = (List)request.getAttribute("bed_list");
+	String room_subject = sc.getRoom_subject();
 	%>
 			
 <!-- room_wrapper -->
-<marquee behavior=scroll><b>☆숙소를 소개합니다☆</b></marquee>
+<!-- <marquee behavior=scroll><b>☆숙소를 소개합니다☆</b></marquee> -->
 
-<div id="room_wrap">
+<div id="room_wrap" style="width:75%;margin:0 auto;">
  <div id="room_detail">
- 	<div id="room_imfomation">
+ 	<div id="room_imfomation" style="margin-top: 25px;">
  	<!-- 숙소제목 -->
  	<div>
  		<h1 style="color:#cc1d1d;display:block;float:left;margin-top:0;"><%=sc.getRoom_subject() %></h1>
@@ -75,9 +44,18 @@
  			<!-- 룸타입 -->
  			<%=sc.getRoom_type() %>
  		</span>
+ 		<i class="far" id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;float:right;font-size:30px;">&#xf004;</i>
  	</div>
  	<div class="clear"></div>
- 	<hr>  
+ 	<!-- 네비게이션 바 -->
+ 		<ul class="roomdetailNav_sg">
+ 			<li><a href="#room_info1">방 정보</a></li>
+ 			<li><a href="#room_facility1">편의시설 </a></li>
+ 			<li><a href="#room_area1">위치 정보 </a></li>
+ 			<li><a href="#room_review1">후기 </a></li>
+ 			<li style="height:21px;line-height:23px;"><a href="#room_qna1">문의</a></li>
+ 		</ul>
+ 	<hr style="display:block;margin:0;padding:0;">  
       
  	
  	<!-- <a href="#"><img src="./img/메일.jpg" alt="mail" align="right"></a> -->
@@ -86,32 +64,22 @@
  	
 <!-- room_content --> 	
  	<div id="room_content">
- 	<!-- 네비게이션 바 -->
- 		<ul class="roomdetailNav_sg">
- 			<li><a href="#room_imfomation">개요 </a> </li>
- 			<li><a href="#room">방정보</a></li>
- 			<li><a href="#room_facility">편의시설 </a></li>
- 			<li><a href="#room_area">지역정보 </a></li>
- 			<li><a href="#room_review">후기 </a></li>
- 			<li><a href="#QnA">QnA</a></li>
- 		</ul>
- 	<div>
+ 	
  	
  	<!-- 숙소 정보 및 이용 규칙 -->
-	<div id="room_rule">
-	<h3>숙소 정보</h3>
+ 	<h3 id="room_rule1">숙소 정보</h3>
+	<div id="room_rule" style="padding:20px;border:1px solid #cccccc;">
 	체크인 시간 - <%=sc.getIn_time() %> <br>
 	체크아웃 시간 - <%=sc.getOut_time() %> <br>
 	화장실 개수 : <%=sc.getRestroom() %><br> 
-	</div>
 		<!-- 숙소 소개 내용 -->
 	 <%=sc.getRoom_content() %> <br>
 	</div>
 	</div>
 
 <!-- 룸정보 -->
-	<div id="room">
-	<h3>방 정보</h3>
+	<h3 id="room_info1">방 정보</h3>
+	<div id="room" style="padding:20px;border:1px solid #cccccc;">
 		<table>
 				<% for(int i=0; i<rooms.size(); i++) { 
 					RoomBean rb = (RoomBean)rooms.get(i);
@@ -143,8 +111,9 @@
 	</div>
 
 	<!-- 편의시설 --> 
-	<div id="room_facility">
-			<h3>편의시설</h3> 
+	<h3 id="room_facility1">편의시설</h3>
+	<div id="room_facility" style="padding:20px;border:1px solid #cccccc;">
+			 
 			<%if(cb.getEssential()==1){%>
 				<i class='far fa-lightbulb' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 필수품목
 			<%}%>
@@ -203,9 +172,9 @@
 
 
 	<!-- 숙소 위치 -->
-	<div id="room_area">
-	<h3>지역정보</h3>
-		<input type="text" value="<%=sc.getAddress()%>" id="address" readonly>
+	<h3 id="room_area1">지역정보</h3>
+	<div id="room_area" style="padding:20px;border:1px solid #cccccc;">
+		<input type="text" value="<%=sc.getAddress()%>" id="address" readonly style="border:none;">
 		<div id="map" style="width:500px;height:350px;border-radius:20px;"></div>
 	</div>
 	<!---------------------- 지도 api 불러오기 ---------------------->
@@ -259,15 +228,208 @@
  
  
  <!-- room_review -->
-<div id="room_review">
-<jsp:include page="room_review.jsp"></jsp:include>
+<h3 id="room_review1">후기 <%-- <%=count%>개 --%> </h3>
+<div id="room_review" style="padding:20px;border:1px solid #cccccc;">
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	List ReviewList = (List) request.getAttribute("boardList");
+	int count = ((Integer) request.getAttribute("count")).intValue();
+	pageNum = (String) request.getAttribute("pageNum");
+	int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
+	int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
+	sc = (SearchBean) request.getAttribute("sc");
+	num = ((Integer) request.getAttribute("num")).intValue();
+%>
+
+
+	<button class="button_sg button1_sg"
+			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
+	<div id="room_review">
+	
+	
+
+	<%
+			for (int i = 0; i < ReviewList.size(); i++) {
+				ReviewBean re = (ReviewBean) ReviewList.get(i);
+	%>
+  
+<table border="1" align="center">
+	<tr>
+	<th>평점</th> 
+	<th colspan="3"> 
+	<span class="star-prototype"><%=re.getStar() %></span>  
+	</th>  
+	</tr>
+	<tr>
+	<th><img src="./img/user.png" alt="img02" width="50px" height="50px"></th>
+	<th> <%=re.getReview_date() %></th>
+   	<th colspan="2"><%=re.getMember_email() %></th> 
+    <tr><th colspan="5"><%=re.getContent() %></th></tr>
+    <tr><th>만족도</th><th colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></th></tr>
+    <tr><th>청결함</th><th colspan="4"><span class="star-prototype"><%=re.getClean() %></span></th></tr>
+	<tr><th>교통접근성</th><th colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></th></tr>
+</table> 
+		<script type="text/javascript"> 
+				$.fn.generateStars = function() {
+  			  return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*16));});
+			};
+
+			// 숫자 평점을 별로 변환하도록 호출하는 함수
+			$('.star-prototype').generateStars();
+		</script>
+		<%
+			}   
+		%>  
+
+<%
+		if (count != 0) {
+			//전체 페이지수 구하기 게시판 
+			//글 50개 한화면에 보여줄 글개수 10개일경우 => 전체 5 페이지
+			//글 56개 한화면에 보여줄 글개수 10개일경우 => 전체 6 페이지
+			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			//한 화면에 보여줄 페이지 번호 개수
+			int pageBlock = 10;
+			//시작페이지 번호 1~10 => 1    11~20 => 11   21~30 => 21
+			int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+			//		1		  = ((     2          - 1)/pageBlock)*pageBlock+1;
+			//		1		  = ((     9          - 1)/pageBlock)*pageBlock+1;
+			//		11		  = ((     12          - 1)/pageBlock)*pageBlock+1;
+			//		11		  = ((     19          - 1)/pageBlock)*pageBlock+1;
+			//끝페이지 번호
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) {
+				endPage = pageCount;
+			}
+			//이전
+			if (startPage > pageBlock) {
+	%><a href="./ReviewList.re?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+	<%
+		}
+			// 1~10
+			for (int i = startPage; i <= endPage; i++) {
+	%><a href="./ReviewList.re?pageNum=<%=i%>">[<%=i%>]
+	</a>
+	<%
+		}
+			//다음
+			if (endPage < pageCount) {
+	%><a href="./ReviewList.re?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+	<%
+		}
+
+		}
+	%>
+
+</div>
 </div>
 <br><br>
 
 
 <!-- room_qna -->
-<div id="room_qna">
-<jsp:include page="room_qna.jsp"></jsp:include>
+<h3 id="room_qna1">QnA <%-- <%=count1%>개 --%> </h3>
+<div id="room_qna" style="padding:20px;border:1px solid #cccccc;">
+	<%
+	request.setCharacterEncoding("UTF-8");
+	
+	List QnAList = (List) request.getAttribute("QnAList");
+	int count1 = ((Integer) request.getAttribute("count1")).intValue();
+	pageNum = (String) request.getAttribute("pageNum");
+	pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
+	currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
+	QnaBean qa = (QnaBean) request.getAttribute("qa");
+	num = ((Integer) request.getAttribute("num")).intValue();
+	 %>
+
+
+<button class="button_sg"
+			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>&room_subject=<%=room_subject %>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
+	<div id="room_qna">
+	<% for (int i = 0; i < QnAList.size(); i++) {
+		QnaBean qn = (QnaBean) QnAList.get(i);
+	%>
+		<button class="accordion_sg">
+	
+			<table>
+				<tr>
+					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;"><%=qn.getMember_email() %>
+					</td><td style="width:200px;"><%=qn.getQnA_date() %></td><td style="width:200px;">
+					<%if(qn.getRe_seq()==1){%>
+						답변완료
+							<%}else{%>
+						답변중
+					<%}%></td>
+				</tr>
+			</table> 
+		</button>
+		<div class="panel_sg">
+  			<p>
+  				<img src="./img/user.png" alt="img02" width="50px" height="50px">
+				<%=qn.getSubject() %>
+				<hr>
+				답글이 있다면 출력하기
+  			</p>
+		</div>
+
+	<% } %>
+		<div style="text-align: center;">
+<%
+		if (count1 != 0) {
+			//전체 페이지수 구하기 게시판 
+			//글 50개 한화면에 보여줄 글개수 10개일경우 => 전체 5 페이지
+			//글 56개 한화면에 보여줄 글개수 10개일경우 => 전체 6 페이지
+			int pageCount = count1 / pageSize + (count1 % pageSize == 0 ? 0 : 1);
+			//한 화면에 보여줄 페이지 번호 개수
+			int pageBlock = 10;
+			//시작페이지 번호 1~10 => 1    11~20 => 11   21~30 => 21
+			int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+			//		1		  = ((     2          - 1)/pageBlock)*pageBlock+1;
+			//		1		  = ((     9          - 1)/pageBlock)*pageBlock+1;
+			//		11		  = ((     12          - 1)/pageBlock)*pageBlock+1;
+			//		11		  = ((     19          - 1)/pageBlock)*pageBlock+1;
+			//끝페이지 번호
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) {
+				endPage = pageCount;
+			}
+			//이전
+			if (startPage > pageBlock) {
+	%><a href="./QnAList.qn?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+	<%
+		}
+			// 1~10
+			for (int i = startPage; i <= endPage; i++) {
+	%><a href="./QnAList.qn?pageNum=<%=i%>">[<%=i%>]
+	</a>
+	<%
+		}
+			//다음
+			if (endPage < pageCount) {
+	%><a href="./QnAList.qn?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+	<%
+		}
+
+		}
+	%>
+</div>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion_sg");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
 </div>
 <br><br> 
  
@@ -278,7 +440,3 @@
  <jsp:include page="room_box.jsp"></jsp:include>
   </div>
 </div>
-
-  
-</body>
-</html>

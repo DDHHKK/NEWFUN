@@ -1,3 +1,5 @@
+<%@page import="net.member.db.MemberBean"%>
+<%@page import="net.member.db.MemberDAO"%>
 <%@page import="net.booking.db.PaymentBean"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="net.booking.db.BookingBean"%>
@@ -55,18 +57,61 @@ Include JQuery Core (Required for calendar plugin)
 </head>
 <body>
 
+<%
+MemberDAO md = new MemberDAO();
+MemberBean mb = new MemberBean(); 
+String email = (String)session.getAttribute("email");
+mb=md.getMember(email);
+
+if(email==null){
+		    response.sendRedirect("./Main.me");
+}
+%>
+
+
+
 <!-- header  시작-->
 <div class="head_dh">
 <ul class="header_dh">
 <li id="pont1_WS"><a href="./Main.me"><i>FUNSTAY</i></a></li>
 <li id="li_2"><input type="text" id="text_1_WS" name="search_info" placeholder="여행하실 지역을 적어주세요">
 <input type="button" value="검색" id="btn_1_WS" onclick="abc111()"></li>
+</ul>
+
+<ul class="header_dh1">
+<li id="li_3"><a href="./HostMain.ho">숙소를 추가해 보세요</a></li>
+<li id="li_4"><a href="./FAQ_boardList.fa">FAQ</a></li>
+
+<li id="li_6"><a href="javascript:void(0)" onclick="document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'"><img src="./upload/<%=mb.getProfile_photo()%>" 
+	id="img_1_WS" style="border-radius:50%;width:40px;height:40px;"></a>
+ <div id="light1" class="white_content_1">
+  <div>
+  <ul id="list_1_WS">
+  	<li id="li_7"><b><%=mb.getEmail()%></b></li>
+	<li><a href="./MemberUpdate.me"><b>프로필수정</b></a></li>
+	<li><a href="./Booking.bo"><b>예약/결제</b></a></li>
+	<li><a href="./MyReserve.bk"><b>나의 예약</b></a></li>
+	<li><a href="./Wishlist.wi"><b>찜한숙소</b></a></li>
+	<li><a href="./MemberMileage.me"><b>마일리지</b></a></li>
+	<li><a href="./MemberQNAlist.me"><b>문의하기</b></a></li>
+
+
+	<li><a href="./HostPassCheckAction.ho"><b>숙소 관리</b></a></li>
+	<li><a href="./HostCash.ho"><b>MY CASH</b></a></li>
+	<li><a href="./MemberLogout2.me"><b>로그아웃</b></a></li>
 
 </ul>
 </div>
+</div>
+</ul>
+
+
+</div>
+<hr>
 
 <!-- header  끝-->
-<hr>
+
+
 
 <jsp:include page="../include/subpage.jsp"></jsp:include>
 
@@ -121,10 +166,52 @@ http://osdir.com/ml/jquery-ui/2009-04/msg00071.html
 
 
 
+h1 {
+	/* border: 1px solid black; */
+    border-left: 5px solid #cc1d1d;
+    padding-left: 7px;
+    color: #cc1d1d;
+    /* padding: 0px 0; */
+    box-sizing: border-box;
+    height: 46px;
+    margin: 3% 0% 1% 30%;
+}
+
+
 
 </style>
 
 <script type="text/javascript">
+
+
+
+function abc111(){
+var search_info = document.getElementById("text_1_WS").value;
+location.href='./MemberSearchAction2.me?search_info='+search_info;
+return;
+}
+
+
+
+$(document).mouseup(function (e){
+    var container = $('.white_content_1');
+    if( container.has(e.target).length === 0){
+      container.css('display','none');
+    }
+  });
+
+
+var input = document.getElementById("text_1_WS");
+input.addEventListener("keyup", function(event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    document.getElementById("btn_1_WS").click();
+  }
+});
+
+
+
+
 $(document).ready(function(){	
 
 	var clickDate = "";
@@ -633,8 +720,11 @@ $(document).ready(function(){
 
 
 		
+
 	
 	<div id="tabs-2">
+	
+		<h1>예약 관리</h1>
 
 		<div id="example" style="margin: 0% 0% 0% 30%; width:60%;">
 
