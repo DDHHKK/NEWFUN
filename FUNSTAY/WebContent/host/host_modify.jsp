@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="./css/default/login.css" rel="stylesheet">
 <link href="./css/default/default.css" rel="stylesheet">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="./css/default/subpage_content.css" rel="stylesheet">
 <link href="./css/default/subpage.css" rel="stylesheet">
@@ -81,11 +81,16 @@ button {
 }
 
 button:hover {
-  opacity: 0.8;
+background-color: #991515;
+
 }
 
 #prevBtn {
   background-color: #bbbbbb;
+}
+
+#prevBtn:hover {
+  background-color: #666666;
 }
 
 /* Make circles that indicate the steps of the form: */
@@ -102,6 +107,7 @@ button:hover {
 
 .step.active {
   opacity: 1;
+  
 }
 
 /* Mark the steps that are finished and valid: */
@@ -266,10 +272,10 @@ List<BedBean> bed_list = (List)request.getAttribute("bed_list");
 				</table>
 			</td>
 		</tr>
-		<tr>
+<!-- 		<tr>
 			<td></td>
 			<td><input type="button" value="+" style="background-color:#cc1d1d;border:none;color:white;line-height:20px;border-radius:50%;width:40px;height:40px;font-size:29px;"></td>
-		</tr>
+		</tr> -->
     </table>
   </div>
   <!-- 3단계 -->
@@ -460,7 +466,7 @@ function fixStepIndicator(n) {
 
 
 <!-- 주소와 지도가 보여지는 API -->
-<!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5bd0699811ddfc0b8ef260a07e7c9163&libraries=services"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -525,7 +531,7 @@ function fixStepIndicator(n) {
             }
         }).open();
     }
-</script> -->
+</script>
 
 
 

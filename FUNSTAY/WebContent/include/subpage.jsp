@@ -44,7 +44,9 @@ $(document).ready(function(){
 		$('.a a:eq('+0+')').css({"border-bottom":"4px solid #cc1d1d"});}
 	if(pathArray[2]==("HostModify.ho")) {
 		$('.a a:eq('+5+')').css({"border-bottom":"4px solid #cc1d1d"});}
-	
+	if(pathArray[2]==("BookingList.ho")) {
+		$('.a a:eq('+5+')').css({"border-bottom":"4px solid #cc1d1d"});}
+
 	
 	var aSize = $('.a').length;
 	// 주소창에 가상주소가 입력되면 회원메뉴에서 가상주소와 일치하는 목록을 찾아서 border-bottom으로 밑줄 표시
