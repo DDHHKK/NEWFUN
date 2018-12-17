@@ -124,7 +124,7 @@ color: #100f0f;
 /*리뷰버튼 끝  */
 
 
-.review_butt_DY:hover {
+.review_butt_DY:hover ,.cancel_butt_DY:hover {
 	color : #cc1d1d;
 	
 }
@@ -186,6 +186,8 @@ hr {
 }
 
 
+
+
 .cancel_butt_DY {
     background-color: #fff;
     color: #000;
@@ -196,7 +198,6 @@ hr {
     font-size: 1.2em;
     margin: 5% 0% 0% 35%;
 }
-
 
 
 
