@@ -16,6 +16,7 @@ import net.book.action.ReviewWriteAction;
 
 
 
+
 public class BookFrontController extends HttpServlet {
 	// 서버 시작
 	// 브라우저 가상주소  http://localhost:8080/Funstay2/BeforeTripList.bk
