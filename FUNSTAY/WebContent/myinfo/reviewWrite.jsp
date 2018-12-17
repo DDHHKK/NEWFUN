@@ -64,6 +64,7 @@ request.setCharacterEncoding("UTF-8");
 SearchBean sc = (SearchBean) request.getAttribute("sc");
 String pageNum = (String) request.getAttribute("pageNum");
 int num = ((Integer) request.getAttribute("num")).intValue();
+String Member_email = (String)request.getAttribute("Member_email");
 
 	%>
 <!-- header  시작-->
@@ -151,11 +152,11 @@ int num = ((Integer) request.getAttribute("num")).intValue();
 </tr>
 <tr>
 <td>아이디</td>
-<td><input type="text" name="member_email"></td>
+<td><input type="text" " value="<%=Member_email %>" readonly></td>
 </tr>
 <tr>
 <td>home_num</td>
-<td><input type="text" name="home_num" value="<%=sc.getHome_num() %>"></td>
+<td><input type="text" name="home_num" value="<%=sc.getHome_num()%>" readonly></td>
 </tr>
 <tr>
 <td colspan="2">

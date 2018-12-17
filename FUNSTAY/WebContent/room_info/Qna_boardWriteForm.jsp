@@ -34,22 +34,28 @@
 .button1:hover {background-color: #e7e7e7;}
 
 </style>
-
-
 <title>Funstay</title>
 <!-- 페이지 default 링크 시작 -->
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="./css/default/login.css" rel="stylesheet">
 <link href="./css/default/default.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="./css/default/subpage_content.css" rel="stylesheet">
+<link href="./css/default/subpage.css" rel="stylesheet">
+<script src="./js/default/jquery-3.3.1.js"></script>
 <!-- 페이지 default 링크 끝-->
 <link href="./css/QnA/QnA.css" rel="stylesheet">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+
+
+<!--my_reserve.css  -->
+<link href="./css/myinfo/my_reserve.css" rel="stylesheet">
+<!--revewWrite.css  -->
+<link href="./css/myinfo/reviewWrite.css" rel="stylesheet">
 </head>
+
 <body>
-<!-- header  시작-->
-<jsp:include page="../include/header.jsp"></jsp:include>
-<!-- header  끝-->
-<hr>
 <%
 request.setCharacterEncoding("UTF-8");
 
@@ -59,11 +65,24 @@ int num = ((Integer) request.getAttribute("num")).intValue();
 String room_subject = (String)request.getAttribute("room_subject");
 String Member_email = (String)request.getAttribute("Member_email");
 %>
+<!-- header  시작-->
+<jsp:include page="../include/header.jsp"></jsp:include>
+<!-- header  끝-->
+<hr>
+<!-- 회원 관리 페이지 왼쪽메뉴바 시작 -->
+<jsp:include page="../include/subpage.jsp"></jsp:include>
+<!-- 회원 관리 페이지 왼쪽메뉴바 끝 -->
+
+
+<!-- 각 페이지 내용을  content 영역 안에 배치 해주세요.-->
+<div id="content_DY">
+
+<!-- 여기서부터 페이지 내용을 적어주세요. -->
 
 
 <form class="w3-container" action="./Qna_boardWriteAction.sc" method="post">
 <table border="0" align="center">
-<tr><td><h2>QnA 글쓰기</h2></tr></td>
+<tr><td><p class="letter">QnA 문의하기</p></tr></td>
 <!-- <tr><td><h3>번호</h3></td><td><input class="w3-input" name="QnA_num" placeholder="QnA_num을 입력해주세요..."></td></tr>  -->
 <tr><td><h3>방 이름</h3></td><td><h3></h3><input class="w3-input" type="hidden" name="home_num" value=<%=qb.getHome_num() %> placeholder="Home_num을 입력해주세요...">
 <input class="w3-input" value="<%=room_subject %>" readonly></h3></td></tr>
@@ -71,21 +90,25 @@ String Member_email = (String)request.getAttribute("Member_email");
 <tr><td><h3>제목</h3></td><td><h3></h3><input class="w3-input" name="subject" placeholder="제목을 입력해주세요..."></h3></td></tr>  
 <tr><td><h3>내용</h3></td><td colspan="3"><textarea name="content" rows="30" cols="100" placeholder="내용을 입력해주세요..."></textarea></td></tr>
 <tr><td colspan="3" align="right">
-<button class="button button1">글쓰기</button>
+<button class="button button1">문의하기</button>
 <button class="button button1" type="reset">다시쓰기</button> 
 </td></tr> 
 </table>
 </form>
 
-</div>   
+<!-- 페이지내용 끝 -->
+</div>
+</div><!-- 회원 관리 페이지 'subpage' include된 페이지의 div끝 !!지우지마세요!!-->
 <div class="clear"></div>
-<hr> 
+<hr>
 <!-- footer 시작-->
 <jsp:include page="../include/footer.jsp"></jsp:include>
 <!-- footer 끝-->
 </body>
-</html>
-</body>
+<!--body끝  -->
+
+
+
 </html>
 
 
