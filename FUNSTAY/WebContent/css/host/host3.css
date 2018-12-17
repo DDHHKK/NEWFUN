@@ -64,14 +64,14 @@ b{
 	font-size:1.2em;
 	color:  #fff;
 	border : none;
-	background-color: #cc1d1d;
+	background-color: #bbbbbb;
 	font-weight: bold;
 	padding : 10px;
 	cursor: pointer;
 }
 
 #back_btn:HOVER{
-	background-color: #991515;
+	background-color: #666666;
 	cursor: pointer;
 }
 
