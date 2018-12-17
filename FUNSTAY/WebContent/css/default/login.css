@@ -116,7 +116,7 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 0% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: -3% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 30%; /* Could be more or less, depending on screen size */
 }
@@ -162,6 +162,12 @@ text-decoration: none;
 /* 생년월일 박스 사이즈 */
 .birth{
 	width: 29% !important;
+	padding: 20px 20px;
+    margin: 7px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 7px;
 }
 /* submit 버튼 */
 .subtn{
