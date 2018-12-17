@@ -380,7 +380,7 @@
   			</p>
 		</div>
 
-	<% } %>
+	<% } %> 
 		<div style="text-align: center;">
 <%
 		if (count1 != 0) {
