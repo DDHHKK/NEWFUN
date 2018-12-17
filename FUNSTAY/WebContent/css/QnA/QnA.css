@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
 
-/*QnA*/
-.accordion {
+ /*QnA*/
+/*.accordion {
     background-color: #eee;
     color: #444;
     cursor: pointer;
@@ -34,7 +34,7 @@
     content: "\2212";
 }
 
-.panel {
+.panel_box {
     padding: 0 18px;
     background-color: white;
     max-height: 0;
@@ -43,7 +43,7 @@
     display : none;
 } 
 
-/* top scroll */
+top scroll
 #top_quick{
     border: 1px solid #999;
     width: 80px;
@@ -60,4 +60,40 @@
     display: block;
     text-align: center;
     line-height: 80px;
+} */
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+.accordion:BEFORE{
+	content: '\2714';
+	margin-right: 5px;
+}
+.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
 }
