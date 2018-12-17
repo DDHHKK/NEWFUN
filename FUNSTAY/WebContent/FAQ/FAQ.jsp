@@ -60,6 +60,7 @@
 	margin: -2% 0% -1% 70%;
 	cursor: pointer;
 	padding : 10px;
+	width: 105px;
 }
 
 #pen:hover{
@@ -110,6 +111,10 @@
 	
     margin: 3% 0% 0% 24%;
 
+}
+
+#pen_a{
+	
 }
 
 </style>
@@ -196,7 +201,7 @@
 		if (email != null) {
 			if (email.equals("admin")) {
 	%>
-	<a href="./FAQ_boardWrite.fa"><i class='fas fa-pen-alt' style='font-size:20px' id="pen">FAQ작성</i></a>
+	<i class='fas fa-pen-alt' style='font-size:20px' id="pen" onclick="location.href='./FAQ_boardWrite.fa'">FAQ작성</i>
 
 	<%
 			}
