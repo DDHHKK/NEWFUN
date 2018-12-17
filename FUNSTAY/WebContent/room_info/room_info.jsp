@@ -7,6 +7,7 @@
 <%@page import="net.search.db.SearchBean"%>
 <%@page import="net.member.db.QnaBean"%>
 <%@page import="java.util.List"%>
+<%@page import="net.search.db.SearchBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -71,7 +72,7 @@
 	<div id="room_rule" style="padding:20px;border:1px solid #cccccc;">
 	체크인 시간 - <%=sc.getIn_time() %> <br>
 	체크아웃 시간 - <%=sc.getOut_time() %> <br>
-	화장실 개수 : <%=sc.getRestroom() %><br> 
+	화장실 개수 : <%=sc.getRestroom() %><br><br>
 		<!-- 숙소 소개 내용 -->
 	 <%=sc.getRoom_content() %> <br>
 	</div>
@@ -88,7 +89,7 @@
 				<tr> <%} %>
 				
 				<td>
-					<div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">
+					<div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:130px;padding:10px;">
 						<b><%=rb.getRe_room()%>번방</b><br>
 						<%-- <%=rb.getRoom_num()%><br> --%>
 						최대 <%=rb.getMax_people()%>명<br>
@@ -345,6 +346,12 @@
 <button class="button_sg"
 			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>&room_subject=<%=room_subject %>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
 	<div id="room_qna">
+	<div class="clear"></div>
+	<table class="accordion_sg1">
+		<tr>
+			<td style="width:500px;text-align:center;">문의 제목</td><td style="width:200px;text-align:center;">작성자</td><td style="width:200px;text-align:center;">등록 날짜</td><td style="width:200px;text-align:center;">답변여부</td>
+		</tr>
+	</table>
 	<% for (int i = 0; i < QnAList.size(); i++) {
 		QnaBean qn = (QnaBean) QnAList.get(i);
 	%>
@@ -352,20 +359,14 @@
 	
 			<table>
 				<tr>
-					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;"><%=qn.getMember_email() %>
-					</td><td style="width:200px;"><%=qn.getQnA_date() %></td><td style="width:200px;">
-					<%if(qn.getRe_seq()==1){%>
-						답변완료
-							<%}else{%>
-						답변중
-					<%}%></td>
+					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;text-align:center;"><%=qn.getMember_email() %></td><td style="width:200px;">등록 날짜표시</td><td style="width:200px;">답변여부표시</td>
 				</tr>
-			</table> 
+			</table>
 		</button>
 		<div class="panel_sg">
   			<p>
   				<img src="./img/user.png" alt="img02" width="50px" height="50px">
-				<%=qn.getSubject() %>
+				<%=qn.getContent() %>
 				<hr>
 				답글이 있다면 출력하기
   			</p>
@@ -437,6 +438,66 @@ for (i = 0; i < acc.length; i++) {
  	</div> 
  	
  	<!-- room_box.jsp -->
- <jsp:include page="room_box.jsp"></jsp:include>
+<%--  <jsp:include page="room_box.jsp"></jsp:include> --%>
+<%
+	sc = (SearchBean) request.getAttribute("sc");
+	pageNum = (String) request.getAttribute("pageNum");
+	num = ((Integer) request.getAttribute("num")).intValue();
+%>
+
+<div id="room_box">
+<nav id="nav_1">
+<form action="Booking.bo" method="get" name="fff" id="form_2">
+<ol>
+<li class="tite_text"><%=sc.getPrice() %> / 1박 
+<!--  <img src="./img/heart.jpg" align="right"> --></li>
+<li>★★★★★ 167</li>
+<!-- <li class="tite_text">날짜</li> -->
+<li><span>체크인</span> <span id="checkout">체크아웃</span></li>
+<li>
+   <input type='text' id="minMaxExample" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/>
+   <input type="text" class='datepicker-here'  data-language='en' placeholder="년/월/일">
+</li>
+<!-- <li class="tite_text">인원</li> -->
+<li>
+  <input type="text" value="" placeholder="게스트 인원을 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
+  <nav id="form_1">
+  <ol>
+     <li>
+        <span class="font1">성&nbsp;인</span> 
+        <input type="button" value="-" onclick="cid1()" class="btn_1" id="btn_11"> 
+        <input type="text" value="" name="text11" id="textcss1" placeholder="0" class="text_box">
+        <input type="button" value="+" onclick="add1()" class="btn_1">
+     </li>
+     <li>
+      <span class="font1">어린이</span> 
+      <input type="button" value="-" onclick="cid2()" class="btn_1" id="btn_12"> 
+      <input type="text" value="" name="text12" id="textcss2" placeholder="0"class="text_box">
+      <input type="button" value="+" onclick="add2()" class="btn_1">
+     </li>
+     <li> 
+       <input type="button" value="확인" onclick="choice()" id="btn">
+     </li>
+     </ol>
+  </nav>
+</li>
+<li><input type="submit" value="예약요청" id="btn1"></li>
+<div class="clear"></div>
+<!-- <hr> -->
+<!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->
+<li align="center">지난 주에 500회 이상 조회되었습니다.</li>
+	<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;"/>
+</ol>
+</form>
+</nav>
+ </div>
   </div>
 </div>
+<script>
+$(document).ready(function () {
+	  //your code here
+	$('#minMaxExample').datepicker({
+	    minDate: new Date() // Now can select only dates, which goes after today
+	});
+	});
+</script>
