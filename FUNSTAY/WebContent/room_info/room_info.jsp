@@ -28,12 +28,13 @@
 	ConvBean cb=(ConvBean)request.getAttribute("cb");
 	List<RoomBean> rooms = (List)request.getAttribute("rooms");
 	List<BedBean> bed_list = (List)request.getAttribute("bed_list");
+	String room_subject = sc.getRoom_subject();
 	%>
 			
 <!-- room_wrapper -->
 <!-- <marquee behavior=scroll><b>☆숙소를 소개합니다☆</b></marquee> -->
 
-<div id="room_wrap" style="width:80%;margin:0 auto;">
+<div id="room_wrap" style="width:75%;margin:0 auto;">
  <div id="room_detail">
  	<div id="room_imfomation" style="margin-top: 25px;">
  	<!-- 숙소제목 -->
@@ -46,7 +47,15 @@
  		<i class="far" id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;float:right;font-size:30px;">&#xf004;</i>
  	</div>
  	<div class="clear"></div>
- 	<hr>  
+ 	<!-- 네비게이션 바 -->
+ 		<ul class="roomdetailNav_sg">
+ 			<li><a href="#room_info1">방 정보</a></li>
+ 			<li><a href="#room_facility1">편의시설 </a></li>
+ 			<li><a href="#room_area1">위치 정보 </a></li>
+ 			<li><a href="#room_review1">후기 </a></li>
+ 			<li style="height:21px;line-height:23px;"><a href="#room_qna1">문의</a></li>
+ 		</ul>
+ 	<hr style="display:block;margin:0;padding:0;">  
       
  	
  	<!-- <a href="#"><img src="./img/메일.jpg" alt="mail" align="right"></a> -->
@@ -55,32 +64,22 @@
  	
 <!-- room_content --> 	
  	<div id="room_content">
- 	<!-- 네비게이션 바 -->
- 		<ul class="roomdetailNav_sg">
- 			<li><a href="#room_imfomation">개요 </a> </li>
- 			<li><a href="#room">방정보</a></li>
- 			<li><a href="#room_facility">편의시설 </a></li>
- 			<li><a href="#room_area">지역정보 </a></li>
- 			<li><a href="#room_review">후기 </a></li>
- 			<li style="height:21px;line-height:23px;"><a href="#QnA">QnA</a></li>
- 		</ul>
- 	<div>
+ 	
  	
  	<!-- 숙소 정보 및 이용 규칙 -->
-	<div id="room_rule">
-	<h3>숙소 정보</h3>
+ 	<h3 id="room_rule1">숙소 정보</h3>
+	<div id="room_rule" style="padding:20px;border:1px solid #cccccc;">
 	체크인 시간 - <%=sc.getIn_time() %> <br>
 	체크아웃 시간 - <%=sc.getOut_time() %> <br>
 	화장실 개수 : <%=sc.getRestroom() %><br> 
-	</div>
 		<!-- 숙소 소개 내용 -->
 	 <%=sc.getRoom_content() %> <br>
 	</div>
 	</div>
 
 <!-- 룸정보 -->
-	<div id="room">
-	<h3>방 정보</h3>
+	<h3 id="room_info1">방 정보</h3>
+	<div id="room" style="padding:20px;border:1px solid #cccccc;">
 		<table>
 				<% for(int i=0; i<rooms.size(); i++) { 
 					RoomBean rb = (RoomBean)rooms.get(i);
@@ -112,8 +111,9 @@
 	</div>
 
 	<!-- 편의시설 --> 
-	<div id="room_facility">
-			<h3>편의시설</h3> 
+	<h3 id="room_facility1">편의시설</h3>
+	<div id="room_facility" style="padding:20px;border:1px solid #cccccc;">
+			 
 			<%if(cb.getEssential()==1){%>
 				<i class='far fa-lightbulb' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 필수품목
 			<%}%>
@@ -172,8 +172,8 @@
 
 
 	<!-- 숙소 위치 -->
-	<div id="room_area">
-	<h3>지역정보</h3>
+	<h3 id="room_area1">지역정보</h3>
+	<div id="room_area" style="padding:20px;border:1px solid #cccccc;">
 		<input type="text" value="<%=sc.getAddress()%>" id="address" readonly style="border:none;">
 		<div id="map" style="width:500px;height:350px;border-radius:20px;"></div>
 	</div>
@@ -228,7 +228,8 @@
  
  
  <!-- room_review -->
-<div id="room_review">
+<h3 id="room_review1">후기 <%-- <%=count%>개 --%> </h3>
+<div id="room_review" style="padding:20px;border:1px solid #cccccc;">
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -242,7 +243,6 @@
 %>
 
 
-<a name="후기"><h1>후기 <%=count%>개 </h1></a>
 	<button class="button_sg button1_sg"
 			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
 	<div id="room_review">
@@ -327,7 +327,8 @@
 
 
 <!-- room_qna -->
-<div id="room_qna"">
+<h3 id="room_qna1">QnA <%-- <%=count1%>개 --%> </h3>
+<div id="room_qna" style="padding:20px;border:1px solid #cccccc;">
 	<%
 	request.setCharacterEncoding("UTF-8");
 	
@@ -340,10 +341,9 @@
 	num = ((Integer) request.getAttribute("num")).intValue();
 	 %>
 
-<a name="QnA"><h1>QnA <%-- <%=count1%>개 --%> </h1></a>
 
 <button class="button_sg"
-			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
+			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>&room_subject=<%=room_subject %>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
 	<div id="room_qna">
 	<% for (int i = 0; i < QnAList.size(); i++) {
 		QnaBean qn = (QnaBean) QnAList.get(i);
