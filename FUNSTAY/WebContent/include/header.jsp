@@ -90,7 +90,6 @@ if(email==null){
   <ul id="list_1_WS">
   	<li id="li_7"><b><%=mb.getEmail()%></b></li>
 	<li><a href="./MemberUpdate.me"><b>프로필수정</b></a></li>
-	<li><a href="./Booking.bo"><b>예약/결제</b></a></li>
 	<li><a href="./MyReserve.bk"><b>나의 예약</b></a></li>
 	<li><a href="./Wishlist.wi"><b>찜한숙소</b></a></li>
 	<li><a href="./MemberMileage.me"><b>마일리지</b></a></li>

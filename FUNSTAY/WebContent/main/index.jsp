@@ -88,7 +88,6 @@ if (email.equals("admin")) {
 		<a href="./MemberLogout.me">로그아웃</a>
  <%}else{%>
 		<a href="./MemberUpdate.me">프로필수정</a>
-		<a href="./Booking.bo">예약/결제</a>
 		<a href="./MyReserve.bk">나의 예약</a>
 		<a href="./Wishlist.wi">찜한숙소</a>
 		<a href="./MemberMileage.me">마일리지</a>
