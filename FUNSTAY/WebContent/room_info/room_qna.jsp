@@ -2,46 +2,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FunStay</title>
 
-<!-- 박슬기 디자인 수정 -->
-<style>
-.accordion_sg {
-  background-color: white;
-  border: none;
-  /* border-top:1px solid grey; */
-  border-bottom:1px solid grey;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
-
-.active, .accordion_sg:hover {
-  background-color: #ccc; 
-}
-
-.panel_sg {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
-}
-</style>
-
-
-</head>
-<body>
-	<%
+<%-- 	<%
 	request.setCharacterEncoding("UTF-8");
 	
 	List QnAList = (List) request.getAttribute("QnAList");
@@ -53,54 +15,32 @@
 	int num = ((Integer) request.getAttribute("num")).intValue();
 	 %>
 
-<a name="QnA"><h1>QnA <%-- <%=count1%>개 --%> </h1></a>
+<a name="QnA"><h1>QnA <%=count1%>개 </h1></a>
 
-<button class="button"
+<button class="button_sg"
 			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
 	<div id="room_qna">
-	
-	
-
-	<%
-			for (int i = 0; i < QnAList.size(); i++) {
-				QnaBean qn = (QnaBean) QnAList.get(i);
+	<% for (int i = 0; i < QnAList.size(); i++) {
+		QnaBean qn = (QnaBean) QnAList.get(i);
 	%>
-  
-<%-- <table border="1" align="center">
-	<tr>
-	<th>Content</th> 
-	<th colspan="3"> 
-	<%=qn.getContent() %>
-	</th>  
-	</tr>
-	<tr>
-	<th><img src="./img/user.png" alt="img02" width="50px" height="50px"></th>
-	<th> <%=qn.getHome_num()%></th>
-   	<th colspan="2"><%=qn.getSubject() %></th> 
-    <tr><th colspan="5"><%=qn.getMember_email() %></th></tr>
-    <tr><th>QnA_num</th><th colspan="4"><%=qn.getQnA_num()%></th></tr>
-    <tr><th>QnA_pass</th><th colspan="4"><%=qn.getQnA_pass()%></th></tr>
-</table>  --%>
-<button class="accordion_sg">
+		<button class="accordion_sg">
 	
-	<table>
-		<tr>
-			<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;"><%=qn.getMember_email() %></td><td style="width:200px;">등록 날짜표시</td><td style="width:200px;">답변여부표시</td>
-		</tr>
-	</table>
-</button>
-<div class="panel_sg">
-  <p>
-  	<img src="./img/user.png" alt="img02" width="50px" height="50px">
-	<%=qn.getSubject() %>
-	<hr>
-	답글이 있다면 출력하기
-  </p>
-</div>
+			<table>
+				<tr>
+					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;"><%=qn.getMember_email() %></td><td style="width:200px;">등록 날짜표시</td><td style="width:200px;">답변여부표시</td>
+				</tr>
+			</table>
+		</button>
+		<div class="panel_sg">
+  			<p>
+  				<img src="./img/user.png" alt="img02" width="50px" height="50px">
+				<%=qn.getSubject() %>
+				<hr>
+				답글이 있다면 출력하기
+  			</p>
+		</div>
 
-		<% 
-			}   
-		%>
+	<% } %>
 		<div style="text-align: center;">
 <%
 		if (count1 != 0) {
@@ -158,11 +98,4 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
-</script>
- 
- 
-
-
-
-</body>
-</html>
+</script> --%>
