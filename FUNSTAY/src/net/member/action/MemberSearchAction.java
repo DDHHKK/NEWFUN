@@ -58,15 +58,21 @@ public class MemberSearchAction implements Action{
 		int pageSize = 10;
 
 		Vector vector = mdd.getsearchList(hb, start_date, end_date,num);
-		Vector vector2 = mdd.getsearchList2(hb);
+		Vector vector2 = mdd.getsearchList2(hb, num);
+		Vector vector3 = mdd.getsearchList3(hb);
 	    List list=(List)vector.get(0);
-		List rest =(List)vector2.get(0);
+		List past =(List)vector2.get(0);
+		List rest =(List)vector3.get(0);
 		HttpSession session = request.getSession();
 		session.setAttribute("list", list);
+		session.setAttribute("past", past);
 		session.setAttribute("rest", rest);
 		session.setAttribute("address", address);
 		request.setAttribute("pageSize", pageSize);
-	
+		session.setAttribute("start_date", start_date);
+		session.setAttribute("end_date", end_date);
+		session.setAttribute("num", num);
+		
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

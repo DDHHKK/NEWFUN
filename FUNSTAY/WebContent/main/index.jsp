@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FUNSTAY</title>
 <!-- css -->
 <link href="css/login1.css" rel="stylesheet">
 <link href = "css/main.css" rel="stylesheet">
@@ -443,7 +443,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 </nav>
 
 <nav id="long_img">
-<img src="./img/AA111.jpg" width="1650px" height="300"><button id="long_btn">숙소 보기 ></button>
+<img src="./img/main_img101.jpg">
 </nav>
 
 
@@ -453,13 +453,6 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 
 <table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
 
-<tr>
-<td class="top_pad_ws">TOP1</td>
-<td class="top_pad1_ws">TOP2</td>
-<td class="top_pad1_ws">TOP3</td>
-<td class="top_pad1_ws">TOP4</td>
-<td class="top_pad1_ws">TOP5</td>
-</tr>
 
    <tr> 
     <td>
@@ -467,7 +460,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
     <%MyWishBean sb1 = (MyWishBean)heart.get(0);
     int str=sb1.getHome_num();
     %>
-    <p><%=str%></p>
+   
 	<a href="./RoomDetail.sc?num=<%=str%>&pageNum=1"><img src="./upload/<%=sb1.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 </div>
 </td>     
@@ -476,7 +469,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
    	<div id= "img_2">
    	<%MyWishBean sb2 = (MyWishBean)heart.get(1); 
    	int str2=sb2.getHome_num();%>
-   	<p><%=str2%></p>
+   	
    	<a href="./RoomDetail.sc?num=<%=str2%>&pageNum=1"><img src="./upload/<%=sb2.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 </div>
 </td>
@@ -485,7 +478,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 <div id= "img_3">
 	<%MyWishBean sb3 = (MyWishBean)heart.get(2);
 	int str3=sb3.getHome_num();%>
-	<p><%=str3%></p>
+	
 	<a href="./RoomDetail.sc?num=<%=str3%>&pageNum=1"><img src="./upload/<%=sb3.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 
 </div>
@@ -495,7 +488,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
  <div id= "img_4">
 	<%MyWishBean sb4 = (MyWishBean)heart.get(3);
 	int str4=sb4.getHome_num();%>
-	<p><%=str4%></p>
+	
 	<a href="./RoomDetail.sc?num=<%=str4%>&pageNum=1"><img src="./upload/<%=sb4.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 
 </div>
@@ -505,7 +498,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
  <div id= "img_5">
  	<%MyWishBean sb5 = (MyWishBean)heart.get(4);
  	int str5=sb5.getHome_num();%>
- 	<p><%=str5%></p>
+ 	
 	<a href="./RoomDetail.sc?num=<%=str5%>&pageNum=1"><img src="./upload/<%=sb5.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 
 </div>
@@ -527,13 +520,6 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 
 <table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
 
-<tr>
-<td class="top_pad_ws">★★★★★</td>
-<td class="top_pad1_ws">★★★★</td>
-<td class="top_pad1_ws">★★★</td>
-<td class="top_pad1_ws">★★</td>
-<td class="top_pad1_ws">★</td>
-</tr>
 
    <tr> 
     <td>

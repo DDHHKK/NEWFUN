@@ -14,9 +14,12 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import net.FAQ.db.FAQBean;
+
 import net.book.db.ReviewBean;
+import net.host.db.HostBean;
 import net.member.db.MemberBean;
 import net.member.db.QnaBean;
+import net.room.db.RoomBean;
 import net.search.Action.SearchListAction;
 
 
@@ -134,74 +137,99 @@ private Connection getConnection() throws Exception{
 		
 		
 
-			public Vector getSideSearch(List list,String[] conv, String []num_conv){
+			public Vector getSideSearch(HostBean hb,String [] conv,int num,int satis,int from,int to){
 				ResultSet rs = null;
 				PreparedStatement pstmt=null;
-				List<SearchBean> SearchList = new ArrayList<SearchBean>();
+				List SearchList = new ArrayList();
+				List Roomlist = new ArrayList();
+				Vector vector = new Vector();
 				StringBuffer sql=new StringBuffer();//속도가 빠름
 				try{
 					
-					//1,2�뵒鍮꾩뿰寃� 硫붿꽌�뱶�샇異�
 					con = getConnection();
-		
-					sql.append("select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 from home h,  room ro, convenience c, review re, payment p where  h.home_num=ro.home_num and h.home_num=c.home_num and  h.home_num=re.home_num and re.payment_num=p.payment_num and h.address LIKE ? and h.start_date < ? and h.end_date > ? and re.satisfaction = ? and (h.price between ? and ?)");
-					
-					
-					for(int i =0; i<conv.length; i++)
+					/*String sql2 = "select * from (select home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 from room  group by home_num) r join (select h.address, h.room_subject, h.room_type, h.room_content, h.price, h.photo,   h.home_num   from (select b.home_num  from home h left join booking b  on h.home_num=b.home_num  where b.check_in between '2018-12-22' and '2018-12-28' or b.check_out between '2018-12-22' and '2018-12-28') as t right join home h  on h.home_num=t.home_num  where t.home_num is null and h.address LIKE '%제주%' and h.start_date < '2018-12-22' and h.end_date > '2018-12-28') s on r.home_num=s.home_num  where r.max_people1>=2 and s.price between 0 and 60000;";
+			*/
+					sql.append("select hhh.home_num, hhh.room_subject, hhh.room_type, hhh.room_content, hhh.photo, hhh.address ");
+					sql.append("from (select s.home_num,s.room_subject, s.room_type, s.room_content, s.price, s.photo,s.address ");
+					sql.append("from (select home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 ");
+					sql.append("from room group by home_num) r join ");
+					sql.append("(select h.address, h.room_subject, h.room_type, h.room_content, h.price, h.photo, h.home_num ");
+					sql.append("from (select b.home_num ");
+					sql.append("from (select hom.home_num ");
+					sql.append("from home hom left join convenience c ");
+					sql.append("on c.home_num=hom.home_num where "); 
+				/*	for(int i =0; i<conv.length; i++)
 					{
-						if(conv.equals("essential")){sql.append("and essential=?");}
-						else if(conv.equals("disabled")){sql.append("and disabled=?");}
-						else if(conv.equals("parking")){sql.append("and parking=?");}
-						else if(conv.equals("wifi")){sql.append("and wifi=?");}
-						else if(conv.equals("air_conditioner")){sql.append("and air_conditioner=?");}
-						else if(conv.equals("animal")){sql.append("and animal=?");}
-						else if(conv.equals("party")){sql.append("and party=?");}
-						else if(conv.equals("pickup")){sql.append("and pickup=?");}
-						else if(conv.equals("elevator")){sql.append("and elevator=?");}
-						else if(conv.equals("iron")){sql.append("and iron=?");}
-						else if(conv.equals("extra_bed")){sql.append("and extra_bed=?");}
-						else if(conv.equals("shampoo")){sql.append("and shampoo=?");}
-						else if(conv.equals("heat")){sql.append("and heat=?");}
-						else if(conv.equals("smoking")){sql.append("and smoking=?");}
-						else if(conv.equals("breakfast")){sql.append("and breakfast=?");}
-						else if(conv.equals("laundry")){sql.append("and laundry=?");}
-						else if(conv.equals("desk")){sql.append("and desk=?");}
-						else if(conv.equals("hair_dryer")) {sql.append("and hair_dryer=?");}
-						else {continue;}
+						if(conv[i].equals("essential")){sql.append(" c.essential=?");}
+						else if(conv[i].equals("disabled")){sql.append(" c.disabled=?");}
+						else if(conv[i].equals("parking")){sql.append("c.parking=?");}
+						else if(conv[i].equals("wifi")){sql.append("c.wifi=?");}
+						else if(conv[i].equals("air_conditioner")){sql.append("c.air_conditioner=?");}
+						else if(conv[i].equals("animal")){sql.append("c.animal=?");}
+						else if(conv[i].equals("party")){sql.append("c.party=?");}
+						else if(conv[i].equals("pickup")){sql.append("c.pickup=?");}
+						else if(conv[i].equals("elevator")){sql.append(" c.elevator=?");}
+						else if(conv[i].equals("iron")){sql.append("c.iron=?");}
+						else if(conv[i].equals("extra_bed")){sql.append(" c.extra_bed=?");}
+						else if(conv[i].equals("shampoo")){sql.append(" c.shampoo=?");}
+						else if(conv[i].equals("heat")){sql.append("c.heat=?");}
+						else if(conv[i].equals("smoking")){sql.append(" c.smoking=?");}
+						else if(conv[i].equals("breakfast")){sql.append(" c.breakfast=?");}
+						else if(conv[i].equals("laundry")){sql.append(" c.laundry=?");}
+						else if(conv[i].equals("desk")){sql.append("c.desk=?");}
+						else if(conv[i].equals("hair_dryer")) {sql.append(" c.hair_dryer=?");}
+						else {break;}
+						sql.append(" and ");
+					}		*/
+						sql.append("c.essential =1");
+					sql.append(") as h left join booking b on h.home_num=b.home_num ");
+					sql.append("where b.check_in between ? and ? or b.check_out between ? and ?) as t ");
+					sql.append("right join home h on h.home_num=t.home_num ");
+					sql.append("where t.home_num is null and h.address LIKE ? and h.start_date < ? and h.end_date > ?) s ");
+					sql.append("on r.home_num=s.home_num where r.max_people1>=? and s.price between ? and ?) as hhh ");
+					sql.append("left join review re on hhh.home_num=re.home_num ");
+					sql.append("where re.satisfaction >= ? group by hhh.home_num");
+
+							
+					int count =1;
+					pstmt=con.prepareStatement(sql.toString());	
+			/*		for(int i =1; i<=conv.length; i++)
+					{
+						pstmt.setInt(i, 1);
+						count=i;
+					}	
+					*/
+					pstmt.setDate(count++, hb.getStart_date());
+					pstmt.setDate(count++, hb.getEnd_date());
+					pstmt.setDate(count++, hb.getStart_date());
+					pstmt.setDate(count++, hb.getEnd_date());
+					pstmt.setString(count++, "%"+hb.getAddress()+"%");
+					pstmt.setDate(count++, hb.getStart_date());
+					pstmt.setDate(count++, hb.getEnd_date());
+					pstmt.setInt(count++, num);
+					pstmt.setInt(count++, from);
+					pstmt.setInt(count++, to);
+					pstmt.setInt(count++, satis);
 						
 						
-						
-					}		
-					pstmt=con.prepareStatement(sql.toString());
-					pstmt.setString(1, (String)list.get(3));
-					pstmt.setInt(2, list.get(4));
-					pstmt.setInt(1, list.get(5));
-					pstmt.setInt(2, pageSize);
-					pstmt.setInt(1, startRow-1);
-					pstmt.setInt(2, pageSize);
 					rs = pstmt.executeQuery();
 					while(rs.next()){
-						SearchBean sc=new SearchBean();
-						sc.setHome_num(rs.getInt("home_num"));
-						sc.setHost_email(rs.getString("host_email"));
-						sc.setAddress(rs.getString("address"));
-						sc.setRoom_type(rs.getString("room_type"));
-						sc.setPhoto(rs.getString("photo"));
-						sc.setRoom_subject(rs.getString("room_subject"));
-						sc.setRoom_content(rs.getString("room_content"));
-						sc.setRestroom(rs.getInt("restroom"));
-						sc.setIn_time(rs.getString("in_time"));
-						sc.setOut_time(rs.getString("out_time"));
-						sc.setPrice(rs.getInt("price"));	
-						sc.setStart_date(rs.getDate("start_date"));
-						sc.setEnd_date(rs.getDate("end_date"));
-						sc.setApply_date(rs.getDate("apply_date"));
-
-						
-						SearchList.add(sc);
-						
-					}
-
+						RoomBean rb = new RoomBean();
+						HostBean hb1 = new HostBean();
+						rb.setMin_people(rs.getInt("min_people1"));
+						rb.setMax_people(rs.getInt("max_people1"));
+						hb1.setAddress(rs.getString("address"));
+						hb1.setRoom_subject(rs.getString("room_subject"));
+						hb1.setRoom_type(rs.getString("room_type"));
+						hb1.setRoom_content(rs.getString("room_content"));
+						hb1.setHome_num(rs.getInt("home_num"));
+						hb1.setPrice(rs.getInt("price"));
+						hb1.setPhoto(rs.getString("photo"));		
+						SearchList.add(hb1);
+						Roomlist.add(rb);
+				}
+					vector.add(SearchList);
+					vector.add(Roomlist);
 				}catch (Exception e){
 					e.printStackTrace();
 				}finally{
@@ -209,7 +237,7 @@ private Connection getConnection() throws Exception{
 					if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
 					if (con != null) {try {con.close();} catch (SQLException ex) {	}}
 				}
-				return SearchList;	
+				return vector;	
 			
 			
 		} 
