@@ -493,7 +493,7 @@ for (i = 0; i < acc.length; i++) {
 
 <div id="room_box">
 <nav id="nav_1">
-<form action="Booking.bo" method="get" name="fff" id="form_2">
+<form action="./Booking.bo" method="get" name="fff" id="form_2">
 <input type="hidden" name="room_subject" value="<%=sc.getRoom_subject()%>">
 <input type="hidden" name="host_email" value="<%=sc.getHost_email() %>">
 <input type="hidden" name="home_num" value="<%=sc.getHome_num()%>">
@@ -502,20 +502,20 @@ for (i = 0; i < acc.length; i++) {
 	<input type="hidden" value="<%=sc.getPrice()%>" name="price11">
 	<input type="hidden" value="<%=sc.getPrice()%>" name="price22">
 	<input type="text" value="<%=sc.getPrice()%>" name="price00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:120px;" readonly>
-	<input type="text" value="/" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:20px;" readonly >
-	<input type="text" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:40px;" readonly>
-	<input type="text" value="박" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:25px;" readonly>
+	<input type="text" value="/1박" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:50px;" readonly >
+	<input type="hidden" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:40px;" readonly>
+	<!-- <input type="text" value="박" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:25px;" readonly> -->
 	<div class="clear"></div>
 </li>
 <li>
 	<div id="mySidenav" class="sidenav">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	<!-- <div class="clear"></div> -->
-		+기본요금<br>
-		+추가요금<br>
-		+수수료<br>
+		+기본요금 <span class="sum_price123">50000x10(500000)</span> <input type="hidden" value="<%=sc.getPrice()%>" name="price00"><br>
+		+추가요금 10000<br>
+		+수수료 25500<br>
 		<hr>
-		<span style="float:right;">합계</span>
+		<span style="float:right;">합계 535500</span>
 	</div>
 </li>
 <!-- <li>
@@ -560,8 +560,10 @@ for (i = 0; i < acc.length; i++) {
 <div class="clear"></div>
 <!-- <hr> -->
 <!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->
-<li align="center">지난 주에 500회 이상 조회되었습니다.</li>
-	<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;"/>
+<li align="center"><!-- 지난 주에 500회 이상 조회되었습니다. -->
+<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;margin:0;padding:0;'"/>
+</li>
+	
 </ol>
 </form>
 </nav>

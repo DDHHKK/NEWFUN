@@ -131,8 +131,8 @@ String email=(String)session.getAttribute("email");
  
  
  
- <%-- 
  
+<%--  
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -142,12 +142,12 @@ String email=(String)session.getAttribute("email");
 	
 	
 %>
-  
+   --%>
  
  
   <!--리뷰쓰기 버튼 -->
-     <button onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'" class="review_butt_DY">리뷰쓰기</button>  
-  <!--리뷰쓰기 버튼 끝  -->  --%>
+     <button onclick="location.href='ReviewWrite.bk'" class="review_butt_DY">리뷰쓰기</button>  
+  <!--리뷰쓰기 버튼 끝  -->  
 		 
 
 	</td>
@@ -764,7 +764,8 @@ function button_event(payment_num){
 		  		  $('.receipt_table_DY').html('<tr><td colspan="2" class="sub_DY">'+item.room_subject+'</td></tr><tr><td>체크인</td><td>'+item.check_in+
 		  				  '</td></tr><tr><td>체크아웃</td><td>'+item.check_out+'</td></tr><tr><td>Room_type</td><td>'+item.room_type+
 		  				  '</td></tr><tr><td>UserName</td><td>'+item.member_email+'</td></tr><tr><td>인원</td><td>'+item.people+
-		  				  '</td></tr><tr><td>총요금</td><td>'+item.sum_price+'</td></tr>');
+		  				  '</td></tr><tr><td>수수료</td><td>'+item.fees+'</td></tr><tr><td>총요금</td><td>'+item.sum_price+
+		  				  '</td></tr>');
 		  	  }); 
 		  	  
 		  	  

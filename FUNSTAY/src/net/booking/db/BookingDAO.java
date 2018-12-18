@@ -24,19 +24,24 @@ public class BookingDAO {
 		return con;
 	}
 	
-	public PaymentBean insertPayment(PaymentBean pb){
+	public void insertPayment(PaymentBean pb, BookingBean bb){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		ResultSet ls = null;
 		PaymentBean pb2 = null;
 		int payment_num2=0; //주문번호
 		Calendar cal=Calendar.getInstance();
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+		String payment_num=null;
+		int booking_num2 = 0;
+		int size = 0;
 		try {
 			con=getConnection();
 			String sql="select max(pay_num) from payment";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
+			ArrayList room_nums = new ArrayList<>();
 			if(rs.next()){
 				payment_num2=rs.getInt(1)+1;
 			}else{
@@ -62,10 +67,49 @@ public class BookingDAO {
 			pstmt.executeUpdate();
 			pstmt.close();
 			
-			sql = "select * from payment where pay_num=?";
-			pstmt.getConnection().prepareStatement(sql);
-			pstmt.setInt(1, payment_num2);
-			pb2 = (PaymentBean) pstmt.executeQuery();
+			sql="select * from room where home_num=? group by home_num";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, bb.getHome_num());
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+			sql="select max(booking_num) from booking";
+			pstmt=con.prepareStatement(sql);
+			ls=pstmt.executeQuery();
+			if(ls.next()){
+				booking_num2=ls.getInt(1)+1;
+			}else{
+				booking_num2=1;
+			}
+			sql=	"insert into booking"
+					+ "(booking_num,payment_num,room_num,check_in,check_out,"
+					+ "people,room_price,add_price,booking_date,booking_status,home_num)"
+					+ "values(?,?,?, str_to_date(?,'%Y-%m-%d'), str_to_date(?,'%Y-%m-%d'),?,?,?,now(),1,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, booking_num2);
+			pstmt.setString(2, sdf.format(cal.getTime()).toString()+"-"+payment_num2);
+			pstmt.setInt(3, rs.getInt("room_num"));
+			pstmt.setString(4, "2018-12-20");
+			pstmt.setString(5, "2018-12-26");
+			pstmt.setInt(6, bb.getPeople());
+			pstmt.setInt(7, bb.getRoom_price());
+			pstmt.setInt(8, bb.getAdd_price());
+			pstmt.setInt(9, bb.getHome_num());
+			pstmt.executeUpdate();
+			}
+			
+			sql = "update host set cash=cash+(select sum_price-fees from payment where payment_num=? && payment_status='결제완료') where host_email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sdf.format(cal.getTime()).toString()+"-"+payment_num2);
+			pstmt.setString(2, pb.getHost_email());
+			
+			pstmt.executeUpdate();
+			
+			sql = "update member set mileage=mileage+(select sum(storage_m)-sum(used_m) from payment where payment_num=? && payment_status='결제완료') where email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sdf.format(cal.getTime()).toString()+"-"+payment_num2);
+			pstmt.setString(2, pb.getMember_email());
+			
+			pstmt.executeUpdate();
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -73,10 +117,35 @@ public class BookingDAO {
 			if(pstmt!=null){try{pstmt.close();}catch(SQLException e){}}
 			if(con!=null){try{con.close();}catch(SQLException e){}}			
 		}
-		return pb2;
 	}
 	
-	public void updatemileage(String member_email){
+	public int getmileage(String member_email){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int mileage=0;
+		System.out.println(member_email);
+		try{
+			con=getConnection();
+			String sql="select * from member where email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, member_email);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				mileage=rs.getInt("mileage");
+				System.out.println(rs.getInt("mileage"));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+		return mileage;
+	}
+	
+	/*public void updatemileage(String member_email){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try{
@@ -95,9 +164,9 @@ public class BookingDAO {
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
-	}
+	}*/
 	
-	public void updateCash(String host_email){
+	/*public void updateCash(String host_email){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try{
@@ -116,24 +185,39 @@ public class BookingDAO {
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
-	}
+	}*/
 	
-	public void insertBooking(BookingBean bb) {
+	/*public void insertBooking(BookingBean bb, payment_num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int booking_num2 = 0;
 		try{
 			con=getConnection();
-			String sql="insert into payment"
-					+ "(payment_num,member_email,request_msg,payment_status,"
-					+ "payment_date,host_email,storage_m,used_m,fees,sum_price,pay_num)"
-					+ "values(?,?,?,?,now(),?,?,?,?,?,?)";
+			String sql="select max(booking_num) from booking";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				booking_num2=rs.getInt(1)+1;
+			}else{
+				booking_num2=1;
+			}
+			pstmt.close();
+			sql=	"insert into booking"
+					+ "(booking_num,payment_num,room_num,check_in,check_out,"
+					+ "people,room_price,add_price,booking_date,booking_status,home_num)"
+					+ "values(?,?,?,?,?,?,?,?,?,1,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, booking_num2);
+			pstmt.setString(2, payment_num);
+			pstmt.setInt(3, bb.getRoom_num());
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
-	}
+	}*/
 	
 	public Vector getBookingList(int home_num, String member_email){
 		List bookingList=new ArrayList();

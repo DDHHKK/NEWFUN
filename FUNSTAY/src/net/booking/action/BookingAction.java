@@ -21,15 +21,9 @@ public class BookingAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String member_email = (String)session.getAttribute("email");
-		//List room_num = null;
-		//room_num.add(Integer.parseInt(request.getParameter("room_num[0]")));
-		//room_num.add(Integer.parseInt(request.getParameter("room_num[1]")));
-		//int room_num1 = Integer.parseInt(request.getParameter("room_num[0]"));
-		//int room_num2 = Integer.parseInt(request.getParameter("room_num[1]"));
-		//Date check_in = Date.valueOf(request.getParameter("check_in"));
-		//Date check_out = Date.valueOf(request.getParameter("check_out"));
-		//int price = 200000;
-		//int people = Integer.parseInt(request.getParameter("people"));
+		String check_in = request.getParameter("check_in");
+		String check_out = request.getParameter("check_out");
+		int people = Integer.parseInt(request.getParameter("people"));
 		String host_email = request.getParameter("host_email");
 		int fees = Integer.parseInt(request.getParameter("fees"));
 		int sum_price= Integer.parseInt(request.getParameter("sum_price"));
@@ -51,32 +45,24 @@ public class BookingAction implements Action{
 		pb.setUsed_m(used_m);
 		pb.setSum_price(sum_price);
 		
+		BookingBean bb = new BookingBean();
+		bb.setAdd_price(10000);
+		bb.setRoom_price(sum_price);
+		bb.setHome_num(home_num);
+		
 		BookingDAO bdao = new BookingDAO();
 		//결제 내역과 정보를 payment테이블에 저장
-		PaymentBean pb2 = bdao.insertPayment(pb);
+		bdao.insertPayment(pb,bb);
 		
 		//보유 마일리지 업데이트
-		bdao.updatemileage(member_email);
-		
+		//bdao.updatemileage(member_email);
 		//보유 캐시 업데이트
-		bdao.updateCash(host_email);
-		
+		//bdao.updateCash(host_email);
 		//결제 정보를 booking 테이블에 저장
-		BookingBean bb = new BookingBean();
-		/*bb.setBooking_num(booking_num);
-		bb.setPayment_num(payment_num);
-		bb.setRoom_num(room_num);
-		bb.setBooking_date(booking_date);
-		bb.setBooking_status(booking_status);
-		bb.setCheck_in(check_in);
-		bb.setChech_out(chech_out);
-		bb.setPeople(people);
-		bb.setRoom_price(room_price);
-		bb.setAdd_price(add_price);*/
 		
 		
 		forward.setRedirect(false);
-		forward.setPath("./payment/complete.jsp");
+		forward.setPath("./payment/Payment_Complete.jsp");
 		
 		return forward;
 	}
