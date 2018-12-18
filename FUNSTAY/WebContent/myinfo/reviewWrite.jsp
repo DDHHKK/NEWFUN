@@ -8,8 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FunStay</title>
 <!-- 페이지 default 링크 시작 -->
-<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="./css/default/login.css" rel="stylesheet">
+<link href="./css/login1.css" rel="stylesheet">
 <link href="./css/default/default.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="./css/default/subpage_content.css" rel="stylesheet">
@@ -48,8 +48,8 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 
 
 <!--my_reserve.css  -->
-<link href="./css/myinfo/my_reserve.css" rel="stylesheet">
-<!--revewWrite.css  -->
+<!-- <link href="./css/myinfo/my_reserve.css" rel="stylesheet"> -->
+
 <link href="./css/myinfo/reviewWrite.css" rel="stylesheet">
 </head>
 
@@ -83,17 +83,21 @@ String Member_email = (String)request.getAttribute("Member_email");
 
 <!-- 여기서부터 페이지 내용을 적어주세요. -->
 
-<p class="letter">리뷰쓰기</p>
+<h1>리뷰쓰기</h1>
  		
 <!--폼 시작  --> 
 <form action="./ReviewWriteAction.bk" method="post"> 
 
+
+<input type="hidden" name="home_num" value="<%=sc.getHome_num()%>">
+<input type="hidden" name="payment_num">
+
 <!--테이블 시작  -->
-<table border="1">
+<table>
 
 <tr>
-<td>방 별점주기</td>
-<td>
+<td class="ttd">별점</td>
+<td class="ttd2">
 <span class="star-input">
 	<span class="input">
     	<input type="radio" name="star" value="1" id="p1">
@@ -113,54 +117,55 @@ String Member_email = (String)request.getAttribute("Member_email");
 <script src="js/room_info/star.js"></script>
 </td>
 </tr>
-<h2>숙박이 어떠셨는지 말씀해 주세요</h2>
 
-<tr>
-<td>payment_num</td>
-<td><input type="text" name="payment_num"></td>
-</tr>
-<tr>
-<td>숙박후기작성</td>
+<tr><h2>숙박이 어떠셨는지 말씀해 주세요</h2></tr>
+
+
+<tr class="ttr">
+<td class="ttd">리뷰</td>
 <td><textarea rows="20" cols="120" placeholder="고객님의 경험은 다른 여행객들이 숙박을 선택하는 데 큰 도움이 됩니다." name="content"></textarea></td>
 </tr>
-<tr>
-<td>만족도</td>
-<td>
-<input type="radio" name="satisfaction" value="1">1점
-<input type="radio" name="satisfaction" value="2">2점
-<input type="radio" name="satisfaction" value="3">3점
-<input type="radio" name="satisfaction" value="4">4점
-<input type="radio" name="satisfaction" value="5">5점</td>
+
+
+
+<tr class="ttr">
+<td class="ttd">만족도</td>
+<td class="ttd2">
+<input type="radio" name="satisfaction" value="5" checked>★★★★★
+<input type="radio" name="satisfaction" value="4">★★★★
+<input type="radio" name="satisfaction" value="3">★★★
+<input type="radio" name="satisfaction" value="2">★★
+<input type="radio" name="satisfaction" value="1">★
+</td>
 </tr>
-<tr>
-<td>깨끗함</td>
-<td>
-<input type="radio" name="clean" value="1">1점
-<input type="radio" name="clean" value="2">2점
-<input type="radio" name="clean" value="3">3점
-<input type="radio" name="clean" value="4">4점
-<input type="radio" name="clean" value="5">5점</td>
+
+
+<tr class="ttr">
+<td class="ttd">청결도</td>
+<td class="ttd2">
+<input type="radio" name="clean" value="5" checked>★★★★★
+<input type="radio" name="clean" value="4">★★★★
+<input type="radio" name="clean" value="3">★★★
+<input type="radio" name="clean" value="2">★★
+<input type="radio" name="clean" value="1">★
 </tr>
-<tr>
-<td>교통접근성</td>
-<td>
-<input type="radio" name="access" value="1">1점
-<input type="radio" name="access" value="2">2점
-<input type="radio" name="access" value="3">3점
-<input type="radio" name="access" value="4">4점
-<input type="radio" name="access" value="5">5점</td>
+
+
+
+<tr class="ttr">
+<td class="ttd">접근성</td>
+<td class="ttd2">
+<input type="radio" name="access" value="5" checked>★★★★★
+<input type="radio" name="access" value="4">★★★★
+<input type="radio" name="access" value="3">★★★
+<input type="radio" name="access" value="2">★★
+<input type="radio" name="access" value="1">★
 </tr>
-<tr>
-<td>아이디</td>
-<td><input type="text" " value="<%=Member_email %>" readonly></td>
-</tr>
-<tr>
-<td>home_num</td>
-<td><input type="text" name="home_num" value="<%=sc.getHome_num()%>" readonly></td>
-</tr>
+
+
 <tr>
 <td colspan="2">
-<button type="submit" class="review_button_DY" onClick="alert('리뷰가 제출되었습니다')">내 리뷰 제출하기</button>
+<button type="submit" class="review_button_DY" onClick="alert('리뷰가 제출되었습니다')">리뷰 쓰기</button>
 </td>
 </tr>
 
