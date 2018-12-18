@@ -273,7 +273,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id10').style.display='block'" class="bill_butt_DY">영수증</button>
+  <button id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id10').style.display='block'" class="bill_butt_DY">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
  <hr>
@@ -337,7 +337,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id10').style.display='block'" class="bill_butt_DY" >영수증</button>
+  <button id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id10').style.display='block'" class="bill_butt_DY" >영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
   
