@@ -30,7 +30,7 @@ s0.parentNode.insertBefore(s1,s0);
 
 
 
-<div id="content">
+<div id="content" style="width:100%;">
 
 
 <div id="sideBar_shj">

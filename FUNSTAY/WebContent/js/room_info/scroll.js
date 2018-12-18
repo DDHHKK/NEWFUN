@@ -57,6 +57,7 @@ $(document).ready(function(){
     });
 });
 
+/*두 날짜간 차이 계산하는 함수*/
 function dateDiff(date1, date2) {
 	var diffDate_1 = new Date(date1);
 	var diffDate_2 = new Date(date2);
@@ -69,7 +70,7 @@ function dateDiff(date1, date2) {
     return diff;
 }
 
-/*확인 버튼을 누르면 스크롤바가 닫힌다*/
+
 //var strDate1 = "2015-5-6";
 //var strDate2 = "2015-6-25";
 //var arr1 = strDate1.split('-');
@@ -81,18 +82,19 @@ $(document).ready(function(){
 	//$("#textcss1").val()+$("#textcss2").val()
 	var strDate1;
 	var dat1;
+	/*확인 버튼을 누르면 스크롤바가 닫힌다*/
     $("#btn").click(function(){
         $("#form_1").slideToggle("slow");
         //alert("gkgkgk");
         //$(this).append('<intput type="text" value="'+$("#textcss1").val()+$("#textcss2").val()+'" name="sel_people">');
     });
     
+    /*가격 조회 버튼*/
     var date = new Date();
     var begin;
     var end;
     var cal_date;
     $("#search_price").click(function(){
-    	alert("호호");
     	begin=$('#check_in').val();
     	end= $("#check_out").val();
     	alert(dateDiff(end,begin));
