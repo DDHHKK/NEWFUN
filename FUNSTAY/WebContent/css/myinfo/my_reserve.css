@@ -18,7 +18,7 @@
 
 
 .w3-bar_DY {
-    width: 41.8%;
+    width: 42.1%;
     font-size: 1.5em;
 }
 
@@ -96,6 +96,14 @@ color: #100f0f;
 .receipt_table_DY td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
+}
+
+/* .receipt_table_DY td:NTH-CHILD(1){
+	background-color:green;
+} */
+
+.sub_DY{
+	background-color:green;
 }
 
 .receipt_ti_DY {
