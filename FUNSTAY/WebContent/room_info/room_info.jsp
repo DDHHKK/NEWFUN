@@ -560,8 +560,10 @@ for (i = 0; i < acc.length; i++) {
 <div class="clear"></div>
 <!-- <hr> -->
 <!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->
-<li align="center">지난 주에 500회 이상 조회되었습니다.</li>
-	<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;"/>
+<li align="center"><!-- 지난 주에 500회 이상 조회되었습니다. -->
+<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;margin:0;padding:0;'"/>
+</li>
+	
 </ol>
 </form>
 </nav>

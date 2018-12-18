@@ -119,6 +119,32 @@ public class BookingDAO {
 		}
 	}
 	
+	public int getmileage(String member_email){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int mileage=0;
+		System.out.println(member_email);
+		try{
+			con=getConnection();
+			String sql="select * from member where email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, member_email);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				mileage=rs.getInt("mileage");
+				System.out.println(rs.getInt("mileage"));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+		return mileage;
+	}
+	
 	/*public void updatemileage(String member_email){
 		Connection con = null;
 		PreparedStatement pstmt = null;

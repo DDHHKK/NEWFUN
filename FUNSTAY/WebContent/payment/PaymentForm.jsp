@@ -38,6 +38,8 @@ integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yI
 <%
 String room_subject=request.getParameter("room_subject");
 //int people = Integer.parseInt(request.getParameter("people"));
+int people = (Integer)request.getAttribute("people");
+int getMileage=(Integer)request.getAttribute("getMileage");
 %>
 <div id="splitwraptotal_sg">
 <h1>결제하기</h1>
@@ -58,7 +60,7 @@ String room_subject=request.getParameter("room_subject");
 <div id="splitwrapright_sg1">
 <div id="paymentinfo_sg">
 <h3>주문 정보</h3>
-주문번호 : djfigieowkdfj02983<br>
+<!-- 주문번호 : djfigieowkdfj02983<br> -->
 <a href="#"><img src="./img/photo2.jpg" alt="숙소 미리보기 사진"></a>
 <a href="#" id="room_subject"><input type="text" value="<%=room_subject%>" name="room_subject"></a><br><hr>
 <i class="fas fa-user-alt"></i> x 4명<br>
@@ -129,7 +131,7 @@ String room_subject=request.getParameter("room_subject");
 		적립마일리지<input type="text" value=<%=request.getAttribute("storage_m")%> name="storage_m">
 		사용마일리지<input type="text" value="0" name="used_m">
 		<input type="button" value="사용하기" onclick="">
-		<input type="text" value="보유마일리지 : 5,000" readonly>	
+		보유 마일리지<input type="text" value="<%=getMileage%>" readonly>	
 	</td>
 </tr>
 </table>

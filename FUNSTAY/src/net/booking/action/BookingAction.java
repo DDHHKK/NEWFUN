@@ -21,7 +21,8 @@ public class BookingAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String member_email = (String)session.getAttribute("email");
-		
+		String check_in = request.getParameter("check_in");
+		String check_out = request.getParameter("check_out");
 		int people = Integer.parseInt(request.getParameter("people"));
 		String host_email = request.getParameter("host_email");
 		int fees = Integer.parseInt(request.getParameter("fees"));
