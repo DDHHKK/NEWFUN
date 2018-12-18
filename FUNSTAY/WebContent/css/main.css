@@ -337,4 +337,19 @@ cursor: pointer;
 
 .dropdown:hover .dropdown-content {display: block;}
 
+
+#long_img{
+	margin: 4% 5%;
+}
+
+#long_btn{
+margin: -9% 0% 0% 43%;
+padding : 13px;
+border: none;
+color : #666;
+background-color: #fff;
+font-weight: bolder;
+border-radius: 3px;
+cursor: pointer;
+}
   
