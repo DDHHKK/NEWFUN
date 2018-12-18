@@ -14,24 +14,25 @@ public class Booking implements Action{
 		System.out.println("Booking execute()");
 		ActionForward forward = new ActionForward();
 		request.setCharacterEncoding("utf-8");
-		//String home_num = request.getParameter("home_num");
-		int home_num = 3;
+		String home_num = request.getParameter("home_num");
+		String room_subject = request.getParameter("room_subject");
+		//int home_num = 3;
 		int [] room_num = {8,9};
 		//String check_in = "2018-11-20";
 		Date check_in = Date.valueOf("2018-11-20");
 		//String check_out = "2018-11-26";
 		Date check_out = Date.valueOf("2018-11-26");
 		
-		int price = 200000;
-		int people = 5;
+		int price = 50000;
+		int people = 11;
 		
 		//String member_email = "funfun@gmail.com";
 		//String request_msg ="2,3번방 예약했어요. 문의답변으로 2번방에는 침구, 2번방에는 간이베드 추가된다고 하셨는데 잊지 말고 잘 준비해주세요! :)";
-		String host_email = "busan@gmail.com";
-		int storage_m = 10800;
+		String host_email = "jeju@gmail.com";
+		int storage_m = 1255;
 		//int used_m = 0;
-		int fees = 18000;
-		int sum_price=1108800;
+		int fees = 25500;
+		int sum_price=500000;
 		/*//스트링을 데이트로 형변환
 		String dateform = request.getParameter("start_date");
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -52,6 +53,7 @@ public class Booking implements Action{
 		//request.setAttribute("used_m", used_m);
 		request.setAttribute("fees", fees);
 		request.setAttribute("sum_price", sum_price);
+		request.setAttribute("room_subject", room_subject);
 		
 		System.out.println(request.getAttribute("check_in"));
 		System.out.println(request.getAttribute("check_out"));

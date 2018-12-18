@@ -37,7 +37,7 @@ integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yI
 <!-- 페이지내용 시작 -->
 <%
 String room_subject=request.getParameter("room_subject");
-int people = Integer.parseInt(request.getParameter("people"));
+//int people = Integer.parseInt(request.getParameter("people"));
 %>
 <div id="splitwraptotal_sg">
 <h1>결제하기</h1>
@@ -81,18 +81,21 @@ int people = Integer.parseInt(request.getParameter("people"));
 <div class="room_info">
 	<div class="room1">
 		home_num : <input type="text" value=<%=request.getAttribute("home_num") %> name="home_num"><br>
-		room_num1<input type="text" value=<%=request.getAttribute("room_num[0]") %> name="room_num[0]"><br>
+		
+		<%-- room_num1<input type="text" value=<%=request.getAttribute("room_num[0]") %> name="room_num[0]"><br>
 		room_num2<input type="text" value=<%=request.getAttribute("room_num[1]") %> name="room_num[1]"><br>
+		 --%>
 		check_in<input type="text" value=<%=request.getAttribute("check_in") %> name="check_in"><br>
 		check_out<input type="text" value=<%=request.getAttribute("check_out") %> name="check_out"><br>
 		people<input type="text" value=<%=request.getAttribute("people") %> name="people"><br>
 		<!-- room_price,add_price db쿼리로 빼기? -->
-		room_price<input type="text" value="40000" name="room_price"><br> 
-		add_price<input type="text" value="20000" name="add_price"><br>
+		room_price<input type="text" value="50000" name="room_price"><br> 
+		add_price<input type="text" value="10000" name="add_price"><br>
 		host_email<input type="text" value=<%=request.getAttribute("host_email")%> name="host_email"><br>
 		storage_m<input type="text" value=<%=request.getAttribute("storage_m")%> name="storage_m"><br>
 		fees<input type="text" value=<%=request.getAttribute("fees")%> name="fees"><br>
 		sum_price<input type="text" value=<%=request.getAttribute("sum_price")%> name="sum_price"><br>
+		room_subject<input type="text" value="<%=room_subject%>" name="room_subject"><br>
 		
 	</div>
 </div>
