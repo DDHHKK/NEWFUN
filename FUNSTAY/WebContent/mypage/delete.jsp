@@ -51,10 +51,10 @@
 <div id="content">
 <!-- 페이지내용 시작 -->
  <div class="panel_box_sh">
-  <h1 class="tite_sh">회원탈퇴</h1>
+  <h1 class="tite_sh">계정 비활성화</h1>
   <!-- 회원탈퇴 폼시작 -->
   <form action="./MemberDeleteAction.me" id="join" method="post">
-  	아이디 삭제를 위해서는 비밀번호 재입력이 필요합니다.<br>
+  	계정 비활성화를 위해서는 비밀번호 재입력이 필요합니다.<br>
     <div>
     <p><i class="fa fa-envelope icon"></i> <label>E-Mail</label></p>
     <p><input type="text" class="t_box_sh" name="email" value="<%=email%>" readonly></p>
@@ -63,11 +63,20 @@
    <div>
     <p><i class="fa fa-key icon"></i><label>Password</label></p>
     <p><input type="password" class="t_box_sh" name="pass"></p>
-    
    </div>
    
+   	
+   <ul>
+   	<li id="ul1"> 비활성화를 하게되면</li>
+   	<li>• 회원님은 계정 비활성화 전에 FUNSTAY 플랫폼에서 이루어진 모든 활동에 대한 권리와 의무를 가집니다.</li>
+    <li>• 회원님의 프로필과 숙소가 표시되지 않습니다. </li>
+	<li>• FUNSTAY로 연락하면 언제든 계정을 재활성화하실 수 있습니다. </li>
+   </ul>
+
+   
+   
    <div id="buttons_sh">
-    <input type="submit" value="탈퇴하기" class="btn">
+    <input type="submit" value="비활성화" class="btn">
     <input type="button" value="취소하기" class="btn" onclick="history.back()">
    </div>
    

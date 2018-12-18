@@ -7,6 +7,7 @@
 <%@page import="net.search.db.SearchBean"%>
 <%@page import="net.member.db.QnaBean"%>
 <%@page import="java.util.List"%>
+<%@page import="net.search.db.SearchBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -28,12 +29,13 @@
 	ConvBean cb=(ConvBean)request.getAttribute("cb");
 	List<RoomBean> rooms = (List)request.getAttribute("rooms");
 	List<BedBean> bed_list = (List)request.getAttribute("bed_list");
+	String room_subject = sc.getRoom_subject();
 	%>
 			
 <!-- room_wrapper -->
 <!-- <marquee behavior=scroll><b>☆숙소를 소개합니다☆</b></marquee> -->
 
-<div id="room_wrap" style="width:80%;margin:0 auto;">
+<div id="room_wrap" style="width:75%;margin:0 auto;">
  <div id="room_detail">
  	<div id="room_imfomation" style="margin-top: 25px;">
  	<!-- 숙소제목 -->
@@ -46,7 +48,15 @@
  		<i class="far" id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;float:right;font-size:30px;">&#xf004;</i>
  	</div>
  	<div class="clear"></div>
- 	<hr>  
+ 	<!-- 네비게이션 바 -->
+ 		<ul class="roomdetailNav_sg">
+ 			<li><a href="#room_info1">방 정보</a></li>
+ 			<li><a href="#room_facility1">편의시설 </a></li>
+ 			<li><a href="#room_area1">위치 정보 </a></li>
+ 			<li><a href="#room_review1">후기 </a></li>
+ 			<li style="height:21px;line-height:23px;"><a href="#room_qna1">문의</a></li>
+ 		</ul>
+ 	<hr style="display:block;margin:0;padding:0;">  
       
  	
  	<!-- <a href="#"><img src="./img/메일.jpg" alt="mail" align="right"></a> -->
@@ -55,32 +65,22 @@
  	
 <!-- room_content --> 	
  	<div id="room_content">
- 	<!-- 네비게이션 바 -->
- 		<ul class="roomdetailNav_sg">
- 			<li><a href="#room_imfomation">개요 </a> </li>
- 			<li><a href="#room">방정보</a></li>
- 			<li><a href="#room_facility">편의시설 </a></li>
- 			<li><a href="#room_area">지역정보 </a></li>
- 			<li><a href="#room_review">후기 </a></li>
- 			<li style="height:21px;line-height:23px;"><a href="#QnA">QnA</a></li>
- 		</ul>
- 	<div>
+ 	
  	
  	<!-- 숙소 정보 및 이용 규칙 -->
-	<div id="room_rule">
-	<h3>숙소 정보</h3>
+ 	<h3 id="room_rule1">숙소 정보</h3>
+	<div id="room_rule" style="padding:20px;border:1px solid #cccccc;">
 	체크인 시간 - <%=sc.getIn_time() %> <br>
 	체크아웃 시간 - <%=sc.getOut_time() %> <br>
-	화장실 개수 : <%=sc.getRestroom() %><br> 
-	</div>
+	화장실 개수 : <%=sc.getRestroom() %><br><br>
 		<!-- 숙소 소개 내용 -->
 	 <%=sc.getRoom_content() %> <br>
 	</div>
 	</div>
 
 <!-- 룸정보 -->
-	<div id="room">
-	<h3>방 정보</h3>
+	<h3 id="room_info1">방 정보</h3>
+	<div id="room" style="padding:20px;border:1px solid #cccccc;">
 		<table>
 				<% for(int i=0; i<rooms.size(); i++) { 
 					RoomBean rb = (RoomBean)rooms.get(i);
@@ -89,7 +89,7 @@
 				<tr> <%} %>
 				
 				<td>
-					<div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:110px;padding:10px;">
+					<div style="border:1px solid #cccccc;border-radius:10px;width:150px;height:130px;padding:10px;">
 						<b><%=rb.getRe_room()%>번방</b><br>
 						<%-- <%=rb.getRoom_num()%><br> --%>
 						최대 <%=rb.getMax_people()%>명<br>
@@ -112,68 +112,105 @@
 	</div>
 
 	<!-- 편의시설 --> 
-	<div id="room_facility">
-			<h3>편의시설</h3> 
+	<h3 id="room_facility1">편의시설</h3>
+	<div id="room_facility" style="padding:20px;border:1px solid #cccccc;overflow:hidden;">
+			 
 			<%if(cb.getEssential()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='far fa-lightbulb' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 필수품목
+				</div>
 			<%}%>
 			<%if(cb.getWifi()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class="fa fa-wifi" style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 와이파이
+				</div>
 			<%}%>
 			<%if(cb.getParking()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-parking' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 주차가능
+				</div>
 			<%}%>
 			<%if(cb.getShampoo()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<img src="./img/icon/shampoo.png" width="15px" height="25px" style='color:#cc1d1d;margin-left:20px;'> 샴푸
+				</div>
 			<%}%>
 			<%if(cb.getAir_conditioner()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-thermometer-empty' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 에어컨
+				</div>
 			<%}%>
 			<%if(cb.getHeat()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-thermometer-full' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 난방
+				</div>
 			<%}%>
 			<%if(cb.getAnimal()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-paw' style='color:#cc1d1d;margin-left:20px;'></i> 반려동물
+				</div>
 			<%}%>
 			<%if(cb.getDisabled()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fab fa-accessible-icon' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 장애인시설
+				</div>
 			<%}%>
 			<%if(cb.getParty()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-birthday-cake' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 파티가능
+				</div>
 			<%}%>
 			<%if(cb.getPickup()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class="fa fa-car" style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 픽업가능
+				</div>
 			<%}%>
 			<%if(cb.getElevator()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-sort' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 엘리베이터
+				</div>
 			<%}%>
 			<%if(cb.getBreakfast()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-utensils' style='color:#cc1d1d;margin-left:20px;'></i> 조식제공
+				</div>
 			<%}%>
 			<%if(cb.getSmoking()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-smoking' style='color:#cc1d1d;margin-left:20px;'></i> 흡연가능
+				</div>
 			<%}%>
 			<%if(cb.getLaundry()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<img src="./img/icon/washing.png" width="15px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 세탁기
+				</div>
 			<%}%>
 			<%if(cb.getIron()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<img src="./img/icon/iron-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 다리미
+				</div>
 			<%}%>
 			<%if(cb.getDesk()==1){%>
-				<img src="./img/icon/table-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 업무가능공간/책상
+				<div style="width:150px;float:left;height:30px;">
+				<img src="./img/icon/table-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 업무가능공간
+				</div>
 			<%}%>
 			<%if(cb.getExtra_bed()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<i class='fas fa-bed' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 간이침대
+				</div>
 			<%}%>
 			<%if(cb.getHair_dryer()==1){%>
+				<div style="width:150px;float:left;height:30px;">
 				<img src="./img/icon/hair_dryer-512.png" width="20px" height="20px" style="color:#cc1d1d;margin-left:20px;"> 헤어드라이기
+				</div>
 			<%}%>
 	</div>
 
 
 	<!-- 숙소 위치 -->
-	<div id="room_area">
-	<h3>지역정보</h3>
+	<h3 id="room_area1">지역정보</h3>
+	<div id="room_area" style="padding:20px;border:1px solid #cccccc;">
 		<input type="text" value="<%=sc.getAddress()%>" id="address" readonly style="border:none;">
 		<div id="map" style="width:500px;height:350px;border-radius:20px;"></div>
 	</div>
@@ -228,7 +265,8 @@
  
  
  <!-- room_review -->
-<div id="room_review">
+<h3 id="room_review1">후기 <%-- <%=count%>개 --%> </h3>
+<div id="room_review" style="padding:20px;border:1px solid #cccccc;">
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -242,7 +280,6 @@
 %>
 
 
-<a name="후기"><h1>후기 <%=count%>개 </h1></a>
 	<button class="button_sg button1_sg"
 			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
 	<div id="room_review">
@@ -327,7 +364,8 @@
 
 
 <!-- room_qna -->
-<div id="room_qna"">
+<h3 id="room_qna1">QnA <%-- <%=count1%>개 --%> </h3>
+<div id="room_qna" style="padding:20px;border:1px solid #cccccc;">
 	<%
 	request.setCharacterEncoding("UTF-8");
 	
@@ -340,11 +378,16 @@
 	num = ((Integer) request.getAttribute("num")).intValue();
 	 %>
 
-<a name="QnA"><h1>QnA <%-- <%=count1%>개 --%> </h1></a>
 
 <button class="button_sg"
-			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
+			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>&room_subject=<%=room_subject %>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
 	<div id="room_qna">
+	<div class="clear"></div>
+	<table class="accordion_sg1">
+		<tr>
+			<td style="width:500px;text-align:center;">문의 제목</td><td style="width:200px;text-align:center;">작성자</td><td style="width:200px;text-align:center;">등록 날짜</td><td style="width:200px;text-align:center;">답변여부</td>
+		</tr>
+	</table>
 	<% for (int i = 0; i < QnAList.size(); i++) {
 		QnaBean qn = (QnaBean) QnAList.get(i);
 	%>
@@ -352,20 +395,28 @@
 	
 			<table>
 				<tr>
-					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;"><%=qn.getMember_email() %></td><td style="width:200px;">등록 날짜표시</td><td style="width:200px;">답변여부표시</td>
+					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;text-align:center;"><%=qn.getMember_email() %></td>
+					<td style="width:200px;"><%=qn.getQnA_date() %></td>
+					<td colspan="2" style="width:200px;">
+						<%if(qn.getRe_seq()==1){%>
+								답변완료
+								<%}else{%>
+								답변중
+						<%}%>
+					</td>
 				</tr>
 			</table>
 		</button>
 		<div class="panel_sg">
   			<p>
   				<img src="./img/user.png" alt="img02" width="50px" height="50px">
-				<%=qn.getSubject() %>
+				<%=qn.getContent() %>
 				<hr>
 				답글이 있다면 출력하기
   			</p>
 		</div>
 
-	<% } %>
+	<% } %> 
 		<div style="text-align: center;">
 <%
 		if (count1 != 0) {
@@ -431,6 +482,77 @@ for (i = 0; i < acc.length; i++) {
  	</div> 
  	
  	<!-- room_box.jsp -->
- <jsp:include page="room_box.jsp"></jsp:include>
+<%--  <jsp:include page="room_box.jsp"></jsp:include> --%>
+<%
+	sc = (SearchBean) request.getAttribute("sc");
+	pageNum = (String) request.getAttribute("pageNum");
+	num = ((Integer) request.getAttribute("num")).intValue();
+%>
+
+<div id="room_box">
+<nav id="nav_1">
+<form action="Booking.bo" method="get" name="fff" id="form_2">
+<input type="hidden" name="room_subject" value="<%=sc.getRoom_subject()%>">
+<input type="hidden" name="host_email" value="<%=sc.getHost_email() %>">
+<input type="hidden" name="home_num" value="<%=sc.getHome_num()%>">
+<ol>
+<li class="tite_text"><input type="hidden" value="<%=sc.getPrice()%>" name="price11">
+	<input type="hidden" value="<%=sc.getPrice()%>" name="price22">
+	<input type="text" value="<%=sc.getPrice()%>" name="price00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;">
+	/ <input type="text" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;">박 
+<div class="clear"></div>
+<!-- <div class="datepicker-here" data-language='en'></div> -->
+<!--  <img src="./img/heart.jpg" align="right"> --></li>
+<li>★★★★★ 167(리뷰 평균 평점 보이게 하기)</li>
+<!-- <li class="tite_text">날짜</li> -->
+<li><span>체크인</span> <span id="checkout">체크아웃</span></li>
+<li>
+   <input type='text' value="2018-12-28" name="check_in" id="check_in" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/ readonly style="width:38%!important;">
+   <input type="text" value="2019-01-02" name="check_out" id="check_out" class='datepicker-here'  data-language='en' placeholder="년/월/일" readonly style="width:38%!important;">
+   <input type="button" id="search_price" value="가격조회" 
+   	style="background-color:white;color:#cc1d1b;border:2px solid #cc1d1b;padding:9px;font-weight:bold;font-size:16px;height:52px;border-radius:10px;line-height:10px;">
+</li>
+<!-- <li class="tite_text">인원</li> -->
+<li>
+  <input type="text" value="" placeholder="게스트 인원을 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
+  <input type="hidden" value="" name="text00" readonly>
+  <nav id="form_1">
+  <ol>
+     <li>
+        <span class="font1">성&nbsp;인</span> 
+        <input type="button" value="-" onclick="cid1()" class="btn_1" id="btn_11"> 
+        <input type="text" value="" name="text11" id="textcss1" placeholder="0" class="text_box">
+        <input type="button" value="+" onclick="add1()" class="btn_1">
+     </li>
+     <li>
+      <span class="font1">어린이</span> 
+      <input type="button" value="-" onclick="cid2()" class="btn_1" id="btn_12"> 
+      <input type="text" value="" name="text12" id="textcss2" placeholder="0"class="text_box">
+      <input type="button" value="+" onclick="add2()" class="btn_1">
+     </li>
+     <li> 
+       <input type="button" value="확인" onclick="choice()" id="btn">
+     </li>
+     </ol>
+  </nav>
+</li>
+<li><input type="submit" value="예약하기" id="btn1"></li>
+<div class="clear"></div>
+<!-- <hr> -->
+<!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->
+<li align="center">지난 주에 500회 이상 조회되었습니다.</li>
+	<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;"/>
+</ol>
+</form>
+</nav>
+ </div>
   </div>
 </div>
+<script>
+$(document).ready(function () {
+	  //your code here
+	$('#minMaxExample').datepicker({
+	    minDate: new Date() // Now can select only dates, which goes after today
+	});
+	});
+</script>

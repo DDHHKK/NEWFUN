@@ -35,7 +35,10 @@ integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yI
 <!-- 회원 관리 페이지 왼쪽메뉴바 끝 -->
 <div id="content">
 <!-- 페이지내용 시작 -->
-
+<%
+String room_subject=request.getParameter("room_subject");
+int people = Integer.parseInt(request.getParameter("people"));
+%>
 <div id="splitwraptotal_sg">
 <h1>결제하기</h1>
 <div class="paysnakmsg_sg">
@@ -57,7 +60,7 @@ integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yI
 <h3>주문 정보</h3>
 주문번호 : djfigieowkdfj02983<br>
 <a href="#"><img src="./img/photo2.jpg" alt="숙소 미리보기 사진"></a>
-<a href="#" id="room_subject"><input type="text" value="강남 도시중심 시티뷰가 멋있는 방" name="room_subject"></a><br><hr>
+<a href="#" id="room_subject"><input type="text" value="<%=room_subject%>" name="room_subject"></a><br><hr>
 <i class="fas fa-user-alt"></i> x 4명<br>
 <i class="far fa-calendar-check"></i> 
 	2018.11.02

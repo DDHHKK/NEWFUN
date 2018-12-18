@@ -265,6 +265,9 @@ cursor: pointer;
   #img_4:HOVER{
  filter:brightness(50%);
  }
+  #img_5:HOVER{
+ filter:brightness(50%);
+ }
    
    
  #font2{font-size: 35px;

@@ -60,7 +60,7 @@ String email = (String)request.getAttribute("email");
 	</div>
 	<div class="showsnakicon_sg">
 		<a href="#">
-		<img src="./img/photo2.jpg" style="width: 100%;height: 260px;">
+		<img src="./img/church.jpg" style="width: 100%;height: 260px;">
 		</a>
 	</div>
 </div>

@@ -107,14 +107,14 @@ width: 400px;height: 53px;
 border-radius:10px 10px 10px 10px;
 background: #cc1d1c;
 color: white;
-margin:0px 10px 25px 0px;
+margin:0px 0px 25px 0px;
 font-size:18px;
 font-weight:600;
 border:none;
 }
 
 
-#checkout{padding-left: 160px;}
+#checkout{padding-left: 111px;}
 
 /*nav ol li:NTH-CHILD(1) {
 	font-size: 25px;
@@ -203,7 +203,7 @@ float : right;
 	
 }
 #room_detail{
-	width: 900px;
+	width: 850px;
 	/* margin : 0 auto; */
 	/* text-align: center; */
 	/* border : 1px solid red;  */
@@ -233,7 +233,7 @@ float : right;
 /*     border :1px solid red; */
 }
 #form_2 {
-	border :1px solid gray;
+	border :1px solid #cccccc;
 	border-radius: 20px;
 	
 } 
@@ -279,10 +279,12 @@ color:white;
 }
 
 #btn{
-border-radius:10px 10px 10px 10px; 
-background-color: #ff8080;
-color: white;
-width: 60px; height: 40px;}
+    border-radius: 10px 10px 10px 10px;
+    background-color: #cc1d1c;
+    color: white;
+    width: 60px;
+    height: 40px;
+    border: none;}
 
  #img_1{margin: 0 30px 0 100px;}
  #img_2{margin-right: 30px;}
@@ -324,6 +326,7 @@ width: 60px; height: 40px;}
 	list-style: none;
 	padding: 0;
 	overflow: hidden;
+	margin-bottom: 0;
 	}
 
 .roomdetailNav_sg li {
@@ -387,7 +390,22 @@ width: 60px; height: 40px;}
   transition: 0.4s;
 }
 
-.active, .accordion_sg:hover {
+.accordion_sg1 {
+  background-color: white;
+  border: none;
+  /* border-top:1px solid grey; */
+  border-bottom:1px solid grey;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+/* .active, */.accordion_sg:hover {
   background-color: #ccc; 
 }
 

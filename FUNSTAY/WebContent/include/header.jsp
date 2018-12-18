@@ -90,7 +90,6 @@ if(email==null){
   <ul id="list_1_WS">
   	<li id="li_7"><b><%=mb.getEmail()%></b></li>
 	<li><a href="./MemberUpdate.me"><b>프로필수정</b></a></li>
-	<li><a href="./Booking.bo"><b>예약/결제</b></a></li>
 	<li><a href="./MyReserve.bk"><b>나의 예약</b></a></li>
 	<li><a href="./Wishlist.wi"><b>찜한숙소</b></a></li>
 	<li><a href="./MemberMileage.me"><b>마일리지</b></a></li>
@@ -148,8 +147,7 @@ if(email==null){
       <label for="pass"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="pass" id="myInput" required>
       </div>
-  <!-- caps lock -->
-     <p id="caps">WARNING! Caps lock is ON.</p> 
+  
   <!-- SNS -->
       <div id="col_box">   
 	  <div class="col">
@@ -237,7 +235,7 @@ if(email==null){
 %>
 <!-- 회원가입 -->
 <div id="id02" class="modal">
-  <form class="modal-content animate" action="./MemberJoinAction.me" method="post" name="fr" enctype="multipart/form-data">
+  <form class="modal-content animate" action="./MemberJoinAction.me" method="post" name="fre" enctype="multipart/form-data">
   <!-- 닫기버튼 -->
     <div class="imgcontainer">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -250,7 +248,7 @@ if(email==null){
 <!-- 이메일(아이디)입력 폼 -->    
       <i class="fa fa-envelope icon"></i>
       <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email">
+      <input type="text" placeholder="Enter Email" name="email">
 <!-- 이메일 중복체크 입력 폼 -->       
       <div>
       <input type="button" value="E-mail중복체크" class="e_check" onclick="idcheck()">
@@ -301,7 +299,8 @@ if(email==null){
       
 <!-- 약관동의 -->
        <p>이용약관 및 개인정보 보호 정책에 동의하여 주십시요 <br><input type="checkbox" name="req"> 개인정보 수집 및 이용에 동의합니다. 
-       <a href="./member/agree.jsp" style="color:dodgerblue">동의약관</a>.</p>
+       <input type="button" value="동의약관" style="background-color: #cc1d1d; color:#fff; border: 1px solid #cc1d1d; border-radius: 2px;" onclick="window.open('./member/agree.jsp','동의약관','top=200, left=150, width=1400, height=500')">
+       <!-- <a href="./member/agree.jsp" style="color:dodgerblue">동의약관</a>.</p> -->
 <!-- 전송버튼 -->
       <div class="clearfix">
         <button type="button" class="subtn" onclick="regChk()"><a>가입완료</a></button>

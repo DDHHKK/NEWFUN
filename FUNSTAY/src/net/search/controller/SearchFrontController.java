@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.search.Action.Qna_boardWrite;
 import net.search.Action.Qna_boardWriteAction;
+import net.search.Action.Qna_boardreWriteAction;
 import net.search.Action.RoomDetailAction;
 import net.search.Action.SearchListAction;
-import net.search.Action.SideSearch;
 
 
 
@@ -30,10 +30,9 @@ public class SearchFrontController extends HttpServlet{
 		
 		System.out.println("뽑아온 가상주소 : "+command);
 		//뽑아온 가상주소 비교
-	
 		ActionForward forward=null;
 		Action action=null; 
-	
+		
 		//list 
 		if (command.equals("/SearchList.sc")){
 			action = new SearchListAction();
@@ -58,7 +57,7 @@ public class SearchFrontController extends HttpServlet{
 			forward.setPath("./room_info/subpage.jsp");
 			forward.setRedirect(false);
 		}
-	
+		
 		//QnA write
 		if(command.equals("/Qna_boardWrite.sc")){
 			action = new Qna_boardWrite();
