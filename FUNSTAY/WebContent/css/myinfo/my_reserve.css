@@ -57,7 +57,7 @@ color: #100f0f;
 
 
 .w3-container .w3-teal{
-	border: none;
+	border: 1px solid red;
 	
 }
 
@@ -79,7 +79,8 @@ color: #100f0f;
 
 .w3-teal, .w3-hover-teal:hover {
     color: #000080!important;
-    background-color: #429494!important;
+    background-color: #cc1b1b!important;
+    text-align: center;
 }
 
 .w3-container {
