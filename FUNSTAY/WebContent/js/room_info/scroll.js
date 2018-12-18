@@ -99,9 +99,10 @@ $(document).ready(function(){
     	end= $("#check_out").val();
     	alert(dateDiff(end,begin));
     	cal_date=dateDiff(end,begin);
-    	//$('.days00').val(cal_date);
-    	//cal_price=document.fff.price22.value*cal_date;
-    	//document.fff.price00.value=cal_price;
+    	$('.days00').val(cal_date);
+    	cal_price=document.fff.price22.value*cal_date;
+    	document.fff.price00.value=cal_price;
+    	$('.sum_price').html(cal_price);
     	
     	/*if($('#check_in').val()!=null){
     		strDate1 = $('#check_in').val();
@@ -122,16 +123,19 @@ $(document).ready(function(){
     });
     
     $('.reserve_btn1_sg').click(function() {
-		if(document.fff.text00.value>document.fff.R_max_people.value){
-			alert("예약가능 최대인원을 초과 하셨습니다. 최대인원 : "+document.fff.R_max_people.value);
-			return false;
-		}if(document.fff.text00.value==0){
+		if(document.fff.text00.value==0){
 			alert("예약 인원을 선택해주세요.");
 			return false;
 		}if($('#check_in').val()=="" || $('#check_out').val()==""){
 			alert("예약 날짜를 선택해주세요.");
 			return false;
 		}
+		/*var a = document.fff.text00.value;
+		var b = document.fff.R_max_people.value
+		if(a<b){
+			alert("예약가능 최대인원을 초과 하셨습니다. 최대인원 : "+document.fff.R_max_people.value+"선택인원 : "+document.fff.text00.value);
+			return false;
+		}*/
 	});
     
 

@@ -6,7 +6,7 @@ $("#check_module").click(function(){
 
 	IMP.request_pay({
 	    pg : 'html5_inicis', // version 1.1.0부터 지원.
-	    pay_method : 'phone',
+	    pay_method : 'card',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
 	    name : '주문명:결제테스트',
 	    amount : 10,
@@ -25,8 +25,8 @@ $("#check_module").click(function(){
 	        msg += '결제 금액 : ' + rsp.paid_amount;
 	        msg += '카드 승인번호 : ' + rsp.apply_num;
 	    } else {
-	        var msg = '결제에 실패하였습니다.';
-	        msg += '에러내용 : ' + rsp.error_msg;
+	        //var msg = '결제에 실패하였습니다.';
+	        msg = '결제실패 : ' + rsp.error_msg;
 	    }
 	    alert(msg);
 	});
