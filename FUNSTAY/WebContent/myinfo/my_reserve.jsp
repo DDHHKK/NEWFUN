@@ -466,13 +466,13 @@ for(int i=0; i<beforeList2.size(); i++){
 	
 if(i%3==0){
 	%>
-	<tr>
+	
 	<% 
 }
 %>
 
-
-         <tr>
+        
+         <%-- <tr>
           <td colspan="2" class="receipt_ti_DY"><%=BeforeB.getRoom_subject() %></td>
          </tr>
          <tr>
@@ -498,12 +498,12 @@ if(i%3==0){
          <tr>
           <td>총 요금</td>
           <td><%=BeforeB.getSum_price() %></td>
-         </tr>
-       
+         </tr> --%>
+          <tbody></tbody>
 	
 
 <% if(i%3==2) { %>
-</tr>
+
   <% } }%> 
   
  </table>
@@ -667,18 +667,18 @@ function button_event(payment_num){
 	   //alert(member_email); //alert주석처리하고 아래 getJSON주석해제
 	   //var payment_num=$('#payment_num_DY').val();
     
-	 $('#bill_butt_DY').click(function(){
+	 $('.bill_butt_DY').click(function(){
 		 var payment_num=$(this).attr('id');
-		   // alert(payment_num);
+		   //alert(payment_num);
 		 
 		 $.getJSON({
 			 dataType:"json",
 			 url:"./myinfo/JSON/bill.jsp",
-			 data:{payment_num:payment_num,member_email:member_email},
+			 data:{payment_num:payment_num/* ,member_email:member_email */},
 			 success:function(data){
 			 
 		  	  $.each(data,function(index,item){
-		  		  $('.receipt_table_DY').append('<tr><td colspan="2">'+item.room_subject+'</td></tr><tr><td>체크인</td><td>'+item.check_in+
+		  		  $('.receipt_table_DY').html('<tr><td colspan="2">'+item.room_subject+'</td></tr><tr><td>체크인</td><td>'+item.check_in+
 		  				  '</td></tr><tr><td>체크아웃</td><td>'+item.check_out+'</td></tr><tr><td>Room_type</td><td>'+item.room_type+
 		  				  '</td></tr><tr><td>UserName</td><td>'+item.member_email+'</td></tr><tr><td>인원</td><td>'+item.people+
 		  				  '</td></tr><tr><td>총요금</td><td>'+item.sum_price+'</td></tr>');
