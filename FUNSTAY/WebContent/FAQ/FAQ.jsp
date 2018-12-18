@@ -219,9 +219,11 @@
 		<button class="accordion" href="./FAQ_boardContent.fa?num=<%=fb.getFAQ_num()%>&pageNum=<%=pageNum%>"><%=fb.getFAQ_subject()%></button>
 		
 		<div class="panel">
-		<p>
+		<pre>
 			<%=fb.getFAQ_content()%>
-				<%
+				
+	 	</pre> 
+	 	<%
 					String email1 = (String)session.getAttribute("email");
 					if (email1 != null) {
 					if (email1.equals("admin")) {
@@ -242,7 +244,6 @@
 					}
 				}
 			%>
-	 	</p> 
 		</div> 
 	
 		<%
