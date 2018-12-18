@@ -21,12 +21,13 @@ public class MemberLoginAction implements Action{
 		MemberBean mb = new MemberBean();
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
-		System.out.println("email : "+email);
-		System.out.println("pass : "+pass);
+		/*System.out.println("email : "+email);
+		System.out.println("pass : "+pass);*/
 		
+		int delete_member=1;
 		
 		MemberDAO mdao = new MemberDAO();
-		int check = mdao.userCheck(email, pass);
+		int check = mdao.userCheck(email, pass,delete_member);
 		if(check == 1){//로그인 성공
 			//호스트 여부를 체크할 수 있는 세션값 생성 -> 호스트=1 일반회원=0
 			HostDAO hdao = new  HostDAO();

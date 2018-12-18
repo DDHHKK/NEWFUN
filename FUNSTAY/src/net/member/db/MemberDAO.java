@@ -162,7 +162,7 @@ public class MemberDAO {
 	}// email check()end
 
 	// email(id)pass check()start
-	public int userCheck(String email, String pass) {
+	public int userCheck(String email, String pass, int delete_member) {
 		int check = -1;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -171,10 +171,11 @@ public class MemberDAO {
 
 			con = getConnection();
 
-			String sql = "select pass from member where email=?";
+			String sql = "select pass from member where email=?,delete_member=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email);
-			;
+			pstmt.setInt(2, 1);
+			
 
 			rs = pstmt.executeQuery();
 
@@ -253,19 +254,31 @@ public class MemberDAO {
 	}// updateMember()end
 
 	// deleteMember()start
-	public int deleteMember(String email, String pass) {
+	public int deleteMember(MemberBean mb,String email, String host_email) {
+		
 		int check = 1;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		MemberBean mb = new MemberBean();
+		
 		try {
 			con = getConnection();
 
-			String sql = "delete from member where email = ? and pass = ?";
+			String sql = "update member set delete_member=? where email = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, email);
-			pstmt.setString(2, pass);
+			pstmt.setInt(1, 0);
+			pstmt.setString(2, email);
+			pstmt.executeUpdate();
+			
+			
+			String sql2 = "update home set home_status=? where host_email=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, 0);
+			pstmt.setString(2, host_email);
+			
+			
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {

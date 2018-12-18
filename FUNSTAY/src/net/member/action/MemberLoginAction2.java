@@ -21,9 +21,10 @@ public class MemberLoginAction2 implements Action{
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		
+		int delete_member=1;
 		
 		MemberDAO mdao = new MemberDAO();
-		int check = mdao.userCheck(email, pass);
+		int check = mdao.userCheck(email, pass,delete_member);
 		if(check == 1){
 			//로그인성공 세션값 생성 메인이동
 			HttpSession session = request.getSession();
