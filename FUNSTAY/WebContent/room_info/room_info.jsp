@@ -492,21 +492,30 @@ for (i = 0; i < acc.length; i++) {
 <div id="room_box">
 <nav id="nav_1">
 <form action="Booking.bo" method="get" name="fff" id="form_2">
+<input type="hidden" name="room_subject" value="<%=sc.getRoom_subject()%>">
 <input type="hidden" name="host_email" value="<%=sc.getHost_email() %>">
 <input type="hidden" name="home_num" value="<%=sc.getHome_num()%>">
 <ol>
-<li class="tite_text"><%=sc.getPrice() %> / 1박 
+<li class="tite_text"><input type="hidden" value="<%=sc.getPrice()%>" name="price11">
+	<input type="hidden" value="<%=sc.getPrice()%>" name="price22">
+	<input type="text" value="<%=sc.getPrice()%>" name="price00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;">
+	/ <input type="text" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;">박 
+<div class="clear"></div>
+<!-- <div class="datepicker-here" data-language='en'></div> -->
 <!--  <img src="./img/heart.jpg" align="right"> --></li>
-<li>★★★★★ 167</li>
+<li>★★★★★ 167(리뷰 평균 평점 보이게 하기)</li>
 <!-- <li class="tite_text">날짜</li> -->
 <li><span>체크인</span> <span id="checkout">체크아웃</span></li>
 <li>
-   <input type='text' id="minMaxExample" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/>
-   <input type="text" class='datepicker-here'  data-language='en' placeholder="년/월/일">
+   <input type='text' value="2018-12-28" name="check_in" id="check_in" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/ readonly style="width:38%!important;">
+   <input type="text" value="2019-01-02" name="check_out" id="check_out" class='datepicker-here'  data-language='en' placeholder="년/월/일" readonly style="width:38%!important;">
+   <input type="button" id="search_price" value="가격조회" 
+   	style="background-color:white;color:#cc1d1b;border:2px solid #cc1d1b;padding:9px;font-weight:bold;font-size:16px;height:52px;border-radius:10px;line-height:10px;">
 </li>
 <!-- <li class="tite_text">인원</li> -->
 <li>
   <input type="text" value="" placeholder="게스트 인원을 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
+  <input type="hidden" value="" name="text00" readonly>
   <nav id="form_1">
   <ol>
      <li>

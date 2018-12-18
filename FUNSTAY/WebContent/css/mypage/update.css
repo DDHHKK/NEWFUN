@@ -143,3 +143,17 @@ h1{
  }
 
 
+/* ----------김다현 수정--------- */
+
+ul {
+	list-style: none;
+}
+
+#ul1{
+	font-size: 1.1em;
+	color:#555;
+	padding :10px;
+	font-weight: bolder;
+	
+}
+

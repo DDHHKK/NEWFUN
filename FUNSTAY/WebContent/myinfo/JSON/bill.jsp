@@ -29,11 +29,11 @@ String dbUrl="jdbc:mysql://192.168.2.27:3306/funstay";
 String dbUser="root";
 String dbPass="1234";
 Connection con=DriverManager.getConnection(dbUrl,dbUser,dbPass);
-//3단계 sql 객체생성 select * from member
-String sql="select * from home h, payment p , booking b where b.payment_num=p.payment_num and b.home_num=h.home_num and p.member_email=? and p.payment_num=?;";
+//3단계 sql 
+String sql="select * from home h, payment p , booking b where b.payment_num=p.payment_num and b.home_num=h.home_num and p.payment_num=? and p.member_email=?";
 PreparedStatement pstmt=con.prepareStatement(sql);
-pstmt.setString(1,member_email);
-pstmt.setString(2,payment_num);
+pstmt.setString(1,payment_num);
+pstmt.setString(2,member_email);
 
 ResultSet rs = pstmt.executeQuery();
 

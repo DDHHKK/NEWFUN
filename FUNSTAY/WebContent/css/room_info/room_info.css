@@ -107,14 +107,14 @@ width: 400px;height: 53px;
 border-radius:10px 10px 10px 10px;
 background: #cc1d1c;
 color: white;
-margin:0px 10px 25px 0px;
+margin:0px 0px 25px 0px;
 font-size:18px;
 font-weight:600;
 border:none;
 }
 
 
-#checkout{padding-left: 160px;}
+#checkout{padding-left: 111px;}
 
 /*nav ol li:NTH-CHILD(1) {
 	font-size: 25px;
