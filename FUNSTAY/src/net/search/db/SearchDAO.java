@@ -111,6 +111,77 @@ private Connection getConnection() throws Exception{
 				if (con != null) {try {con.close();} catch (SQLException ex) {	}}
 			}
 			return SearchList;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+			public Vector getSideSearch(List list,String[] convenience,String []num_conv){
+				ResultSet rs = null;
+				PreparedStatement pstmt=null;
+				List<SearchBean> SearchList = new ArrayList<SearchBean>();
+				StringBuffer sql=new StringBuffer();//속도가 빠름
+				try{
+					
+					//1,2�뵒鍮꾩뿰寃� 硫붿꽌�뱶�샇異�
+					con = getConnection();
+		
+					sql.append("select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 from home h,  room ro, convenience c, review re, payment p where  h.home_num=ro.home_num and h.home_num=c.home_num and  h.home_num=re.home_num and re.payment_num=p.payment_num and h.address LIKE '부산' and h.start_date < '2018-12-07' and h.end_date > '2018-12-19' and re.satisfaction = 3 and (h.price between 10000 and 50000)");
+					
+					pstmt = con.prepareStatement(sql); 
+					pstmt.setInt(1, startRow-1);
+					pstmt.setInt(2, pageSize);
+					rs = pstmt.executeQuery();
+					while(rs.next()){
+						SearchBean sc=new SearchBean();
+						sc.setHome_num(rs.getInt("home_num"));
+						sc.setHost_email(rs.getString("host_email"));
+						sc.setAddress(rs.getString("address"));
+						sc.setRoom_type(rs.getString("room_type"));
+						sc.setPhoto(rs.getString("photo"));
+						sc.setRoom_subject(rs.getString("room_subject"));
+						sc.setRoom_content(rs.getString("room_content"));
+						sc.setRestroom(rs.getInt("restroom"));
+						sc.setIn_time(rs.getString("in_time"));
+						sc.setOut_time(rs.getString("out_time"));
+						sc.setPrice(rs.getInt("price"));	
+						sc.setStart_date(rs.getDate("start_date"));
+						sc.setEnd_date(rs.getDate("end_date"));
+						sc.setApply_date(rs.getDate("apply_date"));
+
+						
+						SearchList.add(sc);
+						
+					}
+
+				}catch (Exception e){
+					e.printStackTrace();
+				}finally{
+					if (rs != null) {try {rs.close();} catch (SQLException ex) {}	}
+					if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
+					if (con != null) {try {con.close();} catch (SQLException ex) {	}}
+				}
+				return SearchList;	
+			
+			
 		} 
 	
 		public void updateReadcount(int home_num){
@@ -380,6 +451,7 @@ private Connection getConnection() throws Exception{
 				}
 			}// updateReadcount() end
 
+		
 			
 		// reInsertBoard
 			public void reInsertBoard(QnaBean qb){
@@ -425,6 +497,10 @@ private Connection getConnection() throws Exception{
 		        }
 		     }
 		// reInsertBoard end		
+			
+	
+			
+		
 
 }
 

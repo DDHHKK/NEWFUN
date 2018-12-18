@@ -14,6 +14,7 @@ import net.search.Action.Qna_boardWriteAction;
 import net.search.Action.Qna_boardreWriteAction;
 import net.search.Action.RoomDetailAction;
 import net.search.Action.SearchListAction;
+import net.search.Action.SideSearch;
 
 
 
@@ -83,17 +84,17 @@ public class SearchFrontController extends HttpServlet{
 					
 			}
 		
-		//답변작성Action	
-			else if(command.equals("/Qna_boardreWrite.sc")){	
-				action=new Qna_boardreWriteAction();	
+		//옵션 검색	
+			else if(command.equals("/SideSearch.sc")){
+			
+				action=new SideSearch();	
 				try {  
 					forward = action.execute(request, response);
 				} catch (Exception e) {						
 					e.printStackTrace(); 
 				}
 					
-			} 
-	
+			}
 			
 		//이동
 		if(forward!=null){ //forward정보가 있으면

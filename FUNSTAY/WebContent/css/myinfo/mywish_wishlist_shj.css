@@ -152,8 +152,8 @@ h1{
 #listmenu_shj {
 	position: relative;
 	display:inline-block;
-
-	
+    background-color: #cc1d1d;
+	color: white;
     }
 
 #listmenu_shj > ul,
@@ -233,13 +233,13 @@ h1{
 #listmenu_shj > ul > li.active,
 #listmenu_shj > ul > li {
 
-    border-bottom: 1px solid #ebebeb;
-    border-right:1px solid #ebebeb;
+    border-bottom: 1px solid #cc1d1d;
+    border-right:1px solid #cc1d1d;
     font-size: 12px;
 }
 #listmenu_shj > ul li:hover {
-  background-color: #F5F5F5;
-  color:#fc4401;
+  background-color: #cc1d1d;
+  color:white;
 }
 #listmenu_shj > ul li:ACTIVE{
 	color:#fc4401;
@@ -256,9 +256,10 @@ h1{
   top: 0;
 }
 #listmenu_shj > ul li li {
-  background-color: #ffffff;
-  border-bottom: 1px solid #ebebeb;
+  background-color: #cc1d1d;
+  border-bottom: 1px solid #cc1d1d;
   font-size: 12px;
+  color:white;
 }
 /* #listmenu_shj > ul li.hover, */
 /* #listmenu_shj > ul li:hover {
@@ -276,7 +277,7 @@ h1{
 } */
 #listmenu_shj > ul a:link,
 #listmenu_shj > ul a:visited {
-  color: #666;
+  color: white !important;
   text-decoration: none;
 }
 /* #listmenu_shj > ul a:hover {
