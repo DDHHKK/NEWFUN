@@ -82,7 +82,9 @@ for(int i=0;i<q_list.size();i++){
 		<td>
 			<%if(qb.getRe_seq()==1){%>
 			답변완료
-			<%}else{%>
+			<%}
+			else{
+			%>
 			답변중
 			<%}%>
 		</td>
