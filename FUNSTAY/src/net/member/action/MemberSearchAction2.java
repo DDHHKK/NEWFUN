@@ -25,20 +25,30 @@ public class MemberSearchAction2 implements Action{
 		HostBean hb = new HostBean();
 		String address = request.getParameter("search_info");
 		hb.setAddress(address);
+		String start_date = "0";
+		String end_date = "0";
+		int num = 0;
+		
+		hb.setAddress(address);
+		int pageSize = 10;
+	
 		System.out.println(hb.getAddress());
 		
 		MemberDAO mdd= new MemberDAO();
 	
 
-	
+		Vector vector = mdd.getsearchList(hb, start_date, end_date,num);
 		Vector vector2 = mdd.getsearchList2(hb);
-	 
-		 List rest=(List)vector2.get(0);
-		
+	    List list=(List)vector.get(0);
+		List rest =(List)vector2.get(0);
 		HttpSession session = request.getSession();
 
+		
+		
+		session.setAttribute("list", list);
 		session.setAttribute("rest", rest);
 		session.setAttribute("address", address);
+		request.setAttribute("pageSize", pageSize);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

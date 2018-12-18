@@ -797,15 +797,34 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select * from (select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) "
+			/*String sql = "select * from (select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) "
 					+ "as min_people1, sum(max_people) as max_people1 from home h join room r "
 					+ "on h.home_num=r.home_num where h.address LIKE ? and h.start_date < ? "
-					+ "and h.end_date > ? group by h.home_num) sum_list where max_people1>= ?;";
+					+ "and h.end_date > ? group by h.home_num) sum_list where max_people1>= ?;";*/
+			String sql = "select *"
+					+ "from (select home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 "
+					+ "from room "
+					+ "group by home_num) r join (select h.address, h.room_subject, h.room_type, h.room_content, h.price, h.photo, "
+					+ "h.home_num "
+					+ "from (select b.home_num "
+					+ "from home h left join booking b "
+					+ "on h.home_num=b.home_num "
+					+ "where b.check_in between ? and ? or b.check_out between ? and ?) as t right join home h "
+					+ "on h.home_num=t.home_num "
+					+ "where t.home_num is null and h.address LIKE ? and h.start_date < ? "
+					+ "and h.end_date > ?) s "
+					+ "on r.home_num=s.home_num "
+					+ "where r.max_people1>=?";
+
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "%"+hb.getAddress()+"%");
-			pstmt.setString(2, start_date);
-			pstmt.setString(3, end_date);
-			pstmt.setInt(4, num);
+			pstmt.setString(1, start_date);
+			pstmt.setString(2, end_date);
+			pstmt.setString(3, start_date);
+			pstmt.setString(4, end_date);
+			pstmt.setString(5, "%"+hb.getAddress()+"%");
+			pstmt.setString(6, start_date);
+			pstmt.setString(7, end_date);
+			pstmt.setInt(8, num);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HostBean hb1 = new HostBean();
@@ -843,6 +862,7 @@ public class MemberDAO {
 	}
 
 	public Vector getsearchList2(HostBean hb) {
+		System.out.println("DAO들어옴전");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -854,6 +874,7 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+hb.getAddress()+"%");
 			rs = pstmt.executeQuery();
+			System.out.println("DAO들어옴후dddd"+hb.getAddress());
 			while (rs.next()) {
 				HostBean hb1 = new HostBean();
 				hb1.setAddress(rs.getString("address"));
@@ -864,10 +885,11 @@ public class MemberDAO {
 				hb1.setPrice(rs.getInt("price"));
 				hb1.setPhoto(rs.getString("photo"));
 			
-
+				System.out.println("DAO들어옴후");
 				goodsList.add(hb1);
 
 			}
+			System.out.println(goodsList.size());
 			vector.add(goodsList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -907,7 +929,7 @@ public class MemberDAO {
 			while (rs.next()) {
 				MyWishBean sb1 = new MyWishBean();
 				sb1.setHome_photo(rs.getString("home_photo"));
-				System.out.println(sb1.getHome_photo());
+				System.out.println("getheartphoto"+sb1.getHome_photo());
 				goodsList.add(sb1);
 			}
 			
@@ -933,5 +955,49 @@ public class MemberDAO {
 		}
 		return vector;
 	}
+	
+	public Vector getsatisfactionphoto() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector vector = new Vector();
+		List goodsList = new ArrayList();
+		try {
+			con = getConnection();
+			String sql = "select sum(home_satisfaction), home_num, home_photo from wish group by home_num, home_photo order by sum(home_satisfaction) desc";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			
+			while (rs.next()) {
+				MyWishBean sb1 = new MyWishBean();
+				sb1.setHome_photo(rs.getString("home_photo"));
+				System.out.println("getsatisfactionphoto"+sb1.getHome_photo());
+				goodsList.add(sb1);
+			}
+			
+			vector.add(goodsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return vector;
+	}
+
 
 }// class end

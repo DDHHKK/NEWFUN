@@ -12,7 +12,7 @@ import net.search.controller.Action;
 import net.search.controller.ActionForward;
 import net.search.db.SearchDAO;
 
-public class Qna_boardWriteAction implements Action{
+public class Qna_boardreWriteAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -25,9 +25,9 @@ public class Qna_boardWriteAction implements Action{
 /*		qb.setQnA_num(Integer.parseInt(request.getParameter("qnA_num")));*/
 		qb.setSubject(request.getParameter("subject"));
 		qb.setContent(request.getParameter("content")); 
-		qb.setQnA_pass(request.getParameter("qnA_pass"));
+		/*qb.setQnA_pass(request.getParameter("qnA_pass"));*/
 		qb.setMember_email(request.getParameter("member_email"));
-		qb.setHome_num(Integer.parseInt(request.getParameter("home_num")));
+/*		qb.setHome_num(Integer.parseInt(request.getParameter("home_num")));*/
 	/*	qb.setRe_ref(Integer.parseInt(request.getParameter("re_ref")));
 		qb.setRe_lev(Integer.parseInt(request.getParameter("re_lev")));
 		qb.setRe_seq(Integer.parseInt(request.getParameter("re_seq")));*/

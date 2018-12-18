@@ -152,7 +152,7 @@ function func()
    <div id="buttons_sh">
     <button type="submit"class="btn" onclick="ch_pw()">저장하기</button>
     <input type="button" value="취소하기" class="btn" onclick="history.back()">
-    <input type="button" value="탈퇴하기" class="btn1" onclick="location.href='./MemberDelete.me'">
+    <input type="button" value="계정 비활성화" class="btn1" onclick="location.href='./MemberDelete.me'">
    </div>
    
   </form> 

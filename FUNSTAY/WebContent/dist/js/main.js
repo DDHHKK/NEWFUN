@@ -68,5 +68,8 @@ $(document).ready(function(){
     });
 });
 
-
-
+function heartphoto(){
+	var search_info = document.getElementById("text_1_WS").value;
+	location.href='./MemberSearchAction2.me?search_info='+search_info;
+	return;
+}

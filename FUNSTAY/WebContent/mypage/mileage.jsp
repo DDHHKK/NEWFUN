@@ -48,7 +48,7 @@
 	<!-- 추천숙소의 섬네일 -->
 	<div class="showsnakicon_sg">
 		<a href="#">
-			<img src="./img/photo2.jpg" style="width: 100%;height: 260px;">
+			<img src="./img/christmas.jpg" style="width: 100%;height: 260px;">
 		</a>
 	</div>
 	
@@ -107,10 +107,16 @@
   			<td><%=pb.getPayment_date() %></td>
   			<td><%=pb.getPayment_status() %></td>
   			<td><%=pb.getPayment_num() %></td>
+  		<%if(pb.getPayment_status().equals("결제취소")&& pb.getUsed_m()!=0 ){ %>
+  			<td>+<%=pb.getUsed_m() %></td>
+  		<% }else { %>
   			<td><%=pb.getUsed_m() %></td>
-  			<td><%=pb.getStorage_m() %></td>
+  		<%}if(pb.getPayment_status().equals("결제취소")){ %>
+  			<td>- <%=pb.getStorage_m() %></td>
+  		<% }else { %>
+  		<td>+ <%=pb.getStorage_m() %></td>
   		</tr>
-	<%}%>
+	<%}  }%>
   	</table>
 	<!-- 검색결과 끝 -->
   

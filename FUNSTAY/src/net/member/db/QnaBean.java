@@ -12,8 +12,8 @@ public class QnaBean {
 	private int home_num;
 	private Date QnA_date;
 	private int re_ref; //답글의 그룹번호 = 기준번호
-	private int re_lev; //들여쓰기
-	private int re_seq; //글의상태 여부 0:답변중 1:답변완료 2:답변글
+	private int re_lev; //0:문의글 1:답변글
+	private int re_seq; //글의상태 여부 0:답변중 1:답변완료
 	private String home_subject;
 	
 	public String getHome_subject() {
