@@ -108,10 +108,10 @@ String Member_email = (String)request.getAttribute("Member_email");
     	<label for="p3">3</label>
     	<input type="radio" name="star" value="4" id="p4">
     	<label for="p4">4</label>
-    	<input type="radio" name="star" value="5" id="p5">
+    	<input type="radio" name="star" value="5" id="p5" checked>
     	<label for="p5">5</label>
   	</span>
-  	<output for="star-input"><b>0</b>점</output>						
+  	<output for="star-input"><b>5</b>점</output>						
 </span>
 <script src="js/room_info/jquery-1.11.3.min.js"></script>
 <script src="js/room_info/star.js"></script>
@@ -131,7 +131,7 @@ String Member_email = (String)request.getAttribute("Member_email");
 <tr class="ttr">
 <td class="ttd">만족도</td>
 <td class="ttd2">
-<input type="radio" name="satisfaction" value="5" checked>★★★★★
+<input type="radio" class="ra" name="satisfaction" value="5" checked>★★★★★
 <input type="radio" name="satisfaction" value="4">★★★★
 <input type="radio" name="satisfaction" value="3">★★★
 <input type="radio" name="satisfaction" value="2">★★
