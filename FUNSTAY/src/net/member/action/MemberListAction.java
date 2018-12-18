@@ -22,7 +22,7 @@ public class MemberListAction implements Action{
 		
 		
 		int count = mdao.getmemberCount();
-		int pageSize =3;
+		int pageSize =10;
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum==null)	
 		{
@@ -30,7 +30,7 @@ public class MemberListAction implements Action{
 		}
 		
 		int currentPage=Integer.parseInt(pageNum);
-		System.out.println(currentPage);
+		/*System.out.println(currentPage);*/
 		int pageBlock =5;
 		int startRow = (currentPage-1)*pageSize+1;
 		int endRow = currentPage*pageSize;

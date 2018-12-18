@@ -9,13 +9,21 @@ public class MemberBean {
 	private String birth;
 	private int mileage;
 	private int member_num;
-	private String search_info; //°Ë»öÇÏ´Â³»¿ë ³Ö´Â  º¯¼ö
-	private String date_a; //´Þ·Â³¯Â¥ ¾Õ¿¡²¨ ³Ö´Â º¯¼ö
-	private String date_b; //´Þ·Â³¯Â¥ µÚ¿¡²¨ ³Ö´Â  º¯¼ö
-	private int text11; //¼ºÀÎ ÀÎ¿ø ³Ö´Â º¯¼ö
-	private int text12; //¾ÆÀÌ  ÀÎ¿ø ³Ö´Â º¯¼ö
+	private String search_info; //ï¿½Ë»ï¿½ï¿½Ï´Â³ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½  ï¿½ï¿½ï¿½ï¿½
+	private String date_a; //ï¿½Þ·Â³ï¿½Â¥ ï¿½Õ¿ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String date_b; //ï¿½Þ·Â³ï¿½Â¥ ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½  ï¿½ï¿½ï¿½ï¿½
+	private int text11; //ï¿½ï¿½ï¿½ï¿½ ï¿½Î¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private int text12; //ï¿½ï¿½ï¿½ï¿½  ï¿½Î¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private String image;
+	private int delete_member;
+	
 
+	public int getDelete_member() {
+		return delete_member;
+	}
+	public void setDelete_member(int delete_member) {
+		this.delete_member = delete_member;
+	}
 	public String getEmail() {
 		return email;
 	}

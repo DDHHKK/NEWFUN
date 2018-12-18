@@ -19,10 +19,12 @@ public class PassCheckAction implements Action{
 		String email = (String)session.getAttribute("email");
 		String pass = (String)request.getParameter("pass");
 		
-		System.out.println(email);
-		System.out.println(pass);
+		int delete_member=1;
+		/*System.out.println(email);
+		System.out.println(pass);*/
+		
 		MemberDAO mdao = new MemberDAO();
-		int check = mdao.userCheck(email, pass);
+		int check = mdao.userCheck(email, pass,delete_member);
 		
 		if (check == 1) {
 

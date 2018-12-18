@@ -69,12 +69,6 @@ private Connection getConnection() throws Exception{
 	}
 	
 	
-	
-	
-	
-
-	
-	
 	@SuppressWarnings("resource")
 	public int insertHost(HostBean hb,String email, int end_date2) {
 		
@@ -99,7 +93,7 @@ private Connection getConnection() throws Exception{
 				home_num=rs.getInt("max(home_num)")+1;
 			}
 			
-			System.out.println(home_num);
+			/*System.out.println(home_num);*/
 			  
 			sql 
 			= "insert into home"
@@ -348,36 +342,7 @@ public void insertConv(ConvBean cb,int home_num) {
 		}
 		return result;		
 	}
-	
-/*	// 호스트 여부 체크
-	public int home_statusCheck(int home_status){
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int result = -1;
-		try{
-			con = getConnection();
-			String sql = "select * from host where home_status=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, home_status);
-			
-			rs = pstmt.executeQuery();
-			if(rs.next()){
-				result=1;
-			}else{result=0;}
-		}catch(Exception e){e.printStackTrace();
-		}finally{
-			try{
-				if(rs!=null){rs.close();}
-				if(pstmt!=null){pstmt.close();}
-				if(con!=null){con.close();}
-			}catch(SQLException e){}
-		}
-		return result;		
-	}*/
-	
-	
-	
+		
 	
 	// 호스트 cash 누적적립/인출
 	public int[] getCashAmount(String host_email){

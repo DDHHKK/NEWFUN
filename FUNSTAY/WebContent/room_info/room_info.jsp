@@ -30,6 +30,7 @@
 	List<RoomBean> rooms = (List)request.getAttribute("rooms");
 	List<BedBean> bed_list = (List)request.getAttribute("bed_list");
 	String room_subject = sc.getRoom_subject();
+	int R_max_people = 0;
 	%>
 			
 <!-- room_wrapper -->
@@ -93,6 +94,7 @@
 						<b><%=rb.getRe_room()%>번방</b><br>
 						<%-- <%=rb.getRoom_num()%><br> --%>
 						최대 <%=rb.getMax_people()%>명<br>
+						<%R_max_people=R_max_people+rb.getMax_people(); %>
 						<%for(int z=0; z<bb.getSingle_bed(); z++){ %>
 							<img src="./img/host/single_bed.png" style="width:35px;height:35px;">
 						<%
@@ -496,26 +498,44 @@ for (i = 0; i < acc.length; i++) {
 <input type="hidden" name="host_email" value="<%=sc.getHost_email() %>">
 <input type="hidden" name="home_num" value="<%=sc.getHome_num()%>">
 <ol>
-<li class="tite_text"><input type="hidden" value="<%=sc.getPrice()%>" name="price11">
+<li class="tite_text" style="margin-bottom:0;padding-bottom:0;">
+	<input type="hidden" value="<%=sc.getPrice()%>" name="price11">
 	<input type="hidden" value="<%=sc.getPrice()%>" name="price22">
-	<input type="text" value="<%=sc.getPrice()%>" name="price00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;">
-	/ <input type="text" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;">박 
-<div class="clear"></div>
-<!-- <div class="datepicker-here" data-language='en'></div> -->
-<!--  <img src="./img/heart.jpg" align="right"> --></li>
-<li>★★★★★ 167(리뷰 평균 평점 보이게 하기)</li>
-<!-- <li class="tite_text">날짜</li> -->
-<li><span>체크인</span> <span id="checkout">체크아웃</span></li>
+	<input type="text" value="<%=sc.getPrice()%>" name="price00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:120px;" readonly>
+	<input type="text" value="/" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:20px;" readonly >
+	<input type="text" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:40px;" readonly>
+	<input type="text" value="박" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:25px;" readonly>
+	<div class="clear"></div>
+</li>
+<li>
+	<div id="mySidenav" class="sidenav">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	<!-- <div class="clear"></div> -->
+		+기본요금<br>
+		+추가요금<br>
+		+수수료<br>
+		<hr>
+		<span style="float:right;">합계</span>
+	</div>
+</li>
+<!-- <li>
+	★★★★★ 167(리뷰 평균 평점 보이게 하기)
+</li> -->
+<li>
+	<span>체크인</span> <span id="checkout">체크아웃</span>
+</li>
 <li>
    <input type='text' value="2018-12-28" name="check_in" id="check_in" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/ readonly style="width:38%!important;">
    <input type="text" value="2019-01-02" name="check_out" id="check_out" class='datepicker-here'  data-language='en' placeholder="년/월/일" readonly style="width:38%!important;">
-   <input type="button" id="search_price" value="가격조회" 
+   <input type="button" id="search_price" value="가격조회" onclick="openNav()"
    	style="background-color:white;color:#cc1d1b;border:2px solid #cc1d1b;padding:9px;font-weight:bold;font-size:16px;height:52px;border-radius:10px;line-height:10px;">
 </li>
 <!-- <li class="tite_text">인원</li> -->
 <li>
-  <input type="text" value="" placeholder="게스트 인원을 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
+  <input type="hidden" value="<%=R_max_people%>" name="R_max_people">
   <input type="hidden" value="" name="text00" readonly>
+  <input type="text" value="" placeholder="게스트 인원을 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
+ 
   <nav id="form_1">
   <ol>
      <li>
@@ -536,7 +556,7 @@ for (i = 0; i < acc.length; i++) {
      </ol>
   </nav>
 </li>
-<li><input type="submit" value="예약하기" id="btn1"></li>
+<li><input type="submit" value="예약하기" id="btn1" class="reserve_btn1_sg"></li>
 <div class="clear"></div>
 <!-- <hr> -->
 <!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->
@@ -548,6 +568,21 @@ for (i = 0; i < acc.length; i++) {
  </div>
   </div>
 </div>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.height = "150px";
+  document.getElementById("mySidenav").style.padding = "20px";
+  document.getElementById("mySidenav").style.border = "2px dashed #cc1d1c";
+  //document.getElementById("main").style.marginbottom = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.height = "0";
+  document.getElementById("mySidenav").style.padding = "0";
+  document.getElementById("mySidenav").style.border = "none";
+  //document.getElementById("main").style.marginbottom= "0";
+}
+</script>
 <script>
 $(document).ready(function () {
 	  //your code here

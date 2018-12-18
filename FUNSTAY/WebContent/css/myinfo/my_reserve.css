@@ -57,7 +57,7 @@ color: #100f0f;
 
 
 .w3-container .w3-teal{
-	border: none;
+	border: 1px solid red;
 	
 }
 
@@ -79,7 +79,8 @@ color: #100f0f;
 
 .w3-teal, .w3-hover-teal:hover {
     color: #000080!important;
-    background-color: #429494!important;
+    background-color: #cc1b1b!important;
+    text-align: center;
 }
 
 .w3-container {
@@ -96,6 +97,16 @@ color: #100f0f;
 .receipt_table_DY td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
+}
+
+/* .receipt_table_DY td:NTH-CHILD(1){
+	background-color:green;
+} */
+
+.sub_DY{
+	/* background-color:green; */
+	font-size: 2em;
+	text-align: center;
 }
 
 .receipt_ti_DY {

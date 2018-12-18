@@ -337,4 +337,12 @@ cursor: pointer;
 
 .dropdown:hover .dropdown-content {display: block;}
 
+
+
+
   
+ 
+#long_img>img{
+	margin: 4% 5%;
+	width:1650px; height:300px;
+	}
