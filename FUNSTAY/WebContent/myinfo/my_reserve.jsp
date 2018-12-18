@@ -105,10 +105,13 @@ if(i%3==0){
 
 
 <div id="room_sub">
-<%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> <br>
+<%=BeforeB.getRoom_subject()%> <br>
 </div>
-	
-	
+	<%
+String email=(String)session.getAttribute("email");
+%>
+ <input type="hidden" value="<%=email%>" id="member_email_DY">
+<%--<input type="hidden" value="<%=BeforeB.getPayment_num()%>" id="payment_num_DY">	 --%>
 	
 	
 	
@@ -118,95 +121,12 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id09').style.display='block'" class="bill_butt_DY">영수증</button>
+  <button class="bill_butt_DY" id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id09').style.display='block'">영수증</button>
   </div>
+  <%-- class="<%=BeforeB.getPayment_num()%>" --%>
+ 
  <!--영수증 버튼 끝  -->  
  <hr>
- 
- 
- 
- 
- 
- 
- 
- <!--영수증 시작  -->
-  <div id="id09" class="w3-modal">
-    <div class="w3-modal-content w3-card-4">
-      <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('id09').style.display='none'" 
-        class="w3-button w3-display-topright">&times;</span>
-        <h2 class="site_DY">Funstay</h2>
-      </header>
-      <div class="w3-container">
-        <table class="receipt_table_DY">
-
-<%
-/* 
-List bookingList=(List)request.getAttribute("bookingList");
-List paymentList=(List)request.getAttribute("paymentList");
-List hostList=(List)request.getAttribute("hostList");  */
-List beforeList2=(List)request.getAttribute("beforeList");
-for(int i2=0; i2<beforeList2.size(); i2++){
-	/* BookingBean bb=(BookingBean)bookingList.get(i);
-	PaymentBean pb=(PaymentBean)paymentList.get(i);
-	HostBean hb=(HostBean)hostList.get(i); */
-	BeforeBean BeforeB2=(BeforeBean)beforeList2.get(i2);
-	
-if(i%3==0){
-	%>
-	<tr>
-	<% 
-}
-%>
-
-         <tr>
-          <td colspan="2" class="receipt_ti_DY"><%=BeforeB2.getRoom_subject() %></td>
-         </tr>
-         <tr>
-          <td>체크인</td> 
-          <td><%=BeforeB2.getCheck_in() %></td>
-         </tr>
-         <tr>
-          <td>체크아웃</td>
-          <td><%=BeforeB2.getCheck_out() %></td>
-         </tr>
-         <tr>
-          <td>Room_type</td>
-          <td><%=BeforeB2.getRoom_type() %></td>
-         </tr>
-         <tr>
-          <td>UserName</td>
-          <td><%=BeforeB2.getMember_email() %></td>
-         </tr>
-         <tr>
-          <td>인원</td>
-          <td><%=BeforeB2.getPeople() %></td>
-         </tr>
-         <tr>
-          <td>총 요금</td>
-          <td><%=BeforeB2.getSum_price() %></td>
-         </tr>
-       
-	
-
-<% if(i%3==2) { %>
-</tr>
-  <% } }%> 
-  
- </table>
-      </div>
-    
-    </div>
-  </div>  
- <!--영수증 끝  -->
- 
- 
- 
- 
- 
- 
- 
- 
  
  
  
@@ -519,7 +439,7 @@ if(i%3==0){
 <!--완료된 숙소 영수증 모달 팝업창 끝 -->  
 	
  
- 
+ <!--완료된 숙소 영수증 모달 팝업창 시작 -->
   <div id="id09" class="w3-modal">
     <div class="w3-modal-content w3-card-4">
       <header class="w3-container w3-teal"> 
@@ -593,7 +513,7 @@ if(i%3==0){
       </footer> -->
     </div>
   </div>  
- 
+ <!--완료된 숙소 영수증 모달 팝업창 끝 -->  
  
 
 
@@ -743,13 +663,18 @@ function button_event(payment_num){
 }
 //ajax 영수증
   $(document).ready(function(){
-    
+	  var member_email=$('#member_email_DY').val();
+	   //alert(member_email); //alert주석처리하고 아래 getJSON주석해제
+	   //var payment_num=$('#payment_num_DY').val();
     
 	 $('#bill_butt_DY').click(function(){
+		 var payment_num=$(this).attr('id');
+		   // alert(payment_num);
+		 
 		 $.getJSON({
 			 dataType:"json",
 			 url:"./myinfo/JSON/bill.jsp",
-			 /* data:{payment_num:payment_num}, */
+			 data:{payment_num:payment_num,member_email:member_email},
 			 success:function(data){
 			 
 		  	  $.each(data,function(index,item){
