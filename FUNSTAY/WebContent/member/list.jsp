@@ -137,9 +137,9 @@ text-align: center;
 	int endPage= ((Integer)request.getAttribute("endPage")).intValue();
 	List<MemberBean> bl =(List<MemberBean>)request.getAttribute("bl");
 	
-	System.out.println(startPage);
+/* 	System.out.println(startPage);
 	System.out.println(endPage);
-	System.out.println(endPage);
+	System.out.println(endPage); */
 	
 	%>
 	<div id="pagecont">
@@ -163,11 +163,11 @@ text-align: center;
 	<br><br>
 	<hr>
 	<br><br>
-	<div id="sbtn">
+<!-- 	<div id="sbtn">
 	<input type="button" class="in_btn" value="메인이동" onclick="location.href='./Main.me'">
 	<input type="button" class="in_btn" value="취소" onclick="location.href='./Main.me'">
 	</div>
-
+ -->
 
 
 

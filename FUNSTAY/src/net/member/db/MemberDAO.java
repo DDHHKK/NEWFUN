@@ -875,7 +875,7 @@ public class MemberDAO {
 	}
 
 	public Vector getsearchList2(HostBean hb) {
-		System.out.println("DAO들어옴전");
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -887,7 +887,7 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+hb.getAddress()+"%");
 			rs = pstmt.executeQuery();
-			System.out.println("DAO들어옴후dddd"+hb.getAddress());
+
 			while (rs.next()) {
 				HostBean hb1 = new HostBean();
 				hb1.setAddress(rs.getString("address"));
@@ -898,7 +898,6 @@ public class MemberDAO {
 				hb1.setPrice(rs.getInt("price"));
 				hb1.setPhoto(rs.getString("photo"));
 			
-				System.out.println("DAO들어옴후");
 				goodsList.add(hb1);
 
 			}
@@ -934,7 +933,11 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select sum(heart), home_num, home_photo from wish group by home_num, home_photo order by sum(heart) desc";
+			String sql = "select sum(a.heart), a.home_photo, substr(b.address,1,2) as address, a.home_num "
+					+ "from wish a  join home b "
+					+ "on a.home_num=b.home_num "
+					+ "group by a.home_photo, b.address "
+					+ "order by sum(heart) desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -942,7 +945,9 @@ public class MemberDAO {
 			while (rs.next()) {
 				MyWishBean sb1 = new MyWishBean();
 				sb1.setHome_photo(rs.getString("home_photo"));
-				System.out.println("getheartphoto"+sb1.getHome_photo());
+				sb1.setHome_num(rs.getInt("home_num"));
+				System.out.println("hearphto" + sb1.getHome_photo());
+				System.out.println("hearphto" + sb1.getHome_num());
 				goodsList.add(sb1);
 			}
 			
