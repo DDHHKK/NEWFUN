@@ -453,3 +453,43 @@ span.star-prototype > * {
     max-width:80px;   
 }
 
+/* 가격조회 css */
+.sidenav {
+  height: 0; /* 100% Full-height */
+  width: 395px; /* 0 width - change this with JavaScript */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.7s; /* 0.5 second transition effect to slide in the sidenav */
+  /* border-top: 2px dashed #cc1d1c; */
+  border-left:none !important;
+  border-right:none !important;
+  border-bottom:none !important;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+
+/* /* The navigation menu links */
+.sidenav a {
+	/* padding:5px; */
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    float: right;
+    
+}
+
+When you mouse over the navigation links, change their color
+.sidenav a:hover {
+  color: #f1f1f1;
+} */
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
