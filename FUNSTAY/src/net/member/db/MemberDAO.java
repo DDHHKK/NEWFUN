@@ -171,7 +171,7 @@ public class MemberDAO {
 
 			con = getConnection();
 
-			String sql = "select pass from member where email=?,delete_member=?";
+			String sql = "select pass from member where email=? and delete_member=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email);
 			pstmt.setInt(2, 1);

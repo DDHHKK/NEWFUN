@@ -24,7 +24,7 @@ public class MemberLoginAction implements Action{
 		/*System.out.println("email : "+email);
 		System.out.println("pass : "+pass);*/
 		
-		int delete_member=1;
+		int delete_member=0;
 		
 		MemberDAO mdao = new MemberDAO();
 		int check = mdao.userCheck(email, pass,delete_member);
@@ -34,7 +34,8 @@ public class MemberLoginAction implements Action{
 			int result = hdao.hostCheck(email);
 			HttpSession session = request.getSession();
 			session.setAttribute("hostCheck",result );
-			System.out.println(result);
+			
+			/*System.out.println(result);*/
 			//email 세션값 생성 메인이동
 			session.setAttribute("email", email);
 			response.setContentType("text/html; charset=UTF-8");
@@ -52,7 +53,7 @@ public class MemberLoginAction implements Action{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('비밀번호틀림');");
+			out.println("alert('아이디 또는 비밀번호 입력이 잘못되었습니다.');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();
@@ -61,7 +62,7 @@ public class MemberLoginAction implements Action{
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('아이디없음');");
+		out.println("alert('아이디 또는 비밀번호 입력이 잘못되었습니다.');");
 		out.println("history.back();");
 		out.println("</script>");
 		out.close();	

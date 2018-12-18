@@ -21,7 +21,7 @@ public class MemberLoginAction2 implements Action{
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		
-		int delete_member=1;
+		int delete_member=0;
 		
 		MemberDAO mdao = new MemberDAO();
 		int check = mdao.userCheck(email, pass,delete_member);
@@ -39,7 +39,7 @@ public class MemberLoginAction2 implements Action{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('비밀번호틀림');");
+			out.println("alert('아이디 또는 비밀번호 입력이 잘못되었습니다.');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();
@@ -48,7 +48,7 @@ public class MemberLoginAction2 implements Action{
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('아이디없음');");
+		out.println("alert('아이디 또는 비밀번호 입력이 잘못되었습니다.');");
 		out.println("history.back();");
 		out.println("</script>");
 		out.close();
