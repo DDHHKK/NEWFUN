@@ -62,7 +62,7 @@ public class MemberLoginAction implements Action{
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('아이디 또는 비밀번호 입력이 잘못되었습니다.');");
+		out.println("alert('존재하지 않는 아이디입니다.');");
 		out.println("history.back();");
 		out.println("</script>");
 		out.close();	
