@@ -2,7 +2,7 @@
 
 #content_DY {
 	 
-    border:1px solid;
+    
     padding-left:15px;
     width: 77%;
     min-height: 500px;
@@ -10,6 +10,33 @@
 
 	
 }
+
+h1 {
+	/* border: 1px solid black; */
+    border-left: 5px solid #cc1d1d;
+    padding-left: 7px;
+    color: #cc1d1d;
+    margin-bottom: 70px;
+    /* padding: 0px 0; */
+    box-sizing: border-box;
+    height: 46px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.ttd{
+	text-align: center;
+	border:1px solid #cccccc;
+	padding : 10px;
+}
+
+.ttd2 {
+	border:1px solid #cccccc;
+	padding-left: 10px;
+}
+
 
 
 /*별점 매기기  */
@@ -35,18 +62,29 @@ textarea {
 
 /*placeholder글자색과 글자크기  */
 textarea::placeholder {
-  color: #6b5b95;
-  font-size: 1em;
+  color: #666;
+  font-size: 0.8em;
 }
 /*placeholder글자 끝 */
 
 
 /*버튼  */
 .review_button_DY {
-	font-size: 2em;
-    background-color: #6b5b95;
+	font-size: 1.2em;
+    background-color: #cc1d1d;
     color: white;
+    padding: 10px 30px;
+    float: right;
+    border:none;
+    font-weight: bolder;
+    margin: 10px;
 }
+
+.review_button_DY:hover{
+	cursor: pointer;
+	background-color: #991515;
+}
+
 /*버튼  */
 
 
