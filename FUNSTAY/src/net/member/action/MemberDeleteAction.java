@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.host.db.HostBean;
+import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
 
 public class MemberDeleteAction implements Action{
@@ -21,15 +23,18 @@ public class MemberDeleteAction implements Action{
 		String pass = (String)request.getParameter("pass");
 		String pass1 = (String)request.getParameter("pass1");
 		
+		MemberBean mb=new MemberBean();
 		
 		MemberDAO mdao = new MemberDAO();
-		int check = mdao.deleteMember(email, pass);
+		HostBean hb=new HostBean();
+		String host_email=(String)session.getAttribute("email");
+		
+		int check = mdao.deleteMember(mb,email,host_email);
 	
 		
 		if (check == 1) {
 
-			session.invalidate();
-			
+			session.invalidate();		
 			forward = new ActionForward();
 			forward.setPath("./Main.me");
 			forward.setRedirect(true);

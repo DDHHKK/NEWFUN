@@ -41,7 +41,7 @@ public class HostModifyAction implements Action{
 		cb.setParty(Integer.parseInt(num_conv[8]));
 		cb.setPickup(Integer.parseInt(num_conv[9]));
 		cb.setElevator(Integer.parseInt(num_conv[10]));
-		System.out.println(Integer.parseInt(num_conv[10]));
+		/*System.out.println(Integer.parseInt(num_conv[10]));*/
 		cb.setBreakfast(Integer.parseInt(num_conv[11]));
 		cb.setSmoking(Integer.parseInt(num_conv[12]));
 		cb.setLaundry(Integer.parseInt(num_conv[13]));

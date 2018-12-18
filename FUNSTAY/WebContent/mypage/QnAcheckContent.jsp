@@ -57,7 +57,11 @@ for(int i=0;i<q_list.size();i++){
 			<td><b>등록일</b></td><td><%=qb.getQnA_date() %></td>
 			<td><b>답변여부</b></td><td>
 				<%if(qb.getRe_seq()==1){%>답변완료
-				<%}else{%>답변중<%}%>
+				<%}else{%>답변중
+				<input type="button" value="답글쓰기"
+				onclick="location.href = './Qna_boardreWrite.sc?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>&re_lev=<%=qb.getRe_lev()%>&re_seq=<%=qb.getRe_seq()%>&QnA_date=<%=qb.getQnA_date() %>&Home_subject=<%=qb.getHome_subject() %>'">
+				
+				<%}%>
 				</td>
 		</tr>
 		<tr>

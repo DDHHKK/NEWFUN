@@ -11,6 +11,7 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'
  integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <style>
 <!-- css -->
 
@@ -125,6 +126,7 @@
 <!-- 페이지 default 링크 시작 -->
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="./css/default/login.css" rel="stylesheet">
+<link href="./css/login1.css" rel="stylesheet">
 <link href="./css/default/default.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- 페이지 default 링크 끝-->
@@ -180,19 +182,19 @@
 
 <div id="btn2">
 <input type="button" value="전체" 
- onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1" name="all" id="all">
 <input type="button" value="숙소"
- onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1" name="accom">
 <input type="button" value="결제"
- onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1" name="pay">
 <input type="button" value="예약"
-  onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)"class="btn1">
+  onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)"class="btn1" name="resev">
 <input type="button" value="계정"
- onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1" name="account">
 <input type="button" value="요금/수수료"
- onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1" name="money">
 <input type="button" value="기타" 
- onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1">
+ onmouseover="over(this)" onmouseout="out(this)" onClick="clicks(this)" class="btn1" name="etc">
 </div>
 <!-- id가 admin이면 회원목록이 보이도록 하자. -->
 
@@ -341,6 +343,8 @@ function over(obj){
 	}
 	obj.className = "act";
 	}
+	
+        
 </script>
  
 
