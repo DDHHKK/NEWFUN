@@ -354,7 +354,7 @@ if (email.equals("admin")) {
 </nav>
 </div>
 <nav>
-<p id="font2">지역 추천 여행을 다녀와 보세요<p>
+<p id="font2">FUNSTAY가 추천하는 지역으로 여행을 떠나보세요.<p>
 
 <table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
  <script>   <!--랜덤으로 나올 사진들 배열에 넣음.--> 
@@ -442,10 +442,14 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 
 </nav>
 
+<nav id="long_img">
+<img src="./img/AA111.jpg" width="1650px" height="300"><button id="long_btn">숙소 보기 ></button>
+</nav>
+
 
 
 <nav>
-<p id="font2">좋아요 TOP5 지역으로 떠나보세요<p>
+<p id="font2">♥ 좋아요 TOP5 지역은 어떠세요?<p>
 
 <table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
 
@@ -514,17 +518,21 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
  
 </nav>
 
+
+
+
+
 <nav>
-<p id="font2">게스트의 만족도 TOP5 지역으로 떠나보세요<p>
+<p id="font2">★ 게스트의 만족도 TOP5 지역으로 떠나보세요<p>
 
 <table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
 
 <tr>
-<td class="top_pad_ws">TOP1</td>
-<td class="top_pad1_ws">TOP2</td>
-<td class="top_pad1_ws">TOP3</td>
-<td class="top_pad1_ws">TOP4</td>
-<td class="top_pad1_ws">TOP5</td>
+<td class="top_pad_ws">★★★★★</td>
+<td class="top_pad1_ws">★★★★</td>
+<td class="top_pad1_ws">★★★</td>
+<td class="top_pad1_ws">★★</td>
+<td class="top_pad1_ws">★</td>
 </tr>
 
    <tr> 
