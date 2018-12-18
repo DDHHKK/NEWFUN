@@ -103,7 +103,9 @@ color: #100f0f;
 } */
 
 .sub_DY{
-	background-color:green;
+	/* background-color:green; */
+	font-size: 2em;
+	text-align: center;
 }
 
 .receipt_ti_DY {
