@@ -105,11 +105,15 @@ if(i%3==0){
 
 
 <div id="room_sub">
-<%=BeforeB.getRoom_subject()%><%-- <img src="./upload/<%=hb.getPhoto().split(",")[0]%>" width="300" height="300"> --%> <br>
+<%=BeforeB.getRoom_subject()%> <br>
 </div>
+<%
+String email=(String)session.getAttribute("email");
+%>
+ <input type="hidden" value="<%=email%>" id="member_email_DY">
+<%--<input type="hidden" value="<%=BeforeB.getPayment_num()%>" id="payment_num_DY">	 --%>
 	
-	
-	
+}	
 	
 	
 	
@@ -118,94 +122,12 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id09').style.display='block'" id="bill_butt_DY">영수증</button>
+  <button class="bill_butt_DY" id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id09').style.display='block'">영수증</button>
   </div>
+  <%-- class="<%=BeforeB.getPayment_num()%>" --%>
+ 
  <!--영수증 버튼 끝  -->  
  <hr>
- 
- 
- 
- 
- 
- 
- 
- <!--영수증 시작  -->
-  <div id="id09" class="w3-modal">
-    <div class="w3-modal-content w3-card-4">
-      <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('id09').style.display='none'" 
-        class="w3-button w3-display-topright">&times;</span>
-        <h2 class="site_DY">Funstay</h2>
-      </header>
-      <div class="w3-container">
-        <table class="receipt_table_DY">
-
-<%
-/* 
-List bookingList=(List)request.getAttribute("bookingList");
-List paymentList=(List)request.getAttribute("paymentList");
-List hostList=(List)request.getAttribute("hostList");  */
-List beforeList2=(List)request.getAttribute("beforeList");
-for(int i2=0; i2<beforeList2.size(); i2++){
-	/* BookingBean bb=(BookingBean)bookingList.get(i);
-	PaymentBean pb=(PaymentBean)paymentList.get(i);
-	HostBean hb=(HostBean)hostList.get(i); */
-	BeforeBean BeforeB2=(BeforeBean)beforeList2.get(i2);
-	
-if(i%3==0){
-	%>
-	<tr>
-	<% 
-}
-%>
-
-         <tr>
-          <td colspan="2" class="receipt_ti_DY"><%=BeforeB2.getRoom_subject() %></td>
-         </tr>
-         <tr>
-          <td>체크인</td> 
-          <td><%=BeforeB2.getCheck_in() %></td>
-         </tr>
-         <tr>
-          <td>체크아웃</td>
-          <td><%=BeforeB2.getCheck_out() %></td>
-         </tr>
-         <tr>
-          <td>Room_type</td>
-          <td><%=BeforeB2.getRoom_type() %></td>
-         </tr>
-         <tr>
-          <td>UserName</td>
-          <td><%=BeforeB2.getMember_email() %></td>
-         </tr>
-         <tr>
-          <td>인원</td>
-          <td><%=BeforeB2.getPeople() %></td>
-         </tr>
-         <tr>
-          <td>총 요금</td>
-          <td><%=BeforeB2.getSum_price() %></td>
-         </tr>
-       
-	
-
-<% if(i%3==2) { %>
-</tr>
-  <% } }%> 
-  
- </table>
-      </div>
-    
-    </div>
-  </div>  
- <!--영수증 끝  -->
- 
- 
- 
- 
- 
- 
- 
  
  
  
@@ -236,8 +158,12 @@ if(i%3==0){
 
 <% if(i%3==2) { %>
 </tr>
-  <% } }%> 
+  <% } //}%> 
   
+
+
+
+
 
 
 
@@ -315,7 +241,6 @@ if(i%3==0){
 
 
 
-
 <!--예정된 숙소 시작  -->
 
 <div id="Paris" class="w3-container city" style="display:none">
@@ -333,9 +258,11 @@ for(int i=0; i<bookingList2.size(); i++){
 	PaymentBean pb=(PaymentBean)paymentList2.get(i);
 	HostBean hb=(HostBean)hostList2.get(i); 
 	BeforeBean BeforeB=(BeforeBean)afterList.get(i);
-	/* System.out.println("2"); */
+	 System.out.println(BeforeB.getPayment_num());
+	 
 if(i%3==0){
 	%>
+	
 	<tr id="tr">
 	<% 
 }
@@ -354,7 +281,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id10').style.display='block'" id="bill_butt_DY">영수증</button>
+  <button onclick="document.getElementById('id10').style.display='block'" class="bill_butt_DY">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
  <hr>
@@ -377,7 +304,6 @@ if(i%3==0){
 </div>
 
 <!--예정된 숙소 끝  -->
-
 
 
 
@@ -418,7 +344,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id10').style.display='block'" id="bill_butt_DY" >영수증</button>
+  <button onclick="document.getElementById('id10').style.display='block'" class="bill_butt_DY" >영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
   
@@ -449,7 +375,7 @@ if(i%3==0){
 
 
 <!--완료된 숙소 영수증 모달 팝업창 시작 -->
-  <%-- <div id="id09" class="w3-modal">
+    <div id="id09" class="w3-modal">
     <div class="w3-modal-content w3-card-4">
       <header class="w3-container w3-teal"> 
         <span onclick="document.getElementById('id09').style.display='none'" 
@@ -466,18 +392,21 @@ if(i%3==0){
 List bookingList=(List)request.getAttribute("bookingList");
 List paymentList=(List)request.getAttribute("paymentList");
 List hostList=(List)request.getAttribute("hostList");  */
-List beforeList2=(List)request.getAttribute("beforeList");
-for(int i=0; i<beforeList2.size(); i++){
+//List beforeList2=(List)request.getAttribute("beforeList");
+//for(int i=0; i<beforeList2.size(); i++){
 	/* BookingBean bb=(BookingBean)bookingList.get(i);
 	PaymentBean pb=(PaymentBean)paymentList.get(i);
 	HostBean hb=(HostBean)hostList.get(i); */
-	BeforeBean BeforeB=(BeforeBean)beforeList2.get(i);
+	//BeforeBean BeforeB=(BeforeBean)beforeList2.get(i);
 	
-if(i%3==0){
+//if(i%3==0){
 	%>
 	<tr>
 	<% 
-}
+//}
+BeforeBean BeforeB=(BeforeBean)request.getAttribute("BeforeB");
+
+
 %>
 
 
@@ -511,102 +440,24 @@ if(i%3==0){
        
 	
 
-<% if(i%3==2) { %>
+<% //if(i%3==2) { %>
 </tr>
-  <% } }%> 
+  <% //} //}%> 
   
  </table>
       </div>
-     <!--  <footer class="w3-container w3-teal">
-        <p class="cancel_DY">예약취소</p>
-      </footer> -->
+     
     </div>
-  </div>  --%>
+  </div>   
 <!--완료된 숙소 영수증 모달 팝업창 끝 -->  
 	
- 
- 
-  <div id="id09" class="w3-modal">
-    <div class="w3-modal-content w3-card-4">
-      <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('id09').style.display='none'" 
-        class="w3-button w3-display-topright">&times;</span>
-        <h2 class="site_DY">Funstay</h2>
-      </header>
-      <div class="w3-container">
-        <table class="receipt_table_DY">
-
-
-  
-<%
-/* 
-List bookingList=(List)request.getAttribute("bookingList");
-List paymentList=(List)request.getAttribute("paymentList");
-List hostList=(List)request.getAttribute("hostList");  */
-List beforeList2=(List)request.getAttribute("beforeList");
-for(int i=0; i<beforeList2.size(); i++){
-	/* BookingBean bb=(BookingBean)bookingList.get(i);
-	PaymentBean pb=(PaymentBean)paymentList.get(i);
-	HostBean hb=(HostBean)hostList.get(i); */
-	BeforeBean BeforeB=(BeforeBean)beforeList2.get(i);
-	
-if(i%3==0){
-	%>
-	<tr>
-	<% 
-}
-%>
-
-
-         <tr>
-          <td colspan="2" class="receipt_ti_DY"><%=BeforeB.getRoom_subject() %></td>
-         </tr>
-         <tr>
-          <td>체크인</td> 
-          <td><%=BeforeB.getCheck_in() %></td>
-         </tr>
-         <tr>
-          <td>체크아웃</td>
-          <td><%=BeforeB.getCheck_out() %></td>
-         </tr>
-         <tr>
-          <td>Room_type</td>
-          <td><%=BeforeB.getRoom_type() %></td>
-         </tr>
-         <tr>
-          <td>UserName</td>
-          <td><%=BeforeB.getMember_email() %></td>
-         </tr>
-         <tr>
-          <td>인원</td>
-          <td><%=BeforeB.getPeople() %></td>
-         </tr>
-         <tr>
-          <td>총 요금</td>
-          <td><%=BeforeB.getSum_price() %></td>
-         </tr>
-       
-	
-
-<% if(i%3==2) { %>
-</tr>
-  <% } }%> 
-  
- </table>
-      </div>
-     <!--  <footer class="w3-container w3-teal">
-        <p class="cancel_DY">예약취소</p>
-      </footer> -->
-    </div>
-  </div>  
- 
  
 
 
  
 
 <!-- 예정된 숙소 영수증 모달 팝업창 시작 -->
-   <div id="id10" class="w3-modal">
+  <div id="id10" class="w3-modal">
     <div class="w3-modal-content w3-card-4">
       <header class="w3-container w3-teal"> 
         <span onclick="document.getElementById('id10').style.display='none'" 
@@ -626,7 +477,7 @@ for(int i=0; i<afterList2.size(); i++){
 	/* BookingBean bb=(BookingBean)bookingList.get(i);
 	PaymentBean pb=(PaymentBean)paymentList.get(i);
 	HostBean hb=(HostBean)hostList.get(i); */
-	BeforeBean BeforeB=(BeforeBean)afterList2.get(i);
+	BeforeBean BeforeB2=(BeforeBean)afterList2.get(i);
 	
 if(i%3==0){
 	%>
@@ -637,31 +488,31 @@ if(i%3==0){
         
 	
          <tr>
-          <td colspan="2" class="receipt_ti_DY"><%=BeforeB.getRoom_subject() %></td>
+          <td colspan="2" class="receipt_ti_DY"><%=BeforeB2.getRoom_subject() %></td>
          </tr>
          <tr>
           <td>체크인</td> 
-          <td><%=BeforeB.getCheck_in() %></td>
+          <td><%=BeforeB2.getCheck_in() %></td>
          </tr>
          <tr>
           <td>체크아웃</td>
-          <td><%=BeforeB.getCheck_out() %></td>
+          <td><%=BeforeB2.getCheck_out() %></td>
          </tr>
          <tr>
           <td>Room_type</td>
-          <td><%=BeforeB.getRoom_type() %></td>
+          <td><%=BeforeB2.getRoom_type() %></td>
          </tr>
          <tr>
           <td>UserName</td>
-          <td><%=BeforeB.getMember_email() %></td>
+          <td><%=BeforeB2.getMember_email() %></td>
          </tr>
          <tr>
           <td>인원</td>
-          <td><%=BeforeB.getPeople() %></td>
+          <td><%=BeforeB2.getPeople() %></td>
          </tr>
          <tr>
           <td>총 요금</td>
-          <td><%=BeforeB.getSum_price() %></td>
+          <td><%=BeforeB2.getSum_price() %></td>
          </tr>
        
 	
@@ -685,7 +536,13 @@ if(i%3==0){
 
 
 
-  
+  <!-- <script type="text/javascript">
+$(document).ready(function(){	
+	
+	$('#bill_butt_DY').click(){alert("asdfasdf");};
+})
+
+</script> -->
   
 
 <!-- content 영역 끝 -->  
@@ -729,20 +586,19 @@ function button_event(payment_num){
 			BookingBean bb=(BookingBean)bookingList3.get(i);
 			PaymentBean pb=(PaymentBean)paymentList3.get(i);
 			HostBean hb=(HostBean)hostList3.get(i); 
-			BeforeBean BeforeB=(BeforeBean)afterList3.get(i);
+			BeforeBean BeforeB3=(BeforeBean)afterList3.get(i);
 		
 		%>
            
 		return location.href="./BillCancel.bk?booking_num="+<%=bb.getBooking_num()%>+"&payment_num="+payment_num+"";
-		<% }%> 
+	
+		<%
+		} 
+		%> 
 		  
 		
 		
 		/* alert("예약취소되었습니다.") */
-		
-		
-		
-	
 		
 	}else{
 		
@@ -755,20 +611,24 @@ function button_event(payment_num){
 
 //ajax 영수증
   $(document).ready(function(){
+    var member_email=$('#member_email_DY').val();
+    //alert(member_email); //alert주석처리하고 아래 getJSON주석해제
+    //var payment_num=$('#payment_num_DY').val();
     
-    
-	 $('#bill_butt_DY').click(function(){
+	 $('.bill_butt_DY').click(function(){
+		 var payment_num=$(this).attr('id');
+		   // alert(payment_num);
 		 $.getJSON({
 			 dataType:"json",
 			 url:"./myinfo/JSON/bill.jsp",
-			 /* data:{payment_num:payment_num}, */
+			 data:{payment_num:payment_num,member_email:member_email}, 
 			 success:function(data){
 			 
 		  	  $.each(data,function(index,item){
 		  		  $('.receipt_table_DY').append('<tr><td colspan="2">'+item.room_subject+'</td></tr><tr><td>체크인</td><td>'+item.check_in+
 		  				  '</td></tr><tr><td>체크아웃</td><td>'+item.check_out+'</td></tr><tr><td>Room_type</td><td>'+item.room_type+
 		  				  '</td></tr><tr><td>UserName</td><td>'+item.member_email+'</td></tr><tr><td>인원</td><td>'+item.people+
-		  				  '</td></tr><tr><td>총요금</td><td>'+item.sum_price+'</td></tr>');
+		  				  '</td></tr><tr><td>총액</td><td>'+item.sum_price+'</td></tr>');
 		  	  }); 
 		  	  
 		  	  
@@ -794,6 +654,8 @@ function button_event(payment_num){
 
 
 </script> 
+
+
 
 
 
