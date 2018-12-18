@@ -31,7 +31,7 @@ s0.parentNode.insertBefore(s1,s0);
 
 
 
-<div id="content" style="width:100%;">
+<div id="content">
 <form action="./SideSearch.sc" method="post" name="fff" id="form_2">
 
 <div id="sideBar_shj">
