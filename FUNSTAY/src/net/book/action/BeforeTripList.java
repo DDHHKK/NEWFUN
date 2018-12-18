@@ -28,10 +28,10 @@ public class BeforeTripList implements Action{
 		//home_num파라미터 가져오기
 		HttpSession session=request.getSession();
 		String member_email=(String)session.getAttribute("email");
-		int num = Integer.parseInt(request.getParameter("num"));
+		/*int num = Integer.parseInt(request.getParameter("num"));
 		System.out.println(num);
 		String pageNum = request.getParameter("pageNum");
-		System.out.println(pageNum);
+		System.out.println(pageNum);*/
 		
 		
 		BookingBean bb=new BookingBean();
@@ -97,9 +97,9 @@ public class BeforeTripList implements Action{
 		
 		/*System.out.println("4");*/
 		
-		//리뷰 쓰는 데에 필요한 것들
+		/*//리뷰 쓰는 데에 필요한 것들
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("num", num);
+		request.setAttribute("num", num);*/
 		
 		
 		
