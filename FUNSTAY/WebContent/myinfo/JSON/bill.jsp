@@ -30,10 +30,9 @@ String dbUser="root";
 String dbPass="1234";
 Connection con=DriverManager.getConnection(dbUrl,dbUser,dbPass);
 //3단계 sql 객체생성 select * from member
-String sql="select * from home h, payment p , booking b where b.payment_num=p.payment_num and b.home_num=h.home_num and p.member_email=? and p.payment_num=?;";
+String sql="select * from home h, payment p , booking b where b.payment_num=p.payment_num and b.home_num=h.home_num and p.payment_num=?;";
 PreparedStatement pstmt=con.prepareStatement(sql);
-pstmt.setString(1,member_email);
-pstmt.setString(2,payment_num);
+pstmt.setString(1,payment_num);
 
 ResultSet rs = pstmt.executeQuery();
 

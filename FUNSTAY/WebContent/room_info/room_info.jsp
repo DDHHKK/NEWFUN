@@ -503,7 +503,7 @@ for (i = 0; i < acc.length; i++) {
 <div class="clear"></div>
 <!-- <div class="datepicker-here" data-language='en'></div> -->
 <!--  <img src="./img/heart.jpg" align="right"> --></li>
-<li>★★★★★ 167</li>
+<li>★★★★★ 167(리뷰 평균 평점 보이게 하기)</li>
 <!-- <li class="tite_text">날짜</li> -->
 <li><span>체크인</span> <span id="checkout">체크아웃</span></li>
 <li>
