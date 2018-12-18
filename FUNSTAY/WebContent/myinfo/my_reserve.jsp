@@ -278,7 +278,7 @@ if(i%3==0){
  <!--영수증 버튼 끝  -->  
  <hr>
   <!-- 예약취소 버튼 -->
-  <button class="cancel_butt_DY" onclick="button_event('<%=pb.getPayment_num()%>');">예약취소</button>
+  <button class="cancel_butt_DY" onclick="button_event('<%=BeforeB.getPayment_num()%>');">예약취소</button>
   <!-- 예약취소 버튼 끝  -->
 		
 
