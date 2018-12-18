@@ -134,7 +134,7 @@ private Connection getConnection() throws Exception{
 		
 		
 
-			public Vector getSideSearch(List list,String[] convenience,String []num_conv){
+			public Vector getSideSearch(List list,String[] conv, String []num_conv){
 				ResultSet rs = null;
 				PreparedStatement pstmt=null;
 				List<SearchBean> SearchList = new ArrayList<SearchBean>();
@@ -144,9 +144,39 @@ private Connection getConnection() throws Exception{
 					//1,2�뵒鍮꾩뿰寃� 硫붿꽌�뱶�샇異�
 					con = getConnection();
 		
-					sql.append("select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 from home h,  room ro, convenience c, review re, payment p where  h.home_num=ro.home_num and h.home_num=c.home_num and  h.home_num=re.home_num and re.payment_num=p.payment_num and h.address LIKE '부산' and h.start_date < '2018-12-07' and h.end_date > '2018-12-19' and re.satisfaction = 3 and (h.price between 10000 and 50000)");
+					sql.append("select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 from home h,  room ro, convenience c, review re, payment p where  h.home_num=ro.home_num and h.home_num=c.home_num and  h.home_num=re.home_num and re.payment_num=p.payment_num and h.address LIKE ? and h.start_date < ? and h.end_date > ? and re.satisfaction = ? and (h.price between ? and ?)");
 					
-					pstmt = con.prepareStatement(sql); 
+					
+					for(int i =0; i<conv.length; i++)
+					{
+						if(conv.equals("essential")){sql.append("and essential=?");}
+						else if(conv.equals("disabled")){sql.append("and disabled=?");}
+						else if(conv.equals("parking")){sql.append("and parking=?");}
+						else if(conv.equals("wifi")){sql.append("and wifi=?");}
+						else if(conv.equals("air_conditioner")){sql.append("and air_conditioner=?");}
+						else if(conv.equals("animal")){sql.append("and animal=?");}
+						else if(conv.equals("party")){sql.append("and party=?");}
+						else if(conv.equals("pickup")){sql.append("and pickup=?");}
+						else if(conv.equals("elevator")){sql.append("and elevator=?");}
+						else if(conv.equals("iron")){sql.append("and iron=?");}
+						else if(conv.equals("extra_bed")){sql.append("and extra_bed=?");}
+						else if(conv.equals("shampoo")){sql.append("and shampoo=?");}
+						else if(conv.equals("heat")){sql.append("and heat=?");}
+						else if(conv.equals("smoking")){sql.append("and smoking=?");}
+						else if(conv.equals("breakfast")){sql.append("and breakfast=?");}
+						else if(conv.equals("laundry")){sql.append("and laundry=?");}
+						else if(conv.equals("desk")){sql.append("and desk=?");}
+						else if(conv.equals("hair_dryer")) {sql.append("and hair_dryer=?");}
+						else {continue;}
+						
+						
+						
+					}		
+					pstmt=con.prepareStatement(sql.toString());
+					pstmt.setString(1, (String)list.get(3));
+					pstmt.setInt(2, list.get(4));
+					pstmt.setInt(1, list.get(5));
+					pstmt.setInt(2, pageSize);
 					pstmt.setInt(1, startRow-1);
 					pstmt.setInt(2, pageSize);
 					rs = pstmt.executeQuery();

@@ -35,7 +35,7 @@ public class SideSearch implements Action{
 			}
 			
 		}
-		list.add(num_conv);
+		
 		
 		String[] convenience = null;
 		try{	convenience=request.getParameterValues("conven");
