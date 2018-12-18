@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class BeforeBean {
 	
+	private String payment_num;
 	private String room_type;
 	private String photo;
 	private String room_subject;
@@ -14,6 +15,12 @@ public class BeforeBean {
 	private int people;
 	
 	
+	public String getPayment_num() {
+		return payment_num;
+	}
+	public void setPayment_num(String payment_num) {
+		this.payment_num = payment_num;
+	}
 	public String getRoom_type() {
 		return room_type;
 	}
