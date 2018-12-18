@@ -445,7 +445,7 @@ if(i%3==0){
       <header class="w3-container w3-teal"> 
         <span onclick="document.getElementById('id09').style.display='none'" 
         class="w3-button w3-display-topright">&times;</span>
-        <h2 class="site_DY">Funstay</h2>
+        <h2 class="site_DY">영수증</h2>
       </header>
       <div class="w3-container">
         <table class="receipt_table_DY">
@@ -525,7 +525,7 @@ if(i%3==0){
       <header class="w3-container w3-teal"> 
         <span onclick="document.getElementById('id10').style.display='none'" 
         class="w3-button w3-display-topright">&times;</span>
-        <h2 class="site_DY">Funstay</h2>
+        <h2 class="site_DY">영수증</h2>
       </header>
       <div class="w3-container">
         <table class="receipt_table_DY">
