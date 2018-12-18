@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FUNSTAY</title>
 <!-- css -->
 <link href="css/login1.css" rel="stylesheet">
 <link href = "css/main.css" rel="stylesheet">
@@ -443,7 +443,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 </nav>
 
 <nav id="long_img">
-<img src="./img/AA111.jpg" width="1650px" height="300"><button id="long_btn">숙소 보기 ></button>
+<img src="./img/main_img101.jpg">
 </nav>
 
 
