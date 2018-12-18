@@ -802,7 +802,7 @@ public class MemberDAO {
 		return vector;
 	}*/
 	
-	public Vector getsearchList(HostBean hb, String start_date, String end_date, int num) {
+	public Vector getsearchList(HostBean hb, String start_date, String end_date, int num) { //지역과 날짜 인원수 모든조건이 맞으면 검색
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -824,7 +824,7 @@ public class MemberDAO {
 					+ "on h.home_num=b.home_num "
 					+ "where b.check_in between ? and ? or b.check_out between ? and ?) as t right join home h "
 					+ "on h.home_num=t.home_num "
-					+ "where t.home_num is null and h.address LIKE ? and h.start_date < ? "
+					+ "where t.home_num is null and h.address LIKE ? and h.home_status=1 and h.start_date < ? "
 					+ "and h.end_date > ?) s "
 					+ "on r.home_num=s.home_num "
 					+ "where r.max_people1>=?";
@@ -848,9 +848,9 @@ public class MemberDAO {
 				hb1.setHome_num(rs.getInt("home_num"));
 				hb1.setPrice(rs.getInt("price"));
 				hb1.setPhoto(rs.getString("photo"));
-					
 				goodsList.add(hb1);
 			}
+			System.out.println("첫번째"+goodsList.size());
 			vector.add(goodsList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -873,8 +873,75 @@ public class MemberDAO {
 		}
 		return vector;
 	}
+	
+	public Vector getsearchList2(HostBean hb,int num) { //지역과 인원수맞으면 검색
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector vector = new Vector();
+		List goodsList = new ArrayList();
+		if(num==0){
+			num=100;
+		}
+		try {
+			con = getConnection();
+			/*String sql = "select * from (select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) "
+					+ "as min_people1, sum(max_people) as max_people1 from home h join room r "
+					+ "on h.home_num=r.home_num where h.address LIKE ? and h.start_date < ? "
+					+ "and h.end_date > ? group by h.home_num) sum_list where max_people1>= ?;";*/
+			String sql = "select * "
+					+ "from (select home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 "
+					+ "from room "
+					+ "group by home_num) r join (select address, room_subject, room_type, room_content, price, photo,home_num "
+					+ "from home "
+					+ "where address LIKE ? and home_status=1) s "
+					+ "on r.home_num=s.home_num "
+					+ "where r.max_people1>=?";
 
-	public Vector getsearchList2(HostBean hb) {
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+hb.getAddress()+"%");
+			pstmt.setInt(2, num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				HostBean hb1 = new HostBean();
+				hb1.setAddress(rs.getString("address"));
+				hb1.setRoom_subject(rs.getString("room_subject"));
+				hb1.setRoom_type(rs.getString("room_type"));
+				hb1.setRoom_content(rs.getString("room_content"));
+				hb1.setHome_num(rs.getInt("home_num"));
+				hb1.setPrice(rs.getInt("price"));
+				hb1.setPhoto(rs.getString("photo"));
+					
+				goodsList.add(hb1);
+			}
+			System.out.println("두번째"+goodsList.size());
+			vector.add(goodsList);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return vector;
+	}
+	
+
+	public Vector getsearchList3(HostBean hb) { //지역만 맞으면 검색
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -883,7 +950,7 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select * from home where address LIKE ?";
+			String sql = "select * from home where address LIKE ? and home_status=1";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+hb.getAddress()+"%");
 			rs = pstmt.executeQuery();
@@ -901,7 +968,7 @@ public class MemberDAO {
 				goodsList.add(hb1);
 
 			}
-			System.out.println(goodsList.size());
+			System.out.println("세번째"+goodsList.size());
 			vector.add(goodsList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -924,6 +991,7 @@ public class MemberDAO {
 		}
 		return vector;
 	}
+	
 
 	public Vector getheartphoto() {
 		Connection con = null;
@@ -946,8 +1014,6 @@ public class MemberDAO {
 				MyWishBean sb1 = new MyWishBean();
 				sb1.setHome_photo(rs.getString("home_photo"));
 				sb1.setHome_num(rs.getInt("home_num"));
-				System.out.println("hearphto" + sb1.getHome_photo());
-				System.out.println("hearphto" + sb1.getHome_num());
 				goodsList.add(sb1);
 			}
 			

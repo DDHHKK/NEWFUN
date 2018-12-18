@@ -38,7 +38,7 @@ public class MemberSearchAction2 implements Action{
 	
 
 		Vector vector = mdd.getsearchList(hb, start_date, end_date,num);
-		Vector vector2 = mdd.getsearchList2(hb);
+		Vector vector2 = mdd.getsearchList3(hb);
 	    List list=(List)vector.get(0);
 		List rest =(List)vector2.get(0);
 		HttpSession session = request.getSession();

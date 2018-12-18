@@ -215,16 +215,21 @@ $(document).ready(function(){
 <%
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
+List past = (List)session.getAttribute("past");
 String address = (String)session.getAttribute("address");
 int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
 %>
 <p id = "pont_1213_WS"><%=address%>에 대해 찾으셨나요?
  <%if(list.size()!=0){
-	%> <%=list.size()%>개의 정보를 찾았습니다.</p>
+	%><%=list.size()%>개의 정보를 찾았습니다.</p>
 <%
  }
+ else if(past.size()!=0){
+	 %><%=past.size()%>개의 정보를 찾았습니다.</p>
+	 <% 
+ }
  else if(rest.size()!=0){
-	 %> <%=rest.size()%>개의 정보를 찾았습니다.</p>
+	 %><%=rest.size()%>개의 정보를 찾았습니다.</p>
 	 <% 
  }
 %>
@@ -418,6 +423,77 @@ $(function(){
 <%
 } //for문끝
 } //if문끝
+
+
+else if(past.size()!=0){
+for(int i=0;i<past.size();i++){ //for문 시작
+	HostBean hb2 = (HostBean)past.get(i);
+%>
+
+<!-- 여기서부터 페이지 내용을 적어주세요. -->
+<div class="content_top_shj" >
+
+<!-- 변수값 : "부산광역시", "100" -->
+<%-- <h1 style="float:left;margin:2% 2% 2% 3%;"><%=hb1.getAddress()%></h1><br> --%>
+
+<!--정렬  -->
+
+ 
+</div>
+<div class="clear"></div>
+
+<div class="outerbox_shj">
+<div class="imgbox_shj">
+
+<div class="slideshow-container">
+
+<div class="mySlides fade_shj">
+ 
+<img src="./upload/<%=hb2.getPhoto().split(",")[0]%>" class="img_shj"style="width:100%">
+
+</div>
+
+<a class="prev_shj"></a>
+<a class="next_shj"></a>
+
+</div>
+<br>
+
+	<!-- 이미지 fade 기능  -->
+</div>
+<div class="contentbox_shj">
+<div class="innercon_shj">
+<h4><%=hb2.getRoom_type() %></h4>
+<h3><a href="./RoomDetail.sc?num=<%=hb2.getHome_num()%>&pageNum=<%=pageSize%>"><%=hb2.getRoom_subject() %></a></h3>
+<h5><%=hb2.getRoom_content() %></h5>
+<%-- <h6><%=hb1.getStart_date()%> ~ <%=hb1.getEnd_date()%> 예약가능</h6> --%>
+</div>
+<div class="star_shj">
+
+ <span>
+ 	 <i id="image1"class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image2" class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image3" class="material-icons" style="font-size:18px" >star_border</i>
+ 	 <i id="image4"class="material-icons" style="font-size:18px" >star_border</i>
+ 	  <i id="image5"class="material-icons" style="font-size:18px" >star_border</i>
+ </span>
+ <span style="position: relative; bottom: 10%;">
+ 2/5
+ </span>
+</div>
+</div>
+<div class="extra_shj">
+<div class="innerex_shj">
+<h4><%=hb2.getPrice() %>￦/1박</h4></div>
+<div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
+</div>
+</div>
+
+
+<%
+} //for문끝
+} //esle if문끝
+
 
 
 
