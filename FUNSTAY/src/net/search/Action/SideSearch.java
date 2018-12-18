@@ -46,16 +46,7 @@ public class SideSearch implements Action{
 			
 		}
 		
-			try{	for(int i =0; i<convenience.length; i++)
-				{	System.out.print(convenience[i]);
-					System.out.println(": "+num_conv[i]);
-				}
-			}
-			catch(NullPointerException e){
-
-					e.printStackTrace();
-				
-			}
+			
 			
 		
 		
