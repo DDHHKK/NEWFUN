@@ -98,6 +98,16 @@ color: #100f0f;
 	padding: 10px;
 }
 
+/* .receipt_table_DY td:NTH-CHILD(1){
+	background-color:green;
+} */
+
+.sub_DY{
+	/* background-color:green; */
+	font-size: 2em;
+	text-align: center;
+}
+
 .receipt_ti_DY {
 	text-align: center;
 	font-size: 2em;
