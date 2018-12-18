@@ -1,8 +1,8 @@
 package net.wishlist.db;
 
 public class MyWishBean {
-	int wish_num, wishlist_num, home_num,price,heart_count,home_satisfaction, heart;
-	String home_photo,room_subject;
+	int wish_num, wishlist_num, home_num,price,heart_count,home_satisfaction,heart;
+	String home_photo,room_subject,wish_address;
 	
 	public int getWish_num() {
 		return wish_num;
@@ -59,5 +59,11 @@ public class MyWishBean {
 		this.heart = heart;
 	}
 
+	public String getwish_address() {
+		return wish_address;
+	}
+	public void setwish_address(String wish_address) {
+		this.wish_address = wish_address;
+	}
 	
 }

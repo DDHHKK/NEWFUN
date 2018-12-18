@@ -1,3 +1,4 @@
+<%@page import="com.sun.org.apache.xalan.internal.xsltc.compiler.sym"%>
 <%@page import="net.wishlist.db.MyWishBean"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Vector"%>
@@ -460,24 +461,28 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
     <td>
     <div id= "img_1">
     <%MyWishBean sb1 = (MyWishBean)heart.get(0);
-    String str=sb1.getHome_photo().split(".png")[0];%>
-	<a href="./MemberSearchAction2.me?search_info=<%=str%>"><img src="./upload/<%=sb1.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+    int str=sb1.getHome_num();
+    %>
+    <p><%=str%></p>
+	<a href="./RoomDetail.sc?num=<%=str%>&pageNum=1"><img src="./upload/<%=sb1.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 </div>
 </td>     
 
    	<td>
    	<div id= "img_2">
    	<%MyWishBean sb2 = (MyWishBean)heart.get(1); 
-   	String str2=sb2.getHome_photo().split(".png")[0];%>
-   	<a href="./MemberSearchAction2.me?search_info=<%=str2%>"><img src="./upload/<%=sb2.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+   	int str2=sb2.getHome_num();%>
+   	<p><%=str2%></p>
+   	<a href="./RoomDetail.sc?num=<%=str2%>&pageNum=1"><img src="./upload/<%=sb2.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 </div>
 </td>
 
 <td>
 <div id= "img_3">
 	<%MyWishBean sb3 = (MyWishBean)heart.get(2);
-	String str3=sb3.getHome_photo().split(".png")[0];%>
-	<a href="./MemberSearchAction2.me?search_info=<%=str3%>"><img src="./upload/<%=sb3.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+	int str3=sb3.getHome_num();%>
+	<p><%=str3%></p>
+	<a href="./RoomDetail.sc?num=<%=str3%>&pageNum=1"><img src="./upload/<%=sb3.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 
 </div>
 </td>
@@ -485,8 +490,9 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
  <td>
  <div id= "img_4">
 	<%MyWishBean sb4 = (MyWishBean)heart.get(3);
-	String str4=sb4.getHome_photo().split(".png")[0];%>
-	<a href="./MemberSearchAction2.me?search_info=<%=str4%>"><img src="./upload/<%=sb4.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+	int str4=sb4.getHome_num();%>
+	<p><%=str4%></p>
+	<a href="./RoomDetail.sc?num=<%=str4%>&pageNum=1"><img src="./upload/<%=sb4.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 
 </div>
 </td>
@@ -494,8 +500,9 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 <td>
  <div id= "img_5">
  	<%MyWishBean sb5 = (MyWishBean)heart.get(4);
- 	String str5=sb5.getHome_photo().split(".png")[0];%>
-	<a href="./MemberSearchAction2.me?search_info=<%=str5%>"><img src="./upload/<%=sb5.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+ 	int str5=sb5.getHome_num();%>
+ 	<p><%=str5%></p>
+	<a href="./RoomDetail.sc?num=<%=str5%>&pageNum=1"><img src="./upload/<%=sb5.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
 
 </div>
 </td>

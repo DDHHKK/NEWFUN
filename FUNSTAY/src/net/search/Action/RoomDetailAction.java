@@ -29,6 +29,7 @@ public class RoomDetailAction implements Action{
 //-----------------------------------------------
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
+		System.out.println("들어왓음"+pageNum);
 		int room_num= 0;
 		
 		SearchDAO bdao = new SearchDAO();
@@ -97,7 +98,7 @@ public class RoomDetailAction implements Action{
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("currentPage", currentPage);
-		
+		System.out.println("마지막"+pageNum);
 		
 		
 		ActionForward forward = new ActionForward();
