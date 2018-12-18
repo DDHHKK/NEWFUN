@@ -32,9 +32,19 @@ public class Booking implements Action{
 		//Date check_in = Date.valueOf("2018-11-20");
 		//String check_out = "2018-11-26";
 		//Date check_out = Date.valueOf("2018-11-26");
-		
-		int price = 50000;
+		int price = Integer.parseInt(request.getParameter("price11"));
+		int select_people = Integer.parseInt(request.getParameter("select_people"));
+		int max_people = Integer.parseInt(request.getParameter("R_max_people"));
+		int basic_people = Integer.parseInt(request.getParameter("basic_people"));
+		int days = Integer.parseInt(request.getParameter("days00"));
+		System.out.println(price);
+		System.out.println(select_people);
+		System.out.println(max_people);
+		System.out.println(basic_people);
+		System.out.println(days);
+		//int price = 50000;
 		//int people = 11;
+		
 		
 		//String member_email = "funfun@gmail.com";
 		//String request_msg ="2,3번방 예약했어요. 문의답변으로 2번방에는 침구, 2번방에는 간이베드 추가된다고 하셨는데 잊지 말고 잘 준비해주세요! :)";

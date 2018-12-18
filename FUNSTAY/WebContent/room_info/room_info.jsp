@@ -31,6 +31,7 @@
 	List<BedBean> bed_list = (List)request.getAttribute("bed_list");
 	String room_subject = sc.getRoom_subject();
 	int R_max_people = 0;
+	int basic_people =0;
 	%>
 			
 <!-- room_wrapper -->
@@ -94,7 +95,9 @@
 						<b><%=rb.getRe_room()%>번방</b><br>
 						<%-- <%=rb.getRoom_num()%><br> --%>
 						최대 <%=rb.getMax_people()%>명<br>
-						<%R_max_people=R_max_people+rb.getMax_people(); %>
+						<%
+							basic_people=basic_people+rb.getMin_people();
+							R_max_people=R_max_people+rb.getMax_people(); %>
 						<%for(int z=0; z<bb.getSingle_bed(); z++){ %>
 							<img src="./img/host/single_bed.png" style="width:35px;height:35px;">
 						<%
@@ -500,22 +503,24 @@ for (i = 0; i < acc.length; i++) {
 <ol>
 <li class="tite_text" style="margin-bottom:0;padding-bottom:0;">
 	<input type="hidden" value="<%=sc.getPrice()%>" name="price11">
-	<input type="hidden" value="<%=sc.getPrice()%>" name="price22">
-	<input type="text" value="<%=sc.getPrice()%>" name="price00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:120px;" readonly>
+	<input type="hidden" value="<%=sc.getPrice()%>" name="price00">
+	<input type="text" value="<%=sc.getPrice()%>" name="price22" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:120px;padding-left: 9px;padding-top:3px;" readonly>
 	<input type="text" value="/1박" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:50px;" readonly >
+	<input type="hidden" value="1" name="select_people" class="select_people">
 	<input type="hidden" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:40px;" readonly>
 	<!-- <input type="text" value="박" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:25px;" readonly> -->
 	<div class="clear"></div>
 </li>
 <li>
-	<div id="mySidenav" class="sidenav">
+	<div id="mySidenav" class="sidenav" style="padding-left:0 !important;padding-right:0 !important;">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	<!-- <div class="clear"></div> -->
-		+기본요금 <span class="sum_price123">50000x10(500000)</span> <input type="hidden" value="<%=sc.getPrice()%>" name="price00"><br>
+		<span class="sum_price123"><!-- 50000x10(500000) --></span>
+		<%-- +기본요금  <input type="hidden" value="<%=sc.getPrice()%>" name="price00"><br>
 		+추가요금 10000<br>
-		+수수료 25500<br>
-		<hr>
-		<span style="float:right;">합계 535500</span>
+		+수수료 25500<br> --%>
+		<!-- <hr>
+		<span style="float:right;">합계 535500</span> -->
 	</div>
 </li>
 <!-- <li>
@@ -532,6 +537,7 @@ for (i = 0; i < acc.length; i++) {
 </li>
 <!-- <li class="tite_text">인원</li> -->
 <li>
+  <input type="hidden" value="<%=basic_people%>" name="basic_people" class="basic_people">
   <input type="hidden" value="<%=R_max_people%>" name="R_max_people">
   <input type="hidden" value="" name="text00" readonly>
   <input type="text" value="" placeholder="게스트 인원을 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
