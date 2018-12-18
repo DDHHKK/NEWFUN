@@ -211,7 +211,7 @@ if(i%3==0){
  
  
  
- 
+ <%-- 
  
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -227,7 +227,7 @@ if(i%3==0){
  
   <!--리뷰쓰기 버튼 -->
      <button onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'" class="review_butt_DY">리뷰쓰기</button>  
-  <!--리뷰쓰기 버튼 끝  --> 
+  <!--리뷰쓰기 버튼 끝  -->  --%>
 		 
 
 	</td>
