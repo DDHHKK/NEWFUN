@@ -612,7 +612,7 @@ function button_event(payment_num){
 //ajax 영수증
   $(document).ready(function(){
     var member_email=$('#member_email_DY').val();
-    //alert(member_email); //alert해제하고 아래 getJSON주석해제
+    //alert(member_email); //alert주석처리하고 아래 getJSON주석해제
     //var payment_num=$('#payment_num_DY').val();
     
 	 $('.bill_butt_DY').click(function(){
