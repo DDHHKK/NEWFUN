@@ -15,16 +15,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="./css/default/subpage_content.css" rel="stylesheet">
 <link href="./css/default/subpage.css" rel="stylesheet">
-<script src="./js/default/jquery-3.3.1.js"></script>
+<script src="./js/myinfo/jquery-3.3.1.js"></script>
 <!-- 페이지 default 링크 끝-->
 
 
-<link href="./css/default/hSubPage.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="./css/myinfo/mywish_wishlist_shj.css" rel="stylesheet">
-<link href="./css/member_mypage/message_list.css" rel="stylesheet">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="styles.css">
+<!--    <link rel="stylesheet" href="styles.css"> -->
    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <style type="text/css">
 .content_top_shj html, body, .content_top_shj div, dl, dt, dd,.content_top_shj ul, ol,.content_top_shj li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend,.content_top_shj input, textarea, button, p, blockquote, th, td { margin:0; /* padding:0; */-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
@@ -71,8 +68,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 
 </style>
-<script type="text/javascript" src="./js/myinfo/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/myinfo/wishlist_shj.js"></script>
 
 </head>
 <body>
@@ -116,13 +111,13 @@ String list_photo = "No_Image_Available.gif";
 <div id="sect_HJ">
 <div style="float:right;width: auto;" id="listmenu_shj">
 <ul style="" >
-   <li class='active has-sub_shj' id="manlist"><a href='#'><span>목록 지우기</span></a>
+   <li class='active has-sub_shj' id="manlist"><a href='#'><span  style="color:white !important; font-size: inherit; font-weight: bold;">목록 지우기</span></a>
       <ul>
       <%
       for(int i=0;i<Wishlist.size();i++){
     	 	WishlistBean wb=(WishlistBean)Wishlist.get(i);
       %>
-         <li class='has-sub'><a href='./DeleteWishlist.wi?member_email=<%=wb.getMember_email()%>&wishlist_num=<%=wb.getWishlist_num()%>'><span><%=wb.getList_name() %></span></a>       
+         <li class='has-sub'><a href='./DeleteWishlist.wi?member_email=<%=wb.getMember_email()%>&wishlist_num=<%=wb.getWishlist_num()%>'><span style="color:white !important; font-size: inherit; font-weight: bold;"><%=wb.getList_name() %></span></a>       
          </li>
       <%
      	 }
@@ -164,16 +159,7 @@ String list_photo = "No_Image_Available.gif";
 	<div class="find_join"><a href="">아이디 / 비밀번호 찾기</a> | <a href="">회원가입</a></div> -->
 </div>
 
-<!--모달윈도우부분-->
-<script type="text/javascript">
-$(function(){
- /*  $('#loginform').submit(function(e){
-    return false;
-  }); */
-  
-  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
-});
-</script>
+
 
 
 </div>
@@ -203,7 +189,17 @@ for(int i=0;i<Wishlist.size();i++){
 <%
 } 
 %> 
+<script type="text/javascript" src="./js/myinfo/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/myinfo/wishlist_shj.js"></script>
 
+<!--모달윈도우부분-->
+<script type="text/javascript">
+$(function(){
+
+
+   $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
+}); 
+</script>
   </div> 
 <div class="clear"></div>
 <!-- 페이지 내용이 끝나는 부분입니다. -->
@@ -212,7 +208,7 @@ for(int i=0;i<Wishlist.size();i++){
 </div><!-- subpage include 파일에서 나온 div 닫기 태그 -->
 
 
-
+<div id = "dddd" style="border:1px solid red; height:300px;"></div>
 <div class="clear"></div>
 <hr>
 <!-- footer -->

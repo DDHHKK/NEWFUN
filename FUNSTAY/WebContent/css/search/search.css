@@ -4,7 +4,7 @@
 /* sideBar */
 #sideBar_shj{border: 2px solid red;
 	width:350px;
-	height:800px;
+	height:1000px;
 	display: inline-block;
 	float: left;}
 
@@ -66,16 +66,18 @@
     
     
     
- #like_star span{position: relative;top: 29px; left: 20px;
-    font-size: 20px; font-weight: bold; display: inline-block;"}
-    
-
-    
+ #like_star span{    position: relative;
+    top: 24px;
+    left: -5px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 7%;
+    display: inline-block;
     }
 
 
 
-.house1,.house2{border: 1px solid;
+.house1,.house2{
 width: 250px;
 }
 
@@ -84,5 +86,11 @@ width: 250px;
 .house2{float: right;
 margin-right: 350px;} 
 
-    
-
+#sideOp{border: 1px solid red;
+	height:67%;
+	width: 100%;    margin-top: 8%;
+}   
+#sideOp span {font-size: 20px;
+    font-weight: bold;padding: 5%;}
+#sideOp table {margin: 8% 10%;}
+#sideOp td{  padding :4%;}

@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import net.search.Action.Qna_boardWrite;
 import net.search.Action.Qna_boardWriteAction;
 import net.search.Action.Qna_boardreWriteAction;
 import net.search.Action.RoomDetailAction;
 import net.search.Action.SearchListAction;
+import net.search.Action.SideSearch;
 
 
 
@@ -83,17 +83,50 @@ public class SearchFrontController extends HttpServlet{
 					
 			}
 		
+
 		//답변작성Action	
 			else if(command.equals("/Qna_boardreWrite.sc")){	
-				action=new Qna_boardreWriteAction();	
+				forward = new ActionForward();
+				forward.setPath("./room_info/Qna_boardreWriteForm.jsp");
+				forward.setRedirect(false);
+			} 
+			 else if (command.equals("/Qna_boardreWriteAction.sc")){
+				 action = new Qna_boardreWriteAction();
+				 try {
+					 forward = action.execute(request, response);
+				 } catch (Exception e) {
+					 e.printStackTrace();
+				 }
+			 }
+		
+		
+		/*//reWrite
+			else if (command.equals("/BoardreWriteForm.bo")){
+				forward = new ActionForward();
+				forward.setPath("./center/reWriteForm.jsp");
+				forward.setRedirect(false);
+			} else if (command.equals("/BoardreWriteAction.bo")){
+				action = new BoardreWriteAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+	*/
+
+		//옵션 검색	
+			else if(command.equals("/SideSearch.sc")){
+			
+				action=new SideSearch();	
 				try {  
 					forward = action.execute(request, response);
 				} catch (Exception e) {						
 					e.printStackTrace(); 
 				}
 					
-			} 
-	
+			}
+
 			
 		//이동
 		if(forward!=null){ //forward정보가 있으면

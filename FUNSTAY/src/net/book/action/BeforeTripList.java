@@ -28,7 +28,10 @@ public class BeforeTripList implements Action{
 		//home_num파라미터 가져오기
 		HttpSession session=request.getSession();
 		String member_email=(String)session.getAttribute("email");
-		
+		/*int num = Integer.parseInt(request.getParameter("num"));
+		System.out.println(num);
+		String pageNum = request.getParameter("pageNum");
+		System.out.println(pageNum);*/
 		
 		
 		BookingBean bb=new BookingBean();
@@ -94,36 +97,9 @@ public class BeforeTripList implements Action{
 		
 		/*System.out.println("4");*/
 		
-		
-/*		
-int pageSize = 10;
-
-		
-		String pageNum = request.getParameter("pageNum");
-		if (pageNum == null)
-			pageNum = "1";
-
-	
-		int currentPage = Integer.parseInt(pageNum);
-		int startRow = (currentPage - 1) * pageSize + 1;
-
-	
-		int endRow = currentPage * pageSize;
-		
-		
-		
-		List<SearchBean> SearchList = null;
-		
-			SearchList = bdao.getSearchList(startRow, pageSize);
-		
-		request.setAttribute("searchList", SearchList);
-		
+		/*//리뷰 쓰는 데에 필요한 것들
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("pageSize", pageSize);
-		request.setAttribute("currentPage", currentPage);
-		*/
-		
-		
+		request.setAttribute("num", num);*/
 		
 		
 		

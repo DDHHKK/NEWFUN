@@ -121,9 +121,9 @@ public class BookDAO {
    		           
    		       while(rs.next()){ 
 					//첫 행 이동 열접근해서
-   		        	/*HostBean hb=new HostBean();
+   		        	HostBean hb=new HostBean();
    		        	PaymentBean pb=new PaymentBean();
-   		        	BookingBean bb=new BookingBean();*/
+   		        	BookingBean bb=new BookingBean();
    		        	BeforeBean BeforB=new BeforeBean();
    		      
    		        	
@@ -137,7 +137,7 @@ public class BookDAO {
    		        	pb.setSum_price(rs.getInt("sum_price"));
    		        	hb.setPhoto("photo");*/
    		        	
-   		        	
+   		            BeforB.setPayment_num(rs.getString("payment_num"));
    		        	BeforB.setRoom_type(rs.getString("room_type"));
    		        	BeforB.setPhoto(rs.getString("photo"));
    		        	BeforB.setRoom_subject(rs.getString("room_subject"));
@@ -146,6 +146,7 @@ public class BookDAO {
    		        	BeforB.setCheck_in(rs.getDate("check_in"));
    		        	BeforB.setCheck_out(rs.getDate("check_out"));
    		        	BeforB.setPeople(rs.getInt("people"));
+   		        	
    		        	
    		        	
    		        	
@@ -436,6 +437,83 @@ public class BookDAO {
   	
   	
 
+
+  	//영수증 내용 하나씩 가져오기
+
+      public BeforeBean GetOne(String payment_num){
+  		/*List bookingList=new ArrayList<>();
+  		List paymentList=new ArrayList<>();
+  		List hostList=new ArrayList<>();*/
+  		/*List beforeList=new ArrayList<>();*/
+  		
+  		
+      	/*Vector vector=new Vector<>();*/
+  		
+  		Connection con=null;
+  	    PreparedStatement pstmt=null;	
+  	    ResultSet rs=null;
+  	    BeforeBean BeforB=null;
+  	    
+  		try{
+  			//1,2단계 메서드 호출
+  			con=getConnection();
+                  
+                     String sql2="select from home h, payment p , booking b "
+                     		+ "where p.payment_num=? and b.payment_num=p.payment_num and b.home_num=h.home_num and b.check_in<now()";
+                     
+                     pstmt=con.prepareStatement(sql2);//객체생성
+     		           pstmt.setString(1,payment_num);
+     		          
+     		           rs=pstmt.executeQuery();
+     		           
+     		       while(rs.next()){ 
+  					//첫 행 이동 열접근해서
+     		        	/*HostBean hb=new HostBean();
+     		        	PaymentBean pb=new PaymentBean();
+     		        	BookingBean bb=new BookingBean();*/
+     		        	BeforB=new BeforeBean();
+     		      
+     		        	
+     		   
+     		        	
+     		            BeforB.setPayment_num(rs.getString("payment_num"));
+     		        	BeforB.setRoom_type(rs.getString("room_type"));
+     		        	BeforB.setPhoto(rs.getString("photo"));
+     		        	BeforB.setRoom_subject(rs.getString("room_subject"));
+     		        	BeforB.setMember_email(rs.getString("member_email"));
+     		        	BeforB.setSum_price(rs.getInt("sum_price"));
+     		        	BeforB.setCheck_in(rs.getDate("check_in"));
+     		        	BeforB.setCheck_out(rs.getDate("check_out"));
+     		        	BeforB.setPeople(rs.getInt("people"));
+     		        	
+     		        	
+     		        	
+     		        	
+     		        	
+     		        	/*
+     		        	bookingList.add(bb);
+     		        	paymentList.add(pb);
+     		        	hostList.add(hb);*/
+     		           /* beforeList.add(BeforB);*/
+     		        	
+  				}
+     		       /* vector.add(bookingList);
+     		        vector.add(paymentList);
+     		        vector.add(hostList);*/
+     		        /*vector.add(beforeList);*/
+     		        
+     		        
+  				}catch(Exception e){
+  					e.printStackTrace();
+  				}finally{
+  					 if(rs!=null) try{rs.close();}catch(SQLException ex){}
+  					 if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+  					 if(con!=null) try{con.close();}catch(SQLException ex){}
+  				}
+  				
+  		return BeforB;
+  		
+  	}//완료된 숙소 가져오는 메서드 끝
 	
   	
   	

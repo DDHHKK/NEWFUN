@@ -1,6 +1,4 @@
-﻿<%@page import="net.member.db.MemberDAO"%>
-<%@page import="org.apache.tomcat.jni.Mmap"%>
-<%@page import="net.host.db.HostBean"%>
+﻿<%@page import="net.host.db.HostBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -26,18 +24,21 @@ s0.parentNode.insertBefore(s1,s0);
 
 
 </script>
+
+
+
 <!--End of Tawk.to Script-->
 
 
 
-<div id="content" style="width:100%;">
-
+<div id="content">
+<form action="./SideSearch.sc" method="post" name="fff" id="form_2">
 
 <div id="sideBar_shj">
 <div id="sideSrch_shj">
 
 <nav id="nav_1">
-<form action="./MemberSearchAction.me" method="post" name="fff" id="form_2">
+
 <table  id="searchtable">
 <tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
 
@@ -69,23 +70,22 @@ s0.parentNode.insertBefore(s1,s0);
 </td></tr>
 
 </table>
-</form>
+
 </nav>
-</div>
-<div style="position: relative;top: 29px; left: 20px;
-    font-size: 20px; font-weight: bold; display: inline-block;">가격</div>
-<div id="sideRnge" style=" display: inline-block;">
-<script src="./js/search/jquery-1.12.3.min.js"></script>
-<script src="./js/search/ion.rangeSlider.js"></script>
- <div style="position: relative; padding: 10%;">
 
-    <div>
-        <input type="text" id="range" value="" name="range" />
-        <input type="number" id="from_shj" value="0">
-        <input type="number" id="to_shj" value="0">
-    </div>
 
-</div>
+<span style="position: relative;     padding: 7% 5% 0% 7%; bottom: 23px; font-size: 20px;
+    font-weight: bold;display: inline-block;">가격</span>
+		<div id="sideRnge" style=" display: inline-block;">
+		<script src="./js/search/jquery-1.12.3.min.js"></script>
+		<script src="./js/search/ion.rangeSlider.js"></script>
+			
+		        <input type="text" id="range" value="" name="range" />
+	        <input type="hidden" name="from" id="from_shj" value="0">
+		    <input type="hidden" to="to" id="to_shj" value="0"> -->
+		   
+		
+		</div>
 <script>
 
     $(function () {
@@ -111,6 +111,7 @@ s0.parentNode.insertBefore(s1,s0);
 			$('#to_shj').val(to);
 			$('#from_shj').attr("value",from);
 			$('#to_shj').attr("value",to);
+			
      	    console.log(from + " - " + to);
      	});
 
@@ -119,21 +120,83 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 
 <div id="like_star">
-<span>선호도</span>
+<span style="top: 19px;">선호도</span>
  <span>
  	 <i id="image1"class="material-icons" style="color:#cc1d1d;" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)">star_border</i>
  	 <i id="image2" class="material-icons" style="color:#cc1d1d;" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)">star_border</i>
  	 <i id="image3" class="material-icons" style="color:#cc1d1d;" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)">star_border</i>
  	 <i id="image4"class="material-icons" style="color:#cc1d1d;" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)">star_border</i>
  	  <i id="image5"class="material-icons" style=color:#cc1d1d;" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)">star_border</i>
- 
+ <input type="hidden" name="star">
  </span>
 </div>
-
 </div>
-<div id="sideOp"></div>
+<br><br>
 
 
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('input[name="conven"]').change(function(){
+		var convenience = [];
+		var convenience ="";
+		$('input[name="conven"]').each(function(index){
+		if ($(this).is(':checked')){
+				$(this).append("<input type='hidden' value='1' name='num_conv' checked>");
+			
+			} else{
+	
+				$(this).append("<input type='hidden' value='0' name='num_conv' checked>");
+			}
+		}); 
+	});
+	
+	});
+</script>
+
+
+
+<div id="sideOp">
+<span>선택 옵션</span>
+<table>
+<tr><td><i class='fas fa-sort' style='font-size:20px'></i></td>
+	<td><input name="conven" value="elevator" type="checkbox"></td><td>엘리베이터</td></tr>
+<tr><td><i class='fas fa-parking' style='font-size:20px'></i></td>
+<td><input name="conven" value="parking" type="checkbox"></td><td> 주차가능</td></tr>	
+<tr><td><i class="fa fa-wifi"></i></td>
+<td><input name="conven" value="wifi" type="checkbox"></td><td> 와이파이</td></tr>	
+<tr><td><i class='fas fa-thermometer-empty' style='font-size:20px'></i></td>
+<td><input name="conven" value="air_conditioner" type="checkbox"></td><td> 에어컨</td></tr>	
+<tr><td> <i class='fas fa-paw'></i></td>
+<td><input name="conven" value="animal" type="checkbox"></td><td>반려동물</td></tr>	
+<tr><td><i class='fas fa-birthday-cake' style='font-size:20px'></i></td>
+<td><input name="conven" value="party" type="checkbox"></td><td>파티가능</td></tr>	
+<tr><td><i class="fa fa-car" style="font-size:20px"></i></td>
+<td><input name="conven" value="pickup" type="checkbox"></td><td>픽업가능</td></tr>	
+<tr><td><i class='fas fa-sort' style='font-size:20px'></i></td>
+<td><input name="conven" value="elevator" type="checkbox"></td><td> 엘리베이터</td></tr>	
+<tr><td><img src="./img/icon/iron-512.png" width="20px" height="20px"></td>
+<td><input name="conven" value="iron" type="checkbox"></td><td>다리미</td></tr>	
+<tr><td><i class='fas fa-bed' style='font-size:15px'></i></td>
+<td><input name="conven" value="extra_bed" type="checkbox"></td><td>간이침대</td></tr>	
+<tr><td> <img src="./img/icon/shampoo.png" width="15px" height="25px"></td>
+<td><input name="conven" value="shampoo" type="checkbox"></td><td>샴푸</td></tr>	
+<tr><td><i class='fas fa-thermometer-full' style='font-size:20px'></i> </td>
+<td><input name="conven" value="heat" type="checkbox"></td><td> 난방</td></tr>	
+<tr><td><i class='fas fa-smoking'></i></td>
+<td><input name="conven" value="smoking" type="checkbox"></td><td>흡연가능</td></tr>	
+<tr><td><i class='fas fa-utensils'></i></td>
+<td><input name="conven" value="breakfast" type="checkbox"></td><td> 조식제공</td></tr>	
+<tr><td><img src="./img/icon/table-512.png" width="20px" height="20px"></td>
+<td><input name="conven" value="desk" type="checkbox"></td><td> 업무가능공간/책상</td></tr>	
+<tr><td><img src="./img/icon/hair_dryer-512.png" width="20px" height="20px"></td>
+<td><input name="conven" value="hair_dryer" type="checkbox"></td><td>헤어드라이기</td></tr>	
+
+</table>
+</div>
+
+
+</form>
 </div>
 <!-- 페이지내용 시작 -->
 
@@ -146,165 +209,10 @@ s0.parentNode.insertBefore(s1,s0);
 
  </div> 
 
- <!-- <div id="sideBar_shj">
-   <form action="starTest.jpg" method="post" name="fr">
- <div >
- main에서 검색바 떼와서 붙이는 자리
- </div>
-
- <div id="option_DY">
-  
-  
-  <div id="hotel_rate_DY">
-
-<div align=center>
- <span>
- 	 <i id="image1"class="material-icons" style="color:#cc1d1d;" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)">star_border</i>
- 	 <i id="image2" class="material-icons" style="color:#cc1d1d;" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)">star_border</i>
- 	 <i id="image3" class="material-icons" style="color:#cc1d1d;" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)">star_border</i>
- 	 <i id="image4"class="material-icons" style="color:#cc1d1d;" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)">star_border</i>
- 	  <i id="image5"class="material-icons" style=color:#cc1d1d;" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)">star_border</i>
- 
- </span>
-</div>
-<input type="hidden" class="star_shj" name="star" value="">
-
-
-  </div>
-   
-
-
-<script src="./js/search/jquery-1.12.3.min.js"></script>
-<script src="./js/search/ion.rangeSlider.js"></script>
- <div style="position: relative; padding: 10%;">
-
-    <div>
-        <input type="text" id="range" value="" name="range" />
-        <input type="number" id="from_shj" value="0">
-        <input type="number" id="to_shj" value="0">
-    </div>
-
-</div>
-<script>
-
-    $(function () {
-
-        $("#range").ionRangeSlider({
-            hide_min_max: true,
-            keyboard: true,
-            min: 0,
-            max: 50000,
-            from: 100,
-            to: 50000,
-            type: 'double',
-            step: 100,
-            prefix: "$",
-            min_interval : 5000,
-            grid: true
-        });
-        $("#range").on("change", function () {
-     	    var $this = $(this),
-     	        from = $this.data("from"),
-     	        to = $this.data("to");
-			$('#from_shj').val(from);
-			$('#to_shj').val(to);
-			$('#from_shj').attr("value",from);
-			$('#to_shj').attr("value",to);
-     	    console.log(from + " - " + to);
-     	});
-
-        
-    });
-</script> -->
-
-
-
-
- 
-
- 
- 
-
-
-  
-  
-  
- <!--  <div id="facility_DY">
-   <h3>시설</h3>
-   <ul id="filter_pupular_list">
-    <li>
-     <label> <i class='far fa-lightbulb' style='font-size:20px'></i>&nbsp;&nbsp;<input name="conven" value="essential" type="checkbox">&nbsp; 필수품목</label>
-    </li>
-    <li>
-     <label> <i class='fab fa-accessible-icon' style='font-size:20px'></i>&nbsp;&nbsp;<input name="conven" value="disabled" type="checkbox">&nbsp; 장애인시설</label>
-    </li>
-    <li>
-     <label> <i class='fas fa-parking' style='font-size:20px'></i>&nbsp;&nbsp; <input name="conven" value="parking" type="checkbox">&nbsp; 주차가능</label>
-    </li>
-    <li>
-     <label> <i class="fa fa-wifi"></i>&nbsp;&nbsp;<input name="conven" value="wifi" type="checkbox">&nbsp; 와이파이</label>
-    </li>
-    <li>
-     <label> <i class='fas fa-thermometer-empty' style='font-size:20px'></i>&nbsp;&nbsp;<input name="conven" value="air_conditioner" type="checkbox">&nbsp; 에어컨</label>
-    </li>
-    <li>
-     <label> <i class='fas fa-paw'></i>&nbsp;&nbsp; <input name="conven" value="animal" type="checkbox">&nbsp;반려동물</label>
-    </li>
-    <li>
-     <label> <i class='fas fa-birthday-cake' style='font-size:20px'></i>&nbsp;&nbsp;<input name="conven" value="party" type="checkbox">&nbsp; 파티가능</label>
-    </li>
-    <li>
-     <label> <i class="fa fa-car" style="font-size:20px"></i>&nbsp;&nbsp; <input name="conven" value="pickup" type="checkbox">&nbsp; 픽업가능</label>
-    </li>
-    <li>
-     <label> <i class='fas fa-sort' style='font-size:20px'></i>&nbsp;&nbsp; <input name="conven" value="elevator" type="checkbox">&nbsp; 엘리베이터</label>
-    </li>
-    <li>
-     <label> <img src="./img/icon/iron-512.png" width="20px" height="20px">&nbsp;&nbsp;<input name="conven" value="iron" type="checkbox">&nbsp; 다리미</label>
-    </li>
-    <li>
-     <label> <i class='fas fa-bed' style='font-size:15px'></i>&nbsp;&nbsp;<input name="conven" value="extra_bed" type="checkbox">&nbsp; 간이침대</label>
-    </li>
-    <li>
-     <label> <img src="./img/icon/shampoo.png" width="15px" height="25px">&nbsp;&nbsp; <input name="conven" value="shampoo" type="checkbox">&nbsp; 샴푸</label>
-    </li>
-    <li>
-     <label> <i class='fas fa-thermometer-full' style='font-size:20px'> </i>&nbsp;&nbsp;<input name="conven" value="heat" type="checkbox">&nbsp; 난방</label>
-    </li>
-     <li>
-     <label> <i class='fas fa-smoking'></i>&nbsp;&nbsp; <input name="conven" value="smoking" type="checkbox">&nbsp; 흡연가능</label>
-    </li>
-    <li>
-     <label> <i class='fas fa-utensils'></i>&nbsp;&nbsp;<input name="conven" value="breakfast" type="checkbox">&nbsp; 조식제공</label>
-    </li>
-    <li>
-     <label> <img src="./img/icon/table-512.png" width="20px" height="20px">&nbsp;&nbsp;<input name="conven" value="desk" type="checkbox">&nbsp;  업무가능공간/책상</label>
-    </li>
-    <li>
-     <label> <img src="./img/icon/hair_dryer-512.png" width="20px" height="20px">&nbsp;&nbsp;<input name="conven" value="hair_dryer" type="checkbox">&nbsp; 헤어드라이기</label>
-    </li>
-    
-   
-   </ul>
-  </div>
-  
-  
-  
- </div>
-
-</form>
-</div>
-
-
-
- -->
-
 
 
 <div id="content_DY" style="border: 1px solid red;">
 <%
-System.out.println("이까지옴");
-MemberDAO da = new MemberDAO();
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
 String address = (String)session.getAttribute("address");
@@ -505,10 +413,13 @@ $(function(){
 });
 </script>
 
+
+
 <%
 } //for문끝
-} 
-//if문끝
+} //if문끝
+
+
 
 else if(rest.size()!=0){
 for(int i=0;i<rest.size();i++){ //for문 시작
@@ -575,10 +486,8 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 </div>
 
 
-
 <%
-
-}
+} //for문끝
 } //esle if문끝
 
 
@@ -612,7 +521,11 @@ else{
 
 
 
-
+<div class="pageNum_shj">
+<a href="#" >◀</a>
+<b><a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
+ <a href="#">6</a> <a href="#">7</a> <a href="#">8</a> <a href="#">9</a></b>
+<a href="#">▶</a>
 
 
 </div>
