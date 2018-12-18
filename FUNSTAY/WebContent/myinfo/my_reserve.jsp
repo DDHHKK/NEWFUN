@@ -118,7 +118,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id09').style.display='block'" id="bill_butt_DY">영수증</button>
+  <button onclick="document.getElementById('id09').style.display='block'" class="bill_butt_DY">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
  <hr>
@@ -213,22 +213,22 @@ if(i%3==0){
  
  
  
- 
- <%-- 		
 <%
 	request.setCharacterEncoding("UTF-8");
-	String pageNum = (String) request.getAttribute("pageNum");
+
+     String pageNum = (String) request.getAttribute("pageNum");
+     int num = ((Integer) request.getAttribute("num")).intValue();
 	
 	
-	int num = ((Integer) request.getAttribute("num")).intValue();
+	
 %>
-  --%>
+  
  
  
   <!--리뷰쓰기 버튼 -->
-    <%-- <button onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'" class="review_butt_DY">리뷰쓰기</button>  --%>
-  <!--리뷰쓰기 버튼 끝  -->
-		
+     <button onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'" class="review_butt_DY">리뷰쓰기</button>  
+  <!--리뷰쓰기 버튼 끝  --> 
+		 
 
 	</td>
 
@@ -353,7 +353,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id10').style.display='block'" id="bill_butt_DY">영수증</button>
+  <button onclick="document.getElementById('id10').style.display='block'" class="bill_butt_DY">영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
  <hr>
@@ -417,7 +417,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button onclick="document.getElementById('id10').style.display='block'" id="bill_butt_DY" >영수증</button>
+  <button onclick="document.getElementById('id10').style.display='block'" class="bill_butt_DY" >영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
   
