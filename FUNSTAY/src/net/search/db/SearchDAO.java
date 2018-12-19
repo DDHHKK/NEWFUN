@@ -141,9 +141,10 @@ private Connection getConnection() throws Exception{
 				ResultSet rs = null;
 				PreparedStatement pstmt=null;
 				List SearchList = new ArrayList();
-				List Roomlist = new ArrayList();
+				List Reviewlist = new ArrayList();
 				Vector vector = new Vector();
 				StringBuffer sql=new StringBuffer();//속도가 빠름
+				int home_num=0;
 				try{
 					
 					con = getConnection();
@@ -151,10 +152,9 @@ private Connection getConnection() throws Exception{
 					sql.append("select * from home where  price between ? and ? and home_num = any( select distinct re.home_num from review re inner join(select * from (select home_num as hom_num, sum(min_people) as min_people1, sum(max_people) as max_people1 ");
 					sql.append("from room group by home_num) r join (select h.address, h.room_subject, h.room_type, h.room_content, h.price, h.photo, h.home_num from (select b.home_num from home h ");
 					sql.append("left join booking b on h.home_num=b.home_num where b.check_in between ? and ? or b.check_out between ? and ?"); 
-			
+					System.out.println("dddd");
 					try{
-						
-						
+					
 						for(int i =0; i<conv.length; i++){
 						sql.append("and h.home_num = any(select home_num from convenience where");
 					     System.out.print("conv "+conv[i]);
@@ -177,13 +177,13 @@ private Connection getConnection() throws Exception{
 						else if(conv[i].equals("desk")){sql.append("desk=?");}
 						else if(conv[i].equals("hair_dryer")) {sql.append(" hair_dryer=?");}
 						
-						if(i == conv.length-1) {System.out.println("fhfhf"); sql.append(" ) "); }
+						if(i == conv.length-1) { sql.append(" ) "); }
 						else {	
 							sql.append(" and ");}
 						
 						}
 						int count=0;
-						System.out.println("3333333333333333333333");
+						
 						sql.append(") as t right join home h on h.home_num=t.home_num where t.home_num is null and h.address LIKE ? and h.home_status=1 and h.start_date <  ? and h.end_date > ?) s on hom_num=s.home_num where r.max_people1>=? ) li on re.home_num=li.home_num where satisfaction>=?)");
 					pstmt=con.prepareStatement(sql.toString());	
 					pstmt.setInt(1, from);
@@ -207,7 +207,7 @@ private Connection getConnection() throws Exception{
 					pstmt.setInt(++count,satis);
 					
 					}catch(NullPointerException e){
-						System.out.println("2322222222222222222");
+					
 						sql.append(")as t right join home h on h.home_num=t.home_num where t.home_num is null and h.address LIKE ? and h.home_status=1 and h.start_date <  ? and h.end_date > ?) s on hom_num=s.home_num where r.max_people1>=? ) li on re.home_num=li.home_num where satisfaction>=?)");
 						pstmt=con.prepareStatement(sql.toString());	
 						pstmt.setInt(1, from);
@@ -223,33 +223,37 @@ private Connection getConnection() throws Exception{
 						pstmt.setInt(11,satis);
 					}
 				
-						
-				
 		
-				
-							
-				
 					rs = pstmt.executeQuery();
 					
 					while(rs.next()){
-						
-						HostBean hb1 = new HostBean();
-						
-						hb1.setAddress(rs.getString("address"));
-						hb1.setRoom_subject(rs.getString("room_subject"));
-						hb1.setRoom_type(rs.getString("room_type"));
-						hb1.setRoom_content(rs.getString("room_content"));
-						hb1.setHome_num(rs.getInt("home_num"));
-						hb1.setPrice(rs.getInt("price"));
-						hb1.setPhoto(rs.getString("photo"));
-						System.out.println("alalalalalalal");
-						System.out.println(rs.getString("room_subject"));
-						SearchList.add(hb1);	
-						
+					HostBean hb1 = new HostBean();
+					ReviewBean rb = new ReviewBean();
+					hb1.setAddress(rs.getString("address"));
+					hb1.setRoom_subject(rs.getString("room_subject"));
+					hb1.setRoom_type(rs.getString("room_type"));
+					hb1.setRoom_content(rs.getString("room_content"));
+					hb1.setHome_num(rs.getInt("home_num"));
+					hb1.setPrice(rs.getInt("price"));
+					hb1.setPhoto(rs.getString("photo"));
+					
+					 home_num = rs.getInt("home_num");
+					 SearchList.add(hb1);
+					String sql2 = "select avg(satisfaction) from review where home_num=?";
+					pstmt = con.prepareStatement(sql2);
+					pstmt.setInt(1, home_num);
+					rs = pstmt.executeQuery();
+					if(rs.next())
+					{
+						rb.setSatisfaction(rs.getString("avg(satisfaction)"));
+					}
+			
+					Reviewlist.add(rb);
 				}
 				
 
 					vector.add(SearchList);
+					vector.add(Reviewlist);
 				}catch (Exception e){
 					e.printStackTrace();
 				}finally{
@@ -546,11 +550,11 @@ private Connection getConnection() throws Exception{
 		              num=rs.getInt("max(QnA_num)")+1;   //rs.getInt(1)
 		           }
 		      
-		           sql="update qna_board set re_lev = 1 where re_ref = ?";
+		           sql="update qna_board set re_lev = 1 where re_ref = ? ";
 		           	  pstmt=con.prepareStatement(sql);
 		              pstmt.setInt(1,qb.getRe_ref());
+		              /*pstmt.setInt(2, qb.getRe_seq());*/
 		              pstmt.executeUpdate();
-		              
 		          
 		           sql="insert into qna_board values(?,?,?,?,?,?,now(),?,1,1)";
 		           pstmt=con.prepareStatement(sql);
@@ -561,6 +565,8 @@ private Connection getConnection() throws Exception{
 					pstmt.setString(5,qb.getMember_email());
 					pstmt.setInt(6,qb.getHome_num());				
 					pstmt.setInt(7,qb.getRe_ref());//re_ref == num 
+					
+				
 						        
 		           pstmt.executeUpdate();
 		        } catch (Exception e) {

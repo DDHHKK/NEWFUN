@@ -100,19 +100,31 @@ public class SideSearch implements Action{
 
 		MemberDAO mdd= new MemberDAO();
 		SearchDAO sdao = new SearchDAO();
-		//Vector vector0 = mdd.getsearchList(hb, start_date, end_date,num);
-		Vector vector = sdao.getSideSearch(hb, convenience, num, satis, from, to);
+		Vector vector0 = mdd.getsearchList(hb, start_date, end_date,num);
+		
 		Vector vector2 = mdd.getsearchList2(hb, num);
 		Vector vector3 = mdd.getsearchList3(hb);
 		int listcheck=0;
 		List a = new ArrayList();
 		List list =null;
-		try{list=(List)vector.get(0);}
-		catch(ArrayIndexOutOfBoundsException e)
-		{list = a;}
-	    
-		List past =(List)vector2.get(0);
-		List rest =(List)vector3.get(0);
+		List avg =null;
+		List search =null;
+		List review =null;
+		
+		if(vector0.size()!=0)
+		{
+			Vector vector = sdao.getSideSearch(hb, convenience, num, satis, from, to);
+			search = (List)vector.get(0);
+			review = (List)vector.get(1);
+		}else if(vector2.size()!=0)
+		{
+			
+		}
+		else if (vector3.size()!=0)
+		{
+			
+		}
+		else{}
 		HttpSession session = request.getSession();
 
 		session.setAttribute("list", list);
@@ -123,7 +135,8 @@ public class SideSearch implements Action{
 		session.setAttribute("start_date", start_date);
 		session.setAttribute("end_date", end_date);
 		session.setAttribute("num", num);
-		
+		session.setAttribute("num", num);
+		session.setAttribute("avg", avg);
 	
 		
 		

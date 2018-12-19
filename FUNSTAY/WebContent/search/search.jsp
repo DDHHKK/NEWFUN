@@ -1,4 +1,5 @@
-﻿<%@page import="net.host.db.HostBean"%>
+﻿<%@page import="net.wishlist.db.WishlistBean"%>
+<%@page import="net.host.db.HostBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -212,24 +213,26 @@ $(document).ready(function(){
 
 <div id="content_DY">
 <%
+System.out.println("D");
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
-
+System.out.println("D");
 List past = (List)session.getAttribute("past");
 
-
-int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
+System.out.println(list.size());
+int pageSize = Integer.parseInt(request.getParameter("pageSize"));
+System.out.println("D");
 %>
 <p id = "pont_1213_WS"><%=address%>에 대해 찾으셨나요?
- <%if(list.size()!=0){
+ <%if(list.size()!=0){System.out.println("D");
 	%><%=list.size()%>개의 정보를 찾았습니다.</p>
 <%
  }
- else if(past.size()!=0){
+ else if(past.size()!=0){System.out.println("dd");
 	 %><%=past.size()%>개의 정보를 찾았습니다.</p>
 	 <% 
  }
- else if(rest.size()!=0){
+ else if(rest.size()!=0){System.out.println("Dddd");
 	 %><%=rest.size()%>개의 정보를 찾았습니다.</p>
 	 <% 
  }
@@ -380,47 +383,41 @@ catch(Exception e)
 <div class="extra_shj">
 <div class="innerex_shj">
 <h4><%=hb.getPrice() %>￦/1박</h4></div>
-<div class="heart_shj"> <i  class='far' id="modaltrigger_shj" style="cursor:pointer;color:#cc1d1d;">&#xf004;</i></div>
-</div>
-</div>
+<div class="heart_shj"> <i  class='far' ><a href="#modal_shj" class="flatbtn" id="modaltrigger_shj" style="color:#cc1d1d;">&#xf004;</a></i></div>
 
-
-<div id="modal_shj" style="display:none;">
+<div id="modal_shj" style="display:none; ">
 	<h2 >목록 리스트</h2>
+<%
+try{
+List wishlist = (List)session.getAttribute("wishlist");
 
+for(int j =0; j<wishlist.size(); j++)
+{
+	WishlistBean wb = (WishlistBean)wishlist.get(i);
+	%>
+	<a href ='./AddMyWish.wi?wishlist_num=<%=wb.getWishlist_num()%>&home_num=<%=hb.getHome_num() %>'><%=wb.getList_name() %></a><br>
+	<%
+
+}}catch(Exception e)
+{
+	%>
+	로그인 후 위시리스트에 추가할 수 있습니다.
+	<%
+}
+%>
+</div>
+</div>
 </div>
 
-<!-- <div style="width:400px; height:400px; border: 10px solid blue;" id ="sjsjsj"> 
-
-<script type="text/javascript">
-$("#sjsjsj").click(function(){
-	alert("ddd");
-	var avg =$("#avg_shj").val();	
-
-		alert(avg);
-		for(var i =1; i<=avg; i++)
-			{
-			
-			$('#image'+i).text("star");
-			} 
-	
-});
-
-</script> -->
 
 
 
-
-
-
-<!-- 하트 클릭부분 -->
+<script type="text/javascript" src="./js/myinfo/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search/modal_shj2.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
-
-	
-	
-	$('.heart_shj>i').click(function(){
+	$('#modaltrigger_shj').click(function(){
 		/* var home_num= $('#home_num').val();
 		var wishlist_num= $('#wishlist_num').val();
 		var wish_num=$('#wish_num').val(); */
@@ -429,7 +426,8 @@ $(document).ready(function(){
 			
 				$(this).attr('class','fas');
 				/*  location.href="./AddMyWish.wi?home_num="+home_num+"&wishlist_num="+wishlist_num; */
-				location.href = "#modal_shj";
+			
+				 
 			}
 		else
 			{
@@ -446,11 +444,27 @@ $(document).ready(function(){
 <!--모달윈도우부분-->
 <script type="text/javascript">
 $(function(){
+	 $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
 
-  $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
 });
 </script>
 
+<!-- <div style="width:400px; height:400px; border: 10px solid blue;" id ="sjsjsj"> 
+<script type="text/javascript">
+$("#sjsjsj").click(function(){
+	alert("ddd");
+	var avg =$("#avg_shj").val();	
+
+		alert(avg);
+		for(var i =1; i<=avg; i++)
+			{
+			
+			$('#image'+i).text("star");
+			} 
+	
+});
+
+</script> -->
 
 
 <%
