@@ -509,16 +509,16 @@ private Connection getConnection() throws Exception{
 		        int num=0; 
 		        try {		          
 		           con=getConnection();	        
-		           String sql="select max(num) from qna_board";
+		           String sql="select max(QnA_num) from qna_board";
 		           pstmt=con.prepareStatement(sql);		      
 		           rs=pstmt.executeQuery();
 		          
 		           if(rs.next()){
-		              num=rs.getInt("max(num)")+1;   //rs.getInt(1)
+		              num=rs.getInt("max(QnA_num)")+1;   //rs.getInt(1)
 		           }
 		      
 		           sql="update qna_board set re_seq = re_seq + 1 where re_ref = ? and re_seq > ? ";
-		           pstmt=con.prepareStatement(sql);
+		           	  pstmt=con.prepareStatement(sql);
 		              pstmt.setInt(1,qb.getRe_ref());
 		              pstmt.setInt(2, qb.getRe_seq());
 		              

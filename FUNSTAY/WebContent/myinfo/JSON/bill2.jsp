@@ -9,10 +9,11 @@
 <%
 String member_email=(String)session.getAttribute("email");
 String payment_num=(String)request.getParameter("payment_num");
+String room_subject=(String)request.getParameter("room_subject");
 
 //member_email="kim@gmail.com";
-//payment_num="20181219-17";
-
+//payment_num="20181219-31";
+//room_subject="부산test";
 
 
 
@@ -29,10 +30,12 @@ String dbUser="root";
 String dbPass="1234";
 Connection con=DriverManager.getConnection(dbUrl,dbUser,dbPass);
 //3단계 sql 
-String sql="select * from home h, payment p where h.host_email=p.host_email and p.payment_num=? and p.member_email=?";
+String sql="select * from home h, payment p where h.host_email=p.host_email and p.payment_num=? and p.member_email=? and room_subject=?";
+/*and payment_num='20181219-31' and room_subject='부산test'  */
 PreparedStatement pstmt=con.prepareStatement(sql);
 pstmt.setString(1,payment_num);
 pstmt.setString(2,member_email);
+pstmt.setString(3,room_subject);
 
 ResultSet rs = pstmt.executeQuery();
 
@@ -47,6 +50,7 @@ while(rs.next()){
 	mb.put("member_email",rs.getString("member_email"));
 	mb.put("fees",rs.getString("fees"));
 	mb.put("sum_price",rs.getString("sum_price"));
+	mb.put("payment_status",rs.getString("payment_status"));
 	/* mb.put("check_in",rs.getString("check_in")); */
 	/* mb.put("name",rs.getString("check_in"));  */
 	/* mb.put("check_out",rs.getString("check_out")); */
