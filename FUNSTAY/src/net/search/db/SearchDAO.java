@@ -147,17 +147,8 @@ private Connection getConnection() throws Exception{
 				try{
 					
 					con = getConnection();
-					/*String sql2 = "select * from (select home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 from room  group by home_num) r join (select h.address, h.room_subject, h.room_type, h.room_content, h.price, h.photo,   h.home_num   from (select b.home_num  from home h left join booking b  on h.home_num=b.home_num  where b.check_in between '2018-12-22' and '2018-12-28' or b.check_out between '2018-12-22' and '2018-12-28') as t right join home h  on h.home_num=t.home_num  where t.home_num is null and h.address LIKE '%제주%' and h.start_date < '2018-12-22' and h.end_date > '2018-12-28') s on r.home_num=s.home_num  where r.max_people1>=2 and s.price between 0 and 60000;";
-			*/
-					sql.append("select hhh.home_num, hhh.room_subject, hhh.room_type, hhh.room_content, hhh.photo, hhh.address ");
-					sql.append("from (select s.home_num,s.room_subject, s.room_type, s.room_content, s.price, s.photo,s.address ");
-					sql.append("from (select home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 ");
-					sql.append("from room group by home_num) r join ");
-					sql.append("(select h.address, h.room_subject, h.room_type, h.room_content, h.price, h.photo, h.home_num ");
-					sql.append("from (select b.home_num ");
-					sql.append("from (select hom.home_num ");
-					sql.append("from home hom left join convenience c ");
-					sql.append("on c.home_num=hom.home_num where "); 
+		
+					sql.append("select * from home h inner join  (select ro.home_num, ro.max_people as max_people from room ro inner join (select r.home_num from review r, convenience c where  r.home_num = c.home_num and ");
 				/*	for(int i =0; i<conv.length; i++)
 					{
 						if(conv[i].equals("essential")){sql.append(" c.essential=?");}
@@ -180,54 +171,54 @@ private Connection getConnection() throws Exception{
 						else if(conv[i].equals("hair_dryer")) {sql.append(" c.hair_dryer=?");}
 						else {break;}
 						sql.append(" and ");
-					}		*/
-						sql.append("c.essential =1");
-					sql.append(") as h left join booking b on h.home_num=b.home_num ");
-					sql.append("where b.check_in between ? and ? or b.check_out between ? and ?) as t ");
-					sql.append("right join home h on h.home_num=t.home_num ");
-					sql.append("where t.home_num is null and h.address LIKE ? and h.start_date < ? and h.end_date > ?) s ");
-					sql.append("on r.home_num=s.home_num where r.max_people1>=? and s.price between ? and ?) as hhh ");
-					sql.append("left join review re on hhh.home_num=re.home_num ");
-					sql.append("where re.satisfaction >= ? group by hhh.home_num");
-
-							
-					int count =1;
+					}*/	
+					 sql.append(" r.satisfaction>=? ) rc where ro.max_people >= ? and ro.room_num!= any(");
+					 sql.append("select room_num from room  where home_num =  ANY(select distinct home_num from booking ") ;
+					 sql.append("where (? between check_in and check_out) or (? between check_in and check_out)))) rorc on h.home_num =rorc.home_num");
+					 sql.append(" where address like ? and h.price between ? and ?");
+					
+		
+				/*	int count =1;
 					pstmt=con.prepareStatement(sql.toString());	
-			/*		for(int i =1; i<=conv.length; i++)
+					for(int i =1; i<=conv.length; i++)
 					{
-						pstmt.setInt(i, 1);
 						count=i;
+						pstmt.setInt(count, 1);
+						
 					}	
 					*/
-					pstmt.setDate(count++, hb.getStart_date());
-					pstmt.setDate(count++, hb.getEnd_date());
-					pstmt.setDate(count++, hb.getStart_date());
-					pstmt.setDate(count++, hb.getEnd_date());
-					pstmt.setString(count++, "%"+hb.getAddress()+"%");
-					pstmt.setDate(count++, hb.getStart_date());
-					pstmt.setDate(count++, hb.getEnd_date());
-					pstmt.setInt(count++, num);
-					pstmt.setInt(count++, from);
-					pstmt.setInt(count++, to);
-					pstmt.setInt(count++, satis);
-						
-						
+					 int count=0;
+					 pstmt=con.prepareStatement(sql.toString());	
+					pstmt.setInt(++count,satis);
+					pstmt.setInt(++count, num);
+					System.out.println(conv.length);
+					System.out.println(count);
+					pstmt.setDate(++count, hb.getStart_date());
+					pstmt.setDate(++count, hb.getEnd_date());
+					pstmt.setString(++count, "%"+hb.getAddress()+"%");		
+					pstmt.setInt(++count, from);
+					pstmt.setInt(++count, to);
+					System.out.println(count);
+				
 					rs = pstmt.executeQuery();
 					while(rs.next()){
 						RoomBean rb = new RoomBean();
 						HostBean hb1 = new HostBean();
-						rb.setMin_people(rs.getInt("min_people1"));
-						rb.setMax_people(rs.getInt("max_people1"));
+
+						rb.setMax_people(rs.getInt("max_people"));
+						Roomlist.add(rb);
 						hb1.setAddress(rs.getString("address"));
 						hb1.setRoom_subject(rs.getString("room_subject"));
 						hb1.setRoom_type(rs.getString("room_type"));
 						hb1.setRoom_content(rs.getString("room_content"));
 						hb1.setHome_num(rs.getInt("home_num"));
 						hb1.setPrice(rs.getInt("price"));
-						hb1.setPhoto(rs.getString("photo"));		
-						SearchList.add(hb1);
-						Roomlist.add(rb);
+						hb1.setPhoto(rs.getString("photo"));
+						System.out.println(rs.getString("room_subject"));
+						SearchList.add(hb1);	
+						
 				}
+					System.out.println("Asdfasdf");
 					vector.add(SearchList);
 					vector.add(Roomlist);
 				}catch (Exception e){
