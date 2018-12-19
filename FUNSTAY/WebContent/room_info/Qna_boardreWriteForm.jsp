@@ -88,11 +88,11 @@ String home_num = request.getParameter("home_num");
 <table border="0" align="center">
 <tr><td><p class="letter">QnA 답변하기</p></td></tr>
 <tr><td><h3>방 이름</h3></td><td><h3><input class="w3-input" type="text" name="QnA_num" value=<%=num %>></h3>
-<input type="text" name="re_ref" value="<%=re_ref %>">
-<input type="text" name="re_lev" value="<%=re_lev %>">
-<input type="text" name="re_seq" value="<%=re_ref %>"> 
+<input type="hidden" name="re_ref" value="<%=re_ref %>">
+<input type="hidden" name="re_lev" value="<%=re_lev %>">
+<input type="hidden" name="re_seq" value="<%=re_ref %>"> 
 </td></tr>  
-<tr><td><h3>문의 제목</h3></td><td><h3> <input class="w3-input" name="subject" value="<%=subject %>"></h3></td></tr> 
+<tr><td><h3>문의 제목</h3></td><td><h3><input class="w3-input" name="subject" value="[답글] <%=subject %>"></h3></td></tr> 
 <tr><td colspan="2"><h3> <input class="w3-input" name="member_email" value="<%=Member_email %>"></h3></td></tr>  
 <tr><td><h3>문의 내용</h3></td><td><h3><%=content %></h3></td></tr> 
 <tr><td><h3>답변</h3></td><td colspan="3"><textarea name="content" rows="30" cols="100" placeholder="답변을 입력해주세요..."></textarea></td></tr>

@@ -80,7 +80,7 @@ for(int i=0;i<q_list.size();i++){
 		</td>
 		<td><%=qb.getQnA_date() %></td>
 		<td>
-			<%if(qb.getRe_seq()==1){%>
+			<%if(qb.getRe_lev()==1){%>
 			답변완료
 			<%}
 			else{
