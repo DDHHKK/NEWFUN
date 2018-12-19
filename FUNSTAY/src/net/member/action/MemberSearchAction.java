@@ -101,7 +101,7 @@ public class MemberSearchAction implements Action{
 	    else{session.setAttribute("avg", a);}
 	    
 		
-	    
+
 		session.setAttribute("list", list);
 		session.setAttribute("past", past);
 		session.setAttribute("rest", rest);
