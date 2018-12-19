@@ -13,7 +13,7 @@ public class ReviewBean {
 	private int access;
 	private String member_email;
 	private int home_num;
-	private int star;
+	private String star;
 	
 	
 	
@@ -35,6 +35,7 @@ public class ReviewBean {
 	public void setReview_date(Date review_date) {
 		this.review_date = review_date;
 	}
+	
 	public int getSatisfaction() {
 		return satisfaction;
 	}
@@ -65,10 +66,10 @@ public class ReviewBean {
 	public void setHome_num(int home_num) {
 		this.home_num = home_num;
 	}
-	public int getStar() {
+	public String getStar() {
 		return star;
 	}
-	public void setStar(int star) {
+	public void setStar(String star) {
 		this.star = star;
 	}
 	

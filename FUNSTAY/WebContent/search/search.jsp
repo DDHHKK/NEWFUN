@@ -1,4 +1,5 @@
-﻿<%@page import="net.host.db.HostBean"%>
+<%@page import="net.review.db.ReviewBean"%>
+<%@page import="net.host.db.HostBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -46,34 +47,10 @@ int num = (Integer)session.getAttribute("num");
 <table  id="searchtable">
 <tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
 
-<<<<<<< HEAD
 
-<tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><input type="text" value="" placeholder="목적지를 적으세요" class="textsize1" name="address"></td></tr>
-<tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><input type='text' id="minMaxExample" class='datepicker-here' name="start_date" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
-   <input type="text" value="" class="datepicker-here" id="datepicker" name="end_date" data-language='en' placeholder="년 / 월 / 일">
-</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;인원</td> <td>
-  <input type="text" value="" placeholder="게스트를 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
-  <nav id="form_1">
-  <ol>
-     <li>
-        <span class="font1">성&nbsp;인</span> &nbsp;&nbsp;
-        <input type="button" value="-" onclick="cid1()" class="btn_1" id="btn_11"> 
-        <input type="text" value="" name="text11" id="textcss1" placeholder="0" class="text_box">
-        <input type="button" value="+" onclick="add1()" class="btn_1">
-     </li>
-     <li>
-      <span class="font1">어린이</span> 
-      <input type="button" value="-" onclick="cid2()" class="btn_1" id="btn_12"> 
-      <input type="text" value="" name="text12" id="textcss2" placeholder="0"class="text_box">
-      <input type="button" value="+" onclick="add2()" class="btn_1">
-     </li>
-     <li> 
-       <input type="button" value="확인" onclick="choice()" id="btn_sh">
-     </li>
-     </ol>
-  </nav>
-</td></tr>
+
+
+
 
 <tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><span class="table_text"><%=address %></span></td></tr>
 <tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><span class="table_text"> <%=start_date %> / <%= end_date %></span></td></tr>
@@ -237,7 +214,6 @@ $(document).ready(function(){
 <%
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
-
 List past = (List)session.getAttribute("past");
 
 
@@ -375,18 +351,21 @@ function showSlides(n) {
 <%
 int avg =0;
 try{List avglist = (List)session.getAttribute("avg");
-avg = (Integer)avglist.get(0);	}
+
+for(int j=0; j<avglist.size(); j++)
+{ReviewBean Beansavg = (ReviewBean)avglist.get(i);
+avg = Beansavg.getSatisfaction();
+ }
+System.out.println(avg+"1111");}
 catch(Exception e)
-{ avg=0;}
+{ avg=0;System.out.println(avg+"2222");}
 
 
-{
+
 	
 	%>
 	
-<%
-}
-%>
+
 <input type="hidden" id="avg_shj" name="avg" value="<%=avg%>">
 <div class="star_shj">
  <span>
