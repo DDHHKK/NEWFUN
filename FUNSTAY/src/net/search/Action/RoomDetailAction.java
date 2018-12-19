@@ -28,9 +28,10 @@ public class RoomDetailAction implements Action{
 		request.setCharacterEncoding("UTF-8");
 //-----------------------------------------------
 		int num = Integer.parseInt(request.getParameter("num"));
+		System.out.println("num"+num);
 		String pageNum = request.getParameter("pageNum");
 		System.out.println("들어왓음"+pageNum);
-		int room_num= 0;
+		int room_num;
 		
 		SearchDAO bdao = new SearchDAO();
 		HostDAO hdao = new HostDAO();
@@ -64,6 +65,7 @@ public class RoomDetailAction implements Action{
 //-----------------------------------------------
 		ReviewDAO rdao = new ReviewDAO();
 		int count = rdao.getReviewCount();
+		System.out.println("count"+count);
 		// 한페이지에 보여줄 글의 개수
 		int pageSize = 10;
 
@@ -77,12 +79,14 @@ public class RoomDetailAction implements Action{
 
 		// 끝행구하기
 		int endRow = currentPage * pageSize;
+		System.out.println("startRow"+startRow);
+		System.out.println("endRow"+endRow);
 		int home_num = num;
 		System.out.println(num);
 		
 		List<ReviewBean> ReviewList = null;
 		if (count != 0)
-			ReviewList = rdao.getReviewList(startRow, pageSize, home_num);
+			ReviewList = rdao.getReviewList(home_num);
 //-----------------------------------------------		
 		SearchDAO sdao = new SearchDAO();
 		int count1 = sdao.getQnaCount();

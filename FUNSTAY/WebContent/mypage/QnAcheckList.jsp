@@ -74,13 +74,13 @@ for(int i=0;i<q_list.size();i++){
 		<td><%=qb.getQnA_num() %></td>
 		<td class="qnaopensub">
 			<a href="./MemberQNAcontent.me?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>">
-				<%if(qb.getRe_lev()%2==1){%>[답변]<%}else{%>[문의]<%}%>
+				<%if(qb.getRe_seq()%2==1){%>[답변]<%}else{%>[문의]<%}%>
 				<%=qb.getSubject() %>
 			</a>
 		</td>
 		<td><%=qb.getQnA_date() %></td>
 		<td>
-			<%if(qb.getRe_seq()==1){%>
+			<%if(qb.getRe_lev()==1){%>
 			답변완료
 			<%}
 			else{

@@ -6,15 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-function result(){
-   
-   //join_check.jsp 페이지를 열리게 한 페이지(index.jsp 의 중복체크버튼) >>> window.opener
-   
-   window.opener.document.fr.email.value = document.wfr.email.value;
-   window.close();
-}
-</script>
+
 
 <style type="text/css">
 #check_box{
@@ -36,9 +28,9 @@ int check = mdao.emailCheck(email);
 <b><font size="4" color="gray">아이디 중복체크</font></b>
 <hr width="300">
 <div id="chk">
-<form action="./MemberEmailCheckAction.me" method="post" name="wfr">
+<form action="./MemberEmailCheckAction.me" method="post" name="wfr" >
    
-	<input type="text" name="email" value="<%=email %>">
+	<input type="text" name="email" class="email" value="<%=email %>">
 	<input type="submit" value="중복확인">
 </form>
 <div id="msg"></div>	
@@ -50,7 +42,8 @@ if(check==1){
 <%
 }else{
 	%>
-	<input type="button" value="사용하기" onclick="result()">
+<!-- 	<input type="button" value="사용하기" onclick="result()"> -->
+	<input type="button" value="사용하기" class="test">
 	<input type="button" value="취소" onclick="window.close()">
 <%	
 }
@@ -58,5 +51,22 @@ if(check==1){
  
 </div>   
 </div>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$('.test').on('click',function(){
+		var email = $('form').find('.email').val();
+		/* alert(email); */
+		window.close();
+	});
+	
+		/* function result(){
+			//join_check.jsp 페이지를 열리게 한 페이지(index.jsp 의 중복체크버튼) >>> window.opener
+			 
+			window.close();
+			} */
+	});
+
+</script>
 </body>
 </html>
