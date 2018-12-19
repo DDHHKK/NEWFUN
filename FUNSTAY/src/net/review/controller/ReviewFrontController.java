@@ -40,8 +40,7 @@ public class ReviewFrontController extends HttpServlet{
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace(
-						);
+				e.printStackTrace();
 			}
 		}
 		

@@ -270,7 +270,7 @@
  
  
  <!-- room_review -->
-<h3 id="room_review1">후기 <%-- <%=count%>개 --%> </h3>
+<h3 id="room_review1">리뷰 <%-- <%=count%>개 --%> </h3>
 <div id="room_review" style="padding:20px;border:1px solid #cccccc;">
 <%
 	request.setCharacterEncoding("UTF-8");
