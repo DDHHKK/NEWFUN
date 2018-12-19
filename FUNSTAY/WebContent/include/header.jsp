@@ -264,7 +264,7 @@ if(email==null){
 <i class="fa fa-key icon"></i>
       <label for="psw-repeat"><b>Repeat Password</b></label>
       <input type="password" placeholder="Repeat Password" name="pass2" id="myInput2"onblur="passchk()">
-	   <input type="text" class="psw-repeat" name="chk" value="비밀번호를 입력하세요" readonly="readonly">
+	   <input type="text" class="psw-repeat" name="chk" id="chk" value="비밀번호를 입력하세요" readonly="readonly">
 <!-- 이름 폼 -->      
 <i class="fa fa-user-o"></i>
       <label for="name"><b>NAME</b></label>
