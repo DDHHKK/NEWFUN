@@ -107,12 +107,10 @@ public class SideSearch implements Action{
 		int listcheck=0;
 		List a = new ArrayList();
 		List list =null;
-		List avg =null;
-		try{list=(List)vector.get(0);
-		 avg=(List)vector.get(1);}
+		try{list=(List)vector.get(0);}
 		catch(ArrayIndexOutOfBoundsException e)
 		{list = a;}
-		
+	    
 		List past =(List)vector2.get(0);
 		List rest =(List)vector3.get(0);
 		HttpSession session = request.getSession();
@@ -125,8 +123,7 @@ public class SideSearch implements Action{
 		session.setAttribute("start_date", start_date);
 		session.setAttribute("end_date", end_date);
 		session.setAttribute("num", num);
-		session.setAttribute("num", num);
-		session.setAttribute("avg", avg);
+		
 	
 		
 		

@@ -865,7 +865,7 @@ public class MemberDAO {
 					if(rs.next())
 					{
 						ReviewBean rb = new ReviewBean();
-						rb.setStar(rs.getInt("star"));
+						rb.setSatisfaction(rs.getInt("star"));
 						System.out.println("star:");
 						System.out.println(rs.getInt("star"));
 						Reviewlist.add(rb);
@@ -952,7 +952,7 @@ public class MemberDAO {
 					if(rs.next())
 					{
 						ReviewBean rb = new ReviewBean();
-						rb.setStar(rs.getInt("star"));
+						rb.setSatisfaction(rs.getInt("star"));
 						System.out.println("star:");
 						System.out.println(rs.getInt("star"));
 						reviewList.add(rb);
@@ -1015,26 +1015,28 @@ public class MemberDAO {
 				hb1.setPhoto(rs.getString("photo"));
 				home_num = rs.getInt("home_num");
 				goodsList.add(hb1);
-				System.out.println("home_num::::::::");
-				System.out.println(home_num);
-				
+				//System.out.println("home_num::::::::");
+				//System.out.println(home_num);
+				String sql2 = "select avg(satisfaction) as star from review where home_num=?";
+				pstmt = con.prepareStatement(sql2);
+				pstmt.setInt(1, home_num);
+				rs = pstmt.executeQuery();
+				if(rs.next())
+				{
+					ReviewBean rb = new ReviewBean();
+					rb.setSatisfaction(rs.getInt("star"));
+					System.out.println("star");
+					//System.out.println(rs.getInt("star"));
+					reviewList.add(rb);
+					
+					vector.add(reviewList);
+				}
+			
 				
 			}
 			vector.add(goodsList);
 		
-			String sql2 = "select avg(satisfaction) as star from review where home_num=?";
-			pstmt = con.prepareStatement(sql2);
-			pstmt.setInt(1, home_num);
-			
-			if(rs.next())
-			{
-				ReviewBean rb = new ReviewBean();
-				rb.setSatisfaction(rs.getInt("star"));
-				System.out.println("star");
-				System.out.println(rs.getInt("star"));
-				reviewList.add(rb);
-				vector.add(reviewList);
-			}
+	
 			
 			System.out.println("세번째"+goodsList.size());
 			

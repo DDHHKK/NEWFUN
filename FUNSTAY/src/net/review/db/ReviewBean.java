@@ -9,11 +9,11 @@ public class ReviewBean {
 	private String content;
 	private Date review_date;
 	private int satisfaction;
-	private String clean;
-	private String access;
+	private int clean;
+	private int access;
 	private String member_email;
 	private int home_num;
-	private int star;
+	private String star;
 	
 	
 	
@@ -35,22 +35,23 @@ public class ReviewBean {
 	public void setReview_date(Date review_date) {
 		this.review_date = review_date;
 	}
+	
 	public int getSatisfaction() {
 		return satisfaction;
 	}
 	public void setSatisfaction(int satisfaction) {
 		this.satisfaction = satisfaction;
 	}
-	public String getClean() {
+	public int getClean() {
 		return clean;
 	}
-	public void setClean(String clean) {
+	public void setClean(int clean) {
 		this.clean = clean;
 	}
-	public String getAccess() {
+	public int getAccess() {
 		return access;
 	}
-	public void setAccess(String access) {
+	public void setAccess(int access) {
 		this.access = access;
 	}
 	public String getMember_email() {
@@ -65,10 +66,10 @@ public class ReviewBean {
 	public void setHome_num(int home_num) {
 		this.home_num = home_num;
 	}
-	public int getStar() {
+	public String getStar() {
 		return star;
 	}
-	public void setStar(int star) {
+	public void setStar(String star) {
 		this.star = star;
 	}
 	

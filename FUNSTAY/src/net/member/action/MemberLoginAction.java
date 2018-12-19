@@ -1,4 +1,4 @@
-﻿package net.member.action;
+package net.member.action;
 
 import java.io.PrintWriter;
 
@@ -20,9 +20,9 @@ public class MemberLoginAction implements Action{
 		
 		MemberBean mb = new MemberBean();
 		String email = request.getParameter("email");
+		System.out.println("email : "+email);
 		String pass = request.getParameter("pass");
-		/*System.out.println("email : "+email);
-		System.out.println("pass : "+pass);*/
+		System.out.println("pass : "+pass);
 		
 		int delete_member=0;
 		
@@ -34,10 +34,9 @@ public class MemberLoginAction implements Action{
 			int result = hdao.hostCheck(email);
 			HttpSession session = request.getSession();
 			session.setAttribute("hostCheck",result );
-			
+			session.setAttribute("email",email );
 			/*System.out.println(result);*/
 			//email 세션값 생성 메인이동
-			session.setAttribute("email", email);
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");

@@ -1,4 +1,5 @@
-﻿<%@page import="net.host.db.HostBean"%>
+<%@page import="net.review.db.ReviewBean"%>
+<%@page import="net.host.db.HostBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -30,7 +31,7 @@ s0.parentNode.insertBefore(s1,s0);
 
 <div id="content">
 <%
-
+String email = (String)session.getAttribute("email");
 String address = (String)session.getAttribute("address");
 String start_date = (String)session.getAttribute("start_date");
 String end_date = (String)session.getAttribute("end_date");
@@ -45,6 +46,11 @@ int num = (Integer)session.getAttribute("num");
 
 <table  id="searchtable">
 <tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
+
+
+
+
+
 
 <tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><span class="table_text"><%=address %></span></td></tr>
 <tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><span class="table_text"> <%=start_date %> / <%= end_date %></span></td></tr>
@@ -208,7 +214,6 @@ $(document).ready(function(){
 <%
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
-
 List past = (List)session.getAttribute("past");
 
 
@@ -346,18 +351,21 @@ function showSlides(n) {
 <%
 int avg =0;
 try{List avglist = (List)session.getAttribute("avg");
-avg = (Integer)avglist.get(0);	}
+
+for(int j=0; j<avglist.size(); j++)
+{ReviewBean Beansavg = (ReviewBean)avglist.get(i);
+avg = Beansavg.getSatisfaction();
+ }
+System.out.println(avg+"1111");}
 catch(Exception e)
-{ avg=0;}
+{ avg=0;System.out.println(avg+"2222");}
 
 
-{
+
 	
 	%>
 	
-<%
-}
-%>
+
 <input type="hidden" id="avg_shj" name="avg" value="<%=avg%>">
 <div class="star_shj">
  <span>
