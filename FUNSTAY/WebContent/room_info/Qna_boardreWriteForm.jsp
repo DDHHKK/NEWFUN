@@ -64,7 +64,8 @@ int QnA_num = Integer.parseInt(request.getParameter("QnA_num"));
 int re_ref = Integer.parseInt(request.getParameter("re_ref"));
 int re_lev = Integer.parseInt(request.getParameter("re_lev"));
 int re_seq = Integer.parseInt(request.getParameter("re_seq"));
-
+String subject = request.getParameter("subject");
+String content = request.getParameter("content");
    
 %>  
 
@@ -89,11 +90,13 @@ int re_seq = Integer.parseInt(request.getParameter("re_seq"));
 <tr><td><p class="letter">QnA 답변하기</p></td></tr>
 
 <tr><td><h3>방 이름</h3></td><td><h3><input class="w3-input" type="text" name="QnA_num" value=<%=num %>></h3></td></tr>
+
 <input type="text" name="re_ref" value="<%=re_ref %>">
 <input type="text" name="re_lev" value="<%=re_lev %>">
 <input type="text" name="re_seq" value="<%=re_ref %>">
 </td></tr> 
-<tr><td><h3>제목</h3></td><td><h3><input class="w3-input" name="subject" placeholder="제목을 입력해주세요..."></h3></td></tr>  
+<tr><td><h3>문의 제목</h3></td><td><h3><%=subject %></h3></td></tr>  
+<tr><td><h3>문의 내용</h3></td><td><h3><%=content %></h3></td></tr> 
 <tr><td><h3>답변</h3></td><td colspan="3"><textarea name="content" rows="30" cols="100" placeholder="답변을 입력해주세요..."></textarea></td></tr>
 
 <tr><td colspan="3" align="right">
