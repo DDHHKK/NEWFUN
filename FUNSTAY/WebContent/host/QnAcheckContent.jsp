@@ -19,33 +19,13 @@
 <!-- 페이지 default 링크 끝-->
 
 <link href="./css/mypage/QnAcheck.css" rel="stylesheet">
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-    $(".qnaopensub").click(function(){
-        //$(this).show();
-        $(this).css({
-        	"color":"red"
-        });
-    });
-    $(".closeqnacontent_sg").click(function(){
-       // $(this .qnacontent).hide();
-    });
-	//}//for문의 끝
-});
-</script -->
-<style type="text/css">
-.goog-te-banner-frame {height:0 !important;}
-</style>
 
 </head>
 <body>
 <!-- header  시작-->
 <jsp:include page="../include/header.jsp"></jsp:include>
 <!-- header  끝-->
-<hr> 
-
-<div class="clear"></div>
-<!-- <div style="height:150px;"></div> -->
+<hr>
 <!-- 회원 관리 페이지 왼쪽메뉴바 시작 -->
 <jsp:include page="../include/subpage.jsp"></jsp:include>
 <!-- 회원 관리 페이지 왼쪽메뉴바 끝 -->
@@ -58,39 +38,52 @@ $(document).ready(function(){
 
 
 <div class="QnAcheckList_sg">
+<input type="button" value="목록" onclick='location.href="./MemberQNAlist.me"' id="btn_dh">
 	<table class="QnAcheck_table_sg" border="1">
-	<tr>
+	<!-- <tr>
 		<td class="qnaheadtd_sg">번호</td>
 		<td class="qnaheadtd_sg">제목</td>
 		<td class="qnaheadtd_sg">등록일</td>
 		<td class="qnaheadtd_sg">답변여부</td>
-	</tr>
+	</tr> -->
 <%
 List<QnaBean> q_list = (List)request.getAttribute("q_list");
 for(int i=0;i<q_list.size();i++){
 	QnaBean qb = (QnaBean)q_list.get(i);
-%>
-	<tr>
-		<td><%=qb.getQnA_num() %></td>
-		<td class="qnaopensub">
-			<a href="./MemberQNAcontent.me?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>">
-				<%-- <%if(qb.getRe_seq()%2==1){%>[답변]<%}else{%>[문의]<%}%> --%>
-				<%=qb.getSubject() %>
-			</a>
-		</td>
-		<td><%=qb.getQnA_date() %></td>
-		<td>
-			<%if(qb.getRe_lev()==1){%>
-			답변완료
-			<%}
-			else{
-			%>
-			답변중
-			<%}%>
-		</td>
-	</tr>
+	if(i==0 || i%2==0){%>
+	
+		<tr>
+			<td><b>번호</b></td><td><%=qb.getQnA_num() %></td>
+			<td><b>등록일</b></td><td><%=qb.getQnA_date() %></td>
+			<td><b>답변여부</b></td><td style="line-height:32px;"> 
+				<%if(qb.getRe_lev()==1){%>답변완료
+				<%}else{%>답변중
+				<input type="button" value="답변 쓰기"
+				onclick="location.href = './Qna_boardreWrite.sc?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>&re_lev=<%=qb.getRe_lev()%>&re_seq=<%=qb.getRe_seq()%>&content=<%=qb.getContent()%>&subject=<%=qb.getSubject()%>&home_num=<%=qb.getHome_num()%>'"  id="btn_dh2" style="float:right;">
+				
+				<%}%>
+				</td>
+		</tr> 
+		<tr>
+			<td><b>룸정보</b></td><td colspan="5"><a href="#"><%=qb.getHome_subject() %></a></td>
+		</tr>
+		<tr>
+			<td><b>제목</b></td><td class="qnaopensub" colspan="5"><%=qb.getSubject() %></td>
+		</tr>
+		</table>
+		
+		
+		
+		<table class="QnAcheck_table_dh">
+		<tr><td colspan="6" id="question_dh">문의 내용</td></tr>
+	<%}if(i%2==1){%>
+		<tr><td colspan="6" id="answer_dh">문의에 대한 답변</td></tr>
+	<%} %>
+	
+	<tr class="qnacontent"><td colspan="6"><textarea rows="17" cols="120" class="text_dh"><%=qb.getContent() %></textarea></td></tr>
 <%} %>
 	</table>
+	
 </div>
 
 

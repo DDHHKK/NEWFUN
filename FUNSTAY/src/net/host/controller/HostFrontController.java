@@ -17,6 +17,7 @@ import net.host.action.HostInsertAction;
 import net.host.action.HostJoinAction;
 import net.host.action.HostPassCheckAction;
 import net.host.action.HostRoomListAction;
+import net.member.action.MemberQnaContent;
 import net.host.action.HostModify;
 import net.host.action.HostModifyAction;
 
@@ -134,6 +135,15 @@ public class HostFrontController extends HttpServlet{
 			try{
 				forward = action.execute(request, response);
 			}catch(Exception e){e.printStackTrace();}
+		}
+		
+		else if (command.equals("/MemberQNAcontent.ho")) {
+			action = new net.host.action.MemberQnaContent();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import net.booking.db.BookingBean;
 import net.booking.db.BookingDAO;
 import net.booking.db.PaymentBean;
+import net.member.db.MemberDAO;
+import net.member.db.QnaBean;
 
 public class BookingList implements Action{
 
@@ -31,11 +33,15 @@ public class BookingList implements Action{
 		
 		
 		BookingDAO bdao = new BookingDAO();
+		MemberDAO mdao = new MemberDAO();
 		Vector<?> vector = bdao.getBookingList(room_num,member_email);
 	
 		List<BookingBean> bookinglist = (List<BookingBean>) vector.get(0);
 		List<PaymentBean> paymentlist=(List<PaymentBean>) vector.get(1);
+		List<QnaBean> q_list = mdao.getQnAList_host(room_num);
 		
+		
+		request.setAttribute("q_list", q_list);
 		request.setAttribute("bookinglist", bookinglist);
 		request.setAttribute("paymentlist", paymentlist);
 		

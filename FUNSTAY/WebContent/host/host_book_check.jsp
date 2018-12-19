@@ -1,3 +1,4 @@
+<%@page import="net.member.db.QnaBean"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@page import="net.member.db.MemberDAO"%>
 <%@page import="net.booking.db.PaymentBean"%>
@@ -17,7 +18,7 @@
 <link href="./css/default/default.css" rel="stylesheet">
 <link href="./css/default/subpage_content.css" rel="stylesheet">
 <link href="./css/default/subpage.css" rel="stylesheet">
-
+<link href="./css/mypage/QnAcheck.css" rel="stylesheet">
 
 
 <!-- Include CSS for JQuery Frontier Calendar plugin (Required for calendar plugin) -->
@@ -115,6 +116,9 @@ if(email==null){
 
 <jsp:include page="../include/subpage.jsp"></jsp:include>
 
+<div id="content">
+<!-- 페이지내용 시작 -->
+
 <!-- Some CSS for our example. (Not required for calendar plugin. Used for example.)-->
 <style type="text/css" media="screen">
 /*
@@ -174,7 +178,8 @@ h1 {
     /* padding: 0px 0; */
     box-sizing: border-box;
     height: 46px;
-    margin: 3% 0% 1% 30%;
+    /* margin: 3% 0% 1% 30%; */
+    margin-bottom:5px;
 }
 
 
@@ -730,7 +735,7 @@ $(document).ready(function(){
 	
 		<h1>예약 관리</h1>
 
-		<div id="example" style="margin: 0% 0% 0% 30%; width:60%;">
+		<div id="example">
 
 		<!--
 		You can use pixel widths or percentages. Calendar will auto resize all sub elements.
@@ -773,11 +778,52 @@ $(document).ready(function(){
 	</div><!-- end example tab -->
 <input type="hidden" value="dd" name="email">
 
+<!-- 문의 글 관리 -->
+
+<div class="QnAcheckList_sg">
+	<table class="QnAcheck_table_sg" border="1" style="width: 100%;">
+	<tr>
+		<td class="qnaheadtd_sg">번호</td>
+		<td class="qnaheadtd_sg">제목</td>
+		<td class="qnaheadtd_sg">등록일</td>
+		<td class="qnaheadtd_sg">답변여부</td>
+	</tr>
+<%
+List<QnaBean> q_list = (List)request.getAttribute("q_list");
+for(int i=0;i<q_list.size();i++){
+	QnaBean qb = (QnaBean)q_list.get(i);
+%>
+	<tr>
+		<td><%=qb.getQnA_num() %></td>
+		<td class="qnaopensub">
+			<a href="./MemberQNAcontent.ho?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>">
+				<%-- <%if(qb.getRe_seq()%2==1){%>[답변]<%}else{%>[문의]<%}%> --%>
+				<%=qb.getSubject() %>
+			</a>
+		</td>
+		<td><%=qb.getQnA_date() %></td>
+		<td>
+			<%if(qb.getRe_lev()==1){%>
+			답변완료
+			<%}
+			else{
+			%>
+			답변중
+			<%}%>
+		</td>
+	</tr>
+<%} %>
+	</table>
+
+
+<div>
 
 
 
 <p>&nbsp;</p>
 
+<!-- 페이지내용 끝 -->
+</div>
 </div><!-- 회원 관리 페이지 'subpage' include된 페이지의 div끝 !!지우지마세요!!-->
 <div class="clear"></div>
 <hr>

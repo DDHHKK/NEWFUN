@@ -635,10 +635,53 @@ public class MemberDAO {
 			String sql 
 					= "select * "
 					+ "from qna_board "
-					+ "where member_email=? "
+					+ "where member_email=? and re_seq=0 "
 					+ "order by QnA_num desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member_email);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				QnaBean qb = new QnaBean();
+				qb.setQnA_num(rs.getInt("QnA_num"));
+				qb.setSubject(rs.getString("subject"));
+				qb.setContent(rs.getString("content"));
+				qb.setQnA_pass(rs.getString("QnA_pass"));
+				qb.setMember_email(rs.getString("member_email"));
+				qb.setHome_num(rs.getInt("home_num"));
+				qb.setQnA_date(rs.getDate("QnA_date"));
+				qb.setRe_ref(rs.getInt("re_ref"));
+				qb.setRe_lev(rs.getInt("re_lev"));
+				qb.setRe_seq(rs.getInt("re_seq"));
+
+				q_list.add(qb);
+			}
+		} catch (Exception e) {
+		} finally {
+			try{
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){rs.close();}
+				if(con!=null){rs.close();}
+			}catch(SQLException e){}
+		}
+		return q_list;
+	}
+	
+	//QnA 관리 페이지
+	public List<QnaBean> getQnAList_host(int home_num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<QnaBean> q_list = new ArrayList<>();
+		try {
+			con = getConnection();
+			String sql 
+					= "select * "
+					+ "from qna_board "
+					+ "where home_num=? and re_seq=0 "
+					+ "order by QnA_num desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, home_num);
 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
