@@ -2,7 +2,7 @@
 
 
 /* sideBar */
-#sideBar_shj{border: 2px solid red;
+#sideBar_shj{
 	width:350px;
 	height:1150px;
 	display: inline-block;
@@ -67,7 +67,7 @@ width: 250px;
 .house2{float: right;
 margin-right: 350px;} 
 
-#sideOp{border: 1px solid red;
+#sideOp{
 	height:70%;
 	width: 100%;    margin-top: 8%;
 }   
