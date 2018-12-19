@@ -198,7 +198,7 @@ if(email==null){
       </div> 
        </div> 
   <!-- 전송버튼 -->     
-      <button type="submit" class="subtn"><a>로그인</a></button>
+      <button type="submit" class="subtn"><span>로그인</span></button>
       <br><br>
         <!-- 아이디저장  --> 
 <!--       <label>
@@ -303,7 +303,7 @@ if(email==null){
        <!-- <a href="./member/agree.jsp" style="color:dodgerblue">동의약관</a>.</p> -->
 <!-- 전송버튼 -->
       <div class="clearfix">
-        <button type="button" class="subtn" onclick="regChk()"><a>가입완료</a></button>
+        <button type="button" class="subtn" onclick="regChk()"><span>가입완료</span></button>
         </div>
 <!-- 취소버튼 사용 유무        
 <div class="container" style="background-color:#f1f1f1">
