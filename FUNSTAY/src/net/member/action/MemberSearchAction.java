@@ -69,10 +69,7 @@ public class MemberSearchAction implements Action{
 		session.setAttribute("rest", rest);
 		session.setAttribute("address", address);
 		request.setAttribute("pageSize", pageSize);
-		session.setAttribute("start_date", start_date);
-		session.setAttribute("end_date", end_date);
-		session.setAttribute("num", num);
-		
+	
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

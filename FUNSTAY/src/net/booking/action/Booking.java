@@ -5,9 +5,6 @@ import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import net.booking.db.BookingDAO;
 
 public class Booking implements Action{
 
@@ -16,51 +13,34 @@ public class Booking implements Action{
 		// TODO Auto-generated method stub
 		System.out.println("Booking execute()");
 		ActionForward forward = new ActionForward();
-		
-		HttpSession session = request.getSession();
-		String member_email = (String)session.getAttribute("email");
 		request.setCharacterEncoding("utf-8");
-		String home_num = request.getParameter("home_num");
-		String room_subject = request.getParameter("room_subject");
-		String check_in = request.getParameter("check_in");
-		String check_out = request.getParameter("check_out");
-		int people = Integer.parseInt(request.getParameter("text00"));
-		String host_email = request.getParameter("host_email");
-		//int home_num = 3;
-		//int [] room_num = {8,9};
+		//String home_num = request.getParameter("home_num");
+		int home_num = 3;
+		int [] room_num = {8,9};
 		//String check_in = "2018-11-20";
-		//Date check_in = Date.valueOf("2018-11-20");
+		Date check_in = Date.valueOf("2018-11-20");
 		//String check_out = "2018-11-26";
-		//Date check_out = Date.valueOf("2018-11-26");
-		int price = Integer.parseInt(request.getParameter("price11"));
-		int select_people = Integer.parseInt(request.getParameter("select_people"));
-		int max_people = Integer.parseInt(request.getParameter("R_max_people"));
-		int basic_people = Integer.parseInt(request.getParameter("basic_people"));
-		int days = Integer.parseInt(request.getParameter("days00"));
-		System.out.println(price);
-		System.out.println(select_people);
-		System.out.println(max_people);
-		System.out.println(basic_people);
-		System.out.println(days);
-		//int price = 50000;
-		//int people = 11;
+		Date check_out = Date.valueOf("2018-11-26");
 		
+		int price = 200000;
+		int people = 5;
 		
 		//String member_email = "funfun@gmail.com";
 		//String request_msg ="2,3번방 예약했어요. 문의답변으로 2번방에는 침구, 2번방에는 간이베드 추가된다고 하셨는데 잊지 말고 잘 준비해주세요! :)";
-		//String host_email = "jeju@gmail.com";
-		int storage_m = 1255;
+		String host_email = "busan@gmail.com";
+		int storage_m = 10800;
 		//int used_m = 0;
-		int fees = 25500;
-		int sum_price=500000;
-		
-		BookingDAO bdao = new BookingDAO();
-		int getMileage = bdao.getmileage(member_email);
-		System.out.println(getMileage);
+		int fees = 18000;
+		int sum_price=1108800;
+		/*//스트링을 데이트로 형변환
+		String dateform = request.getParameter("start_date");
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = transFormat.parse(dateform);
+		System.out.println(date);*/
 		
 		request.setAttribute("home_num", home_num);
-		//request.setAttribute("room_num[0]", room_num[0]);
-		//request.setAttribute("room_num[1]", room_num[1]);
+		request.setAttribute("room_num[0]", room_num[0]);
+		request.setAttribute("room_num[1]", room_num[1]);
 		request.setAttribute("check_in", check_in);	
 		request.setAttribute("check_out", check_out);	
 		request.setAttribute("price", price);	
@@ -72,12 +52,9 @@ public class Booking implements Action{
 		//request.setAttribute("used_m", used_m);
 		request.setAttribute("fees", fees);
 		request.setAttribute("sum_price", sum_price);
-		request.setAttribute("room_subject", room_subject);
-		request.setAttribute("getMileage", getMileage);
 		
 		System.out.println(request.getAttribute("check_in"));
 		System.out.println(request.getAttribute("check_out"));
-		System.out.println(request.getAttribute("getMileage"));
 		forward.setRedirect(false);
 		forward.setPath("./payment/PaymentForm.jsp");
 		return forward;

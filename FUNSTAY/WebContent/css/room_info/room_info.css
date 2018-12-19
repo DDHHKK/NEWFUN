@@ -361,9 +361,9 @@ color:white;
     width: 100%;
     border-radius: 4px;
 } 
-/* .btn_remove:hover {
+.btn_remove:hover {
     opacity: 0.8;
-} */
+}
 
 .roomimg_sg {
     opacity: 0.8;
@@ -462,7 +462,7 @@ span.star-prototype > * {
   /* border-top: 2px dashed #cc1d1c; */
   border-left:none !important;
   border-right:none !important;
-  /* border-bottom:none !important */;
+  border-bottom:none !important;
   overflow-y: hidden;
   box-sizing: border-box;
 }
@@ -492,7 +492,4 @@ When you mouse over the navigation links, change their color
   margin-left: 50px;
 }
 
-.btn_remove :HOVER {
-	color:#cc1d1d;
-}
 

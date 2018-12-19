@@ -37,9 +37,7 @@ integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yI
 <!-- 페이지내용 시작 -->
 <%
 String room_subject=request.getParameter("room_subject");
-//int people = Integer.parseInt(request.getParameter("people"));
-int people = (Integer)request.getAttribute("people");
-int getMileage=(Integer)request.getAttribute("getMileage");
+int people = Integer.parseInt(request.getParameter("people"));
 %>
 <div id="splitwraptotal_sg">
 <h1>결제하기</h1>
@@ -60,7 +58,7 @@ int getMileage=(Integer)request.getAttribute("getMileage");
 <div id="splitwrapright_sg1">
 <div id="paymentinfo_sg">
 <h3>주문 정보</h3>
-<!-- 주문번호 : djfigieowkdfj02983<br> -->
+주문번호 : djfigieowkdfj02983<br>
 <a href="#"><img src="./img/photo2.jpg" alt="숙소 미리보기 사진"></a>
 <a href="#" id="room_subject"><input type="text" value="<%=room_subject%>" name="room_subject"></a><br><hr>
 <i class="fas fa-user-alt"></i> x 4명<br>
@@ -83,21 +81,18 @@ int getMileage=(Integer)request.getAttribute("getMileage");
 <div class="room_info">
 	<div class="room1">
 		home_num : <input type="text" value=<%=request.getAttribute("home_num") %> name="home_num"><br>
-		
-		<%-- room_num1<input type="text" value=<%=request.getAttribute("room_num[0]") %> name="room_num[0]"><br>
+		room_num1<input type="text" value=<%=request.getAttribute("room_num[0]") %> name="room_num[0]"><br>
 		room_num2<input type="text" value=<%=request.getAttribute("room_num[1]") %> name="room_num[1]"><br>
-		 --%>
 		check_in<input type="text" value=<%=request.getAttribute("check_in") %> name="check_in"><br>
 		check_out<input type="text" value=<%=request.getAttribute("check_out") %> name="check_out"><br>
 		people<input type="text" value=<%=request.getAttribute("people") %> name="people"><br>
 		<!-- room_price,add_price db쿼리로 빼기? -->
-		room_price<input type="text" value="50000" name="room_price"><br> 
-		add_price<input type="text" value="10000" name="add_price"><br>
+		room_price<input type="text" value="40000" name="room_price"><br> 
+		add_price<input type="text" value="20000" name="add_price"><br>
 		host_email<input type="text" value=<%=request.getAttribute("host_email")%> name="host_email"><br>
 		storage_m<input type="text" value=<%=request.getAttribute("storage_m")%> name="storage_m"><br>
 		fees<input type="text" value=<%=request.getAttribute("fees")%> name="fees"><br>
 		sum_price<input type="text" value=<%=request.getAttribute("sum_price")%> name="sum_price"><br>
-		room_subject<input type="text" value="<%=room_subject%>" name="room_subject"><br>
 		
 	</div>
 </div>
@@ -131,7 +126,7 @@ int getMileage=(Integer)request.getAttribute("getMileage");
 		적립마일리지<input type="text" value=<%=request.getAttribute("storage_m")%> name="storage_m">
 		사용마일리지<input type="text" value="0" name="used_m">
 		<input type="button" value="사용하기" onclick="">
-		보유 마일리지<input type="text" value="<%=getMileage%>" readonly>	
+		<input type="text" value="보유마일리지 : 5,000" readonly>	
 	</td>
 </tr>
 </table>

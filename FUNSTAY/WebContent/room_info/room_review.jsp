@@ -9,6 +9,7 @@
 	request.setCharacterEncoding("UTF-8");
 
 	List ReviewList = (List) request.getAttribute("boardList");
+	
 	int count = ((Integer) request.getAttribute("count")).intValue();
 	String pageNum = (String) request.getAttribute("pageNum");
 	int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
@@ -18,9 +19,10 @@
 %>
 
 
-<a name="후기"><h1>후기 <%=count%>개 </h1></a>
-	<button class="button_sg button1_sg"
-			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
+<a name="후기"><h1>리뷰 <%=count%>개 </h1></a>
+
+<%-- 	<button class="button_sg button1_sg"
+			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">리뷰쓰기</button> --%>
 	<div id="room_review">
 	
 	
@@ -43,8 +45,8 @@
    	<th colspan="2"><%=re.getMember_email() %></th> 
     <tr><th colspan="5"><%=re.getContent() %></th></tr>
     <tr><th>만족도</th><th colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></th></tr>
-    <tr><th>청결함</th><th colspan="4"><span class="star-prototype"><%=re.getClean() %></span></th></tr>
-	<tr><th>교통접근성</th><th colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></th></tr>
+    <tr><th>청결도</th><th colspan="4"><span class="star-prototype"><%=re.getClean() %></span></th></tr>
+	<tr><th>접근성</th><th colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></th></tr>
 </table> 
 		<script type="text/javascript"> 
 				$.fn.generateStars = function() {

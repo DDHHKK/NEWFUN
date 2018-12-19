@@ -4,7 +4,7 @@
 /* sideBar */
 #sideBar_shj{border: 2px solid red;
 	width:350px;
-	height:1150px;
+	height:1000px;
 	display: inline-block;
 	float: left;}
 
@@ -19,9 +19,10 @@
 }
 
 .textsize2 {
-    width: 72px !important;
+    width: 150px !important;
     height: 25px !important;
     border-radius: 7px !important;
+    margin-left: 15px !important;
     padding: 5px 10px;
     box-sizing: border-box;
 }
@@ -40,12 +41,30 @@
 #form_1 ol { padding-inline-start: 0 !important;}
 #searchtable tr td{margin:3px;} 
 #searchtable tr {margin:3px 0;} 
-
+#btn1 {      width: 96px;
+    height: 34px;
+    font-size: 18px;
+    margin: 5% 0 6% 40%;
+    background-color: #cc1d1d;
+    /* position: relative; */
+    /* top: 52px; */
+    color: white;}
 #searchtable input[type=text] {width: 20px; font-size: 10px !important;}
 
-.table_text{
-    font-size: 14px;}
+.btn_1{    width: 20px;
+ color: white;
+ background-color: #cc1d1d;}
 
+#btn_sh{    position: relative;
+    left: 126px;
+    bottom: 48px;
+    height: 40px;
+    width: 50px;
+    background-color: #cc1d1d;
+    color: white;
+    font-size: 16px;}
+    
+    
     
  #like_star span{    position: relative;
     top: 24px;
@@ -68,7 +87,7 @@ width: 250px;
 margin-right: 350px;} 
 
 #sideOp{border: 1px solid red;
-	height:70%;
+	height:67%;
 	width: 100%;    margin-top: 8%;
 }   
 #sideOp span {font-size: 20px;

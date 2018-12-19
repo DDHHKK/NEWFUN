@@ -40,7 +40,6 @@ function choice() {   //인원수  확인 버튼 누르면 text창에  값이 �
 	if(document.fff.text11.value!="" && document.fff.text12.value!="") {
 		document.fff.text00.value=i+j;
 		var people = i+j
-		document.fff.select_people.value=i+j;
 		document.fff.text1.value="성인"+i+"명" + " " + "어린이"+j+"명"; 
 		var price = document.fff.price11.value;
 		var days = document.fff.days00.value;
@@ -71,6 +70,14 @@ function dateDiff(date1, date2) {
     return diff;
 }
 
+
+//var strDate1 = "2015-5-6";
+//var strDate2 = "2015-6-25";
+//var arr1 = strDate1.split('-');
+//var arr2 = strDate2.split('-');
+//var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
+//var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+
 $(document).ready(function(){
 	//$("#textcss1").val()+$("#textcss2").val()
 	var strDate1;
@@ -87,56 +94,44 @@ $(document).ready(function(){
     var begin;
     var end;
     var cal_date;
-    var add_people;
-    var add_price;
-    var show_add_price;
-    var per_price;
-    var fees;
-    var sum_price;
     $("#search_price").click(function(){
     	begin=$('#check_in').val();
     	end= $("#check_out").val();
     	alert(dateDiff(end,begin));
-    	if($('.select_people').val()>$('.basic_people').val()){
-    		add_people=$('.select_people').val()-$('.basic_people').val();
-    		add_price = 10000*add_people;
-    		show_add_price = "10000x"+add_people;
-    		alert("만원 곱하기 초과 인원"+add_price);
-    	}else {
-    		alert("초관인원 없음")
-    		add_price=0;
-    		show_add_price = "0";
-    	}
     	cal_date=dateDiff(end,begin);
-    	$('.days00').val(cal_date);
-    	per_price = document.fff.price22.value;
-    	cal_price=document.fff.price22.value*cal_date;
-    	document.fff.price00.value=cal_price;
-    	fees = ((per_price*cal_date)+(add_price))/10;
-    	sum_price = (per_price*cal_date)+add_price+fees;
-    	$('.sum_price123').html("+기본요금 ₩"+per_price+"x"+cal_date+"일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> "+per_price*cal_date+"<br>+추가요금 ₩"+add_price+"<br>+수수료 ₩"+fees+"<hr><span style='float:right;'>합계 ₩"+sum_price+"</span>");
+    	//$('.days00').val(cal_date);
+    	//cal_price=document.fff.price22.value*cal_date;
+    	//document.fff.price00.value=cal_price;
+    	
+    	/*if($('#check_in').val()!=null){
+    		strDate1 = $('#check_in').val();
+    		var arr1 = strDate1.split('-');
+    		var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
+    		//alert(arr1[2]);
+    		begin=$('#check_in').val();
+    	}if($("#check_out").val()!=null){
+    		strDate2 = $("#check_out").val();
+    		var arr2 = strDate2.split('-');
+    		var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+    		//alert(arr2[2]);
+    		end= $("#check_out").val();
+    		cal_date=end-begin;
+    		//alert(cal_date)
+    		alert(dateDiff(end,begin));
+    	}*/
     });
     
-    // 예약하기 버튼 제어
     $('.reserve_btn1_sg').click(function() {
-		if(document.fff.text00.value==0){
+		if(document.fff.text00.value>document.fff.R_max_people.value){
+			alert("예약가능 최대인원을 초과 하셨습니다. 최대인원 : "+document.fff.R_max_people.value);
+			return false;
+		}if(document.fff.text00.value==0){
 			alert("예약 인원을 선택해주세요.");
 			return false;
 		}if($('#check_in').val()=="" || $('#check_out').val()==""){
 			alert("예약 날짜를 선택해주세요.");
 			return false;
 		}
-		begin=$('#check_in').val();
-    	end= $("#check_out").val();
-    	alert(dateDiff(end,begin));
-    	cal_date=dateDiff(end,begin);
-    	$('.days00').val(cal_date);
-		/*var a = document.fff.text00.value;
-		var b = document.fff.R_max_people.value
-		if(a<b){
-			alert("예약가능 최대인원을 초과 하셨습니다. 최대인원 : "+document.fff.R_max_people.value+"선택인원 : "+document.fff.text00.value);
-			return false;
-		}*/
 	});
     
 

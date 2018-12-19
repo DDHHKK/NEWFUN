@@ -13,8 +13,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import net.FAQ.db.FAQBean;
-import net.booking.db.BookingBean;
-import net.search.db.SearchBean;
 
 
 
@@ -104,43 +102,6 @@ public class ReviewDAO {
 		}
 		return reviewList;
 	} //getBoardList() end 
-	
-	
-	
-	public BookingBean getSearchHomenum(String payment_num){
-		ResultSet rs = null;
-		BookingBean bb = new BookingBean();
-		try{			
-	
-			con = getConnection();
-	
-			sql = "select * from booking where payment_num = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, payment_num);
-			rs = pstmt.executeQuery();
-			while(rs.next()){				
-				bb.setBooking_num(rs.getInt(1));
-				bb.setPayment_num(rs.getString(2));
-				bb.setRoom_num(rs.getInt(3));
-				bb.setCheck_in(rs.getDate(4));
-				bb.setCheck_out(rs.getDate(5));
-				bb.setPeople(rs.getInt(6));
-				bb.setRoom_price(rs.getInt(7));
-				bb.setAdd_price(rs.getInt(8));
-				bb.setBooking_date(rs.getDate(9));
-				bb.setBooking_status(rs.getInt(10));
-				bb.setHome_num(rs.getInt(11));
-
-	}
-		}catch (Exception e){
-			e.printStackTrace();
-		}finally{
-			if (rs != null) {try {rs.close();} catch (SQLException ex) {}	}
-			if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
-			if (con != null) {try {con.close();} catch (SQLException ex) {	}}
-		}
-		return bb;		
-	}
 
 }
 
