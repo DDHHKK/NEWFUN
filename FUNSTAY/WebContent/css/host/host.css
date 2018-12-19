@@ -148,7 +148,7 @@
 	border : none;
 	background-color: #cc1d1d;
 	font-weight: bold;
-	padding : 10px;
+	padding : 7px;
 	cursor: pointer;
 }
 
@@ -230,6 +230,16 @@ h5 {
 .select_btn:hover {
 	background-color: #991515;
 	border:1px solid #991515;
+}
+
+
+
+input[type="checkbox"]{
+	
+	width: 17px;
+	height: 17px;
+	cursor: pointer;
+
 }
 
 /* ------------------호스트동록메인----------------- */
