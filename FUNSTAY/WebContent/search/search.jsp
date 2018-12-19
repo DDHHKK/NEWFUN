@@ -344,11 +344,21 @@ function showSlides(n) {
 
 
 <%
-List avglist = (List)session.getAttribute("avg");
-String avg = (String)avglist.get(0);
+int avg =0;
+try{List avglist = (List)session.getAttribute("avg");
+avg = (Integer)avglist.get(0);	}
+catch(Exception e)
+{ avg=0;}
+
+
+{
+	
+	%>
+	
+<%
+}
 %>
 <input type="hidden" id="avg_shj" name="avg" value="<%=avg%>">
-
 <div class="star_shj">
  <span>
  	 <i id="image1"class="material-icons" style="font-size:18px" >star_border</i>
@@ -373,9 +383,9 @@ String avg = (String)avglist.get(0);
 	<h2 >목록 리스트</h2>
 
 </div>
-
+<div style="width:400px; height:400px; border: 10px solid blue;" id ="sjsjsj"> 
 <script type="text/javascript">
-$("#image1").click(function(){
+$("#sjsjsj").click(function(){
 	alert("ddd");
 	var avg =$("#avg_shj").val();	
 
