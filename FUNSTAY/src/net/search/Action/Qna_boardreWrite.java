@@ -28,6 +28,7 @@ public class Qna_boardreWrite implements Action {
 		int num = Integer.parseInt(request.getParameter("QnA_num"));
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
+		String home_num = request.getParameter("home_num");
 		
 		int qna_num = num;
 		SearchDAO bdao = new SearchDAO();
@@ -39,7 +40,12 @@ public class Qna_boardreWrite implements Action {
 		request.setAttribute("Member_email", Member_email);
 		request.setAttribute("subject", subject);
 		request.setAttribute("content", content);
-	
+		request.setAttribute("home_num", home_num);
+		
+		System.out.println("이거"+home_num);
+		System.out.println("home_num"+qb.getHome_num());
+		System.out.println("cont"+qb.getContent()); 
+		System.out.println("sub"+qb.getSubject());
 		
 		ActionForward forward = new ActionForward();
 		
