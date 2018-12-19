@@ -308,13 +308,13 @@ if(i%3==0){
 <%
 List bookingList4=(List)request.getAttribute("bookingList3");
 List paymentList4=(List)request.getAttribute("paymentList3");
-List hostList4=(List)request.getAttribute("hostList3"); 
+List hostList4=(List)request.getAttribute("hostList3");  
 List afterList4=(List)request.getAttribute("afterList3");
 System.out.println(bookingList4);
-for(int i=0; i<bookingList4.size(); i++){
-	BookingBean bb=(BookingBean)bookingList4.get(i);
+for(int i=0; i<afterList4.size(); i++){
+	/* BookingBean bb=(BookingBean)bookingList4.get(i);
 	PaymentBean pb=(PaymentBean)paymentList4.get(i);
-	HostBean hb=(HostBean)hostList4.get(i); 
+	HostBean hb=(HostBean)hostList4.get(i);  */
 	BeforeBean BeforeB=(BeforeBean)afterList4.get(i);
 	/* System.out.println("3"); */
 if(i%3==0){
