@@ -264,7 +264,7 @@ if(email==null){
 <i class="fa fa-key icon"></i>
       <label for="psw-repeat"><b>Repeat Password</b></label>
       <input type="password" placeholder="Repeat Password" name="pass2" id="myInput2"onblur="passchk()">
-	   <input type="text" class="psw-repeat" name="chk" value="비밀번호를 입력하세요" readonly="readonly">
+	   <input type="text" class="psw-repeat" name="chk" id="chk" value="비밀번호를 입력하세요" readonly="readonly">
 <!-- 이름 폼 -->      
 <i class="fa fa-user-o"></i>
       <label for="name"><b>NAME</b></label>
@@ -295,15 +295,15 @@ if(email==null){
 <!-- 폰번호 폼 -->      
 <i class="fa fa-phone icon"></i>
       <label for="phone"><b>phone</b></label>
-      <input type="text" placeholder="Enter phone number" name="phone"><br>   
+      <input type="text" placeholder="Enter phone number" name="phone" id="myphone"><br>   
       
 <!-- 약관동의 -->
-       <p>이용약관 및 개인정보 보호 정책에 동의하여 주십시요 <br><input type="checkbox" name="req"> 개인정보 수집 및 이용에 동의합니다. 
+       <p>이용약관 및 개인정보 보호 정책에 동의하여 주십시요 <br><input type="checkbox" name="req" id="myreq"> 개인정보 수집 및 이용에 동의합니다. 
        <input type="button" value="동의약관" style="background-color: #cc1d1d; color:#fff; border: 1px solid #cc1d1d; border-radius: 2px;" onclick="window.open('./member/agree.jsp','동의약관','top=200, left=150, width=1400, height=500')">
        <!-- <a href="./member/agree.jsp" style="color:dodgerblue">동의약관</a>.</p> -->
 <!-- 전송버튼 -->
       <div class="clearfix">
-        <button type="button" class="subtn" onclick="regChk()"><span>가입완료</span></button>
+        <button type="button" class="subtn" id="mysubtn" onclick="regChk()"><span>가입완료</span></button>
         </div>
 <!-- 취소버튼 사용 유무        
 <div class="container" style="background-color:#f1f1f1">

@@ -19,64 +19,37 @@ public class Qna_boardreWriteAction implements Action {
 		System.out.println("Qna_boardreWriteAction execute()");
 
 		
-
-		SearchDAO bdao = new SearchDAO();
+		request.setCharacterEncoding("utf-8");
+		
 		QnaBean qb = new QnaBean();
-		HttpSession session = request.getSession();
-		String Member_email = (String)session.getAttribute("email");//0
-		int QnA_num = Integer.parseInt(request.getParameter("QnA_num"));
 		
-		
-		
-		qb.setHome_num(Integer.parseInt(request.getParameter("hom_num")));
 		qb.setSubject(request.getParameter("subject"));
-		qb.setContent(request.getParameter("content"));
-	
- 
-		
+		qb.setContent(request.getParameter("content"));	
+		qb.setMember_email(request.getParameter("member_email"));
+		qb.setHome_num(Integer.parseInt(request.getParameter("home_num")));	
 		qb.setQnA_num(Integer.parseInt(request.getParameter("QnA_num")));
-
-
 		
+		qb.setRe_ref(Integer.parseInt(request.getParameter("re_ref")));
+		qb.setRe_lev(Integer.parseInt(request.getParameter("re_lev")));
+		qb.setRe_seq(Integer.parseInt(request.getParameter("re_seq")));
 		
+		System.out.println("홈넘"+qb.getHome_num());
+		System.out.println("멤이"+qb.getMember_email());
+		System.out.println("cont"+qb.getContent());
+		System.out.println("sub"+qb.getSubject());
+		System.out.println("ref"+qb.getRe_ref());
+		System.out.println("lev"+qb.getRe_lev());
+		System.out.println("seq"+qb.getRe_seq());
+		 
+		SearchDAO bdao = new SearchDAO();
 		bdao.reInsertBoard(qb);
- 
+   
 
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MemberQNAlist.me");
+		forward.setPath("./MemberQNAcontent.me");
 		forward.setRedirect(false);
 
 		return forward;
 		
-		
-		//---------------------------------------------
-		/*request.setCharacterEncoding("UTF-8");		
-		
-		
-		String room_subject = request.getParameter("room_subject");
-		HttpSession session = request.getSession();
-		String Member_email = (String)session.getAttribute("email");
-	
-		int num = Integer.parseInt(request.getParameter("num"));
-		String pageNum = request.getParameter("pageNum");
-		
-		int qna_num = num;
-		SearchDAO bdao = new SearchDAO();
-		bdao.qna_updateReadcount(qna_num);
-		QnaBean qb= bdao.getQnaboard(num);
-		
-		request.setAttribute("qb", qb);
-		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("num", num);
-		request.setAttribute("room_subject", room_subject);
-		request.setAttribute("Member_email", Member_email);
-		
-		ActionForward forward = new ActionForward();
-		
-		forward = new ActionForward();
-		forward.setPath("./Qna_boardreWriteForm.sc");
-		forward.setRedirect(false);
-
-		return forward;*/
 	}
 }

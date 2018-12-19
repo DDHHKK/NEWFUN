@@ -110,12 +110,12 @@ int num = (Integer)session.getAttribute("num");
             hide_min_max: true,
             keyboard: true,
             min: 0,
-            max: 50000,
+            max: 500000,
             from: 100,
             to: 50000,
             type: 'double',
             step: 100,
-            prefix: "$",
+            prefix: "￦",
             min_interval : 5000,
             grid: true
         });
@@ -145,10 +145,7 @@ int num = (Integer)session.getAttribute("num");
  	  <i id="image5"class="material-icons" style=color:#cc1d1d;" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)">star_border</i>
  <input type="hidden" class="star_shj" name="star">
 
-<script type="text/javascript">
-$(".material-icons").click(function(){alert($('.star_shj').val());});
 
-</script>
  </span>
 </div>
 </div>
@@ -597,15 +594,15 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 } //esle if문끝
 
 
-else{
+
+
+else {
 %>
 <p id="pont_1213_WS"><%=address%>대한 정보를 찾지 못하였습니다.
 다시 지역을 검색해 주세요</p>
 <% 
 }
 %>
-
-
 
 
 

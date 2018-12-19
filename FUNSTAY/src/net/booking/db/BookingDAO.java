@@ -51,8 +51,8 @@ public class BookingDAO {
 			
 			sql="insert into payment"
 					+ "(payment_num,member_email,request_msg,payment_status,"
-					+ "payment_date,host_email,storage_m,used_m,fees,sum_price,pay_num)"
-					+ "values(?,?,?,?,now(),?,?,?,?,?,?)";
+					+ "payment_date,host_email,storage_m,used_m,fees,sum_price,pay_num,home_num)"
+					+ "values(?,?,?,?,now(),?,?,?,?,?,?,?)";
 			pstmt =con.prepareStatement(sql);
 			pstmt.setString(1, sdf.format(cal.getTime()).toString()+"-"+payment_num2);
 			pstmt.setString(2, pb.getMember_email());
@@ -64,6 +64,7 @@ public class BookingDAO {
 			pstmt.setInt(8, pb.getFees());
 			pstmt.setInt(9, pb.getSum_price());
 			pstmt.setInt(10, payment_num2);
+			pstmt.setInt(11, bb.getHome_num());
 			pstmt.executeUpdate();
 			pstmt.close();
 			

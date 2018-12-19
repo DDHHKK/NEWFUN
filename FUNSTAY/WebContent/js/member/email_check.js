@@ -1,7 +1,8 @@
 /*이메일 중복체크*/
 
 	function idcheck(){
-		var email = $('#email').val();
+		/*var email = $('#email').val();*/
+		var email = document.fr.email.value;
 		if(email.indexOf('@')==-1 || email.indexOf('.') == -1){
 			alert("올바른 이메일 형식을 입력하세요");
 			/*document.fr.email.focus();*/
