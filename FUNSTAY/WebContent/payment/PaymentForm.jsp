@@ -40,6 +40,7 @@ String room_subject=request.getParameter("room_subject");
 //int people = Integer.parseInt(request.getParameter("people"));
 int people = (Integer)request.getAttribute("people");
 int getMileage=(Integer)request.getAttribute("getMileage");
+String photo1 = (String)request.getAttribute("photo1");
 %>
 <div id="splitwraptotal_sg">
 <h1>결제하기</h1>
@@ -61,7 +62,7 @@ int getMileage=(Integer)request.getAttribute("getMileage");
 <div id="paymentinfo_sg">
 <h3>주문 정보</h3>
 <!-- 주문번호 : djfigieowkdfj02983<br> -->
-<a href="#"><img src="./img/photo2.jpg" alt="숙소 미리보기 사진"></a><br>
+<a href="#"><img src="./upload/<%=photo1 %>" alt="숙소 미리보기 사진"></a><br>
 <%=room_subject%><br><hr>
 <i class="fas fa-user-alt"></i> x <%=request.getAttribute("people") %> 명<br>
 <i class="far fa-calendar-check"></i> 
@@ -141,7 +142,8 @@ int getMileage=(Integer)request.getAttribute("getMileage");
 <tr>
 	<td>사용 마일리지</td>
 	<td>
-		<input type="text" value="0" name="used_m" style="float:left;"><input type="button" value="사용하기" class="mileage_btn_sg" style="float:left;">
+		<input type="text" value="0" name="used_m" class="used_m" style="float:left;"><input type="button" value="사용하기" class="mileage_btn_sg" style="float:left;">
+		<input type="hidden" value="<%=getMileage%>" name="my_m" class="my_m">
 		<input type="text" value="사용가능 <%=getMileage%>" style="border:none;padding-left:10px;">	
 	</td>
 </tr>
@@ -152,12 +154,31 @@ int getMileage=(Integer)request.getAttribute("getMileage");
 <div id="splitwrapright_sg2">
 <!-- 아임포트 j쿼리 버튼 -->
 <input type="button" value="결제하기" id="check_module" class="check_module">
-<input type="submit" value="결제하기(테스트용)" id="check_module">
+<input type="submit" value="결제하기(테스트용)" id="check_module" class="momoomo">
 </div>
 </form>
 <!-- 아임포트 결제 j쿼리 -->
 <script src="./js/payment/PaymentForm.js"></script>
+<script>
+$('.mileage_btn_sg').click(function(){
+	var used_m = $('.used_m').val()*1;
+	var my_m = $('.my_m').val()*1;
+	if(used_m>my_m){
+		alert("보유 마일리지가 부족합니다.");
+		$('.used_m').val(my_m);
+	}
+});
+$('.momoomo').click(function(){
+	var used_m = $('.used_m').val()*1;
+	var my_m = $('.my_m').val()*1;
+	if(used_m>my_m){
+		alert("보유 마일리지가 부족합니다.");
+		$('.used_m').val(my_m);
+		return false;
+	}
+});
 
+</script>
 <!-- <input type="button" value="날짜 확인test" id="datebtn">
 <script>
 $("#datebtn").click(function(){

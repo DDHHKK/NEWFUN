@@ -82,6 +82,8 @@ public class Booking implements Action{
 		BookingDAO bdao = new BookingDAO();
 		int getMileage = bdao.getmileage(member_email);
 		System.out.println(getMileage);
+		String photo=bdao.getphoto(Integer.parseInt(home_num));
+		String photo1=photo.split(",")[0];
 		
 		request.setAttribute("home_num", home_num);
 		//request.setAttribute("room_num[0]", room_num[0]);
@@ -110,6 +112,7 @@ public class Booking implements Action{
 		request.setAttribute("fees", fees);
 		request.setAttribute("storage_m", storage_m);
 		request.setAttribute("sum_price", sum_price);
+		request.setAttribute("photo1", photo1);
 		
 		System.out.println(request.getAttribute("check_in"));
 		System.out.println(request.getAttribute("check_out"));

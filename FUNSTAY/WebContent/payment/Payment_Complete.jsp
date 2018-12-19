@@ -49,10 +49,10 @@ border-bottom: 1px solid #cccccc;}
 	<td style="background-color:#f3f3f3;">결제 금액</td><td><%=request.getAttribute("sum_price") %></td>
 </tr>
 <tr>
-	<td style="background-color:#f3f3f3;">적립된 적립금</td><td><%=request.getAttribute("storage_m") %></td>
+	<td style="background-color:#f3f3f3;">적립된 마일리지</td><td><%=request.getAttribute("storage_m") %></td>
 </tr>
 <tr>
-	<td style="background-color:#f3f3f3;">사용한 적립금</td><td><%=request.getAttribute("used_m") %></td>
+	<td style="background-color:#f3f3f3;">사용한 마일리지</td><td><%=request.getAttribute("used_m") %></td>
 </tr>
 <!-- <tr>	
 	<td colspan="2" style="text-align:center;">

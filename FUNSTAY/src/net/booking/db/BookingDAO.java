@@ -128,6 +128,7 @@ public class BookingDAO {
 		System.out.println(member_email);
 		try{
 			con=getConnection();
+
 			String sql="select * from member where email=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, member_email);
@@ -136,6 +137,7 @@ public class BookingDAO {
 				mileage=rs.getInt("mileage");
 				System.out.println(rs.getInt("mileage"));
 			}
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -145,6 +147,32 @@ public class BookingDAO {
 		}
 		return mileage;
 	}
+	
+	public String getphoto(int home_num){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String photo=null;
+		try{
+			con=getConnection();
+			
+			String sql = "select photo from home where home_num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, home_num);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				photo = rs.getString("photo");
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+		return photo;
+	}
+				
 	
 	/*public void updatemileage(String member_email){
 		Connection con = null;
