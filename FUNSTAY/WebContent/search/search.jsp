@@ -6,11 +6,8 @@
 <script src="dist/js/main.js"></script>
 
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-$(document).ready(function(){
-$("#form_1").hide();
-});
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+<!-- <script type="text/javascript">
+PI||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
@@ -23,7 +20,7 @@ s0.parentNode.insertBefore(s1,s0);
 
 
 
-</script>
+</script> -->
 
 
 
@@ -49,6 +46,7 @@ int num = (Integer)session.getAttribute("num");
 <table  id="searchtable">
 <tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
 
+<<<<<<< HEAD
 
 <tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><input type="text" value="" placeholder="목적지를 적으세요" class="textsize1" name="address"></td></tr>
 <tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><input type='text' id="minMaxExample" class='datepicker-here' name="start_date" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
@@ -77,10 +75,11 @@ int num = (Integer)session.getAttribute("num");
   </nav>
 </td></tr>
 
+=======
+>>>>>>> branch 'master' of https://github.com/DDHHKK/NEWFUN.git
 <tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><span class="table_text"><%=address %></span></td></tr>
 <tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><span class="table_text"> <%=start_date %> / <%= end_date %></span></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;인원</td> <td><span class="table_text"><%=num %> 명</span></td></tr>
-
 
 </table>
 <input type="hidden" name="address" value="<%=address%>">
@@ -373,10 +372,28 @@ function showSlides(n) {
 <h5><%=hb.getRoom_content() %></h5>
 <%-- <h6><%=hb.getStart_date()%> ~ <%=hb.getEnd_date()%> 예약가능</h6> --%>
 </div>
+
+
+<%
+int avg =0;
+try{List avglist = (List)session.getAttribute("avg");
+avg = (Integer)avglist.get(0);	}
+catch(Exception e)
+{ avg=0;}
+
+
+{
+	
+	%>
+	
+<%
+}
+%>
+<input type="hidden" id="avg_shj" name="avg" value="<%=avg%>">
 <div class="star_shj">
  <span>
- 	 <i id="image1"class="material-icons" style="font-size:18px" >star</i>
- 	 <i id="image2" class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image1"class="material-icons" style="font-size:18px" >star_border</i>
+ 	 <i id="image2" class="material-icons" style="font-size:18px" >star_border</i>
  	 <i id="image3" class="material-icons" style="font-size:18px" >star_border</i>
  	 <i id="image4"class="material-icons" style="font-size:18px" >star_border</i>
  	  <i id="image5"class="material-icons" style="font-size:18px" >star_border</i>
@@ -397,9 +414,22 @@ function showSlides(n) {
 	<h2 >목록 리스트</h2>
 
 </div>
+<div style="width:400px; height:400px; border: 10px solid blue;" id ="sjsjsj"> 
+<script type="text/javascript">
+$("#sjsjsj").click(function(){
+	alert("ddd");
+	var avg =$("#avg_shj").val();	
 
+		alert(avg);
+		for(var i =1; i<=avg; i++)
+			{
+			
+			$('#image'+i).text("star");
+			} 
+	
+});
 
-
+</script>
 
 
 
@@ -409,6 +439,9 @@ function showSlides(n) {
 <!-- 하트 클릭부분 -->
 <script type="text/javascript">
 $(document).ready(function(){
+
+
+	
 	
 	$('.heart_shj>i').click(function(){
 		/* var home_num= $('#home_num').val();
@@ -433,14 +466,10 @@ $(document).ready(function(){
 
 
 
-
 <!--모달윈도우부분-->
 <script type="text/javascript">
 $(function(){
- /*  $('#loginform').submit(function(e){
-    return false;
-  }); */
-  
+
   $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
 });
 </script>

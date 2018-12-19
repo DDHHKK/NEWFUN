@@ -56,13 +56,20 @@ public class MemberSearchAction implements Action{
 		MemberDAO mdd= new MemberDAO();
 
 		int pageSize = 10;
-
 		Vector vector = mdd.getsearchList(hb, start_date, end_date,num);
 		Vector vector2 = mdd.getsearchList2(hb, num);
 		Vector vector3 = mdd.getsearchList3(hb);
-	    List list=(List)vector.get(0);
+		List list=(List)vector.get(0);
+	    if(vector.size()==2)
+	    {
+	    	List avg=(List)vector.get(1);
+	    	session.setAttribute("avg", avg);
+	    }
+
 		List past =(List)vector2.get(0);
 		List rest =(List)vector3.get(0);
+		
+
 		session.setAttribute("list", list);
 		session.setAttribute("past", past);
 		session.setAttribute("rest", rest);
