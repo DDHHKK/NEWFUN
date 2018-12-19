@@ -57,7 +57,12 @@
 <!-- 각 페이지 내용을  content 영역 안에 배치 해주세요.-->
 <div id="content_DY">
 
-<!-- 여기서부터 페이지 내용을 적어주세요. -->
+<%-- <!-- 여기서부터 페이지 내용을 적어주세요. -->
+<%
+
+int home_num=(Integer.parseInt(request.getParameter("home_num")));
+
+%> --%>
 
 <h1>내 예약정보</h1>
  
@@ -131,23 +136,16 @@ String email=(String)session.getAttribute("email");
  
  
  
- <%-- 
  
-<%
-	request.setCharacterEncoding("UTF-8");
 
-     String pageNum = (String) request.getAttribute("pageNum");
-     int num = ((Integer) request.getAttribute("num")).intValue();
-	
-	
-	
-%>
-  
+
+
  
  
   <!--리뷰쓰기 버튼 -->
-     <button onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'" class="review_butt_DY">리뷰쓰기</button>  
-  <!--리뷰쓰기 버튼 끝  -->  --%>
+     <input type="button" onclick="location.href='ReviewWrite.bk?pn=<%=BeforeB.getPayment_num()%>'"
+      class="review_butt_DY" value="리뷰쓰기">  
+  <!--리뷰쓰기 버튼 끝  -->  
 		 
 
 	</td>
@@ -763,8 +761,9 @@ function button_event(payment_num){
 		  	  $.each(data,function(index,item){
 		  		  $('.receipt_table_DY').html('<tr><td colspan="2" class="sub_DY">'+item.room_subject+'</td></tr><tr><td>체크인</td><td>'+item.check_in+
 		  				  '</td></tr><tr><td>체크아웃</td><td>'+item.check_out+'</td></tr><tr><td>Room_type</td><td>'+item.room_type+
-		  				  '</td></tr><tr><td>UserName</td><td>'+item.member_email+'</td></tr><tr><td>인원</td><td>'+item.people+
-		  				  '</td></tr><tr><td>총요금</td><td>'+item.sum_price+'</td></tr>');
+		  				  '</td></tr><tr><td>인원</td><td>'+item.people+'</td></tr><tr><td>subtotal</td><td>'+(item.sum_price-item.fees)+ 
+		  				  '</td></tr><tr><td>수수료</td><td>'+item.fees+'</td></tr><tr><td>total</td><td>'+item.sum_price+
+		  				  '</td></tr>');
 		  	  }); 
 		  	  
 		  	  

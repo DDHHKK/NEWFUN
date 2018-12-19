@@ -31,6 +31,7 @@
 	List<BedBean> bed_list = (List)request.getAttribute("bed_list");
 	String room_subject = sc.getRoom_subject();
 	int R_max_people = 0;
+	int basic_people =0;
 	%>
 			
 <!-- room_wrapper -->
@@ -94,7 +95,9 @@
 						<b><%=rb.getRe_room()%>번방</b><br>
 						<%-- <%=rb.getRoom_num()%><br> --%>
 						최대 <%=rb.getMax_people()%>명<br>
-						<%R_max_people=R_max_people+rb.getMax_people(); %>
+						<%
+							basic_people=basic_people+rb.getMin_people();
+							R_max_people=R_max_people+rb.getMax_people(); %>
 						<%for(int z=0; z<bb.getSingle_bed(); z++){ %>
 							<img src="./img/host/single_bed.png" style="width:35px;height:35px;">
 						<%
@@ -267,7 +270,7 @@
  
  
  <!-- room_review -->
-<h3 id="room_review1">후기 <%-- <%=count%>개 --%> </h3>
+<h3 id="room_review1">리뷰 <%-- <%=count%>개 --%> </h3>
 <div id="room_review" style="padding:20px;border:1px solid #cccccc;">
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -493,29 +496,31 @@ for (i = 0; i < acc.length; i++) {
 
 <div id="room_box">
 <nav id="nav_1">
-<form action="Booking.bo" method="get" name="fff" id="form_2">
+<form action="./Booking.bo" method="get" name="fff" id="form_2">
 <input type="hidden" name="room_subject" value="<%=sc.getRoom_subject()%>">
 <input type="hidden" name="host_email" value="<%=sc.getHost_email() %>">
 <input type="hidden" name="home_num" value="<%=sc.getHome_num()%>">
 <ol>
 <li class="tite_text" style="margin-bottom:0;padding-bottom:0;">
 	<input type="hidden" value="<%=sc.getPrice()%>" name="price11">
-	<input type="hidden" value="<%=sc.getPrice()%>" name="price22">
-	<input type="text" value="<%=sc.getPrice()%>" name="price00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:120px;" readonly>
-	<input type="text" value="/" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:20px;" readonly >
-	<input type="text" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:40px;" readonly>
-	<input type="text" value="박" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:25px;" readonly>
+	<input type="hidden" value="<%=sc.getPrice()%>" name="price00">
+	<input type="text" value="<%=sc.getPrice()%>" name="price22" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:120px;padding-left: 9px;padding-top:3px;" readonly>
+	<input type="text" value="/1박" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:50px;" readonly >
+	<input type="hidden" value="1" name="select_people" class="select_people">
+	<input type="hidden" value="1" class="days00" name="days00" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:40px;" readonly>
+	<!-- <input type="text" value="박" style="display:block;width:fit-content;border:none;float:left;padding:0;font-size:25px;width:25px;" readonly> -->
 	<div class="clear"></div>
 </li>
 <li>
-	<div id="mySidenav" class="sidenav">
+	<div id="mySidenav" class="sidenav" style="padding-left:0 !important;padding-right:0 !important;">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	<!-- <div class="clear"></div> -->
-		+기본요금<br>
-		+추가요금<br>
-		+수수료<br>
-		<hr>
-		<span style="float:right;">합계</span>
+		<span class="sum_price123"><!-- 50000x10(500000) --></span>
+		<%-- +기본요금  <input type="hidden" value="<%=sc.getPrice()%>" name="price00"><br>
+		+추가요금 10000<br>
+		+수수료 25500<br> --%>
+		<!-- <hr>
+		<span style="float:right;">합계 535500</span> -->
 	</div>
 </li>
 <!-- <li>
@@ -532,6 +537,7 @@ for (i = 0; i < acc.length; i++) {
 </li>
 <!-- <li class="tite_text">인원</li> -->
 <li>
+  <input type="hidden" value="<%=basic_people%>" name="basic_people" class="basic_people">
   <input type="hidden" value="<%=R_max_people%>" name="R_max_people">
   <input type="hidden" value="" name="text00" readonly>
   <input type="text" value="" placeholder="게스트 인원을 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
@@ -560,8 +566,10 @@ for (i = 0; i < acc.length; i++) {
 <div class="clear"></div>
 <!-- <hr> -->
 <!-- <li align="center"><b>예약 확정 전에는 요금이 청구되지 않습니다.</b></li> -->
-<li align="center">지난 주에 500회 이상 조회되었습니다.</li>
-	<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;"/>
+<li align="center"><!-- 지난 주에 500회 이상 조회되었습니다. -->
+<input type="button" class="btn_remove" value="숙소신고하기" onclick="showPopup();" style="color:gray;margin:0;padding:0;'"/>
+</li>
+	
 </ol>
 </form>
 </nav>
