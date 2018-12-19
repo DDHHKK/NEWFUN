@@ -42,7 +42,7 @@ s0.parentNode.insertBefore(s1,s0);
 <table  id="searchtable">
 <tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
 
-<tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><input type="text" value="" placeholder="목적지를 적으세요" class="textsize1" name="address"></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><input type="text" value="" placeholder="dd" class="textsize1" name="address"></td></tr>
 <tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><input type='text' id="minMaxExample" class='datepicker-here' name="start_date" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
    <input type="text" value="" class="datepicker-here" id="datepicker" name="end_date" data-language='en' placeholder="년 / 월 / 일">
 </td></tr>
