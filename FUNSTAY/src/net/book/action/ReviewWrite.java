@@ -27,14 +27,18 @@ public class ReviewWrite implements Action {
 		// 없으면 ./MemberLogin.me ActionForward 이용 이동
 
 		request.setCharacterEncoding("UTF-8");		
-		System.out.println("집에가고싶어1");
-		String payment_num = request.getParameter("payment_num");
+	
+		String payment_num1 = request.getParameter("payment_num");
+		
+		
 		
 		BookingBean bb=new BookingBean();
 		ReviewDAO rdao=new ReviewDAO();
 		
-		bb= rdao.getSearchHomenum(payment_num);
-		bb.getPayment_num();
+		bb= rdao.getSearchHomenum(payment_num1);
+		String payment_num=bb.getPayment_num();
+		
+		
 		int home_num=bb.getHome_num();
 		
 
@@ -44,14 +48,13 @@ public class ReviewWrite implements Action {
 		
 		/*bdao.updateReadcount(num);*/ 
 		
-		System.out.println("집에가고싶어2");
-		SearchBean sc= bdao.getSearchboard(home_num);
+
 		
 		HttpSession session = request.getSession();
 		String Member_email = (String)session.getAttribute("email");
 		
-		request.setAttribute("sc", sc);
-		System.out.println("집에가고싶어"+sc);
+	
+		request.setAttribute("payment_num", payment_num);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("home_num", home_num);
 		request.setAttribute("Member_email", Member_email);

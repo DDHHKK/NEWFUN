@@ -1,3 +1,4 @@
+<%@page import="net.booking.db.BookingBean"%>
 <%@page import="net.search.db.SearchBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -61,13 +62,11 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 <%
 request.setCharacterEncoding("UTF-8");
 	
-SearchBean sc = (SearchBean) request.getAttribute("sc");
+BookingBean bb=new BookingBean();
 String pageNum = (String) request.getAttribute("pageNum");
-int num = ((Integer) request.getAttribute("num")).intValue();
+int home_num = ((Integer) request.getAttribute("home_num")).intValue();
 String Member_email = (String)request.getAttribute("Member_email");
-
-
-
+String payment_num= (String)request.getAttribute("payment_num");
 
 	%>
 <!-- header  시작-->
@@ -92,8 +91,10 @@ String Member_email = (String)request.getAttribute("Member_email");
 <form action="./ReviewWriteAction.bk" method="post"> 
 
 
-<input type="text" name="home_num" value="<%=sc.getHome_num()%>">
-<input type="text" name="payment_num">
+<input type="text" name="home_num" value="<%=home_num%>">
+<input type="text" name="payment_num" value="<%=payment_num%>">
+<input type="text" name="Member_email" value="<%=Member_email%>"> 
+<input type="text" name="pageNum" value="<%=pageNum%>"> 
 
 <!--테이블 시작  -->
 <table>
