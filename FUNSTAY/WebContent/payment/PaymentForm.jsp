@@ -62,7 +62,7 @@ String photo1 = (String)request.getAttribute("photo1");
 <div id="paymentinfo_sg">
 <h3>주문 정보</h3>
 <!-- 주문번호 : djfigieowkdfj02983<br> -->
-<a href="#"><img src="./upload/<%=photo1 %>" alt="숙소 미리보기 사진"></a><br>
+<a href="#"><img src="./upload/<%=photo1 %>" alt="숙소 미리보기 사진"></a>
 <%=room_subject%><br><hr>
 <i class="fas fa-user-alt"></i> x <%=request.getAttribute("people") %> 명<br>
 <i class="far fa-calendar-check"></i> 
