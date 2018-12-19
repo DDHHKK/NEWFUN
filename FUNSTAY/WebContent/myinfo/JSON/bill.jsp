@@ -49,7 +49,7 @@ while(rs.next()){
 	mb.put("fees",rs.getString("fees"));
 	mb.put("sum_price",rs.getString("sum_price"));
 	mb.put("check_in",rs.getString("check_in"));
-	mb.put("name",rs.getString("check_in"));
+	/* mb.put("name",rs.getString("check_in")); */
 	mb.put("check_out",rs.getString("check_out"));
 	mb.put("people",rs.getString("people"));
 	

@@ -62,7 +62,7 @@
 
 <!-- 로그인/회원가입 js -->
 <script src="./js/member/email_check.js"></script>
-<script src="./js/default/required_join.js"></script>
+<script src="./js/default/required_Join.js"></script>
 
 <!-- 
 	css파일 연결할때 예시 

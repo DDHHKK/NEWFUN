@@ -378,7 +378,7 @@ public class BookDAO {
   			//1,2단계 메서드 호출
   			con=getConnection();
                   
-                     String sql2="select * from home h,payment p "
+                     String sql2="select distinct * from home h,payment p "
                      		+ "where p.member_email=? and h.host_email=p.host_email and p.payment_status=?";
                      
                      pstmt=con.prepareStatement(sql2);//객체생성

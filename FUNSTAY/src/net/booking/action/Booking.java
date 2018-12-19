@@ -32,7 +32,8 @@ public class Booking implements Action{
 		//Date check_in = Date.valueOf("2018-11-20");
 		//String check_out = "2018-11-26";
 		//Date check_out = Date.valueOf("2018-11-26");
-		int price = Integer.parseInt(request.getParameter("price11"));
+		int price = Integer.parseInt(request.getParameter("price33"));
+		//int price = Integer.parseInt(request.getParameter("price11"));
 		int select_people = Integer.parseInt(request.getParameter("select_people"));
 		int max_people = Integer.parseInt(request.getParameter("R_max_people"));
 		int basic_people = Integer.parseInt(request.getParameter("basic_people"));
