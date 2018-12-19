@@ -263,10 +263,9 @@ private Connection getConnection() throws Exception{
 			ResultSet rs = null;
 			SearchBean sc = new SearchBean();
 			try{			
-				//1,2�뵒鍮꾩뿰寃� 硫붿꽌�뱶�샇異�
+		
 				con = getConnection();
-				//num 寃뚯떆�뙋 湲�踰덊샇 援ы븯湲�
-				//sql �븿�닔 理쒕�媛� 援ы븯湲� max()
+		
 				sql = "select * from home where home_num = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, home_num);
