@@ -1117,7 +1117,11 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select sum(home_satisfaction), home_num, home_photo from wish group by home_num, home_photo order by sum(home_satisfaction) desc";
+			String sql = "select sum(a.home_satisfaction), a.home_photo, substr(b.address,1,2) as address, a.home_num "
+					+ "from wish a  join home b "
+					+ "on a.home_num=b.home_num "
+					+ "group by a.home_photo, b.address,a.home_num "
+					+ "order by sum(home_satisfaction) desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -1125,7 +1129,9 @@ public class MemberDAO {
 			while (rs.next()) {
 				MyWishBean sb1 = new MyWishBean();
 				sb1.setHome_photo(rs.getString("home_photo"));
-				System.out.println("getsatisfactionphoto"+sb1.getHome_photo());
+				sb1.setHome_num(rs.getInt("home_num"));
+				System.out.println("home_photo들고옴"+sb1.getHome_photo());
+				System.out.println("home_num들고옴"+sb1.getHome_num());
 				goodsList.add(sb1);
 			}
 			

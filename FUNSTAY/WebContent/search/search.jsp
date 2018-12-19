@@ -46,7 +46,7 @@ int num = (Integer)session.getAttribute("num");
 <table  id="searchtable">
 <tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
 
-<<<<<<< HEAD
+
 
 <tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><input type="text" value="" placeholder="목적지를 적으세요" class="textsize1" name="address"></td></tr>
 <tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><input type='text' id="minMaxExample" class='datepicker-here' name="start_date" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
@@ -233,7 +233,7 @@ $(document).ready(function(){
 
 
 
-<div id="content_DY" style="border: 1px solid red;">
+<div id="content_DY">
 <%
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
@@ -412,7 +412,7 @@ catch(Exception e)
 	<h2 >목록 리스트</h2>
 
 </div>
-<div style="width:400px; height:400px; border: 10px solid blue;" id ="sjsjsj"> 
+<!-- <div style="width:400px; height:400px; border: 10px solid blue;" id ="sjsjsj"> 
 <script type="text/javascript">
 $("#sjsjsj").click(function(){
 	alert("ddd");
@@ -427,7 +427,7 @@ $("#sjsjsj").click(function(){
 	
 });
 
-</script>
+</script> -->
 
 
 
