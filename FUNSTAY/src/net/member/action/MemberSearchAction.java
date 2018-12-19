@@ -23,7 +23,7 @@ public class MemberSearchAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		
+		HttpSession session = request.getSession();
 		HostBean hb = new HostBean();
 		request.setCharacterEncoding("utf-8");
 		String address = request.getParameter("address");
@@ -63,7 +63,6 @@ public class MemberSearchAction implements Action{
 	    List list=(List)vector.get(0);
 		List past =(List)vector2.get(0);
 		List rest =(List)vector3.get(0);
-		HttpSession session = request.getSession();
 		session.setAttribute("list", list);
 		session.setAttribute("past", past);
 		session.setAttribute("rest", rest);

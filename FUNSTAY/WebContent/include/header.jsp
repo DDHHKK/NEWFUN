@@ -35,6 +35,7 @@ $(document).ready(function(){
 <%MemberDAO md = new MemberDAO();
 MemberBean mb = new MemberBean(); 
 String email = (String)session.getAttribute("email");
+System.out.println("email11"+email);
 mb=md.getMember(email);
 int hostCheck = 0;
 try{
