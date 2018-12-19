@@ -4,8 +4,11 @@ var right=0;
 function regChk(){
 	var chk1 = /\d/;
 	var chk2 = /[a-z]/i;
-	var pass = document.fr.pass.value;
-	var email = document.fr.email.value;
+	var pass = $('#myInput1').val();
+	var email = $('#email').val();
+	
+	/*var pass = document.fr.pass.value;
+	var email = document.fr.email.value;*/
 	 
 	 if(email.length==0 || email==""){
 	  alert("이메일을 입력하십시오");
@@ -52,8 +55,10 @@ function regChk(){
 	 document.fr.submit();
 }//regChk()
 function passchk(){
-	var pass = document.fr.pass.value;
-	 var pass2 = document.fr.pass2.value;
+	var pass = $('#myInput1').val();
+	var pass2 = $('#myInput2').val();
+	/*var pass = document.fr.pass.value;
+	 var pass2 = document.fr.pass2.value;*/
 	 if (pass2.length == 0 || pass2 == "") {
 	  document.fr.chk.value = "비밀번호를 입력하세요";
 	  right = 0;

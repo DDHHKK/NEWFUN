@@ -21,15 +21,20 @@ public class ReviewWriteAction implements Action{
 		//ReviewBean bb객체생성
 		ReviewBean bb=new ReviewBean();
 		
-	    bb.setPayment_num(request.getParameter("payment_num"));
+	    bb.setPayment_num(request.getParameter("payment_num"));	    
 		bb.setContent(request.getParameter("content"));
-		bb.setSatisfaction(request.getParameter("satisfaction"));
-		bb.setClean(request.getParameter("clean"));
+		bb.setSatisfaction(request.getParameter("satisfaction"));		
+		bb.setClean(request.getParameter("clean"));	
 		bb.setAccess(request.getParameter("access"));
-		/*bb.setMember_email(request.getParameter("member_email"));*/
-		bb.setHome_num(Integer.parseInt(request.getParameter("home_num")));
+		bb.setMember_email(request.getParameter("Member_email"));		
+		
+		int home_num = (Integer.parseInt(request.getParameter("home_num")));
+		bb.setHome_num(home_num);
 		/*bb.setStar(request.getParameter("star"));*/
 		
+		int pageNum=10;
+		
+		request.setAttribute("home_num", home_num);
 		
 		//BookDAO bdao객체생성
 		BookDAO bdao=new BookDAO();
@@ -38,7 +43,7 @@ public class ReviewWriteAction implements Action{
 		//이동  ./ReviewList.bo
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath("./RoomDetail.sc");
+		forward.setPath("./RoomDetail.sc?num="+home_num+"&pageNum="+pageNum);
 		return forward;
 	}
 	

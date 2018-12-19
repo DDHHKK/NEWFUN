@@ -4,14 +4,14 @@
     pageEncoding="UTF-8"%>
 <header>
 <script src="./js/default/jquery-3.3.1.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
    //인원 텍스트창을 클릭하면 스크롤바가 내려온다 
 $(document).ready(function(){
 	$("img_1_WS").click(function(){
 		$(this).next().slideToggle('slow');
 	});
 });    
-</script>
+</script> -->
 <script type="text/javascript">
 	function abc111(){
 	var search_info = document.getElementById("text_1_WS").value;
@@ -198,7 +198,7 @@ if(email==null){
       </div> 
        </div> 
   <!-- 전송버튼 -->     
-      <button type="submit" class="subtn"><a>로그인</a></button>
+      <button type="submit" class="subtn"><span>로그인</span></button>
       <br><br>
         <!-- 아이디저장  --> 
 <!--       <label>
@@ -248,7 +248,7 @@ if(email==null){
 <!-- 이메일(아이디)입력 폼 -->    
       <i class="fa fa-envelope icon"></i>
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email">
+      <input type="text" placeholder="Enter Email" name="email" id="email">
 <!-- 이메일 중복체크 입력 폼 -->       
       <div>
       <input type="button" value="E-mail중복체크" class="e_check" onclick="idcheck()">
@@ -263,7 +263,7 @@ if(email==null){
 <!-- 비밀번호 확인 폼-->
 <i class="fa fa-key icon"></i>
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="pass2" onblur="passchk()">
+      <input type="password" placeholder="Repeat Password" name="pass2" id="myInput2"onblur="passchk()">
 	   <input type="text" class="psw-repeat" name="chk" value="비밀번호를 입력하세요" readonly="readonly">
 <!-- 이름 폼 -->      
 <i class="fa fa-user-o"></i>
@@ -303,7 +303,7 @@ if(email==null){
        <!-- <a href="./member/agree.jsp" style="color:dodgerblue">동의약관</a>.</p> -->
 <!-- 전송버튼 -->
       <div class="clearfix">
-        <button type="button" class="subtn" onclick="regChk()"><a>가입완료</a></button>
+        <button type="button" class="subtn" onclick="regChk()"><span>가입완료</span></button>
         </div>
 <!-- 취소버튼 사용 유무        
 <div class="container" style="background-color:#f1f1f1">

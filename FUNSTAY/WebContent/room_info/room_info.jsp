@@ -283,19 +283,19 @@
 
 	List ReviewList = (List) request.getAttribute("boardList");
 	int count = ((Integer) request.getAttribute("count")).intValue();
+	
 	pageNum = (String) request.getAttribute("pageNum");
 	int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
 	int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
-	sc = (SearchBean) request.getAttribute("sc");
-	num = ((Integer) request.getAttribute("num")).intValue();
+	int home_num = ((Integer) request.getAttribute("home_num")).intValue();
 %>
 
-
+<%-- 
 	<button class="button_sg button1_sg"
-			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button>
+			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button> --%>
+			 
+			 
 	<div id="room_review">
-	
-	
 
 	<%
 			for (int i = 0; i < ReviewList.size(); i++) {
@@ -303,20 +303,20 @@
 	%>
   
 <table border="1" align="center">
-	<tr>
+<%-- 	<tr>
 	<th>평점</th> 
 	<th colspan="3"> 
 	<span class="star-prototype"><%=re.getStar() %></span>  
 	</th>  
-	</tr>
+	</tr> --%>
 	<tr>
 	<th><img src="./img/user.png" alt="img02" width="50px" height="50px"></th>
 	<th> <%=re.getReview_date() %></th>
    	<th colspan="2"><%=re.getMember_email() %></th> 
     <tr><th colspan="5"><%=re.getContent() %></th></tr>
     <tr><th>만족도</th><th colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></th></tr>
-    <tr><th>청결함</th><th colspan="4"><span class="star-prototype"><%=re.getClean() %></span></th></tr>
-	<tr><th>교통접근성</th><th colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></th></tr>
+    <tr><th>청결도</th><th colspan="4"><span class="star-prototype"><%=re.getClean() %></span></th></tr>
+	<tr><th>접근성</th><th colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></th></tr>
 </table> 
 		<script type="text/javascript"> 
 				$.fn.generateStars = function() {
@@ -382,6 +382,7 @@
 	
 	List QnAList = (List) request.getAttribute("QnAList");
 	int count1 = ((Integer) request.getAttribute("count1")).intValue();
+
 	pageNum = (String) request.getAttribute("pageNum");
 	pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
 	currentPage = ((Integer) request.getAttribute("currentPage")).intValue();

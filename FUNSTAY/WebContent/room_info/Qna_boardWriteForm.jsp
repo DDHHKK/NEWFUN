@@ -65,6 +65,7 @@ int num = ((Integer) request.getAttribute("num")).intValue();
 String room_subject = (String)request.getAttribute("room_subject");
 String Member_email = (String)request.getAttribute("Member_email");
 %>
+
 <!-- header  시작-->
 <jsp:include page="../include/header.jsp"></jsp:include>
 <!-- header  끝-->
@@ -83,7 +84,7 @@ String Member_email = (String)request.getAttribute("Member_email");
 <form class="w3-container" action="./Qna_boardWriteAction.sc?num=<%=qb.getHome_num()%>&pageNum=<%=pageNum%>" method="post">
 <table border="0" align="center">
 <tr><td><p class="letter">QnA 문의하기</p></td></tr>
-<tr><td><h3>방 이름</h3></td><td><h3><input class="w3-input" type="hidden" name="home_num" value=<%=qb.getHome_num() %> placeholder="Home_num을 입력해주세요...">
+<tr><td><h3>방 이름</h3></td><td><h3><input class="w3-input" type="hidden" name="home_num" value=<%=qb.getHome_num() %>>
 <input class="w3-input" value="<%=room_subject %>" readonly></h3></td></tr>
 <tr><td><h3>Email</h3></td><td><input class="w3-input" name="member_email" value="<%=Member_email %>" readonly></td></tr> 
 <tr><td><h3>제목</h3></td><td><h3><input class="w3-input" name="subject" placeholder="제목을 입력해주세요..."></h3></td></tr>  
