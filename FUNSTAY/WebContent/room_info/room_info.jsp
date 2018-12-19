@@ -419,7 +419,7 @@
 	<% for (int i = 0; i < QnAList.size(); i++) {
 		QnaBean qn = (QnaBean) QnAList.get(i);
 	%>
-	<%if(qn.getRe_seq()==0){%>
+	<%-- <%if(qn.getRe_seq()==0){%> --%>
 		<button class="accordion_sg">
 			<table>
 				<tr>
@@ -435,16 +435,20 @@
 				</tr>
 			</table>
 		</button>
-		<%}%>
+	<%-- <%}%> --%> 
+		
 		<div class="panel_sg">
   			<p>
   				<img src="./img/user.png" alt="img02" width="50px" height="50px">
-				<%=qn.getContent() %>
+				 <%=qn.getContent() %>
+				 
+				 <%if(qn.getRe_seq()==1){%>
 				<hr> 
-				답글있으면 불러오기
+				<%=qn.getMember_email() %>님 글의 답변 -> <%=qn.getContent() %>
+				 <%}%>
 			</p>	
-		</div>
-	<% } %> 
+		</div> 
+	<%}%>
 		<div style="text-align: center;">
 <%
 		if (count1 != 0) {
