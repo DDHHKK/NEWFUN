@@ -57,7 +57,12 @@
 <!-- 각 페이지 내용을  content 영역 안에 배치 해주세요.-->
 <div id="content_DY">
 
-<!-- 여기서부터 페이지 내용을 적어주세요. -->
+<%-- <!-- 여기서부터 페이지 내용을 적어주세요. -->
+<%
+
+int home_num=(Integer.parseInt(request.getParameter("home_num")));
+
+%> --%>
 
 <h1>내 예약정보</h1>
  
@@ -132,21 +137,14 @@ String email=(String)session.getAttribute("email");
  
  
  
-<%--  
-<%
-	request.setCharacterEncoding("UTF-8");
 
-     String pageNum = (String) request.getAttribute("pageNum");
-     int num = ((Integer) request.getAttribute("num")).intValue();
-	
-	
-	
-%>
-   --%>
+
+
  
  
   <!--리뷰쓰기 버튼 -->
-     <button onclick="location.href='ReviewWrite.bk'" class="review_butt_DY">리뷰쓰기</button>  
+     <input type="button" onclick="location.href='ReviewWrite.bk?pn=<%=BeforeB.getPayment_num()%>'"
+      class="review_butt_DY" value="리뷰쓰기">  
   <!--리뷰쓰기 버튼 끝  -->  
 		 
 
@@ -310,13 +308,13 @@ if(i%3==0){
 <%
 List bookingList4=(List)request.getAttribute("bookingList3");
 List paymentList4=(List)request.getAttribute("paymentList3");
-List hostList4=(List)request.getAttribute("hostList3"); 
+List hostList4=(List)request.getAttribute("hostList3");  
 List afterList4=(List)request.getAttribute("afterList3");
 System.out.println(bookingList4);
-for(int i=0; i<bookingList4.size(); i++){
-	BookingBean bb=(BookingBean)bookingList4.get(i);
+for(int i=0; i<afterList4.size(); i++){
+	/* BookingBean bb=(BookingBean)bookingList4.get(i);
 	PaymentBean pb=(PaymentBean)paymentList4.get(i);
-	HostBean hb=(HostBean)hostList4.get(i); 
+	HostBean hb=(HostBean)hostList4.get(i);  */
 	BeforeBean BeforeB=(BeforeBean)afterList4.get(i);
 	/* System.out.println("3"); */
 if(i%3==0){

@@ -21,7 +21,11 @@ public class Qna_boardWrite implements Action {
 		
 		request.setCharacterEncoding("UTF-8");		
 		
-		
+		int QnA_num = Integer.parseInt(request.getParameter("QnA_num"));
+		int re_ref = Integer.parseInt(request.getParameter("re_ref"));
+		int re_lev = Integer.parseInt(request.getParameter("re_lev"));
+		int re_seq = Integer.parseInt(request.getParameter("re_seq"));
+		int home_num = Integer.parseInt(request.getParameter("home_num"));
 		String room_subject = request.getParameter("room_subject");
 		HttpSession session = request.getSession();
 		String Member_email = (String)session.getAttribute("email");
@@ -39,6 +43,11 @@ public class Qna_boardWrite implements Action {
 		request.setAttribute("num", num);
 		request.setAttribute("room_subject", room_subject);
 		request.setAttribute("Member_email", Member_email);
+		request.setAttribute("QnA_num", QnA_num);
+		request.setAttribute("re_ref", re_ref);
+		request.setAttribute("re_lev", re_lev);
+		request.setAttribute("re_seq", re_seq);
+		request.setAttribute("home_num", home_num);
 		
 		ActionForward forward = new ActionForward();
 		

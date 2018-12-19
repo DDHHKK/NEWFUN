@@ -26,9 +26,9 @@ public class ReviewWriteAction implements Action{
 		bb.setSatisfaction(request.getParameter("satisfaction"));
 		bb.setClean(request.getParameter("clean"));
 		bb.setAccess(request.getParameter("access"));
-		bb.setMember_email(request.getParameter("member_email"));
+		/*bb.setMember_email(request.getParameter("member_email"));*/
 		bb.setHome_num(Integer.parseInt(request.getParameter("home_num")));
-		bb.setStar(request.getParameter("star"));
+		/*bb.setStar(request.getParameter("star"));*/
 		
 		
 		//BookDAO bdao객체생성
@@ -38,7 +38,7 @@ public class ReviewWriteAction implements Action{
 		//이동  ./ReviewList.bo
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath("./MyReserve.bk");
+		forward.setPath("./RoomDetail.sc");
 		return forward;
 	}
 	
