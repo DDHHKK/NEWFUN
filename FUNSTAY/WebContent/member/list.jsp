@@ -94,7 +94,7 @@ text-align: center;
 			<th>휴대폰번호</th>
 			<th>생일</th>
 			<th>마일리지</th>
-			<th>비고</th>
+			<!-- <th>비고</th> -->
 		
 		</tr>
 		
@@ -110,7 +110,7 @@ text-align: center;
 			<td class="p_td"><%=mb.getPhone()%></td>
 			<td class="p_td"><%=mb.getBirth()%></td>
 			<td class="p_td"><%=mb.getMileage()%></td>
-			<td class="p_td">
+		<%-- 	<td class="p_td">
 			<%if(mb.getEmail().equals("admin")){
 				%>
 				추방불가
@@ -121,7 +121,7 @@ text-align: center;
 				<%
 			}
 			%>
-		</tr>
+		</tr> --%>
 		<%
 			}
 		%>

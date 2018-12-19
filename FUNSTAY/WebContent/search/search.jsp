@@ -6,11 +6,8 @@
 <script src="dist/js/main.js"></script>
 
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-$(document).ready(function(){
-$("#form_1").hide();
-});
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+<!-- <script type="text/javascript">
+PI||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
@@ -23,7 +20,7 @@ s0.parentNode.insertBefore(s1,s0);
 
 
 
-</script>
+</script> -->
 
 
 
@@ -49,38 +46,9 @@ int num = (Integer)session.getAttribute("num");
 <table  id="searchtable">
 <tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
 
-
-<tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><input type="text" value="" placeholder="dd" class="textsize1" name="address"></td></tr>
-<tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><input type='text' id="minMaxExample" class='datepicker-here' name="start_date" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
-   <input type="text" value="" class="datepicker-here" id="datepicker" name="end_date" data-language='en' placeholder="년 / 월 / 일">
-</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;인원</td> <td>
-  <input type="text" value="" placeholder="게스트를 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
-  <nav id="form_1">
-  <ol>
-     <li>
-        <span class="font1">성&nbsp;인</span> &nbsp;&nbsp;
-        <input type="button" value="-" onclick="cid1()" class="btn_1" id="btn_11"> 
-        <input type="text" value="" name="text11" id="textcss1" placeholder="0" class="text_box">
-        <input type="button" value="+" onclick="add1()" class="btn_1">
-     </li>
-     <li>
-      <span class="font1">어린이</span> 
-      <input type="button" value="-" onclick="cid2()" class="btn_1" id="btn_12"> 
-      <input type="text" value="" name="text12" id="textcss2" placeholder="0"class="text_box">
-      <input type="button" value="+" onclick="add2()" class="btn_1">
-     </li>
-     <li> 
-       <input type="button" value="확인" onclick="choice()" id="btn_sh">
-     </li>
-     </ol>
-  </nav>
-</td></tr>
-
 <tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><span class="table_text"><%=address %></span></td></tr>
 <tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><span class="table_text"> <%=start_date %> / <%= end_date %></span></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;인원</td> <td><span class="table_text"><%=num %> 명</span></td></tr>
-
 
 </table>
 <input type="hidden" name="address" value="<%=address%>">
@@ -110,12 +78,12 @@ int num = (Integer)session.getAttribute("num");
             hide_min_max: true,
             keyboard: true,
             min: 0,
-            max: 50000,
+            max: 500000,
             from: 100,
             to: 50000,
             type: 'double',
             step: 100,
-            prefix: "$",
+            prefix: "￦",
             min_interval : 5000,
             grid: true
         });
@@ -145,10 +113,7 @@ int num = (Integer)session.getAttribute("num");
  	  <i id="image5"class="material-icons" style=color:#cc1d1d;" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)">star_border</i>
  <input type="hidden" class="star_shj" name="star">
 
-<script type="text/javascript">
-$(".material-icons").click(function(){alert($('.star_shj').val());});
 
-</script>
  </span>
 </div>
 </div>
@@ -376,10 +341,18 @@ function showSlides(n) {
 <h5><%=hb.getRoom_content() %></h5>
 <%-- <h6><%=hb.getStart_date()%> ~ <%=hb.getEnd_date()%> 예약가능</h6> --%>
 </div>
+
+
+<%
+List avglist = (List)session.getAttribute("avg");
+String avg = (String)avglist.get(0);
+%>
+<input type="hidden" id="avg_shj" name="avg" value="<%=avg%>">
+
 <div class="star_shj">
  <span>
- 	 <i id="image1"class="material-icons" style="font-size:18px" >star</i>
- 	 <i id="image2" class="material-icons" style="font-size:18px" >star</i>
+ 	 <i id="image1"class="material-icons" style="font-size:18px" >star_border</i>
+ 	 <i id="image2" class="material-icons" style="font-size:18px" >star_border</i>
  	 <i id="image3" class="material-icons" style="font-size:18px" >star_border</i>
  	 <i id="image4"class="material-icons" style="font-size:18px" >star_border</i>
  	  <i id="image5"class="material-icons" style="font-size:18px" >star_border</i>
@@ -401,8 +374,21 @@ function showSlides(n) {
 
 </div>
 
+<script type="text/javascript">
+$("#image1").click(function(){
+	alert("ddd");
+	var avg =$("#avg_shj").val();	
 
+		alert(avg);
+		for(var i =1; i<=avg; i++)
+			{
+			
+			$('#image'+i).text("star");
+			} 
+	
+});
 
+</script>
 
 
 
@@ -412,6 +398,9 @@ function showSlides(n) {
 <!-- 하트 클릭부분 -->
 <script type="text/javascript">
 $(document).ready(function(){
+
+
+	
 	
 	$('.heart_shj>i').click(function(){
 		/* var home_num= $('#home_num').val();
@@ -436,14 +425,10 @@ $(document).ready(function(){
 
 
 
-
 <!--모달윈도우부분-->
 <script type="text/javascript">
 $(function(){
- /*  $('#loginform').submit(function(e){
-    return false;
-  }); */
-  
+
   $('#modaltrigger_shj').leanModal({ top: 110, overlay: 0.8, closeButton: ".hidemodal" });
 });
 </script>
@@ -597,15 +582,15 @@ for(int i=0;i<rest.size();i++){ //for문 시작
 } //esle if문끝
 
 
-else{
+
+
+else {
 %>
 <p id="pont_1213_WS"><%=address%>대한 정보를 찾지 못하였습니다.
 다시 지역을 검색해 주세요</p>
 <% 
 }
 %>
-
-
 
 
 

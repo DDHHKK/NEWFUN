@@ -64,7 +64,7 @@ public class ReviewDAO {
 	
 	
 
-	public List<ReviewBean> getReviewList(int startRow, int pageSize, int home_num){
+	public List<ReviewBean> getReviewList(int home_num){
 		ResultSet rs = null;
 		List<ReviewBean> reviewList = new ArrayList<ReviewBean>();
 		try{
@@ -73,22 +73,28 @@ public class ReviewDAO {
 			con = getConnection();
 			//num 게시판 글번호 구하기
 			//sql 함수 최대값 구하기 max()
-			sql = "select * from Review where home_num = ? order by payment_num desc limit ?,?";
+			sql = "select * from review where home_num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, home_num);
-			pstmt.setInt(2, startRow-1);
-			pstmt.setInt(3, pageSize);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				ReviewBean re=new ReviewBean();
 				re.setPayment_num(rs.getString("payment_num"));
+				System.out.println("1"+re.getPayment_num());
 				re.setContent(rs.getString("content"));
+				System.out.println("2"+re.getContent());
 				re.setReview_date(rs.getDate("review_date"));
+				System.out.println("3"+re.getReview_date());
 				re.setAccess(rs.getString("access"));
+				System.out.println("4"+re.getAccess());
 				re.setClean(rs.getString("clean"));
+				System.out.println("5"+re.getClean());
 				re.setSatisfaction(rs.getString("satisfaction"));
+				System.out.println("6"+re.getSatisfaction());
 				re.setMember_email(rs.getString("member_email"));
+				System.out.println("7"+re.getMember_email());
 				re.setHome_num(rs.getInt("home_num"));
+				System.out.println("8"+re.getHome_num());
 				
 				
 				reviewList.add(re);

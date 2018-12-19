@@ -289,12 +289,18 @@
 	System.out.println(Rev.size());
   */
 	List ReviewList = (List) request.getAttribute("boardList");
+  System.out.println("room_reviewlist"+ReviewList.size());
 	int count = ((Integer) request.getAttribute("count")).intValue();
+	 System.out.println("room_count"+count);
 	pageNum = (String) request.getAttribute("pageNum");
+	 System.out.println("room_pageNum"+pageNum);
 	int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
+	 System.out.println("room_pageSize"+pageSize);
 	int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
+	 System.out.println("room_currentPage"+currentPage);
 	/* sc = (SearchBean) request.getAttribute("sc"); */
 	num = ((Integer) request.getAttribute("num")).intValue();
+	System.out.println("room_num"+num);
 	
 	
 	
@@ -414,13 +420,13 @@
 		QnaBean qn = (QnaBean) QnAList.get(i);
 	%>
 		<button class="accordion_sg">
-	
+		<%if(qn.getRe_lev()!=1){%>
 			<table>
 				<tr>
 					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;text-align:center;"><%=qn.getMember_email() %></td>
 					<td style="width:200px;"><%=qn.getQnA_date() %></td>
 					<td colspan="2" style="width:200px;">
-						<%if(qn.getRe_seq()==1){%>
+						<%if(qn.getRe_lev()==1){%>
 								답변완료
 								<%}else{%>
 								답변중
@@ -437,7 +443,7 @@
 				답글이 있다면 출력하기
   			</p>
 		</div>
-
+		<%}%>
 	<% } %> 
 		<div style="text-align: center;">
 <%

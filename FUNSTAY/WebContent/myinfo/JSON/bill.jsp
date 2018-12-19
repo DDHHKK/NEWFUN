@@ -51,6 +51,7 @@ while(rs.next()){
 	mb.put("check_in",rs.getString("check_in"));
 	/* mb.put("name",rs.getString("check_in")); */
 	mb.put("check_out",rs.getString("check_out"));
+	mb.put("payment_status",rs.getString("payment_status"));
 	mb.put("people",rs.getString("people"));
 	
 

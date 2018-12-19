@@ -40,7 +40,7 @@ public class Qna_boardWrite implements Action {
 		request.setAttribute("num", num);
 		request.setAttribute("room_subject", room_subject);
 		request.setAttribute("Member_email", Member_email);
-	
+		System.out.println("이거"+qb.getHome_num());
 
 		ActionForward forward = new ActionForward();
 		forward = new ActionForward();
