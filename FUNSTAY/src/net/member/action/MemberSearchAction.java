@@ -23,7 +23,7 @@ public class MemberSearchAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		
+		HttpSession session = request.getSession();
 		HostBean hb = new HostBean();
 		request.setCharacterEncoding("utf-8");
 		String address = request.getParameter("address");
@@ -56,15 +56,20 @@ public class MemberSearchAction implements Action{
 		MemberDAO mdd= new MemberDAO();
 
 		int pageSize = 10;
-
 		Vector vector = mdd.getsearchList(hb, start_date, end_date,num);
 		Vector vector2 = mdd.getsearchList2(hb, num);
 		Vector vector3 = mdd.getsearchList3(hb);
-	    List list=(List)vector.get(0);
-	    List avg=(List)vector.get(1);
+		List list=(List)vector.get(0);
+	    if(vector.size()==2)
+	    {
+	    	List avg=(List)vector.get(1);
+	    	session.setAttribute("avg", avg);
+	    }
+
 		List past =(List)vector2.get(0);
 		List rest =(List)vector3.get(0);
-		HttpSession session = request.getSession();
+		
+
 		session.setAttribute("list", list);
 		session.setAttribute("past", past);
 		session.setAttribute("rest", rest);
@@ -73,7 +78,7 @@ public class MemberSearchAction implements Action{
 		session.setAttribute("start_date", start_date);
 		session.setAttribute("end_date", end_date);
 		session.setAttribute("num", num);
-		session.setAttribute("avg", avg);
+		
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
