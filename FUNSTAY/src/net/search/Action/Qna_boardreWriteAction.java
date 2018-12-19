@@ -14,10 +14,9 @@ public class Qna_boardreWriteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ReviewWrite execute()");
+		System.out.println("Qna_boardreWriteAction execute()");
 
-		// 세션가져오기
-		// 없으면 ./MemberLogin.me ActionForward 이용 이동
+		
 
 		SearchDAO bdao = new SearchDAO();
 		QnaBean qb = new QnaBean();
@@ -25,7 +24,6 @@ public class Qna_boardreWriteAction implements Action {
 		String Member_email = (String)session.getAttribute("email");//0
 		int QnA_num = Integer.parseInt(request.getParameter("QnA_num"));
 		
-		String pageNum = request.getParameter("pageNum");
 		
 		
 		qb.setHome_num(Integer.parseInt(request.getParameter("hom_num")));
@@ -38,12 +36,12 @@ public class Qna_boardreWriteAction implements Action {
 
 
 		
-		request.setAttribute("pageNum", pageNum);
+		
 		bdao.reInsertBoard(qb);
-
+ 
 
 		ActionForward forward = new ActionForward();
-		forward.setPath("./BoardList.bo");
+		forward.setPath("./MemberQNAlist.me");
 		forward.setRedirect(false);
 
 		return forward;

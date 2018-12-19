@@ -46,6 +46,7 @@ while(rs.next()){
 	mb.put("photo",rs.getString("photo"));
 	mb.put("room_subject",rs.getString("room_subject"));
 	mb.put("member_email",rs.getString("member_email"));
+	mb.put("fees",rs.getString("fees"));
 	mb.put("sum_price",rs.getString("sum_price"));
 	mb.put("check_in",rs.getString("check_in"));
 	mb.put("name",rs.getString("check_in"));
