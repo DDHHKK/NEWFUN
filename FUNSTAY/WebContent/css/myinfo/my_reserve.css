@@ -160,6 +160,7 @@ color: #100f0f;
 #room_sub {
 	padding : 10px;
 	text-align: center;
+	width: 300px;
 }
 
 .reseve_table td {
@@ -221,6 +222,26 @@ hr {
     margin: 8% 0% 0% 38%;
 	
 }
+
+
+.info_DY {
+    color: #cc1d1d;
+    font-size: 2em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

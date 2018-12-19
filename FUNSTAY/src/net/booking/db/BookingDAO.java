@@ -227,20 +227,24 @@ public class BookingDAO {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		String sql="";
+		System.out.println("1111");
 		ResultSet rs=null;
 		try {
 			//1,2 디비연결
+			System.out.println("22222");
 			con=getConnection();
 			//3 sql
-			sql="select * from booking b, payment p where b.payment_num=p.payment_num and home_num=? and p.host_email=?";
+			sql="select * from booking b, payment p where b.payment_num=p.payment_num and b.home_num=? and p.host_email=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, home_num);
 			pstmt.setString(2, member_email);
 			//4 rs 실행 저장
+			System.out.println("333333");
 			rs=pstmt.executeQuery();
 			//5 rs데이터 있으면 자바빈 객체 생성 gBean
 			//  rs => 자바빈 멤버변수 저장 => goodsList 한칸 저장
 			while(rs.next()){
+				System.out.println("4444");
 				BookingBean bb=new BookingBean();
 				PaymentBean pb = new PaymentBean();
 				bb.setBooking_num(rs.getInt("booking_num"));
@@ -264,7 +268,8 @@ public class BookingDAO {
 				pb.setFees(rs.getInt("fees"));
 				pb.setPay_num(rs.getInt("pay_num"));
 				pb.setSum_price(rs.getInt("sum_price"));
-				
+				System.out.println("alskjdflksadjfkl;ajsdlkf");
+				System.out.println(pb.getPayment_num());
 				//자바빈 => 배열 한칸 저장
 				bookingList.add(bb);
 				paymentList.add(pb);

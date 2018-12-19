@@ -17,16 +17,18 @@ public class BookingList implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("BookingList execute()");
-		int room_num = 1;//Integer.parseInt(request.getParameter("room_num"));
+		int room_num = Integer.parseInt(request.getParameter("home_num"));
 		HttpSession session = request.getSession();
 		String member_email = (String)session.getAttribute("email");
 		ActionForward forward = new ActionForward();
+		
 		if(member_email==null)
 		{
 			forward.setRedirect(false);
 			forward.setPath("./Main.me");
 			return forward;
 		}
+		
 		
 		BookingDAO bdao = new BookingDAO();
 		Vector<?> vector = bdao.getBookingList(room_num,member_email);
@@ -36,7 +38,6 @@ public class BookingList implements Action{
 		
 		request.setAttribute("bookinglist", bookinglist);
 		request.setAttribute("paymentlist", paymentlist);
-		
 		
 		forward.setRedirect(false);
 		forward.setPath("./host/host_book_check.jsp");
