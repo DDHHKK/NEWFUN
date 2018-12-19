@@ -66,10 +66,10 @@ int home_num=(Integer.parseInt(request.getParameter("home_num")));
 
 <h1>내 예약정보</h1>
  
-<div class="w3-bar_DY w3-black" id="btn2_DY">
-  <button class="w3-bar-item w3-button" onclick="openCity('London');clicks(this)">완료된 숙소</button>
-  <button class="w3-bar-item w3-button" onclick="openCity('Paris');clicks(this)">예정된 숙소</button>
-  <button class="w3-bar-item w3-button" onclick="openCity('Seoul');clicks(this)">취소된 숙소</button>
+<div class="w3-bar_DY w3-black">
+  <button class="w3-bar-item w3-button" onclick="openCity('London')">완료된 숙소</button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Paris')">예정된 숙소</button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Seoul')">취소된 숙소</button>
 </div>
 
 
@@ -79,8 +79,6 @@ int home_num=(Integer.parseInt(request.getParameter("home_num")));
 <!--완료된 숙소탭 시작  -->
 <div id="London" class="w3-container city">
 
-  
-  
   <!--썸네일2시작  -->
   <a href="#">
   
@@ -108,9 +106,6 @@ for(int i=0; i<beforeList.size(); i++){
 	HostBean hb=(HostBean)hostList.get(i); */
 	BeforeBean BeforeB=(BeforeBean)beforeList.get(i);
 	/* System.out.println("1"); */
-	
-	
-	
 	
 	
 if(i%3==0){
@@ -370,34 +365,7 @@ if(i%3==0){
 }
 %>
 
-        
-         <%-- <tr>
-          <td colspan="2" class="receipt_ti_DY"><%=BeforeB.getRoom_subject() %></td>
-         </tr>
-         <tr>
-          <td>체크인</td> 
-          <td><%=BeforeB.getCheck_in() %></td>
-         </tr>
-         <tr>
-          <td>체크아웃</td>
-          <td><%=BeforeB.getCheck_out() %></td>
-         </tr>
-         <tr>
-          <td>Room_type</td>
-          <td><%=BeforeB.getRoom_type() %></td>
-         </tr>
-         <tr>
-          <td>UserName</td>
-          <td><%=BeforeB.getMember_email() %></td>
-         </tr>
-         <tr>
-          <td>인원</td>
-          <td><%=BeforeB.getPeople() %></td>
-         </tr>
-         <tr>
-          <td>총 요금</td>
-          <td><%=BeforeB.getSum_price() %></td>
-         </tr> --%>
+   
           <tbody></tbody>
 	
 
