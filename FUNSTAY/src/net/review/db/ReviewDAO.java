@@ -85,11 +85,11 @@ public class ReviewDAO {
 				System.out.println("2"+re.getContent());
 				re.setReview_date(rs.getDate("review_date"));
 				System.out.println("3"+re.getReview_date());
-				re.setAccess(rs.getString("access"));
+				re.setAccess(rs.getInt("access"));
 				System.out.println("4"+re.getAccess());
-				re.setClean(rs.getString("clean"));
+				re.setClean(rs.getInt("clean"));
 				System.out.println("5"+re.getClean());
-				re.setSatisfaction(rs.getString("satisfaction"));
+				re.setSatisfaction(rs.getInt("satisfaction"));
 				System.out.println("6"+re.getSatisfaction());
 				re.setMember_email(rs.getString("member_email"));
 				System.out.println("7"+re.getMember_email());

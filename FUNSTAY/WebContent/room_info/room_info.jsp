@@ -419,14 +419,14 @@
 	<% for (int i = 0; i < QnAList.size(); i++) {
 		QnaBean qn = (QnaBean) QnAList.get(i);
 	%>
+	<%if(qn.getRe_seq()==0){%>
 		<button class="accordion_sg">
-	
 			<table>
 				<tr>
 					<td style="width:500px;"><%=qn.getSubject() %></td><td style="width:200px;text-align:center;"><%=qn.getMember_email() %></td>
 					<td style="width:200px;"><%=qn.getQnA_date() %></td>
 					<td colspan="2" style="width:200px;">
-						<%if(qn.getRe_seq()==1){%>
+						<%if(qn.getRe_lev()==1){%>
 								답변완료
 								<%}else{%>
 								답변중
@@ -435,15 +435,15 @@
 				</tr>
 			</table>
 		</button>
+		<%}%>
 		<div class="panel_sg">
   			<p>
   				<img src="./img/user.png" alt="img02" width="50px" height="50px">
 				<%=qn.getContent() %>
-				<hr>
-				답글이 있다면 출력하기
-  			</p>
+				<hr> 
+				답글있으면 불러오기
+			</p>	
 		</div>
-
 	<% } %> 
 		<div style="text-align: center;">
 <%

@@ -75,8 +75,6 @@ int num = (Integer)session.getAttribute("num");
   </nav>
 </td></tr>
 
-=======
->>>>>>> branch 'master' of https://github.com/DDHHKK/NEWFUN.git
 <tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><span class="table_text"><%=address %></span></td></tr>
 <tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><span class="table_text"> <%=start_date %> / <%= end_date %></span></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;인원</td> <td><span class="table_text"><%=num %> 명</span></td></tr>

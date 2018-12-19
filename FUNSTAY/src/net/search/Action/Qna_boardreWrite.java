@@ -41,6 +41,9 @@ public class Qna_boardreWrite implements Action {
 		request.setAttribute("subject", subject);
 		request.setAttribute("content", content);
 		request.setAttribute("home_num", home_num);
+		System.out.println("역기여기"+qb.getRe_lev());
+		System.out.println("역기여기"+qb.getRe_ref());
+		System.out.println("역기여기"+qb.getRe_seq());
 		
 		ActionForward forward = new ActionForward();
 		

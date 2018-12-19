@@ -247,6 +247,9 @@ $(document).ready(function(){
 		cal_in.setTime(bb.getCheck_in());
 		Calendar cal_out = Calendar.getInstance();
 		cal_out.setTime(bb.getCheck_out());
+		
+		System.out.println("dddddddddd");
+		System.out.println(pb.getPayment_date());
 
 		
 	%> 
@@ -370,6 +373,7 @@ $(document).ready(function(){
 			border: {
 				width: 5,
 				radius: 10
+				
 			},
 			padding: 10, 
 			textAlign: "left",

@@ -14,6 +14,8 @@ import javax.sql.DataSource;
 
 import net.booking.db.PaymentBean;
 import net.host.db.HostBean;
+import net.review.db.ReviewBean;
+import net.room.db.RoomBean;
 import net.wishlist.db.MyWishBean;
 
 public class MemberDAO {
@@ -808,6 +810,9 @@ public class MemberDAO {
 		ResultSet rs = null;
 		Vector vector = new Vector();
 		List goodsList = new ArrayList();
+		List Reviewlist = new ArrayList();
+		int home_num = 0;
+		
 		try {
 			con = getConnection();
 			/*String sql = "select * from (select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) "
@@ -828,7 +833,7 @@ public class MemberDAO {
 					+ "and h.end_date > ?) s "
 					+ "on r.home_num=s.home_num "
 					+ "where r.max_people1>=?";
-
+			System.out.println("ASDfas2222222dfasdfasfd");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, start_date);
 			pstmt.setString(2, end_date);
@@ -840,18 +845,38 @@ public class MemberDAO {
 			pstmt.setInt(8, num);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
+				System.out.println("ASDfasdfasdfasfd");
 				HostBean hb1 = new HostBean();
+				
 				hb1.setAddress(rs.getString("address"));
 				hb1.setRoom_subject(rs.getString("room_subject"));
 				hb1.setRoom_type(rs.getString("room_type"));
 				hb1.setRoom_content(rs.getString("room_content"));
 				hb1.setHome_num(rs.getInt("home_num"));
-				hb1.setPrice(rs.getInt("price"));
-				hb1.setPhoto(rs.getString("photo"));
-				goodsList.add(hb1);
-			}
+				 home_num = rs.getInt("home_num");
+				 hb1.setPrice(rs.getInt("price"));
+					hb1.setPhoto(rs.getString("photo"));
+					goodsList.add(hb1);
+					
+				}	
+					String sql2 = "select avg(satisfaction) as star from review where home_num=?";
+					pstmt = con.prepareStatement(sql2);
+					pstmt.setInt(1, home_num);
+					if(rs.next())
+					{
+						ReviewBean rb = new ReviewBean();
+						rb.setStar(rs.getInt("star"));
+						System.out.println("star:");
+						System.out.println(rs.getInt("star"));
+						Reviewlist.add(rb);
+						vector.add(Reviewlist);
+					}
+				
+				
+		
 			System.out.println("첫번째"+goodsList.size());
 			vector.add(goodsList);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -880,6 +905,8 @@ public class MemberDAO {
 		ResultSet rs = null;
 		Vector vector = new Vector();
 		List goodsList = new ArrayList();
+		List reviewList = new ArrayList();
+		int home_num=0;
 		if(num==0){
 			num=100;
 		}
@@ -905,6 +932,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HostBean hb1 = new HostBean();
+				
 				hb1.setAddress(rs.getString("address"));
 				hb1.setRoom_subject(rs.getString("room_subject"));
 				hb1.setRoom_type(rs.getString("room_type"));
@@ -912,11 +940,29 @@ public class MemberDAO {
 				hb1.setHome_num(rs.getInt("home_num"));
 				hb1.setPrice(rs.getInt("price"));
 				hb1.setPhoto(rs.getString("photo"));
-					
-				goodsList.add(hb1);
+				 home_num = rs.getInt("home_num");
+				 hb1.setPrice(rs.getInt("price"));
+					hb1.setPhoto(rs.getString("photo"));
+					goodsList.add(hb1);
 			}
+					System.out.println("star2");
+					String sql2 = "select avg(satisfaction) as star from review where home_num=?";
+					pstmt = con.prepareStatement(sql2);
+					pstmt.setInt(1, home_num);System.out.println("star2");
+					if(rs.next())
+					{
+						ReviewBean rb = new ReviewBean();
+						rb.setStar(rs.getInt("star"));
+						System.out.println("star:");
+						System.out.println(rs.getInt("star"));
+						reviewList.add(rb);
+						vector.add(reviewList);
+					}
+			
+		
 			System.out.println("두번째"+goodsList.size());
 			vector.add(goodsList);
+			
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -948,6 +994,8 @@ public class MemberDAO {
 		ResultSet rs = null;
 		Vector vector = new Vector();
 		List goodsList = new ArrayList();
+		List reviewList = new ArrayList();
+		int home_num=0;
 		try {
 			con = getConnection();
 			String sql = "select * from home where address LIKE ? and home_status=1";
@@ -957,6 +1005,7 @@ public class MemberDAO {
 
 			while (rs.next()) {
 				HostBean hb1 = new HostBean();
+				
 				hb1.setAddress(rs.getString("address"));
 				hb1.setRoom_subject(rs.getString("room_subject"));
 				hb1.setRoom_type(rs.getString("room_type"));
@@ -964,12 +1013,32 @@ public class MemberDAO {
 				hb1.setHome_num(rs.getInt("home_num"));
 				hb1.setPrice(rs.getInt("price"));
 				hb1.setPhoto(rs.getString("photo"));
-			
+				home_num = rs.getInt("home_num");
 				goodsList.add(hb1);
-
+				System.out.println("home_num::::::::");
+				System.out.println(home_num);
+				
+				
 			}
-			System.out.println("세번째"+goodsList.size());
 			vector.add(goodsList);
+		
+			String sql2 = "select avg(satisfaction) as star from review where home_num=?";
+			pstmt = con.prepareStatement(sql2);
+			pstmt.setInt(1, home_num);
+			
+			if(rs.next())
+			{
+				ReviewBean rb = new ReviewBean();
+				rb.setSatisfaction(rs.getInt("star"));
+				System.out.println("star");
+				System.out.println(rs.getInt("star"));
+				reviewList.add(rb);
+				vector.add(reviewList);
+			}
+			
+			System.out.println("세번째"+goodsList.size());
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
