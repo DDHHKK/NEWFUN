@@ -171,18 +171,41 @@ text-decoration: none;
 }
 /* submit 버튼 */
 .subtn{
-	background-color: #cc1b1b !important;
+	background-color: #cc1b1b;
 	width:100%;
 	height: 50px;
 	cursor: pointer;
-	border: none;
 	border-radius: 10px;
-	font-weight: bold;
+	border: none;
+	margin-top: 20px;
+	transition:all 0.5;
 }
- .subtn a{
-	color: #fff;
-	font-size: 20px;
-	
+ .subtn span{
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+} 
+.subtn:HOVER{
+	background-color: #991515;
+}
+ .subtn span:AFTER{
+   content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+ }
+ .subtn:HOVER span{
+ 	padding-right: 25px;
+ }
+ .subtn:HOVER span:AFTER{
+ opacity: 1;
+  right: 0;
+ }
 } 
 .psw-repeat {
     border-width: 0px !important;

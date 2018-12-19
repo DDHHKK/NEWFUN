@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.search.Action.Qna_boardWrite;
 import net.search.Action.Qna_boardWriteAction;
+import net.search.Action.Qna_boardreWrite;
 import net.search.Action.Qna_boardreWriteAction;
 import net.search.Action.RoomDetailAction;
 import net.search.Action.SearchListAction;
@@ -72,7 +73,7 @@ public class SearchFrontController extends HttpServlet{
 			forward.setRedirect(false);
 		}
 		
-		//리뷰작성Action	
+		//Qna_boardWriteAction.sc	
 			else if(command.equals("/Qna_boardWriteAction.sc")){	
 				action=new Qna_boardWriteAction();	
 				try {  
@@ -85,35 +86,31 @@ public class SearchFrontController extends HttpServlet{
 		
 
 		//답변작성Action	
-			else if(command.equals("/Qna_boardreWrite.sc")){	
-				forward = new ActionForward();
-				forward.setPath("./room_info/Qna_boardreWriteForm.jsp");
-				forward.setRedirect(false);
-			} 
-			 else if (command.equals("/Qna_boardreWriteAction.sc")){
-				 action = new Qna_boardreWriteAction();
-				 try {
-					 forward = action.execute(request, response);
-				 } catch (Exception e) {
-					 e.printStackTrace();
-				 }
-			 }
-		
-		
-		/*//reWrite
-			else if (command.equals("/BoardreWriteForm.bo")){
-				forward = new ActionForward();
-				forward.setPath("./center/reWriteForm.jsp");
-				forward.setRedirect(false);
-			} else if (command.equals("/BoardreWriteAction.bo")){
-				action = new BoardreWriteAction();
-				try {
-					forward = action.execute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		if(command.equals("/Qna_boardreWrite.sc")){
+			action = new Qna_boardreWrite();
+			try {  
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-	*/
+		}else if (command.equals("/Qna_boardreWriteForm.sc")){
+			forward = new ActionForward();  
+			forward.setPath("./room_info/Qna_boardreWriteForm.jsp");
+			forward.setRedirect(false);
+		}
+		 
+		//답변 Action	
+		else if(command.equals("/Qna_boardreWriteAction.sc")){	
+			action=new Qna_boardreWriteAction();	
+			try {  
+				forward = action.execute(request, response);
+			} catch (Exception e) {						
+				e.printStackTrace(); 
+			}
+				
+		}
+		
+	
 
 		//옵션 검색	
 			else if(command.equals("/SideSearch.sc")){

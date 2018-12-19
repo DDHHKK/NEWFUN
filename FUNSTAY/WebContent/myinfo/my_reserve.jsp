@@ -335,7 +335,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id11').style.display='block'" class="bill_butt_DY" >영수증</button>
+  <button id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id11').style.display='block'" class="bill_butt_Cancel_DY" >영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
   
@@ -742,7 +742,7 @@ function button_event(payment_num){
 	}
 	
 }
-//ajax 영수증
+//영수증(완료/예정 숙소)
   $(document).ready(function(){
 	  var member_email=$('#member_email_DY').val();
 	   //alert(member_email); //alert주석처리하고 아래 getJSON주석해제
@@ -755,7 +755,7 @@ function button_event(payment_num){
 		 $.getJSON({
 			 dataType:"json",
 			 url:"./myinfo/JSON/bill.jsp",
-			 data:{payment_num:payment_num/* ,member_email:member_email */},
+			 data:{payment_num:payment_num,member_email:member_email},
 			 success:function(data){
 			 
 		  	  $.each(data,function(index,item){
@@ -769,14 +769,45 @@ function button_event(payment_num){
 		  	  
 			 }
 		    });
+		
 		 
+	 });
+    
+    
+      
+      
+      
+    });
+    
+    
+    
+//영수증(취소 숙소)
+  $(document).ready(function(){
+	  var member_email=$('#member_email_DY').val();
+	   //alert(member_email); //alert주석처리하고 아래 getJSON주석해제
+	   //var payment_num=$('#payment_num_DY').val();
+    
+	 $('.bill_butt_Cancel_DY').click(function(){
+		 var payment_num=$(this).attr('id');
+		   alert(payment_num);
 		 
-		 
-		 
-		 
-		 
-		 
-		 
+		 $.getJSON({
+			 dataType:"json",
+			 url:"./myinfo/JSON/bill2.jsp",
+			 data:{payment_num:payment_num,member_email:member_email},
+			 success:function(data){
+			 
+		  	  $.each(data,function(index,item){
+		  		  $('.receipt_table_DY').html('<tr><td colspan="2" class="sub_DY">'+item.room_subject+'</td></tr><tr><td>체크인</td><td>'+item.check_in+
+		  				  '</td></tr><tr><td>체크아웃</td><td>'+item.check_out+'</td></tr><tr><td>Room_type</td><td>'+item.room_type+
+		  				  '</td></tr><tr><td>UserName</td><td>'+item.member_email+'</td></tr><tr><td>인원</td><td>'+item.people+
+		  				  '</td></tr><tr><td>총요금</td><td>'+item.sum_price+'</td></tr>');
+		  	  }); 
+		  	  
+		  	  
+			 }
+		    });
+		
 		 
 	 });
     
