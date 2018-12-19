@@ -154,7 +154,7 @@ text-align: center;
 	for(int i = startPage; i<=endPage; i++ )
 	{
 		%> <a href="MemberListAction.me?pageNum=<%=i%>">[<%=i%>]</a> <%
-	}
+	} 
 
 	if(endPage>pageCount)
 	{	%> <a href="MemberListAction.me?pageNum=<%=startPage+pageBlock%>">[다음]</a>	<%	}

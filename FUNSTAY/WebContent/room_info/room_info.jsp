@@ -450,7 +450,51 @@
 		</div> 
 	<%}%>
 		<div style="text-align: center;">
-<%
+		<%
+		if (count1 != 0) {
+			//전체 페이지수 구하기 게시판 
+			//글 50개 한화면에 보여줄 글개수 10개일경우 => 전체 5 페이지
+			//글 56개 한화면에 보여줄 글개수 10개일경우 => 전체 6 페이지
+			int pageCount = count1 / pageSize + (count1 % pageSize == 0 ? 0 : 1);
+			//한 화면에 보여줄 페이지 번호 개수
+			int pageBlock = 10;
+			//시작페이지 번호 1~10 => 1    11~20 => 11   21~30 => 21
+			int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+			//		1		  = ((     2          - 1)/pageBlock)*pageBlock+1;
+			//		1		  = ((     9          - 1)/pageBlock)*pageBlock+1;
+			//		11		  = ((     12          - 1)/pageBlock)*pageBlock+1;
+			//		11		  = ((     19          - 1)/pageBlock)*pageBlock+1;
+			//끝페이지 번호
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) {
+				endPage = pageCount;
+			} 
+			%>
+		<%
+	if(endPage > pageCount){
+		endPage=pageCount;//전체 페이지 개수
+	}
+	
+	if(startPage>pageCount)
+	{	%> <a href="./RoomDetailAction.sc?pageNum=<%=startPage-pageBlock%>">[이전]</a>	<%}
+
+	for(int i = startPage; i<=endPage; i++ )
+	{
+		%> <a href="./RoomDetailAction.sc?pageNum=<%=i%>">[<%=i%>]</a> <%
+	}
+
+	if(endPage>pageCount)
+	{	%> <a href="./RoomDetailAction.sc?pageNum=<%=startPage+pageBlock%>">[다음]</a>	<%	
+
+	%><%
+		}
+
+		}
+	%>
+		
+		
+		
+<%-- <%
 		if (count1 != 0) {
 			//전체 페이지수 구하기 게시판 
 			//글 50개 한화면에 보여줄 글개수 10개일경우 => 전체 5 페이지
@@ -487,7 +531,7 @@
 		}
 
 		}
-	%>
+	%> --%>
 </div>
 </div>
 
