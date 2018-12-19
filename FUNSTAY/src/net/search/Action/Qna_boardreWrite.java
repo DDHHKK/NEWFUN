@@ -26,17 +26,19 @@ public class Qna_boardreWrite implements Action {
 		String Member_email = (String)session.getAttribute("email");
 		
 		int num = Integer.parseInt(request.getParameter("QnA_num"));
-		
+		String subject = request.getParameter("subject");
+		String content = request.getParameter("content");
 		
 		int qna_num = num;
 		SearchDAO bdao = new SearchDAO();
-		/*bdao.qna_updateReadcount(qna_num);*/
+		bdao.qna_updateReadcount(qna_num);
 		QnaBean qb= bdao.getQnaboard(num);
 		
 		request.setAttribute("qb", qb);
 		request.setAttribute("num", num);
 		request.setAttribute("Member_email", Member_email);
-	
+		request.setAttribute("subject", subject);
+		request.setAttribute("content", content);
 	
 		
 		ActionForward forward = new ActionForward();

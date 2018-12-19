@@ -61,7 +61,7 @@ public class BookDAO {
 				
 				
 				
-				String sql="insert into review values(?,?,now(),?,?,?,?,?,?)";
+				String sql="insert into review values(?,?,now(),?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				//System.out.println(bb.getPayment_num());
 				pstmt.setString(1,bb.getPayment_num()); //payment_num 			
@@ -71,8 +71,8 @@ public class BookDAO {
 				pstmt.setString(5,bb.getAccess());//access
 				pstmt.setString(6,bb.getMember_email());//member_email
 				pstmt.setInt(7,bb.getHome_num());//home_num
-				pstmt.setString(8,bb.getStar());//star
-
+				/*pstmt.setString(8,bb.getStar());//star
+*/
                 //4단계 실행
 				pstmt.executeUpdate(); 
 				

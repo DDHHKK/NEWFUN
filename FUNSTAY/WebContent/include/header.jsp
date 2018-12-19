@@ -4,14 +4,14 @@
     pageEncoding="UTF-8"%>
 <header>
 <script src="./js/default/jquery-3.3.1.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
    //인원 텍스트창을 클릭하면 스크롤바가 내려온다 
 $(document).ready(function(){
 	$("img_1_WS").click(function(){
 		$(this).next().slideToggle('slow');
 	});
 });    
-</script>
+</script> -->
 <script type="text/javascript">
 	function abc111(){
 	var search_info = document.getElementById("text_1_WS").value;

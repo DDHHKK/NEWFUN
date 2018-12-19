@@ -143,7 +143,7 @@ String email=(String)session.getAttribute("email");
  
  
   <!--리뷰쓰기 버튼 -->
-     <input type="button" onclick="location.href='ReviewWrite.bk?pn=<%=BeforeB.getPayment_num()%>'"
+     <input type="button" onclick="location.href='ReviewWrite.bk?payment_num=<%=BeforeB.getPayment_num()%>'"
       class="review_butt_DY" value="리뷰쓰기">  
   <!--리뷰쓰기 버튼 끝  -->  
 		 
