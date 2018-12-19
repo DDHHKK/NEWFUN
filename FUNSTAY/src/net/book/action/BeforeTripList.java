@@ -28,6 +28,8 @@ public class BeforeTripList implements Action{
 		//home_num파라미터 가져오기
 		HttpSession session=request.getSession();
 		String member_email=(String)session.getAttribute("email");
+		/*String room_subject=(String)request.getParameter("room_subject");
+		System.out.println("room_subject");*/
 		/*int num = Integer.parseInt(request.getParameter("num"));
 		System.out.println(num);
 		String pageNum = request.getParameter("pageNum");

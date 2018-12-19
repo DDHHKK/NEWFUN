@@ -143,7 +143,7 @@ String email=(String)session.getAttribute("email");
  
  
   <!--리뷰쓰기 버튼 -->
-     <input type="button" onclick="location.href='ReviewWrite.bk?pn=<%=BeforeB.getPayment_num()%>'"
+     <input type="button" onclick="location.href='ReviewWrite.bk?payment_num=<%=BeforeB.getPayment_num()%>'"
       class="review_butt_DY" value="리뷰쓰기">  
   <!--리뷰쓰기 버튼 끝  -->  
 		 
@@ -335,7 +335,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id11').style.display='block'" class="bill_butt_Cancel_DY" >영수증</button>
+  <button id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id11').style.display='block'" class="bill_butt_Cancel_DY" name="<%=BeforeB.getRoom_subject()%>" >영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
   
@@ -790,19 +790,31 @@ function button_event(payment_num){
 	 $('.bill_butt_Cancel_DY').click(function(){
 		 var payment_num=$(this).attr('id');
 		   alert(payment_num);
+		 var room_subject= $(this).attr('name');
+		   alert(room_subject);
 		 
 		 $.getJSON({
 			 dataType:"json",
 			 url:"./myinfo/JSON/bill2.jsp",
-			 data:{payment_num:payment_num,member_email:member_email},
+			 data:{payment_num:payment_num,member_email:member_email,room_subject:room_subject},
 			 success:function(data){
 			 
 		  	  $.each(data,function(index,item){
-		  		  $('.receipt_table_DY').html('<tr><td colspan="2" class="sub_DY">'+item.room_subject+'</td></tr><tr><td>체크인</td><td>'+item.check_in+
-		  				  '</td></tr><tr><td>체크아웃</td><td>'+item.check_out+'</td></tr><tr><td>Room_type</td><td>'+item.room_type+
-		  				  '</td></tr><tr><td>UserName</td><td>'+item.member_email+'</td></tr><tr><td>인원</td><td>'+item.people+
-		  				  '</td></tr><tr><td>총요금</td><td>'+item.sum_price+'</td></tr>');
+		  		  $('.receipt_table_DY').html('<tr><td colspan="2" class="sub_DY">'+item.room_subject+'</td></tr><tr><td>Room_type</td><td>'+item.room_type+
+		  				  '</td></tr><tr><td>subtotal</td><td>'+(item.sum_price-item.fees)+ 
+		  				  '</td></tr><tr><td>수수료</td><td>'+item.fees+'</td></tr><tr><td>총요금</td><td>'+item.sum_price+'</td></tr>');
 		  	  }); 
+		  	  
+		  	  
+		  	  
+		  	  
+		  	  
+		  	  /* $('.receipt_table_DY').html('<tr><td colspan="2" class="sub_DY">'+item.room_subject+'</td></tr><tr><td>체크인</td><td>'+item.check_in+
+		  				  '</td></tr><tr><td>체크아웃</td><td>'+item.check_out+'</td></tr><tr><td>Room_type</td><td>'+item.room_type+
+		  				  '</td></tr><tr><td>인원</td><td>'+item.people+'</td></tr><tr><td>subtotal</td><td>'+(item.sum_price-item.fees)+ 
+		  				  '</td></tr><tr><td>수수료</td><td>'+item.fees+'</td></tr><tr><td>total</td><td>'+item.sum_price+
+		  				  '</td></tr>'); */
+		  	  
 		  	  
 		  	  
 			 }

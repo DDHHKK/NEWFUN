@@ -248,7 +248,7 @@ if(email==null){
 <!-- 이메일(아이디)입력 폼 -->    
       <i class="fa fa-envelope icon"></i>
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email">
+      <input type="text" placeholder="Enter Email" name="email" id="email">
 <!-- 이메일 중복체크 입력 폼 -->       
       <div>
       <input type="button" value="E-mail중복체크" class="e_check" onclick="idcheck()">
@@ -263,8 +263,8 @@ if(email==null){
 <!-- 비밀번호 확인 폼-->
 <i class="fa fa-key icon"></i>
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="pass2" onblur="passchk()">
-	   <input type="text" class="psw-repeat" name="chk" value="비밀번호를 입력하세요" readonly="readonly">
+      <input type="password" placeholder="Repeat Password" name="pass2" id="myInput2"onblur="passchk()">
+	   <input type="text" class="psw-repeat" name="chk" id="chk" value="비밀번호를 입력하세요" readonly="readonly">
 <!-- 이름 폼 -->      
 <i class="fa fa-user-o"></i>
       <label for="name"><b>NAME</b></label>

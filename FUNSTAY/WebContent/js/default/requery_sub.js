@@ -1,11 +1,15 @@
 /*비밀번호  / 핸드폰 번호 제어*/
 
 var right=0;
+
 function regChk(){
 	var chk1 = /\d/;
 	var chk2 = /[a-z]/i;
-	var pass = document.fre.pass.value;
-	var email = document.fre.email.value;
+/*	var pass = $('#myInput1').val();
+	var email = $('#email').val();*/
+	
+	var pass = document.fr.pass.value;
+	var email = document.fr.email.value;
 	 
 	 if(email.length==0 || email==""){
 	  alert("이메일을 입력하십시오");
@@ -28,13 +32,13 @@ function regChk(){
 	  alert("비밀번호가 동일한지 확인하시오");
 	  return false;
 	 }
-	 var name = document.fre.name.value;
+	 var name = document.fr.name.value;
 	 if(name.length==0 || name==null){
 	  alert("이름을 입력하십시오");
 	  return false;
 	 }
 	 var num_regx = /^[0-9]*$/;
-	 var phone = document.fre.phone.value;
+	 var phone = document.fr.phone.value;
 	 if(phone.length==0 || phone==null){
 	  alert("핸드폰번호를 입력하십시오");
 	  return false;
@@ -43,25 +47,34 @@ function regChk(){
 	 alert("핸드폰번호는 숫자만 입력가능합니다");
 	  return false;
 	 }
-	 var ckeck = document.fre.req.checked;
+	 var ckeck = document.fr.req.checked;
 	 
 	 if(ckeck==false){
 	alert("약관동의 체크 해주세요");
 	return false;	 
 	 }
-	 document.fre.submit();
+	 document.fr.submit();
 }//regChk()
+
 function passchk(){
-	var pass = document.fre.pass.value;
-	 var pass2 = document.fre.pass2.value;
+	/*var pass = $('#myInput1').val();
+	var pass2 = $('#myInput2').val();*/
+	var pass = document.fr.pass.value;
+	 var pass2 = document.fr.pass2.value;
 	 if (pass2.length == 0 || pass2 == "") {
-	  document.fre.chk.value = "비밀번호를 입력하세요";
+		/* alert('비밀번호를 입력하세요.');
+		 $('#chk').val('비밀번호를 입력하세요.')  ;*/
+		 document.fr.chk.value = '비밀번호를 입력하세요';
 	  right = 0;
 	 } else if (pass != pass2) {
-	  document.fre.chk.value = "비밀번호가 다릅니다.";
+	/*	alert('비밀번호가 다릅니다.');
+	  $('#chk').val('비밀번호가 다릅니다.')  ;*/
+	  document.fr.chk.value = '비밀번호가 다릅니다.';
 	  right = 0;
 	 } else {   
-	  document.fre.chk.value = "비밀번호가 동일합니다.";
+		/* alert('비밀번호가 동일합니다.');
+		 $('#chk').val('비밀번호가 동일합니다.')  ;*/
+	  document.fr.chk.value = '비밀번호가 동일합니다.';
 	  right = 1;
 	 }
 	 return;
