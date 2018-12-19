@@ -42,7 +42,7 @@ public class ReviewListAction implements Action{
 		int home_num = 1;
 		List<ReviewBean> ReviewList = null;
 		if (count != 0)
-			ReviewList = bdao.getReviewList(startRow, pageSize, home_num);
+			ReviewList = bdao.getReviewList(home_num);
 		
 		request.setAttribute("boardList", ReviewList);
 		request.setAttribute("count", count);

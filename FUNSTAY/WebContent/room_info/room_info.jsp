@@ -289,12 +289,18 @@
 	System.out.println(Rev.size());
   */
 	List ReviewList = (List) request.getAttribute("boardList");
+  System.out.println("room_reviewlist"+ReviewList.size());
 	int count = ((Integer) request.getAttribute("count")).intValue();
+	 System.out.println("room_count"+count);
 	pageNum = (String) request.getAttribute("pageNum");
+	 System.out.println("room_pageNum"+pageNum);
 	int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
+	 System.out.println("room_pageSize"+pageSize);
 	int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
+	 System.out.println("room_currentPage"+currentPage);
 	/* sc = (SearchBean) request.getAttribute("sc"); */
 	num = ((Integer) request.getAttribute("num")).intValue();
+	System.out.println("room_num"+num);
 	
 	
 	
