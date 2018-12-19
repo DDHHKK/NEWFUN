@@ -335,7 +335,7 @@ if(i%3==0){
 	
 <!--영수증버튼(모달박스)  -->
   <div class="w3-container_receipt">
-  <button id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id11').style.display='block'" class="bill_butt_Cancel_DY" >영수증</button>
+  <button id="<%=BeforeB.getPayment_num()%>" onclick="document.getElementById('id11').style.display='block'" class="bill_butt_Cancel_DY" name="<%=BeforeB.getRoom_subject()%>" >영수증</button>
   </div>
  <!--영수증 버튼 끝  -->  
   
@@ -790,11 +790,13 @@ function button_event(payment_num){
 	 $('.bill_butt_Cancel_DY').click(function(){
 		 var payment_num=$(this).attr('id');
 		   alert(payment_num);
+		 var room_subject= $(this).attr('name');
+		   alert(room_subject);
 		 
 		 $.getJSON({
 			 dataType:"json",
 			 url:"./myinfo/JSON/bill2.jsp",
-			 data:{payment_num:payment_num,member_email:member_email},
+			 data:{payment_num:payment_num,member_email:member_email,room_subject:room_subject},
 			 success:function(data){
 			 
 		  	  $.each(data,function(index,item){
