@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 /* 규칙으로 정하면 좋을것 같습니다. */
 #wrap *{box-sizing:border-box;}
-#content h1{text-align: center;}
 
 /* 모바일 크기 0~767px */
 #content {
@@ -67,7 +66,7 @@
     /* display: block; */
     /* float: left; */
     width:fix-content;
-    margin-left: 60%;
+    float: right;
     text-align: right;
 }
 
@@ -266,7 +265,7 @@
 	float: right;
 	padding: 10px;
 	box-sizing: border-box;
-	width: 40%;
+	width: 35%;
 	padding: 20px 20px 0 20px;
 	border:1px solid black;
 	border-bottom:none;
@@ -279,7 +278,7 @@
 	float: right;
 	padding: 10px;
 	box-sizing: border-box;
-	width: 40%;
+	width: 35%;
 	padding: 0 20px 20px 20px;
 	border: 1px solid black;
     border-top: none;
@@ -290,6 +289,38 @@
 #paymemberinfo_sg input {
 	display: block;
     width: inherit;
+    height: 41px;
+    padding: 10px;
+}
+
+.sub_menu {
+	display:none;
 }
 	
+#content {
+	width: 90%;
+}	
+
+h1 {    
+	text-align:left;
+	border-left: 5px solid #cc1d1d;
+    padding-left: 7px;
+    color: #cc1d1d;
+    margin-bottom: 70px;
+    /* padding: 0px 0; */
+    box-sizing: border-box;
+    height: 46px;}
+}
+
+#paymemberinfo_sg {
+	min-height: 800px;
+}
+
+.mileage_btn_sg {
+	background-color:white;
+	border:2px solid #cc1d1d;
+	color:#cc1d1d;
+	padding:10px;
+	font-weight: bold;
+	margin : 0 10px 0 10px;
 }

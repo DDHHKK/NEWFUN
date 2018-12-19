@@ -33,6 +33,9 @@ public class BookingAction implements Action{
 		int storage_m = Integer.parseInt(request.getParameter("storage_m"));
 		int used_m = Integer.parseInt(request.getParameter("used_m"));
 		String payment_status = "결제완료";
+		int room_price = Integer.parseInt(request.getParameter("room_price"));
+		int add_price = Integer.parseInt(request.getParameter("add_price"));
+		int price = Integer.parseInt(request.getParameter("price")); 
 		
 		//payment테이블에 들어갈 내용 paymentbean에 저장
 		PaymentBean pb = new PaymentBean();
@@ -46,13 +49,14 @@ public class BookingAction implements Action{
 		pb.setSum_price(sum_price);
 		
 		BookingBean bb = new BookingBean();
-		bb.setAdd_price(10000);
-		bb.setRoom_price(sum_price);
+		bb.setAdd_price(add_price);
+		bb.setRoom_price(room_price);
 		bb.setHome_num(home_num);
+		bb.setPeople(people);
 		
 		BookingDAO bdao = new BookingDAO();
 		//결제 내역과 정보를 payment테이블에 저장
-		bdao.insertPayment(pb,bb);
+		bdao.insertPayment(pb, bb, check_in, check_out);;
 		
 		//보유 마일리지 업데이트
 		//bdao.updatemileage(member_email);

@@ -22,8 +22,8 @@ public class Qna_boardreWriteAction implements Action {
 		SearchDAO bdao = new SearchDAO();
 		QnaBean qb = new QnaBean();
 		HttpSession session = request.getSession();
-		String Member_email = (String)session.getAttribute("email");
-		int num = Integer.parseInt(request.getParameter("num"));
+		String Member_email = (String)session.getAttribute("email");//0
+		int QnA_num = Integer.parseInt(request.getParameter("QnA_num"));
 		
 		String pageNum = request.getParameter("pageNum");
 		
@@ -34,10 +34,8 @@ public class Qna_boardreWriteAction implements Action {
 	
  
 		
-		qb.setQnA_num(Integer.parseInt(request.getParameter("num")));
-		qb.setRe_ref(Integer.parseInt(request.getParameter("re_ref")));
-		qb.setRe_lev(Integer.parseInt(request.getParameter("re_lev")));
-		qb.setRe_seq(Integer.parseInt(request.getParameter("re_seq")));
+		qb.setQnA_num(Integer.parseInt(request.getParameter("QnA_num")));
+
 
 		
 		request.setAttribute("pageNum", pageNum);

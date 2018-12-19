@@ -24,24 +24,24 @@ public class BookingDAO {
 		return con;
 	}
 	
-	public void insertPayment(PaymentBean pb, BookingBean bb){
+	public void insertPayment(PaymentBean pb, BookingBean bb, String check_in, String check_out){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ResultSet ls = null;
 		PaymentBean pb2 = null;
-		int payment_num2=0; //주문번호
+		int payment_num2=0; //결제 주문번호
 		Calendar cal=Calendar.getInstance();
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-		String payment_num=null;
-		int booking_num2 = 0;
-		int size = 0;
+		String payment_num=null; // 결제 주문번호
+		int booking_num2 = 0; // 북킹 번호
+		//int size = 0; //
 		try {
 			con=getConnection();
 			String sql="select max(pay_num) from payment";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
-			ArrayList room_nums = new ArrayList<>();
+			//ArrayList room_nums = new ArrayList<>();
 			if(rs.next()){
 				payment_num2=rs.getInt(1)+1;
 			}else{
@@ -88,8 +88,8 @@ public class BookingDAO {
 			pstmt.setInt(1, booking_num2);
 			pstmt.setString(2, sdf.format(cal.getTime()).toString()+"-"+payment_num2);
 			pstmt.setInt(3, rs.getInt("room_num"));
-			pstmt.setString(4, "2018-12-20");
-			pstmt.setString(5, "2018-12-26");
+			pstmt.setString(4, check_in);
+			pstmt.setString(5, check_out);
 			pstmt.setInt(6, bb.getPeople());
 			pstmt.setInt(7, bb.getRoom_price());
 			pstmt.setInt(8, bb.getAdd_price());
