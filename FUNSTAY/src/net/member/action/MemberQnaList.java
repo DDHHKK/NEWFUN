@@ -21,6 +21,7 @@ public class MemberQnaList implements Action{
 		String email = (String) session.getAttribute("email");
 		//email="kim@gmail.com";
 		
+		
 		MemberDAO mdao = new MemberDAO();
 		List<QnaBean> q_list = mdao.getQnAList(email);
 		
