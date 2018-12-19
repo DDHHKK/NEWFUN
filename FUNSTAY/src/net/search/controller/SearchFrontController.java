@@ -73,7 +73,7 @@ public class SearchFrontController extends HttpServlet{
 			forward.setRedirect(false);
 		}
 		
-		//리뷰작성Action	
+		//Qna_boardWriteAction.sc	
 			else if(command.equals("/Qna_boardWriteAction.sc")){	
 				action=new Qna_boardWriteAction();	
 				try {  
@@ -97,6 +97,17 @@ public class SearchFrontController extends HttpServlet{
 			forward = new ActionForward();  
 			forward.setPath("./room_info/Qna_boardreWriteForm.jsp");
 			forward.setRedirect(false);
+		}
+		 
+		//답변 Action	
+		else if(command.equals("/Qna_boardreWriteAction.sc")){	
+			action=new Qna_boardreWriteAction();	
+			try {  
+				forward = action.execute(request, response);
+			} catch (Exception e) {						
+				e.printStackTrace(); 
+			}
+				
 		}
 		
 	

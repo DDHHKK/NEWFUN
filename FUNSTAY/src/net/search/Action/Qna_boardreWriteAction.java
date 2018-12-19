@@ -4,11 +4,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import net.member.db.QnaBean;
 import net.search.controller.Action;
 import net.search.controller.ActionForward;
 import net.search.db.SearchDAO;
+
+
+
 
 public class Qna_boardreWriteAction implements Action {
 
