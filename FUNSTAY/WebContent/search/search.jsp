@@ -1,5 +1,4 @@
-<%@page import="net.review.db.ReviewBean"%>
-<%@page import="net.host.db.HostBean"%>
+﻿<%@page import="net.host.db.HostBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -46,6 +45,7 @@ int num = (Integer)session.getAttribute("num");
 
 <table  id="searchtable">
 <tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
+
 
 
 
@@ -210,10 +210,11 @@ $(document).ready(function(){
 
 
 
-<div id="content_DY" style="border: 1px solid red;">
+<div id="content_DY">
 <%
 List list = (List)session.getAttribute("list");
 List rest = (List)session.getAttribute("rest");
+
 List past = (List)session.getAttribute("past");
 
 
@@ -351,21 +352,18 @@ function showSlides(n) {
 <%
 int avg =0;
 try{List avglist = (List)session.getAttribute("avg");
-
-for(int j=0; j<avglist.size(); j++)
-{ReviewBean Beansavg = (ReviewBean)avglist.get(i);
-avg = Beansavg.getSatisfaction();
- }
-System.out.println(avg+"1111");}
+avg = (Integer)avglist.get(0);	}
 catch(Exception e)
-{ avg=0;System.out.println(avg+"2222");}
+{ avg=0;}
 
 
-
+{
 	
 	%>
 	
-
+<%
+}
+%>
 <input type="hidden" id="avg_shj" name="avg" value="<%=avg%>">
 <div class="star_shj">
  <span>
@@ -391,7 +389,9 @@ catch(Exception e)
 	<h2 >목록 리스트</h2>
 
 </div>
-<div style="width:400px; height:400px; border: 10px solid blue;" id ="sjsjsj"> 
+
+<!-- <div style="width:400px; height:400px; border: 10px solid blue;" id ="sjsjsj"> 
+
 <script type="text/javascript">
 $("#sjsjsj").click(function(){
 	alert("ddd");
@@ -406,7 +406,7 @@ $("#sjsjsj").click(function(){
 	
 });
 
-</script>
+</script> -->
 
 
 
