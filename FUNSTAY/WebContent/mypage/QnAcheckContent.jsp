@@ -59,11 +59,11 @@ for(int i=0;i<q_list.size();i++){
 				<%if(qb.getRe_seq()==1){%>답변완료
 				<%}else{%>답변중
 				<input type="button" value="답글쓰기"
-				onclick="location.href = './Qna_boardreWrite.sc?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>&re_lev=<%=qb.getRe_lev()%>&re_seq=<%=qb.getRe_seq()%>&QnA_date=<%=qb.getQnA_date() %>&Home_subject=<%=qb.getHome_subject() %>'">
+				onclick="location.href = './Qna_boardreWrite.sc?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>&re_lev=<%=qb.getRe_lev()%>&re_seq=<%=qb.getRe_seq()%>&Home_subject=<%=qb.getHome_subject() %>'">
 				
 				<%}%>
 				</td>
-		</tr>
+		</tr> 
 		<tr>
 			<td><b>룸정보</b></td><td colspan="5"><a href="#"><%=qb.getHome_subject() %></a></td>
 		</tr>
