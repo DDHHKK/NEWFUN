@@ -391,7 +391,7 @@ catch(Exception e)
 	<h2 >목록 리스트</h2>
 
 </div>
-<div style="width:400px; height:400px; border: 10px solid blue;" id ="sjsjsj"> 
+ 
 <script type="text/javascript">
 $("#sjsjsj").click(function(){
 	alert("ddd");
