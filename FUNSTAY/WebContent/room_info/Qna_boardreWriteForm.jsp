@@ -60,12 +60,14 @@ request.setCharacterEncoding("UTF-8");
 int num = ((Integer) request.getAttribute("num")).intValue();
 String Member_email = (String)request.getAttribute("Member_email");
 QnaBean qb = (QnaBean) request.getAttribute("qb");
-%>
-<%
+int QnA_num = Integer.parseInt(request.getParameter("QnA_num"));
 int re_ref = Integer.parseInt(request.getParameter("re_ref"));
 int re_lev = Integer.parseInt(request.getParameter("re_lev"));
 int re_seq = Integer.parseInt(request.getParameter("re_seq"));
-%>
+int home_num = Integer.parseInt(request.getParameter("home_num"));
+   
+%>  
+
 
 <!-- header  시작-->
 <jsp:include page="../include/header.jsp"></jsp:include> 
@@ -82,9 +84,10 @@ int re_seq = Integer.parseInt(request.getParameter("re_seq"));
 <!-- 여기서부터 페이지 내용을 적어주세요. -->
 
 
-<form class="w3-container" action="./Qna_boardreWriteAction.sc" method="post">
+<form class="w3-container" action="./Qna_boardreWriteAction.sc?num=<%=qb.getHome_num()%>" method="post">
 <table border="0" align="center">
 <tr><td><p class="letter">QnA 답변하기</p></td></tr>
+
 <tr><td><h3>방 이름</h3></td><td><h3><input class="w3-input" type="text" name="QnA_num" value=<%=num %>></h3></td></tr>
 <input type="text" name="re_ref" value="<%=re_ref %>">
 <input type="text" name="re_lev" value="<%=re_lev %>">
@@ -92,13 +95,19 @@ int re_seq = Integer.parseInt(request.getParameter("re_seq"));
 </td></tr> 
 <tr><td><h3>제목</h3></td><td><h3><input class="w3-input" name="subject" placeholder="제목을 입력해주세요..."></h3></td></tr>  
 <tr><td><h3>답변</h3></td><td colspan="3"><textarea name="content" rows="30" cols="100" placeholder="답변을 입력해주세요..."></textarea></td></tr>
+
+<tr><td><h3>방 이름</h3></td><td><input type="text" name="room_name"></intput></td>
+<tr><td><h3>Email</h3></td><td><input type="text" name="email"></td></tr> 
+<tr><td><h3>제목</h3></td><td><input type="text" name="subject"></td></tr>  
+<tr><td><h3>내용</h3></td><td><input type="text" name="content"></td></tr>
+
 <tr><td colspan="3" align="right">
 <button class="button button1">답변하기</button>
 <button class="button button1" type="reset">다시쓰기</button> 
 </td></tr> 
 </table>
 </form>
- 
+
 <!-- 페이지내용 끝 -->
 </div>
 </div><!-- 회원 관리 페이지 'subpage' include된 페이지의 div끝 !!지우지마세요!!-->
