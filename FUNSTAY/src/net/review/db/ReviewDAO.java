@@ -89,7 +89,7 @@ public class ReviewDAO {
 				re.setSatisfaction(rs.getString("satisfaction"));
 				re.setMember_email(rs.getString("member_email"));
 				re.setHome_num(rs.getInt("home_num"));
-				re.setStar(rs.getString("star"));
+				
 				
 				reviewList.add(re);
 				

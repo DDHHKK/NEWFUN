@@ -1,4 +1,5 @@
 <!-- http://kirinyaga.tistory.com/21 스크롤 -->
+<%@page import="net.search.db.SearchDAO"%>
 <%@page import="net.bed.db.BedBean"%>
 <%@page import="net.room.db.RoomBean"%>
 <%@page import="net.conv.db.ConvBean"%>
@@ -274,22 +275,32 @@
 <div id="room_review" style="padding:20px;border:1px solid #cccccc;">
 <%
 	request.setCharacterEncoding("UTF-8");
-
+/* 
+	SearchDAO sdao=new SearchDAO();
+	
+	List<ReviewBean> Rev=(List)sdao.getRevieweList(num);
+	
+	System.out.println(Rev.size());
+  */
 	List ReviewList = (List) request.getAttribute("boardList");
 	int count = ((Integer) request.getAttribute("count")).intValue();
-	
 	pageNum = (String) request.getAttribute("pageNum");
 	int pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
 	int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
-	int home_num = ((Integer) request.getAttribute("home_num")).intValue();
+	/* sc = (SearchBean) request.getAttribute("sc"); */
+	num = ((Integer) request.getAttribute("num")).intValue();
+	
+	
+	
+	
 %>
 
-<%-- 
-	<button class="button_sg button1_sg"
+
+<%-- 	<button class="button_sg button1_sg"
 			 onclick="location.href='ReviewWrite.bk?num=<%=num%>&pageNum=<%=pageNum%>'">후기쓰기</button> --%>
-			 
-			 
 	<div id="room_review">
+	
+	
 
 	<%
 			for (int i = 0; i < ReviewList.size(); i++) {
@@ -376,7 +387,6 @@
 	
 	List QnAList = (List) request.getAttribute("QnAList");
 	int count1 = ((Integer) request.getAttribute("count1")).intValue();
-
 	pageNum = (String) request.getAttribute("pageNum");
 	pageSize = ((Integer) request.getAttribute("pageSize")).intValue();
 	currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
