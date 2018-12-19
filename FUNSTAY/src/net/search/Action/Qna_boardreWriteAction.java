@@ -46,7 +46,7 @@ public class Qna_boardreWriteAction implements Action {
    
 
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MemberQNAcontent.me");
+		forward.setPath("./MemberQNAcontent.ho");
 		forward.setRedirect(false);
 
 		return forward;

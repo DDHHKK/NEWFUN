@@ -51,16 +51,16 @@ String email = (String)request.getAttribute("email");
 <h1 style="padding-top: 5px;">MY CASH</h1>
 <!-- 보유마일리지  한눈에 보기 -->
 <div id="mileagepreview_sg">
-	<div class="previewmileage_sg" style="width:44%;line-height:60px;">
+	<div class="previewmileage_sg" style="width:55%;line-height:60px;">
 		총 누적 캐쉬 :  <b style="color: #cc1d1d;"><%=request.getAttribute("totalCash[0]") %> C</b><br>
 		인출한 캐쉬 :  <b style="color: #cc1d1d;">0 C</b><br>
 		인출 가능 캐쉬 : <b style="color: #cc1d1d;"><%=request.getAttribute("totalCash[0]") %> C</b><br>
 		<!-- 은행권 공동 오픈플랫폼 - 입금이체 API -->
 		<input type="button" value="인출하기" id="mdatebtn_sg" style="float:right;" onclick="alert('서비스 준비중');">
 	</div>
-	<div class="showsnakicon_sg">
+	<div class="showsnakicon_sg" style="width:45%;padding:20px;">
 		<a href="#">
-		<img src="./img/church.jpg" style="width: 100%;height: 260px;">
+		<img src="./img/mypage/cash.jpg" style="width: 100%;height: 260px;">
 		</a>
 	</div>
 </div>

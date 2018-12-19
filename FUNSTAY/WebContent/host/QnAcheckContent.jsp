@@ -35,10 +35,13 @@
 
 
 <h1>문의 확인</h1>
-
+<%
+List<QnaBean> q_list = (List)request.getAttribute("q_list");
+%>
 
 <div class="QnAcheckList_sg">
-<input type="button" value="목록" onclick='location.href="./MemberQNAlist.me"' id="btn_dh">
+<input type="button" value="목록" onclick='location.href="./BookingList.ho?home_num=<%=q_list.get(0).getHome_num() %>"' id="btn_dh">
+<!-- <input type="button" value="목록" onclick='location.href="./MemberQNAlist.me"' id="btn_dh"> -->
 	<table class="QnAcheck_table_sg" border="1">
 	<!-- <tr>
 		<td class="qnaheadtd_sg">번호</td>
@@ -47,7 +50,7 @@
 		<td class="qnaheadtd_sg">답변여부</td>
 	</tr> -->
 <%
-List<QnaBean> q_list = (List)request.getAttribute("q_list");
+
 for(int i=0;i<q_list.size();i++){
 	QnaBean qb = (QnaBean)q_list.get(i);
 	if(i==0 || i%2==0){%>

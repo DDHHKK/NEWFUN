@@ -63,6 +63,14 @@ public class BookingAction implements Action{
 		//보유 캐시 업데이트
 		//bdao.updateCash(host_email);
 		//결제 정보를 booking 테이블에 저장
+		request.setAttribute("room_subject", room_subject);
+		request.setAttribute("room_subject", room_subject);
+		request.setAttribute("storage_m", storage_m);
+		request.setAttribute("used_m", used_m);
+		request.setAttribute("sum_price", sum_price);
+		request.setAttribute("check_in", check_in);
+		request.setAttribute("check_out", check_out);
+		request.setAttribute("people", people);
 		
 		
 		forward.setRedirect(false);
