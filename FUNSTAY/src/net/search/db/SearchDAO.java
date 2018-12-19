@@ -141,9 +141,10 @@ private Connection getConnection() throws Exception{
 				ResultSet rs = null;
 				PreparedStatement pstmt=null;
 				List SearchList = new ArrayList();
-				List Roomlist = new ArrayList();
+				List Reviewlist = new ArrayList();
 				Vector vector = new Vector();
 				StringBuffer sql=new StringBuffer();//속도가 빠름
+				int home_num=0;
 				try{
 					
 					con = getConnection();
@@ -232,24 +233,31 @@ private Connection getConnection() throws Exception{
 					rs = pstmt.executeQuery();
 					
 					while(rs.next()){
-						
-						HostBean hb1 = new HostBean();
-						
-						hb1.setAddress(rs.getString("address"));
-						hb1.setRoom_subject(rs.getString("room_subject"));
-						hb1.setRoom_type(rs.getString("room_type"));
-						hb1.setRoom_content(rs.getString("room_content"));
-						hb1.setHome_num(rs.getInt("home_num"));
-						hb1.setPrice(rs.getInt("price"));
-						hb1.setPhoto(rs.getString("photo"));
-						System.out.println("alalalalalalal");
-						System.out.println(rs.getString("room_subject"));
-						SearchList.add(hb1);	
-						
+					HostBean hb1 = new HostBean();
+					ReviewBean rb = new ReviewBean();
+					hb1.setAddress(rs.getString("address"));
+					hb1.setRoom_subject(rs.getString("room_subject"));
+					hb1.setRoom_type(rs.getString("room_type"));
+					hb1.setRoom_content(rs.getString("room_content"));
+					hb1.setHome_num(rs.getInt("home_num"));
+					 home_num = rs.getInt("home_num");
+					 SearchList.add(hb1);
+					String sql2 = "select avg(satisfaction) from review where home_num=?";
+					pstmt = con.prepareStatement(sql2);
+					pstmt.setInt(1, home_num);
+					if(rs.next())
+					{
+						rb.setSatisfaction(rs.getString("avg(satisfaction)"));
+					}
+					hb1.setPrice(rs.getInt("price"));
+					hb1.setPhoto(rs.getString("photo"));
+					
+					Reviewlist.add(rb);
 				}
 				
 
 					vector.add(SearchList);
+					vector.add(Reviewlist);
 				}catch (Exception e){
 					e.printStackTrace();
 				}finally{

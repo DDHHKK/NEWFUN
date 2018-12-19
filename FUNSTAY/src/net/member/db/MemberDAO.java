@@ -14,6 +14,8 @@ import javax.sql.DataSource;
 
 import net.booking.db.PaymentBean;
 import net.host.db.HostBean;
+import net.review.db.ReviewBean;
+import net.room.db.RoomBean;
 import net.wishlist.db.MyWishBean;
 
 public class MemberDAO {
@@ -808,6 +810,9 @@ public class MemberDAO {
 		ResultSet rs = null;
 		Vector vector = new Vector();
 		List goodsList = new ArrayList();
+		List Reviewlist = new ArrayList();
+		int home_num = 0;
+		
 		try {
 			con = getConnection();
 			/*String sql = "select * from (select h.address,h.room_subject,h.room_type, h.room_content, h.price, h.photo, h.home_num, sum(min_people) "
@@ -841,17 +846,32 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HostBean hb1 = new HostBean();
+				ReviewBean rb = new ReviewBean();
 				hb1.setAddress(rs.getString("address"));
 				hb1.setRoom_subject(rs.getString("room_subject"));
 				hb1.setRoom_type(rs.getString("room_type"));
 				hb1.setRoom_content(rs.getString("room_content"));
 				hb1.setHome_num(rs.getInt("home_num"));
-				hb1.setPrice(rs.getInt("price"));
-				hb1.setPhoto(rs.getString("photo"));
-				goodsList.add(hb1);
+				 home_num = rs.getInt("home_num");
+				 hb1.setPrice(rs.getInt("price"));
+					hb1.setPhoto(rs.getString("photo"));
+					goodsList.add(hb1);
+				String sql2 = "select avg(satisfaction) from review where home_num=?";
+				pstmt = con.prepareStatement(sql2);
+				pstmt.setInt(1, home_num);
+				if(rs.next())
+				{
+					rb.setSatisfaction(rs.getString("avg(satisfaction)"));
+					System.out.println(rs.getString("avg(satisfaction)"));
+					Reviewlist.add(rb);
+				}
+				
+				
+				
 			}
 			System.out.println("첫번째"+goodsList.size());
 			vector.add(goodsList);
+			vector.add(Reviewlist);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
