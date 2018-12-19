@@ -49,9 +49,38 @@ int num = (Integer)session.getAttribute("num");
 <table  id="searchtable">
 <tr><td colspan="2"><input type="submit" value="검색" id="btn1"></td></tr>
 
+
+<tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><input type="text" value="" placeholder="dd" class="textsize1" name="address"></td></tr>
+<tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><input type='text' id="minMaxExample" class='datepicker-here' name="start_date" data-language='en' data-position="bottom left" placeholder="년 / 월 / 일"/>
+   <input type="text" value="" class="datepicker-here" id="datepicker" name="end_date" data-language='en' placeholder="년 / 월 / 일">
+</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;인원</td> <td>
+  <input type="text" value="" placeholder="게스트를 고르세요" class="textsize1" name="text1" id="textsize_1" readonly="readonly">
+  <nav id="form_1">
+  <ol>
+     <li>
+        <span class="font1">성&nbsp;인</span> &nbsp;&nbsp;
+        <input type="button" value="-" onclick="cid1()" class="btn_1" id="btn_11"> 
+        <input type="text" value="" name="text11" id="textcss1" placeholder="0" class="text_box">
+        <input type="button" value="+" onclick="add1()" class="btn_1">
+     </li>
+     <li>
+      <span class="font1">어린이</span> 
+      <input type="button" value="-" onclick="cid2()" class="btn_1" id="btn_12"> 
+      <input type="text" value="" name="text12" id="textcss2" placeholder="0"class="text_box">
+      <input type="button" value="+" onclick="add2()" class="btn_1">
+     </li>
+     <li> 
+       <input type="button" value="확인" onclick="choice()" id="btn_sh">
+     </li>
+     </ol>
+  </nav>
+</td></tr>
+
 <tr><td>&nbsp;&nbsp;&nbsp;목적지</td> <td><span class="table_text"><%=address %></span></td></tr>
 <tr><td><span>&nbsp;&nbsp;&nbsp;체크 인/아웃</span></td> <td><span class="table_text"> <%=start_date %> / <%= end_date %></span></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;인원</td> <td><span class="table_text"><%=num %> 명</span></td></tr>
+
 
 </table>
 <input type="hidden" name="address" value="<%=address%>">
@@ -283,7 +312,7 @@ for(int i=0;i<list.size();i++){ //for문 시작
 <!-- <div class="mySlides fade_shj">
 
   <img src="./img/photo_3.png" class="img_shj" style="width:100%">
->>>>>>> branch 'master' of https://github.com/DDHHKK/NEWFUN.git
+
 
 </div>
 
@@ -595,14 +624,6 @@ else {
 
 
 
-<div class="pageNum_shj">
-<a href="#" >◀</a>
-<b><a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
- <a href="#">6</a> <a href="#">7</a> <a href="#">8</a> <a href="#">9</a></b>
-<a href="#">▶</a>
-
-
-</div>
 <!-- 페이지 내용이 끝나는 부분입니다. -->
 
 </div>

@@ -387,7 +387,9 @@ for ( int i =1; i<=10; i++){
 <table id="host2">
 <tr><td colspan="2"><b>편의시설</b></td></tr>
 
+
 <tr><td><input type="checkbox" name="convenience" value="필수품목" class="conv"><i class='far fa-lightbulb' style='font-size:20px'></i> 필수품목<br><span>수건,침대시트,베개,비누,휴지 등<span></td>
+
 <td><input type="checkbox" name="convenience" value="와이파이" class="conv" > <i class="fa fa-wifi"></i> 와이파이</td></tr>
 
 <tr><td><input type="checkbox" name="convenience" value="주차가능" class="conv"> <i class='fas fa-parking' style='font-size:20px'></i> 주차가능</td>

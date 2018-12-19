@@ -538,16 +538,16 @@ private Connection getConnection() throws Exception{
 		        int num=0; 
 		        try {		          
 		           con=getConnection();	        
-		           String sql="select max(num) from qna_board";
+		           String sql="select max(QnA_num) from qna_board";
 		           pstmt=con.prepareStatement(sql);		      
 		           rs=pstmt.executeQuery();
 		          
 		           if(rs.next()){
-		              num=rs.getInt("max(num)")+1;   //rs.getInt(1)
+		              num=rs.getInt("max(QnA_num)")+1;   //rs.getInt(1)
 		           }
 		      
 		           sql="update qna_board set re_seq = re_seq + 1 where re_ref = ? and re_seq > ? ";
-		           pstmt=con.prepareStatement(sql);
+		           	  pstmt=con.prepareStatement(sql);
 		              pstmt.setInt(1,qb.getRe_ref());
 		              pstmt.setInt(2, qb.getRe_seq());
 		              
@@ -575,7 +575,44 @@ private Connection getConnection() throws Exception{
 		     }
 		// reInsertBoard end		
 			
-	
+			public List<ReviewBean> getRevieweList(int num) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				List<ReviewBean> r_list = new ArrayList<>();
+				try {
+					con = getConnection();
+					String sql 
+							= "select * "
+							+ "from review "
+							+ "where num=? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, num);
+
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						ReviewBean rb = new ReviewBean();
+						rb.setContent(rs.getString("content"));
+						rb.setReview_date(rs.getDate("review_date"));
+						rb.setContent(rs.getString("content"));
+						rb.setSatisfaction(rs.getString("satisfaction"));
+						rb.setClean(rs.getString("clean"));
+						rb.setAccess(rs.getString("access"));
+						rb.setMember_email(rs.getString("member_email"));
+					
+
+						r_list.add(rb);
+					}
+				} catch (Exception e) {
+				} finally {
+					try{
+						if(rs!=null){rs.close();}
+						if(pstmt!=null){rs.close();}
+						if(con!=null){rs.close();}
+					}catch(SQLException e){}
+				}
+				return r_list;
+			}
 			
 		
 

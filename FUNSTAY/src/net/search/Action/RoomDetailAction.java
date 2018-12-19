@@ -79,6 +79,7 @@ public class RoomDetailAction implements Action{
 		int endRow = currentPage * pageSize;
 		int home_num = num;
 		System.out.println(num);
+		
 		List<ReviewBean> ReviewList = null;
 		if (count != 0)
 			ReviewList = rdao.getReviewList(startRow, pageSize, home_num);
