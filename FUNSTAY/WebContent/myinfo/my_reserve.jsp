@@ -66,10 +66,10 @@ int home_num=(Integer.parseInt(request.getParameter("home_num")));
 
 <h1>내 예약정보</h1>
  
-<div class="w3-bar_DY w3-black">
-  <button class="w3-bar-item w3-button" onclick="openCity('London')">완료된 숙소</button>
-  <button class="w3-bar-item w3-button" onclick="openCity('Paris')">예정된 숙소</button>
-  <button class="w3-bar-item w3-button" onclick="openCity('Seoul')">취소된 숙소</button>
+<div class="w3-bar_DY w3-black" id="btn2_DY">
+  <button class="w3-bar-item w3-button" onclick="openCity('London');clicks(this)">완료된 숙소</button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Paris');clicks(this)">예정된 숙소</button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Seoul');clicks(this)">취소된 숙소</button>
 </div>
 
 
@@ -476,13 +476,7 @@ if(i%3==0){
           <td>총 요금</td>
           <td><%=BeforeB.getSum_price() %></td>
          </tr>
-       
-	
-	
-	
-	
-
-
+    
 <% if(i%3==2) { %>
 </tr>
   <% } }%> 
@@ -510,59 +504,11 @@ if(i%3==0){
         <table class="receipt_table_DY">
          
 <%
-/* 
-List bookingList=(List)request.getAttribute("bookingList");
-List paymentList=(List)request.getAttribute("paymentList");
-List hostList=(List)request.getAttribute("hostList");  */
-//List afterList3=(List)request.getAttribute("afterList");
-//for(int i=0; i<afterList3.size(); i++){
-	/* BookingBean bb=(BookingBean)bookingList.get(i);
-	PaymentBean pb=(PaymentBean)paymentList.get(i);
-	HostBean hb=(HostBean)hostList.get(i); */
-	//BeforeBean BeforeB=(BeforeBean)afterList3.get(i);
-	
-//if(i%3==0){
 	%>
 	<tr>
 	<% 
-//}
 %>
-        
-	<%-- 
-         <tr>
-          <td colspan="2" class="receipt_ti_DY"><%=//BeforeB.getRoom_subject() %></td>
-         </tr>
-         <tr>
-          <td>체크인</td> 
-          <td><%=//BeforeB.getCheck_in() %></td>
-         </tr>
-         <tr>
-          <td>체크아웃</td>
-          <td><%=//BeforeB.getCheck_out() %></td>
-         </tr>
-         <tr>
-          <td>Room_type</td>
-          <td><%=//BeforeB.getRoom_type() %></td>
-         </tr>
-         <tr>
-          <td>UserName</td>
-          <td><%=//BeforeB.getMember_email() %></td>
-         </tr>
-         <tr>
-          <td>인원</td>
-          <td><%=//BeforeB.getPeople() %></td>
-         </tr>
-         <tr>
-          <td>총 요금</td>
-          <td><%=//BeforeB.getSum_price() %></td>
-         </tr>
-       
-	 --%>
-	
-	
-	
-
-
+  
 <% //if(i%3==2) { %>
 </tr>
   <% //}// }%> 
@@ -578,13 +524,8 @@ List hostList=(List)request.getAttribute("hostList");  */
 
 
 
-
-
-
-  
-  
-
 <!-- content 영역 끝 -->  
+
 
 
 <script>
@@ -633,10 +574,6 @@ function button_event(payment_num){
 		
 		/* alert("예약취소되었습니다.") */
 		
-		
-		
-	
-		
 	}else{
 		
 		
@@ -675,9 +612,6 @@ function button_event(payment_num){
 		 
 	 });
     
-    
-      
-      
       
     });
     
@@ -716,11 +650,39 @@ function button_event(payment_num){
 		 
 	 });
     
-    
-      
-      
       
     });
+    
+    
+    
+    
+    
+    
+  /* FAQ 검색 버튼 색상 적용하는 쿼리 */
+  /* //롤오버
+  function over(obj){ 
+  	if(obj.className != "act") {
+  	obj.className = "m_over";
+  	}
+  	} 
+  	// 롤아웃 
+  	function out(obj){ 
+  	if(obj.className != "act") {
+  	obj.className = "m_out";
+  	}
+  	} 
+  	// 클릭 
+  	function clicks(obj){ 
+  	var divs = document.getElementById("btn2_DY").getElementsByTagName("button"); 
+  	        for(var i=0; i<divs.length; i++){ 
+  	        divs[i].className = "m_out";
+  	        }
+  	        
+  	    obj.className = "act";
+  	}
+  	 */
+    
+    
 </script> 
 
 
