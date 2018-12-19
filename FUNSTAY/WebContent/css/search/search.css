@@ -71,6 +71,13 @@ margin-right: 350px;}
 	height:70%;
 	width: 100%;    margin-top: 8%;
 }   
+
+#btn1{    padding: 2%;
+    width: 25%;
+    margin-left: 46%;
+    background-color: #cc1d1d;
+    color: white;
+    font-size: 14px;}
 #sideOp span {font-size: 20px;
     font-weight: bold;padding: 5%;}
 #sideOp table {margin: 8% 10%;}
