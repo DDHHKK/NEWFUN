@@ -231,7 +231,7 @@ public class BookingDAO {
 			//1,2 디비연결
 			con=getConnection();
 			//3 sql
-			sql="select * from booking b, payment p where b.payment_num=p.payment_num and home_num=? and p.host_email=?";
+			sql="select * from booking b, payment p where b.payment_num=p.payment_num and b.home_num=? and p.host_email=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, home_num);
 			pstmt.setString(2, member_email);

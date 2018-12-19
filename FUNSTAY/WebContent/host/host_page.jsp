@@ -16,8 +16,9 @@
 <link rel="shortcut icon" href="../favicon.ico"> 
 <title>FunStay</title>
 <!-- 페이지 default 링크 시작 -->
-<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
 <link href="./css/default/login.css" rel="stylesheet">
+<link href="./css/login1.css" rel="stylesheet">
 <link href="./css/default/default.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="./css/default/subpage_content.css" rel="stylesheet">
