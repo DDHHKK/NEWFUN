@@ -280,7 +280,7 @@
  
  <!-- room_review -->
 <h3 id="room_review1">리뷰 <%-- <%=count%>개 --%> </h3>
-<div id="room_review" style="padding:20px;border:1px solid #cccccc;">
+<div id="room_review" style="padding:20px;">
 <%
 	request.setCharacterEncoding("UTF-8");
 /* 
@@ -332,7 +332,8 @@
 				mb=md.getMember(email);
 	%>
   
-<table border="1" align="center" id="review_table">
+<table  id="review_table">
+<div class="ttd_table">
 <%-- 	<tr>
 	<th>평점</th> 
 	<th colspan="3"> 
@@ -342,14 +343,15 @@
 	<tr><td class="ttd">작성일</td><td> <%=re.getReview_date() %></td></tr>
 	<tr>
 	
-	<td><img src="./upload/<%=mb.getProfile_photo()%>" style="border-radius:50%;width:40px;height:40px;"></td>
+	<td class="ttd"><img src="./upload/<%=mb.getProfile_photo()%>" style="border-radius:50%;width:40px;height:40px;"></td>
 	
-   	<td colspan="2"><%=re.getMember_email() %></td> 
-   	 <tr><td>만족도</td><td colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></td></tr>
-    <tr><td>청결도</td><td colspan="4"><span class="star-prototype"><%=re.getClean() %></span></td></tr>
-	<tr><td>접근성</td><td colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></td></tr>
-    <tr><td colspan="5"><%=re.getContent() %></td></tr>
-
+   	<td colspan="2""><%=re.getMember_email() %></td> 
+   	 <tr><td class="ttd">만 족 도</td><td colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></td></tr>
+    <tr><td class="ttd">청 결 도</td><td colspan="4"><span class="star-prototype"><%=re.getClean() %></span></td></tr>
+	<tr><td class="ttd">접 근 성</td><td colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></td></tr>
+	
+    <tr><td class="cont" colspan="5"><%=re.getContent() %></td></tr>
+</div><!-- //ttd_table -->
 </table> 
 		<script type="text/javascript"> 
 				$.fn.generateStars = function() {
