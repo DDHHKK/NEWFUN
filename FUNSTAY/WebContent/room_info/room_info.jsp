@@ -331,15 +331,33 @@
 
 				mb=md.getMember(email);
 	%>
-  
+ <table  id="review_sg_table" border="1" style="border-collapse:collapse;border:1px solid #cccccc;width:90%;margin:0 auto;">
+<tr>
+	<td style="background-color:#f3f3f3;">작성자</td><td colspan="3">
+	<img src="./upload/<%=mb.getProfile_photo()%>" style="border-radius:50%;width:40px;height:40px;"><%=re.getMember_email() %>
+	</td>
+	<td style="background-color:#f3f3f3;">작성일</td><td><%=re.getReview_date() %>
+	
+	</td>
+</tr>
+<tr>
+	<td style="background-color:#f3f3f3;">만족도</td><td><span class="star-prototype"><%=re.getSatisfaction() %></span></td>
+	<td style="background-color:#f3f3f3;">청결도</td><td><span class="star-prototype"><%=re.getClean() %></span></td>
+	<td style="background-color:#f3f3f3;">접근성</td><td><span class="star-prototype"><%=re.getAccess()%></span></td>
+</tr>
+<tr>
+	<td colspan="6" style="text-align: center;"><%=re.getContent() %></td>
+</tr>
+</table>
 <table  id="review_table">
-<div class="ttd_table">
-<%-- 	<tr>
+
+<%-- <div class="ttd_table">
+	<tr>
 	<th>평점</th> 
 	<th colspan="3"> 
 	<span class="star-prototype"><%=re.getStar() %></span>  
 	</th>  
-	</tr> --%>
+	</tr>
 	<tr><td class="ttd">작성일</td><td> <%=re.getReview_date() %></td></tr>
 	<tr>
 	
@@ -351,7 +369,7 @@
 	<tr><td class="ttd">접 근 성</td><td colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></td></tr>
 	
     <tr><td class="cont" colspan="5"><%=re.getContent() %></td></tr>
-</div><!-- //ttd_table -->
+</div>< --%>
 </table> 
 		<script type="text/javascript"> 
 				$.fn.generateStars = function() {

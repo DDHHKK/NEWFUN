@@ -520,3 +520,6 @@ When you mouse over the navigation links, change their color
 	text-align: center;
 } */
 
+#review_sg_table td {
+	padding:4px;
+}
