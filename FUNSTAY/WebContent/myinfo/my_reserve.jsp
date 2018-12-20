@@ -371,33 +371,7 @@ if(i%3==0){
 %>
 
         
-         <%-- <tr>
-          <td colspan="2" class="receipt_ti_DY"><%=BeforeB.getRoom_subject() %></td>
-         </tr>
-         <tr>
-          <td>체크인</td> 
-          <td><%=BeforeB.getCheck_in() %></td>
-         </tr>
-         <tr>
-          <td>체크아웃</td>
-          <td><%=BeforeB.getCheck_out() %></td>
-         </tr>
-         <tr>
-          <td>Room_type</td>
-          <td><%=BeforeB.getRoom_type() %></td>
-         </tr>
-         <tr>
-          <td>UserName</td>
-          <td><%=BeforeB.getMember_email() %></td>
-         </tr>
-         <tr>
-          <td>인원</td>
-          <td><%=BeforeB.getPeople() %></td>
-         </tr>
-         <tr>
-          <td>총 요금</td>
-          <td><%=BeforeB.getSum_price() %></td>
-         </tr> --%>
+ 
           <tbody></tbody>
 	
 

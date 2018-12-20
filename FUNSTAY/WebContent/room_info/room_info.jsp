@@ -131,92 +131,92 @@
 			 
 			<%if(cb.getEssential()==1){%>
 				<div style="width:150px;float:left;height:50px;height:30px;">
-				<i class='far fa-lightbulb' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 필수품목
+				<i class='far fa-lightbulb' style='font-size:20px;margin-left:20px;'></i> 필수품목
 				</div>
 			<%}%>
 			<%if(cb.getWifi()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class="fa fa-wifi" style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 와이파이
+				<i class="fa fa-wifi" style='font-size:20px;margin-left:20px;'></i> 와이파이
 				</div>
 			<%}%>
 			<%if(cb.getParking()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-parking' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 주차가능
+				<i class='fas fa-parking' style='font-size:20px;margin-left:20px;'></i> 주차가능
 				</div>
 			<%}%>
 			<%if(cb.getShampoo()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/shampoo.png" width="15px" height="25px" style='color:#cc1d1d;margin-left:20px;'> 샴푸
+				<img src="./img/icon/shampoo.png" width="15px" height="25px" style='margin-left:20px;'> 샴푸
 				</div>
 			<%}%>
 			<%if(cb.getAir_conditioner()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-thermometer-empty' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 에어컨
+				<i class='fas fa-thermometer-empty' style='font-size:20px;margin-left:20px;'></i> 에어컨
 				</div>
 			<%}%>
 			<%if(cb.getHeat()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-thermometer-full' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 난방
+				<i class='fas fa-thermometer-full' style='font-size:20px;margin-left:20px;'></i> 난방
 				</div>
 			<%}%>
 			<%if(cb.getAnimal()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-paw' style='color:#cc1d1d;margin-left:20px;'></i> 반려동물
+				<i class='fas fa-paw' style='margin-left:20px;'></i> 반려동물
 				</div>
 			<%}%>
 			<%if(cb.getDisabled()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fab fa-accessible-icon' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 장애인시설
+				<i class='fab fa-accessible-icon' style='font-size:20px;margin-left:20px;'></i> 장애인시설
 				</div>
 			<%}%>
 			<%if(cb.getParty()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-birthday-cake' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 파티가능
+				<i class='fas fa-birthday-cake' style='font-size:20px;margin-left:20px;'></i> 파티가능
 				</div>
 			<%}%>
 			<%if(cb.getPickup()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class="fa fa-car" style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 픽업가능
+				<i class="fa fa-car" style='font-size:20px;margin-left:20px;'></i> 픽업가능
 				</div>
 			<%}%>
 			<%if(cb.getElevator()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-sort' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 엘리베이터
+				<i class='fas fa-sort' style='font-size:20px;margin-left:20px;'></i> 엘리베이터
 				</div>
 			<%}%>
 			<%if(cb.getBreakfast()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-utensils' style='color:#cc1d1d;margin-left:20px;'></i> 조식제공
+				<i class='fas fa-utensils' style='margin-left:20px;'></i> 조식제공
 				</div>
 			<%}%>
 			<%if(cb.getSmoking()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-smoking' style='color:#cc1d1d;margin-left:20px;'></i> 흡연가능
+				<i class='fas fa-smoking' style='margin-left:20px;'></i> 흡연가능
 				</div>
 			<%}%>
 			<%if(cb.getLaundry()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/washing.png" width="15px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 세탁기
+				<img src="./img/icon/washing.png" width="15px" height="20px" style='margin-left:20px;'> 세탁기
 				</div>
 			<%}%>
 			<%if(cb.getIron()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/iron-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 다리미
+				<img src="./img/icon/iron-512.png" width="20px" height="20px" style='margin-left:20px;'> 다리미
 				</div>
 			<%}%>
 			<%if(cb.getDesk()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/table-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 업무가능공간
+				<img src="./img/icon/table-512.png" width="20px" height="20px" style='margin-left:20px;'> 업무가능공간
 				</div>
 			<%}%>
 			<%if(cb.getExtra_bed()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-bed' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 간이침대
+				<i class='fas fa-bed' style='font-size:20px;margin-left:20px;'></i> 간이침대
 				</div>
 			<%}%>
 			<%if(cb.getHair_dryer()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/hair_dryer-512.png" width="20px" height="20px" style="color:#cc1d1d;margin-left:20px;"> 헤어드라이기
+				<img src="./img/icon/hair_dryer-512.png" width="20px" height="20px" style="margin-left:20px;"> 헤어드라이기
 				</div>
 			<%}%>
 	</div>
@@ -280,7 +280,7 @@
  
  <!-- room_review -->
 <h3 id="room_review1">리뷰 <%-- <%=count%>개 --%> </h3>
-<div id="room_review" style="padding:20px;border:1px solid #cccccc;">
+<div id="room_review" style="padding:20px;">
 <%
 	request.setCharacterEncoding("UTF-8");
 /* 
@@ -315,7 +315,10 @@
 	<div id="room_review">
 	
 	
-
+<%if(ReviewList.size()==0){
+	%>
+	등록된 리뷰가 없습니다.
+	<%}%>
 	<%
 			for (int i = 0; i < ReviewList.size(); i++) {
 				ReviewBean re = (ReviewBean) ReviewList.get(i);
@@ -329,7 +332,8 @@
 				mb=md.getMember(email);
 	%>
   
-<table border="1" align="center" id="review_table">
+<table  id="review_table">
+<div class="ttd_table">
 <%-- 	<tr>
 	<th>평점</th> 
 	<th colspan="3"> 
@@ -339,14 +343,15 @@
 	<tr><td class="ttd">작성일</td><td> <%=re.getReview_date() %></td></tr>
 	<tr>
 	
-	<td><img src="./upload/<%=mb.getProfile_photo()%>" style="border-radius:50%;width:40px;height:40px;"></td>
+	<td class="ttd"><img src="./upload/<%=mb.getProfile_photo()%>" style="border-radius:50%;width:40px;height:40px;"></td>
 	
-   	<td colspan="2"><%=re.getMember_email() %></td> 
-   	 <tr><td>만족도</td><td colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></td></tr>
-    <tr><td>청결도</td><td colspan="4"><span class="star-prototype"><%=re.getClean() %></span></td></tr>
-	<tr><td>접근성</td><td colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></td></tr>
-    <tr><td colspan="5"><%=re.getContent() %></td></tr>
-
+   	<td colspan="2""><%=re.getMember_email() %></td> 
+   	 <tr><td class="ttd">만 족 도</td><td colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></td></tr>
+    <tr><td class="ttd">청 결 도</td><td colspan="4"><span class="star-prototype"><%=re.getClean() %></span></td></tr>
+	<tr><td class="ttd">접 근 성</td><td colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></td></tr>
+	
+    <tr><td class="cont" colspan="5"><%=re.getContent() %></td></tr>
+</div><!-- //ttd_table -->
 </table> 
 		<script type="text/javascript"> 
 				$.fn.generateStars = function() {
@@ -428,13 +433,16 @@
 	<!--  -->
 	<table style="width:100%;margin-bottom:20px;">
 	<tr>
-		<td class="qnaheadtd_sg">번호</td>
-		<td class="qnaheadtd_sg">제목</td>
-		<td class="qnaheadtd_sg">등록일</td>
-		<td class="qnaheadtd_sg">답변여부</td>
+		<td class="qnaheadtd_sg" style="text-align: center;padding:3px;">번호</td>
+		<td class="qnaheadtd_sg" style="text-align: center;padding:3px;">제목</td>
+		<td class="qnaheadtd_sg" style="text-align: center;padding:3px;">등록일</td>
+		<td class="qnaheadtd_sg" style="text-align: center;padding:3px;">답변여부</td>
 	</tr>
+<%List<QnaBean> q_list = (List)request.getAttribute("q_list");
+if(q_list.size()==0){%>
+<tr><td colspan="4" style="text-align: center;">등록된 문의글이 없습니다.</td></tr>
 <%
-List<QnaBean> q_list = (List)request.getAttribute("q_list");
+}
 for(int i=0;i<q_list.size();i++){
 	QnaBean qb = (QnaBean)q_list.get(i);
 %>
