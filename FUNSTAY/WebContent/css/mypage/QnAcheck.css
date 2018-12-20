@@ -1,14 +1,4 @@
 @CHARSET "UTF-8";
-
-
-
-/* 테블릿,노트북 크기 768~1023px */
-@media all and (min-width:768px){}
-
-
-
-/* 모니터,대형스크린크기 1024~무한 */
-@media all and (min-width:1024px) {
 	
 h1 {
 	/* border: 1px solid black; */
@@ -105,7 +95,4 @@ h1 {
     border: 1px solid #cccccc;
     text-align: center;
     margin-bottom: 10%;
-}
-
-	
 }

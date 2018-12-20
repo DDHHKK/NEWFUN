@@ -314,7 +314,22 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if(command.equals("/BoardUpdate.me")){
+			action = new QnaboardUpdate();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/BoardDelete.me")){
+			action = new QnaboardDelete();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+
 
 		if (forward != null) {
 			if (forward.isRedirect()) {

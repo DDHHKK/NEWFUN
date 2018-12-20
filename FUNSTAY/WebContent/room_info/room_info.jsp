@@ -421,10 +421,49 @@
 
 
 <button class="button_sg"
-			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>&room_subject=<%=room_subject %>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
+			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>&room_subject=<%=room_subject %>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;    padding: 11px 19px;">호스트에게 문의하기</button>
 	<div id="room_qna">
 	<div class="clear"></div>
-	<table class="accordion_sg1">
+	
+	<!--  -->
+	<table style="width:100%;margin-bottom:20px;">
+	<tr>
+		<td class="qnaheadtd_sg">번호</td>
+		<td class="qnaheadtd_sg">제목</td>
+		<td class="qnaheadtd_sg">등록일</td>
+		<td class="qnaheadtd_sg">답변여부</td>
+	</tr>
+<%
+List<QnaBean> q_list = (List)request.getAttribute("q_list");
+for(int i=0;i<q_list.size();i++){
+	QnaBean qb = (QnaBean)q_list.get(i);
+%>
+	<tr>
+		<td><%=qb.getQnA_num() %></td>
+		<td class="qnaopensub">
+			<%-- <a href="./MemberQNAcontent.sc?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>" target="_blank">
+			 --%><a href="./MemberQNAcontent.sc?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>" onClick="window.open(this.href, '', 'width=1000, height=700, menubar=no, status=no, toolbar=no, resizable=no'); return false;">
+				<%if(qb.getRe_seq()%2==1){%>[답변]<%}else{%>[문의]<%}%>
+				<%=qb.getSubject() %>
+			</a>
+		</td>
+		<td><%=qb.getQnA_date() %></td>
+		<td>
+			<%if(qb.getRe_lev()==1){%>
+			답변완료
+			<%}
+			else{
+			%>
+			답변중
+			<%}%>
+		</td>
+	</tr>
+<%} %>
+	</table>
+	<!--  -->
+
+	
+	<%-- <table class="accordion_sg1">
 		<tr>
 			<td style="width:500px;text-align:center;">문의 제목</td><td style="width:200px;text-align:center;">작성자</td><td style="width:200px;text-align:center;">등록 날짜</td><td style="width:200px;text-align:center;">답변여부</td>
 		</tr>
@@ -458,8 +497,10 @@
 				<%=qn.getMember_email() %>님 글의 답변 -> <%=qn.getContent() %>
 				 <%}%>
 			</p>	
-		</div> 
-	<%}%>
+		</div>  --%>
+		
+		
+	<%-- <%}%> --%>
 		<div style="text-align: center;">
 		<%
 		if (count1 != 0) {

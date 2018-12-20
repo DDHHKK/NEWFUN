@@ -1193,6 +1193,52 @@ public class MemberDAO {
 		}
 		return vector;
 	}
+	
+	public void updateQnA(int qna_num, String member_email, String subject, String content) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql 
+					= "update qna_board set subject=?, content=? where qna_num=? and member_email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, subject);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, qna_num);
+			pstmt.setString(4, member_email);
+
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+		} finally {
+			try{
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+	}
+	
+	public void deleteQnA(int qna_num, String member_email) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql 
+					= "delete from qna_board where qna_num=? and member_email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, qna_num);
+			pstmt.setString(2, member_email);
+
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+		} finally {
+			try{
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+	}
 
 
 }// class end
