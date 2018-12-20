@@ -64,6 +64,9 @@ int num = (Integer)session.getAttribute("num");
 <input type="hidden" name="num" value="<%=num %>">
 </nav>
 
+<script type="text/javascript" src="./js/myinfo/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search/modal_shj.js"></script>
+
 
 <span style="position: relative;     padding: 7% 5% 0% 7%; bottom: 23px; font-size: 20px;
     font-weight: bold;display: inline-block;">가격</span>
@@ -406,7 +409,6 @@ for(int j =0; j<wishlist.size(); j++)
 
 
 
-<script type="text/javascript" src="./js/myinfo/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="./js/search/modal_shj2.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
