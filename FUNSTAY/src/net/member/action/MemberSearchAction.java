@@ -50,7 +50,7 @@ public class MemberSearchAction implements Action{
 		System.out.println(email);
 		
 		 if(email!=null)
-		    {    System.out.println("d2222222222");
+		    { 
 		    WishlistDAO wdao = new WishlistDAO();
 		    List wishlist = wdao.getWishList(email);
 		    System.out.println("d333333");

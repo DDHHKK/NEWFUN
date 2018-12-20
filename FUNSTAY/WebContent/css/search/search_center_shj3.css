@@ -597,7 +597,7 @@ Ion.RangeSlider, Flat UI Skin
 /** modal window styles **/
 #lean_overlay {
     position: fixed;
-    z-index:10000;
+    z-index:100;
     top: 0px;
     left: 0px;
     height:100%;
