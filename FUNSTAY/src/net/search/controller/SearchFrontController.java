@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.search.Action.MemberQnaContent;
 import net.search.Action.Qna_boardWrite;
 import net.search.Action.Qna_boardWriteAction;
 import net.search.Action.Qna_boardreWrite;
@@ -122,6 +123,16 @@ public class SearchFrontController extends HttpServlet{
 					e.printStackTrace(); 
 				}
 					
+			}
+		
+		//QnA 리스트
+			else if (command.equals("/MemberQNAcontent.sc")) {
+				action = new MemberQnaContent();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 
 			

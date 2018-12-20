@@ -1,4 +1,6 @@
 <!-- http://kirinyaga.tistory.com/21 스크롤 -->
+<%@page import="net.member.db.MemberBean"%>
+<%@page import="net.member.db.MemberDAO"%>
 <%@page import="net.search.db.SearchDAO"%>
 <%@page import="net.bed.db.BedBean"%>
 <%@page import="net.room.db.RoomBean"%>
@@ -317,23 +319,34 @@
 	<%
 			for (int i = 0; i < ReviewList.size(); i++) {
 				ReviewBean re = (ReviewBean) ReviewList.get(i);
+				
+				
+				
+				MemberDAO md = new MemberDAO();
+				MemberBean mb = new MemberBean(); 
+				String email = (String)session.getAttribute("email");
+
+				mb=md.getMember(email);
 	%>
   
-<table border="1" align="center">
+<table border="1" align="center" id="review_table">
 <%-- 	<tr>
 	<th>평점</th> 
 	<th colspan="3"> 
 	<span class="star-prototype"><%=re.getStar() %></span>  
 	</th>  
 	</tr> --%>
+	<tr><td class="ttd">작성일</td><td> <%=re.getReview_date() %></td></tr>
 	<tr>
-	<th><img src="./img/user.png" alt="img02" width="50px" height="50px"></th>
-	<th> <%=re.getReview_date() %></th>
-   	<th colspan="2"><%=re.getMember_email() %></th> 
-    <tr><th colspan="5"><%=re.getContent() %></th></tr>
-    <tr><th>만족도</th><th colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></th></tr>
-    <tr><th>청결도</th><th colspan="4"><span class="star-prototype"><%=re.getClean() %></span></th></tr>
-	<tr><th>접근성</th><th colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></th></tr>
+	
+	<td><img src="./upload/<%=mb.getProfile_photo()%>" style="border-radius:50%;width:40px;height:40px;"></td>
+	
+   	<td colspan="2"><%=re.getMember_email() %></td> 
+   	 <tr><td>만족도</td><td colspan="4"><span class="star-prototype"><%=re.getSatisfaction() %></span></td></tr>
+    <tr><td>청결도</td><td colspan="4"><span class="star-prototype"><%=re.getClean() %></span></td></tr>
+	<tr><td>접근성</td><td colspan="4"><span class="star-prototype"><%=re.getAccess()%></span></td></tr>
+    <tr><td colspan="5"><%=re.getContent() %></td></tr>
+
 </table> 
 		<script type="text/javascript"> 
 				$.fn.generateStars = function() {
@@ -408,10 +421,49 @@
 
 
 <button class="button_sg"
-			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>&room_subject=<%=room_subject %>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;">호스트에게 문의하기</button>
+			 onclick="location.href='Qna_boardWrite.sc?num=<%=num%>&pageNum=<%=pageNum%>&room_subject=<%=room_subject %>'" style="background-color:white;color:gray;float:right;font-weight:bold;border:1px solid gray;    padding: 11px 19px;">호스트에게 문의하기</button>
 	<div id="room_qna">
 	<div class="clear"></div>
-	<table class="accordion_sg1">
+	
+	<!--  -->
+	<table style="width:100%;margin-bottom:20px;">
+	<tr>
+		<td class="qnaheadtd_sg">번호</td>
+		<td class="qnaheadtd_sg">제목</td>
+		<td class="qnaheadtd_sg">등록일</td>
+		<td class="qnaheadtd_sg">답변여부</td>
+	</tr>
+<%
+List<QnaBean> q_list = (List)request.getAttribute("q_list");
+for(int i=0;i<q_list.size();i++){
+	QnaBean qb = (QnaBean)q_list.get(i);
+%>
+	<tr>
+		<td><%=qb.getQnA_num() %></td>
+		<td class="qnaopensub">
+			<%-- <a href="./MemberQNAcontent.sc?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>" target="_blank">
+			 --%><a href="./MemberQNAcontent.sc?QnA_num=<%=qb.getQnA_num()%>&re_ref=<%=qb.getRe_ref()%>" onClick="window.open(this.href, '', 'width=1000, height=700, menubar=no, status=no, toolbar=no, resizable=no'); return false;">
+				<%if(qb.getRe_seq()%2==1){%>[답변]<%}else{%>[문의]<%}%>
+				<%=qb.getSubject() %>
+			</a>
+		</td>
+		<td><%=qb.getQnA_date() %></td>
+		<td>
+			<%if(qb.getRe_lev()==1){%>
+			답변완료
+			<%}
+			else{
+			%>
+			답변중
+			<%}%>
+		</td>
+	</tr>
+<%} %>
+	</table>
+	<!--  -->
+
+	
+	<%-- <table class="accordion_sg1">
 		<tr>
 			<td style="width:500px;text-align:center;">문의 제목</td><td style="width:200px;text-align:center;">작성자</td><td style="width:200px;text-align:center;">등록 날짜</td><td style="width:200px;text-align:center;">답변여부</td>
 		</tr>
@@ -445,8 +497,10 @@
 				<%=qn.getMember_email() %>님 글의 답변 -> <%=qn.getContent() %>
 				 <%}%>
 			</p>	
-		</div> 
-	<%}%>
+		</div>  --%>
+		
+		
+	<%-- <%}%> --%>
 		<div style="text-align: center;">
 		<%
 		if (count1 != 0) {

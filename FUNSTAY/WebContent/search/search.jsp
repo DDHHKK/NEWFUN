@@ -219,7 +219,7 @@ List rest = (List)session.getAttribute("rest");
 System.out.println("D");
 List past = (List)session.getAttribute("past");
 
-System.out.println(list.size());
+
 int pageSize = Integer.parseInt(request.getParameter("pageSize"));
 System.out.println("D");
 %>
@@ -360,12 +360,6 @@ catch(Exception e)
 { avg=0;}
 
 
-{
-	
-	%>
-	
-<%
-}
 %>
 <input type="hidden" id="avg_shj" name="avg" value="<%=avg%>">
 <div class="star_shj">

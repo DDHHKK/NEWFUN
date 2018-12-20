@@ -47,6 +47,7 @@ public class AddWishlist implements Action{
 			wb.setList_name(multi.getParameter("list_name"));
 			wb.setMember_email(multi.getParameter("member_email"));
 			wb.setList_photo(multi.getFilesystemName("list_photo"));
+			System.out.println(multi.getFilesystemName("list_photo"));
 			wdao.addWishList(wb);
 			System.out.println(wb.getList_photo());
 			af.setPath("./Wishlist.wi");
