@@ -94,6 +94,36 @@ public class WishlistDAO {
 		}
 	}//리스트 생성
 	
+	public void updatePhoto(int wishlist_num ,String photo)
+	{
+		Connection con=null;
+		PreparedStatement psm=null;
+		ResultSet rs=null;
+		
+		try
+		{System.out.println("dao111");
+			con = getConnection();
+			String sql="update wishlist set list_photo=? where wishlist_num=?";
+			psm = con.prepareStatement(sql);
+			 psm.setString(1,photo );
+			psm.setInt(2,wishlist_num );
+			
+			 System.out.println("dao222");
+			 System.out.println(photo);
+			 System.out.println(wishlist_num);
+			 System.out.println("dao333");
+			 psm.executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(psm!=null)try{psm.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+		
+	}
+	
 	public List getWishList(String member_email)
 	{
 		Connection con=null;
@@ -111,6 +141,7 @@ public class WishlistDAO {
 				WishlistBean wb=new WishlistBean();
 				wb.setMember_email(member_email);
 				wb.setWishlist_num(rs.getInt("wishlist_num"));
+				
 				wb.setList_photo(rs.getString("list_photo"));
 				wb.setList_name(rs.getString("list_name"));
 				WishList.add(wb);

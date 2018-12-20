@@ -1059,7 +1059,7 @@ public class MemberDAO {
 				home_num = rs.getInt("home_num");
 				goodsList.add(hb1);
 			vector.add(goodsList);
-		
+			System.out.println(home_num);
 			String sql2 = "select avg(satisfaction) as star from review where home_num=?";
 			pstmt = con.prepareStatement(sql2);
 			pstmt.setInt(1, home_num);
@@ -1106,7 +1106,7 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select sum(a.heart), a.home_photo, substr(b.address,1,2) as address, a.home_num "
+			String sql = "select sum(a.heart), a.home_photo, substr(b.address,1,2) as address, a.home_num,b.room_subject,b.price "
 					+ "from wish a  join home b "
 					+ "on a.home_num=b.home_num "
 					+ "group by a.home_photo, b.address "
@@ -1119,6 +1119,13 @@ public class MemberDAO {
 				MyWishBean sb1 = new MyWishBean();
 				sb1.setHome_photo(rs.getString("home_photo"));
 				sb1.setHome_num(rs.getInt("home_num"));
+				sb1.setRoom_subject(rs.getString("room_subject"));
+				sb1.setPrice(rs.getInt("price"));
+				System.out.println(sb1.getHome_photo());
+				System.out.println(sb1.getHome_num());
+				System.out.println(sb1.getRoom_subject());
+				System.out.println(sb1.getPrice());
+
 				goodsList.add(sb1);
 			}
 			
@@ -1153,21 +1160,22 @@ public class MemberDAO {
 		List goodsList = new ArrayList();
 		try {
 			con = getConnection();
-			String sql = "select sum(a.home_satisfaction), a.home_photo, substr(b.address,1,2) as address, a.home_num "
-					+ "from wish a  join home b "
+			String sql = "select sum(a.satisfaction), b.photo, substr(b.address,1,2) as address, a.home_num, b.room_subject, b.price  "
+					+ "from review a  join home b "
 					+ "on a.home_num=b.home_num "
-					+ "group by a.home_photo, b.address,a.home_num "
-					+ "order by sum(home_satisfaction) desc";
+					+ "group by b.photo, b.address, a.home_num "
+					+ "order by sum(satisfaction) desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			
 			while (rs.next()) {
 				MyWishBean sb1 = new MyWishBean();
-				sb1.setHome_photo(rs.getString("home_photo"));
+				sb1.setHome_photo(rs.getString("photo"));
 				sb1.setHome_num(rs.getInt("home_num"));
-				System.out.println("home_photo들고옴"+sb1.getHome_photo());
-				System.out.println("home_num들고옴"+sb1.getHome_num());
+				sb1.setRoom_subject(rs.getString("room_subject"));
+				sb1.setPrice(rs.getInt("price"));
+			
 				goodsList.add(sb1);
 			}
 			
@@ -1192,6 +1200,52 @@ public class MemberDAO {
 				}
 		}
 		return vector;
+	}
+	
+	public void updateQnA(int qna_num, String member_email, String subject, String content) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql 
+					= "update qna_board set subject=?, content=? where qna_num=? and member_email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, subject);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, qna_num);
+			pstmt.setString(4, member_email);
+
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+		} finally {
+			try{
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
+	}
+	
+	public void deleteQnA(int qna_num, String member_email) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql 
+					= "delete from qna_board where qna_num=? and member_email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, qna_num);
+			pstmt.setString(2, member_email);
+
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+		} finally {
+			try{
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
+			}catch(SQLException e){}
+		}
 	}
 
 

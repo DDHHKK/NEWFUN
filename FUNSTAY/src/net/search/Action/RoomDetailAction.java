@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.bed.db.BedBean;
 import net.conv.db.ConvBean;
 import net.host.db.HostDAO;
+import net.member.db.MemberDAO;
 import net.member.db.QnaBean;
 import net.review.db.ReviewBean;
 import net.review.db.ReviewDAO;
@@ -93,6 +94,12 @@ public class RoomDetailAction implements Action{
 		List<QnaBean> QnAList = null;
 		if (count1 != 0)
 			QnAList = sdao.getQnAList(home_num);
+		
+		MemberDAO mdao = new MemberDAO();
+		List<QnaBean> q_list = mdao.getQnAList_host(num);
+		
+		
+		request.setAttribute("q_list", q_list);
 		
 		request.setAttribute("count1", count1);
 		request.setAttribute("QnAList", QnAList);
