@@ -19,6 +19,10 @@ public class AddMyWish implements Action{
 		int wishlist_num = Integer.parseInt(request.getParameter("wishlist_num"));
 		HostDAO hdao = new HostDAO();
 		HostBean hb = hdao.getHost(home_num);//home 정보 불러내기
+		String photos = hb.getPhoto();
+		String[] photo = photos.split(",");
+		hb.setPhoto(photo[0]);
+		System.out.println("photo::"+photo[1]);
 		MyWishDAO mwdao = new MyWishDAO();
 		int heart = mwdao.insertMyWish(hb, wishlist_num);
 		//
