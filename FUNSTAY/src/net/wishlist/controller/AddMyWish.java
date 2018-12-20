@@ -14,7 +14,7 @@ public class AddMyWish implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("Wishlist execute()");
+		System.out.println("Addmywish execute()");
 		int home_num = Integer.parseInt(request.getParameter("home_num"));
 		int wishlist_num = Integer.parseInt(request.getParameter("wishlist_num"));
 		HostDAO hdao = new HostDAO();
@@ -22,7 +22,6 @@ public class AddMyWish implements Action{
 		String photos = hb.getPhoto();
 		String[] photo = photos.split(",");
 		hb.setPhoto(photo[0]);
-		System.out.println("photo::"+photo[1]);
 		MyWishDAO mwdao = new MyWishDAO();
 		int heart = mwdao.insertMyWish(hb, wishlist_num);
 		//
