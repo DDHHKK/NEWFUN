@@ -64,7 +64,7 @@
 <div style="float:left;width: auto;"  id="listmenu_shj">
 <ul style="width: 100%;" >
 <!--가상주소로 변환  -->
-   <li  class='active has-sub' ><a href='BackWishlist.wi'><span>리스트로 돌아가기</span></a>
+   <li  class='active has-sub' ><a href='BackWishlist.wi'><span style="color:white !important; font-size: inherit; font-weight: bold;">리스트로 돌아가기</span></a>
    </li>
 </ul>
 </div>
@@ -76,7 +76,7 @@
 <div style="float:right; /* width: 50%; */" id="listmenu_shj">
 <ul style="" >
 	<!-- 변수값:My wish -->
-   <li class='active has-sub_shj' id="manlist"><a href='#'><span>My wish</span></a>
+   <li class='active has-sub_shj' id="manlist"><a href='#'><span style="color:white !important; font-size: inherit; font-weight: bold;">My wish</span></a>
       <ul style="width: 130%;">
        <%
       for(int i=0;i<Wishlist.size();i++){
@@ -84,7 +84,7 @@
      
       %>
 
-         <li class='has-sub'><a href='./MyWish.wi?wishlist_num=<%=wb.getWishlist_num()%>'><span><%=wb.getList_name() %></span></a>       
+         <li class='has-sub'><a href='./MyWish.wi?wishlist_num=<%=wb.getWishlist_num()%>'><span style="color:white !important; font-size: inherit; font-weight: bold;"><%=wb.getList_name() %></span></a>       
          </li>
          <%
       }

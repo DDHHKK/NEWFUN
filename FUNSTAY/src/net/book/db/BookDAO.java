@@ -378,13 +378,15 @@ public class BookDAO {
   			//1,2단계 메서드 호출
   			con=getConnection();
                   
-                     String sql2="select distinct * from home h,payment p "
-                     		+ "where p.member_email=? and h.host_email=p.host_email and p.payment_status=?";
+                     String sql2="select * from home h join payment p on h.home_num=p.home_num where p.member_email=? and p.payment_status=?";
+  			
+  			         /* String sql2="select * from home h join payment p on h.home_num=p.home_num "
+  			          		+ "where p.member_email=? and p.payment_status=? and p.payment_num=?";*/
                      
                      pstmt=con.prepareStatement(sql2);//객체생성
      		           pstmt.setString(1,member_email);
      		           pstmt.setString(2, "결제취소");
-     		           /*pstmt.setString(3, payment_num);*/
+     		          /* pstmt.setString(3, payment_num);*/
      		          
      		           rs=pstmt.executeQuery();
      		           

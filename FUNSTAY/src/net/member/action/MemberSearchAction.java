@@ -97,31 +97,33 @@ public class MemberSearchAction implements Action{
 	    	session.setAttribute("list", list);
 	    }
 	    else if(vector2.size()==2)
-	    {System.out.println("dwwww4444ww");
+	    {System.out.println("dwwww444ww");
 	    	List avg=(List)vector2.get(1);
 	    	past =(List)vector2.get(0);
-	    	session.setAttribute("avg", avg);
+	    	session.setAttribute("avg", avg);//
 	    	session.setAttribute("past", past);
 	    }
 	    else if(vector2.size()==1)
-	    {System.out.println("dwwww4444ww");
+	    {System.out.println("dwwww4554ww");
 	    	past =(List)vector2.get(0);
 	    	session.setAttribute("past", past);
 	    }
 	    
 	    else if(vector3.size()==2)
-	    {System.out.println("dwwww4444ww");
+	    {System.out.println("dwwww6664ww");
 	    	List avg=(List)vector3.get(1);
 	    	rest =(List)vector3.get(0);
 	    	session.setAttribute("avg", avg);
 	    	session.setAttribute("rest", rest);
+	    	System.out.println(rest.size());
+	    	System.out.println("ffff");
 	    }
 	    else if(vector3.size()==1)
-	    {System.out.println("dwwww4444ww");
+	    {System.out.println("dwwww7777ww");
 	    	rest =(List)vector3.get(0);
 	    	session.setAttribute("rest", rest);
 	    }
-	    else{System.out.println("dwwww4444ww");session.setAttribute("avg", a);
+	    else{System.out.println("dwwww888ww");session.setAttribute("avg", a);
 	    System.out.println("dww111111111ww");
 		System.out.println(email);
 	   
@@ -130,6 +132,7 @@ public class MemberSearchAction implements Action{
 	    session.setAttribute("rest", a);
 	    session.setAttribute("past", a);
 		session.setAttribute("list", a);}
+	    System.out.println(a.size());
 	
 		session.setAttribute("address", address);
 	
@@ -140,7 +143,7 @@ public class MemberSearchAction implements Action{
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath("./search.me?pageSize="+pageSize);
+		forward.setPath("./search.me?pageSize="+10);
 	
 		
 		return forward;

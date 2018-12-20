@@ -289,6 +289,7 @@ public void insertConv(ConvBean cb,int home_num) {
 				hb.setRoom_subject(rs.getString("room_subject"));
 				hb.setRoom_content(rs.getString("room_content"));
 				hb.setRestroom(rs.getInt("restroom"));
+				hb.setPhoto(rs.getString("photo"));
 				hb.setPrice(rs.getInt("price"));
 				hb.setStart_date(rs.getDate("start_date"));
 				hb.setEnd_date(rs.getDate("end_date"));

@@ -25,7 +25,7 @@ JSONArray arr=new JSONArray(); //배열 ArrayList 역할  .add()
 //1단계 드라이버 로더
 Class.forName("com.mysql.jdbc.Driver");
 //2단계 디비연결
-String dbUrl="jdbc:mysql://192.168.2.27:3306/funstay";
+String dbUrl="jdbc:mysql://192.168.2.10:3306/funstay";
 String dbUser="root";
 String dbPass="1234";
 Connection con=DriverManager.getConnection(dbUrl,dbUser,dbPass);

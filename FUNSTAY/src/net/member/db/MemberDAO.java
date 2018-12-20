@@ -1059,7 +1059,7 @@ public class MemberDAO {
 				home_num = rs.getInt("home_num");
 				goodsList.add(hb1);
 			vector.add(goodsList);
-		
+			System.out.println(home_num);
 			String sql2 = "select avg(satisfaction) as star from review where home_num=?";
 			pstmt = con.prepareStatement(sql2);
 			pstmt.setInt(1, home_num);
