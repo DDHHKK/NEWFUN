@@ -282,15 +282,19 @@ cursor: pointer;
  }
  
  .heart_dw_ws{ width:300px;
-font-family: 'Lora', serif;
+/* font-family: 'Lora', serif; */
+color:#666;
  font-size: 16px;
  font-weight:lighter;
- padding-bottom: 10px;}
+ padding-bottom: 10px;
+font-weight: bold;}
  
  .heart_dw_ws2{ width:300px;
-font-family: 'Lora', serif;
+/* font-family: 'Lora', serif; */
  font-size: 15px;
- font-weight:lighter;}
+ font-weight:lighter;
+ color:#666;
+ font-weight: bold;}
  
  .img_dwdc_ws{
  margin-bottom: 10px;} 
@@ -369,6 +373,6 @@ font-family: 'Lora', serif;
   
  
 #long_img>img{
-	margin: 4% 5%;
+	margin: 110px 5% 0 5%;
 	width:1650px; height:300px;
 	}

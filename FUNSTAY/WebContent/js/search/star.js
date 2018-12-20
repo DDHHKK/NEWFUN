@@ -2,7 +2,7 @@
 var locked=0;
 function show(star)
 {
-	unlock(star);
+	
 	if (locked) {return;}
 	
 	var i;

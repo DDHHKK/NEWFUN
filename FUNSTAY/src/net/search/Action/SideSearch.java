@@ -23,7 +23,8 @@ public class SideSearch implements Action{
 		// TODO Auto-generated method stub
 		System.out.println("SearchSide execute()");
 		request.setCharacterEncoding("UTF-8");
-		
+		HttpSession session = request.getSession();
+
 		HostBean hb = new HostBean();
 
 		String[] num_conv = null;
@@ -50,7 +51,7 @@ public class SideSearch implements Action{
 	
 		
 		
-			System.out.println("111");
+			
 		int from=0;
 		int to=0;
 		try{	from = Integer.parseInt(request.getParameter("from"));
@@ -101,7 +102,6 @@ public class SideSearch implements Action{
 		MemberDAO mdd= new MemberDAO();
 		SearchDAO sdao = new SearchDAO();
 		Vector vector0 = mdd.getsearchList(hb, start_date, end_date,num);
-		
 		Vector vector2 = mdd.getsearchList2(hb, num);
 		Vector vector3 = mdd.getsearchList3(hb);
 		int listcheck=0;
@@ -110,12 +110,16 @@ public class SideSearch implements Action{
 		List avg =null;
 		List search =null;
 		List review =null;
-		
+		System.out.println("Ddd");
 		if(vector0.size()!=0)
 		{
+			System.out.println("Ddd");
+			System.out.println(vector0.size());
 			Vector vector = sdao.getSideSearch(hb, convenience, num, satis, from, to);
 			search = (List)vector.get(0);
 			review = (List)vector.get(1);
+			session.setAttribute("list", search);
+			session.setAttribute("avg", review);
 		}else if(vector2.size()!=0)
 		{
 			
@@ -125,24 +129,22 @@ public class SideSearch implements Action{
 			
 		}
 		else{}
-		HttpSession session = request.getSession();
 
-		session.setAttribute("list", list);
+		
 		session.setAttribute("past", a);
 		session.setAttribute("rest", a);
 		session.setAttribute("address", address);
-		request.setAttribute("pageSize", pageSize);
+		
 		session.setAttribute("start_date", start_date);
 		session.setAttribute("end_date", end_date);
 		session.setAttribute("num", num);
-		session.setAttribute("num", num);
-		session.setAttribute("avg", avg);
+		
 	
 		
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./search.me?listcheck="+listcheck);
+		forward.setPath("./search.me?listcheck="+listcheck+"&pageSize="+10);
 		return forward;
 	}
 

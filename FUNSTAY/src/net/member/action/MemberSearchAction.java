@@ -18,6 +18,7 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 import net.host.db.HostBean;
 import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
+import net.wishlist.db.MyWishBean;
 import net.wishlist.db.WishlistBean;
 import net.wishlist.db.WishlistDAO;
 
@@ -53,7 +54,14 @@ public class MemberSearchAction implements Action{
 		    { 
 		    WishlistDAO wdao = new WishlistDAO();
 		    List wishlist = wdao.getWishList(email);
-		    System.out.println("d333333");
+		    if(wishlist.size()==0)
+		    {
+		    	WishlistBean wb = new WishlistBean();
+		    	wb.setMember_email(email);
+		    
+		    }
+		   
+		    
 		    session.setAttribute("wishlist", wishlist);
 		    }
 		    
@@ -83,12 +91,12 @@ public class MemberSearchAction implements Action{
 		
 		System.out.println(vector.size());
 		int s = vector.size();
-	    System.out.println("dwwwwww");
+	    
 	    if(s==2)
-	    {System.out.println("d22222wwwww");
-	    	List avg=(List)vector.get(1);System.out.println("d233222wwwww");
-	    	list=(List)vector.get(0);System.out.println("d242wwwww");
-	    	session.setAttribute("avg", avg);System.out.println("d22552wwwww");
+	    {
+	    	List avg=(List)vector.get(1);
+	    	list=(List)vector.get(0);
+	    	session.setAttribute("avg", avg);
 	    	session.setAttribute("list", list);System.out.println("d2226666wwww");
 	    }
 	    else if(vector.size()==1)
