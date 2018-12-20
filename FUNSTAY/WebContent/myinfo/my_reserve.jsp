@@ -588,7 +588,7 @@ function button_event(payment_num){
     
 	 $('.bill_butt_DY').click(function(){
 		 var payment_num=$(this).attr('id');
-		   alert(payment_num);
+		   //alert(payment_num);
 		 
 		 $.getJSON({
 			 dataType:"json",

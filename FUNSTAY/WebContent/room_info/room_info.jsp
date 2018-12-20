@@ -575,8 +575,8 @@ for (i = 0; i < acc.length; i++) {
 	<span>체크인</span> <span id="checkout">체크아웃</span>
 </li>
 <li>
-   <input type='text' value="2018-12-28" name="check_in" id="check_in" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/ readonly style="width:38%!important;">
-   <input type="text" value="2019-01-02" name="check_out" id="check_out" class='datepicker-here'  data-language='en' placeholder="년/월/일" readonly style="width:38%!important;">
+   <input type='text'  name="check_in" id="check_in" class='datepicker-here' data-language='en' data-position="bottom left" placeholder="년/월/일"/ readonly style="width:38%!important;">
+   <input type="text"  name="check_out" id="check_out" class='datepicker-here'  data-language='en' placeholder="년/월/일" readonly style="width:38%!important;">
    <input type="button" id="search_price" value="가격조회" onclick="openNav()"
    	style="background-color:white;color:#cc1d1b;border:2px solid #cc1d1b;padding:9px;font-weight:bold;font-size:16px;height:52px;border-radius:10px;line-height:10px;">
 </li>

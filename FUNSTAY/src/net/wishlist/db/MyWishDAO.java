@@ -99,7 +99,7 @@ public class MyWishDAO {
 			}
 			
 			
-			sql = "insert into wish values(?,?,?,?,?,?,?)";
+			sql = "insert into wish (wish_num,home_photo,heart,wishlist_num,home_num,room_subject,price,heart_count,home_satisfaction,wish_address) values(?,?,?,?,?,?,?,?,?,?)";
 			psm=con.prepareStatement(sql);
 			psm.setInt(1,wish_num);
 			psm.setString(2,hb.getPhoto());
@@ -108,9 +108,9 @@ public class MyWishDAO {
 			psm.setInt(5,hb.getHome_num());
 			psm.setString(6,hb.getRoom_subject());
 			psm.setInt(7,hb.getPrice());
-			psm.setString(8,hb.getRoom_subject());
-			psm.setInt(9,heart_count);
-			psm.setInt(10,0);
+			psm.setInt(8,0);
+			psm.setInt(9,3);
+			psm.setString(10,hb.getAddress());
 			
 			psm.executeUpdate();
 		}catch (Exception e){
