@@ -22,7 +22,7 @@
  
 
 <!-- 혜진씨 삽입링크 -->
-<link href="./css/search/search_center_shj2.css" rel="stylesheet">
+<link href="./css/search/search_center_shj3.css" rel="stylesheet">
  <link rel="stylesheet" href="styles.css">
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <!-- <script src="script.js"></script> -->
@@ -51,7 +51,7 @@
 
 <!-- modal -->
 <script type="text/javascript" src="./js/myinfo/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search/modal_shj.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search/modal_shj2.js"></script>
 
 
 <!-- 편의시설 아이콘 링크 -->
