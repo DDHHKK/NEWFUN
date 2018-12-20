@@ -35,8 +35,8 @@ List<QnaBean> q_list = (List)request.getAttribute("q_list");
 %>
 
 <div class="QnAcheckList_sg">
-<input type="button" value="목록" onclick='location.href="./BookingList.ho?home_num=<%=q_list.get(0).getHome_num() %>"' id="btn_dh" style="margin-left:91%;">
-<!-- <input type="button" value="목록" onclick='location.href="./MemberQNAlist.me"' id="btn_dh"> -->
+<%-- <input type="button" value="목록" onclick='location.href="./BookingList.ho?home_num=<%=q_list.get(0).getHome_num() %>"' id="btn_dh" style="margin-left:91%;">
+ --%><!-- <input type="button" value="목록" onclick='location.href="./MemberQNAlist.me"' id="btn_dh"> -->
 	<table class="QnAcheck_table_sg" border="1" style="width: 99%;">
 	<!-- <tr>
 		<td class="qnaheadtd_sg">번호</td>
