@@ -265,6 +265,255 @@ private Connection getConnection() throws Exception{
 			
 			
 		} 
+			
+			
+		
+			
+			public Vector getSideSearch2(HostBean hb,String [] conv,int num,int satis,int from,int to){
+				ResultSet rs = null;
+				PreparedStatement pstmt=null;
+				List SearchList = new ArrayList();
+				List Reviewlist = new ArrayList();
+				Vector vector = new Vector();
+				StringBuffer sql=new StringBuffer();//속도가 빠름
+				int home_num=0;
+				int satisfaction=0;
+				
+				try{
+					
+					con = getConnection();
+					sql.append("select li.home_num from review re inner join(select s.home_num from (select home_num, sum(min_people) as min_people1, sum(max_people) as max_people1 ");
+					sql.append("from room group by home_num) r join (select address, room_subject, room_type, room_content, price, photo,home_num ");
+					sql.append("from home where address LIKE ? and home_status=1 and price between ? and ?) s on r.home_num=s.home_num where r.max_people1>=? ) li");
+					sql.append("on re.home_num=li.home_num where satisfaction>=? ");
+	
+					try{
+					
+						for(int i =0; i<conv.length; i++){
+						sql.append("and li.home_num=any(select home_num from convenience where ");
+					     System.out.print("conv "+conv[i]);
+						if(conv[i].equals("essential")){System.out.println("Asdddddf");sql.append(" essential=?");}
+						else if(conv[i].equals("disabled")){sql.append(" disabled=?");}
+						else if(conv[i].equals("parking")){sql.append("parking=?");}
+						else if(conv[i].equals("wifi")){sql.append("wifi=?");}
+						else if(conv[i].equals("air_conditioner")){sql.append("air_conditioner=?");}
+						else if(conv[i].equals("animal")){sql.append("animal=?");}
+						else if(conv[i].equals("party")){sql.append("party=?");}
+						else if(conv[i].equals("pickup")){sql.append("pickup=?");}
+						else if(conv[i].equals("elevator")){sql.append(" elevator=?");}
+						else if(conv[i].equals("iron")){sql.append("iron=?");}
+						else if(conv[i].equals("extra_bed")){sql.append(" extra_bed=?");}
+						else if(conv[i].equals("shampoo")){sql.append(" shampoo=?");}
+						else if(conv[i].equals("heat")){sql.append("heat=?");}
+						else if(conv[i].equals("smoking")){sql.append(" smoking=?");}
+						else if(conv[i].equals("breakfast")){sql.append(" breakfast=?");}
+						else if(conv[i].equals("laundry")){sql.append(" laundry=?");}
+						else if(conv[i].equals("desk")){sql.append("desk=?");}
+						else if(conv[i].equals("hair_dryer")) {sql.append(" hair_dryer=?");}
+						
+						if(i == conv.length-1) { sql.append(" ) "); }
+						else {	
+							sql.append(" and ");}
+						
+						}
+						int count=0;
+
+						pstmt=con.prepareStatement(sql.toString());	
+						pstmt.setString(1, "%"+hb.getAddress()+"%");
+						pstmt.setInt(2, from);
+						pstmt.setInt(3, to);
+						pstmt.setInt(4, num);
+						pstmt.setInt(5,satis);
+				
+						for(int i =6; i<(conv.length+6); i++)
+						{	
+							count=i;
+							System.out.println("번호는 ?");
+							System.out.println(count);
+							pstmt.setInt(count, 1);
+						}	
+
+						
+						}catch(NullPointerException e){
+						
+							sql.append(")");
+							pstmt=con.prepareStatement(sql.toString());	
+							
+						}
+					
+			
+						rs = pstmt.executeQuery();
+						
+						while(rs.next())
+						{
+							HostBean hb1 = new HostBean();
+							home_num=rs.getInt("home_num");
+							String sql2 = "select avg(satisfaction) from review where home_num=?";
+							pstmt = con.prepareStatement(sql2);
+							pstmt.setInt(1, home_num);
+							rs = pstmt.executeQuery();
+							if(rs.next())
+							{
+								ReviewBean rb = new ReviewBean();
+								rb.setSatisfaction(rs.getString("avg(satisfaction)"));	
+								Reviewlist.add(rb);
+							}
+							sql2 = "select * from home h, room r where r.home_num=h.home_num and h.home_num=?";
+							pstmt=con.prepareStatement(sql2);	
+							pstmt.setInt(1, home_num);
+							rs = pstmt.executeQuery();
+							while(rs.next())
+							{
+								hb1.setAddress(rs.getString("address"));
+								hb1.setRoom_subject(rs.getString("room_subject"));
+								hb1.setRoom_type(rs.getString("room_type"));
+								hb1.setRoom_content(rs.getString("room_content"));
+								hb1.setHome_num(rs.getInt("home_num"));
+								hb1.setPrice(rs.getInt("price"));
+								hb1.setPhoto(rs.getString("photo"));
+								SearchList.add(hb1);
+							}
+						}
+						
+						
+						
+	
+						vector.add(SearchList);
+						vector.add(Reviewlist);
+					}catch (Exception e){
+						e.printStackTrace();
+					}finally{
+						if (rs != null) {try {rs.close();} catch (SQLException ex) {}	}
+						if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
+						if (con != null) {try {con.close();} catch (SQLException ex) {	}}
+					}
+					return vector;	
+				
+				
+		} 	
+			
+			
+			
+			
+			
+			public Vector getSideSearch3(HostBean hb,String [] conv,int num,int satis,int from,int to){
+				ResultSet rs = null;
+				PreparedStatement pstmt=null;
+				List SearchList = new ArrayList();
+				List Reviewlist = new ArrayList();
+				Vector vector = new Vector();
+				StringBuffer sql=new StringBuffer();//속도가 빠름
+				int home_num=0;
+				int satisfaction=0;
+				
+				try{
+					
+					con = getConnection();
+					sql.append("select * from home h inner join (select home_num from review where satisfaction>=?)re");
+					sql.append("on h.home_num=re.home_num where address LIKE ? and home_status=1 and price between ? and ?");		
+					try{
+					
+						for(int i =0; i<conv.length; i++){
+						sql.append("and home_num=any(select home_num from convenience where ");
+					     System.out.print("conv "+conv[i]);
+						if(conv[i].equals("essential")){System.out.println("Asdddddf");sql.append(" essential=?");}
+						else if(conv[i].equals("disabled")){sql.append(" disabled=?");}
+						else if(conv[i].equals("parking")){sql.append("parking=?");}
+						else if(conv[i].equals("wifi")){sql.append("wifi=?");}
+						else if(conv[i].equals("air_conditioner")){sql.append("air_conditioner=?");}
+						else if(conv[i].equals("animal")){sql.append("animal=?");}
+						else if(conv[i].equals("party")){sql.append("party=?");}
+						else if(conv[i].equals("pickup")){sql.append("pickup=?");}
+						else if(conv[i].equals("elevator")){sql.append(" elevator=?");}
+						else if(conv[i].equals("iron")){sql.append("iron=?");}
+						else if(conv[i].equals("extra_bed")){sql.append(" extra_bed=?");}
+						else if(conv[i].equals("shampoo")){sql.append(" shampoo=?");}
+						else if(conv[i].equals("heat")){sql.append("heat=?");}
+						else if(conv[i].equals("smoking")){sql.append(" smoking=?");}
+						else if(conv[i].equals("breakfast")){sql.append(" breakfast=?");}
+						else if(conv[i].equals("laundry")){sql.append(" laundry=?");}
+						else if(conv[i].equals("desk")){sql.append("desk=?");}
+						else if(conv[i].equals("hair_dryer")) {sql.append(" hair_dryer=?");}
+						
+						if(i == conv.length-1) { sql.append(" ) "); }
+						else {	
+							sql.append(" and ");}
+						
+						}
+						int count=0;
+
+						pstmt=con.prepareStatement(sql.toString());	
+						pstmt.setInt(1,satis);
+						pstmt.setString(2, "%"+hb.getAddress()+"%");
+						pstmt.setInt(3, from);
+						pstmt.setInt(4, to);
+
+				
+						for(int i =5; i<(conv.length+5); i++)
+						{	
+							count=i;
+							System.out.println("번호는 ?");
+							System.out.println(count);
+							pstmt.setInt(count, 1);
+						}	
+
+						
+						}catch(NullPointerException e){
+						
+							sql.append(")");
+							pstmt=con.prepareStatement(sql.toString());	
+							
+						}
+					
+			
+						rs = pstmt.executeQuery();
+						
+						while(rs.next())
+						{
+							HostBean hb1 = new HostBean();
+							ReviewBean rb = new ReviewBean();
+								hb1.setAddress(rs.getString("address"));
+								hb1.setRoom_subject(rs.getString("room_subject"));
+								hb1.setRoom_type(rs.getString("room_type"));
+								hb1.setRoom_content(rs.getString("room_content"));
+								hb1.setHome_num(rs.getInt("home_num"));
+								hb1.setPrice(rs.getInt("price"));
+								hb1.setPhoto(rs.getString("photo"));
+								SearchList.add(hb1);
+								
+								 home_num = rs.getInt("home_num");
+								 SearchList.add(hb1);
+								String sql2 = "select avg(satisfaction) from review where home_num=?";
+								pstmt = con.prepareStatement(sql2);
+								pstmt.setInt(1, home_num);
+								rs = pstmt.executeQuery();
+								if(rs.next())
+								{
+									rb.setSatisfaction(rs.getString("avg(satisfaction)"));
+								}
+						
+								Reviewlist.add(rb);
+							
+							}
+						
+				
+						vector.add(SearchList);
+						vector.add(Reviewlist);
+					}catch (Exception e){
+						e.printStackTrace();
+					}finally{
+						if (rs != null) {try {rs.close();} catch (SQLException ex) {}	}
+						if (pstmt != null) {try {pstmt.close();} catch (SQLException ex) {}}
+						if (con != null) {try {con.close();} catch (SQLException ex) {	}}
+					}
+					return vector;	
+				
+				
+		} 	
+		
+
+
+			
 	
 		public void updateReadcount(int home_num){
 			ResultSet rs = null;

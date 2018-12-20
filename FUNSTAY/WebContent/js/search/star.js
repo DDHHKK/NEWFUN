@@ -44,13 +44,17 @@ function lock (star)
 
 function unlock (star)
 {
-	noshow(5);
+	
 	locked=0;
 }
 
 function mark(star)
 {
-	lock(star);
+	unlock(5)
+	noshow(5);
+	
+	show(star)
+	
 	$('.star_shj').attr("value",star);
 }
 

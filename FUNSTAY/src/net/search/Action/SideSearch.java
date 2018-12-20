@@ -122,7 +122,8 @@ public class SideSearch implements Action{
 			session.setAttribute("avg", review);
 		}else if(vector2.size()!=0)
 		{
-			
+			System.out.println("Ddd");
+			System.out.println(vector2.size());
 		}
 		else if (vector3.size()!=0)
 		{
