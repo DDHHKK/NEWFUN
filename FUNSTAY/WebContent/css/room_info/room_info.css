@@ -501,6 +501,22 @@ When you mouse over the navigation links, change their color
 
 #review_table {
 	width : 100%;
+	
+	border-collapse: collapse;
+	color: #ccc;
 }
-
+.ttd{
+	width : 100px;
+	text-align: center;
+}
+#review_table td {
+	padding: 10px;
+	
+}
+.cont{
+	text-align: center;
+}
+/* .op{
+	text-align: center;
+} */
 
