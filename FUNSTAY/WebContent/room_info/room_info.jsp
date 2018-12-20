@@ -419,7 +419,6 @@
 	<% for (int i = 0; i < QnAList.size(); i++) {
 		QnaBean qn = (QnaBean) QnAList.get(i);
 	%>
-	<%-- <%if(qn.getRe_seq()==0){%> --%>
 		<button class="accordion_sg">
 			<table>
 				<tr>
@@ -435,7 +434,6 @@
 				</tr>
 			</table>
 		</button>
-	<%-- <%}%> --%> 
 		
 		<div class="panel_sg">
   			<p>
@@ -491,47 +489,6 @@
 
 		}
 	%>
-		
-		
-		
-<%-- <%
-		if (count1 != 0) {
-			//전체 페이지수 구하기 게시판 
-			//글 50개 한화면에 보여줄 글개수 10개일경우 => 전체 5 페이지
-			//글 56개 한화면에 보여줄 글개수 10개일경우 => 전체 6 페이지
-			int pageCount = count1 / pageSize + (count1 % pageSize == 0 ? 0 : 1);
-			//한 화면에 보여줄 페이지 번호 개수
-			int pageBlock = 10;
-			//시작페이지 번호 1~10 => 1    11~20 => 11   21~30 => 21
-			int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
-			//		1		  = ((     2          - 1)/pageBlock)*pageBlock+1;
-			//		1		  = ((     9          - 1)/pageBlock)*pageBlock+1;
-			//		11		  = ((     12          - 1)/pageBlock)*pageBlock+1;
-			//		11		  = ((     19          - 1)/pageBlock)*pageBlock+1;
-			//끝페이지 번호
-			int endPage = startPage + pageBlock - 1;
-			if (endPage > pageCount) {
-				endPage = pageCount;
-			}
-			//이전
-			if (startPage > pageBlock) {
-	%><a href="./QnAList.qn?pageNum=<%=startPage - pageBlock%>">[이전]</a>
-	<%
-		}
-			// 1~10
-			for (int i = startPage; i <= endPage; i++) {
-	%><a href="./QnAList.qn?pageNum=<%=i%>">[<%=i%>]
-	</a>
-	<%
-		}
-			//다음
-			if (endPage < pageCount) {
-	%><a href="./QnAList.qn?pageNum=<%=startPage + pageBlock%>">[다음]</a>
-	<%
-		}
-
-		}
-	%> --%>
 </div>
 </div>
 
