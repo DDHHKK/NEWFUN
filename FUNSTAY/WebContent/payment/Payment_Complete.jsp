@@ -42,9 +42,9 @@ border-bottom: 1px solid #cccccc;}
 <tr>
 	<td style="background-color:#f3f3f3;">예약 날짜</td><td><%=request.getAttribute("check_in") %> ~ <%=request.getAttribute("check_out") %></td>
 </tr>
-<tr>
+<%-- <tr>
 	<td style="background-color:#f3f3f3;">요청 메세지</td><td><%=request.getAttribute("request_msg") %></td>
-</tr>
+</tr> --%>
 <tr>
 	<td style="background-color:#f3f3f3;">결제 금액</td><td><%=request.getAttribute("sum_price") %></td>
 </tr>

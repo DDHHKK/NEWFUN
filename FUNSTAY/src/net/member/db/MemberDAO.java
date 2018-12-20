@@ -544,8 +544,8 @@ public class MemberDAO {
 		} finally {
 			try{
 				if(rs!=null){rs.close();}
-				if(pstmt!=null){rs.close();}
-				if(con!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
 			}catch(SQLException e){}
 		}
 		return m_list;
@@ -573,8 +573,8 @@ public class MemberDAO {
 		} finally {
 			try{
 				if(rs!=null){rs.close();}
-				if(pstmt!=null){rs.close();}
-				if(con!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
 			}catch(SQLException e){}
 		}
 		return getmileage;
@@ -614,8 +614,8 @@ public class MemberDAO {
 		} finally {
 			try{
 				if(rs!=null){rs.close();}
-				if(pstmt!=null){rs.close();}
-				if(con!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
 			}catch(SQLException e){}
 		}
 		return m_list;
@@ -664,8 +664,8 @@ public class MemberDAO {
 			} finally {
 				try{
 					if(rs!=null){rs.close();}
-					if(pstmt!=null){rs.close();}
-					if(con!=null){rs.close();}
+					if(pstmt!=null){ptmt.close();}
+					if(con!=null){con.close();}
 				}catch(SQLException e){}
 			}
 			return q_list;
@@ -708,8 +708,8 @@ public class MemberDAO {
 		} finally {
 			try{
 				if(rs!=null){rs.close();}
-				if(pstmt!=null){rs.close();}
-				if(con!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
 			}catch(SQLException e){}
 		}
 		return q_list;
@@ -755,8 +755,8 @@ public class MemberDAO {
 		}finally{
 			try{
 				if(rs!=null){rs.close();}
-				if(pstmt!=null){rs.close();}
-				if(con!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(con!=null){con.close();}
 			}catch(SQLException e){}
 		}
 		return q_list;
