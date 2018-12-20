@@ -181,7 +181,7 @@ for(int i=0;i<Wishlist.size();i++){
 
 <a href="./MyWish.wi?wishlist_num=<%=wb.getWishlist_num()%>">
 <div id="list_shj" >
-	<img src="./img/<%=wb.getList_photo()%>"><div id="explain_shj"><%=wb.getList_name()%></div>
+	<img src="./upload/<%=wb.getList_photo()%>"><div id="explain_shj"><%=wb.getList_name()%></div>
 </div>
 </a>	
 	

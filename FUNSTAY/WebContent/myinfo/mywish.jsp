@@ -124,7 +124,7 @@ List MyWishlist = (List)request.getAttribute("mywishlist");
  <input type="hidden" id="home_num" value="<%=mwb.getHome_num()%>">
 <a href="#">
 <div class="mywish_shj">
- <div id="outerbox_shj"> <img src="./img/<%=mwb.getHome_photo()%>">
+ <div id="outerbox_shj"> <img src="./upload/<%=mwb.getHome_photo()%>">
 
 
 
