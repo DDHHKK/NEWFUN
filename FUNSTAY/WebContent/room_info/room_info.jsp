@@ -131,92 +131,92 @@
 			 
 			<%if(cb.getEssential()==1){%>
 				<div style="width:150px;float:left;height:50px;height:30px;">
-				<i class='far fa-lightbulb' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 필수품목
+				<i class='far fa-lightbulb' style='font-size:20px;margin-left:20px;'></i> 필수품목
 				</div>
 			<%}%>
 			<%if(cb.getWifi()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class="fa fa-wifi" style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 와이파이
+				<i class="fa fa-wifi" style='font-size:20px;margin-left:20px;'></i> 와이파이
 				</div>
 			<%}%>
 			<%if(cb.getParking()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-parking' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 주차가능
+				<i class='fas fa-parking' style='font-size:20px;margin-left:20px;'></i> 주차가능
 				</div>
 			<%}%>
 			<%if(cb.getShampoo()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/shampoo.png" width="15px" height="25px" style='color:#cc1d1d;margin-left:20px;'> 샴푸
+				<img src="./img/icon/shampoo.png" width="15px" height="25px" style='margin-left:20px;'> 샴푸
 				</div>
 			<%}%>
 			<%if(cb.getAir_conditioner()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-thermometer-empty' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 에어컨
+				<i class='fas fa-thermometer-empty' style='font-size:20px;margin-left:20px;'></i> 에어컨
 				</div>
 			<%}%>
 			<%if(cb.getHeat()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-thermometer-full' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 난방
+				<i class='fas fa-thermometer-full' style='font-size:20px;margin-left:20px;'></i> 난방
 				</div>
 			<%}%>
 			<%if(cb.getAnimal()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-paw' style='color:#cc1d1d;margin-left:20px;'></i> 반려동물
+				<i class='fas fa-paw' style='margin-left:20px;'></i> 반려동물
 				</div>
 			<%}%>
 			<%if(cb.getDisabled()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fab fa-accessible-icon' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 장애인시설
+				<i class='fab fa-accessible-icon' style='font-size:20px;margin-left:20px;'></i> 장애인시설
 				</div>
 			<%}%>
 			<%if(cb.getParty()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-birthday-cake' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 파티가능
+				<i class='fas fa-birthday-cake' style='font-size:20px;margin-left:20px;'></i> 파티가능
 				</div>
 			<%}%>
 			<%if(cb.getPickup()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class="fa fa-car" style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 픽업가능
+				<i class="fa fa-car" style='font-size:20px;margin-left:20px;'></i> 픽업가능
 				</div>
 			<%}%>
 			<%if(cb.getElevator()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-sort' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 엘리베이터
+				<i class='fas fa-sort' style='font-size:20px;margin-left:20px;'></i> 엘리베이터
 				</div>
 			<%}%>
 			<%if(cb.getBreakfast()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-utensils' style='color:#cc1d1d;margin-left:20px;'></i> 조식제공
+				<i class='fas fa-utensils' style='margin-left:20px;'></i> 조식제공
 				</div>
 			<%}%>
 			<%if(cb.getSmoking()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-smoking' style='color:#cc1d1d;margin-left:20px;'></i> 흡연가능
+				<i class='fas fa-smoking' style='margin-left:20px;'></i> 흡연가능
 				</div>
 			<%}%>
 			<%if(cb.getLaundry()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/washing.png" width="15px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 세탁기
+				<img src="./img/icon/washing.png" width="15px" height="20px" style='margin-left:20px;'> 세탁기
 				</div>
 			<%}%>
 			<%if(cb.getIron()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/iron-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 다리미
+				<img src="./img/icon/iron-512.png" width="20px" height="20px" style='margin-left:20px;'> 다리미
 				</div>
 			<%}%>
 			<%if(cb.getDesk()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/table-512.png" width="20px" height="20px" style='color:#cc1d1d;margin-left:20px;'> 업무가능공간
+				<img src="./img/icon/table-512.png" width="20px" height="20px" style='margin-left:20px;'> 업무가능공간
 				</div>
 			<%}%>
 			<%if(cb.getExtra_bed()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<i class='fas fa-bed' style='font-size:20px;color:#cc1d1d;margin-left:20px;'></i> 간이침대
+				<i class='fas fa-bed' style='font-size:20px;margin-left:20px;'></i> 간이침대
 				</div>
 			<%}%>
 			<%if(cb.getHair_dryer()==1){%>
 				<div style="width:150px;float:left;height:50px;">
-				<img src="./img/icon/hair_dryer-512.png" width="20px" height="20px" style="color:#cc1d1d;margin-left:20px;"> 헤어드라이기
+				<img src="./img/icon/hair_dryer-512.png" width="20px" height="20px" style="margin-left:20px;"> 헤어드라이기
 				</div>
 			<%}%>
 	</div>
