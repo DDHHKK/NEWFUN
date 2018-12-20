@@ -21,6 +21,7 @@
 
 <!-- 로고 폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 <!-- 검색 폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Kodchasan" rel="stylesheet">
 <!-- 회원가입 아이콘 -->
@@ -442,26 +443,23 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 
 </nav>
 
-<nav id="long_img">
-<img src="./img/main_img101.jpg">
-</nav>
-
-
 
 <nav>
-<p id="font2">♥ 좋아요 TOP5 지역은 어떠세요?<p>
+<p id="font2">♥ 좋아요 TOP5 숙소는 어떠세요?<p>
 
 <table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
 
 
    <tr> 
     <td>
-    <div id= "img_1">
+    <div id= "img_1" border="1">
     <%MyWishBean sb1 = (MyWishBean)heart.get(0);
     int str=sb1.getHome_num();
     %>
    
-	<a href="./RoomDetail.sc?num=<%=str%>&pageNum=1"><img src="./upload/<%=sb1.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+	<a href="./RoomDetail.sc?num=<%=str%>&pageNum=1"><img src="./upload/<%=sb1.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br>
+	<p class="heart_dw_ws"><%=sb1.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sb1.getPrice()%></p>
 </div>
 </td>     
 
@@ -470,7 +468,9 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
    	<%MyWishBean sb2 = (MyWishBean)heart.get(1); 
    	int str2=sb2.getHome_num();%>
    	
-   	<a href="./RoomDetail.sc?num=<%=str2%>&pageNum=1"><img src="./upload/<%=sb2.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+   	<a href="./RoomDetail.sc?num=<%=str2%>&pageNum=1"><img src="./upload/<%=sb2.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br> 
+   	<p class="heart_dw_ws"><%=sb2.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sb2.getPrice()%></p>
 </div>
 </td>
 
@@ -479,7 +479,9 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 	<%MyWishBean sb3 = (MyWishBean)heart.get(2);
 	int str3=sb3.getHome_num();%>
 	
-	<a href="./RoomDetail.sc?num=<%=str3%>&pageNum=1"><img src="./upload/<%=sb3.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+	<a href="./RoomDetail.sc?num=<%=str3%>&pageNum=1"><img src="./upload/<%=sb3.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br>
+	<p class="heart_dw_ws"><%=sb3.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sb3.getPrice()%></p>
 
 </div>
 </td>
@@ -489,8 +491,9 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 	<%MyWishBean sb4 = (MyWishBean)heart.get(3);
 	int str4=sb4.getHome_num();%>
 	
-	<a href="./RoomDetail.sc?num=<%=str4%>&pageNum=1"><img src="./upload/<%=sb4.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
-
+	<a href="./RoomDetail.sc?num=<%=str4%>&pageNum=1"><img src="./upload/<%=sb4.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br>
+	<p class="heart_dw_ws"><%=sb4.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sb4.getPrice()%></p>
 </div>
 </td>
 
@@ -499,7 +502,9 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
  	<%MyWishBean sb5 = (MyWishBean)heart.get(4);
  	int str5=sb5.getHome_num();%>
  	
-	<a href="./RoomDetail.sc?num=<%=str5%>&pageNum=1"><img src="./upload/<%=sb5.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+	<a href="./RoomDetail.sc?num=<%=str5%>&pageNum=1"><img src="./upload/<%=sb5.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br>
+	<p class="heart_dw_ws"><%=sb5.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sb5.getPrice()%></p>
 
 </div>
 </td>
@@ -513,36 +518,43 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 
 
 
-
-
 <nav>
-<p id="font2">★ 게스트의 만족도 TOP5 지역으로 떠나보세요<p>
+<p id="font2">★ 게스트의 만족도 TOP5 숙소로 떠나보세요<p>
 
-<table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
+<table id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
 
 
    <tr> 
     <td>
     <div id= "img_1">
     <%MyWishBean sbb1 = (MyWishBean)satisfaction.get(0); 
-    String strr1=sbb1.getHome_photo().split(".png")[0];%>
-	<a href="./MemberSearchAction2.me?search_info=<%=strr1%>"><img src="./upload/<%=sbb1.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+  	 int strr1=sbb1.getHome_num();%>
+	<a href="./RoomDetail.sc?num=<%=strr1%>&pageNum=1"><img src="./upload/<%=sbb1.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br> 
+	<p class="heart_dw_ws"><%=sbb1.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sbb1.getPrice()%></p>
+	
 </div>
 </td>     
 
    	<td>
    	<div id= "img_2">
    	<%MyWishBean sbb2 = (MyWishBean)satisfaction.get(1); 
-   	 String strr2=sbb2.getHome_photo().split(".png")[0];%>
-   	<a href="./MemberSearchAction2.me?search_info=<%=strr2%>"><img src="./upload/<%=sbb2.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+   	int strr2=sbb2.getHome_num();;%>
+   	<a href="./RoomDetail.sc?num=<%=strr2%>&pageNum=1"><img src="./upload/<%=sbb2.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br>
+   	<p class="heart_dw_ws"><%=sbb2.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sbb2.getPrice()%></p>
+   	
 </div>
 </td>
 
 <td>
 <div id= "img_3">
 	<%MyWishBean sbb3 = (MyWishBean)satisfaction.get(2);
-	 String strr3=sbb3.getHome_photo().split(".png")[0];%>
-	<a href="./MemberSearchAction2.me?search_info=<%=strr3%>"><img src="./upload/<%=sbb3.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+	int strr3=sbb3.getHome_num();;%>
+	<a href="./RoomDetail.sc?num=<%=strr3%>&pageNum=1"><img src="./upload/<%=sbb3.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br>
+	<p class="heart_dw_ws"><%=sbb3.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sbb3.getPrice()%></p>
+	
 
 </div>
 </td>
@@ -550,8 +562,11 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
  <td>
  <div id= "img_4">
 	<%MyWishBean sbb4 = (MyWishBean)satisfaction.get(3);
-	 String strr4=sbb4.getHome_photo().split(".png")[0];%>
-	<a href="./MemberSearchAction2.me?search_info=<%=strr4%>"><img src="./upload/<%=sbb4.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+	int strr4=sbb4.getHome_num();;%>
+	<a href="./RoomDetail.sc?num=<%=strr4%>&pageNum=1"><img src="./upload/<%=sbb4.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br>
+	<p class="heart_dw_ws"><%=sbb4.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sbb4.getPrice()%></p>
+	
 
 </div>
 </td>
@@ -559,8 +574,11 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 <td>
  <div id= "img_5">
  	<%MyWishBean sbb5 = (MyWishBean)satisfaction.get(4);
- 	 String strr5=sbb5.getHome_photo().split(".png")[0];%>
-	<a href="./MemberSearchAction2.me?search_info=<%=strr5%>"><img src="./upload/<%=sbb5.getHome_photo().split(",")[0]%>" width="300" height="300"></a>; 
+ 	int strr5=sbb5.getHome_num();;%>
+	<a href="./RoomDetail.sc?num=<%=strr5%>&pageNum=1"><img src="./upload/<%=sbb5.getHome_photo().split(",")[0]%>" width="300" height="250" class="img_dwdc_ws"></a><br>
+	<p class="heart_dw_ws"><%=sbb5.getRoom_subject()%></p>
+	<p class="heart_dw_ws2">￦<%=sbb5.getPrice()%></p>
+	
 
 </div>
 </td>
@@ -568,6 +586,10 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 </tr>
  </table> <!--랜덤으로 사진을 나오게하는 소스 여기서 끝--> 
  
+ 
+ <nav id="long_img">
+<img src="./img/main_img101.jpg">
+</nav>
  
  
 </nav>

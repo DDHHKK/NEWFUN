@@ -27,9 +27,6 @@ public class WishlistBean {
 	public void setList_name(String list_name) {
 		this.list_name = list_name;
 	}
-	
-	
-	
 /*	int wish_num , wishlist_num,home_num,price,heart_count,home_satisfaction;
 	String home_photo, room_subject;
 	boolean heart;

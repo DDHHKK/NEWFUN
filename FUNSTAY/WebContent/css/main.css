@@ -16,7 +16,7 @@ body {margin: 0;}
 	}
 
 @keyframes photo1{
-	
+
 	
 	0%{background-image: url("photo30.jpg");
 		background-repeat: no-repeat;
@@ -39,6 +39,7 @@ body {margin: 0;}
 
 section {
 	margin: 0 30px 0 0;
+
 /* overflow: hidden; */
 float: right;
 }
@@ -248,11 +249,22 @@ background-color: #991515;
 cursor: pointer;
 }
 
- #img_1{margin: 0 30px 0 100px;}
- #img_2{margin-right: 30px;}
- #img_3{margin-right: 30px;}
- #img_4{margin-right: 30px;}
- 
+#table_1 td {min-height: 390px; 
+  vertical-align: top; }
+
+
+
+ #img_1{margin: 0 30px 0 100px;
+ text-align: center;}
+ #img_2{margin-right: 30px;
+  text-align: center;}
+ #img_3{margin-right: 30px;
+  text-align: center;}
+ #img_4{margin-right: 30px;
+  text-align: center;}
+ #img_5{text-align: center;
+  text}
+  
  #img_1:HOVER{
  filter:brightness(50%);
  }
@@ -268,11 +280,25 @@ cursor: pointer;
   #img_5:HOVER{
  filter:brightness(50%);
  }
-   
-   
+ 
+ .heart_dw_ws{ width:300px;
+font-family: 'Lora', serif;
+ font-size: 16px;
+ font-weight:lighter;
+ padding-bottom: 10px;}
+ 
+ .heart_dw_ws2{ width:300px;
+font-family: 'Lora', serif;
+ font-size: 15px;
+ font-weight:lighter;}
+ 
+ .img_dwdc_ws{
+ margin-bottom: 10px;} 
  #font2{font-size: 35px;
    margin: 70px 0 45px 99px;
-   font-family: 'Noto Sans KR', sans-serif;}
+   font-family: 'Noto Sans KR', sans-serif;
+   color: #666;}
+   
    
   #pont3_ws{background-color: transparent;
 	color: white;
