@@ -315,7 +315,10 @@
 	<div id="room_review">
 	
 	
-
+<%if(ReviewList.size()==0){
+	%>
+	등록된 리뷰가 없습니다.
+	<%}%>
 	<%
 			for (int i = 0; i < ReviewList.size(); i++) {
 				ReviewBean re = (ReviewBean) ReviewList.get(i);
@@ -428,13 +431,16 @@
 	<!--  -->
 	<table style="width:100%;margin-bottom:20px;">
 	<tr>
-		<td class="qnaheadtd_sg">번호</td>
-		<td class="qnaheadtd_sg">제목</td>
-		<td class="qnaheadtd_sg">등록일</td>
-		<td class="qnaheadtd_sg">답변여부</td>
+		<td class="qnaheadtd_sg" style="text-align: center;padding:3px;">번호</td>
+		<td class="qnaheadtd_sg" style="text-align: center;padding:3px;">제목</td>
+		<td class="qnaheadtd_sg" style="text-align: center;padding:3px;">등록일</td>
+		<td class="qnaheadtd_sg" style="text-align: center;padding:3px;">답변여부</td>
 	</tr>
+<%List<QnaBean> q_list = (List)request.getAttribute("q_list");
+if(q_list.size()==0){%>
+<tr><td colspan="4" style="text-align: center;">등록된 문의글이 없습니다.</td></tr>
 <%
-List<QnaBean> q_list = (List)request.getAttribute("q_list");
+}
 for(int i=0;i<q_list.size();i++){
 	QnaBean qb = (QnaBean)q_list.get(i);
 %>
