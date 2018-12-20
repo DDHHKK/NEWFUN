@@ -625,9 +625,9 @@ function button_event(payment_num){
     
 	 $('.bill_butt_Cancel_DY').click(function(){
 		 var payment_num=$(this).attr('id');
-		   alert(payment_num);
+		   //alert(payment_num);
 		 var room_subject= $(this).attr('name');
-		   alert(room_subject);
+		   //alert(room_subject);
 		 
 		 $.getJSON({
 			 dataType:"json",
