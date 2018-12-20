@@ -46,6 +46,12 @@
 	  window.open("room_info/room_report.jsp", "a", "width=1000, height=700, left=200, top=100"); 
 	  }
  </script>
+ 
+ <style type="text/css">
+ .review_sg_table td {
+	padding:4px;
+}
+ </style>
 </head>
 <body>
 <!-- header  시작-->
