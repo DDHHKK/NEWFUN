@@ -448,7 +448,7 @@ document.write( "<img src='" + imgUrls5[ Math.floor( Math.random() * 4) ] + "' w
 </nav>
 
 <nav>
-<p id="font2" style="margin-bottom: 20px;">♥ TOP5 숙소는 어떠세요?<p>
+<p id="font2" style="margin-bottom: 20px;">♥좋아요 TOP5 숙소는 어떠세요?<p>
 
 <table border="0" id="table_1"> <!--랜덤으로 사진을 나오게하는 소스 여기서부터시작-->
 
